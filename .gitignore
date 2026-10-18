@@ -11,3 +11,6 @@ __pycache__/
 /data/raw/
 
 /reports/vg150_graph_statistics.json
+/wandb/
+/checkpoints/
+/runs/
