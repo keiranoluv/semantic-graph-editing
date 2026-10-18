@@ -11,6 +11,35 @@ from src.datasets.schemas import SceneGraphRecord, SceneObject, SceneRelation
 from src.graph.builder import SceneGraphBuilder
 from src.graph.features import FeatureExtractor
 
+
+def _clip_rounding_overflow(
+    box: tuple[float, float, float, float],
+    width: int,
+    height: int,
+    tolerance: float,
+) -> tuple[float, float, float, float]:
+    """Clip only minor boundary overflow caused by coordinate rounding."""
+    x1, y1, x2, y2 = box
+
+    overflow = max(
+        -x1,
+        -y1,
+        x2 - width,
+        y2 - height,
+        0.0,
+    )
+
+    if overflow > tolerance:
+        raise ValueError(f"Bounding box exceeds image bounds by {overflow:.4f} pixels")
+
+    return (
+        max(0.0, x1),
+        max(0.0, y1),
+        min(float(width), x2),
+        min(float(height), y2),
+    )
+
+
 Split = Literal["train", "val", "test"]
 BOX_SCALE = 1024.0
 
@@ -131,7 +160,12 @@ class VG150AnnotationLoader:
                     SceneObject(
                         object_id=local_id,
                         label_id=int(label),
-                        bbox_xyxy=xyxy,
+                        bbox_xyxy=_clip_rounding_overflow(
+                            xyxy,
+                            width,
+                            height,
+                            tolerance=0.5 * scale,
+                        ),
                         attribute_ids=tuple(int(value) for value in attrs if int(value) > 0),
                     )
                 )
