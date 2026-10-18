@@ -9,3 +9,5 @@ __pycache__/
 *.pt
 *.pth
 /data/raw/
+
+/reports/vg150_graph_statistics.json
