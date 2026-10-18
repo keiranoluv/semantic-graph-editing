@@ -6,6 +6,8 @@ from typing import Literal
 from torch_geometric.data import Data, Dataset
 
 from src.datasets.schemas import SceneGraphRecord
+from src.graph.builder import SceneGraphBuilder
+from src.graph.features import FeatureExtractor
 
 Split = Literal["train", "val", "test"]
 
@@ -34,12 +36,19 @@ class VG150AnnotationLoader:
 class VG150GraphDataset(Dataset):
     """PyG adapter; graph creation will be delegated to a graph builder.
 
-    TODO: dependency injection of feature extractor and graph builder.
+    Feature extraction and graph construction are injected dependencies.
     """
 
-    def __init__(self, loader: VG150AnnotationLoader) -> None:
+    def __init__(
+        self,
+        loader: VG150AnnotationLoader,
+        feature_extractor: FeatureExtractor,
+        graph_builder: SceneGraphBuilder,
+    ) -> None:
         super().__init__(root=None)
         self.loader = loader
+        self.feature_extractor = feature_extractor
+        self.graph_builder = graph_builder
 
     def len(self) -> int:
         """Number of graph samples (images), not objects or relationships."""

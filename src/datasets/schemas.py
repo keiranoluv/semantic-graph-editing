@@ -6,6 +6,7 @@ Coordinates use absolute pixel-space xyxy format.
 """
 
 from dataclasses import dataclass, field
+from math import isfinite
 
 
 @dataclass(frozen=True)
@@ -49,8 +50,12 @@ class SceneGraphRecord:
             x1, y1, x2, y2 = obj.bbox_xyxy
             if not (0 <= x1 < x2 <= self.width and 0 <= y1 < y2 <= self.height):
                 raise ValueError("Invalid xyxy bounding box")
+            if not all(isfinite(value) for value in obj.bbox_xyxy):
+                raise ValueError("Bounding box coordinates must be finite")
             if obj.label_id < 0:
                 raise ValueError("Object label IDs must be nonnegative")
+            if any(attribute_id < 0 for attribute_id in obj.attribute_ids):
+                raise ValueError("Attribute IDs must be nonnegative")
         known = set(ids)
         for relation in self.relations:
             if relation.subject_id not in known or relation.object_id not in known:
