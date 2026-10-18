@@ -4,6 +4,7 @@ import argparse
 import json
 import math
 import random
+import re
 import subprocess
 from pathlib import Path
 
@@ -27,11 +28,7 @@ def resolve_device(requested):
 
 
 def collate_training_graphs(graphs, ratio, generator):
-    """Concatenate selected pairs from independent graphs on CPU.
-
-    Node indices are offset by cumulative node counts.
-    Each graph retains its own negative sampling policy.
-    """
+    """Sample each image independently, then concatenate selected nodes/pairs."""
     xs = []
     object_labels = []
     pair_indices = []
@@ -45,70 +42,25 @@ def collate_training_graphs(graphs, ratio, generator):
             negative_ratio=ratio,
             generator=generator,
         )
-
         if selected.numel() == 0:
             skipped += 1
-        else:
-            xs.append(graph.x)
-            object_labels.append(graph.object_labels)
-            pair_indices.append(graph.edge_label_index[:, selected] + node_offset)
-            targets.append(graph.edge_label[selected])
+            continue
 
+        xs.append(graph.x)
+        object_labels.append(graph.object_labels)
+        pair_indices.append(graph.edge_label_index[:, selected] + node_offset)
+        targets.append(graph.edge_label[selected])
         node_offset += graph.num_nodes
 
     if not targets:
         return None, skipped
 
-    batch = {
+    return {
         "x": torch.cat(xs, dim=0),
         "object_labels": torch.cat(object_labels, dim=0),
         "pairs": torch.cat(pair_indices, dim=1),
         "targets": torch.cat(targets, dim=0),
-    }
-
-    # Skipped graphs contribute no nodes, so adjust pair indices
-    # using the number of nodes actually included.
-    # Rebuild pair offsets from included graphs instead.
-    offset = 0
-    fixed_pairs = []
-
-    for graph in graphs:
-        selected_count = (graph.edge_label > 0).sum().item()
-        if selected_count == 0:
-            continue
-
-        # Pair indices in pair_indices already contain original offsets.
-        # This method instead constructs compact offsets.
-        offset += graph.num_nodes
-
-    # The compact construction is performed below using selected pairs.
-    # Avoid retaining offsets from skipped graphs.
-    if skipped:
-        fixed_pairs.clear()
-        compact_offset = 0
-        for graph in graphs:
-            selected = getattr(graph, "_selected_pairs", None)
-            # No cached selection: pairs are already grouped in the
-            # original list, so remap using original offsets.
-            if (graph.edge_label > 0).sum().item() == 0:
-                continue
-            fixed_pairs.append(compact_offset)
-            compact_offset += graph.num_nodes
-
-        # Reconstruct offsets deterministically without resampling.
-        original_offset = 0
-        compact_offset = 0
-        remapped = []
-        group_index = 0
-        for graph in graphs:
-            if (graph.edge_label > 0).sum().item() > 0:
-                remapped.append(pair_indices[group_index] - original_offset + compact_offset)
-                compact_offset += graph.num_nodes
-                group_index += 1
-            original_offset += graph.num_nodes
-        batch["pairs"] = torch.cat(remapped, dim=1)
-
-    return batch, skipped
+    }, skipped
 
 
 def forward_batch(model, batch, name, device):
@@ -217,6 +169,22 @@ def validate(model, dataset, limit, name, device, batch_size=128):
     return metrics
 
 
+def create_run_dir(output_dir, run_name):
+    """Create a new run atomically; never reuse a previous run's outputs."""
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,119}", run_name):
+        raise ValueError("Run name must be a safe directory name")
+    root = output_dir / run_name
+    root.mkdir(parents=True, exist_ok=True)
+    for number in range(1, 100000):
+        path = root / f"run_{number:04d}"
+        try:
+            path.mkdir(exist_ok=False)
+            return path
+        except FileExistsError:
+            continue
+    raise RuntimeError("Too many runs with the same name")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", choices=["mlp", "mlp_semantic"], required=True)
@@ -224,10 +192,14 @@ def main():
     parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--val-batch-size", type=int, default=128)
-    parser.add_argument("--epochs", type=int, default=15)
-    parser.add_argument("--patience", type=int, default=5)
+    parser.add_argument("--epochs", type=int, default=100)
+    parser.add_argument("--patience", type=int, default=10)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--weight-decay", type=float, default=0.01)
+    parser.add_argument("--run-name", type=str, default=None)
+    parser.add_argument("--min-delta", type=float, default=0.0)
+    parser.add_argument("--deterministic", action="store_true")
     parser.add_argument("--negative-ratio", type=int, default=3)
     parser.add_argument("--max-train-images", type=int, default=57723)
     parser.add_argument("--max-val-images", type=int, default=5000)
@@ -256,6 +228,8 @@ def main():
     ):
         parser.error("Batch size, epochs and limits must be positive")
 
+    if args.weight_decay < 0 or args.min_delta < 0:
+        parser.error("Weight decay and min delta must be nonnegative")
     if args.lr <= 0 or args.negative_ratio < 0:
         parser.error("Invalid learning rate or negative ratio")
 
@@ -293,6 +267,10 @@ def main():
         "batch_size": args.batch_size,
         "val_batch_size": args.val_batch_size,
         "lr": args.lr,
+        "weight_decay": args.weight_decay,
+        "patience": args.patience,
+        "min_delta": args.min_delta,
+        "deterministic": args.deterministic,
         "seed": args.seed,
         "train_limit": train_limit,
         "val_limit": val_limit,
@@ -300,7 +278,7 @@ def main():
     }
 
     model = build_model(config).to(device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     generator = torch.Generator().manual_seed(args.seed)
 
     sha = subprocess.run(
@@ -310,8 +288,9 @@ def main():
         check=False,
     ).stdout.strip()
 
-    run_dir = args.output_dir / (f"{args.model}_bs{args.batch_size}_seed{args.seed}")
-    run_dir.mkdir(parents=True, exist_ok=True)
+    run_name = args.run_name or f"{args.model}_bs{args.batch_size}_seed{args.seed}"
+    run_dir = create_run_dir(args.output_dir, run_name)
+    (run_dir / "config.json").write_text(json.dumps(config, indent=2) + "\n")
 
     run = None
     if args.wandb_mode != "disabled":
@@ -391,7 +370,7 @@ def main():
 
             torch.save(checkpoint, run_dir / "last.pt")
 
-            if score > best_score:
+            if score > best_score + args.min_delta:
                 best_score = score
                 best_epoch = epoch
                 bad_epochs = 0
