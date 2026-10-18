@@ -9,6 +9,7 @@ from pathlib import Path
 
 import torch
 import torch.nn.functional as F
+from tqdm.auto import tqdm
 
 from scripts.evaluate_mlp import build_model, predict
 from scripts.train_mlp import make_dataset
@@ -16,12 +17,12 @@ from src.evaluation.scene_graph import evaluate_image, summarize_evaluation
 from src.training.sampling import sample_training_pairs
 
 
-def train_one_epoch(model, dataset, limit, optimizer, ratio, generator, name):
+def train_one_epoch(model, dataset, limit, optimizer, ratio, generator, name, device):
     model.train()
     losses = []
     skipped = 0
 
-    for idx in range(limit):
+    for idx in tqdm(range(limit), desc=f"Train {name}", unit="img"):
         graph = dataset[idx]
         indices = sample_training_pairs(
             graph.edge_label,
@@ -33,6 +34,8 @@ def train_one_epoch(model, dataset, limit, optimizer, ratio, generator, name):
             skipped += 1
             continue
 
+        graph = graph.to(device)
+        indices = indices.to(device)
         optimizer.zero_grad(set_to_none=True)
 
         # Reuse the existing evaluation dispatch to handle both models.
@@ -60,14 +63,14 @@ def train_one_epoch(model, dataset, limit, optimizer, ratio, generator, name):
 
 
 @torch.no_grad()
-def validate(model, dataset, limit, name):
+def validate(model, dataset, limit, name, device):
     model.eval()
     total_loss = 0.0
     total_pairs = 0
     results = []
 
-    for idx in range(limit):
-        graph = dataset[idx]
+    for idx in tqdm(range(limit), desc=f"Val {name}", unit="img"):
+        graph = dataset[idx].to(device)
         logits = predict(model, graph, name)
 
         # Cross-entropy: all non-ambiguous candidate pairs.
@@ -84,10 +87,10 @@ def validate(model, dataset, limit, name):
         # of the single-label training targets.
         results.append(
             evaluate_image(
-                logits=logits,
-                candidate_pairs=graph.edge_label_index,
-                gt_pairs=graph.gt_relation_index,
-                gt_predicates=graph.gt_predicate,
+                logits=logits.cpu(),
+                candidate_pairs=graph.edge_label_index.cpu(),
+                gt_pairs=graph.gt_relation_index.cpu(),
+                gt_predicates=graph.gt_predicate.cpu(),
             )
         )
 
@@ -108,6 +111,7 @@ def main():
     )
     parser.add_argument("--root", type=Path, default=Path("data/raw/vg150"))
     parser.add_argument("--epochs", type=int, default=15)
+    parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
     parser.add_argument("--patience", type=int, default=5)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--lr", type=float, default=1e-3)
@@ -178,7 +182,13 @@ def main():
         "selection_metric": "mR@50",
     }
 
-    model = build_model(config)
+    if args.device == "auto":
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    else:
+        device = torch.device(args.device)
+    if device.type == "cuda" and not torch.cuda.is_available():
+        raise RuntimeError("CUDA unavailable")
+    model = build_model(config).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
     generator = torch.Generator().manual_seed(args.seed)
 
@@ -208,6 +218,7 @@ def main():
     bad_epochs = 0
     history = []
 
+    print(f"[INFO] Device: {device}", flush=True)
     print(f"[INFO] Model: {args.model}", flush=True)
     print(f"[INFO] Train images: {train_limit}", flush=True)
     print(f"[INFO] Validation images: {val_limit}", flush=True)
@@ -222,9 +233,10 @@ def main():
                 args.negative_ratio,
                 generator,
                 args.model,
+                device,
             )
 
-            val = validate(model, val_data, val_limit, args.model)
+            val = validate(model, val_data, val_limit, args.model, device)
             score = val["mR@50"]
 
             if score is None or not math.isfinite(score):
