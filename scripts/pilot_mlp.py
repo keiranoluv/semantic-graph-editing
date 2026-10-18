@@ -3,6 +3,7 @@
 import argparse
 import json
 import math
+import os
 import random
 import re
 import subprocess
@@ -185,38 +186,106 @@ def create_run_dir(output_dir, run_name):
     raise RuntimeError("Too many runs with the same name")
 
 
+def check_resume_compatibility(saved, current):
+    """Reject changes to optimization and data protocol on resume."""
+    frozen = (
+        "model",
+        "features",
+        "hidden_dim",
+        "embedding_dim",
+        "num_object_classes",
+        "num_classes",
+        "box_policy",
+        "negative_ratio",
+        "batch_size",
+        "lr",
+        "weight_decay",
+        "patience",
+        "min_delta",
+        "deterministic",
+        "seed",
+        "train_limit",
+        "val_limit",
+        "selection_metric",
+        "dataset",
+    )
+    for key in frozen:
+        if saved.get(key) != current.get(key):
+            raise ValueError(f"Resume config mismatch for {key}: {saved.get(key)!r} != {current.get(key)!r}")
+
+
+def restore_training_state(checkpoint, model, optimizer, generator, device):
+    """Restore all training-critical state at the end of an epoch."""
+    model.load_state_dict(checkpoint["model"])
+    optimizer.load_state_dict(checkpoint["optimizer"])
+    generator.set_state(checkpoint["sampler_rng"])
+    torch.set_rng_state(checkpoint["torch_rng"])
+    if device.type == "cuda":
+        cuda_rng = checkpoint.get("cuda_rng")
+        if cuda_rng is None:
+            raise ValueError("CUDA RNG state missing from checkpoint")
+        torch.cuda.set_rng_state_all(cuda_rng)
+    random.setstate(checkpoint["python_rng"])
+    return (
+        int(checkpoint["epoch"]) + 1,
+        float(checkpoint["best_score"]),
+        int(checkpoint["best_epoch"]),
+        int(checkpoint["bad_epochs"]),
+        list(checkpoint["history"]),
+    )
+
+
+def atomic_torch_save(value, path):
+    """Replace a completed checkpoint atomically within its own run."""
+    temp = path.with_name(path.name + ".tmp")
+    try:
+        torch.save(value, temp)
+        os.replace(temp, path)
+    finally:
+        temp.unlink(missing_ok=True)
+
+
+def atomic_text_save(content, path):
+    temp = path.with_name(path.name + ".tmp")
+    try:
+        temp.write_text(content, encoding="utf-8")
+        os.replace(temp, path)
+    finally:
+        temp.unlink(missing_ok=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", choices=["mlp", "mlp_semantic"], required=True)
     parser.add_argument("--root", type=Path, default=Path("data/raw/vg150"))
     parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
-    parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument("--batch-size", type=int, default=512)
     parser.add_argument("--val-batch-size", type=int, default=128)
     parser.add_argument("--epochs", type=int, default=100)
     parser.add_argument("--patience", type=int, default=10)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--weight-decay", type=float, default=0.01)
-    parser.add_argument("--run-name", type=str, default=None)
     parser.add_argument("--min-delta", type=float, default=0.0)
-    parser.add_argument("--deterministic", action="store_true")
     parser.add_argument("--negative-ratio", type=int, default=3)
     parser.add_argument("--max-train-images", type=int, default=57723)
     parser.add_argument("--max-val-images", type=int, default=5000)
     parser.add_argument("--hidden-dim", type=int, default=256)
     parser.add_argument("--embedding-dim", type=int, default=32)
     parser.add_argument("--box-policy", choices=["strict", "clip"], default="clip")
-    parser.add_argument("--output-dir", type=Path, default=Path("checkpoints/pilot"))
+    parser.add_argument("--output-dir", type=Path, default=Path("checkpoints/experiments"))
+    parser.add_argument("--run-name", type=str, default=None)
     parser.add_argument(
-        "--wandb-mode",
-        choices=["online", "offline", "disabled"],
-        default="offline",
+        "--resume", type=Path, default=None, help="Resume a checkpoint created by the new runner (use last.pt)"
     )
+    parser.add_argument("--deterministic", action="store_true")
+    parser.add_argument("--wandb-mode", choices=["online", "offline", "disabled"], default="offline")
     args = parser.parse_args()
 
     if (
         min(
             args.batch_size,
+            args.val_batch_size,
             args.epochs,
             args.patience,
             args.max_train_images,
@@ -226,38 +295,37 @@ def main():
         )
         <= 0
     ):
-        parser.error("Batch size, epochs and limits must be positive")
+        parser.error("Batch sizes, epochs, patience, limits and dimensions must be positive")
+    if args.lr <= 0 or args.negative_ratio < 0 or args.weight_decay < 0 or args.min_delta < 0:
+        parser.error("Invalid learning rate, negative ratio, weight decay or min delta")
 
-    if args.weight_decay < 0 or args.min_delta < 0:
-        parser.error("Weight decay and min delta must be nonnegative")
-    if args.lr <= 0 or args.negative_ratio < 0:
-        parser.error("Invalid learning rate or negative ratio")
+    if args.deterministic:
+        os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
+        torch.use_deterministic_algorithms(True)
 
     random.seed(args.seed)
     torch.manual_seed(args.seed)
     torch.set_num_threads(1)
-
     device = resolve_device(args.device)
 
-    with (args.root / "VG-SGG-dicts-with-attri.json").open() as f:
+    with (args.root / "VG-SGG-dicts-with-attri.json").open(encoding="utf-8") as f:
         vocabulary = json.load(f)
-
     num_objects = max(vocabulary["label_to_idx"].values()) + 1
     num_classes = max(vocabulary["predicate_to_idx"].values()) + 1
-
     if num_classes != 51:
         raise ValueError(f"Expected 51 classes; got {num_classes}")
 
     train_data = make_dataset(args.root, "train", args.box_policy)
     val_data = make_dataset(args.root, "val", args.box_policy)
-
     train_limit = min(args.max_train_images, len(train_data))
     val_limit = min(args.max_val_images, len(val_data))
 
     config = {
         "model": args.model,
         "dataset": "VG150",
-        "features": ("geometry" if args.model == "mlp" else "geometry+trainable_object_embedding"),
+        "features": "geometry" if args.model == "mlp" else "geometry+trainable_object_embedding",
         "hidden_dim": args.hidden_dim,
         "embedding_dim": args.embedding_dim,
         "num_object_classes": num_objects,
@@ -280,7 +348,6 @@ def main():
     model = build_model(config).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     generator = torch.Generator().manual_seed(args.seed)
-
     sha = subprocess.run(
         ["git", "rev-parse", "HEAD"],
         capture_output=True,
@@ -289,36 +356,65 @@ def main():
     ).stdout.strip()
 
     run_name = args.run_name or f"{args.model}_bs{args.batch_size}_seed{args.seed}"
-    run_dir = create_run_dir(args.output_dir, run_name)
-    (run_dir / "config.json").write_text(json.dumps(config, indent=2) + "\n")
+    start_epoch = 1
+    best_score = -math.inf
+    best_epoch = 0
+    bad_epochs = 0
+    history = []
+    wandb_id = None
+
+    if args.resume:
+        checkpoint_path = args.resume.resolve()
+        if checkpoint_path.name != "last.pt":
+            raise ValueError("Resume requires last.pt, not best.pt")
+        checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
+        if checkpoint.get("checkpoint_version") != 2:
+            raise ValueError(
+                "Legacy checkpoint detected. Resume is only supported for v2 runs; old files remain untouched"
+            )
+        check_resume_compatibility(checkpoint["config"], config)
+        run_dir = checkpoint_path.parent
+        if not (run_dir / "config.json").is_file():
+            raise ValueError("Run directory missing config.json")
+        if json.loads((run_dir / "config.json").read_text()) != checkpoint["config"]:
+            raise ValueError("Run config.json differs from checkpoint")
+        start_epoch, best_score, best_epoch, bad_epochs, history = restore_training_state(
+            checkpoint, model, optimizer, generator, device
+        )
+        if args.epochs < start_epoch:
+            raise ValueError("--epochs must be >= the next epoch when resuming")
+        wandb_id = checkpoint.get("wandb_id")
+        print(f"[RESUME] {checkpoint_path} -> epoch {start_epoch}", flush=True)
+    else:
+        run_dir = create_run_dir(args.output_dir, run_name)
+        (run_dir / "config.json").write_text(json.dumps(config, indent=2) + "\n")
+
+    print(
+        f"[INFO] model={args.model} device={device} batch_size={args.batch_size} val_batch_size={args.val_batch_size}",
+        flush=True,
+    )
+    print(f"[INFO] train={train_limit} val={val_limit} output={run_dir}", flush=True)
 
     run = None
     if args.wandb_mode != "disabled":
         import wandb
 
+        if args.resume and not wandb_id:
+            raise ValueError("Cannot resume W&B logging: previous run has no W&B ID; use --wandb-mode disabled")
         run = wandb.init(
             project="semantic-graph-editing",
-            name=f"pilot-{args.model}-bs{args.batch_size}-seed{args.seed}",
+            name=run_name,
             mode=args.wandb_mode,
+            id=wandb_id,
+            resume="must" if wandb_id else None,
             config={**config, "git_sha": sha, "device": str(device)},
         )
-
-    best_score = -math.inf
-    best_epoch = 0
-    bad_epochs = 0
-    history = []
-
-    print(
-        f"[INFO] model={args.model} device={device} " f"batch_size={args.batch_size}",
-        flush=True,
-    )
-    print(
-        f"[INFO] train={train_limit} val={val_limit}",
-        flush=True,
-    )
+        wandb_id = run.id
+    elif args.resume and wandb_id:
+        print("[WARN] W&B is disabled; original run will not be updated", flush=True)
 
     try:
-        for epoch in range(1, args.epochs + 1):
+        for epoch in range(start_epoch, args.epochs + 1):
             train_loss, steps, skipped = train_one_epoch(
                 model,
                 train_data,
@@ -330,19 +426,10 @@ def main():
                 args.model,
                 device,
             )
-
-            val = validate(
-                model,
-                val_data,
-                val_limit,
-                args.model,
-                device,
-                args.val_batch_size,
-            )
+            val = validate(model, val_data, val_limit, args.model, device, args.val_batch_size)
             score = val["mR@50"]
-
             if score is None or not math.isfinite(score):
-                raise RuntimeError("Invalid validation mR@50")
+                raise RuntimeError("Invalid mR@50: cannot select checkpoint")
 
             metrics = {
                 "epoch": epoch,
@@ -357,59 +444,54 @@ def main():
             }
             history.append(metrics)
 
+            improved = score > best_score + args.min_delta
+            if improved:
+                best_score = score
+                best_epoch = epoch
+                bad_epochs = 0
+            else:
+                bad_epochs += 1
+
             checkpoint = {
+                "checkpoint_version": 2,
                 "epoch": epoch,
                 "model": model.state_dict(),
                 "optimizer": optimizer.state_dict(),
                 "sampler_rng": generator.get_state(),
                 "torch_rng": torch.get_rng_state(),
+                "cuda_rng": torch.cuda.get_rng_state_all() if device.type == "cuda" else None,
+                "python_rng": random.getstate(),
+                "best_score": best_score,
+                "best_epoch": best_epoch,
+                "bad_epochs": bad_epochs,
+                "history": history,
                 "config": config,
                 "validation": val,
                 "git_sha": sha,
+                "wandb_id": wandb_id,
             }
 
-            torch.save(checkpoint, run_dir / "last.pt")
-
-            if score > best_score + args.min_delta:
-                best_score = score
-                best_epoch = epoch
-                bad_epochs = 0
-                torch.save(checkpoint, run_dir / "best.pt")
-                improved = True
-            else:
-                bad_epochs += 1
-                improved = False
-
-            (run_dir / "history.json").write_text(json.dumps(history, indent=2) + "\n")
+            if improved:
+                atomic_torch_save(checkpoint, run_dir / "best.pt")
+            atomic_torch_save(checkpoint, run_dir / "last.pt")
+            atomic_text_save(json.dumps(history, indent=2) + "\n", run_dir / "history.json")
 
             print(
-                f"[Epoch {epoch:02d}/{args.epochs}] "
-                f"train={train_loss:.4f} "
-                f"val_loss={val['loss']:.4f} "
-                f"R50={val['R@50']:.4f} "
-                f"mR50={score:.4f} "
-                f"best={best_score:.4f}@{best_epoch} "
-                f"steps={steps} "
+                f"[Epoch {epoch:03d}/{args.epochs}] "
+                f"train={train_loss:.4f} val_loss={val['loss']:.4f} "
+                f"R50={val['R@50']:.4f} mR50={score:.4f} "
+                f"best={best_score:.4f}@{best_epoch} steps={steps} "
                 f"{'NEW_BEST' if improved else ''}",
                 flush=True,
             )
-
             if run is not None:
                 run.log(metrics, step=epoch)
-
             if bad_epochs >= args.patience:
-                print(
-                    f"[EARLY STOP] patience={args.patience}",
-                    flush=True,
-                )
+                print(f"[EARLY STOP] patience={args.patience}", flush=True)
                 break
 
-        print(
-            f"[PASS] Best epoch={best_epoch} " f"mR@50={best_score:.4f}",
-            flush=True,
-        )
+        print(f"[PASS] Best epoch={best_epoch} mR@50={best_score:.4f}", flush=True)
         print(f"[INFO] Checkpoints: {run_dir}", flush=True)
-
     finally:
         if run is not None:
             run.finish()
