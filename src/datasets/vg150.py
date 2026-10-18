@@ -1,6 +1,7 @@
 """VG150 HDF5 annotation reader and PyG dataset adapter."""
 
 import json
+from math import isfinite
 from pathlib import Path
 from typing import Literal
 
@@ -10,6 +11,38 @@ from torch_geometric.data import Data, Dataset
 from src.datasets.schemas import SceneGraphRecord, SceneObject, SceneRelation
 from src.graph.builder import SceneGraphBuilder
 from src.graph.features import FeatureExtractor
+
+
+def _clip_box_to_image(
+    box: tuple[float, float, float, float],
+    width: int,
+    height: int,
+) -> tuple[float, float, float, float]:
+    """Clip coordinates to image bounds and reject degenerate boxes."""
+    if width <= 0 or height <= 0:
+        raise ValueError("Image dimensions must be positive")
+
+    if not all(isfinite(value) for value in box):
+        raise ValueError("Bounding box coordinates must be finite")
+
+    x1, y1, x2, y2 = box
+
+    if x1 >= x2 or y1 >= y2:
+        raise ValueError("Invalid bounding box geometry")
+
+    clipped = (
+        max(0.0, min(float(width), x1)),
+        max(0.0, min(float(height), y1)),
+        max(0.0, min(float(width), x2)),
+        max(0.0, min(float(height), y2)),
+    )
+
+    cx1, cy1, cx2, cy2 = clipped
+
+    if cx1 >= cx2 or cy1 >= cy2:
+        raise ValueError("Degenerate bounding box after clipping")
+
+    return clipped
 
 
 def _clip_rounding_overflow(
@@ -40,6 +73,7 @@ def _clip_rounding_overflow(
     )
 
 
+BoxPolicy = Literal["strict", "clip"]
 Split = Literal["train", "val", "test"]
 BOX_SCALE = 1024.0
 
@@ -52,10 +86,20 @@ class VG150AnnotationLoader:
     No implicit filtering, random splitting, or duplicate removal occurs.
     """
 
-    def __init__(self, root: Path, split: Split, split_manifest: Path) -> None:
+    def __init__(
+        self,
+        root: Path,
+        split: Split,
+        split_manifest: Path,
+        box_policy: BoxPolicy = "strict",
+    ) -> None:
+        if box_policy not in ("strict", "clip"):
+            raise ValueError(f"Unsupported box policy: {box_policy}")
+
         self.root = Path(root)
         self.split = split
         self.split_manifest = Path(split_manifest)
+        self.box_policy = box_policy
 
         if split not in ("train", "val", "test"):
             raise ValueError(f"Unsupported split: {split}")
@@ -156,16 +200,16 @@ class VG150AnnotationLoader:
                     (cy + bh / 2) * scale,
                 )
 
+                if self.box_policy == "clip":
+                    converted_box = _clip_box_to_image(xyxy, width, height)
+                else:
+                    converted_box = _clip_rounding_overflow(xyxy, width, height, tolerance=0.5 * scale)
+
                 objects.append(
                     SceneObject(
                         object_id=local_id,
                         label_id=int(label),
-                        bbox_xyxy=_clip_rounding_overflow(
-                            xyxy,
-                            width,
-                            height,
-                            tolerance=0.5 * scale,
-                        ),
+                        bbox_xyxy=converted_box,
                         attribute_ids=tuple(int(value) for value in attrs if int(value) > 0),
                     )
                 )
@@ -196,7 +240,11 @@ class VG150AnnotationLoader:
             height=height,
             objects=tuple(objects),
             relations=tuple(relations),
-            metadata={"dataset": "vg150", "hdf5_row": str(row)},
+            metadata={
+                "dataset": "vg150",
+                "hdf5_row": str(row),
+                "box_policy": self.box_policy,
+            },
         )
         record.validate()
         return record
