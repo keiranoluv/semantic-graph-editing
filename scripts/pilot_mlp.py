@@ -11,9 +11,10 @@ import torch
 import torch.nn.functional as F
 from tqdm.auto import tqdm
 
-from scripts.evaluate_mlp import build_model, predict
+from scripts.evaluate_mlp import build_model
 from scripts.train_mlp import make_dataset
-from src.evaluation.scene_graph import evaluate_image, summarize_evaluation
+from src.evaluation.batched import evaluate_graph_batch
+from src.evaluation.scene_graph import summarize_evaluation
 from src.training.sampling import sample_training_pairs
 
 
@@ -185,33 +186,28 @@ def train_one_epoch(
 
 
 @torch.no_grad()
-def validate(model, dataset, limit, name, device):
+def validate(model, dataset, limit, name, device, batch_size=128):
     model.eval()
     total_loss = 0.0
     total_pairs = 0
     results = []
 
-    for idx in tqdm(range(limit), desc=f"Val {name}", unit="img"):
-        graph = dataset[idx].to(device)
-        logits = predict(model, graph, name)
+    progress = tqdm(
+        range(0, limit, batch_size),
+        desc=f"Val {name}",
+        unit="batch",
+    )
 
-        mask = graph.edge_label >= 0
-        if mask.any():
-            total_loss += F.cross_entropy(
-                logits[mask],
-                graph.edge_label[mask],
-                reduction="sum",
-            ).item()
-            total_pairs += int(mask.sum().item())
+    for begin in progress:
+        end = min(begin + batch_size, limit)
+        graphs = [dataset[idx] for idx in range(begin, end)]
 
-        results.append(
-            evaluate_image(
-                logits=logits.cpu(),
-                candidate_pairs=graph.edge_label_index.cpu(),
-                gt_pairs=graph.gt_relation_index.cpu(),
-                gt_predicates=graph.gt_predicate.cpu(),
-            )
-        )
+        batch_results, loss_sum, pair_count = evaluate_graph_batch(model, graphs, name, device, compute_loss=True)
+
+        results.extend(batch_results)
+        total_loss += loss_sum
+        total_pairs += pair_count
+        progress.set_postfix(images=end)
 
     if total_pairs == 0:
         raise RuntimeError("No validation candidate pairs")
@@ -227,6 +223,7 @@ def main():
     parser.add_argument("--root", type=Path, default=Path("data/raw/vg150"))
     parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
     parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument("--val-batch-size", type=int, default=128)
     parser.add_argument("--epochs", type=int, default=15)
     parser.add_argument("--patience", type=int, default=5)
     parser.add_argument("--seed", type=int, default=42)
@@ -294,6 +291,7 @@ def main():
         "box_policy": args.box_policy,
         "negative_ratio": args.negative_ratio,
         "batch_size": args.batch_size,
+        "val_batch_size": args.val_batch_size,
         "lr": args.lr,
         "seed": args.seed,
         "train_limit": train_limit,
@@ -354,7 +352,14 @@ def main():
                 device,
             )
 
-            val = validate(model, val_data, val_limit, args.model, device)
+            val = validate(
+                model,
+                val_data,
+                val_limit,
+                args.model,
+                device,
+                args.val_batch_size,
+            )
             score = val["mR@50"]
 
             if score is None or not math.isfinite(score):
