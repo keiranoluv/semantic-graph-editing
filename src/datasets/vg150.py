@@ -187,5 +187,12 @@ class VG150GraphDataset(Dataset):
         return len(self.loader)
 
     def get(self, idx: int) -> Data:
-        """Materialization is reserved for Milestone 4.3."""
-        raise NotImplementedError("Connect loader, features, and graph builder")
+        """Build a PyG graph from an annotated image.
+
+        The loader, feature extractor, and graph builder are independent
+        components. Ground-truth relations are not used as node features
+        or to construct the message-passing topology.
+        """
+        record = self.loader.load(idx)
+        features = self.feature_extractor.extract(record)
+        return self.graph_builder.build(record, features)
