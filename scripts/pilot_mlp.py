@@ -1,4 +1,4 @@
-"""Pilot training for geometry and semantic VG150 PredCls MLPs."""
+"""Mini-batch VG150 MLP training with CUDA, tqdm and early stopping."""
 
 import argparse
 import json
@@ -17,49 +17,171 @@ from src.evaluation.scene_graph import evaluate_image, summarize_evaluation
 from src.training.sampling import sample_training_pairs
 
 
-def train_one_epoch(model, dataset, limit, optimizer, ratio, generator, name, device):
-    model.train()
-    losses = []
+def resolve_device(requested):
+    if requested == "auto":
+        requested = "cuda" if torch.cuda.is_available() else "cpu"
+    if requested == "cuda" and not torch.cuda.is_available():
+        raise RuntimeError("CUDA requested but unavailable")
+    return torch.device(requested)
+
+
+def collate_training_graphs(graphs, ratio, generator):
+    """Concatenate selected pairs from independent graphs on CPU.
+
+    Node indices are offset by cumulative node counts.
+    Each graph retains its own negative sampling policy.
+    """
+    xs = []
+    object_labels = []
+    pair_indices = []
+    targets = []
+    node_offset = 0
     skipped = 0
 
-    for idx in tqdm(range(limit), desc=f"Train {name}", unit="img"):
-        graph = dataset[idx]
-        indices = sample_training_pairs(
+    for graph in graphs:
+        selected = sample_training_pairs(
             graph.edge_label,
             negative_ratio=ratio,
             generator=generator,
         )
 
-        if indices.numel() == 0:
+        if selected.numel() == 0:
             skipped += 1
+        else:
+            xs.append(graph.x)
+            object_labels.append(graph.object_labels)
+            pair_indices.append(graph.edge_label_index[:, selected] + node_offset)
+            targets.append(graph.edge_label[selected])
+
+        node_offset += graph.num_nodes
+
+    if not targets:
+        return None, skipped
+
+    batch = {
+        "x": torch.cat(xs, dim=0),
+        "object_labels": torch.cat(object_labels, dim=0),
+        "pairs": torch.cat(pair_indices, dim=1),
+        "targets": torch.cat(targets, dim=0),
+    }
+
+    # Skipped graphs contribute no nodes, so adjust pair indices
+    # using the number of nodes actually included.
+    # Rebuild pair offsets from included graphs instead.
+    offset = 0
+    fixed_pairs = []
+
+    for graph in graphs:
+        selected_count = (graph.edge_label > 0).sum().item()
+        if selected_count == 0:
             continue
 
-        graph = graph.to(device)
-        indices = indices.to(device)
+        # Pair indices in pair_indices already contain original offsets.
+        # This method instead constructs compact offsets.
+        offset += graph.num_nodes
+
+    # The compact construction is performed below using selected pairs.
+    # Avoid retaining offsets from skipped graphs.
+    if skipped:
+        fixed_pairs.clear()
+        compact_offset = 0
+        for graph in graphs:
+            selected = getattr(graph, "_selected_pairs", None)
+            # No cached selection: pairs are already grouped in the
+            # original list, so remap using original offsets.
+            if (graph.edge_label > 0).sum().item() == 0:
+                continue
+            fixed_pairs.append(compact_offset)
+            compact_offset += graph.num_nodes
+
+        # Reconstruct offsets deterministically without resampling.
+        original_offset = 0
+        compact_offset = 0
+        remapped = []
+        group_index = 0
+        for graph in graphs:
+            if (graph.edge_label > 0).sum().item() > 0:
+                remapped.append(pair_indices[group_index] - original_offset + compact_offset)
+                compact_offset += graph.num_nodes
+                group_index += 1
+            original_offset += graph.num_nodes
+        batch["pairs"] = torch.cat(remapped, dim=1)
+
+    return batch, skipped
+
+
+def forward_batch(model, batch, name, device):
+    x = batch["x"].to(device)
+    pairs = batch["pairs"].to(device)
+
+    if name == "mlp_semantic":
+        labels = batch["object_labels"].to(device)
+        return model(x=x, edge_label_index=pairs, object_labels=labels)
+
+    return model(x=x, edge_label_index=pairs)
+
+
+def train_one_epoch(
+    model,
+    dataset,
+    limit,
+    batch_size,
+    optimizer,
+    ratio,
+    generator,
+    name,
+    device,
+):
+    model.train()
+    total_loss = 0.0
+    total_pairs = 0
+    steps = 0
+    skipped = 0
+
+    progress = tqdm(
+        range(0, limit, batch_size),
+        desc=f"Train {name}",
+        unit="batch",
+    )
+
+    for start in progress:
+        end = min(start + batch_size, limit)
+        graphs = [dataset[i] for i in range(start, end)]
+
+        batch, batch_skipped = collate_training_graphs(graphs, ratio, generator)
+        skipped += batch_skipped
+
+        if batch is None:
+            continue
+
         optimizer.zero_grad(set_to_none=True)
 
-        # Reuse the existing evaluation dispatch to handle both models.
-        # Restrict candidate pairs before the forward pass.
-        original_pairs = graph.edge_label_index
-        graph.edge_label_index = original_pairs[:, indices]
+        logits = forward_batch(model, batch, name, device)
+        targets = batch["targets"].to(device)
 
-        try:
-            logits = predict(model, graph, name)
-        finally:
-            graph.edge_label_index = original_pairs
+        loss = F.cross_entropy(logits, targets)
 
-        loss = F.cross_entropy(logits, graph.edge_label[indices])
-        if not torch.isfinite(loss):
-            raise RuntimeError(f"Non-finite train loss at image {idx}")
+        if not torch.isfinite(loss).item():
+            raise RuntimeError(f"Non-finite loss at batch starting {start}")
 
         loss.backward()
         optimizer.step()
-        losses.append(float(loss.item()))
 
-    if not losses:
+        count = targets.numel()
+        total_loss += loss.detach().item() * count
+        total_pairs += count
+        steps += 1
+
+        progress.set_postfix(
+            loss=f"{total_loss / total_pairs:.4f}",
+            images=end,
+            steps=steps,
+        )
+
+    if steps == 0:
         raise RuntimeError("No successful optimizer steps")
 
-    return sum(losses) / len(losses), len(losses), skipped
+    return total_loss / total_pairs, steps, skipped
 
 
 @torch.no_grad()
@@ -73,7 +195,6 @@ def validate(model, dataset, limit, name, device):
         graph = dataset[idx].to(device)
         logits = predict(model, graph, name)
 
-        # Cross-entropy: all non-ambiguous candidate pairs.
         mask = graph.edge_label >= 0
         if mask.any():
             total_loss += F.cross_entropy(
@@ -83,8 +204,6 @@ def validate(model, dataset, limit, name, device):
             ).item()
             total_pairs += int(mask.sum().item())
 
-        # PredCls: GT triplets are evaluated independently
-        # of the single-label training targets.
         results.append(
             evaluate_image(
                 logits=logits.cpu(),
@@ -104,14 +223,11 @@ def validate(model, dataset, limit, name, device):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--model",
-        choices=["mlp", "mlp_semantic"],
-        required=True,
-    )
+    parser.add_argument("--model", choices=["mlp", "mlp_semantic"], required=True)
     parser.add_argument("--root", type=Path, default=Path("data/raw/vg150"))
-    parser.add_argument("--epochs", type=int, default=15)
     parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
+    parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument("--epochs", type=int, default=15)
     parser.add_argument("--patience", type=int, default=5)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--lr", type=float, default=1e-3)
@@ -131,6 +247,7 @@ def main():
 
     if (
         min(
+            args.batch_size,
             args.epochs,
             args.patience,
             args.max_train_images,
@@ -140,24 +257,25 @@ def main():
         )
         <= 0
     ):
-        parser.error("Epochs, patience, image limits and dimensions must be positive")
+        parser.error("Batch size, epochs and limits must be positive")
 
-    if args.negative_ratio < 0 or args.lr <= 0:
-        parser.error("Invalid negative ratio or learning rate")
+    if args.lr <= 0 or args.negative_ratio < 0:
+        parser.error("Invalid learning rate or negative ratio")
 
     random.seed(args.seed)
     torch.manual_seed(args.seed)
     torch.set_num_threads(1)
 
-    vocab_path = args.root / "VG-SGG-dicts-with-attri.json"
-    with vocab_path.open(encoding="utf-8") as f:
-        vocab = json.load(f)
+    device = resolve_device(args.device)
 
-    num_objects = max(vocab["label_to_idx"].values()) + 1
-    num_predicates = max(vocab["predicate_to_idx"].values()) + 1
+    with (args.root / "VG-SGG-dicts-with-attri.json").open() as f:
+        vocabulary = json.load(f)
 
-    if num_predicates != 51:
-        raise ValueError(f"Expected 51 predicate classes, got {num_predicates}")
+    num_objects = max(vocabulary["label_to_idx"].values()) + 1
+    num_classes = max(vocabulary["predicate_to_idx"].values()) + 1
+
+    if num_classes != 51:
+        raise ValueError(f"Expected 51 classes; got {num_classes}")
 
     train_data = make_dataset(args.root, "train", args.box_policy)
     val_data = make_dataset(args.root, "val", args.box_policy)
@@ -172,9 +290,10 @@ def main():
         "hidden_dim": args.hidden_dim,
         "embedding_dim": args.embedding_dim,
         "num_object_classes": num_objects,
-        "num_classes": num_predicates,
+        "num_classes": num_classes,
         "box_policy": args.box_policy,
         "negative_ratio": args.negative_ratio,
+        "batch_size": args.batch_size,
         "lr": args.lr,
         "seed": args.seed,
         "train_limit": train_limit,
@@ -182,24 +301,18 @@ def main():
         "selection_metric": "mR@50",
     }
 
-    if args.device == "auto":
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    else:
-        device = torch.device(args.device)
-    if device.type == "cuda" and not torch.cuda.is_available():
-        raise RuntimeError("CUDA unavailable")
     model = build_model(config).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
     generator = torch.Generator().manual_seed(args.seed)
 
-    git_sha = subprocess.run(
+    sha = subprocess.run(
         ["git", "rev-parse", "HEAD"],
         capture_output=True,
         text=True,
         check=False,
     ).stdout.strip()
 
-    run_dir = args.output_dir / f"{args.model}_seed{args.seed}"
+    run_dir = args.output_dir / (f"{args.model}_bs{args.batch_size}_seed{args.seed}")
     run_dir.mkdir(parents=True, exist_ok=True)
 
     run = None
@@ -208,9 +321,9 @@ def main():
 
         run = wandb.init(
             project="semantic-graph-editing",
-            name=f"pilot-{args.model}-seed{args.seed}",
+            name=f"pilot-{args.model}-bs{args.batch_size}-seed{args.seed}",
             mode=args.wandb_mode,
-            config={**config, "git_sha": git_sha},
+            config={**config, "git_sha": sha, "device": str(device)},
         )
 
     best_score = -math.inf
@@ -218,10 +331,14 @@ def main():
     bad_epochs = 0
     history = []
 
-    print(f"[INFO] Device: {device}", flush=True)
-    print(f"[INFO] Model: {args.model}", flush=True)
-    print(f"[INFO] Train images: {train_limit}", flush=True)
-    print(f"[INFO] Validation images: {val_limit}", flush=True)
+    print(
+        f"[INFO] model={args.model} device={device} " f"batch_size={args.batch_size}",
+        flush=True,
+    )
+    print(
+        f"[INFO] train={train_limit} val={val_limit}",
+        flush=True,
+    )
 
     try:
         for epoch in range(1, args.epochs + 1):
@@ -229,6 +346,7 @@ def main():
                 model,
                 train_data,
                 train_limit,
+                args.batch_size,
                 optimizer,
                 args.negative_ratio,
                 generator,
@@ -240,7 +358,7 @@ def main():
             score = val["mR@50"]
 
             if score is None or not math.isfinite(score):
-                raise RuntimeError("Invalid mR@50; cannot select checkpoint")
+                raise RuntimeError("Invalid validation mR@50")
 
             metrics = {
                 "epoch": epoch,
@@ -263,7 +381,7 @@ def main():
                 "torch_rng": torch.get_rng_state(),
                 "config": config,
                 "validation": val,
-                "git_sha": git_sha,
+                "git_sha": sha,
             }
 
             torch.save(checkpoint, run_dir / "last.pt")
@@ -278,10 +396,7 @@ def main():
                 bad_epochs += 1
                 improved = False
 
-            (run_dir / "history.json").write_text(
-                json.dumps(history, indent=2) + "\n",
-                encoding="utf-8",
-            )
+            (run_dir / "history.json").write_text(json.dumps(history, indent=2) + "\n")
 
             print(
                 f"[Epoch {epoch:02d}/{args.epochs}] "
@@ -290,6 +405,7 @@ def main():
                 f"R50={val['R@50']:.4f} "
                 f"mR50={score:.4f} "
                 f"best={best_score:.4f}@{best_epoch} "
+                f"steps={steps} "
                 f"{'NEW_BEST' if improved else ''}",
                 flush=True,
             )
@@ -299,13 +415,13 @@ def main():
 
             if bad_epochs >= args.patience:
                 print(
-                    f"[EARLY STOP] No mR@50 improvement " f"for {args.patience} epochs",
+                    f"[EARLY STOP] patience={args.patience}",
                     flush=True,
                 )
                 break
 
         print(
-            f"[PASS] Best epoch={best_epoch}, " f"best mR@50={best_score:.4f}",
+            f"[PASS] Best epoch={best_epoch} " f"mR@50={best_score:.4f}",
             flush=True,
         )
         print(f"[INFO] Checkpoints: {run_dir}", flush=True)
