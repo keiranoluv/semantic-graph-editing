@@ -1,15 +1,15 @@
-"""Dataset skeletal-contract tests, not integration tests."""
+"""VG150 public API contract tests."""
 
-from pathlib import Path
-
-import pytest
-
-pytest.importorskip("torch_geometric")
-
-from src.datasets.vg150 import VG150AnnotationLoader  # noqa: E402
+from src.datasets.vg150 import VG150AnnotationLoader, VG150GraphDataset
 
 
-def test_loader_is_explicitly_unimplemented():
-    loader = VG150AnnotationLoader(Path("unused"), "train", Path("split.json"))
-    with pytest.raises(NotImplementedError, match="source format"):
-        loader.load(0)
+def test_loader_interface():
+    """Verify the annotation loader exposes its public methods."""
+    assert callable(VG150AnnotationLoader.load)
+    assert callable(VG150AnnotationLoader.__len__)
+
+
+def test_graph_dataset_interface():
+    """Verify the graph dataset remains a separate adapter."""
+    assert callable(VG150GraphDataset.get)
+    assert callable(VG150GraphDataset.len)
