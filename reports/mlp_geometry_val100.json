@@ -1,0 +1,21 @@
+{
+  "num_images": 100,
+  "num_images_with_gt": 100,
+  "num_predicates_with_gt": 32,
+  "R@50": 0.29678928087736134,
+  "mR@50": 0.022600587817979124,
+  "R@100": 0.34516926331322617,
+  "mR@100": 0.029637934529238876,
+  "dataset": "VG150",
+  "model": "mlp",
+  "features": "geometry",
+  "split": "val",
+  "images_evaluated": 100,
+  "box_policy": "clip",
+  "checkpoint": "checkpoints/mlp_wandb_smoke.pt",
+  "checkpoint_epoch": 3,
+  "seed": 42,
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "recall_aggregation": "image_macro",
+  "mean_recall_aggregation": "predicate_macro"
+}
