@@ -7,7 +7,16 @@ import numpy as np
 import pytest
 import torch
 
-from src.knowledge.transe.core import TransE, check_gate, evaluate, load_kg, negative_sample, set_seed, split_triples
+from src.knowledge.transe.core import (
+    TransE,
+    check_gate,
+    evaluate,
+    load_kg,
+    negative_sample,
+    set_seed,
+    split_triples,
+    split_triples_transductive,
+)
 
 
 def make_kg(tmp_path, source="wordnet"):
@@ -99,3 +108,100 @@ def test_reject_sameas_and_bad_ids(tmp_path):
         f.write("999\t0\t1\ttest\n")
     with pytest.raises(ValueError, match="outside vocabulary"):
         load_kg(folder)
+
+
+def test_transductive_split_coverage_reproducible_and_disjoint():
+    # Synthetic graph: leaf nodes, repeated relations, and disconnected components.
+    triples = np.array(
+        [(i, i % 2, i + 1) for i in range(30)] + [(i, 2, (i + 7) % 31) for i in range(31)], dtype=np.int64
+    )
+    a = split_triples_transductive(triples, seed=42)
+    b = split_triples_transductive(triples, seed=42)
+    assert all(np.array_equal(x, y) for x, y in zip(a, b, strict=False))
+    train, val, test = a
+    assert len(train) + len(val) + len(test) == len(triples)
+    sets = [set(map(tuple, part)) for part in a]
+    assert not (sets[0] & sets[1] or sets[0] & sets[2] or sets[1] & sets[2])
+    e = set(train[:, 0]) | set(train[:, 2])
+    r = set(train[:, 1])
+    for part in (val, test):
+        assert (set(part[:, 0]) | set(part[:, 2])).issubset(e)
+        assert set(part[:, 1]).issubset(r)
+
+
+def test_transductive_split_fails_when_holdout_infeasible():
+    # Every edge has a uniquely occurring leaf -> all edges must remain in train.
+    triples = np.array([(2 * i, 0, 2 * i + 1) for i in range(10)], dtype=np.int64)
+    with pytest.raises(ValueError, match="infeasible"):
+        split_triples_transductive(triples, seed=42)
+
+
+def test_transductive_split_does_not_modify_input():
+    triples = np.array([(i, 0, (i + 1) % 20) for i in range(20)], dtype=np.int64)
+    before = triples.copy()
+    split_triples_transductive(triples, seed=42)
+    assert np.array_equal(triples, before)
+
+
+def test_cli_bounded_evaluation_and_split_ratios(tmp_path, monkeypatch, capsys):
+    from scripts import train_transe
+
+    kg = make_kg(tmp_path)
+    output = tmp_path / "bounded"
+    args = [
+        "train_transe",
+        "--kg-dir",
+        str(kg),
+        "--output-dir",
+        str(output),
+        "--val-ratio",
+        "0.2",
+        "--test-ratio",
+        "0.2",
+        "--eval-max-triples",
+        "1",
+        "--dim",
+        "8",
+        "--epochs",
+        "1",
+        "--batch-size",
+        "4",
+    ]
+    monkeypatch.setattr("sys.argv", args + ["--dry-run"])
+    train_transe.main()
+    manifest = json.loads(capsys.readouterr().out)
+    assert manifest["eval_subset"] is True
+    assert manifest["train_count"] == 8 and manifest["val_count"] == 2 and manifest["test_count"] == 2
+    assert not output.exists()
+    monkeypatch.setattr("sys.argv", args)
+    train_transe.main()
+    metrics = json.loads((output / "metrics.json").read_text())
+    assert metrics["history"][0]["val"]["count"] == 2
+    assert metrics["test"]["count"] == 2
+    assert metrics["evaluation_protocol"]["val_total"] == 2
+    assert metrics["evaluation_protocol"]["subset"] is True
+
+
+def test_cli_invalid_ratios_and_eval_limit(tmp_path, monkeypatch):
+    from scripts import train_transe
+
+    kg = make_kg(tmp_path)
+    for extra in (["--eval-max-triples", "0"], ["--val-ratio", "0.8", "--test-ratio", "0.3"], ["--val-ratio", "nan"]):
+        monkeypatch.setattr(
+            "sys.argv",
+            ["train_transe", "--kg-dir", str(kg), "--output-dir", str(tmp_path / "invalid"), "--dry-run"] + extra,
+        )
+        with pytest.raises(SystemExit):
+            train_transe.main()
+
+
+def test_cli_eval_subset_deterministic(tmp_path, monkeypatch, capsys):
+    from scripts import train_transe
+
+    kg = make_kg(tmp_path)
+    common = ["train_transe", "--kg-dir", str(kg), "--dry-run", "--eval-max-triples", "1"]
+    for name in ("first", "second"):
+        monkeypatch.setattr("sys.argv", common + ["--output-dir", str(tmp_path / name)])
+        train_transe.main()
+        obj = json.loads(capsys.readouterr().out)
+        assert obj["eval_val_triples"] == obj["eval_test_triples"] == 1

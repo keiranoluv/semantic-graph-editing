@@ -69,3 +69,61 @@ entity-coverage checks, baseline comparisons and at least three seeds.
 **Not PredCls metrics.** These link prediction metrics are NOT equivalent to
 VG150 scene-graph Recall@50/100 or mean Recall; those must be measured later
 with the same MLP/GAT/GAT+KG image split protocol.
+
+## C.1.5 Transductive coverage split
+
+`--split-policy random` (default) preserves the original C.1 seeded split.
+`--split-policy transductive` constructs a training-edge cover for all
+entities and relation IDs, then holds out the exact requested 10% validation
+and 10% test unique triples. It errors if an edge cover cannot fit the
+requested training budget. Degree-1 edges must remain in train. The new policy
+uses only KG topology, not VG150 image/test predicate annotations. The held-out
+samples differ between policies, so **do not attribute metric changes to a
+better model**. It is still a technical C-Draft, not human-reviewed data.
+
+```bash
+python -m scripts.train_transe \
+  --kg-dir data/knowledge/wordnet-ai-draft-v1/kg \
+  --mode draft --split-policy transductive \
+  --output-dir runs/transe/c1-wordnet-transductive-seed42 \
+  --seed 42 --epochs 10 --dry-run
+```
+
+The historical output name `split_indices.npz` is retained for compatibility;
+its `train`, `val`, `test` arrays contain **triple rows (N,3)**, not indices.
+Never reuse an existing output directory. CPU reproducibility should be
+checked against a separate run directory with the same seed.
+
+
+## C.1.6 — Configurable holdouts and bounded evaluation
+
+The CLI retains default `--val-ratio 0.1 --test-ratio 0.1`. Both options
+accept finite fractions in (0,1), whose sum must be below 1. For
+`--split-policy transductive`, the coverage gate still refuses infeasible
+ratios; increasing the train fraction is **not a guarantee** of feasibility.
+
+`--eval-max-triples N` deterministically samples up to N held-out triples
+**separately** from validation and test, without replacement. The seed and
+sampling policy are recorded in the manifest; metrics record both evaluated
+and total holdout counts. `count` in MRR/Hits is **head + tail queries**,
+so 100 triples produce 200 rank queries. Sampling does **not** change the
+train/validation/test splits, and filtered ranking continues to exclude all
+known triples, including unevaluated holdout positives.
+
+These subset metrics are **technical diagnostics**, never official benchmark
+results. Omitting the flag evaluates the complete holdout, maintaining the
+legacy behavior. Dataset provenance and review gates are unchanged. Use a
+new output directory for each configuration, and do not compare metrics from
+different holdout sets as though they used the same evaluation data.
+
+Example large-graph CPU smoke test (first run `--dry-run`):
+
+```bash
+python -m scripts.train_transe \
+  --kg-dir data/knowledge/conceptnet-b2-v1 \
+  --mode draft --split-policy random \
+  --val-ratio 0.1 --test-ratio 0.1 \
+  --eval-max-triples 100 \
+  --output-dir runs/transe/c1-conceptnet-bounded-seed42 \
+  --dim 64 --epochs 3 --batch-size 512 --seed 42 --device cpu --dry-run
+```

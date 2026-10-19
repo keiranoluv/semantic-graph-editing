@@ -192,6 +192,76 @@ def split_triples(
     return triples[order[nval + ntest :]], triples[order[:nval]], triples[order[nval : nval + ntest]]
 
 
+def split_triples_transductive(
+    triples: np.ndarray, seed: int, val_ratio: float = 0.1, test_ratio: float = 0.1
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Coverage-preserving triple holdout: ALL evaluated entities/relations occur in train.
+
+    Select essential edges in ascending endpoint-degree order, then reserve
+    sufficient randomly chosen extra training edges to match the requested
+    holdout sizes. Never silently change the requested ratios.
+    """
+    if not (0 < val_ratio < 1 and 0 < test_ratio < 1 and val_ratio + test_ratio < 1):
+        raise ValueError("Invalid split ratios")
+    triples = np.asarray(triples)
+    if triples.ndim != 2 or triples.shape[1] != 3 or not np.issubdtype(triples.dtype, np.integer):
+        raise ValueError("Triples must be an integer (N, 3) array")
+    n = len(triples)
+    if n < 10 or len({tuple(map(int, t)) for t in triples}) != n:
+        raise ValueError("Need at least 10 distinct triples")
+    nval, ntest = max(1, int(n * val_ratio)), max(1, int(n * test_ratio))
+    train_budget = n - nval - ntest
+    rng = np.random.default_rng(seed)
+    order = rng.permutation(n)
+    # Insertion order is seed-randomized for reproducible tie breaking.
+    incident: dict[tuple[str, int], list[int]] = {}
+    degree: dict[tuple[str, int], int] = {}
+    for i in order:
+        h, r, t = map(int, triples[i])
+        for key in {("e", h), ("e", t), ("r", r)}:
+            incident.setdefault(key, []).append(int(i))
+            degree[key] = degree.get(key, 0) + 1
+    chosen: set[int] = set()
+    covered: set[tuple[str, int]] = set()
+    # Degree-1 nodes are mandatory; choosing constrained nodes first also
+    # reduces the chance of over-allocating the training split.
+    keys = sorted(incident, key=lambda x: degree[x])
+    for key in keys:
+        if key in covered:
+            continue
+        candidates = incident[key]
+
+        def gain(i: int) -> int:
+            h, r, t = map(int, triples[i])
+            return sum(k not in covered for k in {("e", h), ("e", t), ("r", r)})
+
+        index = max(candidates, key=gain)
+        chosen.add(index)
+        h, r, t = map(int, triples[index])
+        covered.update({("e", h), ("e", t), ("r", r)})
+        if len(chosen) > train_budget:
+            raise ValueError(
+                f"Transductive split infeasible at requested ratios: "
+                f"coverage needs >{train_budget} training triples; lower holdout ratios"
+            )
+    remainder = [int(i) for i in order if int(i) not in chosen]
+    extra_train = train_budget - len(chosen)
+    train_ids = sorted(chosen) + remainder[:extra_train]
+    holdout = remainder[extra_train:]
+    train = triples[train_ids].copy()
+    val = triples[holdout[:nval]].copy()
+    test = triples[holdout[nval:]].copy()
+    assert len(train) == train_budget and len(val) == nval and len(test) == ntest
+    train_e = set(train[:, 0].tolist()) | set(train[:, 2].tolist())
+    train_r = set(train[:, 1].tolist())
+    for part in (val, test):
+        if not (set(part[:, 0].tolist()) | set(part[:, 2].tolist())).issubset(train_e):
+            raise AssertionError("Entity coverage invariant violated")
+        if not set(part[:, 1].tolist()).issubset(train_r):
+            raise AssertionError("Relation coverage invariant violated")
+    return train, val, test
+
+
 def evaluate(
     model: TransE, triples: np.ndarray, known: set[tuple[int, int, int]], device: torch.device, batch_size: int = 128
 ) -> dict:
