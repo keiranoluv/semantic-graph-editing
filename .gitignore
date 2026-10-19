@@ -16,3 +16,7 @@ __pycache__/
 /runs/
 /reports/mlp_evaluation.json
 scripts/pilot_mlp.py.bak
+
+# Large downloaded external KG data and generated KG artifacts
+/data/external/
+/data/knowledge/

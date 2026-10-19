@@ -72,11 +72,15 @@ Read the hash printed by `sha256sum`, then run (replace `YOUR_SHA256_HEX_HERE`):
 python -m scripts.build_conceptnet_graph \
   --assertions data/external/conceptnet/conceptnet-assertions-5.7.0.csv.gz \
   --expected-sha256 YOUR_SHA256_HEX_HERE \
+  --max-edges 300000 \
   --dry-run
 python -m scripts.build_conceptnet_graph \
   --assertions data/external/conceptnet/conceptnet-assertions-5.7.0.csv.gz \
-  --expected-sha256 YOUR_SHA256_HEX_HERE
+  --expected-sha256 YOUR_SHA256_HEX_HERE \
+  --max-edges 300000
 ```
+
+**Observed reproducibility policy (2026-10-19):** the dataset snapshot with SHA-256 `accd65fe94038584295574ddc26e1500c1919c8c4532bf771811cafd0948af7e` retained 56,703 evidence rows. The CLI default `--max-edges=50000` is too low: for this exact reference extraction use `--max-edges 300000` explicitly. This fingerprint comes from the project machine, not an independently published checksum. See `docs/TEAM_REPRODUCIBILITY_AND_PROTOCOLS.md` for full teammate instructions.
 
 The SHA-256 obtained from the same download detects later changes, but alone
 is **not independent authenticity verification**. For reproducible group runs,
