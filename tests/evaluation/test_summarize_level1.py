@@ -1,0 +1,75 @@
+import copy
+
+import pytest
+
+from scripts.summarize_level1 import summarize
+
+
+def reports():
+    rows = []
+    for seed, score in [(42, 0.1), (123, 0.2), (3407, 0.3)]:
+        rows.append(
+            {
+                "model": "gat_kg",
+                "seed": seed,
+                "split": "val",
+                "protocol": "PredCls_graph_constrained_top1_per_pair",
+                "data_sha256": {"splits.json": "same"},
+                "images_evaluated": 5000,
+                "split_images": 5000,
+                "full_split": True,
+                "config": {
+                    "model": "gat_kg",
+                    "seed": seed,
+                    "kg_manifest_sha256": "abc",
+                    "use_knowledge": True,
+                    "message_edges": "full",
+                    "val_limit": 5000,
+                },
+                "per_predicate": {"1": {"support": 4}},
+                "checkpoint_sha256": f"checkpoint-{seed}",
+                "checkpoint": f"/tmp/{seed}.pt",
+                "R@50": score,
+                "R@100": score,
+                "mR@50": score,
+                "mR@100": score,
+            }
+        )
+    return rows
+
+
+def call(tmp_path, rows):
+    paths = []
+    for i, row in enumerate(rows):
+        import json
+
+        p = tmp_path / f"{i}.json"
+        p.write_text(json.dumps(row))
+        paths.append(p)
+    return summarize(paths)
+
+
+def test_three_seed_mean_and_sample_std(tmp_path):
+    result = call(tmp_path, reports())
+    assert result["groups"][0]["metrics"]["mR@50"]["mean"] == pytest.approx(0.2)
+    assert result["groups"][0]["metrics"]["mR@50"]["sample_std"] == pytest.approx(0.1)
+
+
+@pytest.mark.parametrize(
+    "change", ["subset", "different_split", "different_support", "different_config", "duplicate_seed"]
+)
+def test_rejects_noncomparable_reports(tmp_path, change):
+    rows = copy.deepcopy(reports())
+    if change == "subset":
+        rows[1]["full_split"] = False
+    elif change == "different_split":
+        rows[1]["data_sha256"]["splits.json"] = "other"
+    elif change == "different_support":
+        rows[1]["per_predicate"]["1"]["support"] = 3
+    elif change == "different_config":
+        rows[1]["config"]["message_edges"] = "none"
+    else:
+        rows[1]["seed"] = 42
+        rows[1]["config"]["seed"] = 42
+    with pytest.raises(ValueError):
+        call(tmp_path, rows)

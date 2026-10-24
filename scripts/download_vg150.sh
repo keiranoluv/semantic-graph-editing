@@ -12,6 +12,8 @@ DICT_URL="https://raw.githubusercontent.com/Prk10/VG150_VisualGenome/main/VG-SGG
 META_URL="https://homes.cs.washington.edu/~ranjay/visualgenome/data/dataset/image_data.json.zip"
 
 H5_SHA256="ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1"
+DICT_SHA256="1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1"
+META_JSON_SHA256="93d0053d7e8f451497646fa513e8fb9b1a889df6e757010b88e51e2e21803487"
 
 download() {
     local url="$1"
@@ -31,6 +33,7 @@ download "$DICT_URL" "$ROOT/VG-SGG-dicts-with-attri.json"
 download "$META_URL" "$ROOT/image_data.json.zip"
 
 echo "$H5_SHA256  $ROOT/VG-SGG-with-attri.h5" | sha256sum -c
+echo "$DICT_SHA256  $ROOT/VG-SGG-dicts-with-attri.json" | sha256sum -c
 
 python - "$ROOT" <<'INNER_PY'
 import json
@@ -58,3 +61,5 @@ for key in ("label_to_idx", "predicate_to_idx", "attribute_to_idx"):
 print(f"[OK] Raw metadata records: {len(metadata)}")
 print("[OK] VG150 annotations downloaded.")
 INNER_PY
+
+echo "$META_JSON_SHA256  $ROOT/image_data_raw.json" | sha256sum -c

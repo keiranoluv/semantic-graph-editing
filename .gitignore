@@ -6,6 +6,7 @@ data/processed/*
 __pycache__/
 *.pyc
 .venv/
+myenv/
 *.pt
 *.pth
 /data/raw/
