@@ -94,6 +94,7 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | 2026-10-25 | Kiểm tra mapping reviewed trong `myenv` | NLTK 3.9.1 tạo 150 linked_manual; 151 dòng ngữ nghĩa trùng bản Python hệ thống NLTK 3.10.3, chỉ metadata phiên bản khác; bản `myenv` là `data/knowledge/wordnet-reviewed-toan-v1/` | Teammate dùng cùng `myenv` hoặc output dir riêng khi đổi NLTK |
 | 2026-10-25 | CPU dry-run WordNet KG từ mapping Toan | 150 class resolved, 146 synset gốc riêng, 1.077 entities và 1.312 triples ở 2 hops; chưa cung cấp reviewed override/evidence gate nên `ready_for_gat_kg_training=false` | Không train final từ dry-run này; bổ sung manifest audit và dựng KG versioned sau khi nhóm chốt chính sách |
 | 2026-10-25 | CPU dry-run KG với override 150 class của Toan | Cổng `--require-fully-reviewed` PASS; 146 synset gốc, 1.077 entities, 1.312 triples; `ready_for_gat_kg_training=true` | Người dùng tạo artifact KG thực tế bằng lệnh bên dưới; Codex kiểm tra đầu ra và chuẩn bị nhánh TransE/C.2/GAT+KG |
+| 2026-10-25 | Chuẩn bị lệnh GPU và WandB cho nhánh KG 150 class | KG smoke riêng tạo được 1.077 entities/1.312 triples; TransE transductive dry-run PASS (1.050/131/131 triples); GAT+KG WandB offline CPU smoke 1 epoch PASS; 0 GPU train do Codex | Người dùng tạo KG chính, chạy TransE GPU 10 epochs, export CPU, rồi GAT+KG GPU với WandB online, tối đa 200 epochs/patience 15; lệnh tại `docs/knowledge/c2_gat_wordnet.md` |
 
 ## B1-01 — Kiểm kê trước khi cài đặt
 
@@ -158,8 +159,9 @@ các URL download trên máy teammate chưa được kiểm chứng bằng một
   cùng output dir sau khi đã tạo thành công. Gửi dòng `ready_for_gat_kg_training`
   và `git status --short` nếu lệnh lỗi.
 - Sau khi có KG, Codex kiểm tra hash/số lượng rồi hoàn thiện đường đi
-  TransE → C.2 export → GAT+KG cho mapping mới. Codex gửi lệnh train GPU cụ thể
-  khi các cổng nạp artifact đã được kiểm tra; người dùng tự chạy train GPU.
+  TransE → C.2 export → GAT+KG cho mapping mới. Lệnh GPU và WandB đã được chuẩn
+  bị trong [c2_gat_wordnet.md](knowledge/c2_gat_wordnet.md); người dùng tự chạy
+  sau mỗi bước phụ thuộc và gửi output để Codex kiểm tra.
 - C.1 `--mode reviewed` hiện yêu cầu manifest riêng có bằng chứng/lý do cho
   từng class; việc có đủ 150 lựa chọn synset chưa tự tạo ra manifest đó. Trong
   lúc hoàn thiện hợp đồng này, các run `--mode draft` chỉ dùng kiểm tra kỹ thuật

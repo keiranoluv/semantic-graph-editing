@@ -34,8 +34,6 @@ def main(argv=None):
     args = parse_args(baseline_tokens)
     if kg_args.kg_features is None:
         extra.error("--kg-features is required")
-    if args.wandb_mode != "disabled":
-        extra.error("Initial GAT+KG runner uses local logs; pass --wandb-mode disabled")
     if args.deterministic:
         import os
 
@@ -82,6 +80,7 @@ def main(argv=None):
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     generator = torch.Generator().manual_seed(args.seed)
     start, best_score, best_epoch, bad_epochs, history = 1, -math.inf, 0, 0, []
+    wandb_id = None
     if args.resume:
         path = args.resume.resolve()
         checkpoint = torch.load(path, map_location="cpu", weights_only=True)
@@ -93,6 +92,7 @@ def main(argv=None):
         start, best_score, best_epoch, bad_epochs, history = restore_training_state(
             checkpoint, model, optimizer, generator, device
         )
+        wandb_id = checkpoint.get("wandb_id")
         if start > args.epochs or bad_epochs >= args.patience:
             raise ValueError("Run has already completed its epoch budget or early stopping")
     else:
@@ -110,59 +110,87 @@ def main(argv=None):
         atomic_text_save(freeze.stdout, run_dir / "requirements-frozen.txt")
     git_sha = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
     print(f"[DRAFT] device={device}; train={train_limit}; val={val_limit}; run={run_dir}", flush=True)
-    for epoch in range(start, args.epochs + 1):
-        loss, steps, skipped = train_one_epoch(
-            model,
-            train,
-            train_limit,
-            args.batch_size,
-            args.accumulation_steps,
-            optimizer,
-            args.negative_ratio,
-            generator,
-            device,
+    run = None
+    if args.wandb_mode != "disabled":
+        import wandb
+
+        if args.resume and wandb_id is None:
+            raise ValueError("No previous W&B run to resume; use --wandb-mode disabled")
+        run = wandb.init(
+            project="semantic-graph-editing",
+            name=run_dir.name,
+            mode=args.wandb_mode,
+            id=wandb_id,
+            resume="must" if wandb_id else None,
+            config={**config, "git_sha": git_sha, "device": str(device)},
         )
-        metrics = validate_gat(model, val, val_limit, device, args.val_batch_size)
-        score = metrics["mR@50"]
-        if score is None or not math.isfinite(score):
-            raise RuntimeError("Cannot select checkpoint without finite validation mR@50")
-        stats = {
-            "epoch": epoch,
-            "train/loss": loss,
-            "train/optimizer_steps": steps,
-            "train/skipped_graphs": skipped,
-            **{f"val/{k}": v for k, v in metrics.items()},
-        }
-        history.append(stats)
-        improved = score > best_score + args.min_delta
-        if improved:
-            best_score, best_epoch, bad_epochs = score, epoch, 0
-        else:
-            bad_epochs += 1
-        state = {
-            "checkpoint_version": 4,
-            "epoch": epoch,
-            "model": model.state_dict(),
-            "optimizer": optimizer.state_dict(),
-            "sampler_rng": generator.get_state(),
-            "torch_rng": torch.get_rng_state(),
-            "python_rng": random.getstate(),
-            "cuda_rng": torch.cuda.get_rng_state_all() if device.type == "cuda" else None,
-            "best_score": best_score,
-            "best_epoch": best_epoch,
-            "bad_epochs": bad_epochs,
-            "history": history,
-            "config": config,
-            "validation": metrics,
-            "git_sha": git_sha,
-        }
-        if improved:
-            atomic_torch_save(state, run_dir / "best.pt")
-        atomic_torch_save(state, run_dir / "last.pt")
-        atomic_text_save(json.dumps(history, indent=2) + "\n", run_dir / "history.json")
-        print(f"[Epoch {epoch}] loss={loss:.5f} val_mR50={score:.5f} best={best_score:.5f}@{best_epoch}", flush=True)
-        if bad_epochs >= args.patience:
-            break
+        wandb_id = run.id
+    elif args.resume and wandb_id:
+        print("[WARN] W&B disabled; previous W&B run not updated", flush=True)
+    try:
+        for epoch in range(start, args.epochs + 1):
+            loss, steps, skipped = train_one_epoch(
+                model,
+                train,
+                train_limit,
+                args.batch_size,
+                args.accumulation_steps,
+                optimizer,
+                args.negative_ratio,
+                generator,
+                device,
+            )
+            metrics = validate_gat(model, val, val_limit, device, args.val_batch_size)
+            score = metrics["mR@50"]
+            if score is None or not math.isfinite(score):
+                raise RuntimeError("Cannot select checkpoint without finite validation mR@50")
+            stats = {
+                "epoch": epoch,
+                "train/loss": loss,
+                "train/optimizer_steps": steps,
+                "train/skipped_graphs": skipped,
+                **{f"val/{k}": v for k, v in metrics.items()},
+            }
+            history.append(stats)
+            improved = score > best_score + args.min_delta
+            if improved:
+                best_score, best_epoch, bad_epochs = score, epoch, 0
+            else:
+                bad_epochs += 1
+            state = {
+                "checkpoint_version": 4,
+                "epoch": epoch,
+                "model": model.state_dict(),
+                "optimizer": optimizer.state_dict(),
+                "sampler_rng": generator.get_state(),
+                "torch_rng": torch.get_rng_state(),
+                "python_rng": random.getstate(),
+                "cuda_rng": torch.cuda.get_rng_state_all() if device.type == "cuda" else None,
+                "best_score": best_score,
+                "best_epoch": best_epoch,
+                "bad_epochs": bad_epochs,
+                "history": history,
+                "config": config,
+                "validation": metrics,
+                "git_sha": git_sha,
+                "wandb_id": wandb_id,
+            }
+            if improved:
+                atomic_torch_save(state, run_dir / "best.pt")
+            atomic_torch_save(state, run_dir / "last.pt")
+            atomic_text_save(json.dumps(history, indent=2) + "\n", run_dir / "history.json")
+            print(
+                f"[Epoch {epoch}] loss={loss:.5f} val_mR50={score:.5f} best={best_score:.5f}@{best_epoch}", flush=True
+            )
+            if run is not None:
+                run.log(stats, step=epoch)
+            if bad_epochs >= args.patience:
+                print(f"[EARLY STOP] patience={args.patience}", flush=True)
+                break
+        print(f"[PASS] Best epoch={best_epoch} mR@50={best_score:.5f}", flush=True)
+    finally:
+        if run is not None:
+            run.finish()
 
 
 if __name__ == "__main__":

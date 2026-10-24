@@ -1,9 +1,78 @@
-# C.2 và GAT+WordNet — pipeline draft mức 1
+# C.2 và GAT+WordNet — pipeline mức 1
 
-Trạng thái: code đã có, unit tests và CPU smoke đã chạy. Chưa train GPU hoặc
-chốt kết quả GAT+KG. Mapping hiện tại chưa được người kiểm tra; exporter hiện
-**chỉ hỗ trợ draft**, chưa hỗ trợ xuất bản reviewed. Khi nhóm hoàn tất review,
-cần bổ sung contract reviewed và tái tạo KG/TransE/export tương ứng.
+Trạng thái: mapping đại diện 150/150 của Toan đã được biên dịch. KG, TransE và
+feature export mới từ mapping đó chưa được tạo trong đường chạy chính. Exporter
+và GAT+KG runner hiện vẫn gắn nhãn `draft`; C.1 `reviewed` cần manifest audit
+riêng có bằng chứng/lý do từng class. GAT+KG đã hỗ trợ WandB online/offline và
+early stopping theo validation mR@50; CPU smoke WandB offline 1 epoch PASS.
+
+## Đường chạy tiếp theo với mapping 150 class
+
+Chạy từ thư mục gốc repository; dùng `myenv`. Các output dir phải chưa tồn tại.
+Người dùng chạy lệnh tạo KG trên CPU và các lệnh train GPU. Codex không chạy
+train GPU.
+
+```bash
+myenv/bin/python -m scripts.build_wordnet_graph \
+  --mapping data/knowledge/wordnet-reviewed-toan-v1/wordnet_mapping.json \
+  --reviewed-overrides configs/knowledge/wordnet_overrides.reviewed-toan-v1.json \
+  --require-fully-reviewed --max-hops 2 \
+  --output-dir data/knowledge/wordnet-kg-toan-v1
+```
+
+Lệnh CPU tạo KG; smoke riêng đạt 150/150 class, 1.077 entities, 1.312 triples,
+`ready_for_gat_kg_training=true`. Sau khi KG được tạo, train TransE trên GPU:
+
+```bash
+myenv/bin/python -m scripts.train_transe \
+  --kg-dir data/knowledge/wordnet-kg-toan-v1 \
+  --mode draft --split-policy transductive \
+  --output-dir runs/transe/wordnet-toan-v1-seed42 \
+  --dim 64 --epochs 10 --batch-size 512 --seed 42 --device cuda
+```
+
+TransE C.1 hiện dùng 10 epochs cố định, chưa có WandB hoặc early stopping;
+`draft` ở đây là trạng thái hợp đồng audit, dù nguồn mapping đã đủ 150 lựa chọn
+của Toan. Dry-run split transductive PASS: 1.050 train, 131 validation, 131
+test triples. Sau khi run hoàn tất, xuất embedding trên CPU:
+
+```bash
+myenv/bin/python -m scripts.export_knowledge \
+  --checkpoint runs/transe/wordnet-toan-v1-seed42/epoch_0010.pt \
+  --kg-dir data/knowledge/wordnet-kg-toan-v1 \
+  --mapping data/knowledge/wordnet-reviewed-toan-v1/wordnet_mapping.json \
+  --output-dir data/knowledge/c2-wordnet-toan-v1
+```
+
+Kiểm tra output báo `150/150 mapped classes` trước khi train GAT+KG. Đăng nhập
+WandB bằng `myenv/bin/wandb login` trên máy của người dùng (không gửi API key
+vào chat), rồi chạy seed 42:
+
+```bash
+myenv/bin/python -m scripts.train_gat_kg \
+  --kg-features data/knowledge/c2-wordnet-toan-v1 --allow-draft \
+  --device cuda --seed 42 \
+  --epochs 200 --patience 15 --min-delta 0 \
+  --batch-size 512 --accumulation-steps 1 --val-batch-size 128 \
+  --max-train-images 57723 --max-val-images 5000 \
+  --hidden-dim 256 --embedding-dim 32 --num-heads 4 --num-layers 2 \
+  --dropout 0.1 --lr 0.001 --weight-decay 0.01 \
+  --negative-ratio 3 --box-policy clip --wandb-mode online \
+  --output-dir runs/level1/wordnet-toan-seed42-v1
+```
+
+200 là trần, không phải số epoch bắt buộc: dừng sau 15 epochs liên tiếp không
+tăng validation mR@50, giữ `best.pt`. Dùng cùng patience 15 với GAT baseline;
+baseline seed 123 đạt best epoch 100 nên không đặt trần 100 cho KG run.
+WandB project là `semantic-graph-editing`; runner log train/validation mỗi epoch
+và lưu run ID trong `last.pt` để resume. Checkpoint lưu local, không tự upload
+lên WandB. Khi resume, thêm
+`--resume runs/level1/wordnet-toan-seed42-v1/last.pt` vào đúng lệnh gốc.
+
+Các kết quả này vẫn mang trạng thái kỹ thuật `draft` cho tới khi contract audit
+C.1/C.2 reviewed được hoàn thiện; không gọi là kết quả final trong báo cáo.
+
+## Bản draft 124 class trước đây
 
 ## C.2: mục đích và cách xuất
 
