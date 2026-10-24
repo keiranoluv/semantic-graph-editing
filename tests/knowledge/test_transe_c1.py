@@ -205,3 +205,45 @@ def test_cli_eval_subset_deterministic(tmp_path, monkeypatch, capsys):
         train_transe.main()
         obj = json.loads(capsys.readouterr().out)
         assert obj["eval_val_triples"] == obj["eval_test_triples"] == 1
+
+
+def test_cli_early_stop_tests_selected_best_checkpoint(tmp_path, monkeypatch):
+    from scripts import train_transe
+
+    folder = make_kg(tmp_path)
+    output = tmp_path / "early_stop"
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "train_transe",
+            "--kg-dir",
+            str(folder),
+            "--output-dir",
+            str(output),
+            "--dim",
+            "8",
+            "--epochs",
+            "4",
+            "--patience",
+            "1",
+            "--min-delta",
+            "1",
+            "--batch-size",
+            "4",
+        ],
+    )
+    train_transe.main()
+    result = json.loads((output / "metrics.json").read_text())
+    assert len(result["history"]) == 2
+    assert result["selection"]["best_epoch"] == result["selection"]["selected_epoch"] == 1
+    assert result["selection"]["early_stopped"] is True
+    assert not (output / "epoch_0003.pt").exists()
+
+    kg = load_kg(folder)
+    best = torch.load(output / "best.pt", map_location="cpu", weights_only=True)
+    assert best["epoch"] == 1
+    model = TransE(len(kg.entities), len(kg.relations), dim=8)
+    model.load_state_dict(best["model"])
+    with np.load(output / "split_indices.npz") as split:
+        expected_test = evaluate(model, split["test"], set(map(tuple, kg.triples)), torch.device("cpu"))
+    assert result["test"] == expected_test

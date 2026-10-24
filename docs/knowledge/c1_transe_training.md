@@ -34,6 +34,11 @@ Provisional B.1/B.2.1 artifacts cannot pass the Reviewed gate.
 
 ## Commands
 
+The 10-epoch command below is a technical smoke run, not a recommended budget
+for a new KG. Historical WordNet validation MRR was still improving at epoch
+10. For the 150-class Toan mapping, use validation-MRR checkpoint selection,
+early stopping and WandB as documented in `c2_gat_wordnet.md`.
+
 ```bash
 python -m pytest tests/knowledge/test_transe_c1.py -q
 python -m scripts.train_transe --help
@@ -60,9 +65,14 @@ checkpoint per epoch (model/optimizer/RNG), and `metrics.json` recording
 filtered head-and-tail MRR/Hits@1/3/10. Validation is computed every epoch;
 test only after all epochs. Split is unique-triple-level, seeded random
 holdout with all positive triples used for filtering corruptions/rankings.
-This skeleton does **not** support resuming from checkpoints or selecting best
-checkpoint; checkpoints are snapshots. It does not prevent inverse/near-duplicate
-information leakage (random triple holdout is not inductive evaluation).
+The trainer does **not** support resuming from checkpoints. It writes an epoch
+snapshot each epoch and `best.pt` when validation filtered MRR improves. With
+`--patience N`, it stops after N consecutive epochs without a gain exceeding
+`--min-delta`, then evaluates test once using `best.pt`. Without `--patience`,
+the legacy final-epoch test behavior is retained. `--wandb-mode online|offline`
+logs train loss and validation MRR/Hits; the default is `disabled`. It does not
+prevent inverse/near-duplicate information leakage (random triple holdout is
+not inductive evaluation).
 For publication-quality conclusions, add relation-stratified splits,
 entity-coverage checks, baseline comparisons and at least three seeds.
 

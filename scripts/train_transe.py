@@ -37,6 +37,9 @@ def main():
     )
     p.add_argument("--dim", type=int, default=64)
     p.add_argument("--epochs", type=int, default=10)
+    p.add_argument("--patience", type=int, default=None, help="Stop after this many epochs without val MRR gain")
+    p.add_argument("--min-delta", type=float, default=0.0, help="Minimum validation MRR gain")
+    p.add_argument("--wandb-mode", choices=("online", "offline", "disabled"), default="disabled")
     p.add_argument("--batch-size", type=int, default=512)
     p.add_argument("--lr", type=float, default=1e-3)
     p.add_argument("--margin", type=float, default=1.0)
@@ -56,6 +59,10 @@ def main():
         p.error("val-ratio and test-ratio must be finite positive fractions summing to less than one")
     if args.eval_max_triples is not None and args.eval_max_triples <= 0:
         p.error("--eval-max-triples must be positive")
+    if args.patience is not None and args.patience <= 0:
+        p.error("--patience must be positive")
+    if not math.isfinite(args.min_delta) or args.min_delta < 0:
+        p.error("--min-delta must be finite and nonnegative")
     if not (math.isfinite(args.lr) and math.isfinite(args.margin) and args.margin > 0):
         p.error("lr and margin must be finite positive values")
     if args.epochs <= 0 or args.batch_size <= 0 or args.lr <= 0 or args.dim <= 0:
@@ -88,6 +95,10 @@ def main():
         "review_manifest_sha256": None,
         "seed": args.seed,
         "epochs": args.epochs,
+        "patience": args.patience,
+        "min_delta": args.min_delta,
+        "checkpoint_selection": "best_validation_MRR" if args.patience is not None else "final_epoch_legacy",
+        "wandb_mode": args.wandb_mode,
         "val_ratio": args.val_ratio,
         "test_ratio": args.test_ratio,
         "eval_max_triples": args.eval_max_triples,
@@ -129,10 +140,21 @@ def main():
     rng = np.random.default_rng(args.seed + 1)
     # Exclusive directory creation; never alter a prior run.
     args.output_dir.mkdir(parents=True, exist_ok=False)
+    run = None
     try:
         np.savez(args.output_dir / "split_indices.npz", train=train, val=val, test=test)
         (args.output_dir / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+        if args.wandb_mode != "disabled":
+            import wandb
+
+            run = wandb.init(
+                project="semantic-graph-editing",
+                name=args.output_dir.name,
+                mode=args.wandb_mode,
+                config=manifest,
+            )
         history = []
+        best_mrr, best_epoch, bad_epochs = -math.inf, 0, 0
         for epoch in range(1, args.epochs + 1):
             model.train()
             order = rng.permutation(len(train))
@@ -153,24 +175,58 @@ def main():
                 "train_loss": float(np.mean(losses)),
                 "val": evaluate(model, val_eval, known, device),
             }
+            score = record["val"]["MRR"]
+            if not math.isfinite(score):
+                raise RuntimeError("Cannot select TransE checkpoint without finite validation MRR")
+            improved = score > best_mrr + args.min_delta
+            if improved:
+                best_mrr, best_epoch, bad_epochs = score, epoch, 0
+            else:
+                bad_epochs += 1
             history.append(record)
             # Checkpoint per epoch, with optimizer + PRNG state for auditable continuation.
             target = args.output_dir / f"epoch_{epoch:04d}.pt"
-            torch.save(
-                {
-                    "model": model.state_dict(),
-                    "optimizer": optimizer.state_dict(),
-                    "epoch": epoch,
-                    "manifest": manifest,
-                    "numpy_rng": rng.bit_generator.state,
-                    "torch_rng": torch.get_rng_state(),
-                },
-                target,
-            )
+            checkpoint = {
+                "model": model.state_dict(),
+                "optimizer": optimizer.state_dict(),
+                "epoch": epoch,
+                "manifest": manifest,
+                "numpy_rng": rng.bit_generator.state,
+                "torch_rng": torch.get_rng_state(),
+            }
+            torch.save(checkpoint, target)
+            if improved:
+                torch.save(checkpoint, args.output_dir / "best.pt")
             print(json.dumps(record))
+            if run is not None:
+                run.log(
+                    {
+                        "epoch": epoch,
+                        "train/loss": record["train_loss"],
+                        **{f"val/{name}": value for name, value in record["val"].items()},
+                        "val/best_MRR": best_mrr,
+                        "val/bad_epochs": bad_epochs,
+                    },
+                    step=epoch,
+                )
+            if args.patience is not None and bad_epochs >= args.patience:
+                print(f"[EARLY STOP] best_epoch={best_epoch} val_MRR={best_mrr:.6f}", flush=True)
+                break
+        selected_epoch = best_epoch if args.patience is not None else epoch
+        if args.patience is not None:
+            best = torch.load(args.output_dir / "best.pt", map_location=device, weights_only=True)
+            model.load_state_dict(best["model"])
+        test_metrics = evaluate(model, test_eval, known, device)
         result = {
             "history": history,
-            "test": evaluate(model, test_eval, known, device),
+            "test": test_metrics,
+            "selection": {
+                "metric": "validation_filtered_MRR",
+                "best_epoch": best_epoch,
+                "best_val_MRR": best_mrr,
+                "selected_epoch": selected_epoch,
+                "early_stopped": len(history) < args.epochs,
+            },
             "evaluation_protocol": {
                 "subset": manifest["eval_subset"],
                 "max_triples": args.eval_max_triples,
@@ -183,9 +239,16 @@ def main():
             },
         }
         (args.output_dir / "metrics.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
-    except Exception:
+        if run is not None:
+            run.summary["best_epoch"] = best_epoch
+            run.summary["best_val_MRR"] = best_mrr
+            run.summary["selected_epoch"] = selected_epoch
+            for name, value in test_metrics.items():
+                run.summary[f"test/{name}"] = value
+    finally:
         # Preserve partial run for debugging; NEVER repurpose the directory.
-        raise
+        if run is not None:
+            run.finish()
 
 
 if __name__ == "__main__":

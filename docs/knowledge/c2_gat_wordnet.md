@@ -1,10 +1,11 @@
 # C.2 và GAT+WordNet — pipeline mức 1
 
-Trạng thái: mapping đại diện 150/150 của Toan đã được biên dịch. KG, TransE và
+Trạng thái: mapping đại diện 150/150 của Toan và KG chính đã được tạo. TransE và
 feature export mới từ mapping đó chưa được tạo trong đường chạy chính. Exporter
 và GAT+KG runner hiện vẫn gắn nhãn `draft`; C.1 `reviewed` cần manifest audit
 riêng có bằng chứng/lý do từng class. GAT+KG đã hỗ trợ WandB online/offline và
 early stopping theo validation mR@50; CPU smoke WandB offline 1 epoch PASS.
+TransE cũng hỗ trợ WandB và chọn `best.pt` theo validation filtered MRR.
 
 ## Đường chạy tiếp theo với mapping 150 class
 
@@ -21,32 +22,39 @@ myenv/bin/python -m scripts.build_wordnet_graph \
 ```
 
 Lệnh CPU tạo KG; smoke riêng đạt 150/150 class, 1.077 entities, 1.312 triples,
-`ready_for_gat_kg_training=true`. Sau khi KG được tạo, train TransE trên GPU:
+`ready_for_gat_kg_training=true`. Đăng nhập WandB bằng `myenv/bin/wandb login`
+trên máy của người dùng (không gửi API key vào chat). Sau khi KG được tạo, train
+TransE trên GPU:
 
 ```bash
 myenv/bin/python -m scripts.train_transe \
   --kg-dir data/knowledge/wordnet-kg-toan-v1 \
   --mode draft --split-policy transductive \
   --output-dir runs/transe/wordnet-toan-v1-seed42 \
-  --dim 64 --epochs 10 --batch-size 512 --seed 42 --device cuda
+  --dim 64 --epochs 200 --patience 20 --min-delta 0.0001 \
+  --batch-size 512 --seed 42 --device cuda --wandb-mode online
 ```
 
-TransE C.1 hiện dùng 10 epochs cố định, chưa có WandB hoặc early stopping;
-`draft` ở đây là trạng thái hợp đồng audit, dù nguồn mapping đã đủ 150 lựa chọn
-của Toan. Dry-run split transductive PASS: 1.050 train, 131 validation, 131
-test triples. Sau khi run hoàn tất, xuất embedding trên CPU:
+10 epochs ở bản C.1 cũ chỉ dùng smoke; validation MRR của bản WordNet cũ còn
+tăng tại epoch 10. Bản này dùng tối đa 200 epochs, dừng sau 20 epochs liên tiếp
+không tăng validation filtered MRR ít nhất 0.0001; export `best.pt`, không dùng
+epoch cuối một cách mặc định. Chỉ dùng validation để chọn checkpoint; test
+được tính một lần sau train trên checkpoint đã chọn. WandB log train loss,
+validation MRR/Hits và epoch tốt nhất. `draft` là trạng thái hợp đồng audit,
+dù nguồn mapping đã đủ 150 lựa chọn của Toan. Dry-run split transductive PASS:
+1.050 train, 131 validation, 131 test triples. Sau khi run hoàn tất, xuất
+embedding trên CPU:
 
 ```bash
 myenv/bin/python -m scripts.export_knowledge \
-  --checkpoint runs/transe/wordnet-toan-v1-seed42/epoch_0010.pt \
+  --checkpoint runs/transe/wordnet-toan-v1-seed42/best.pt \
   --kg-dir data/knowledge/wordnet-kg-toan-v1 \
   --mapping data/knowledge/wordnet-reviewed-toan-v1/wordnet_mapping.json \
   --output-dir data/knowledge/c2-wordnet-toan-v1
 ```
 
-Kiểm tra output báo `150/150 mapped classes` trước khi train GAT+KG. Đăng nhập
-WandB bằng `myenv/bin/wandb login` trên máy của người dùng (không gửi API key
-vào chat), rồi chạy seed 42:
+Kiểm tra output báo `150/150 mapped classes` trước khi train GAT+KG, rồi chạy
+seed 42:
 
 ```bash
 myenv/bin/python -m scripts.train_gat_kg \
