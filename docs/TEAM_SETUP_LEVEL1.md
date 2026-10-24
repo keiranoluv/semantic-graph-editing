@@ -126,6 +126,29 @@ vẫn chạy với hộp và đồ thị trên nền trống. Nếu máy teammat
 Các archive nhiều GB, chỉ tải khi thực sự cần ảnh cho demo/phân tích; giữ nguyên
 `image_id` và kiểm tra hình khớp metadata.
 
+Để review WordNet với 5 JPEG train cho mỗi class mà không tải toàn bộ
+archive, dùng lệnh sau sau khi đã tạo `train_examples_with_boxes.csv`:
+
+```bash
+python -m scripts.download_level1_review_images
+```
+
+Lệnh đọc từng JPEG cần thiết từ bản lưu trữ ZIP thay thế bằng HTTP Range, lưu
+237 ảnh gốc khác nhau vào `data/raw/vg150/images/` và tạo bảng đối chiếu 750
+cặp class–ảnh trong
+`data/knowledge/level1-human-review-v2/review_images.csv`. Chi tiết tại
+`docs/knowledge/LEVEL1_MAPPING_REVIEW.md`.
+Để tạo thư mục ảnh có tên class dễ xem bằng file manager, chạy tiếp:
+
+```bash
+python -m scripts.prepare_level1_review_images
+```
+
+Kết quả nằm ở `data/raw/vg150/images_review/`; ví dụ
+`001_airplane_2349975.jpg`, trong đó số cuối là `image_id` gốc. Mở
+`data/raw/vg150/images_review/index.html` để xem khung bao màu đỏ trên 5 ảnh
+của mỗi class.
+
 ## 4. WordNet và mapping
 
 ```bash
@@ -141,6 +164,22 @@ Mục đích: tải corpus ngoài, kiểm tra phiên bản, liên kết vocabula
 CSV ứng viên để **người** kiểm tra. WordNet của artifact cũ là 3.0. Môi trường
 mới có thể ghi NLTK khác artifact cũ; output khác phải dùng thư mục mới.
 Không ghi đè bản cũ hoặc coi ranking là quyết định kiểm duyệt.
+
+Bản mapping đại diện 150/150 do Toan chọn đã được lưu thành override có
+provenance trong `configs/knowledge/wordnet_overrides.reviewed-toan-v1.json`.
+Sau khi cài WordNet 3.0, teammate có thể tạo lại mapping:
+
+```bash
+python -m scripts.prepare_knowledge \
+  --overrides configs/knowledge/wordnet_overrides.reviewed-toan-v1.json \
+  --output-dir data/knowledge/wordnet-reviewed-toan-v1
+```
+
+Lệnh này chỉ chuẩn bị mapping trên CPU; KG và checkpoint TransE draft cũ chưa
+tương thích với mapping reviewed mới.
+Chạy trong `myenv` (NLTK 3.9.1). Python hệ thống trên máy kiểm tra dùng NLTK
+3.10.3 và sinh metadata `nltk_version` khác, dù 151 dòng mapping giống hệt;
+không ghi đè hai artifact cùng thư mục. Nếu đổi môi trường, chọn output mới.
 
 Các artifact đang dùng cho smoke project nằm ở
 `data/knowledge/wordnet-ai-draft-v1/`, không được commit. Máy teammate cần nhận

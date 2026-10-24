@@ -16,6 +16,8 @@ myenv/
 /checkpoints/
 /runs/
 /reports/mlp_evaluation.json
+/reports/eval_bs*.json
+/logs/
 scripts/pilot_mlp.py.bak
 
 # Large downloaded external KG data and generated KG artifacts

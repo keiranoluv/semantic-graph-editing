@@ -17,7 +17,8 @@ không lấy 100 ảnh mặc định của script MLP cũ.
 Số chính xác dạng fraction và từng seed ở
 `reports/level1/baselines_3seed_val5000_summary.json` và các file
 `{mlp,mlp_semantic,gat}_seed{42,123,3407}_val5000.json`.
-Đây là report được tạo tại máy hiện tại; chưa commit và không tự động xuất bản.
+Đây là report được tạo tại máy hiện tại. Các JSON nhỏ có thể được chia sẻ cùng
+tài liệu; checkpoint và dữ liệu gốc vẫn cần được cung cấp riêng để tái tạo.
 Teammate có thể tạo lại theo lệnh ở tài liệu quy trình sau khi nhận các
 checkpoint tương ứng.
 

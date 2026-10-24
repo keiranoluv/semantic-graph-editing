@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "images_evaluated": 5000,
+  "full_split": true,
+  "interpretation": "validation_not_final_test",
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "metrics_unit": "fraction_0_to_1",
+  "std_definition": "sample_standard_deviation_ddof_1",
+  "groups": [
+    {
+      "condition": "gat",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "checkpoints/experiments/gat_bs512_seed42/run_0001/best.pt",
+        "checkpoints/experiments/gat_bs512_seed123/run_0001/best.pt",
+        "checkpoints/experiments/gat_bs512_seed3407/run_0001/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6422327453635083,
+          "sample_std": 0.0014393939565651914
+        },
+        "R@100": {
+          "mean": 0.6634900142337717,
+          "sample_std": 0.002454832742905011
+        },
+        "mR@50": {
+          "mean": 0.1979628355564899,
+          "sample_std": 0.010299529654349642
+        },
+        "mR@100": {
+          "mean": 0.22003970780406687,
+          "sample_std": 0.010675529855212142
+        }
+      },
+      "max_epochs_recorded": null
+    },
+    {
+      "condition": "mlp",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "checkpoints/experiments/mlp_bs512_seed42/run_0001/best.pt",
+        "checkpoints/experiments/mlp_bs512_seed123/run_0001/best.pt",
+        "checkpoints/experiments/mlp_bs512_seed3407/run_0001/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.48996417082437,
+          "sample_std": 0.000771967118506545
+        },
+        "R@100": {
+          "mean": 0.5158733768657018,
+          "sample_std": 0.0007950142996873393
+        },
+        "mR@50": {
+          "mean": 0.049453507142842607,
+          "sample_std": 0.0005887158468590984
+        },
+        "mR@100": {
+          "mean": 0.054706221742813914,
+          "sample_std": 0.0008221340550393508
+        }
+      },
+      "max_epochs_recorded": null
+    },
+    {
+      "condition": "mlp_semantic",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "checkpoints/experiments/mlp_semantic_bs512_seed42/run_0001/best.pt",
+        "checkpoints/experiments/mlp_semantic_bs512_seed123/run_0001/best.pt",
+        "checkpoints/experiments/mlp_semantic_bs512_seed3407/run_0001/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.642615693469601,
+          "sample_std": 0.0009420970064923025
+        },
+        "R@100": {
+          "mean": 0.6632888361428153,
+          "sample_std": 0.00020493694062683162
+        },
+        "mR@50": {
+          "mean": 0.17670226334914163,
+          "sample_std": 0.00274655319747224
+        },
+        "mR@100": {
+          "mean": 0.19756671719372979,
+          "sample_std": 0.003431381937707858
+        }
+      },
+      "max_epochs_recorded": null
+    }
+  ]
+}

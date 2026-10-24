@@ -1,6 +1,6 @@
 # Theo dõi Project 01 — Mức 1
 
-Cập nhật: 2026-10-24.
+Cập nhật: 2026-10-25.
 
 ## Cách phối hợp
 
@@ -36,7 +36,7 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | Bước | Mục đích và sản phẩm | Trạng thái | Điều kiện hoàn thành |
 |---|---|---|---|
 | 1. Kiểm tra nền và môi trường | Xác minh C.1, baseline, phụ thuộc, nguồn dữ liệu và split; hướng dẫn thiết lập cho nhóm | Hoàn thành kiểm tra nền; còn giới hạn về split/ngân sách lịch sử | 150 tests ban đầu PASS, split tái tạo khớp, 9 checkpoint/config/epoch khớp; xem audit |
-| 2. C.2 — Xuất embedding | Chuyển checkpoint TransE thành bảng đặc trưng đúng class ID VG150, kèm mask và provenance | Draft hoàn thành; reviewed chưa triển khai | 10 tests export PASS, artifact thật [151,64], 124/150 class được chọn nghĩa; cả 150 class có gợi ý trong worksheet v2 |
+| 2. C.2 — Xuất embedding | Chuyển checkpoint TransE thành bảng đặc trưng đúng class ID VG150, kèm mask và provenance | Draft export hoàn thành; mapping đại diện 150/150 của Toan đã biên dịch; reviewed KG/TransE/export chưa dựng | Draft artifact [151,64] có 124/150 class; reviewed override có 150 lựa chọn và provenance, cần train KG mới trước khi xuất embedding reviewed |
 | 3. GAT+WordNet | Tích hợp KG vào đặc trưng đỉnh, có cấu hình và run riêng | Code draft và CPU smoke hoàn thành | 3 chế độ KG-on/KG-off/edges-off train+val CPU thành công; baseline được bảo toàn |
 | 4. Thực nghiệm | So sánh cùng protocol với 3 seeds; ablation tri thức/cạnh | 9 baseline đã đánh giá lại full validation; aggregator có; chờ GAT+KG GPU | Chưa có kết quả GAT+KG train dài hoặc mean/std cho nhánh KG |
 | 5. Phân tích và bộ nộp | 5 đúng/5 sai, notebook, bảng kết quả, hướng dẫn, tài liệu báo cáo/demo | Có case kỹ thuật, notebook đã chạy, bản chuẩn bị báo cáo/slide; phân tích người và kết quả final còn lại | Phân tích thủ công trên model final và bộ nộp hoàn chỉnh |
@@ -80,6 +80,20 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | 2026-10-24 | Notebook mức 1 | Chạy thành công với GAT baseline và ảnh validation đầu tiên; visual hóa box và GT/predicted scene graph | Ảnh JPEG tùy chọn, nhóm demo với checkpoint final |
 | 2026-10-24 | Chuẩn bị bộ nộp và QA sau thay đổi | `docs/LEVEL1_SUBMISSION.md`; 169 tests, lint/format và pre-commit trên file đã sửa PASS | Báo cáo/slide cuối cần GPU results và đóng góp thực tế |
 | 2026-10-24 | Chuẩn bị CUDA trong `myenv` | torch 2.7.0+cu128, CUDA 12.8, RTX 5090 available; pip check và 169 tests PASS | Người dùng chạy train GPU seed 42 |
+| 2026-10-25 | Tải ảnh phục vụ review WordNet | 150 JPEG train khác nhau cho 150 class, 21.5 MB; đối chiếu class ID, SHA-256, giải mã JPEG, kích thước metadata và hộp bao đều PASS; host gốc từ chối kết nối nên đọc từng file trong ZIP mirror | Nhóm xem vật thể trong hộp và ghi quyết định thật vào worksheet |
+| 2026-10-25 | Tạo bản ảnh có tên class để review | 150 bản sao ở `data/raw/vg150/images_review/`, dạng `001_airplane_2349975.jpg` với số cuối là `image_id` gốc; giữ nguyên ảnh nguồn | Nhóm xem ảnh theo tên class, tra hộp bao trong `review_images.csv` khi cần |
+| 2026-10-25 | Thêm trang xem hộp bao cho review | `images_review/index.html` hiển thị 150 ảnh với khung đỏ và lọc theo class ID, nhãn, image ID; `bike` trên ảnh 2376992 nằm sát mép trái phía dưới | Nhóm dùng hộp bao để xét đúng đối tượng, xem thêm ví dụ nếu ảnh bị cắt |
+| 2026-10-25 | Thêm ảnh thứ hai cho class `bike` | `011_bike_2344860.jpg` và gallery có 151 thẻ; ảnh train này có xe máy đỏ, hai hộp gần trùng mang nhãn `bike` và `motorcycle` | Reviewer cân nhắc nhãn `bike` có thể đa nghĩa, chưa chốt synset |
+| 2026-10-25 | Mở rộng review lên 5 ảnh/class | 750 cặp class–ảnh train, 237 JPEG gốc, 750 bản sao tên class và 750 thẻ gallery; SHA-256, giải mã JPEG, kích thước metadata và hộp bao đều PASS | Nhóm kiểm tra 5 ví dụ từng nhãn và ghi quyết định người review |
+| 2026-10-25 | Kiểm tra 5 box của `building` | Cả 5 khớp HDF5/class ID 22; ảnh `1592671` chụp nội thất nhưng box phủ 99% ảnh, `2389149` box chỉ 0,5% ảnh | Ghi hai ví dụ là khó xác nhận/khả năng annotation nhiễu; không dùng riêng chúng để quyết định synset |
+| 2026-10-25 | Kiểm tra 5 box của `cap` | Cả 5 khớp HDF5/class ID 25; ảnh `2347962` và `2354978` là đồ đội đầu, `2399043` là nắp chai, `2388888` khó xác định | Giữ `defer`, ghi rõ class có nhiều nghĩa, chưa chọn synset duy nhất |
+| 2026-10-25 | Kiểm tra 5 box của `ear` | Cả 5 khớp HDF5/class ID 40; đều là tai ngoài của chó, người, bò, cừu, ngựa vằn | Reviewer so `ear.n.01` với `auricle.n.02`, chưa điền quyết định hộ |
+| 2026-10-25 | Kiểm tra 5 box của `glass` | Cả 5 khớp HDF5/class ID 54; 2 ly uống, 2 kính đeo mắt, 1 vùng kính nhỏ chưa chắc; candidate nguồn thiếu `spectacles.n.01` | Giữ `defer`, ghi class đa nghĩa và chốt chính sách mapping trước khi chọn synset |
+| 2026-10-25 | Kiểm tra 5 box của `wheel` | Cả 5 khớp HDF5/class ID 144; box chỉ bánh xe đạp, xe máy hoặc toa tàu, không bao cả xe | `wheel.n.01` phù hợp hơn `bicycle.n.01`; reviewer tự ghi quyết định |
+| 2026-10-25 | Biên dịch mapping đại diện của Toan | 150/150 synset được chọn; sửa `orange` thành quả cam, `stand` thành vật đỡ; thêm candidate WordNet 3.0 cho `short_pants.n.01` với provenance; compiler 150 accept, mapping mới 150 linked_manual | Ghi rõ class đa nghĩa dùng synset đại diện; bổ sung bằng chứng/lý do từng class cho manifest C.1 reviewed; dựng KG/TransE/export mới, không tái dùng checkpoint draft 124 class |
+| 2026-10-25 | Kiểm tra mapping reviewed trong `myenv` | NLTK 3.9.1 tạo 150 linked_manual; 151 dòng ngữ nghĩa trùng bản Python hệ thống NLTK 3.10.3, chỉ metadata phiên bản khác; bản `myenv` là `data/knowledge/wordnet-reviewed-toan-v1/` | Teammate dùng cùng `myenv` hoặc output dir riêng khi đổi NLTK |
+| 2026-10-25 | CPU dry-run WordNet KG từ mapping Toan | 150 class resolved, 146 synset gốc riêng, 1.077 entities và 1.312 triples ở 2 hops; chưa cung cấp reviewed override/evidence gate nên `ready_for_gat_kg_training=false` | Không train final từ dry-run này; bổ sung manifest audit và dựng KG versioned sau khi nhóm chốt chính sách |
+| 2026-10-25 | CPU dry-run KG với override 150 class của Toan | Cổng `--require-fully-reviewed` PASS; 146 synset gốc, 1.077 entities, 1.312 triples; `ready_for_gat_kg_training=true` | Người dùng tạo artifact KG thực tế bằng lệnh bên dưới; Codex kiểm tra đầu ra và chuẩn bị nhánh TransE/C.2/GAT+KG |
 
 ## B1-01 — Kiểm kê trước khi cài đặt
 
@@ -128,17 +142,28 @@ các URL download trên máy teammate chưa được kiểm chứng bằng một
 
 ## Bước tiếp theo do người dùng thực hiện
 
-- Chọn ưu tiên train draft hay kiểm tra mapping trước khi train dài.
-- Đã giải thích mapping và chuẩn bị bảng
-  `data/knowledge/level1-human-review-v2/review.csv`; hướng dẫn tại
-  [LEVEL1_MAPPING_REVIEW.md](knowledge/LEVEL1_MAPPING_REVIEW.md).
-  Chưa coi câu hỏi của người dùng là quyết định chọn train hay review trước.
-- Codex đã tiếp tục toàn bộ phần code/CPU/tài liệu sau lời nhắn "tiếp tục".
-  Train GPU vẫn do người dùng khởi chạy theo lệnh cụ thể.
-- Khi muốn train GPU: chuyển PyTorch trong `myenv` sang CUDA theo hướng dẫn
-  thiết lập, rồi chạy seed 42 theo [c2_gat_wordnet.md](knowledge/c2_gat_wordnet.md).
-- Gửi output train, lỗi nếu có, và đường dẫn run. Codex tiếp tục đọc kết quả,
-  kiểm tra checkpoint/đánh giá và chuẩn bị các seeds/ablation tiếp theo.
+- Mapping đại diện 150/150 class được coi là chốt cho bước triển khai tiếp theo.
+  Tạo artifact WordNet KG mới bằng lệnh CPU sau, từ thư mục gốc repository:
+
+  ```bash
+  myenv/bin/python -m scripts.build_wordnet_graph \
+    --mapping data/knowledge/wordnet-reviewed-toan-v1/wordnet_mapping.json \
+    --reviewed-overrides configs/knowledge/wordnet_overrides.reviewed-toan-v1.json \
+    --require-fully-reviewed --max-hops 2 \
+    --output-dir data/knowledge/wordnet-kg-toan-v1
+  ```
+
+  Lệnh ghi 5 file KG (`entities.json`, `relations.json`, `class_entity_ids.json`,
+  `triples.tsv`, `metadata.json`); không train và không dùng GPU. Không chạy lại
+  cùng output dir sau khi đã tạo thành công. Gửi dòng `ready_for_gat_kg_training`
+  và `git status --short` nếu lệnh lỗi.
+- Sau khi có KG, Codex kiểm tra hash/số lượng rồi hoàn thiện đường đi
+  TransE → C.2 export → GAT+KG cho mapping mới. Codex gửi lệnh train GPU cụ thể
+  khi các cổng nạp artifact đã được kiểm tra; người dùng tự chạy train GPU.
+- C.1 `--mode reviewed` hiện yêu cầu manifest riêng có bằng chứng/lý do cho
+  từng class; việc có đủ 150 lựa chọn synset chưa tự tạo ra manifest đó. Trong
+  lúc hoàn thiện hợp đồng này, các run `--mode draft` chỉ dùng kiểm tra kỹ thuật
+  và không được gọi là kết quả cuối.
 - Không đánh dấu bước 4 hoặc 5 hoàn thành trước khi có dữ liệu thực nghiệm,
   phân tích 5 đúng/5 sai và notebook/demo thực tế.
 

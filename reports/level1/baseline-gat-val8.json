@@ -1,0 +1,131 @@
+{
+  "num_images": 8,
+  "num_images_with_gt": 8,
+  "num_predicates_with_gt": 14,
+  "R@50": 0.7340476190476191,
+  "mR@50": 0.33864379084967317,
+  "R@100": 0.7802976190476191,
+  "mR@100": 0.37832633053221293,
+  "model": "gat",
+  "seed": 42,
+  "split": "val",
+  "images_evaluated": 8,
+  "split_images": 5000,
+  "full_split": false,
+  "checkpoint_epoch": 31,
+  "checkpoint_sha256": "eeff2cf4e27820c7a0860ade5a592cf2c608ff0bbd3d632084afd88980192628",
+  "checkpoint": "checkpoints/experiments/gat_bs512_seed42/run_0001/best.pt",
+  "config": {
+    "model": "gat",
+    "dataset": "VG150",
+    "features": "geometry+trainable_object_embedding",
+    "topology": "fully_connected_directed_no_predicate_labels",
+    "geometry_dim": 5,
+    "embedding_dim": 32,
+    "hidden_dim": 256,
+    "num_heads": 4,
+    "num_layers": 2,
+    "dropout": 0.1,
+    "num_object_classes": 151,
+    "num_classes": 51,
+    "seed": 42,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "negative_ratio": 3,
+    "batch_size": 512,
+    "accumulation_steps": 1,
+    "effective_batch_size": 512,
+    "val_batch_size": 128,
+    "patience": 15,
+    "min_delta": 0.0,
+    "deterministic": false,
+    "box_policy": "clip",
+    "train_limit": 57723,
+    "val_limit": 5000,
+    "selection_metric": "mR@50",
+    "evaluation_protocol": "PredCls_graph_constrained_top1_per_pair"
+  },
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "historical_training_data_hashes_available": false,
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "recall_aggregation": "image_macro",
+  "mean_recall_aggregation": "predicate_macro_over_gt_support",
+  "interpretation": "baseline_evaluation",
+  "per_predicate": {
+    "1": {
+      "support": 1,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "3": {
+      "support": 1,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "8": {
+      "support": 1,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "20": {
+      "support": 17,
+      "R@50": 0.5882352941176471,
+      "R@100": 0.5882352941176471
+    },
+    "22": {
+      "support": 2,
+      "R@50": 0.5,
+      "R@100": 0.5
+    },
+    "29": {
+      "support": 8,
+      "R@50": 0.375,
+      "R@100": 0.875
+    },
+    "30": {
+      "support": 3,
+      "R@50": 0.3333333333333333,
+      "R@100": 0.3333333333333333
+    },
+    "31": {
+      "support": 18,
+      "R@50": 0.9444444444444444,
+      "R@100": 1.0
+    },
+    "35": {
+      "support": 3,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "40": {
+      "support": 1,
+      "R@50": 1.0,
+      "R@100": 1.0
+    },
+    "43": {
+      "support": 1,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "48": {
+      "support": 7,
+      "R@50": 1.0,
+      "R@100": 1.0
+    },
+    "49": {
+      "support": 3,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "50": {
+      "support": 3,
+      "R@50": 0.0,
+      "R@100": 0.0
+    }
+  }
+}

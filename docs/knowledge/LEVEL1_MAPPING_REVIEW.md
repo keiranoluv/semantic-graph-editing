@@ -56,10 +56,88 @@ Mỗi dòng ghi `class_id`, `label`, `image_id`, `object_index`, hộp bao pixel
 `box_xyxy` và URL ảnh. Manifest cùng thư mục ghi hash split/HDF5/vocabulary.
 Script chỉ đọc nhãn/hộp đối tượng, không đọc predicate hoặc quan hệ GT.
 
-Nếu URL JPEG trong CSV không mở được từ máy nhóm, dùng archive ảnh ở
-[Visual Genome](https://visualgenome.org/api/v0/api_home), tra JPEG theo
-`image_id` và đối chiếu hộp. Trên máy Codex host ảnh trả lỗi kết nối, nên
-Codex chưa xem trực tiếp các JPEG này.
+Để tải **5 ảnh train cho mỗi class** mà không tải cả hai archive nhiều GB,
+chạy:
+
+```bash
+python -m scripts.download_level1_review_images
+```
+
+Ảnh JPEG được lưu theo `image_id` trong `data/raw/vg150/images/` và bảng
+`data/knowledge/level1-human-review-v2/review_images.csv` ghi rõ
+`class_id → image_id → local_path`, hộp bao và SHA-256. Script lấy đủ 750
+cặp class–ảnh trong bảng ví dụ; vì nhiều class dùng chung ảnh, chỉ có 237
+JPEG gốc khác nhau. Ảnh được đọc từng file bằng HTTP Range từ
+[bản lưu trữ ZIP Visual Genome trên Hugging Face](https://huggingface.co/datasets/pppop7/VisualGenome_VG_100K_1_and_2/tree/main)
+khi host ảnh gốc không truy cập được. Chạy lại sẽ bỏ qua JPEG đã có; dữ liệu
+ảnh và bảng manifest nằm dưới `data/` nên không đưa vào Git.
+
+Để xem ảnh theo tên class mà không phải tra CSV mỗi lần, tạo bản sao có tên
+`class_id_label_image_id.jpg`:
+
+```bash
+python -m scripts.prepare_level1_review_images
+```
+
+Thư mục kết quả là `data/raw/vg150/images_review/`, ví dụ
+`001_airplane_2349975.jpg`, `028_chair_712978.jpg`. Class ID được thêm số 0
+phía trước để sắp xếp đúng; số cuối là `image_id` gốc, không phải thứ tự mẫu.
+Ảnh gốc vẫn giữ nguyên. Khi cần xem chính xác hộp bao của vật thể trong ảnh,
+tra lại `review_images.csv` theo `class_id` hoặc `image_id`. Cùng lệnh đó tạo
+`data/raw/vg150/images_review/index.html`: mở file này bằng trình duyệt, gõ
+`bike` hoặc class ID vào ô lọc; khung đỏ chỉ vật thể được gán nhãn. Đây là
+cách nhanh hơn để phân biệt nhiều vật thể trong cùng ảnh.
+
+Mỗi class có 5 file tên riêng trong `images_review/`; cùng một JPEG gốc có
+thể được sao chép dưới các tên class khác nhau với **hộp bao khác nhau**.
+Chẳng hạn ảnh `2344860` có
+chiếc xe máy đỏ ở giữa, với hai hộp gần trùng nhau mang nhãn `bike` và
+`motorcycle`. Đây là bằng chứng nhãn `bike` có thể chứa nghĩa xe máy trong
+train split, không phải quyết định review toàn bộ class.
+
+Class `building` có hai ví dụ cần chú ý: ảnh `1592671` chụp nội thất nhưng
+box `building` phủ khoảng 99% ảnh; ảnh `2389149` có box rất mỏng, chỉ khoảng
+0,5% diện tích ảnh. Cả hai box khớp annotation HDF5 gốc sau khi đổi tọa độ,
+nhưng nội dung ảnh khó dùng để xác nhận nghĩa của class. Reviewer nên ghi rõ
+ví dụ nào bị nhiễu hoặc không đủ thông tin, không xem mỗi box như bằng chứng
+ngữ nghĩa chính xác.
+
+Class `cap` cũng đa nghĩa trong 5 ví dụ train: `2347962` trỏ vào mũ len,
+`2354978` vào mũ/visor của người chơi tennis, còn `2399043` trỏ vào nắp chai.
+Ảnh `2388888` có box trên một chi tiết trắng nhỏ ở thiết bị vệ sinh, chưa đủ
+rõ để gọi tên chính xác. Cả 5 box đều khớp HDF5 gốc; vấn đề là một class có
+nhiều nghĩa vật thể. Không nên `accept` một synset duy nhất cho cả class chỉ
+dựa vào các ví dụ này; ghi `defer` và nêu các image ID/nhóm nghĩa trong `notes`.
+
+Class `ear` có 5 box khớp HDF5 gốc và đều chỉ **tai ngoài nhìn thấy**:
+`2348882` (chó), `2360052` (người), `2383751` (bò), `2402376` (cừu),
+`2407625` (ngựa vằn). Gợi ý `ear.n.01` là cơ quan nghe nói chung; candidate
+`auricle.n.02` chỉ cấu trúc tai ngoài và có thể sát đối tượng trong ảnh hơn.
+Không có ví dụ bắp ngô (`ear.n.05`) trong 5 ảnh này. Reviewer cần quyết định
+mức cụ thể mong muốn của mapping và ghi lý do; Codex chưa điền `accept` thay.
+
+Class `glass` có 5 box khớp HDF5 nhưng trộn nghĩa: `2362080` và `2398917`
+chỉ ly uống, `2396412` và `2407062` chỉ kính đeo mắt. Ảnh `2388478` có box
+trên một vùng kính nhỏ của công trình, cần nhìn kỹ trước khi gọi tên. Candidate
+nguồn hiện có `glass.n.02` (ly) và `glass.n.01` (chất liệu kính), nhưng thiếu
+`spectacles.n.01` (kính đeo mắt), vì bộ sinh candidate dùng từ đơn `glass`.
+Thêm candidate này vẫn chưa giải quyết việc **một class chứa nhiều loại vật**;
+giữ `defer` và ghi các image ID/nhóm nghĩa trong `notes` trước khi chốt chính
+sách mapping hoặc xử lý class đa nghĩa.
+
+Class `wheel` (ID 144) có 5 box khớp HDF5 và đều chỉ **bánh xe**, không bao cả
+chiếc xe: `2344544` là bánh xe đạp ở mép phải, `2378325` là bánh xe máy,
+`2396132` và `2406051` là bánh xe đạp, `2410124` là bánh toa tàu. Gợi ý
+`wheel.n.01` phù hợp với vật thể trong 5 ảnh; candidate `bicycle.n.01` chỉ
+cả chiếc xe đạp nên không phù hợp với box. Reviewer có thể xem các ảnh này
+để quyết định `accept` và ghi bằng chứng vào `notes`.
+
+Host JPEG gốc trả lỗi kết nối trên máy này. 237 ảnh đã được tải qua bản ZIP
+thay thế và kiểm tra mở ảnh, SHA-256, kích thước khớp metadata, hộp nằm trong
+ảnh. Người review vẫn cần **tự xem nội dung**; các kiểm tra kỹ thuật không xác
+nhận nghĩa WordNet. Nếu cần xem thêm ví dụ ngoài 5 ảnh mỗi class, dùng các URL
+trong CSV hoặc archive ảnh tại
+[Visual Genome](https://visualgenome.org/api/v0/api_home), tra bằng `image_id`.
 
 Quy trình cho một dòng, ví dụ `bike` (class ID 11):
 
@@ -109,27 +187,44 @@ thay người hoặc tự biến gợi ý thành nhãn đã xác nhận.
 
 ## Sau khi kiểm tra
 
-Giữ CSV gốc, manifest nguồn và bản quyết định đã điền. Codex sẽ kiểm tra schema,
-giúp compile các quyết định thực tế và triển khai đường export reviewed phù hợp.
-Đường reviewed chưa hoàn thiện; không dùng `--allow-draft` để tuyên bố đã qua
-kiểm duyệt. Các nhãn defer cần được giữ rõ trong mask và thống kê coverage.
+Giữ CSV gốc, manifest nguồn và bản quyết định đã điền. Bản lựa chọn **150/150**
+do Toan cung cấp ngày 2026-10-25 đã được lưu tại
+`configs/knowledge/level1_verified_synsets_toan_2026-10-25.txt` (đúng thứ tự
+class ID 1..150). Ba dòng trống trong bản paste đầu đã được Toan bổ sung:
+`bike=motorcycle.n.01`, `building=building.n.01`, `cap=cap.n.01`. Toan cũng sửa
+`orange=orange.n.01`, `stand=base.n.08`, và chọn `glass.n.02` làm nghĩa đại diện
+dù class chứa cả kính đeo mắt. Một synset đại diện cho class **không đảm bảo
+đúng cho mọi object instance**; xem ghi chú trong override.
 
-Khi nhóm đã điền xong, trước hết kiểm tra bản quyết định mà không ghi file:
+Lệnh kiểm tra/biên dịch lại từ file đã lưu:
 
 ```bash
-python -m scripts.prepare_wordnet_review compile \
-  --mapping data/knowledge/wordnet-vg150/wordnet_mapping.json \
-  --review-csv data/knowledge/level1-human-review-v2/review.csv \
-  --output configs/knowledge/wordnet_overrides.reviewed-v2.json \
-  --dry-run
+python -m scripts.compile_level1_verified_review \
+  --reviewer Toan --review-date 2026-10-25 --dry-run
 ```
 
-Script kiểm tra class ID/label, candidate, quyết định và tên reviewer cho các
-dòng `accept`. Kết quả `accepted_decisions` là số dòng đã thực sự được người
-điền chấp nhận, không phải số gợi ý AI. Sau đó Codex có thể giúp kiểm tra
-provenance, compile và dựng lại artifact trong thư mục mới.
+Lệnh đã chạy và tạo `configs/knowledge/wordnet_overrides.reviewed-toan-v1.json`
+với 150 quyết định `accept`, tên reviewer và ghi chú nguồn; bản CSV đã điền,
+mapping mở rộng và report nằm trong
+`data/knowledge/level1-human-review-v2/compiled-toan-v1/`. Bản paste chỉ có
+cột synset, không có lý do riêng cho hầu hết dòng; ghi chú nói rõ giới hạn này
+và tách phần kiểm tra ảnh của Codex khỏi lựa chọn của Toan. Candidate bổ sung
+`short_pants.n.01` được xác thực bằng WordNet 3.0 và ghi provenance ở
+`configs/knowledge/level1_review_candidate_additions.json`.
 
-`short` là trường hợp phải **defer** nếu nghĩa muốn dùng là quần short: candidate
-trong mapping nguồn cũ không chứa `short_pants.n.01`. Compiler hiện tại chỉ
-chấp nhận candidate đã có trong nguồn; cần mở rộng candidate với provenance
-riêng trước khi chọn nghĩa này.
+Tạo lại mapping WordNet 150/150 từ override đã biên dịch:
+
+```bash
+python -m scripts.prepare_knowledge \
+  --overrides configs/knowledge/wordnet_overrides.reviewed-toan-v1.json \
+  --output-dir data/knowledge/wordnet-reviewed-toan-v1
+```
+
+Lệnh này đã chạy: 150 `linked_manual`, 0 `unmatched`. Đây mới là **mapping**;
+KG/TransE checkpoint và bảng nhúng C.2 hiện có vẫn thuộc draft 124 class.
+Cần dựng và huấn luyện lại theo nguồn reviewed trước khi báo cáo kết quả
+GAT+KG reviewed. Bản paste không có `evidence_reference` và lý do riêng cho
+từng class như manifest của chế độ TransE `reviewed` yêu cầu; compiler 150
+`accept` không tự chứng minh audit từng ảnh. Nhóm cần bổ sung bằng chứng và
+rà các class đa nghĩa trước khi mở strict training gate. Không dùng
+`--allow-draft` để tuyên bố đã qua kiểm duyệt.
