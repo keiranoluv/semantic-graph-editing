@@ -17,20 +17,28 @@ lexical alignment, `SameAs` or candidate-pair consumption occurs.
   `ready_for_gat_kg_training=false`. Never report as official accuracy or
   use its embeddings in official GAT+KG ablations.
 - **C-Reviewed (`--mode reviewed`)**: fail-closed. Requires pinned identical KG
-  input file hashes, an independently prepared human-reviewed manifest with
-  150 individual class decisions/reviewer/evidence/rationale records, and
-  `ready_for_gat_kg_training=true` in KG metadata. No automatic promotion of
-  B.2.2 candidate alignments; this milestone has **no review compiler**.
-  A manifest is an audit input, not independently verifiable evidence that a
-  review occurred; release policy additionally requires a human audit.
+  input file hashes, `ready_for_gat_kg_training=true`, and a human approval
+  manifest. The original `human_approved` contract needs 150 individual
+  decisions/reviewer/evidence/rationale records. The WordNet
+  `human_approved_batch` contract accepts Toan's explicitly approved 150
+  representative synsets, verifies selection/override/mapping/approval file
+  hashes and every class/entity alignment, and records that most classes lack
+  an individual rationale. No B.2.2 candidate alignment is auto-promoted.
 
-Reviewed manifest schema (must be authored and verified **by people**, not
-produced by this tool): `schema_version: 1`, `review_status: human_approved`,
+Individual reviewed manifest schema (must be authored and verified **by people**,
+not produced by this tool): `schema_version: 1`, `review_status: human_approved`,
 `kg_source: wordnet|conceptnet`, `kg_path: <absolute resolved KG directory>`,
 `kg_sha256: {entities.json,relations.json,triples.tsv,metadata.json: SHA256}`,
 `reviews`: exactly 150 entries containing `class_id` 1..150, `decision`
 (`accept|reject|defer`), `reviewer`, `evidence_reference`, `rationale`.
 Provisional B.1/B.2.1 artifacts cannot pass the Reviewed gate.
+
+For this project's official 150-synset batch decision, the source selection
+and approval were supplied by Toan. `scripts.prepare_level1_official_manifest`
+compiles their exact hashes into a machine-local `human_approved_batch`
+manifest. It does not invent per-class rationales or claim each VG150 object
+instance matches its representative synset. Full commands are in
+`c2_gat_wordnet.md`.
 
 ## Commands
 

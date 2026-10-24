@@ -1,4 +1,4 @@
-"""Train draft GAT+WordNet with traceable inputs and matched ablation switches."""
+"""Train GAT+WordNet with traceable inputs and matched ablation switches."""
 
 import argparse
 import importlib.metadata
@@ -66,7 +66,7 @@ def main(argv=None):
         use_knowledge=not kg_args.no_knowledge,
         message_edges=kg_args.message_edges,
         topology="fully_connected_directed" if kg_args.message_edges == "full" else "self_loops_only",
-        interpretation="draft_not_human_reviewed_not_final_results",
+        interpretation=feature_manifest["interpretation"],
         max_epochs=args.epochs,
         code_sha256={
             str(path): sha256(path) for root in (Path("src"), Path("scripts")) for path in sorted(root.rglob("*.py"))
@@ -109,7 +109,10 @@ def main(argv=None):
         freeze = subprocess.run([sys.executable, "-m", "pip", "freeze"], capture_output=True, text=True, check=True)
         atomic_text_save(freeze.stdout, run_dir / "requirements-frozen.txt")
     git_sha = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
-    print(f"[DRAFT] device={device}; train={train_limit}; val={val_limit}; run={run_dir}", flush=True)
+    print(
+        f"[{feature_manifest['mode'].upper()}] device={device}; train={train_limit}; val={val_limit}; run={run_dir}",
+        flush=True,
+    )
     run = None
     if args.wandb_mode != "disabled":
         import wandb

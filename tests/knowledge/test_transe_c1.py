@@ -14,6 +14,7 @@ from src.knowledge.transe.core import (
     load_kg,
     negative_sample,
     set_seed,
+    sha256,
     split_triples,
     split_triples_transductive,
 )
@@ -247,3 +248,83 @@ def test_cli_early_stop_tests_selected_best_checkpoint(tmp_path, monkeypatch):
     with np.load(output / "split_indices.npz") as split:
         expected_test = evaluate(model, split["test"], set(map(tuple, kg.triples)), torch.device("cpu"))
     assert result["test"] == expected_test
+
+
+def test_official_batch_review_binds_selection_and_class_entities(tmp_path, monkeypatch):
+    from scripts import prepare_level1_official_manifest
+
+    folder = make_kg(tmp_path)
+    selections = tmp_path / "selections.txt"
+    selections.write_text("selected_synset\n" + "".join(f"{i % 12}\n" for i in range(1, 151)))
+    overrides = tmp_path / "overrides.json"
+    overrides.write_text(
+        json.dumps(
+            {
+                "mappings": {f"class{i}": str(i % 12) for i in range(1, 151)},
+                "review_provenance": {f"class{i}": {"class_id": i, "reviewer": "Toan"} for i in range(1, 151)},
+            }
+        )
+    )
+    mapping = tmp_path / "mapping.json"
+    mapping.write_text(
+        json.dumps(
+            {
+                "overrides_sha256": sha256(overrides),
+                "rows": [{"class_id": 0, "label": "__background__", "status": "background", "synset_id": None}]
+                + [
+                    {"class_id": i, "label": f"class{i}", "status": "linked_manual", "synset_id": str(i % 12)}
+                    for i in range(1, 151)
+                ],
+            }
+        )
+    )
+    approval = tmp_path / "approval.json"
+    approval.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "reviewer": "Toan",
+                "review_date": "2026-10-25",
+                "approval_scope": "all_150_representative_synsets",
+                "statement": "Toan approved this batch",
+                "per_class_rationale_provided": False,
+            }
+        )
+    )
+    (folder / "class_entity_ids.json").write_text(
+        json.dumps({"class_entity_ids": [None] + [i % 12 for i in range(1, 151)]})
+    )
+    meta = json.loads((folder / "metadata.json").read_text())
+    meta.update(
+        ready_for_gat_kg_training=True,
+        resolved_class_count=150,
+        unresolved_class_ids=[],
+        unreviewed_class_ids=[],
+        input_mapping_sha256=sha256(mapping),
+    )
+    (folder / "metadata.json").write_text(json.dumps(meta))
+    manifest = tmp_path / "review_manifest.json"
+    monkeypatch.setattr(
+        "sys.argv",
+        [
+            "prepare_level1_official_manifest",
+            "--kg-dir",
+            str(folder),
+            "--mapping",
+            str(mapping),
+            "--overrides",
+            str(overrides),
+            "--selections",
+            str(selections),
+            "--approval",
+            str(approval),
+            "--output",
+            str(manifest),
+        ],
+    )
+    prepare_level1_official_manifest.main()
+    kg = load_kg(folder)
+    check_gate("reviewed", kg, folder, manifest)
+    selections.write_text(selections.read_text() + "tampered\n")
+    with pytest.raises(ValueError, match="selections path/hash mismatch"):
+        check_gate("reviewed", kg, folder, manifest)

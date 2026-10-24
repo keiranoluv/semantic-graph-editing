@@ -126,6 +126,10 @@ def main():
         from src.knowledge.transe.core import sha256
 
         manifest["review_manifest_sha256"] = sha256(args.review_manifest)
+        review_info = json.loads(args.review_manifest.read_text(encoding="utf-8"))
+        manifest["review_status"] = review_info.get("review_status")
+        manifest["review_basis"] = review_info.get("review_basis")
+        manifest["per_class_rationale_provided"] = review_info.get("per_class_rationale_provided")
     if args.dry_run:
         print(
             json.dumps(

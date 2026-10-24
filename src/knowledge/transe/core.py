@@ -91,12 +91,17 @@ def check_gate(mode: str, kg: KG, folder: Path, review_manifest: Path | None = N
     if review_manifest is None:
         raise ValueError("C-Reviewed requires an externally human-reviewed manifest")
     m = json.loads(review_manifest.read_text(encoding="utf-8"))
-    if m.get("schema_version") != 1 or m.get("review_status") != "human_approved" or m.get("kg_source") != kg.source:
+    if m.get("schema_version") != 1 or m.get("kg_source") != kg.source:
         raise ValueError("Review manifest missing human approval or incorrect source")
     if m.get("kg_sha256") != kg.hashes or m.get("kg_path") != str(folder.resolve()):
         raise ValueError("Review manifest does not bind all exact input files/path")
     if kg.metadata.get("ready_for_gat_kg_training") is not True:
         raise ValueError("Source KG metadata explicitly not training-ready")
+    if m.get("review_status") == "human_approved_batch":
+        _check_batch_review(m, kg, folder)
+        return
+    if m.get("review_status") != "human_approved":
+        raise ValueError("Review manifest missing human approval")
     if not isinstance(m.get("reviews"), list) or len(m["reviews"]) != 150:
         raise ValueError("Require 150 individually reviewed VG150 class decisions")
     ids = set()
@@ -121,6 +126,97 @@ def check_gate(mode: str, kg: KG, folder: Path, review_manifest: Path | None = N
         or kg.metadata.get("human_verified_class_count") == 0
     ):
         raise ValueError("Provisional/unverified KG may not run in C-Reviewed")
+
+
+def _check_batch_review(m: dict, kg: KG, folder: Path) -> None:
+    """Accept an exact, user-approved 150-synset selection without inventing rationales."""
+    if kg.source != "wordnet" or m.get("review_basis") != "official_representative_batch_selection":
+        raise ValueError("Batch approval only supports the official WordNet representative mapping")
+    if (
+        kg.metadata.get("resolved_class_count") != 150
+        or kg.metadata.get("unresolved_class_ids") != []
+        or kg.metadata.get("unreviewed_class_ids") != []
+    ):
+        raise ValueError("Batch approval requires 150 resolved and reviewed KG classes")
+    files = {}
+    for key in ("mapping", "overrides", "selections", "approval"):
+        path = Path(m.get(f"{key}_path", ""))
+        if not path.is_absolute() or not path.is_file() or sha256(path) != m.get(f"{key}_sha256"):
+            raise ValueError(f"Batch review {key} path/hash mismatch")
+        files[key] = path
+    if kg.metadata.get("input_mapping_sha256") != m["mapping_sha256"]:
+        raise ValueError("Batch review mapping/KG SHA256 mismatch")
+    mapping = json.loads(files["mapping"].read_text(encoding="utf-8"))
+    overrides = json.loads(files["overrides"].read_text(encoding="utf-8"))
+    approval = json.loads(files["approval"].read_text(encoding="utf-8"))
+    selection_lines = files["selections"].read_text(encoding="utf-8-sig").splitlines()
+    if mapping.get("overrides_sha256") != m["overrides_sha256"]:
+        raise ValueError("Batch review override/mapping SHA256 mismatch")
+    if (
+        approval.get("schema_version") != 1
+        or approval.get("approval_scope") != "all_150_representative_synsets"
+        or approval.get("reviewer") != m.get("reviewer")
+        or not approval.get("review_date")
+        or approval.get("review_date") != m.get("review_date")
+        or not approval.get("statement")
+        or approval.get("per_class_rationale_provided") is not False
+        or m.get("per_class_rationale_provided") is not False
+    ):
+        raise ValueError("Batch review approval declaration is incomplete")
+    reviewer = approval["reviewer"]
+    if (
+        not isinstance(reviewer, str)
+        or not reviewer.strip()
+        or "AI" in reviewer.upper()
+        or "CHATGPT" in reviewer.upper()
+    ):
+        raise ValueError("Batch review requires a named human reviewer")
+    rows = mapping.get("rows")
+    reviews = m.get("reviews")
+    if (
+        not isinstance(rows, list)
+        or len(rows) != 151
+        or not isinstance(reviews, list)
+        or len(reviews) != 150
+        or len(selection_lines) != 151
+        or selection_lines[0] != "selected_synset"
+    ):
+        raise ValueError("Batch review requires exactly 150 ordered selections")
+    explicit = json.loads((folder / "class_entity_ids.json").read_text(encoding="utf-8")).get("class_entity_ids")
+    if not isinstance(explicit, list) or len(explicit) != 151 or explicit[0] is not None:
+        raise ValueError("Batch review class/entity alignment is invalid")
+    labels, provenance = overrides.get("mappings"), overrides.get("review_provenance")
+    if not isinstance(labels, dict) or not isinstance(provenance, dict):
+        raise ValueError("Batch review override lacks mappings/provenance")
+    for i in range(1, 151):
+        row, item = rows[i], reviews[i - 1]
+        synset = selection_lines[i].strip()
+        label = row.get("label")
+        audit = provenance.get(label, {})
+        if (
+            row.get("class_id") != i
+            or row.get("status") != "linked_manual"
+            or not synset
+            or row.get("synset_id") != synset
+            or labels.get(label) != synset
+            or not isinstance(audit, dict)
+            or audit.get("class_id") != i
+            or audit.get("reviewer") != reviewer
+            or not isinstance(item, dict)
+            or item.get("class_id") != i
+            or item.get("label") != label
+            or item.get("selected_synset") != synset
+            or item.get("reviewer") != reviewer
+            or item.get("evidence_reference") != f"{files['selections']}#L{i + 1}"
+        ):
+            raise ValueError(f"Batch review selection/provenance mismatch at class {i}")
+        entity_id = explicit[i]
+        if (
+            type(entity_id) is not int
+            or not 0 <= entity_id < len(kg.entities)
+            or kg.entities[entity_id] != f"wn:{synset}"
+        ):
+            raise ValueError(f"Batch review KG entity mismatch at class {i}")
 
 
 class TransE(nn.Module):

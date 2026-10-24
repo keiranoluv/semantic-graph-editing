@@ -142,3 +142,56 @@ def test_loader_rejects_row_reordering(bundle):
     p.write_text(json.dumps(d))
     with pytest.raises(ValueError, match="row order"):
         load_class_features(bundle[-1], allow_draft=True)
+
+
+def test_reviewed_export_loads_without_allow_draft(bundle):
+    ck, kg, mapping, vocab, output = bundle
+    mapping_doc = json.loads(mapping.read_text())
+    mapping_doc["rows"][150]["status"] = "linked_manual"
+    mapping_doc["rows"][150]["synset_id"] = "concept6.n.01"
+    mapping.write_text(json.dumps(mapping_doc))
+    ids = json.loads((kg / "class_entity_ids.json").read_text())
+    ids["class_entity_ids"][150] = 6
+    (kg / "class_entity_ids.json").write_text(json.dumps(ids))
+    metadata = json.loads((kg / "metadata.json").read_text())
+    metadata.update(ready_for_gat_kg_training=True, resolved_class_count=150, input_mapping_sha256=sha256(mapping))
+    (kg / "metadata.json").write_text(json.dumps(metadata))
+    review = output.with_name("human_review.json")
+    review.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "review_status": "human_approved",
+                "kg_source": "wordnet",
+                "kg_path": str(kg.resolve()),
+                "kg_sha256": load_kg(kg).hashes,
+                "reviews": [
+                    {
+                        "class_id": i,
+                        "decision": "accept",
+                        "reviewer": "Toan",
+                        "evidence_reference": f"selection:{i}",
+                        "rationale": "Synthetic test rationale",
+                    }
+                    for i in range(1, 151)
+                ],
+            }
+        )
+    )
+    checkpoint = torch.load(ck, weights_only=True)
+    checkpoint["manifest"].update(
+        mode="reviewed",
+        review_status="human_approved",
+        review_manifest_sha256=sha256(review),
+        input_sha256=load_kg(kg).hashes,
+    )
+    torch.save(checkpoint, ck)
+
+    manifest = export_wordnet(ck, kg, mapping, vocab, output, review_manifest_path=review)
+    features, valid, loaded = load_class_features(output)
+    assert manifest["mode"] == loaded["mode"] == "reviewed"
+    assert manifest["review_status"] == "human_approved"
+    assert features.shape == (151, 8) and int(valid.sum()) == 150
+    (output / "review_manifest.json").write_text("tampered")
+    with pytest.raises(ValueError, match="manifest SHA256 mismatch"):
+        load_class_features(output)

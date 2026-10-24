@@ -177,6 +177,11 @@ python -m scripts.prepare_knowledge \
 
 Lệnh này chỉ chuẩn bị mapping trên CPU; KG và checkpoint TransE draft cũ chưa
 tương thích với mapping reviewed mới.
+Toan đã xác nhận 150 lựa chọn này là chính thức. Teammate tiếp tục dựng KG và
+tạo manifest reviewed batch bằng lệnh trong
+[c2_gat_wordnet.md](knowledge/c2_gat_wordnet.md). Manifest chứa đường dẫn tuyệt
+đối và SHA-256, nên phải tạo lại trên từng máy sau khi có KG; không copy
+manifest từ máy khác rồi đổi đường dẫn bằng tay.
 Chạy trong `myenv` (NLTK 3.9.1). Python hệ thống trên máy kiểm tra dùng NLTK
 3.10.3 và sinh metadata `nltk_version` khác, dù 151 dòng mapping giống hệt;
 không ghi đè hai artifact cùng thư mục. Nếu đổi môi trường, chọn output mới.

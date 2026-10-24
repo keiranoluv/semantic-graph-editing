@@ -1,11 +1,12 @@
 # C.2 và GAT+WordNet — pipeline mức 1
 
-Trạng thái: mapping đại diện 150/150 của Toan và KG chính đã được tạo. TransE và
-feature export mới từ mapping đó chưa được tạo trong đường chạy chính. Exporter
-và GAT+KG runner hiện vẫn gắn nhãn `draft`; C.1 `reviewed` cần manifest audit
-riêng có bằng chứng/lý do từng class. GAT+KG đã hỗ trợ WandB online/offline và
-early stopping theo validation mR@50; CPU smoke WandB offline 1 epoch PASS.
-TransE cũng hỗ trợ WandB và chọn `best.pt` theo validation filtered MRR.
+Trạng thái: mapping đại diện 150/150 của Toan và KG chính đã được tạo. Toan đã
+xác nhận toàn bộ lựa chọn này là chính thức; manifest ghi rõ đây là xác nhận
+theo lô, không có lý do riêng cho phần lớn class. C.1/C.2/GAT+KG đã nhận đường
+`reviewed` này. TransE và GAT+KG vẫn chờ người dùng train GPU trên dữ liệu đầy
+đủ. Smoke CPU reviewed đi qua TransE → export 150/150 → GAT+KG PASS. Cả hai
+trainer đã hỗ trợ WandB; TransE chọn `best.pt` theo validation filtered MRR,
+GAT+KG chọn theo validation mR@50.
 
 ## Đường chạy tiếp theo với mapping 150 class
 
@@ -23,14 +24,25 @@ myenv/bin/python -m scripts.build_wordnet_graph \
 
 Lệnh CPU tạo KG; smoke riêng đạt 150/150 class, 1.077 entities, 1.312 triples,
 `ready_for_gat_kg_training=true`. Đăng nhập WandB bằng `myenv/bin/wandb login`
-trên máy của người dùng (không gửi API key vào chat). Sau khi KG được tạo, train
-TransE trên GPU:
+trên máy của người dùng (không gửi API key vào chat). Tạo manifest xác nhận
+chính thức từ các file mapping/override/selection đã commit:
+
+```bash
+myenv/bin/python -m scripts.prepare_level1_official_manifest
+```
+
+Trên máy hiện tại manifest đã được tạo tại
+`data/knowledge/wordnet-kg-toan-v1/review_manifest.json`; teammate tái tạo
+theo đường dẫn KG của họ. Manifest khóa SHA-256 của bốn file KG và nguồn lựa
+chọn; không tạo thêm lý do review chưa được Toan cung cấp. Sau đó train TransE
+trên GPU:
 
 ```bash
 myenv/bin/python -m scripts.train_transe \
   --kg-dir data/knowledge/wordnet-kg-toan-v1 \
-  --mode draft --split-policy transductive \
-  --output-dir runs/transe/wordnet-toan-v1-seed42 \
+  --mode reviewed --review-manifest data/knowledge/wordnet-kg-toan-v1/review_manifest.json \
+  --split-policy transductive \
+  --output-dir runs/transe/wordnet-toan-reviewed-seed42 \
   --dim 64 --epochs 200 --patience 20 --min-delta 0.0001 \
   --batch-size 512 --seed 42 --device cuda --wandb-mode online
 ```
@@ -40,17 +52,17 @@ tăng tại epoch 10. Bản này dùng tối đa 200 epochs, dừng sau 20 epoch
 không tăng validation filtered MRR ít nhất 0.0001; export `best.pt`, không dùng
 epoch cuối một cách mặc định. Chỉ dùng validation để chọn checkpoint; test
 được tính một lần sau train trên checkpoint đã chọn. WandB log train loss,
-validation MRR/Hits và epoch tốt nhất. `draft` là trạng thái hợp đồng audit,
-dù nguồn mapping đã đủ 150 lựa chọn của Toan. Dry-run split transductive PASS:
+validation MRR/Hits và epoch tốt nhất. Dry-run split transductive PASS:
 1.050 train, 131 validation, 131 test triples. Sau khi run hoàn tất, xuất
 embedding trên CPU:
 
 ```bash
 myenv/bin/python -m scripts.export_knowledge \
-  --checkpoint runs/transe/wordnet-toan-v1-seed42/best.pt \
+  --checkpoint runs/transe/wordnet-toan-reviewed-seed42/best.pt \
   --kg-dir data/knowledge/wordnet-kg-toan-v1 \
+  --review-manifest data/knowledge/wordnet-kg-toan-v1/review_manifest.json \
   --mapping data/knowledge/wordnet-reviewed-toan-v1/wordnet_mapping.json \
-  --output-dir data/knowledge/c2-wordnet-toan-v1
+  --output-dir data/knowledge/c2-wordnet-reviewed-v1
 ```
 
 Kiểm tra output báo `150/150 mapped classes` trước khi train GAT+KG, rồi chạy
@@ -58,7 +70,7 @@ seed 42:
 
 ```bash
 myenv/bin/python -m scripts.train_gat_kg \
-  --kg-features data/knowledge/c2-wordnet-toan-v1 --allow-draft \
+  --kg-features data/knowledge/c2-wordnet-reviewed-v1 \
   --device cuda --seed 42 \
   --epochs 200 --patience 15 --min-delta 0 \
   --batch-size 512 --accumulation-steps 1 --val-batch-size 128 \
@@ -66,7 +78,7 @@ myenv/bin/python -m scripts.train_gat_kg \
   --hidden-dim 256 --embedding-dim 32 --num-heads 4 --num-layers 2 \
   --dropout 0.1 --lr 0.001 --weight-decay 0.01 \
   --negative-ratio 3 --box-policy clip --wandb-mode online \
-  --output-dir runs/level1/wordnet-toan-seed42-v1
+  --output-dir runs/level1/wordnet-reviewed-seed42-v1
 ```
 
 200 là trần, không phải số epoch bắt buộc: dừng sau 15 epochs liên tiếp không
@@ -75,10 +87,12 @@ baseline seed 123 đạt best epoch 100 nên không đặt trần 100 cho KG run
 WandB project là `semantic-graph-editing`; runner log train/validation mỗi epoch
 và lưu run ID trong `last.pt` để resume. Checkpoint lưu local, không tự upload
 lên WandB. Khi resume, thêm
-`--resume runs/level1/wordnet-toan-seed42-v1/last.pt` vào đúng lệnh gốc.
+`--resume runs/level1/wordnet-reviewed-seed42-v1/last.pt` vào đúng lệnh gốc.
 
-Các kết quả này vẫn mang trạng thái kỹ thuật `draft` cho tới khi contract audit
-C.1/C.2 reviewed được hoàn thiện; không gọi là kết quả final trong báo cáo.
+Kết quả dùng mapping chính thức 150 synset đại diện. Báo cáo phải nêu rõ xác
+nhận theo lô của Toan, class đa nghĩa có thể chứa object instance không khớp
+synset đại diện, và không có lý do review riêng cho phần lớn class. Đó là giới
+hạn của bằng chứng, không phải trạng thái `draft` của pipeline.
 
 ## Bản draft 124 class trước đây
 

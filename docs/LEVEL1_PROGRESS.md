@@ -36,8 +36,8 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | Bước | Mục đích và sản phẩm | Trạng thái | Điều kiện hoàn thành |
 |---|---|---|---|
 | 1. Kiểm tra nền và môi trường | Xác minh C.1, baseline, phụ thuộc, nguồn dữ liệu và split; hướng dẫn thiết lập cho nhóm | Hoàn thành kiểm tra nền; còn giới hạn về split/ngân sách lịch sử | 150 tests ban đầu PASS, split tái tạo khớp, 9 checkpoint/config/epoch khớp; xem audit |
-| 2. C.2 — Xuất embedding | Chuyển checkpoint TransE thành bảng đặc trưng đúng class ID VG150, kèm mask và provenance | Draft export hoàn thành; mapping đại diện 150/150 của Toan đã biên dịch; reviewed KG/TransE/export chưa dựng | Draft artifact [151,64] có 124/150 class; reviewed override có 150 lựa chọn và provenance, cần train KG mới trước khi xuất embedding reviewed |
-| 3. GAT+WordNet | Tích hợp KG vào đặc trưng đỉnh, có cấu hình và run riêng | Code draft và CPU smoke hoàn thành | 3 chế độ KG-on/KG-off/edges-off train+val CPU thành công; baseline được bảo toàn |
+| 2. C.2 — Xuất embedding | Chuyển checkpoint TransE thành bảng đặc trưng đúng class ID VG150, kèm mask và provenance | Đường reviewed chính thức 150/150 đã đi qua CPU smoke; chờ checkpoint GPU chính | Manifest batch của Toan khóa nguồn/150 class; CPU smoke export [151,64] với 150/150 class; cần export lại từ TransE GPU `best.pt` |
+| 3. GAT+WordNet | Tích hợp KG vào đặc trưng đỉnh, có cấu hình và run riêng | Code reviewed và CPU smoke hoàn thành | Reviewed GAT+KG 1 epoch CPU PASS; 3 chế độ KG-on/KG-off/edges-off draft trước đó PASS; baseline được bảo toàn |
 | 4. Thực nghiệm | So sánh cùng protocol với 3 seeds; ablation tri thức/cạnh | 9 baseline đã đánh giá lại full validation; aggregator có; chờ GAT+KG GPU | Chưa có kết quả GAT+KG train dài hoặc mean/std cho nhánh KG |
 | 5. Phân tích và bộ nộp | 5 đúng/5 sai, notebook, bảng kết quả, hướng dẫn, tài liệu báo cáo/demo | Có case kỹ thuật, notebook đã chạy, bản chuẩn bị báo cáo/slide; phân tích người và kết quả final còn lại | Phân tích thủ công trên model final và bộ nộp hoàn chỉnh |
 
@@ -46,10 +46,10 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 - Đã đọc PDF, code GAT, phần nạp KG của TransE và các ghi chú handoff.
 - Theo ghi chú baseline, đã có 9 runs MLP/GAT cho seeds 42, 123, 3407;
   các số liệu được ghi là validation, chưa phải đánh giá held-out test cuối cùng.
-- Full suite hiện tại có 173 tests PASS; lint/format và pre-commit trên các file
+- Full suite hiện tại có 176 tests PASS; lint/format trên các file mới/sửa
   đã sửa PASS. Chưa báo cáo toàn bộ pre-commit `--all-files` PASS.
 - `myenv` ban đầu chỉ có pip; đã cài dependencies và chạy CPU smoke. Sau đó đổi
-  sang torch 2.7.0+cu128: CUDA available, nhận RTX 5090; full suite hiện tại 173 tests PASS.
+  sang torch 2.7.0+cu128: CUDA available, nhận RTX 5090; full suite hiện tại 176 tests PASS.
 - Mapping AI-provisional cần phân biệt với mapping được người kiểm tra chấp thuận.
 - README đã cập nhật phạm vi C.1/C.2/GAT+WordNet draft; không khẳng định train GPU đã xong.
 - Cần xác minh tính tương đương split, giới hạn số ảnh và protocol của các baseline.
@@ -97,6 +97,7 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | 2026-10-25 | Chuẩn bị lệnh GPU và WandB cho nhánh KG 150 class | KG smoke riêng tạo được 1.077 entities/1.312 triples; TransE transductive dry-run PASS (1.050/131/131 triples); GAT+KG WandB offline CPU smoke 1 epoch PASS; 0 GPU train do Codex | Người dùng tạo KG chính, chạy TransE GPU theo validation MRR, export CPU, rồi GAT+KG GPU với WandB online; lệnh tại `docs/knowledge/c2_gat_wordnet.md` |
 | 2026-10-25 | Sửa ngân sách TransE trước run 150 class | Run WordNet cũ 10 epochs còn tăng validation MRR tại epoch 10; thêm WandB và chọn `best.pt` theo validation MRR, early stop; CPU smoke 2 epochs và export 150/150 PASS | Người dùng chạy TransE tối đa 200 epochs, patience 20, rồi export `best.pt`; không dùng checkpoint epoch 10 mặc định |
 | 2026-10-25 | Kiểm tra KG chính sau khi người dùng tạo | `data/knowledge/wordnet-kg-toan-v1/metadata.json`: 150 class resolved, 1.077 entities, 1.312 triples, `ready_for_gat_kg_training=true`; TransE chính chưa chạy | Commit thay đổi early stopping/WandB của TransE, sau đó người dùng chạy GPU theo lệnh mới |
+| 2026-10-25 | Toan xác nhận bản 150 synset là chính thức | Tạo approval declaration không nhận vơ lý do riêng từng class; manifest batch khóa SHA-256 của KG/mapping/override/selection; C.1 reviewed dry-run, TransE CPU smoke 2 epochs, C.2 export 150/150 và GAT+KG CPU smoke 1 epoch PASS | Commit code reviewed và chạy TransE GPU `--mode reviewed`, export `best.pt`, rồi GAT+KG GPU không dùng `--allow-draft` |
 
 ## B1-01 — Kiểm kê trước khi cài đặt
 
@@ -145,29 +146,15 @@ các URL download trên máy teammate chưa được kiểm chứng bằng một
 
 ## Bước tiếp theo do người dùng thực hiện
 
-- Mapping đại diện 150/150 class được coi là chốt cho bước triển khai tiếp theo.
-  Tạo artifact WordNet KG mới bằng lệnh CPU sau, từ thư mục gốc repository:
-
-  ```bash
-  myenv/bin/python -m scripts.build_wordnet_graph \
-    --mapping data/knowledge/wordnet-reviewed-toan-v1/wordnet_mapping.json \
-    --reviewed-overrides configs/knowledge/wordnet_overrides.reviewed-toan-v1.json \
-    --require-fully-reviewed --max-hops 2 \
-    --output-dir data/knowledge/wordnet-kg-toan-v1
-  ```
-
-  Lệnh ghi 5 file KG (`entities.json`, `relations.json`, `class_entity_ids.json`,
-  `triples.tsv`, `metadata.json`); không train và không dùng GPU. Không chạy lại
-  cùng output dir sau khi đã tạo thành công. Gửi dòng `ready_for_gat_kg_training`
-  và `git status --short` nếu lệnh lỗi.
-- Sau khi có KG, Codex kiểm tra hash/số lượng rồi hoàn thiện đường đi
-  TransE → C.2 export → GAT+KG cho mapping mới. Lệnh GPU và WandB đã được chuẩn
-  bị trong [c2_gat_wordnet.md](knowledge/c2_gat_wordnet.md); người dùng tự chạy
-  sau mỗi bước phụ thuộc và gửi output để Codex kiểm tra.
-- C.1 `--mode reviewed` hiện yêu cầu manifest riêng có bằng chứng/lý do cho
-  từng class; việc có đủ 150 lựa chọn synset chưa tự tạo ra manifest đó. Trong
-  lúc hoàn thiện hợp đồng này, các run `--mode draft` chỉ dùng kiểm tra kỹ thuật
-  và không được gọi là kết quả cuối.
+- Mapping 150/150 của Toan đã được xác nhận chính thức; KG và manifest reviewed
+  batch đã có ở máy hiện tại. Teammate tạo lại bằng lệnh trong
+  [c2_gat_wordnet.md](knowledge/c2_gat_wordnet.md).
+- Người dùng commit thay đổi reviewed pipeline, chạy TransE GPU `--mode reviewed`
+  với WandB và early stopping, xuất `best.pt` trên CPU, rồi chạy GAT+KG GPU từ
+  export `[REVIEWED] 150/150`. Toàn bộ lệnh tại tài liệu C.2 nêu trên; gửi
+  output và đường dẫn run để Codex kiểm tra trước khi tổng hợp kết quả.
+- Manifest ghi nguồn xác nhận theo lô và giới hạn thiếu lý do riêng cho phần lớn
+  class. Khi báo cáo, nêu đúng giới hạn này và vấn đề nhãn đa nghĩa.
 - Không đánh dấu bước 4 hoặc 5 hoàn thành trước khi có dữ liệu thực nghiệm,
   phân tích 5 đúng/5 sai và notebook/demo thực tế.
 
