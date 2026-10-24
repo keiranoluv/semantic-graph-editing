@@ -2,7 +2,7 @@
 
 VG150 scene graph learning, external knowledge exploration and planned controllable image editing.
 
-**Current scope:** MLP/GAT PredCls baselines, Toan's official representative WordNet mapping for 150 classes, draft ConceptNet preparation, C.1 TransE, C.2 WordNet feature export and GAT+WordNet. The reviewed WordNet path passes CPU smoke from KG through GAT+KG; full GPU TransE/GAT+KG experiments remain pending. Cross-KG identity alignment, image editing and no-graph-constraint evaluation are not delivered.
+**Current scope:** MLP/GAT PredCls baselines, Toan's official representative WordNet mapping for 150 classes, draft ConceptNet preparation, C.1 TransE, C.2 WordNet feature export and GAT+WordNet. Reviewed WordNet TransE seed 42 and its 150-class C.2 export have completed; full GAT+KG GPU experiments remain pending. Cross-KG identity alignment, image editing and no-graph-constraint evaluation are not delivered.
 
 - [Level 1 progress and collaboration rules](docs/LEVEL1_PROGRESS.md)
 - [Team environment and VG150 download commands](docs/TEAM_SETUP_LEVEL1.md)

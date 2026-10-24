@@ -3,8 +3,9 @@
 Trạng thái: mapping đại diện 150/150 của Toan và KG chính đã được tạo. Toan đã
 xác nhận toàn bộ lựa chọn này là chính thức; manifest ghi rõ đây là xác nhận
 theo lô, không có lý do riêng cho phần lớn class. C.1/C.2/GAT+KG đã nhận đường
-`reviewed` này. TransE và GAT+KG vẫn chờ người dùng train GPU trên dữ liệu đầy
-đủ. Smoke CPU reviewed đi qua TransE → export 150/150 → GAT+KG PASS. Cả hai
+`reviewed` này. TransE GPU seed 42 đã hoàn tất: best epoch 52/72, validation
+filtered MRR 0,046061. Export C.2 reviewed chính đã có [151,64], 150/150 và
+GAT+KG CPU smoke trên đúng export này PASS. GAT+KG GPU còn chờ. Cả hai
 trainer đã hỗ trợ WandB; TransE chọn `best.pt` theo validation filtered MRR,
 GAT+KG chọn theo validation mR@50.
 
