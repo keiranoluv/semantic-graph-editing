@@ -20,7 +20,7 @@ Trên máy hiện tại, cache CLIP và TransE/C.2 v2 đã hoàn tất; các l�
   GAT+WordNet ghép thêm
   TransE 64D cùng valid bit; KG-off giữ kiến trúc đó nhưng zero KG. Edges-off
   giữ input/KG nhưng chỉ còn self-loop trong message passing. Tất cả dùng
-  cùng negative ratio 3, batch 512, trần 200 epoch, patience 15 và chọn
+  cùng negative ratio 3, batch train/validation 512, trần 200 epoch, patience 15 và chọn
   validation mR@50. Kiến trúc khác nhau nên đây là so sánh cùng dữ liệu và
   ngân sách epoch, không phải bằng nhau về FLOPs.
 - Ba seed PredCls: 42, 123, 3407. TransE seed 42 tạo một embedding cố định
