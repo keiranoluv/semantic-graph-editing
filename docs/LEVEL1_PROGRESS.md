@@ -2,6 +2,21 @@
 
 Cập nhật: 2026-10-25.
 
+## Nhánh tiếp theo: KG theo cặp × loss điều chỉnh
+
+Đã cài đặt ma trận 2 × 2 × 3 seed = **12 run** trong
+[level1_pair_kg_v1.md](experiments/level1_pair_kg_v1.md). Gồm GAT với nhánh
+ConceptNet TransE theo cặp đối tượng bật/tắt, kết hợp cross entropy gốc hoặc
+logit-adjusted cross entropy. Prior chỉ dùng nhãn train và chính sách lấy mẫu
+negative hiện tại; file `reports/level1/clip-pair-kg-train-prior-v1.json` có
+hash dữ liệu để kiểm tra trên máy khác. Codex chỉ chạy CPU preflight, người
+dùng chạy train/eval GPU sau khi commit. CPU smoke train/eval 8 ảnh cho KG-off/CE
+và KG-on/loss điều chỉnh PASS; prior khớp graph builder trên 8 ảnh train đầu,
+dry-run launcher có 12 job và toàn bộ 199 tests PASS. Kết quả GPU đang chờ train.
+
+VG150 test đã được đánh giá cho các nhánh trước. Nhánh mới được chọn theo val;
+không dùng lại test như held-out độc lập để chỉnh mô hình.
+
 ## Cách phối hợp
 
 - Codex sửa code/tài liệu và được chạy kiểm tra môi trường, dữ liệu, tests,

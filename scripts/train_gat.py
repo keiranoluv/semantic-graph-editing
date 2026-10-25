@@ -39,6 +39,7 @@ def train_one_epoch(
     generator,
     device,
     batch_loader=None,
+    logit_adjustment=None,
 ):
     """Use graph mini-batches; supervise sampled pairs, propagate on full topology."""
     model.train()
@@ -81,7 +82,11 @@ def train_one_epoch(
 
         logits = forward_gat_batch(model, batch, device)
         targets = batch["targets"].to(device)
-        loss_sum = F.cross_entropy(logits, targets, reduction="sum")
+        loss_sum = F.cross_entropy(
+            logits if logit_adjustment is None else logits + logit_adjustment,
+            targets,
+            reduction="sum",
+        )
         if not torch.isfinite(loss_sum).item():
             raise RuntimeError(f"Non-finite GAT loss in micro-batch {begin}")
         loss_sum.backward()

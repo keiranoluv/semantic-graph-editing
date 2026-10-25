@@ -63,6 +63,20 @@ def test_conceptnet_group_has_correct_source_name(tmp_path):
     assert result["groups"][0]["condition"].startswith("gat_kg:conceptnet:")
 
 
+def test_pairwise_kg_factorial_summary_keeps_four_conditions(tmp_path):
+    rows = []
+    for kg_mode in ("off", "on"):
+        for loss_mode in ("ce", "logit_adjusted"):
+            for row in reports():
+                row["model"] = "gat_pair_kg"
+                row["config"].update(model="gat_pair_kg", kg_mode=kg_mode, loss_mode=loss_mode)
+                row["checkpoint_sha256"] += f"-{kg_mode}-{loss_mode}"
+                rows.append(row)
+    result = call(tmp_path, rows)
+    assert len(result["groups"]) == 4
+    assert all(group["seeds"] == [42, 123, 3407] for group in result["groups"])
+
+
 def test_clip_summary_rejects_cross_run_input_budget_drift(tmp_path):
     rows = reports()
     for row in rows:
