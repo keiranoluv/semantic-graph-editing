@@ -52,6 +52,8 @@ def common_args(seed: int, wandb_mode: str) -> list[str]:
         "512",
         "--val-batch-size",
         "512",
+        "--num-workers",
+        "0",
         "--max-train-images",
         "57723",
         "--max-val-images",
@@ -126,6 +128,8 @@ def eval_command(condition: str, seed: int, device: str) -> list[str]:
         device,
         "--batch-size",
         "512",
+        "--num-workers",
+        "0",
         "--output",
         str(report_path(condition, seed)),
     ]

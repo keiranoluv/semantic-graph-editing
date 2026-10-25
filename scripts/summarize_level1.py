@@ -45,6 +45,7 @@ def summarize(paths, *, expected_seeds=(42, 123, 3407), allow_subset=False):
         "weight_decay",
         "hidden_dim",
         "embedding_dim",
+        "num_workers",
         "deterministic",
         "code_sha256",
     )

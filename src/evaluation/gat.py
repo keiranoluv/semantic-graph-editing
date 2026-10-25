@@ -3,6 +3,7 @@
 import torch
 import torch.nn.functional as F
 
+from src.datasets.batching import graph_batches
 from src.evaluation.scene_graph import evaluate_image, summarize_evaluation
 from src.graph.gnn_batching import collate_gnn_graphs, forward_gat_batch
 
@@ -40,7 +41,7 @@ def evaluate_gat_batch(model, graphs, device, compute_loss=False):
 
 
 @torch.inference_mode()
-def validate_gat(model, dataset, limit, device, batch_size=32):
+def validate_gat(model, dataset, limit, device, batch_size=32, batch_loader=None):
     """Full validation: original graph-constrained mR@50 for model selection."""
     from tqdm.auto import tqdm
 
@@ -48,8 +49,12 @@ def validate_gat(model, dataset, limit, device, batch_size=32):
     total_loss = 0.0
     total_pairs = 0
     results = []
-    for begin in tqdm(range(0, limit, batch_size), desc="Validate GAT", unit="batch"):
-        graphs = [dataset[i] for i in range(begin, min(begin + batch_size, limit))]
+    for _, graphs in tqdm(
+        graph_batches(dataset, limit, batch_size, batch_loader),
+        total=(limit + batch_size - 1) // batch_size,
+        desc="Validate GAT",
+        unit="batch",
+    ):
         batch_results, loss_sum, count = evaluate_gat_batch(model, graphs, device, compute_loss=True)
         results.extend(batch_results)
         total_loss += loss_sum

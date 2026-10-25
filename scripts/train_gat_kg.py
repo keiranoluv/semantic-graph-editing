@@ -14,6 +14,7 @@ import torch
 from scripts.pilot_mlp import atomic_text_save, atomic_torch_save, resolve_device, restore_training_state
 from scripts.train_gat import frozen_config, parse_args, train_one_epoch
 from scripts.train_mlp import make_dataset
+from src.datasets.batching import make_graph_loader
 from src.evaluation.gat import validate_gat
 from src.knowledge.export import load_class_features
 from src.knowledge.transe.core import sha256
@@ -134,6 +135,16 @@ def main(argv=None):
         wandb_id = run.id
     elif args.resume and wandb_id:
         print("[WARN] W&B disabled; previous W&B run not updated", flush=True)
+    train_loader = (
+        make_graph_loader(train, train_limit, args.batch_size, args.num_workers, args.seed + 100_000)
+        if args.num_workers
+        else None
+    )
+    val_loader = (
+        make_graph_loader(val, val_limit, args.val_batch_size, args.num_workers, args.seed + 200_000)
+        if args.num_workers
+        else None
+    )
     try:
         for epoch in range(start, args.epochs + 1):
             loss, steps, skipped = train_one_epoch(
@@ -146,8 +157,9 @@ def main(argv=None):
                 args.negative_ratio,
                 generator,
                 device,
+                train_loader,
             )
-            metrics = validate_gat(model, val, val_limit, device, args.val_batch_size)
+            metrics = validate_gat(model, val, val_limit, device, args.val_batch_size, val_loader)
             score = metrics["mR@50"]
             if score is None or not math.isfinite(score):
                 raise RuntimeError("Cannot select checkpoint without finite validation mR@50")

@@ -46,10 +46,10 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 - Đã đọc PDF, code GAT, phần nạp KG của TransE và các ghi chú handoff.
 - Theo ghi chú baseline, đã có 9 runs MLP/GAT cho seeds 42, 123, 3407;
   các số liệu được ghi là validation, chưa phải đánh giá held-out test cuối cùng.
-- Full suite hiện tại có 184 tests PASS; lint/format trên các file mới/sửa
+- Full suite hiện tại có 187 tests PASS; lint/format trên các file mới/sửa
   đã sửa PASS. Chưa báo cáo toàn bộ pre-commit `--all-files` PASS.
 - `myenv` ban đầu chỉ có pip; đã cài dependencies và chạy CPU smoke. Sau đó đổi
-  sang torch 2.7.0+cu128: CUDA available, nhận RTX 5090; full suite hiện tại 184 tests PASS.
+  sang torch 2.7.0+cu128: CUDA available, nhận RTX 5090; full suite hiện tại 187 tests PASS.
 - Mapping AI-provisional cần phân biệt với mapping được người kiểm tra chấp thuận.
 - README đã cập nhật phạm vi C.1/C.2/GAT+WordNet draft; không khẳng định train GPU đã xong.
 - Cần xác minh tính tương đương split, giới hạn số ảnh và protocol của các baseline.
@@ -126,6 +126,8 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | 2026-10-25 | CPU smoke ba mô hình với cache CLIP hoàn chỉnh | MLP, GAT và GAT+KG đều train 1 epoch CPU trên 8 train/8 val images, tạo `best.pt` và evaluate CPU 8 ảnh validation ra report hữu hạn. KG smoke dùng export WordNet cũ chỉ để kiểm tra wiring. Sửa hai help string còn ghi ResNet18. Audit rủi ro và lệnh 15 run ở `docs/experiments/level1_clip_regions.md` | Chờ TransE v2/export mới trước 15 GPU run |
 | 2026-10-25 | Train TransE v2 và export WordNet | Theo yêu cầu mới của người dùng, Codex chạy đúng lệnh TransE GPU seed 42 với filter train-only/validation train+val; exit 0, early stop epoch 60, `best.pt` epoch 40, validation MRR 0,0441983 và KG test MRR 0,0260909. CPU export từ `best.pt` tạo C.2 v2 shape [151,64], 150/150 class valid. Launcher ma trận CLIP dry-run PASS với 15 jobs tuần tự; chưa chạy PredCls GPU. Run dữ liệu/W&B không commit | Người dùng commit code/tài liệu rồi chạy 15 PredCls GPU run và đánh giá validation |
 | 2026-10-25 | Tăng batch validation ma trận CLIP | Sau commit `0cb72d8`, kiểm tra chưa có run PredCls GPU nào và không có trainer đang chạy. Đổi batch validation trong từng epoch và lượt evaluate độc lập từ 128/32 thành 512 cho cả 15 run; giữ batch train 512 và protocol khác như cũ | Người dùng commit thay đổi này trước khi chạy ma trận GPU; theo dõi VRAM khi chạy song song |
+| 2026-10-25 | Tối ưu đọc graph trước khi khởi chạy lại 15 ô | Người dùng dừng launcher 3 MLP; Codex chuyển 3 checkpoint/log dở sang thư mục `*-stopped-before-loader-20261025`, không xóa. Đọc HDF5 bằng memmap read-only cho dataset liên tục, fallback sang HDF5 với dataset nén; có tùy chọn worker nhưng launcher đặt 0 vì benchmark 4.096 graph: 1,03 giây với memmap/0 worker, 3,36 giây với HDF5 giữ mở/0 worker, 3,69/3,52 giây với memmap/2 hoặc 4 worker. MLP, GAT, GAT+KG smoke CPU 1 epoch có history, model tensors và sampler RNG khớp chính xác trước/sau đổi loader. Full suite 187 tests, lint/format, diff check và dry-run 15 ô tối đa 5 song song PASS. Chưa chạy PredCls GPU với code mới | Người dùng commit code/tài liệu rồi khởi chạy lại cả 15 ô từ đầu với `--max-parallel 5`; theo dõi VRAM, không dùng checkpoint cũ khác code hash |
+| 2026-10-25 | Dọn ba run MLP dở theo yêu cầu người dùng | Xóa đúng 3 thư mục checkpoint đã archive, 3 log, 3 thư mục W&B local và 3 symlink trỏ vào chúng; output `runs/level1-clip-v1/` và `logs/level1-clip-v1/` dành cho ma trận mới vẫn trống. Không xóa dữ liệu, cache CLIP, KG export hay W&B run trên web | Người dùng commit thay đổi loader rồi chạy mới đủ 15 ô |
 
 ## B1-01 — Kiểm kê trước khi cài đặt
 
@@ -175,8 +177,9 @@ tải và xác minh toàn bộ; máy teammate chưa được kiểm chứng bằ
 - TransE v2 GPU và export WordNet 150/150 đã hoàn tất trên máy hiện tại;
   lệnh tái lập ở [level1_clip_regions.md](experiments/level1_clip_regions.md).
 - Người dùng commit code/tài liệu, sau đó train 15 run CLIP bằng GPU;
-  tiếp đó đánh giá đủ 5.000 ảnh validation cho mỗi checkpoint. Launcher mặc
-  định chạy tuần tự, giữ riêng output/log và không ghi đè.
+  tiếp đó đánh giá đủ 5.000 ảnh validation cho mỗi checkpoint. Lệnh trong
+  hướng dẫn đặt `--max-parallel 5`; launcher giữ riêng output/log và không ghi
+  đè. Ba MLP run dở trước khi tối ưu đã được dọn theo yêu cầu người dùng.
 - Dùng các report mới để phân tích ít nhất 5 đúng/5 sai, hoàn thiện báo cáo,
   slide và notebook/demo; chỉ đánh giá test sau khi khóa pipeline.
 - Teammate tải lại annotation và JPEG theo

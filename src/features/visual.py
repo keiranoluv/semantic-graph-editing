@@ -3,10 +3,10 @@
 import json
 from pathlib import Path
 
-import h5py
 import numpy as np
 import torch
 
+from src.datasets.hdf5_session import ProcessLocalH5
 from src.datasets.schemas import SceneGraphRecord
 from src.features.geometry import GeometryFeatureExtractor
 from src.graph.features import FeatureExtractor
@@ -38,6 +38,7 @@ class VisualFeatureExtractor(FeatureExtractor):
         self.cache_dir = Path(cache_dir)
         self.manifest = load_visual_manifest(self.cache_dir, Path(root), box_policy)
         self.box_policy = box_policy
+        self._features = ProcessLocalH5(self.cache_dir / "features.h5")
 
     @property
     def output_dim(self) -> int:
@@ -48,7 +49,7 @@ class VisualFeatureExtractor(FeatureExtractor):
         if record.metadata.get("box_policy") != self.box_policy:
             raise ValueError("Record and visual cache box policies differ")
         row = int(record.metadata["hdf5_row"])
-        with h5py.File(self.cache_dir / "features.h5", "r") as cache:
+        with self._features.open() as cache:
             if not bool(cache["done"][row]):
                 raise ValueError(f"Missing visual features for image row {row}")
             if int(cache["image_id"][row]) != int(record.image_id):

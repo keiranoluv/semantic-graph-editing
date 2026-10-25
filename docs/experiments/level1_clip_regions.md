@@ -54,6 +54,21 @@ sau các run.
   trước khi chạy lại; không đổi riêng một điều kiện hoặc trộn report khác
   cấu hình.
 
+### Đọc dữ liệu cho ma trận CLIP
+
+Các HDF5 ở máy hiện tại có dataset liên tục, không nén; reader ánh xạ trực
+tiếp mảng read-only vào bộ nhớ và dùng HDF5 thông thường nếu gặp dataset không
+thể ánh xạ. Dữ liệu, thứ tự ảnh và negative sampling không đổi. Trên 4.096
+graph train, một lượt đọc CPU sau khi khởi động mất 1,03 giây với 0 worker,
+so với 3,36 giây khi chỉ giữ HDF5 mở. Dùng 2/4 worker lần lượt mất 3,69/3,52
+giây vì chi phí chuyển graph qua tiến trình; do đó launcher đặt
+`--num-workers 0` cho cả 15 ô. Đây là benchmark đọc graph, không phải thời gian
+train GPU.
+
+Ba MLP run bị dừng trước thay đổi loader đã được xóa theo yêu cầu người dùng,
+gồm checkpoint/log dở và W&B local tương ứng. Ma trận sau thay đổi khởi chạy
+lại cả 15 ô từ đầu vì checkpoint cũ ghi code hash khác.
+
 ## 1. Tải JPEG đầy đủ
 
 Trước tiên chạy phần annotation trong [TEAM_SETUP_LEVEL1.md](../TEAM_SETUP_LEVEL1.md),
@@ -135,19 +150,19 @@ filter. MRR TransE là KG link prediction, không phải PredCls Recall.
 Khi cache và KG export đều hoàn tất, xem lệnh trước khi chạy:
 
 ```bash
-myenv/bin/python -m src.level1_visual_matrix train --max-parallel 1 --dry-run
+myenv/bin/python -m src.level1_visual_matrix train --max-parallel 5 --dry-run
 ```
 
 Người dùng chạy train GPU:
 
 ```bash
-myenv/bin/python -m src.level1_visual_matrix train --max-parallel 1
+myenv/bin/python -m src.level1_visual_matrix train --max-parallel 5
 ```
 
 Launcher tạo 3 seed cho mỗi điều kiện `mlp_semantic`, `gat`, `kg_on`,
 `kg_off`, `edges_off`; checkpoint trong `runs/level1-clip-v1/`, log trong
-`logs/level1-clip-v1/`. Mặc định chạy tuần tự để dễ phát hiện lỗi và không
-vượt bộ nhớ. Output/log đã tồn tại sẽ bị từ chối, không ghi đè.
+`logs/level1-clip-v1/`. Lệnh trên duy trì tối đa năm run cùng lúc; cần theo
+dõi VRAM khi các ô GAT chạy. Output/log đã tồn tại sẽ bị từ chối, không ghi đè.
 Nếu cần chạy riêng một ô sau khi xử lý lỗi, thêm `--condition gat --seed 42`
 (thay tên/seed phù hợp) để launcher chỉ tạo đúng run còn thiếu.
 

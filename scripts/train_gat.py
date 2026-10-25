@@ -20,6 +20,7 @@ from scripts.pilot_mlp import (
     restore_training_state,
 )
 from scripts.train_mlp import make_dataset
+from src.datasets.batching import graph_batches, make_graph_loader
 from src.evaluation.gat import validate_gat
 from src.features.visual import load_visual_manifest
 from src.graph.gnn_batching import collate_gnn_graphs, forward_gat_batch
@@ -28,7 +29,16 @@ from src.models.gat import build_gat_model
 
 
 def train_one_epoch(
-    model, dataset, limit, batch_size, accumulation_steps, optimizer, negative_ratio, generator, device
+    model,
+    dataset,
+    limit,
+    batch_size,
+    accumulation_steps,
+    optimizer,
+    negative_ratio,
+    generator,
+    device,
+    batch_loader=None,
 ):
     """Use graph mini-batches; supervise sampled pairs, propagate on full topology."""
     model.train()
@@ -56,8 +66,12 @@ def train_one_epoch(
         pending_batches = 0
         pending_pairs = 0
 
-    for begin in tqdm(range(0, limit, batch_size), desc="Train GAT", unit="micro-batch"):
-        graphs = [dataset[i] for i in range(begin, min(begin + batch_size, limit))]
+    for begin, graphs in tqdm(
+        graph_batches(dataset, limit, batch_size, batch_loader),
+        total=math.ceil(limit / batch_size),
+        desc="Train GAT",
+        unit="micro-batch",
+    ):
         batch, _, batch_skipped = collate_gnn_graphs(
             graphs, training=True, negative_ratio=negative_ratio, generator=generator
         )
@@ -94,6 +108,7 @@ def parse_args(argv=None):
     parser.add_argument("--batch-size", type=int, default=32, help="Graphs per GPU micro-batch")
     parser.add_argument("--accumulation-steps", type=int, default=16, help="Micro-batches per optimizer update")
     parser.add_argument("--val-batch-size", type=int, default=32)
+    parser.add_argument("--num-workers", type=int, default=0, help="Persistent graph loading workers per split")
     parser.add_argument("--max-train-images", type=int, default=57723)
     parser.add_argument("--max-val-images", type=int, default=5000)
     parser.add_argument("--seed", type=int, default=42)
@@ -136,6 +151,8 @@ def parse_args(argv=None):
         )
     if args.lr <= 0 or args.weight_decay < 0 or args.negative_ratio < 0 or args.min_delta < 0:
         parser.error("Invalid optimizer, negative sampling or early-stopping parameters")
+    if args.num_workers < 0:
+        parser.error("num-workers must be nonnegative")
     if not 0 <= args.dropout < 1:
         parser.error("Dropout must be in [0, 1)")
     return args
@@ -187,6 +204,8 @@ def frozen_config(args, num_objects, num_predicates, train_limit, val_limit):
             for folder in (Path("src"), Path("scripts"))
             for path in sorted(folder.rglob("*.py"))
         }
+    if args.num_workers:
+        config["num_workers"] = args.num_workers
     return config
 
 
@@ -277,6 +296,16 @@ def main(argv=None):
     elif args.resume and wandb_id:
         print("[WARN] W&B disabled; previous W&B run not updated", flush=True)
 
+    train_loader = (
+        make_graph_loader(train_dataset, train_limit, args.batch_size, args.num_workers, args.seed + 100_000)
+        if args.num_workers
+        else None
+    )
+    val_loader = (
+        make_graph_loader(val_dataset, val_limit, args.val_batch_size, args.num_workers, args.seed + 200_000)
+        if args.num_workers
+        else None
+    )
     try:
         for epoch in range(start_epoch, args.epochs + 1):
             train_loss, steps, skipped = train_one_epoch(
@@ -289,8 +318,9 @@ def main(argv=None):
                 args.negative_ratio,
                 generator,
                 device,
+                train_loader,
             )
-            val = validate_gat(model, val_dataset, val_limit, device, args.val_batch_size)
+            val = validate_gat(model, val_dataset, val_limit, device, args.val_batch_size, val_loader)
             score = val["mR@50"]
             if score is None or not math.isfinite(score):
                 raise RuntimeError("Cannot select checkpoint without finite validation mR@50")

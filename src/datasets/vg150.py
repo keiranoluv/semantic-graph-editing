@@ -8,6 +8,7 @@ from typing import Literal
 import h5py
 from torch_geometric.data import Data, Dataset
 
+from src.datasets.hdf5_session import ProcessLocalH5
 from src.datasets.schemas import SceneGraphRecord, SceneObject, SceneRelation
 from src.graph.builder import SceneGraphBuilder
 from src.graph.features import FeatureExtractor
@@ -105,6 +106,7 @@ class VG150AnnotationLoader:
             raise ValueError(f"Unsupported split: {split}")
 
         self.annotations_path = self.root / "VG-SGG-with-attri.h5"
+        self._annotations = ProcessLocalH5(self.annotations_path)
         self.metadata_path = self.root / "image_data.json"
         self.vocabulary_path = self.root / "VG-SGG-dicts-with-attri.json"
 
@@ -169,7 +171,7 @@ class VG150AnnotationLoader:
         """Return one normalized record using a split-relative index."""
         row = self.indices[index]
 
-        with h5py.File(self.annotations_path, "r") as h5:
+        with self._annotations.open() as h5:
             first_box = int(h5["img_to_first_box"][row])
             last_box = int(h5["img_to_last_box"][row])
             first_rel = int(h5["img_to_first_rel"][row])

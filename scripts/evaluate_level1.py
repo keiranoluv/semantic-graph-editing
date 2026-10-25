@@ -10,6 +10,7 @@ import torch
 from scripts.evaluate_mlp import build_model
 from scripts.pilot_mlp import resolve_device
 from scripts.train_mlp import make_dataset
+from src.datasets.batching import graph_batches, make_graph_loader
 from src.evaluation.batched import evaluate_graph_batch
 from src.evaluation.gat import evaluate_gat_batch
 from src.evaluation.scene_graph import summarize_evaluation
@@ -43,12 +44,13 @@ def main(argv=None):
     p.add_argument("--allow-test", action="store_true")
     p.add_argument("--device", choices=("cpu", "cuda", "auto"), default="cpu")
     p.add_argument("--batch-size", type=int, default=32)
+    p.add_argument("--num-workers", type=int, default=0, help="Persistent graph loading workers")
     p.add_argument("--max-images", type=int)
     p.add_argument("--output", type=Path, required=True)
     args = p.parse_args(argv)
     if args.split == "test" and not args.allow_test:
         p.error("Held-out test requires --allow-test after experimental setup is frozen")
-    if args.batch_size <= 0 or (args.max_images is not None and args.max_images <= 0):
+    if args.batch_size <= 0 or args.num_workers < 0 or (args.max_images is not None and args.max_images <= 0):
         p.error("Batch size and optional image limit must be positive")
     if args.output.exists():
         raise FileExistsError(args.output)
@@ -77,9 +79,13 @@ def main(argv=None):
     model.to(device).eval()
     dataset = make_dataset(args.root, args.split, config["box_policy"], visual_cache)
     limit = len(dataset) if args.max_images is None else min(args.max_images, len(dataset))
+    loader = (
+        make_graph_loader(dataset, limit, args.batch_size, args.num_workers, config["seed"] + 300_000)
+        if args.num_workers
+        else None
+    )
     results = []
-    for begin in range(0, limit, args.batch_size):
-        graphs = [dataset[i] for i in range(begin, min(begin + args.batch_size, limit))]
+    for _, graphs in graph_batches(dataset, limit, args.batch_size, loader):
         if name in {"gat", "gat_kg"}:
             batch_results, _, _ = evaluate_gat_batch(model, graphs, device)
         else:

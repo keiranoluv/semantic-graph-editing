@@ -15,6 +15,7 @@ from tqdm.auto import tqdm
 
 from scripts.evaluate_mlp import build_model
 from scripts.train_mlp import make_dataset
+from src.datasets.batching import graph_batches, make_graph_loader
 from src.evaluation.batched import evaluate_graph_batch
 from src.evaluation.scene_graph import summarize_evaluation
 from src.features.visual import load_visual_manifest
@@ -87,6 +88,7 @@ def train_one_epoch(
     generator,
     name,
     device,
+    batch_loader=None,
 ):
     model.train()
     total_loss = 0.0
@@ -95,14 +97,14 @@ def train_one_epoch(
     skipped = 0
 
     progress = tqdm(
-        range(0, limit, batch_size),
+        graph_batches(dataset, limit, batch_size, batch_loader),
+        total=math.ceil(limit / batch_size),
         desc=f"Train {name}",
         unit="batch",
     )
 
-    for start in progress:
+    for start, graphs in progress:
         end = min(start + batch_size, limit)
-        graphs = [dataset[i] for i in range(start, end)]
 
         batch, batch_skipped = collate_training_graphs(graphs, ratio, generator)
         skipped += batch_skipped
@@ -141,21 +143,21 @@ def train_one_epoch(
 
 
 @torch.no_grad()
-def validate(model, dataset, limit, name, device, batch_size=128):
+def validate(model, dataset, limit, name, device, batch_size=128, batch_loader=None):
     model.eval()
     total_loss = 0.0
     total_pairs = 0
     results = []
 
     progress = tqdm(
-        range(0, limit, batch_size),
+        graph_batches(dataset, limit, batch_size, batch_loader),
+        total=math.ceil(limit / batch_size),
         desc=f"Val {name}",
         unit="batch",
     )
 
-    for begin in progress:
+    for begin, graphs in progress:
         end = min(begin + batch_size, limit)
-        graphs = [dataset[idx] for idx in range(begin, end)]
 
         batch_results, loss_sum, pair_count = evaluate_graph_batch(model, graphs, name, device, compute_loss=True)
 
@@ -211,6 +213,7 @@ def check_resume_compatibility(saved, current):
         "selection_metric",
         "dataset",
         "geometry_dim",
+        "num_workers",
         "visual_cache_manifest_sha256",
         "data_sha256",
         "code_sha256",
@@ -268,6 +271,7 @@ def main():
     parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
     parser.add_argument("--batch-size", type=int, default=512)
     parser.add_argument("--val-batch-size", type=int, default=128)
+    parser.add_argument("--num-workers", type=int, default=0, help="Persistent graph loading workers per split")
     parser.add_argument("--epochs", type=int, default=100)
     parser.add_argument("--patience", type=int, default=10)
     parser.add_argument("--seed", type=int, default=42)
@@ -305,6 +309,8 @@ def main():
         parser.error("Batch sizes, epochs, patience, limits and dimensions must be positive")
     if args.lr <= 0 or args.negative_ratio < 0 or args.weight_decay < 0 or args.min_delta < 0:
         parser.error("Invalid learning rate, negative ratio, weight decay or min delta")
+    if args.num_workers < 0:
+        parser.error("num-workers must be nonnegative")
 
     if args.deterministic:
         os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
@@ -371,6 +377,8 @@ def main():
             for folder in (Path("src"), Path("scripts"))
             for path in sorted(folder.rglob("*.py"))
         }
+    if args.num_workers:
+        config["num_workers"] = args.num_workers
 
     model = build_model(config).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
@@ -440,6 +448,16 @@ def main():
     elif args.resume and wandb_id:
         print("[WARN] W&B is disabled; original run will not be updated", flush=True)
 
+    train_loader = (
+        make_graph_loader(train_data, train_limit, args.batch_size, args.num_workers, args.seed + 100_000)
+        if args.num_workers
+        else None
+    )
+    val_loader = (
+        make_graph_loader(val_data, val_limit, args.val_batch_size, args.num_workers, args.seed + 200_000)
+        if args.num_workers
+        else None
+    )
     try:
         for epoch in range(start_epoch, args.epochs + 1):
             train_loss, steps, skipped = train_one_epoch(
@@ -452,8 +470,9 @@ def main():
                 generator,
                 args.model,
                 device,
+                train_loader,
             )
-            val = validate(model, val_data, val_limit, args.model, device, args.val_batch_size)
+            val = validate(model, val_data, val_limit, args.model, device, args.val_batch_size, val_loader)
             score = val["mR@50"]
             if score is None or not math.isfinite(score):
                 raise RuntimeError("Invalid mR@50: cannot select checkpoint")
