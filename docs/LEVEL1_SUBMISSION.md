@@ -12,14 +12,13 @@ Không coi các ô trống là kết quả đã có.
 2. **Dữ liệu/split (2 trang).** HDF5/vocabulary/metadata và hash ở
    [TEAM_SETUP_LEVEL1.md](TEAM_SETUP_LEVEL1.md). Split theo ảnh 57.723 / 5.000 /
    26.446, `box_policy=clip`; nêu giới hạn so sánh benchmark.
-3. **Mô hình (2–3 trang).** Geometry MLP 5D; Semantic MLP thêm embedding nhãn
-   học được 32D; GAT truyền tin trên fully-connected directed topology không
-   đọc predicate GT; GAT+WordNet thêm TransE 64D và valid bit. Đặc trưng vùng
-   ảnh chưa dùng trong bảng kết quả lịch sử bên dưới. Nhánh CLIP ViT-B/32 đang
-   chuẩn bị theo [level1_clip_regions.md](experiments/level1_clip_regions.md):
-   vùng ảnh 512D sẽ vào cùng MLP semantic/GAT/GAT+WordNet trước đợt train mới.
-   PDF mục 4.1 đề xuất vùng ảnh, trang 3 cho phép điều chỉnh kiến trúc nếu giải
-   thích cơ chế.
+3. **Mô hình (2–3 trang).** Bảng hiện tại dùng hình học hộp 5D, đặc trưng
+   vùng ảnh CLIP ViT-B/32 đóng băng 512D và embedding nhãn học được 32D cho
+   MLP semantic/GAT/GAT+KG. GAT truyền tin trên fully-connected directed
+   topology không đọc predicate GT. Nhánh KG thêm vector 64D và valid bit từ
+   WordNet TransE hoặc ConceptNet TransE/RotatE/ComplEx; chi tiết ở
+   [level1_clip_regions.md](experiments/level1_clip_regions.md). Bảng
+   annotation-only bên dưới là kết quả lịch sử riêng, không trộn với CLIP.
 4. **Tri thức nền (2 trang).** WordNet noun senses, graph, C.1 TransE và C.2
    `[151,64]` features với 150/150 class từ mapping đại diện Toan xác nhận
    chính thức. Mô tả quy trình tại
@@ -29,10 +28,11 @@ Không coi các ô trống là kết quả đã có.
    checkpoint bằng validation mR@50, R@50/100 và mR@50/100, tính mean/sample
    std. Đưa cả ablation tắt KG và bỏ cạnh giữa đối tượng. Phân biệt `--no-knowledge`
    cùng kiến trúc với GAT baseline gốc.
-6. **Kết quả (2–3 trang).** Bảng dưới đây là đánh giá annotation-only độc lập
-   đủ 5.000 ảnh validation cho mỗi checkpoint, ba seed mỗi điều kiện. Thay bằng
-   hoặc bổ sung bảng CLIP khi 15 run mới hoàn tất. Thêm per-predicate/long-tail
-   và kết quả test chỉ sau khi chốt pipeline final.
+6. **Kết quả (2–3 trang).** Dùng [bảng CLIP validation 27 run](../reports/level1/clip-all-27run-val5000-summary.md),
+   [summary held-out test 27 run](../reports/level1/clip-all-27run-test26446-summary.json)
+   và [phân tích test](../reports/level1/clip-all-27run-test26446-analysis.md)
+   làm nguồn chính. Mỗi điều kiện có ba seed và cùng protocol. Bảng dưới đây
+   chỉ là kết quả annotation-only lịch sử; nêu rõ sự khác nhau về input và KG.
 7. **Phân tích lỗi (1–2 trang).** Công cụ trích case đã tạo 5 hit/5 missed mẫu
    ở [level1_case_candidates.md](experiments/level1_case_candidates.md).
    Thay hoặc bổ sung case GAT+KG final, xem JPEG và ghi nguyên nhân thực tế.
@@ -40,7 +40,7 @@ Không coi các ô trống là kết quả đã có.
    hash, hạn chế mapping, split/protocol, khai báo mã nguồn mở/AI theo PDF.
    Nêu rõ không dùng relation annotation validation/test để dựng KG.
 
-### Bảng kết quả đã có (full validation, %, 3 seeds)
+### Bảng annotation-only lịch sử (full validation, %, 3 seeds)
 
 | Model | R@50 | R@100 | mR@50 | mR@100 |
 |---|---:|---:|---:|---:|
@@ -92,7 +92,9 @@ Không tự điền tên người kiểm tra WordNet hay tuyên bố họ đã k
 - Có 3 seeds GAT+KG và ablation, cùng split/protocol; hash và config đầy đủ.
 - Có nguồn lựa chọn 150 synset của Toan, approval declaration và manifest
   reviewed batch gắn hash KG; báo cáo nêu giới hạn thiếu lý do riêng từng class.
-- Đánh giá full validation; chỉ chạy test cuối sau khi đóng băng thiết kế.
+- Đánh giá full validation và held-out test đã hoàn tất cho 27 run CLIP sau
+  khi [plan khóa checkpoint](../reports/level1/clip-all-27run-test-plan.json)
+  được tạo. Không dùng test này để chọn thiết kế mới rồi báo lại như held-out.
 - Có 5 đúng/5 sai được người thật kiểm tra ảnh và giải thích.
 - Notebook chạy được trên máy nhóm; đường dẫn JPEG hoặc demo không ảnh được
   công bố rõ. Environment, data, commands và nguồn ảnh/tri thức kèm hash.
