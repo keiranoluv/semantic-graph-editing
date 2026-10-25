@@ -13,6 +13,9 @@ bridge WordNet↔ConceptNet. Vùng ảnh vẫn là cache CLIP ViT-B/32 đã dùn
 đề xuất AI và 16 quyết định trực tiếp. `bike` và `glass` được chấp nhận theo
 quyết định của Toan nhưng URI vẫn trộn nghĩa; rationale ghi rõ rủi ro đó.
 Review này chỉ xác nhận liên kết class→URI, không xác nhận từng assertion.
+TransE seed 42 đã có checkpoint và C.2 CPU export nằm ở
+`data/knowledge/c2-conceptnet-toan-v3/` với 138/150 class có vector. Sáu ô
+PredCls mới chưa có output; người dùng chạy GPU theo mục 3.
 
 ## 1. Hồ sơ review và cách kiểm lại
 
