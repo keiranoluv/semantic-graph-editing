@@ -38,7 +38,7 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | 1. Kiểm tra nền và môi trường | Xác minh C.1, baseline, phụ thuộc, nguồn dữ liệu và split; hướng dẫn thiết lập cho nhóm | Hoàn thành kiểm tra nền; còn giới hạn về split/ngân sách lịch sử | 150 tests ban đầu PASS, split tái tạo khớp, 9 checkpoint/config/epoch khớp; xem audit |
 | 2. C.2 — Xuất embedding | Chuyển checkpoint TransE thành bảng đặc trưng đúng class ID VG150, kèm mask và provenance | Hoàn thành export reviewed chính [151,64], 150/150 class | `best.pt` epoch 52, hash KG/review và tensor export khớp; `load_class_features` PASS |
 | 3. GAT+WordNet | Tích hợp KG vào đặc trưng đỉnh, có cấu hình và run riêng | Hoàn thành code reviewed, CPU smoke và 3 run KG-on GPU | Cả 3 seed có `best.pt` và dừng bằng early stopping; baseline được bảo toàn |
-| 4. Thực nghiệm | So sánh cùng protocol với 3 seeds; ablation tri thức/cạnh | 9 baseline đã đánh giá lại full validation; 3 KG-on đã train xong, chờ đánh giá độc lập và 6 ablation | Chạy KG-off/edges-off, đánh giá lại 9 `best.pt` trên full validation, sau đó chốt protocol để đánh giá test |
+| 4. Thực nghiệm | So sánh cùng protocol với 3 seeds; ablation tri thức/cạnh | 9 baseline và 9 KG-on/ablation checkpoint đã đánh giá độc lập trên đủ 5.000 ảnh validation | Chốt và giải trình lựa chọn đầu vào theo PDF; nếu bổ sung vùng ảnh, train và so sánh lại trước đánh giá test |
 | 5. Phân tích và bộ nộp | 5 đúng/5 sai, notebook, bảng kết quả, hướng dẫn, tài liệu báo cáo/demo | Có case kỹ thuật, notebook đã chạy, bản chuẩn bị báo cáo/slide; phân tích người và kết quả final còn lại | Phân tích thủ công trên model final và bộ nộp hoàn chỉnh |
 
 ## Điểm xuất phát và những điều chưa xác minh
@@ -53,8 +53,14 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 - Mapping AI-provisional cần phân biệt với mapping được người kiểm tra chấp thuận.
 - README đã cập nhật phạm vi C.1/C.2/GAT+WordNet draft; không khẳng định train GPU đã xong.
 - Cần xác minh tính tương đương split, giới hạn số ảnh và protocol của các baseline.
-- Baseline hiện tại không có đặc trưng vùng ảnh. Cần ghi rõ lựa chọn này trong báo cáo;
-  đề cho phép điều chỉnh kiến trúc nếu giải thích cơ chế.
+- Baseline hiện tại không có đặc trưng vùng ảnh. Lúc bắt đầu pipeline chưa tải JPEG;
+  237 JPEG hiện có được tải sau đó chỉ để review synset, không phải tập ảnh
+  huấn luyện. PDF mục 4.1 (trang 2) nêu nhãn/vùng ảnh/hình học là cách tổ chức
+  input được đề xuất và cho phép input khác; trang 3 nói kiến trúc cấp độ 1
+  *nên* gồm cả ba và cho phép điều chỉnh nếu giải thích cơ chế. Bảng yêu cầu
+  cấp độ 1 không đặt vùng ảnh thành điều kiện bắt buộc riêng. Cần giải trình
+  lựa chọn annotation-only trong báo cáo và trao đổi với giảng viên nếu coi đó
+  là thay đổi lớn; nếu quyết định thêm vùng ảnh, phải train/so sánh lại.
 - Cần xác nhận với giảng viên phạm vi notebook cho mức 1: mục sản phẩm chung có
   minh họa thao tác chỉnh sửa, trong khi huấn luyện thao tác thuộc mức 2.
 
@@ -105,6 +111,12 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | 2026-10-25 | Hoàn tất 3 run GAT+WordNet reviewed GPU | Seeds 42/123/3407 dừng early stopping ở epoch 69/70/45, `best.pt` epoch 54/55/30. Validation mR@50 tại `best.pt`: 20,2079% / 20,0762% / 18,9785%; mean ± sample std 19,7542 ± 0,6750%. GAT baseline cùng seeds: 19,7963 ± 1,0300%. Các số KG-on lấy từ history/checkpoint, chưa chạy evaluator độc lập; seed 42 tăng nhưng hai seed còn lại giảm. | Người dùng chạy 6 ablation GPU, rồi đánh giá độc lập cả 9 checkpoint trên full validation; chưa dùng test để chọn mô hình |
 | 2026-10-25 | Sửa launcher ablation chạy trực tiếp | Lệnh `python tools/level1_matrix.py` ban đầu lỗi `ModuleNotFoundError: src` trước khi khởi chạy GPU; thêm repo root vào import path và cho dry-run kiểm tra feature bundle. Dry-run `--max-parallel 6`, py_compile, ruff và `git diff --check` PASS | Người dùng chạy lại `train-ablations --max-parallel 6`; không có run ablation nào được tạo bởi lần lỗi trước |
 | 2026-10-25 | Chuyển launcher vào `src/` theo yêu cầu người dùng | Đường dẫn hiện tại là `src/level1_matrix.py`, chạy qua `python -m src.level1_matrix`; chỉ chuyển orchestration, không sửa trainer/model. Vì `train_gat_kg.py` hash mọi file Python dưới `src/` và `scripts/`, các ablation mới sẽ ghi thêm hash của launcher so với 3 KG-on đã hoàn tất; ghi rõ khác biệt provenance này khi báo cáo | Người dùng commit file và tài liệu trước khi chạy GPU; Codex không tự commit |
+| 2026-10-25 | Người dùng khởi chạy 6 ablation đồng thời | `src.level1_matrix train-ablations --max-parallel 6` in ra 6 dòng `[START]` cho KG-off và edges-off, seeds 42/123/3407; kiểm tra tiến trình thấy đủ 6 trainer đang chạy. Chưa có kết quả cuối | Không khởi chạy trùng trên máy này; chờ tất cả dừng rồi chạy stage evaluate |
+| 2026-10-25 | Audit GAT+KG và TransE khi ablation đang chạy | 51 test mục tiêu PASS. C.2 [151,64], 150 class valid, background zero; vector/mask trong `best.pt` GAT+KG khớp từng phần tử. Cả 6 config ablation có cùng hash dữ liệu/KG, chỉ đổi switch dự kiến và `code_sha256` do chuyển launcher vào `src/`. Trên 8 ảnh validation, cùng trọng số: tắt KG đổi logits trung bình 1,812; tắt cạnh đổi 4,223. TransE thực hiện score `||h+r-t||`, margin loss, chuẩn hóa entity; review/KG hashes khớp. Điểm cần ghi nhận: negative sampler và validation filtered MRR đang dùng tập `known` gồm cả triple KG test; đánh giá lại `best.pt` với chỉ train+val để lọc cho validation làm MRR đổi 0,00000046. Đây là hạn chế protocol KG link prediction, không phải rò rỉ VG150 test; chưa sửa `src/` hoặc `scripts/` giữa 6 run GPU. | Sau ablation, đối chiếu KG-on/KG-off; nếu cần báo cáo KG link prediction theo protocol nghiêm ngặt, sửa bộ lọc và tái chạy C.1/C.2 bằng phiên bản mới |
+| 2026-10-25 | Bốn ablation hoàn tất | `kg_off` seeds 42/3407 và `edges_off` seeds 42/123 có `last.pt` ở ngưỡng early stop; người dùng báo exit=0. Validation mR@50 tại `best.pt`: KG-off 19,6313%/18,8603%, edges-off 19,4674%/19,2297%. Cùng seed, KG-on cao hơn lần lượt +0,5766/+0,1182 và +0,7405/+0,8465 điểm %. `kg_off` seed123 và `edges_off` seed3407 còn chạy tại thời điểm kiểm tra | Chờ 2 run còn lại; chưa tính mean/std 3 seed hoặc kết luận cuối từ 4 run |
+| 2026-10-25 | KG-off đủ 3 seed hoàn tất | Seed 123 exit=0, `best.pt` epoch 53, validation mR@50=18,9907%. KG-off seeds 42/123/3407: 19,6313%/18,9907%/18,8603%, mean ± sample std 19,1608 ± 0,4127%. KG-on tương ứng 19,7542 ± 0,6750%, paired delta +0,5934 điểm %, dương cả 3 seed. Đây là validation lấy từ history, chưa đánh giá độc lập; edges-off seed 3407 vẫn chạy | Chờ run cuối rồi chạy stage evaluate cho cả 9 checkpoint; không đánh giá test trước khi chốt protocol |
+| 2026-10-25 | Cả 6 ablation hoàn tất | Kiểm tra đủ 9 cặp `best.pt`/`last.pt`, tất cả dừng ở `bad_epochs=15`, không còn tiến trình train. `edges_off` seed 3407 best epoch 74, validation mR@50=19,9819%. Ba seed `edges_off`: 19,4674%/19,2297%/19,9819%, mean ± sample std 19,5597 ± 0,3845%. KG-on hơn `edges_off` trung bình +0,1945 điểm %, nhưng seed 3407 thấp hơn 1,0034 điểm %. Số này lấy từ checkpoint/history, chưa phải lượt evaluate độc lập | Người dùng chạy `myenv/bin/python -m src.level1_matrix evaluate --max-parallel 3 --device cuda` để đánh giá 9 checkpoint trên toàn bộ validation và tạo summary; chưa dùng test |
+| 2026-10-25 | Đánh giá độc lập cả 9 checkpoint hoàn tất | Đủ 9 report, mỗi report `split=val`, `images_evaluated=5000`, `full_split=true`; summary 3 nhóm. Validation mR@50 mean ± sample std: KG-on 19,7542 ± 0,6750%, KG-off 19,1608 ± 0,4127%, edges-off 19,5597 ± 0,3845%; GAT baseline 19,7963 ± 1,0300%. KG-on hơn KG-off +0,5934 điểm %, hơn edges-off +0,1945 điểm %; vẫn thấp hơn GAT baseline gốc 0,0421 điểm %. R@50 KG-on 64,1446%, thấp hơn KG-off 64,3164% và edges-off 64,7673%. Đây là kết quả annotation-only với embedding TransE hiện tại; không có VG150 test hoặc đặc trưng vùng ảnh | Giữ kết quả làm baseline kỹ thuật, bổ sung vùng ảnh và quyết định sửa protocol TransE trước đợt train final; không dùng test để chọn giữa các phương án |
 
 ## B1-01 — Kiểm kê trước khi cài đặt
 
@@ -160,7 +172,8 @@ các URL download trên máy teammate chưa được kiểm chứng bằng một
   validation hiện lấy từ history/checkpoint; chờ đánh giá độc lập `best.pt`
   và đối chứng KG-off/edges-off trước khi kết luận tác dụng của tri thức.
 - Ma trận 9 run gồm KG-on, KG-off và edges-off, mỗi điều kiện 3 seeds. Ba KG-on
-  đã hoàn tất; còn 6 ablation. Lệnh chuẩn bị và đánh giá:
+  đã hoàn tất; 6 ablation đã được khởi chạy trên máy này. Lệnh tái lập cho máy
+  khác và đánh giá sau khi hoàn tất:
 
   ```bash
   myenv/bin/python -m src.level1_matrix train-ablations --max-parallel 6 --dry-run
