@@ -178,3 +178,46 @@ Mỗi evaluator xác minh cùng hash cache và dữ liệu với checkpoint. Rep
 `reports/level1/clip-v1-matched-3seed-val5000-summary.json`. Gửi lại log, 15
 report và summary để đối chiếu paired delta, per-predicate và chọn phân tích
 5 dự đoán đúng/5 sai. Chỉ khi khóa toàn bộ pipeline mới đánh giá test một lần.
+
+Trích 5 hit và 5 miss R@50 để xem ảnh trên CPU, dùng GAT seed 42 làm mô hình
+đại diện cho nhóm GAT có mR@50 trung bình 3 seed cao nhất. Script đọc đúng
+cache CLIP đã lưu trong checkpoint và đối chiếu hash trước khi suy luận:
+
+```bash
+myenv/bin/python -m scripts.extract_level1_examples \
+  --checkpoint runs/level1-clip-v1/clip-gat-seed42-v1/run_0001/best.pt \
+  --root data/raw/vg150 --split val --device cpu --max-images 100 \
+  --selection-seed 2026 --count 5 \
+  --output reports/level1/clip-v1-gat-seed42-example-candidates-val100.json
+```
+
+Các dòng trong JSON là ứng viên theo metric, chưa phải kết luận đánh giá bằng
+mắt người. Cần mở JPEG, kiểm hộp bao và ghi nhận những nhãn GT đồng nghĩa hoặc
+mơ hồ; cùng một ảnh có thể chứa một hit và một miss khác nhau.
+
+Tạo trang HTML có ảnh gốc, hai hộp bao và GT/dự đoán để review trực quan:
+
+```bash
+myenv/bin/python tools/render_level1_example_review.py \
+  --examples reports/level1/clip-v1-gat-seed42-example-candidates-val100.json \
+  --images-dir data/raw/vg150/images \
+  --image-metadata data/raw/vg150/image_data.json \
+  --output reports/level1/clip-v1-gat-seed42-example-review.html
+```
+
+Mở HTML trong trình duyệt từ máy chứa repository. Viền đỏ là subject, viền
+xanh là object. Nếu GT và dự đoán là hai cách diễn đạt đều hợp lý trên ảnh,
+ghi nhận là nhãn mơ hồ thay vì mặc định coi mô hình sai về nghĩa.
+
+Nếu trình xem file chỉ hiện mã HTML, tạo hai ảnh PNG để mở trực tiếp:
+
+```bash
+myenv/bin/python tools/render_level1_review_png.py \
+  --examples reports/level1/clip-v1-gat-seed42-example-candidates-val100.json \
+  --images-dir data/raw/vg150/images \
+  --image-metadata data/raw/vg150/image_data.json \
+  --output-prefix reports/level1/clip-v1-gat-seed42-review
+```
+
+Output là `clip-v1-gat-seed42-review-hits.png` và
+`clip-v1-gat-seed42-review-misses.png` trong `reports/level1/`.

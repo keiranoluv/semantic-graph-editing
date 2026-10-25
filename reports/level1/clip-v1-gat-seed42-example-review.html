@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VG150 PredCls — review 5 hit / 5 miss</title>
+<style>
+body{font:16px/1.5 system-ui,sans-serif;max-width:1120px;margin:0 auto;padding:24px;color:#18202b;background:#f4f6f9}
+h1{font-size:1.7rem}.note{background:#fff4d5;padding:12px;border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:16px}
+.card{background:white;padding:16px;border-radius:10px;box-shadow:0 1px 5px #0002}
+.card h2{margin:0 0 8px;font-size:1.25rem}.photo{position:relative;width:100%;overflow:hidden;background:#ddd}
+.photo img{display:block;width:100%;height:100%}.box{position:absolute;box-sizing:border-box;border:3px solid;pointer-events:none}
+.box span{position:absolute;top:0;left:0;color:white;font-size:12px;font-weight:700;padding:2px 4px;white-space:nowrap}
+.subject{border-color:#ff3b30}.subject span{background:#c5241c}.object{border-color:#00a65a}.object span{background:#087c45}
+.hit_at_50{border-top:5px solid #087c45}.missed_at_50{border-top:5px solid #bd6715}
+pre{white-space:pre-wrap}
+</style></head><body>
+<h1>VG150 PredCls · 5 hit / 5 miss R@50</h1>
+<p class="note">Viền đỏ: subject; viền xanh: object. “Hit” là triplet GT có trong top 50 dự đoán;
+“miss” là triplet GT vắng mặt. Đây là nhãn theo metric: hãy xem ảnh và box trước khi kết luận dự đoán sai về nghĩa.</p>
+<p>Checkpoint: runs/level1-clip-v1/clip-gat-seed42-v1/run_0001/best.pt · split: val · pool: 100 ảnh</p>
+<div class="grid">
+<article class="card hit_at_50">
+  <h2>Hit 1 · image 40</h2>
+  <p><strong>GT:</strong> flower → <b>in</b> → vase<br>
+     <strong>Model:</strong> flower → <b>in</b> → vase<br>
+     <strong>Pair rank:</strong> 1;
+     <strong>score:</strong> 0.927;
+     <strong>metric reason:</strong> correct_predicate_in_top50</p>
+  <div class="photo" style="aspect-ratio:560/800">
+    <img src="../../data/raw/vg150/images/40.jpg" alt="VG150 validation image 40">
+    <div class="box subject" style="left:29.0179%;top:0.0000%;width:70.5915%;height:43.1641%"><span>Subject: flower</span></div>
+    <div class="box object" style="left:66.5458%;top:28.6133%;width:15.6250%;height:14.2578%"><span>Object: vase</span></div>
+  </div>
+  <details><summary>Box coordinates</summary><pre>subject: [162.5, 0.0, 557.8125, 345.3125]
+object: [372.65625, 228.90625, 460.15625, 342.96875]</pre></details>
+</article>
+<article class="card hit_at_50">
+  <h2>Hit 2 · image 7</h2>
+  <p><strong>GT:</strong> woman → <b>sitting on</b> → chair<br>
+     <strong>Model:</strong> woman → <b>sitting on</b> → chair<br>
+     <strong>Pair rank:</strong> 14;
+     <strong>score:</strong> 0.473;
+     <strong>metric reason:</strong> correct_predicate_in_top50</p>
+  <div class="photo" style="aspect-ratio:800/600">
+    <img src="../../data/raw/vg150/images/7.jpg" alt="VG150 validation image 7">
+    <div class="box subject" style="left:0.0000%;top:52.0182%;width:38.7207%;height:47.5260%"><span>Subject: woman</span></div>
+    <div class="box object" style="left:0.0000%;top:89.5182%;width:39.8926%;height:10.0260%"><span>Object: chair</span></div>
+  </div>
+  <details><summary>Box coordinates</summary><pre>subject: [0.0, 312.109375, 309.765625, 597.265625]
+object: [0.0, 537.109375, 319.140625, 597.265625]</pre></details>
+</article>
+<article class="card hit_at_50">
+  <h2>Hit 3 · image 89</h2>
+  <p><strong>GT:</strong> door → <b>on</b> → table<br>
+     <strong>Model:</strong> door → <b>on</b> → table<br>
+     <strong>Pair rank:</strong> 28;
+     <strong>score:</strong> 0.301;
+     <strong>metric reason:</strong> correct_predicate_in_top50</p>
+  <div class="photo" style="aspect-ratio:800/533">
+    <img src="../../data/raw/vg150/images/89.jpg" alt="VG150 validation image 89">
+    <div class="box subject" style="left:9.1797%;top:40.8214%;width:15.8203%;height:20.6672%"><span>Subject: door</span></div>
+    <div class="box object" style="left:0.0000%;top:38.4029%;width:25.0000%;height:26.6768%"><span>Object: table</span></div>
+  </div>
+  <details><summary>Box coordinates</summary><pre>subject: [73.4375, 217.578125, 200.0, 327.734375]
+object: [0.0, 204.6875, 200.0, 346.875]</pre></details>
+</article>
+<article class="card hit_at_50">
+  <h2>Hit 4 · image 81</h2>
+  <p><strong>GT:</strong> door → <b>on</b> → cabinet<br>
+     <strong>Model:</strong> door → <b>on</b> → cabinet<br>
+     <strong>Pair rank:</strong> 36;
+     <strong>score:</strong> 0.252;
+     <strong>metric reason:</strong> correct_predicate_in_top50</p>
+  <div class="photo" style="aspect-ratio:352/512">
+    <img src="../../data/raw/vg150/images/81.jpg" alt="VG150 validation image 81">
+    <div class="box subject" style="left:0.0000%;top:78.3203%;width:20.1705%;height:21.2891%"><span>Subject: door</span></div>
+    <div class="box object" style="left:0.0000%;top:68.1641%;width:19.8864%;height:31.4453%"><span>Object: cabinet</span></div>
+  </div>
+  <details><summary>Box coordinates</summary><pre>subject: [0.0, 401.0, 71.0, 510.0]
+object: [0.0, 349.0, 70.0, 510.0]</pre></details>
+</article>
+<article class="card hit_at_50">
+  <h2>Hit 5 · image 3</h2>
+  <p><strong>GT:</strong> girl → <b>with</b> → hair<br>
+     <strong>Model:</strong> girl → <b>with</b> → hair<br>
+     <strong>Pair rank:</strong> 5;
+     <strong>score:</strong> 0.423;
+     <strong>metric reason:</strong> correct_predicate_in_top50</p>
+  <div class="photo" style="aspect-ratio:640/480">
+    <img src="../../data/raw/vg150/images/3.jpg" alt="VG150 validation image 3">
+    <div class="box subject" style="left:81.7871%;top:19.4661%;width:17.6758%;height:28.7760%"><span>Subject: girl</span></div>
+    <div class="box object" style="left:91.0156%;top:20.1172%;width:8.7891%;height:22.7865%"><span>Object: hair</span></div>
+  </div>
+  <details><summary>Box coordinates</summary><pre>subject: [523.4375, 93.4375, 636.5625, 231.5625]
+object: [582.5, 96.5625, 638.75, 205.9375]</pre></details>
+</article>
+<article class="card missed_at_50">
+  <h2>Miss 1 · image 40</h2>
+  <p><strong>GT:</strong> table → <b>near</b> → chair<br>
+     <strong>Model:</strong> table → <b>with</b> → chair<br>
+     <strong>Pair rank:</strong> 48;
+     <strong>score:</strong> 0.014;
+     <strong>metric reason:</strong> different_predicate</p>
+  <div class="photo" style="aspect-ratio:560/800">
+    <img src="../../data/raw/vg150/images/40.jpg" alt="VG150 validation image 40">
+    <div class="box subject" style="left:22.5307%;top:41.9434%;width:76.8694%;height:51.2695%"><span>Subject: table</span></div>
+    <div class="box object" style="left:0.0000%;top:36.5723%;width:38.0162%;height:58.8867%"><span>Object: chair</span></div>
+  </div>
+  <details><summary>Box coordinates</summary><pre>subject: [126.171875, 335.546875, 556.640625, 745.703125]
+object: [0.0, 292.578125, 212.890625, 763.671875]</pre></details>
+</article>
+<article class="card missed_at_50">
+  <h2>Miss 2 · image 7</h2>
+  <p><strong>GT:</strong> laptop → <b>above</b> → desk<br>
+     <strong>Model:</strong> laptop → <b>on</b> → desk<br>
+     <strong>Pair rank:</strong> 3;
+     <strong>score:</strong> 0.755;
+     <strong>metric reason:</strong> different_predicate</p>
+  <div class="photo" style="aspect-ratio:800/600">
+    <img src="../../data/raw/vg150/images/7.jpg" alt="VG150 validation image 7">
+    <div class="box subject" style="left:73.5352%;top:79.7526%;width:22.0703%;height:13.9323%"><span>Subject: laptop</span></div>
+    <div class="box object" style="left:72.3145%;top:75.5859%;width:27.4414%;height:24.0885%"><span>Object: desk</span></div>
+  </div>
+  <details><summary>Box coordinates</summary><pre>subject: [588.28125, 478.515625, 764.84375, 562.109375]
+object: [578.515625, 453.515625, 798.046875, 598.046875]</pre></details>
+</article>
+<article class="card missed_at_50">
+  <h2>Miss 3 · image 89</h2>
+  <p><strong>GT:</strong> shelf → <b>on</b> → table<br>
+     <strong>Model:</strong> shelf → <b>under</b> → table<br>
+     <strong>Pair rank:</strong> 59;
+     <strong>score:</strong> 0.092;
+     <strong>metric reason:</strong> different_predicate</p>
+  <div class="photo" style="aspect-ratio:800/533">
+    <img src="../../data/raw/vg150/images/89.jpg" alt="VG150 validation image 89">
+    <div class="box subject" style="left:27.5391%;top:53.1338%;width:13.2812%;height:7.7685%"><span>Subject: shelf</span></div>
+    <div class="box object" style="left:27.6855%;top:39.7221%;width:13.3789%;height:19.6412%"><span>Object: table</span></div>
+  </div>
+  <details><summary>Box coordinates</summary><pre>subject: [220.3125, 283.203125, 326.5625, 324.609375]
+object: [221.484375, 211.71875, 328.515625, 316.40625]</pre></details>
+</article>
+<article class="card missed_at_50">
+  <h2>Miss 4 · image 81</h2>
+  <p><strong>GT:</strong> door → <b>on</b> → cabinet<br>
+     <strong>Model:</strong> door → <b>of</b> → cabinet<br>
+     <strong>Pair rank:</strong> 29;
+     <strong>score:</strong> 0.278;
+     <strong>metric reason:</strong> different_predicate</p>
+  <div class="photo" style="aspect-ratio:352/512">
+    <img src="../../data/raw/vg150/images/81.jpg" alt="VG150 validation image 81">
+    <div class="box subject" style="left:41.1932%;top:60.7422%;width:8.5227%;height:25.3906%"><span>Subject: door</span></div>
+    <div class="box object" style="left:41.1932%;top:53.9062%;width:9.0909%;height:32.0312%"><span>Object: cabinet</span></div>
+  </div>
+  <details><summary>Box coordinates</summary><pre>subject: [145.0, 311.0, 175.0, 441.0]
+object: [145.0, 276.0, 177.0, 440.0]</pre></details>
+</article>
+<article class="card missed_at_50">
+  <h2>Miss 5 · image 3</h2>
+  <p><strong>GT:</strong> girl → <b>has</b> → hair<br>
+     <strong>Model:</strong> girl → <b>with</b> → hair<br>
+     <strong>Pair rank:</strong> 5;
+     <strong>score:</strong> 0.423;
+     <strong>metric reason:</strong> different_predicate</p>
+  <div class="photo" style="aspect-ratio:640/480">
+    <img src="../../data/raw/vg150/images/3.jpg" alt="VG150 validation image 3">
+    <div class="box subject" style="left:81.7871%;top:19.4661%;width:17.6758%;height:28.7760%"><span>Subject: girl</span></div>
+    <div class="box object" style="left:91.0156%;top:20.1172%;width:8.7891%;height:22.7865%"><span>Object: hair</span></div>
+  </div>
+  <details><summary>Box coordinates</summary><pre>subject: [523.4375, 93.4375, 636.5625, 231.5625]
+object: [582.5, 96.5625, 638.75, 205.9375]</pre></details>
+</article></div>
+</body></html>

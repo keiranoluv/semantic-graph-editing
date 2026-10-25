@@ -10,6 +10,7 @@ import torch
 from scripts.evaluate_level1 import load_model
 from scripts.pilot_mlp import resolve_device
 from scripts.train_mlp import make_dataset
+from src.features.visual import load_visual_manifest
 from src.knowledge.transe.core import sha256
 
 
@@ -77,6 +78,7 @@ def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--checkpoint", type=Path, required=True)
     p.add_argument("--root", type=Path, default=Path("data/raw/vg150"))
+    p.add_argument("--visual-cache", type=Path, help="Override cache path stored in a visual checkpoint")
     p.add_argument("--split", choices=("val", "test"), default="val")
     p.add_argument("--allow-test", action="store_true")
     p.add_argument("--device", choices=("cpu", "cuda", "auto"), default="cpu")
@@ -100,9 +102,19 @@ def main(argv=None):
     }
     if config.get("data_sha256") is not None and config["data_sha256"] != data_hashes:
         raise ValueError("Dataset differs from checkpoint input hashes")
+    visual_cache = args.visual_cache or config.get("visual_cache")
+    if config.get("visual_cache_manifest_sha256"):
+        if visual_cache is None:
+            raise ValueError("Visual checkpoint requires its frozen region cache")
+        visual_cache = Path(visual_cache)
+        load_visual_manifest(visual_cache, args.root, config["box_policy"])
+        if sha256(visual_cache / "manifest.json") != config["visual_cache_manifest_sha256"]:
+            raise ValueError("Visual cache differs from training checkpoint")
+    elif args.visual_cache is not None:
+        raise ValueError("Cannot add visual features to an annotation-only checkpoint")
     device = resolve_device(args.device)
     model = load_model(checkpoint).to(device).eval()
-    dataset = make_dataset(args.root, args.split, config["box_policy"])
+    dataset = make_dataset(args.root, args.split, config["box_policy"], visual_cache)
     limit = len(dataset) if args.max_images is None else min(args.max_images, len(dataset))
     metadata = json.loads((args.root / "image_data.json").read_text(encoding="utf-8"))
     image_urls = {str(item["image_id"]): item.get("url") for item in metadata}
@@ -128,6 +140,7 @@ def main(argv=None):
         "split": args.split,
         "checkpoint": str(args.checkpoint),
         "checkpoint_sha256": sha256(args.checkpoint),
+        "visual_cache_manifest_sha256": config.get("visual_cache_manifest_sha256"),
         "model": config["model"],
         "selection_seed": args.selection_seed,
         "image_pool_size": limit,

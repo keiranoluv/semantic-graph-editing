@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "checkpoint": "runs/level1-clip-v1/clip-gat-seed42-v1/run_0001/best.pt",
+  "checkpoint_sha256": "79eebd6324c1581513e408866791c9a8caa46ab3c7d864bd6847b7132df216d8",
+  "visual_cache_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+  "model": "gat",
+  "selection_seed": 2026,
+  "image_pool_size": 100,
+  "selection_rule": "shuffle_images_seeded_take_first_gt_triplet_per_category_at_most_one_per_image",
+  "protocol": "PredCls_graph_constrained_top1_per_pair_R@50",
+  "examples": {
+    "hit_at_50": [
+      {
+        "image_id": "40",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/40.jpg",
+        "subject_node": 2,
+        "subject_object_id": 2,
+        "subject_class": "flower",
+        "subject_box_xyxy": [
+          162.5,
+          0.0,
+          557.8125,
+          345.3125
+        ],
+        "object_node": 5,
+        "object_object_id": 5,
+        "object_class": "vase",
+        "object_box_xyxy": [
+          372.65625,
+          228.90625,
+          460.15625,
+          342.96875
+        ],
+        "gt_predicate": "in",
+        "predicted_predicate": "in",
+        "predicted_rank": 1,
+        "predicted_pair_score": 0.9270205497741699,
+        "reason": "correct_predicate_in_top50",
+        "human_analysis": ""
+      },
+      {
+        "image_id": "7",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/7.jpg",
+        "subject_node": 1,
+        "subject_object_id": 1,
+        "subject_class": "woman",
+        "subject_box_xyxy": [
+          0.0,
+          312.109375,
+          309.765625,
+          597.265625
+        ],
+        "object_node": 6,
+        "object_object_id": 6,
+        "object_class": "chair",
+        "object_box_xyxy": [
+          0.0,
+          537.109375,
+          319.140625,
+          597.265625
+        ],
+        "gt_predicate": "sitting on",
+        "predicted_predicate": "sitting on",
+        "predicted_rank": 14,
+        "predicted_pair_score": 0.47253045439720154,
+        "reason": "correct_predicate_in_top50",
+        "human_analysis": ""
+      },
+      {
+        "image_id": "89",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K_2/89.jpg",
+        "subject_node": 3,
+        "subject_object_id": 3,
+        "subject_class": "door",
+        "subject_box_xyxy": [
+          73.4375,
+          217.578125,
+          200.0,
+          327.734375
+        ],
+        "object_node": 1,
+        "object_object_id": 1,
+        "object_class": "table",
+        "object_box_xyxy": [
+          0.0,
+          204.6875,
+          200.0,
+          346.875
+        ],
+        "gt_predicate": "on",
+        "predicted_predicate": "on",
+        "predicted_rank": 28,
+        "predicted_pair_score": 0.3005845248699188,
+        "reason": "correct_predicate_in_top50",
+        "human_analysis": ""
+      },
+      {
+        "image_id": "81",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K_2/81.jpg",
+        "subject_node": 3,
+        "subject_object_id": 3,
+        "subject_class": "door",
+        "subject_box_xyxy": [
+          0.0,
+          401.0,
+          71.0,
+          510.0
+        ],
+        "object_node": 1,
+        "object_object_id": 1,
+        "object_class": "cabinet",
+        "object_box_xyxy": [
+          0.0,
+          349.0,
+          70.0,
+          510.0
+        ],
+        "gt_predicate": "on",
+        "predicted_predicate": "on",
+        "predicted_rank": 36,
+        "predicted_pair_score": 0.2515127956867218,
+        "reason": "correct_predicate_in_top50",
+        "human_analysis": ""
+      },
+      {
+        "image_id": "3",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/3.jpg",
+        "subject_node": 1,
+        "subject_object_id": 1,
+        "subject_class": "girl",
+        "subject_box_xyxy": [
+          523.4375,
+          93.4375,
+          636.5625,
+          231.5625
+        ],
+        "object_node": 3,
+        "object_object_id": 3,
+        "object_class": "hair",
+        "object_box_xyxy": [
+          582.5,
+          96.5625,
+          638.75,
+          205.9375
+        ],
+        "gt_predicate": "with",
+        "predicted_predicate": "with",
+        "predicted_rank": 5,
+        "predicted_pair_score": 0.42314136028289795,
+        "reason": "correct_predicate_in_top50",
+        "human_analysis": ""
+      }
+    ],
+    "missed_at_50": [
+      {
+        "image_id": "40",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/40.jpg",
+        "subject_node": 0,
+        "subject_object_id": 0,
+        "subject_class": "table",
+        "subject_box_xyxy": [
+          126.171875,
+          335.546875,
+          556.640625,
+          745.703125
+        ],
+        "object_node": 3,
+        "object_object_id": 3,
+        "object_class": "chair",
+        "object_box_xyxy": [
+          0.0,
+          292.578125,
+          212.890625,
+          763.671875
+        ],
+        "gt_predicate": "near",
+        "predicted_predicate": "with",
+        "predicted_rank": 48,
+        "predicted_pair_score": 0.01355790626257658,
+        "reason": "different_predicate",
+        "human_analysis": ""
+      },
+      {
+        "image_id": "7",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/7.jpg",
+        "subject_node": 5,
+        "subject_object_id": 5,
+        "subject_class": "laptop",
+        "subject_box_xyxy": [
+          588.28125,
+          478.515625,
+          764.84375,
+          562.109375
+        ],
+        "object_node": 4,
+        "object_object_id": 4,
+        "object_class": "desk",
+        "object_box_xyxy": [
+          578.515625,
+          453.515625,
+          798.046875,
+          598.046875
+        ],
+        "gt_predicate": "above",
+        "predicted_predicate": "on",
+        "predicted_rank": 3,
+        "predicted_pair_score": 0.7546475529670715,
+        "reason": "different_predicate",
+        "human_analysis": ""
+      },
+      {
+        "image_id": "89",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K_2/89.jpg",
+        "subject_node": 8,
+        "subject_object_id": 8,
+        "subject_class": "shelf",
+        "subject_box_xyxy": [
+          220.3125,
+          283.203125,
+          326.5625,
+          324.609375
+        ],
+        "object_node": 14,
+        "object_object_id": 14,
+        "object_class": "table",
+        "object_box_xyxy": [
+          221.484375,
+          211.71875,
+          328.515625,
+          316.40625
+        ],
+        "gt_predicate": "on",
+        "predicted_predicate": "under",
+        "predicted_rank": 59,
+        "predicted_pair_score": 0.09204182028770447,
+        "reason": "different_predicate",
+        "human_analysis": ""
+      },
+      {
+        "image_id": "81",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K_2/81.jpg",
+        "subject_node": 5,
+        "subject_object_id": 5,
+        "subject_class": "door",
+        "subject_box_xyxy": [
+          145.0,
+          311.0,
+          175.0,
+          441.0
+        ],
+        "object_node": 4,
+        "object_object_id": 4,
+        "object_class": "cabinet",
+        "object_box_xyxy": [
+          145.0,
+          276.0,
+          177.0,
+          440.0
+        ],
+        "gt_predicate": "on",
+        "predicted_predicate": "of",
+        "predicted_rank": 29,
+        "predicted_pair_score": 0.2781277298927307,
+        "reason": "different_predicate",
+        "human_analysis": ""
+      },
+      {
+        "image_id": "3",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/3.jpg",
+        "subject_node": 1,
+        "subject_object_id": 1,
+        "subject_class": "girl",
+        "subject_box_xyxy": [
+          523.4375,
+          93.4375,
+          636.5625,
+          231.5625
+        ],
+        "object_node": 3,
+        "object_object_id": 3,
+        "object_class": "hair",
+        "object_box_xyxy": [
+          582.5,
+          96.5625,
+          638.75,
+          205.9375
+        ],
+        "gt_predicate": "has",
+        "predicted_predicate": "with",
+        "predicted_rank": 5,
+        "predicted_pair_score": 0.42314136028289795,
+        "reason": "different_predicate",
+        "human_analysis": ""
+      }
+    ]
+  },
+  "warning": "Missed means not matched to annotated GT at top50; human_analysis must be completed by a person"
+}

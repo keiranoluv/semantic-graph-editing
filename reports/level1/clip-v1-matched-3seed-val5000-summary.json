@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "images_evaluated": 5000,
+  "full_split": true,
+  "interpretation": "validation_not_final_test",
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "visual_cache_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+  "metrics_unit": "fraction_0_to_1",
+  "std_definition": "sample_standard_deviation_ddof_1",
+  "groups": [
+    {
+      "condition": "gat",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-gat-seed42-v1/run_0001/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-gat-seed123-v1/run_0001/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-gat-seed3407-v1/run_0001/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.632433877213683,
+          "sample_std": 0.009705957091436901
+        },
+        "R@100": {
+          "mean": 0.6540390320424612,
+          "sample_std": 0.010052508009806033
+        },
+        "mR@50": {
+          "mean": 0.1997657249413183,
+          "sample_std": 0.004749100749917591
+        },
+        "mR@100": {
+          "mean": 0.22038445556405295,
+          "sample_std": 0.0037565147175088647
+        }
+      },
+      "max_epochs_recorded": null
+    },
+    {
+      "condition": "gat_kg:wordnet:a0d6573fbf27:kg_0:edges_full",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-kg_off-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-kg_off-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-kg_off-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6316261928706626,
+          "sample_std": 0.004888920149053789
+        },
+        "R@100": {
+          "mean": 0.6526483196733456,
+          "sample_std": 0.0052380007294451116
+        },
+        "mR@50": {
+          "mean": 0.1962839498971439,
+          "sample_std": 0.0024970649694630296
+        },
+        "mR@100": {
+          "mean": 0.21865962663268543,
+          "sample_std": 0.004003825004512554
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "gat_kg:wordnet:a0d6573fbf27:kg_1:edges_full",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-kg_on-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-kg_on-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-kg_on-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6362297837686018,
+          "sample_std": 0.004943591911983239
+        },
+        "R@100": {
+          "mean": 0.6593178574652643,
+          "sample_std": 0.004565002774375518
+        },
+        "mR@50": {
+          "mean": 0.1884853869002634,
+          "sample_std": 0.0040056880444854425
+        },
+        "mR@100": {
+          "mean": 0.21158344649926134,
+          "sample_std": 0.0035170708467712948
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "gat_kg:wordnet:a0d6573fbf27:kg_1:edges_none",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-edges_off-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-edges_off-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-edges_off-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6385085387253029,
+          "sample_std": 0.012242232632780837
+        },
+        "R@100": {
+          "mean": 0.6598474836904973,
+          "sample_std": 0.012571967367397454
+        },
+        "mR@50": {
+          "mean": 0.19674346895356723,
+          "sample_std": 0.011600515789954078
+        },
+        "mR@100": {
+          "mean": 0.21697998962704307,
+          "sample_std": 0.011062124138190872
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "mlp_semantic",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-mlp_semantic-seed42-v1/run_0001/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-mlp_semantic-seed123-v1/run_0001/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-mlp_semantic-seed3407-v1/run_0001/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6290647831445288,
+          "sample_std": 0.007664004764038431
+        },
+        "R@100": {
+          "mean": 0.655232079426178,
+          "sample_std": 0.0030792424110314674
+        },
+        "mR@50": {
+          "mean": 0.1737032080998475,
+          "sample_std": 0.011181944938158342
+        },
+        "mR@100": {
+          "mean": 0.19782375233482608,
+          "sample_std": 0.009691480738109513
+        }
+      },
+      "max_epochs_recorded": null
+    }
+  ]
+}

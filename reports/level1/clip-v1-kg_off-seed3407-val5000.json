@@ -1,0 +1,398 @@
+{
+  "num_images": 5000,
+  "num_images_with_gt": 5000,
+  "num_predicates_with_gt": 49,
+  "R@50": 0.6287554098898762,
+  "mR@50": 0.19610612965934907,
+  "R@100": 0.6491005962549612,
+  "mR@100": 0.22279356536644768,
+  "model": "gat_kg",
+  "seed": 3407,
+  "split": "val",
+  "images_evaluated": 5000,
+  "split_images": 5000,
+  "full_split": true,
+  "checkpoint_epoch": 60,
+  "checkpoint_sha256": "fe4920348f9827c1cedb7cf1d8045cba963b5454634afad112f0acc4cc4c13e3",
+  "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-v1/clip-kg_off-seed3407-v1/best.pt",
+  "config": {
+    "model": "gat_kg",
+    "dataset": "VG150",
+    "features": "geometry+frozen_clip_vit_b32+trainable_object_embedding+frozen_wordnet+valid_bit",
+    "topology": "fully_connected_directed",
+    "geometry_dim": 517,
+    "visual_cache": "/workspace/workspace/semantic-graph-editing/data/cache/vg150-clip-vit-b32-v1",
+    "visual_cache_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+    "embedding_dim": 32,
+    "hidden_dim": 256,
+    "num_heads": 4,
+    "num_layers": 2,
+    "dropout": 0.1,
+    "num_object_classes": 151,
+    "num_classes": 51,
+    "seed": 3407,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "negative_ratio": 3,
+    "batch_size": 512,
+    "accumulation_steps": 1,
+    "effective_batch_size": 512,
+    "val_batch_size": 512,
+    "patience": 15,
+    "min_delta": 0.0,
+    "deterministic": false,
+    "box_policy": "clip",
+    "train_limit": 57723,
+    "val_limit": 5000,
+    "selection_metric": "mR@50",
+    "evaluation_protocol": "PredCls_graph_constrained_top1_per_pair",
+    "data_sha256": {
+      "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+      "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+      "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+      "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+    },
+    "code_sha256": {
+      "src/datasets/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/datasets/batching.py": "dbadb4216157ba6d4bd0686f904d7f2435295bfdacf276adfe1f3148ae17c450",
+      "src/datasets/hdf5_session.py": "8c634333d21fa4d299654f6204b5072d9943cc39d0ac827a777b21aab9be2f2e",
+      "src/datasets/preprocessing.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/datasets/schemas.py": "d01126cdb95da4b555e82d011685ee792bf8ebee6facd566593e3cd0e1a20dad",
+      "src/datasets/vg150.py": "48365e5bed0b9da7663ad8b489a5a811a6362263d402462199dd1be75c863776",
+      "src/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/evaluation/ablation.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/evaluation/batched.py": "f5ffb7ff168da76719c4b7860ff9660f1e10fce82f49d1dd2ee1dc5aa018349e",
+      "src/evaluation/demo_svg.py": "a45e45a304be9093614593c365573314c3b31581d3ccee625da57b9d283a7a46",
+      "src/evaluation/gat.py": "5dcc70d7c2606c5acc6530eef228f354aa379c11f57ec506adbfe4fb76bb43b9",
+      "src/evaluation/metrics.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/evaluation/scene_graph.py": "48a9527d02c3bdc6ec92feb44b46d341f3d6fbf23a6a57a36263ee69a4c085f9",
+      "src/features/__init__.py": "f8a5840638d005e7a98720ac4ae53ae0b01d63ea0b7a9d47b1bb8677515f9d28",
+      "src/features/geometry.py": "fe7818323445d1b35a876033d634457310fd5e567497a5185a74da2eb46ad2d5",
+      "src/features/semantic.py": "d2a28c2ecc12458aae25610dea036d6b11b19fcfa04255c72f0944ed0c0c44fc",
+      "src/features/visual.py": "12679300334149acca8e58b9ff4c3be441d518e620444dde0082bc1b7be91f1f",
+      "src/graph/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/graph/builder.py": "8258c92406fbcb9bfb3c175edc3434d74d0271a7c10f6424c4096dd7d124e7e2",
+      "src/graph/features.py": "ce85ee6b98a71fc097950467e86a5c75bb2ab5b8f6242a45b9417428f0b803ec",
+      "src/graph/gnn_batching.py": "80d3726d96dd0a8a66882cb817b0c260bcd85960e33be5918d68be7b0189a99e",
+      "src/knowledge/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/knowledge/alignment_candidates.py": "9ff861369583954e8f1a9379f1633f67c016762399eaf88373cc71bab8252ddf",
+      "src/knowledge/conceptnet_builder.py": "833b525fecbefc14449c998b7fdceebc1a8093271cdaf9a47749d0acc4aa15ef",
+      "src/knowledge/embeddings.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/knowledge/entity_linking.py": "5b66aaa2f3151228b3a9a955ac55e7fc87ad4e9a738c416f53e03fe1242683db",
+      "src/knowledge/export.py": "5310ac41e1cead5983d95fa54ffcffe2c66d7a095db0ba9aa747f2ab2324e0cd",
+      "src/knowledge/graph_builder.py": "77e68c435646fdeef4db9350b7fc40b4fb19773adae4673f9ccca61f9b5cc39f",
+      "src/knowledge/sense_review.py": "6cfd89448c45f52b8ec32bae41b94510b2b82fcdcdec33224d3d564ef0255182",
+      "src/knowledge/transe/__init__.py": "9a928f5f52b68c5c2284adb6eb7c85fe848bf814712a7655fd59b199cfe318e0",
+      "src/knowledge/transe/core.py": "a9fd30375b592123cddf27e3b776155e81106eb537ccd2d0e68af50b0217a8a8",
+      "src/level1_matrix.py": "f9770f921f8c77463b44878b0048bd68f4e3cbaec69f3f5ddc804986624819d7",
+      "src/level1_visual_matrix.py": "b96f0defcb67823e1ff591e72b08b0a4cb0939138d88f0cc9a9f6b5de326efb2",
+      "src/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/models/gat.py": "17b8e7d5fcdff509d3c97710ee4aab94af1c5ad5c992bd987aa8eafe6a13d52b",
+      "src/models/gat_kg.py": "ee726442c14e82817ef8f60538bf0ad53adc9ba0d83bf56c5d53d0a80f9d994a",
+      "src/models/mlp.py": "c9690991bd4f24da8e9f4a71b3940477bc98fae163aac176a3c9743cf98a0738",
+      "src/models/mlp_semantic.py": "b435961576068dde62c3f0ded2379ca88a09d334b0a87b0434c9b19b3110e2b8",
+      "src/training/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/training/device.py": "bfc2f98e857df3f27cd1fb68482d48c4a9bfe329067702b293cdd24f4d6230e8",
+      "src/training/sampling.py": "3a738739f6680335da127da57bd28b52790526afd836dd080db13fb6f7a46058",
+      "src/training/trainer.py": "0d3f94c02a88c2793502c53d4b7e0d92f179133f69b7d8197e4f916d19e6d061",
+      "src/utils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scripts/build_ai_wordnet_draft.py": "f132955324e799a76e833989008a5174fa4fb6f98e05e6d8e0b5bcedb4ddbd14",
+      "scripts/build_alignment_candidates.py": "7b5753c365f111b44e9f0a21652ad8126437da72bd85b2b922733a2af0eeb35c",
+      "scripts/build_conceptnet_graph.py": "fbdf0ed53e65ab8cbb600d9c858c180f49bb7c8fbf0616f4935e8e6eea7b8855",
+      "scripts/build_vg150_manifest.py": "cc75b4ec4e5d4552e7ac4ee4f4ffd09ac81361797c4071a9d7d653559cd36cdf",
+      "scripts/build_wordnet_graph.py": "1625cb8d516219b66b88b27a15dd317e93a1f6702d0c747f90e0918d72ede03c",
+      "scripts/cache_vg150_regions.py": "c9441599ce09b795cd9854e0ab0f131ffcd1f11c5d1d42e10d83db54b54ff069",
+      "scripts/compile_level1_verified_review.py": "9005b516a32fa417ea70500efe33d9c0bc9069a6f21bcf1c58d0c427859821fe",
+      "scripts/compute_vg150_statistics.py": "2ed23048e3df6f2f32a3cf434bcb4a9e80baca3af8008736b8208415febc94f2",
+      "scripts/download_level1_review_images.py": "c05077bf741148961b661f68ab7c2bc5bb73b54b4065fcc05bbcb094cdbd9815",
+      "scripts/download_vg150_image.py": "bc0ab51a286fe7421d0f998715f7332753727229e45c72d947c0193a4f8f696c",
+      "scripts/download_vg150_images.py": "c468c4e603aaa6805a84bac3e1eabd5e129131030505bb06bc09d1e4273e6581",
+      "scripts/evaluate.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scripts/evaluate_gat.py": "c0e9c1e611421a4e073692890cd12632928a065ce60a74578f0459fb09d4d16c",
+      "scripts/evaluate_level1.py": "a746204e6e8cd717845a302e69981c03ab6f7dc09c16649fed173a5b40bc22f0",
+      "scripts/evaluate_mlp.py": "924a93a4de98a9a23c55644a6c7bea7e34a80f4bae38094068722f9d7de8cd5b",
+      "scripts/export_knowledge.py": "f50853c60a3b65ecb2ed90ac1060681da4bfbd7f79d2c5a2583530fd52aa9fb4",
+      "scripts/extract_level1_examples.py": "4a81468e53bdd162442cca3409b6db7fa126e534f90093f8ee8de24c3cadc4a1",
+      "scripts/pilot_mlp.py": "d378fbead50bef395134b574321dfdd1f81fd7cd40f96dbceba82266aa82ee92",
+      "scripts/prepare_knowledge.py": "6598e732e8b490fa7c1ae73c8785f79bc89b8dcb44cd80b10c6f8c75a5623c8b",
+      "scripts/prepare_level1_official_manifest.py": "b7785df72d93f27940e8ce022827922093551a755e3bd82b2a05421f8c8f429d",
+      "scripts/prepare_level1_review.py": "86ed6776d1670c95fa216149ec02a1967153a2c0cd0058c698e68f55986736e4",
+      "scripts/prepare_level1_review_images.py": "1559093a5fd54aede14c86b4c83eab3c05801baf53701b2b4d14ba5b44475286",
+      "scripts/prepare_wordnet_review.py": "ab024a1c9910744a9056b0ad8a8e66b194af923cee25c6ecf833f85a8de2a76f",
+      "scripts/prepare_wordnet_review_examples.py": "49b03af827dba2a8da921ce46eba25735e8b2170bfbe87819face10ffc9c33e4",
+      "scripts/preprocess.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scripts/smoke_train_mlp.py": "0f85bec6fb5282cf9ee4ab2c51d26ac11a8928c26b11dd1f262c8f51bf7f3c0e",
+      "scripts/summarize_level1.py": "c83fdb8fe1dda5eec5ad7b0624f454b34f1abb763b454cdc4713eb6b21c8793c",
+      "scripts/train.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scripts/train_gat.py": "0b44fee8de9a96f5493d285de3defe58a90be886fdf3270fa374dd38083a180b",
+      "scripts/train_gat_kg.py": "28dfa2ac86973e07fc2a7d1b79064b309eea1844e49fe30dc2c8817ff3874ffd",
+      "scripts/train_mlp.py": "360b900ff33dcdbb4bcb63d3e2d2be3a774e962f518ec6abfe7e1c43b1b90a74",
+      "scripts/train_mlp_semantic.py": "aad793e5c74fbc0641bad4efc2f4fe31ed6d1f25acdcae8eff0cc7629526b83f",
+      "scripts/train_transe.py": "21f6c6203dee01bb7137fd25a247a4744e16e8278e5a547aa6904221f7070ad1"
+    },
+    "kg_dim": 64,
+    "kg_manifest_sha256": "a0d6573fbf27f706eaed81ed333d2238665bc3898a65636fd6bc76caeaeeee26",
+    "use_knowledge": false,
+    "message_edges": "full",
+    "interpretation": "official_human_selected_representative_synsets_no_per_class_rationale",
+    "max_epochs": 200
+  },
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "historical_training_data_hashes_available": true,
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "recall_aggregation": "image_macro",
+  "mean_recall_aggregation": "predicate_macro_over_gt_support",
+  "interpretation": "official_human_selected_representative_synsets_no_per_class_rationale",
+  "per_predicate": {
+    "1": {
+      "support": 522,
+      "R@50": 0.10344827586206896,
+      "R@100": 0.1111111111111111
+    },
+    "2": {
+      "support": 19,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "3": {
+      "support": 22,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "4": {
+      "support": 34,
+      "R@50": 0.08823529411764706,
+      "R@100": 0.08823529411764706
+    },
+    "5": {
+      "support": 35,
+      "R@50": 0.22857142857142856,
+      "R@100": 0.2571428571428571
+    },
+    "6": {
+      "support": 152,
+      "R@50": 0.28289473684210525,
+      "R@100": 0.3026315789473684
+    },
+    "7": {
+      "support": 225,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "8": {
+      "support": 517,
+      "R@50": 0.425531914893617,
+      "R@100": 0.4932301740812379
+    },
+    "9": {
+      "support": 99,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "10": {
+      "support": 37,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "11": {
+      "support": 92,
+      "R@50": 0.41304347826086957,
+      "R@100": 0.43478260869565216
+    },
+    "12": {
+      "support": 21,
+      "R@50": 0.19047619047619047,
+      "R@100": 0.38095238095238093
+    },
+    "13": {
+      "support": 56,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "14": {
+      "support": 11,
+      "R@50": 0.7272727272727273,
+      "R@100": 0.8181818181818182
+    },
+    "16": {
+      "support": 36,
+      "R@50": 0.19444444444444445,
+      "R@100": 0.19444444444444445
+    },
+    "17": {
+      "support": 10,
+      "R@50": 0.0,
+      "R@100": 0.1
+    },
+    "18": {
+      "support": 23,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "19": {
+      "support": 76,
+      "R@50": 0.06578947368421052,
+      "R@100": 0.09210526315789473
+    },
+    "20": {
+      "support": 2544,
+      "R@50": 0.6977201257861635,
+      "R@100": 0.7602201257861635
+    },
+    "21": {
+      "support": 315,
+      "R@50": 0.5047619047619047,
+      "R@100": 0.5777777777777777
+    },
+    "22": {
+      "support": 1739,
+      "R@50": 0.32144910868315124,
+      "R@100": 0.3438757906843013
+    },
+    "23": {
+      "support": 498,
+      "R@50": 0.2469879518072289,
+      "R@100": 0.2931726907630522
+    },
+    "24": {
+      "support": 22,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "25": {
+      "support": 35,
+      "R@50": 0.02857142857142857,
+      "R@100": 0.02857142857142857
+    },
+    "26": {
+      "support": 19,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "27": {
+      "support": 7,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "28": {
+      "support": 44,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "29": {
+      "support": 1893,
+      "R@50": 0.3185419968304279,
+      "R@100": 0.3808769149498151
+    },
+    "30": {
+      "support": 1236,
+      "R@50": 0.4538834951456311,
+      "R@100": 0.47815533980582525
+    },
+    "31": {
+      "support": 11911,
+      "R@50": 0.8378809503819998,
+      "R@100": 0.8764167576190076
+    },
+    "32": {
+      "support": 25,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "33": {
+      "support": 103,
+      "R@50": 0.04854368932038835,
+      "R@100": 0.06796116504854369
+    },
+    "34": {
+      "support": 8,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "35": {
+      "support": 198,
+      "R@50": 0.025252525252525252,
+      "R@100": 0.025252525252525252
+    },
+    "36": {
+      "support": 40,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "37": {
+      "support": 2,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "38": {
+      "support": 75,
+      "R@50": 0.5333333333333333,
+      "R@100": 0.5733333333333334
+    },
+    "39": {
+      "support": 1,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "40": {
+      "support": 278,
+      "R@50": 0.26618705035971224,
+      "R@100": 0.29856115107913667
+    },
+    "41": {
+      "support": 147,
+      "R@50": 0.05442176870748299,
+      "R@100": 0.08843537414965986
+    },
+    "42": {
+      "support": 38,
+      "R@50": 0.02631578947368421,
+      "R@100": 0.02631578947368421
+    },
+    "43": {
+      "support": 231,
+      "R@50": 0.17316017316017315,
+      "R@100": 0.22077922077922077
+    },
+    "44": {
+      "support": 15,
+      "R@50": 0.26666666666666666,
+      "R@100": 0.3333333333333333
+    },
+    "45": {
+      "support": 23,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "46": {
+      "support": 337,
+      "R@50": 0.44807121661721067,
+      "R@100": 0.49554896142433236
+    },
+    "47": {
+      "support": 25,
+      "R@50": 0.56,
+      "R@100": 0.64
+    },
+    "48": {
+      "support": 1954,
+      "R@50": 0.9462640736949847,
+      "R@100": 0.9749232343909928
+    },
+    "49": {
+      "support": 180,
+      "R@50": 0.0,
+      "R@100": 0.0
+    },
+    "50": {
+      "support": 791,
+      "R@50": 0.13147914032869784,
+      "R@100": 0.16055625790139064
+    }
+  }
+}
