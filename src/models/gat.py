@@ -69,6 +69,11 @@ class GATPredicateClassifier(nn.Module):
         edge_index: topology for message passing, built WITHOUT relation labels.
         edge_label_index: pairs to score (can be sampled during training).
         """
+        h = self.encode_nodes(x, edge_index, object_labels)
+        return self.score_pairs(h, edge_label_index)
+
+    def encode_nodes(self, x: torch.Tensor, edge_index: torch.Tensor, object_labels: torch.Tensor) -> torch.Tensor:
+        """Encode objects once so KG fusion can inspect the visual graph context."""
         if x.ndim != 2 or x.shape[1] != self.geometry_dim:
             raise ValueError("Expected geometry x with shape [N, geometry_dim]")
         if object_labels.ndim != 1 or object_labels.shape[0] != x.shape[0]:
@@ -79,11 +84,7 @@ class GATPredicateClassifier(nn.Module):
             bool((object_labels < 0).any()) or bool((object_labels >= self.object_embedding.num_embeddings).any())
         ):
             raise ValueError("object_labels outside vocabulary")
-        for name, indices in (("edge_index", edge_index), ("edge_label_index", edge_label_index)):
-            if indices.ndim != 2 or indices.shape[0] != 2 or indices.dtype != torch.long:
-                raise ValueError(f"{name} must be torch.long [2, E]")
-            if indices.numel() and (bool((indices < 0).any()) or bool((indices >= x.shape[0]).any())):
-                raise ValueError(f"{name} contains invalid node index")
+        self._check_edges(edge_index, x.shape[0], "edge_index")
 
         features = torch.cat((x, self.object_embedding(object_labels)), dim=-1)
         h = F.relu(self.node_projection(features))
@@ -93,6 +94,18 @@ class GATPredicateClassifier(nn.Module):
             h = F.elu(h)
             h = F.dropout(h, p=self.dropout, training=self.training)
 
+        return h
+
+    @staticmethod
+    def _check_edges(indices: torch.Tensor, num_nodes: int, name: str) -> None:
+        if indices.ndim != 2 or indices.shape[0] != 2 or indices.dtype != torch.long:
+            raise ValueError(f"{name} must be torch.long [2, E]")
+        if indices.numel() and (bool((indices < 0).any()) or bool((indices >= num_nodes).any())):
+            raise ValueError(f"{name} contains invalid node index")
+
+    def score_pairs(self, h: torch.Tensor, edge_label_index: torch.Tensor) -> torch.Tensor:
+        """Apply the original predicate head to encoded ordered node pairs."""
+        self._check_edges(edge_label_index, h.shape[0], "edge_label_index")
         source, target = edge_label_index
         pair_features = torch.cat((h[source], h[target]), dim=-1)
         return self.predicate_head(pair_features)

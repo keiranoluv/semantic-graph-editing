@@ -18,6 +18,7 @@ from src.features.visual import load_visual_manifest
 from src.knowledge.transe.core import sha256
 from src.models.gat import build_gat_model
 from src.models.gat_kg import model_from_checkpoint
+from src.models.gat_kg_fusion import model_from_checkpoint as fusion_model_from_checkpoint
 from src.models.gat_pair_kg import model_from_checkpoint as pair_model_from_checkpoint
 
 
@@ -29,6 +30,8 @@ def load_model(checkpoint):
         return model_from_checkpoint(checkpoint)
     if name == "gat_pair_kg":
         return pair_model_from_checkpoint(checkpoint)
+    if name == "gat_kg_fusion":
+        return fusion_model_from_checkpoint(checkpoint)
     if name == "gat":
         model = build_gat_model(config)
     else:
@@ -89,7 +92,7 @@ def main(argv=None):
     )
     results = []
     for _, graphs in graph_batches(dataset, limit, args.batch_size, loader):
-        if name in {"gat", "gat_kg", "gat_pair_kg"}:
+        if name in {"gat", "gat_kg", "gat_pair_kg", "gat_kg_fusion"}:
             batch_results, _, _ = evaluate_gat_batch(model, graphs, device)
         else:
             batch_results, _, _ = evaluate_graph_batch(model, graphs, name, device)

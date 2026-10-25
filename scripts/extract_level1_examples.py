@@ -19,7 +19,7 @@ def predict_graph(model, name, graph, device):
         "x": graph.x.to(device),
         "edge_label_index": graph.edge_label_index.to(device),
     }
-    if name in {"gat", "gat_kg", "gat_pair_kg"}:
+    if name in {"gat", "gat_kg", "gat_pair_kg", "gat_kg_fusion"}:
         kwargs["edge_index"] = graph.edge_index.to(device)
         kwargs["object_labels"] = graph.object_labels.to(device)
     elif name == "mlp_semantic":

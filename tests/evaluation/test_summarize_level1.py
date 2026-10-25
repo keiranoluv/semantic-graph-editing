@@ -77,6 +77,27 @@ def test_pairwise_kg_factorial_summary_keeps_four_conditions(tmp_path):
     assert all(group["seeds"] == [42, 123, 3407] for group in result["groups"])
 
 
+def test_kg_fusion_summary_keeps_seven_matched_conditions(tmp_path):
+    rows = []
+    for mode, variants in (
+        ("off", ("none",)),
+        ("pair", ("real", "shuffled")),
+        ("visual_gate", ("real", "shuffled")),
+        ("relation_prior", ("real", "shuffled")),
+    ):
+        for variant in variants:
+            for row in reports():
+                row["model"] = "gat_kg_fusion"
+                row["config"].update(
+                    model="gat_kg_fusion", fusion_mode=mode, knowledge_variant=variant, loss_mode="logit_adjusted"
+                )
+                row["checkpoint_sha256"] += f"-{mode}-{variant}"
+                rows.append(row)
+    result = call(tmp_path, rows)
+    assert len(result["groups"]) == 7
+    assert all(group["seeds"] == [42, 123, 3407] for group in result["groups"])
+
+
 def test_clip_summary_rejects_cross_run_input_budget_drift(tmp_path):
     rows = reports()
     for row in rows:

@@ -29,6 +29,23 @@ Xem [summary 12 run](../reports/level1/clip-pair-kg-v1-12run-val5000-summary.jso
 VG150 test đã được đánh giá cho các nhánh trước. Nhánh mới được chọn theo val;
 không dùng lại test như held-out độc lập để chỉnh mô hình.
 
+## Ma trận fusion có đối chứng KG xáo trộn (chuẩn bị, chưa train GPU)
+
+Repo sạch ở commit `664b2d3` trước khi tạo nhánh code mới. Đã chuẩn bị
+[level1_fusion_v1.md](experiments/level1_fusion_v1.md): 7 điều kiện × 3 seed
+= 21 run, gồm baseline GAT cùng loss điều chỉnh, pair KG cũ, gate nhìn embedding
+cặp sau GAT, và prior từ 10 loại quan hệ ConceptNet; mỗi phương pháp KG có
+bản real/shuffled. Cả 21 dùng đúng prior train, CLIP cache, split và ngân sách
+huấn luyện như ma trận 12 run. C.1 TransE relation-score tensor [151,151,10]
+đã xuất CPU từ checkpoint đúng hash C.2, không đọc predicate VG. Shuffled KG
+giữ valid mask và phân bố vector/score, phá mapping trên toàn bộ 138 class
+hợp lệ. CPU smoke train/evaluate 8 ảnh cho baseline, pair shuffled, visual
+gate real và relation prior real PASS; checkpoint GAT cũ evaluate CPU 8 ảnh
+PASS. Toàn bộ 204 tests, ruff, black và launcher dry-run 21 jobs PASS. Lệnh
+GPU nằm trong tài liệu thí nghiệm; người dùng chạy sau commit. Thiết kế này
+sau khi xem test cũ, nên test cũ không phải holdout độc lập cho phương pháp
+mới.
+
 ## Cách phối hợp
 
 - Codex sửa code/tài liệu và được chạy kiểm tra môi trường, dữ liệu, tests,

@@ -13,6 +13,8 @@ def condition(report):
     cfg = report["config"]
     if cfg["model"] == "gat_pair_kg":
         return f"gat_pair_kg:kg_{cfg['kg_mode']}:loss_{cfg['loss_mode']}"
+    if cfg["model"] == "gat_kg_fusion":
+        return f"gat_kg_fusion:{cfg['fusion_mode']}:{cfg['knowledge_variant']}:loss_{cfg['loss_mode']}"
     if cfg["model"] == "gat_kg":
         source = report["config"].get("kg_manifest_sha256", "unknown")[:12]
         kg_source = "conceptnet" if "frozen_conceptnet" in cfg.get("features", "") else "wordnet"
