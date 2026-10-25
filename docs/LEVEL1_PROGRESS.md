@@ -2,17 +2,29 @@
 
 Cập nhật: 2026-10-25.
 
-## Nhánh tiếp theo: KG theo cặp × loss điều chỉnh
+## Nhánh KG theo cặp × loss điều chỉnh
 
 Đã cài đặt ma trận 2 × 2 × 3 seed = **12 run** trong
 [level1_pair_kg_v1.md](experiments/level1_pair_kg_v1.md). Gồm GAT với nhánh
 ConceptNet TransE theo cặp đối tượng bật/tắt, kết hợp cross entropy gốc hoặc
 logit-adjusted cross entropy. Prior chỉ dùng nhãn train và chính sách lấy mẫu
 negative hiện tại; file `reports/level1/clip-pair-kg-train-prior-v1.json` có
-hash dữ liệu để kiểm tra trên máy khác. Codex chỉ chạy CPU preflight, người
-dùng chạy train/eval GPU sau khi commit. CPU smoke train/eval 8 ảnh cho KG-off/CE
-và KG-on/loss điều chỉnh PASS; prior khớp graph builder trên 8 ảnh train đầu,
-dry-run launcher có 12 job và toàn bộ 199 tests PASS. Kết quả GPU đang chờ train.
+hash dữ liệu để kiểm tra trên máy khác. Codex chỉ chạy CPU preflight; Toan đã
+chạy đủ 12 train và 12 lượt evaluate GPU trên toàn bộ 5.000 ảnh val. Audit CPU
+xác nhận 12/12 report khớp SHA-256, epoch và mR@50 của `best.pt` hiện tại.
+CPU smoke train/eval 8 ảnh cho KG-off/CE và KG-on/loss điều chỉnh PASS; prior
+khớp graph builder trên 8 ảnh train đầu, dry-run launcher có 12 job và toàn bộ
+199 tests PASS.
+
+Mean 3 seed trên val, đơn vị %: `ce_off` R@50/mR@50 = 64,03/19,44;
+`ce_on` = 62,91/20,28; `adjusted_off` = 60,80/26,20;
+`adjusted_on` = 60,79/26,47. Loss điều chỉnh tăng mR@50 +6,75 điểm và
+giảm R@50 −3,22 điểm so với CE cùng KG-off; mR tăng cả ba seed. KG theo cặp
+chỉ tăng mR@50 +0,27 điểm khi đã điều chỉnh loss, với paired seed
++0,45/−1,20/+1,57 điểm: chưa chứng minh lợi ích KG ổn định. Theo nhóm lớp
+trên val, `adjusted_off` head/body/tail = 45,97/30,60/11,15%; `adjusted_on`
+= 45,40/32,73/9,91%: KG tăng body nhưng giảm tail ở cấu hình loss mới.
+Xem [summary 12 run](../reports/level1/clip-pair-kg-v1-12run-val5000-summary.json).
 
 VG150 test đã được đánh giá cho các nhánh trước. Nhánh mới được chọn theo val;
 không dùng lại test như held-out độc lập để chỉnh mô hình.
@@ -172,6 +184,7 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | 2026-10-25 | RotatE evaluate độc lập hoàn tất; chốt bảng validation 27 run CLIP | Toan chạy GPU evaluate RotatE sau khi train dừng. Report seed 42/123/3407 khớp SHA-256 `best.pt`, epoch 60/38/32 và bốn metric `validation`; summary mean±sample SD R@50=63,5435±0,7741%, mR@50=19,0817±0,6986%. Cả 27 run CLIP giờ có report độc lập trên 5.000 ảnh validation, cùng data/cache/protocol; [bảng 27 run validation](../reports/level1/clip-all-27run-val5000-summary.md) ghi mean±SD và từng seed. GAT + CLIP có mR@50 cao nhất 19,9766%; ConceptNet TransE `edges-off` có R@50 cao nhất 64,3165%. Đây là validation, chưa phải VG150 held-out test. | Dùng bảng validation cho phân tích mốc 1; chỉ báo cáo test khi có protocol/split test được khóa và một lần đánh giá riêng |
 | 2026-10-25 | Khóa 27 checkpoint và chuẩn bị held-out test | Theo yêu cầu của Toan, tạo launcher riêng `tools/level1_test_matrix.py` và [plan test](../reports/level1/clip-all-27run-test-plan.json) chứa 9 điều kiện × 3 seed, SHA-256 từng checkpoint/report validation và code đánh giá. CPU `freeze` PASS 27 checkpoint, test split 26.446 ảnh; GPU command dry-run PASS, không chạy GPU. Launcher dùng `--split test --allow-test`, đủ ảnh và cùng protocol/cache; từ chối nguồn thay đổi hoặc ghi đè report, tổng hợp mean±SD khi đủ 27 report. [Hướng dẫn](experiments/level1_heldout_test.md) ghi cách chạy, resume và giới hạn diễn giải sau khi xem test. | Toan commit code/plan/docs rồi chạy một lượt GPU test; Codex kiểm report, so paired seed và điều tra nguyên nhân nếu KG tiếp tục dưới GAT |
 | 2026-10-25 | Held-out test 27 run hoàn tất và phân tích KG | Toan chạy GPU test đủ 27/27 checkpoint; Codex chạy verifier CPU, tất cả report đủ 26.446 ảnh, 50 predicate, khớp SHA-256 checkpoint/plan, cache/split/protocol; [summary test](../reports/level1/clip-all-27run-test26446-summary.json) và [phân tích](../reports/level1/clip-all-27run-test26446-analysis.md). GAT mR@50=18,3724%; RotatE=18,3883% (+0,0159 điểm, paired seeds +0,340/+0,195/−0,487), WordNet TransE=17,8177%, ConceptNet TransE=18,1400%, ComplEx=18,1449%. RotatE gần hòa GAT, chưa chứng minh KG cải thiện ổn định; mọi KG-on vẫn dưới GAT ở tail 20 lớp. Train head 10 chiếm 88,40% annotation, loss chưa cân bằng; 11,95% annotation ở cặp đa nhãn bị bỏ khỏi supervision một nhãn. CPU smoke xác nhận vector KG tác động logits, nên không thấy lỗi tắt KG; kiến trúc nối vector khái niệm ở đỉnh là nút thắt khả dĩ, chưa chứng minh nhân quả. | Giữ test làm kết quả held-out của ma trận đã khóa; hoàn thiện 5 đúng/5 sai được người xác nhận, cập nhật báo cáo/demo. Mọi cải tiến sau khi đã xem test phải kiểm trên nguồn đánh giá mới nếu muốn tuyên bố held-out |
+| 2026-10-25 | Ma trận KG theo cặp × loss điều chỉnh trên CLIP hoàn tất | Toan train/evaluate 12/12 run; 12 report val trên 5.000 ảnh đều khớp `best.pt` theo SHA-256, epoch và mR@50. Mean mR@50: `ce_off` 19,44%, `ce_on` 20,28%, `adjusted_off` 26,20%, `adjusted_on` 26,47%. Điều chỉnh loss tăng mR rõ ở cả ba seed nhưng giảm R; KG gain so với cùng loss nhỏ và không nhất quán theo seed. | Giữ kết quả val làm phát triển phương pháp; nếu cần quy lợi ích riêng cho ngữ nghĩa ConceptNet, thêm shuffled-KG control; cần holdout mới cho kết luận tổng quát hóa |
 
 ## B1-01 — Kiểm kê trước khi cài đặt
 

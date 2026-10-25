@@ -85,3 +85,26 @@ VG150 test đã được xem trong thí nghiệm trước; vì vậy kết quả
 sau khi thiết kế nhánh này chỉ mang tính thăm dò, không còn là phép kiểm định
 held-out độc lập cho lựa chọn kiến trúc. Ưu tiên chốt trên val và sau đó dùng
 dataset/holdout mới khi cần xác nhận tổng quát hóa.
+
+## Kết quả validation sau 12 run
+
+Toan đã chạy đủ 12 train và 12 evaluate GPU. Mỗi report dùng toàn bộ 5.000 ảnh
+validation; audit CPU xác nhận 12/12 report khớp SHA-256, epoch và mR@50 trong
+`best.pt` hiện tại. [Summary JSON](../../reports/level1/clip-pair-kg-v1-12run-val5000-summary.json)
+có bốn metric và sample standard deviation theo ba seed.
+
+| Điều kiện | R@50 mean ± SD | mR@50 mean ± SD |
+|---|---:|---:|
+| `ce_off` | 64,03 ± 0,11% | 19,44 ± 0,95% |
+| `ce_on` | 62,91 ± 0,13% | 20,28 ± 1,13% |
+| `adjusted_off` | 60,80 ± 0,06% | 26,20 ± 0,84% |
+| `adjusted_on` | 60,79 ± 0,45% | 26,47 ± 0,64% |
+
+`adjusted_off − ce_off` tăng mR@50 **6,75 điểm phần trăm** ở cả ba seed,
+đổi lại R@50 giảm **3,22 điểm**. `adjusted_on − adjusted_off` chỉ tăng
+mR@50 trung bình **0,27 điểm**, paired seed +0,45/−1,20/+1,57 điểm; chưa có
+bằng chứng ổn định về ích lợi riêng của KG. Trên val, recall@50 trung bình
+head 10/body 20/tail 19 lớp có GT của `adjusted_off` là 45,97/30,60/11,15%;
+`adjusted_on` là 45,40/32,73/9,91%. KG tăng body nhưng giảm tail trong điều
+kiện dùng loss điều chỉnh. So sánh này chưa tách được ngữ nghĩa ConceptNet
+khỏi tác động của thêm pair MLP và không phải kiểm định trên holdout mới.
