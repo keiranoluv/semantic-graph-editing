@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "images_evaluated": 5000,
+  "full_split": true,
+  "interpretation": "validation_not_final_test",
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "visual_cache_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+  "metrics_unit": "fraction_0_to_1",
+  "std_definition": "sample_standard_deviation_ddof_1",
+  "groups": [
+    {
+      "condition": "gat_kg:conceptnet:cc02dc8266b4:kg_1:edges_full",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-conceptnet-v1/clip-conceptnet-kg_on-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-conceptnet-v1/clip-conceptnet-kg_on-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-conceptnet-v1/clip-conceptnet-kg_on-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6366682050116903,
+          "sample_std": 0.00340690899065579
+        },
+        "R@100": {
+          "mean": 0.6584209885049246,
+          "sample_std": 0.0033197954778168256
+        },
+        "mR@50": {
+          "mean": 0.19664427394298456,
+          "sample_std": 0.006556951673146127
+        },
+        "mR@100": {
+          "mean": 0.21842165491569174,
+          "sample_std": 0.007504255518470694
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "gat_kg:conceptnet:cc02dc8266b4:kg_1:edges_none",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-conceptnet-v1/clip-conceptnet-edges_off-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-conceptnet-v1/clip-conceptnet-edges_off-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-conceptnet-v1/clip-conceptnet-edges_off-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6431649171732206,
+          "sample_std": 0.0039949108449510665
+        },
+        "R@100": {
+          "mean": 0.6650413695250178,
+          "sample_std": 0.0036539925725412423
+        },
+        "mR@50": {
+          "mean": 0.19860658867371317,
+          "sample_std": 0.008506780998229225
+        },
+        "mR@100": {
+          "mean": 0.2187317057773441,
+          "sample_std": 0.0071787694277676084
+        }
+      },
+      "max_epochs_recorded": 200
+    }
+  ]
+}

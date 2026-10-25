@@ -163,6 +163,7 @@ def export_conceptnet(
     output: Path,
     *,
     review_manifest_path: Path,
+    embedding_model: str = "transe",
 ):
     """Export reviewed ConceptNet class vectors; deferred rows stay zero."""
     if output.exists():
@@ -189,14 +190,42 @@ def export_conceptnet(
     explicit = json.loads((kg_dir / "class_entity_ids.json").read_text(encoding="utf-8"))["class_entity_ids"]
     if len(links) != 151 or len(explicit) != 151 or any(links[i]["label"] != label for i, label in classes):
         raise ValueError("ConceptNet class links do not match exact VG150 vocabulary")
+    if embedding_model not in {"transe", "rotate"}:
+        raise ValueError("Unsupported ConceptNet embedding model")
+    if manifest.get("embedding_model", "transe") != embedding_model:
+        raise ValueError("Checkpoint embedding model does not match requested export")
     dim = manifest.get("dim")
-    weights = checkpoint["model"]["entity.weight"]
-    relations = checkpoint["model"]["relation.weight"]
+    if embedding_model == "rotate":
+        complex_dim = manifest.get("complex_dim")
+        state = checkpoint["model"]
+        real, imag, relations = state["node_emb.weight"], state["node_emb_im.weight"], state["rel_emb.weight"]
+        if (
+            type(complex_dim) is not int
+            or complex_dim <= 0
+            or dim != complex_dim * 2
+            or manifest.get("embedding_version") != 2
+            or manifest.get("score_norm") != "complex_l1"
+            or manifest.get("loss") != "filtered_self_adversarial_logsigmoid"
+            or type(manifest.get("negative_count")) is not int
+            or manifest["negative_count"] <= 0
+            or manifest.get("entity_export") != "real_imag_concat_l2_normalized"
+            or real.shape != (len(kg.entities), complex_dim)
+            or imag.shape != real.shape
+            or relations.shape != (len(kg.relations), complex_dim)
+            or not all(x.is_floating_point() and torch.isfinite(x).all() for x in (real, imag, relations))
+        ):
+            raise ValueError("Invalid ConceptNet RotatE checkpoint embeddings")
+        weights = torch.nn.functional.normalize(torch.cat((real, imag), dim=1).to(torch.float32), dim=1)
+        if not torch.isfinite(weights).all() or torch.any(torch.linalg.vector_norm(weights, dim=1) < 0.99):
+            raise ValueError("Invalid normalized RotatE entity vectors")
+    else:
+        weights = checkpoint["model"]["entity.weight"]
+        relations = checkpoint["model"]["relation.weight"]
     if (
         type(dim) is not int
         or dim <= 0
         or weights.shape != (len(kg.entities), dim)
-        or relations.shape != (len(kg.relations), dim)
+        or relations.shape != (len(kg.relations), dim if embedding_model == "transe" else dim // 2)
         or not weights.is_floating_point()
         or not torch.isfinite(weights).all()
         or not torch.isfinite(weights.to(torch.float32)).all()
@@ -244,6 +273,8 @@ def export_conceptnet(
         "review_basis": review["review_basis"],
         "review_manifest_sha256": sha256(review_manifest_path),
         "kg_source": "conceptnet",
+        "embedding_model": embedding_model,
+        "entity_export": manifest.get("entity_export") if embedding_model == "rotate" else "transe_entity_weight",
         "source_version": kg.metadata["source_version"],
         "dim": dim,
         "class_count": 151,

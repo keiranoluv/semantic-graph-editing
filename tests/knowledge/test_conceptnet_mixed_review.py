@@ -13,6 +13,7 @@ from scripts.prepare_conceptnet_review import check, compile_reviewed, prepare
 from scripts.suggest_conceptnet_review import FIELDS
 from src.knowledge.conceptnet_builder import extract_assertions
 from src.knowledge.export import export_conceptnet, load_class_features
+from src.knowledge.rotate import RotateV2
 from src.knowledge.transe.core import TransE, check_gate, load_kg, sha256
 
 
@@ -148,6 +149,75 @@ def test_mixed_direct_and_ai_review_is_bound_to_exact_decisions(tmp_path):
     assert int(valid.sum()) == 138
     assert valid[135:139].all() and not valid[139:].any()
     assert export_manifest["review_basis"] == "human_mixed_direct_and_ai_batch"
+
+    rotate_checkpoint = tmp_path / "rotate-best.pt"
+    rotate_manifest = {
+        **torch.load(checkpoint, map_location="cpu", weights_only=True)["manifest"],
+        "embedding_model": "rotate",
+        "embedding_version": 2,
+        "score_norm": "complex_l1",
+        "loss": "filtered_self_adversarial_logsigmoid",
+        "negative_count": 8,
+        "complex_dim": 4,
+        "entity_export": "real_imag_concat_l2_normalized",
+    }
+    torch.save(
+        {
+            "manifest": rotate_manifest,
+            "model": RotateV2(len(kg.entities), len(kg.relations), 4).state_dict(),
+            "epoch": 1,
+        },
+        rotate_checkpoint,
+    )
+    rotate_features_dir = tmp_path / "rotate-features"
+    export_conceptnet(
+        rotate_checkpoint,
+        compiled_dir,
+        vocabulary,
+        rotate_features_dir,
+        review_manifest_path=manifest,
+        embedding_model="rotate",
+    )
+    rotate_features, rotate_valid, rotate_export_manifest = load_class_features(rotate_features_dir)
+    assert int(rotate_valid.sum()) == 138
+    assert rotate_features.shape == (151, 8)
+    assert torch.allclose(torch.linalg.vector_norm(rotate_features[rotate_valid], dim=1), torch.ones(138), atol=1e-6)
+    assert rotate_export_manifest["embedding_model"] == "rotate"
+    rotate_state = torch.load(rotate_checkpoint, map_location="cpu", weights_only=True)["model"]
+    first_entity_id = json.loads((compiled_dir / "class_entity_ids.json").read_text())["class_entity_ids"][1]
+    expected = torch.nn.functional.normalize(
+        torch.cat(
+            (rotate_state["node_emb.weight"][first_entity_id], rotate_state["node_emb_im.weight"][first_entity_id])
+        ),
+        dim=0,
+    )
+    assert torch.allclose(rotate_features[1], expected)
+    with pytest.raises(ValueError, match="embedding model"):
+        export_conceptnet(
+            rotate_checkpoint,
+            compiled_dir,
+            vocabulary,
+            tmp_path / "wrong-model",
+            review_manifest_path=manifest,
+        )
+    v1_checkpoint = tmp_path / "rotate-v1.pt"
+    torch.save(
+        {
+            "manifest": {**rotate_manifest, "embedding_version": 1, "score_norm": "complex_l2"},
+            "model": torch.load(rotate_checkpoint, map_location="cpu", weights_only=True)["model"],
+            "epoch": 1,
+        },
+        v1_checkpoint,
+    )
+    with pytest.raises(ValueError, match="RotatE checkpoint"):
+        export_conceptnet(
+            v1_checkpoint,
+            compiled_dir,
+            vocabulary,
+            tmp_path / "v1-output",
+            review_manifest_path=manifest,
+            embedding_model="rotate",
+        )
 
     direct_file = compiled_dir / "direct_decisions.csv"
     direct = direct_file.read_bytes()

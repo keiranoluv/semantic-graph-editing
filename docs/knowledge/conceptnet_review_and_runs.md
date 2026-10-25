@@ -15,7 +15,9 @@ quyết định của Toan nhưng URI vẫn trộn nghĩa; rationale ghi rõ r�
 Review này chỉ xác nhận liên kết class→URI, không xác nhận từng assertion.
 TransE seed 42 đã có checkpoint và C.2 CPU export nằm ở
 `data/knowledge/c2-conceptnet-toan-v3/` với 138/150 class có vector. Sáu ô
-PredCls mới chưa có output; người dùng chạy GPU theo mục 3.
+PredCls mới và GPU evaluate đã hoàn tất. Xem
+[bảng 21 run CLIP trên validation 5.000 ảnh](../../reports/level1/clip-all-21run-val5000-summary.md);
+các lệnh ở mục 3 dùng để tái lập khi tạo version output mới.
 
 ## 1. Hồ sơ review và cách kiểm lại
 
@@ -186,7 +188,7 @@ myenv/bin/python -m scripts.export_conceptnet \
   --output-dir data/knowledge/c2-conceptnet-toan-v3
 ```
 
-## 3. PredCls: 6 run ConceptNet cần chạy và đánh giá
+## 3. PredCls: 6 run ConceptNet đã chạy và đánh giá
 
 MLP và GAT thuần đã có cùng CLIP cache nên không cần train lại. Ba run
 `kg_off` CLIP+WordNet trước cũng dùng GAT+KG 64D, cùng siêu tham số và ba seed;
@@ -223,3 +225,8 @@ coverage, kích thước KG và nguồn tri thức, không chỉ chất lượng
 Snapshot tải một lần từ URL ConceptNet 5.7.0 chính thức và SHA-256 đã ghi ở
 [b2_conceptnet_workflow.md](b2_conceptnet_workflow.md); teammate có lệnh tải
 và dựng graph trong tài liệu đó.
+
+Thử nghiệm embedding RotatE riêng sau 21 run CLIP được hướng dẫn tại
+[rotate_conceptnet_workflow.md](rotate_conceptnet_workflow.md). Nhánh này dùng
+chính ConceptNet reviewed v3 và đường dẫn output mới; không thay các kết quả
+TransE hiện có.
