@@ -28,6 +28,14 @@ và margin hinge loss với score L2 của PyG. Giữ artifact
 PredCls từ nó. Bản v2 là một thử nghiệm sửa phương pháp train, chưa được
 chứng minh có metric tốt hơn.
 
+**Kết quả v2:** Toan đã chạy KG train đến early stop epoch 76. `best.pt`
+epoch 36 có validation MRR 0,01324, so với TransE 0,01567 trên cùng 512
+triple mẫu và split; train loss tiếp tục giảm sau epoch 36 nhưng validation
+MRR giảm. C.2 đã export trên CPU ở
+`data/knowledge/c2-conceptnet-rotate-toan-v2/`: `[151,64]`, 138 class valid,
+invalid rows bằng 0. Chênh lệch KG MRR không đủ để suy ra kết quả PredCls;
+ba run KG-on vẫn là phép kiểm tra giả thuyết đó.
+
 ## 1. Preflight và train KG
 
 Làm việc tại gốc repository. CPU preflight chỉ in manifest/số triple:
