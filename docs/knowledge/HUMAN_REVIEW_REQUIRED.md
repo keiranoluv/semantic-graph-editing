@@ -5,7 +5,7 @@ Record decisions and provenance before any results are described as official.
 The current counts below reflect the user's B.1 AI draft, **not** human
 verification and not an independent measurement by this document.
 
-## Current ground truth of the workflow (before human review)
+## Historical checkpoint before WordNet review
 
 | Artifact | Last observed result | Human-reviewed? | Use |
 | --- | --- | --- | --- |
@@ -93,3 +93,10 @@ status **and does not imply that a human checked it**.
 
 **Owners:** assign at least one named human reviewer and one independent check
 for difficult senses before marking this document's obligations complete.
+
+Nhánh ConceptNet độc lập đã có quyết định Toan v3 cho 150 class: 138 accept,
+12 reject, với 134 đề xuất AI được duyệt theo lô và 16 quyết định focus trực
+tiếp. Hồ sơ nguồn nhỏ ở `reviews/conceptnet-toan-v3/`, KG đã compile và CPU
+TransE dry-run PASS; xem [conceptnet_review_and_runs.md](conceptnet_review_and_runs.md).
+Điều này không chứng nhận từng assertion ConceptNet và không cần bridge
+WordNet↔ConceptNet cho nhánh độc lập.

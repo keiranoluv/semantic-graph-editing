@@ -13,7 +13,8 @@ def condition(report):
     cfg = report["config"]
     if cfg["model"] == "gat_kg":
         source = report["config"].get("kg_manifest_sha256", "unknown")[:12]
-        return f"gat_kg:wordnet:{source}:kg_{int(cfg['use_knowledge'])}:edges_{cfg['message_edges']}"
+        kg_source = "conceptnet" if "frozen_conceptnet" in cfg.get("features", "") else "wordnet"
+        return f"gat_kg:{kg_source}:{source}:kg_{int(cfg['use_knowledge'])}:edges_{cfg['message_edges']}"
     return cfg["model"]
 
 

@@ -137,6 +137,10 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | 2026-10-25 | Bản PNG cho trình xem file | Giao diện người dùng mở HTML như text, nên thêm `tools/render_level1_review_png.py` để xuất hai contact sheet PNG, mỗi ảnh có 5 case với box đỏ/xanh, GT và dự đoán. Đã kiểm bằng trình xem ảnh; output `reports/level1/clip-v1-gat-seed42-review-hits.png` và `...-misses.png`. | Người dùng mở PNG trực tiếp và đánh dấu các quan hệ/box hợp lý hoặc mơ hồ; sau đó hoàn thiện phân tích 5 đúng/5 sai |
 | 2026-10-25 | Ghi nhận xét sơ bộ 10 triplet | Thêm `reports/level1/clip-v1-gat-seed42-qualitative-review.md`: 5 hit/5 miss theo R@50 trên 5 ảnh validation, tách khớp GT khỏi hợp lý ngữ nghĩa. Các miss `has`→`with`, `above`→`on` có thể do cách diễn đạt; `near`→`with` là lỗi quan hệ rõ hơn. Không nhận đây là đánh giá thủ công của người trong nhóm; không suy tỷ lệ lỗi từ mẫu nhỏ. | Thành viên nhóm xác nhận bảng ảnh/box và dùng nhận xét đã kiểm trong báo cáo |
 | 2026-10-25 | Kiểm khả năng thử CLIP + ConceptNet sau checkpoint Git | Snapshot ConceptNet 5.7 đã có; graph B.2 gồm 46.414 entities, 56.703 triples nhưng metadata `ready_for_gat_kg_training=false`, 150 dòng review queue chưa có quyết định/người duyệt. Bản B.2.2 bridge cũng là candidate chưa duyệt. `src/knowledge/export.py` hiện chỉ xuất C.2 WordNet; chưa có bảng embedding ConceptNet [151,64] được kiểm class ID. Vì vậy chưa có lệnh GPU CLIP+ConceptNet công bằng và hợp lệ để chạy ngay. | Sau khi người dùng commit kết quả CLIP hiện tại, chuẩn bị mapping ConceptNet được review, cổng KG/TransE và C.2 riêng; CPU smoke và dry-run trước khi gửi lệnh GPU |
+| 2026-10-25 | Chuẩn bị nhánh CLIP + ConceptNet reviewed sau commit `81703ab` | Tạo `data/knowledge/conceptnet-review-v1/review.csv` 150 dòng **trống** và 1.705 evidence mẫu; 26 nhãn ưu tiên mơ hồ, 112 nhãn có nhiều URI còn lại, 12 nhãn chuẩn. Script `prepare_conceptnet_review` kiểm URI, assertion, reviewer và hash nguồn; compiler version riêng chỉ chạy khi 150 quyết định đầy đủ. Cổng C.1 ConceptNet khóa CSV/class link/manifest, C.2 xuất vector đúng class ID với mask 0 cho reject/defer, GAT+KG nhận nguồn ConceptNet. Ranking TransE được vector hóa để giảm hàng trăm nghìn batch nhỏ mỗi epoch. CPU preflight graph thật: split transductive 10%/10% thất bại, 8%/8% PASS (47.631/4.536/4.536); 192 tests PASS. Chưa chạy GPU. | Người trong nhóm review `review.csv` theo [hướng dẫn](knowledge/conceptnet_review_and_runs.md); sau đó compiler và CPU dry-run, người dùng chạy TransE GPU, export CPU, rồi 6 run PredCls GPU cần thiết và evaluate. Không dùng bridge WordNet↔ConceptNet cho nhánh này |
+| 2026-10-25 | Chuẩn bị đề xuất review ConceptNet theo yêu cầu của Toan | Tạo `data/knowledge/conceptnet-review-v1/review_suggestions.ai-draft.csv` từ graph ConceptNet 5.7 và mapping WordNet đại diện đã khóa hash. Đề xuất 121 accept, 27 defer, 2 reject (`pant`, `short`), kèm assertion URI và lý do từng dòng; `review_focus.ai-draft.csv` lọc 29 dòng cần chú ý. `proposed_by=Codex_AI_provisional`, `requested_human_approver=Toan`; file `review.csv` chính thức vẫn 150 pending. Có cổng batch approval riêng: chỉ sau tuyên bố của Toan khóa hash mới tạo review version khác, ghi rõ AI draft được duyệt theo lô và `human_verified_class_count=0`. | Toan xem file đầy đủ và 29 dòng focus; nếu đồng ý, phê duyệt bản AI draft theo lô. Chưa tạo approval thay người dùng, chưa chạy GPU |
+| 2026-10-25 | Kiểm lại 27 nhãn ConceptNet bị hoãn | Xem mọi cạnh được giữ lại của từng URI ứng viên, tạo bản AI v2 riêng tại `data/knowledge/conceptnet-review-ai-v2/`: thêm 13 đề xuất `accept` có URI/assertion/rationale cụ thể (`branch`, `cap`, `handle`, `orange`, `plane`, `plant`, `player`, `post`, `screen`, `ski`, `surfboard`, `tail`, `wing`). Tổng mới 134 accept, 14 defer, 2 reject. Bản v1/hash cũ giữ nguyên; bản report focus giờ có 16 nhãn. Chưa gán `reviewer=Toan`, chưa phê duyệt hay chạy GPU. | Toan xem [báo cáo 13 đã xét/16 còn cân nhắc](../reports/level1/conceptnet-ai-review-focus.md) và bản đề xuất 150 dòng; nếu đồng ý bản v2, phê duyệt theo lô để compiler ghi đúng provenance |
+| 2026-10-25 | Toan chốt review ConceptNet 150 class | Toan duyệt 134 đề xuất AI v2 và trực tiếp chọn `accept` ID 11, 54, 123, 143; `reject` 12 ID focus còn lại. Tạo hồ sơ v3 riêng (`data/knowledge/conceptnet-review-toan-v3/`) có lời quyết định nguyên văn, bốn URI/assertion do Codex chọn, 16 quyết định trực tiếp và dấu vết 134 đề xuất AI; reviewer=Toan, basis `human_mixed_direct_and_ai_batch`. Hai file nguồn nhỏ `reviews/conceptnet-toan-v3/approval.json` và `selection.csv` được theo dõi bằng Git để teammate tái dựng dữ liệu bị ignore. Tổng 138 accept, 12 reject, 0 defer/pending. Compiler `data/knowledge/conceptnet-reviewed-toan-v3/` và CPU TransE dry-run PASS (47.631/4.536/4.536); 194 tests PASS. `bike`/`glass` được accept theo chỉ đạo nhưng URI trộn nghĩa; đây là rủi ro khi giải thích vector. Chưa chạy GPU, chưa commit. | Toan chạy TransE ConceptNet GPU theo [hướng dẫn](knowledge/conceptnet_review_and_runs.md); sau checkpoint, Codex có thể export C.2 CPU rồi gửi lệnh 6 run CLIP+ConceptNet GPU |
 
 ## B1-01 — Kiểm kê trước khi cài đặt
 
@@ -183,14 +187,16 @@ tải và xác minh toàn bộ; máy teammate chưa được kiểm chứng bằ
 
 ## Bước tiếp theo do người dùng thực hiện
 
-- TransE v2 GPU và export WordNet 150/150 đã hoàn tất trên máy hiện tại;
-  lệnh tái lập ở [level1_clip_regions.md](experiments/level1_clip_regions.md).
-- Người dùng commit code/tài liệu, sau đó train 15 run CLIP bằng GPU;
-  tiếp đó đánh giá đủ 5.000 ảnh validation cho mỗi checkpoint. Lệnh trong
-  hướng dẫn đặt `--max-parallel 5`; launcher giữ riêng output/log và không ghi
-  đè. Ba MLP run dở trước khi tối ưu đã được dọn theo yêu cầu người dùng.
-- Dùng các report mới để phân tích ít nhất 5 đúng/5 sai, hoàn thiện báo cáo,
-  slide và notebook/demo; chỉ đánh giá test sau khi khóa pipeline.
+- 15 run CLIP+WordNet và 15 lượt evaluate validation đã hoàn tất; summary và
+  ví dụ 5 đúng/5 sai ở `reports/level1/`.
+- Người trong nhóm điền 150 quyết định class→ConceptNet trong
+  `data/knowledge/conceptnet-review-v1/review.csv`, xem bằng chứng ở file
+  `evidence_samples.csv` cùng thư mục. Lệnh kiểm và trình tự TransE/PredCls ở
+  [conceptnet_review_and_runs.md](knowledge/conceptnet_review_and_runs.md).
+- Chỉ sau review hoàn chỉnh mới biên dịch KG ConceptNet version riêng và chạy
+  TransE GPU, export C.2 CPU, 6 run PredCls GPU và evaluate trên 5.000 ảnh val.
+- Khóa pipeline trước khi đánh giá VG150 test; hoàn thiện báo cáo, slide và
+  notebook/demo từ các report đã có.
 - Teammate tải lại annotation và JPEG theo
   [TEAM_SETUP_LEVEL1.md](TEAM_SETUP_LEVEL1.md); mapping reviewed có lệnh tái lập
   ở [c2_gat_wordnet.md](knowledge/c2_gat_wordnet.md).

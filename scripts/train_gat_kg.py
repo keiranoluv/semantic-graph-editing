@@ -1,4 +1,4 @@
-"""Train GAT+WordNet with traceable inputs and matched ablation switches."""
+"""Train GAT+KG with traceable inputs and matched ablation switches."""
 
 import argparse
 import importlib.metadata
@@ -62,9 +62,9 @@ def main(argv=None):
     config.update(
         model="gat_kg",
         features=(
-            "geometry+frozen_clip_vit_b32+trainable_object_embedding+frozen_wordnet+valid_bit"
+            f"geometry+frozen_clip_vit_b32+trainable_object_embedding+frozen_{feature_manifest['kg_source']}+valid_bit"
             if args.visual_cache
-            else "geometry+trainable_object_embedding+frozen_wordnet+valid_bit"
+            else f"geometry+trainable_object_embedding+frozen_{feature_manifest['kg_source']}+valid_bit"
         ),
         kg_dim=feature_manifest["dim"],
         kg_manifest_sha256=sha256(kg_args.kg_features / "manifest.json"),

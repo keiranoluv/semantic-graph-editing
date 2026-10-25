@@ -128,3 +128,4 @@ a separately versioned, auditable B.2.2 bridge file. Do not use B.2.1 draft
 as final TransE/GAT+KG ground truth.
 
 For all human-review obligations, see `docs/knowledge/HUMAN_REVIEW_REQUIRED.md`.
+Worksheet và pipeline reviewed độc lập ở [conceptnet_review_and_runs.md](conceptnet_review_and_runs.md).

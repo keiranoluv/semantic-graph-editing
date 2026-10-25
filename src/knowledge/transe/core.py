@@ -123,13 +123,233 @@ def check_gate(mode: str, kg: KG, folder: Path, review_manifest: Path | None = N
             for k in ("reviewer", "evidence_reference", "rationale")
         ):
             raise ValueError("Review requires named human, evidence and rationale")
-        if "AI" in item["reviewer"].upper() or "CHATGPT" in item["reviewer"].upper():
+        if item["reviewer"].strip().casefold() in {"ai", "openai", "chatgpt", "assistant", "llm"}:
             raise ValueError("AI reviewer is not human review evidence")
-    if (
-        kg.metadata.get("curation_tier", "").upper().find("PROVISIONAL") >= 0
-        or kg.metadata.get("human_verified_class_count") == 0
+    batch_approved_ai = (
+        kg.source == "conceptnet"
+        and m.get("review_basis") == "human_batch_approved_ai_proposal"
+        and kg.metadata.get("human_batch_approved_class_count") == 150
+    )
+    if kg.metadata.get("curation_tier", "").upper().find("PROVISIONAL") >= 0 or (
+        kg.metadata.get("human_verified_class_count") == 0 and not batch_approved_ai
     ):
         raise ValueError("Provisional/unverified KG may not run in C-Reviewed")
+    if kg.source == "conceptnet":
+        _check_conceptnet_review(m, kg, folder)
+
+
+def _check_conceptnet_review(m: dict, kg: KG, folder: Path) -> None:
+    """Bind individual URI decisions and source evidence to the exact graph."""
+    basis = m.get("review_basis")
+    if basis not in {
+        "individual_conceptnet_class_uri_selection",
+        "human_batch_approved_ai_proposal",
+        "human_mixed_direct_and_ai_batch",
+    }:
+        raise ValueError("Unsupported ConceptNet review basis")
+    if basis != kg.metadata.get("review_basis"):
+        raise ValueError("ConceptNet KG/review basis mismatch")
+    for name, key in (
+        ("review.csv", "review_csv_sha256"),
+        ("class_concept_candidates.json", "class_concept_candidates_sha256"),
+        ("provenance.json", "provenance_sha256"),
+        ("class_entity_ids.json", "class_entity_ids_sha256"),
+        ("class_concept_links.json", "class_concept_links_sha256"),
+    ):
+        if sha256(folder / name) != m.get(key):
+            raise ValueError(f"ConceptNet review artifact hash mismatch: {name}")
+    if sha256(folder / "review.csv") != kg.metadata.get("input_review_sha256"):
+        raise ValueError("ConceptNet KG metadata/review CSV mismatch")
+    ids = json.loads((folder / "class_entity_ids.json").read_text(encoding="utf-8"))["class_entity_ids"]
+    links = json.loads((folder / "class_concept_links.json").read_text(encoding="utf-8"))["classes"]
+    candidates = json.loads((folder / "class_concept_candidates.json").read_text(encoding="utf-8"))["classes"]
+    with (folder / "review.csv").open(encoding="utf-8-sig", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    if not all(len(x) == 151 for x in (ids, links, candidates)) or len(rows) != 150:
+        raise ValueError("ConceptNet review class count mismatch")
+    if ids[0] is not None or links[0].get("decision") != "background":
+        raise ValueError("ConceptNet background class must be unlinked")
+    evidence = set()
+    with (folder / "triples.tsv").open(encoding="utf-8", newline="") as stream:
+        for edge in csv.DictReader(stream, delimiter="\t"):
+            for endpoint in ("subject_id", "object_id"):
+                evidence.add((kg.entities[int(edge[endpoint])], edge["assertion_uri"]))
+    accepted = 0
+    for i, (item, row) in enumerate(zip(m["reviews"], rows, strict=True), start=1):
+        uri = item.get("selected_uri")
+        decision = item["decision"]
+        if (
+            item.get("class_id") != i
+            or row.get("class_id") != str(i)
+            or row.get("label") != item.get("label")
+            or row.get("conceptnet_uri_candidates") != ";".join(candidates[i].get("concept_uris", []))
+            or candidates[i].get("label") != item.get("label")
+            or links[i].get("label") != item.get("label")
+            or links[i].get("decision") != decision
+            or links[i].get("selected_uri") != uri
+            or row.get("decision", "").strip().lower() != decision
+            or row.get("selected_uri", "").strip() != (uri or "")
+            or row.get("reviewer", "").strip() != item.get("reviewer")
+            or row.get("evidence_reference", "").strip() != item.get("evidence_reference")
+            or row.get("rationale", "").strip() != item.get("rationale")
+        ):
+            raise ValueError(f"ConceptNet review row mismatch at class {i}")
+        if decision == "accept":
+            if (
+                uri not in candidates[i].get("concept_uris", [])
+                or type(ids[i]) is not int
+                or not 0 <= ids[i] < len(kg.entities)
+                or kg.entities[ids[i]] != f"cn:{uri}"
+                or (f"cn:{uri}", item["evidence_reference"]) not in evidence
+            ):
+                raise ValueError(f"ConceptNet URI/entity/evidence mismatch at class {i}")
+            accepted += 1
+        elif uri is not None or ids[i] is not None:
+            raise ValueError(f"Rejected/deferred ConceptNet class must be unlinked: {i}")
+    reviewed_count = (
+        kg.metadata.get("human_verified_class_count", 0) + kg.metadata.get("human_batch_approved_class_count", 0)
+        if basis == "human_mixed_direct_and_ai_batch"
+        else kg.metadata.get("human_batch_approved_class_count")
+        if basis == "human_batch_approved_ai_proposal"
+        else kg.metadata.get("human_verified_class_count")
+    )
+    if accepted != kg.metadata.get("resolved_class_count") or reviewed_count != 150:
+        raise ValueError("ConceptNet reviewed KG class coverage mismatch")
+    if basis == "human_batch_approved_ai_proposal":
+        _check_conceptnet_batch_approval(m, folder, rows)
+    if basis == "human_mixed_direct_and_ai_batch":
+        _check_conceptnet_mixed_approval(m, kg, folder, rows)
+
+
+def _check_conceptnet_mixed_approval(m: dict, kg: KG, folder: Path, rows: list[dict]) -> None:
+    """Verify 134 approved AI rows and 16 direct human decisions separately."""
+    if (
+        m.get("human_direct_class_count") != 16
+        or m.get("human_batch_approved_class_count") != 134
+        or kg.metadata.get("human_verified_class_count") != 16
+        or kg.metadata.get("human_batch_approved_class_count") != 134
+    ):
+        raise ValueError("ConceptNet mixed review count mismatch")
+    for name, key in (
+        ("approval.json", "approval_sha256"),
+        ("selection.csv", "selection_sha256"),
+        ("direct_decisions.csv", "direct_decisions_sha256"),
+        ("review_suggestions.ai-draft.csv", "proposal_sha256"),
+        ("review_focus.ai-draft.csv", "focus_sha256"),
+    ):
+        if sha256(folder / name) != m.get(key):
+            raise ValueError(f"ConceptNet mixed approval artifact hash mismatch: {name}")
+    approval = json.loads((folder / "approval.json").read_text(encoding="utf-8"))
+    accepted_ids = approval.get("accepted_focus_class_ids")
+    if (
+        approval.get("schema_version") != 1
+        or approval.get("approval_scope") != "conceptnet_ai_134_plus_16_direct_focus"
+        or approval.get("approver") != m.get("approved_by")
+        or approval.get("proposal_sha256") != m["proposal_sha256"]
+        or approval.get("focus_sha256") != m["focus_sha256"]
+        or approval.get("selection_sha256") != m["selection_sha256"]
+        or approval.get("approve_non_focus_ai_proposals") is not True
+        or approval.get("reject_remaining_focus") is not True
+        or not isinstance(approval.get("statement"), str)
+        or len(approval["statement"].strip()) < 20
+        or not isinstance(accepted_ids, list)
+        or any(type(i) is not int for i in accepted_ids)
+        or accepted_ids != sorted(set(accepted_ids))
+    ):
+        raise ValueError("ConceptNet mixed approval declaration mismatch")
+    with (folder / "review_suggestions.ai-draft.csv").open(encoding="utf-8", newline="") as stream:
+        proposals = list(csv.DictReader(stream))
+    with (folder / "review_focus.ai-draft.csv").open(encoding="utf-8", newline="") as stream:
+        focus = list(csv.DictReader(stream))
+    with (folder / "selection.csv").open(encoding="utf-8", newline="") as stream:
+        selections = list(csv.DictReader(stream))
+    with (folder / "direct_decisions.csv").open(encoding="utf-8", newline="") as stream:
+        direct = list(csv.DictReader(stream))
+    focus_ids = [int(item["class_id"]) for item in focus]
+    if (
+        len(proposals) != 150
+        or len(focus_ids) != 16
+        or focus_ids != sorted(set(focus_ids))
+        or {int(item["class_id"]) for item in proposals if item["proposed_decision"] != "accept"} != set(focus_ids)
+        or [int(item["class_id"]) for item in selections] != accepted_ids
+        or [int(item["class_id"]) for item in direct] != focus_ids
+        or not set(accepted_ids).issubset(focus_ids)
+    ):
+        raise ValueError("ConceptNet mixed approval focus/selection mismatch")
+    direct_by_id = {int(item["class_id"]): item for item in direct}
+    selection_by_id = {int(item["class_id"]): item for item in selections}
+    for i, (row, proposal) in enumerate(zip(rows, proposals, strict=True), start=1):
+        if (
+            proposal.get("class_id") != str(i)
+            or proposal.get("label") != row["label"]
+            or proposal.get("conceptnet_uri_candidates") != row["conceptnet_uri_candidates"]
+            or row["reviewer"] != m["approved_by"]
+        ):
+            raise ValueError(f"ConceptNet mixed proposal/class mismatch at {i}")
+        if i in direct_by_id:
+            item = direct_by_id[i]
+            if any(
+                item.get(key) != row.get(key)
+                for key in ("label", "decision", "selected_uri", "reviewer", "evidence_reference", "rationale")
+            ):
+                raise ValueError(f"ConceptNet direct decision mismatch at {i}")
+            if i in selection_by_id:
+                selected = selection_by_id[i]
+                if row["decision"] != "accept" or any(
+                    selected.get(key) != row.get(key) for key in ("selected_uri", "evidence_reference", "rationale")
+                ):
+                    raise ValueError(f"ConceptNet accepted focus selection mismatch at {i}")
+            elif row["decision"] != "reject" or row["selected_uri"]:
+                raise ValueError(f"ConceptNet rejected focus decision mismatch at {i}")
+        elif (
+            proposal.get("proposed_decision") != "accept"
+            or row["decision"] != "accept"
+            or proposal.get("proposed_uri") != row["selected_uri"]
+            or proposal.get("evidence_reference") != row["evidence_reference"]
+            or not row["rationale"].startswith(
+                f"Batch-approved AI proposal {m['proposal_sha256'][:12]} by {m['approved_by']}; "
+            )
+        ):
+            raise ValueError(f"ConceptNet approved AI proposal mismatch at {i}")
+
+
+def _check_conceptnet_batch_approval(m: dict, folder: Path, rows: list[dict]) -> None:
+    for name, key in (
+        ("approval.json", "approval_sha256"),
+        ("review_suggestions.ai-draft.csv", "proposal_sha256"),
+        ("review_focus.ai-draft.csv", "focus_sha256"),
+    ):
+        if sha256(folder / name) != m.get(key):
+            raise ValueError(f"ConceptNet batch approval artifact hash mismatch: {name}")
+    approval = json.loads((folder / "approval.json").read_text(encoding="utf-8"))
+    if (
+        approval.get("schema_version") != 1
+        or approval.get("approval_scope") != "all_150_conceptnet_ai_proposals"
+        or approval.get("approver") != m.get("approved_by")
+        or approval.get("proposal_sha256") != m["proposal_sha256"]
+        or approval.get("focus_sha256") != m["focus_sha256"]
+        or not isinstance(approval.get("statement"), str)
+        or len(approval["statement"].strip()) < 20
+    ):
+        raise ValueError("ConceptNet batch approval declaration mismatch")
+    with (folder / "review_suggestions.ai-draft.csv").open(encoding="utf-8", newline="") as stream:
+        proposals = list(csv.DictReader(stream))
+    if len(proposals) != 150:
+        raise ValueError("ConceptNet batch approval needs all 150 AI proposals")
+    for i, (row, proposal) in enumerate(zip(rows, proposals, strict=True), start=1):
+        if (
+            proposal.get("class_id") != str(i)
+            or proposal.get("label") != row["label"]
+            or proposal.get("conceptnet_uri_candidates") != row["conceptnet_uri_candidates"]
+            or proposal.get("proposed_decision") != row["decision"]
+            or proposal.get("proposed_uri", "") != row["selected_uri"]
+            or proposal.get("evidence_reference") != row["evidence_reference"]
+            or row.get("reviewer") != m["approved_by"]
+            or not row.get("rationale", "").startswith(
+                f"Batch-approved AI proposal {m['proposal_sha256'][:12]} by {m['approved_by']}; "
+            )
+        ):
+            raise ValueError(f"ConceptNet batch approval row mismatch at class {i}")
 
 
 def _check_batch_review(m: dict, kg: KG, folder: Path) -> None:
@@ -367,22 +587,32 @@ def evaluate(
 ) -> dict:
     """Filtered raw-entity ranking on both head and tail, ties use average rank."""
     ranks = []
+    # Build lookup once. The previous implementation copied every candidate
+    # triple to CPU and launched ceil(entity_count/batch_size) tiny GPU batches
+    # for *each* head and tail query. ConceptNet has ~46k entities, so score
+    # all candidate entities in one tensor operation per query instead.
+    head_known = {}
+    tail_known = {}
+    for h, r, t in known:
+        head_known.setdefault((int(r), int(t)), set()).add(int(h))
+        tail_known.setdefault((int(h), int(r)), set()).add(int(t))
     model.eval()
     with torch.no_grad():
+        entities = model.entity.weight
+        relations = model.relation.weight
         for h, r, t in triples:
+            h, r, t = int(h), int(r), int(t)
             for side in (0, 2):
-                query = np.tile([h, r, t], (model.entity.num_embeddings, 1))
-                query[:, side] = np.arange(model.entity.num_embeddings)
-                scores = []
-                for chunk in np.array_split(query, max(1, (len(query) + batch_size - 1) // batch_size)):
-                    scores.extend(model.score(torch.as_tensor(chunk, dtype=torch.long, device=device)).cpu().tolist())
-                gold = scores[int(h if side == 0 else t)]
-                for index in range(len(scores)):
-                    triple = (int(index), int(r), int(t)) if side == 0 else (int(h), int(r), int(index))
-                    if triple in known and triple != (int(h), int(r), int(t)):
-                        scores[index] = float("inf")
-                better = sum(s < gold - 1e-8 for s in scores)
-                tied = sum(abs(s - gold) <= 1e-8 for s in scores)
+                diff = entities + relations[r] - entities[t] if side == 0 else entities[h] + relations[r] - entities
+                scores = torch.linalg.vector_norm(diff, ord=model.p, dim=-1)
+                gold_id = h if side == 0 else t
+                gold = scores[gold_id]
+                filtered = head_known.get((r, t), ()) if side == 0 else tail_known.get((h, r), ())
+                filtered = [index for index in filtered if index != gold_id]
+                if filtered:
+                    scores[torch.as_tensor(filtered, dtype=torch.long, device=device)] = float("inf")
+                better = int(torch.count_nonzero(scores < gold - 1e-8).item())
+                tied = int(torch.count_nonzero(torch.abs(scores - gold) <= 1e-8).item())
                 ranks.append(1 + better + (tied - 1) / 2)
     return {
         "MRR": float(np.mean([1 / x for x in ranks])),

@@ -108,6 +108,33 @@ def test_transe_train_deterministic_and_metrics():
     assert metrics["count"] == 2 and 0 < metrics["MRR"] <= 1
 
 
+def test_vectorized_filtered_ranking_matches_candidate_reference():
+    set_seed(7)
+    model = TransE(19, 2, dim=6)
+    triples = np.array([[0, 0, 1], [3, 1, 4], [7, 0, 9]], dtype=np.int64)
+    known = {(0, 0, 1), (2, 0, 1), (0, 0, 5), (3, 1, 4), (7, 0, 9), (8, 0, 9)}
+    observed = evaluate(model, triples, known, torch.device("cpu"))
+    ranks = []
+    with torch.no_grad():
+        for h, r, t in triples:
+            for side in (0, 2):
+                query = np.tile([h, r, t], (19, 1))
+                query[:, side] = np.arange(19)
+                scores = model.score(torch.as_tensor(query, dtype=torch.long)).tolist()
+                gold = scores[h if side == 0 else t]
+                for candidate in range(19):
+                    triple = (candidate, int(r), int(t)) if side == 0 else (int(h), int(r), candidate)
+                    if triple in known and triple != (int(h), int(r), int(t)):
+                        scores[candidate] = float("inf")
+                better = sum(score < gold - 1e-8 for score in scores)
+                tied = sum(abs(score - gold) <= 1e-8 for score in scores)
+                ranks.append(1 + better + (tied - 1) / 2)
+    assert observed["count"] == len(ranks)
+    assert observed["MRR"] == pytest.approx(np.mean([1 / rank for rank in ranks]))
+    for k in (1, 3, 10):
+        assert observed[f"Hits@{k}"] == pytest.approx(np.mean([rank <= k for rank in ranks]))
+
+
 def test_reject_sameas_and_bad_ids(tmp_path):
     folder = make_kg(tmp_path)
     (folder / "relations.json").write_text(json.dumps({"relations": ["SameAs"]}))

@@ -1,4 +1,4 @@
-"""Frozen WordNet features and edge-removal ablation, separate from baseline."""
+"""Frozen KG features and edge-removal ablation, separate from baseline."""
 
 import torch
 

@@ -1,4 +1,4 @@
-"""C.2 WordNet feature export with explicit VG150 class alignment."""
+"""C.2 KG feature export with explicit VG150 class alignment."""
 
 import json
 from pathlib import Path
@@ -156,13 +156,127 @@ def export_wordnet(
     return export_manifest
 
 
+def export_conceptnet(
+    checkpoint_path: Path,
+    kg_dir: Path,
+    vocabulary: Path,
+    output: Path,
+    *,
+    review_manifest_path: Path,
+):
+    """Export reviewed ConceptNet class vectors; deferred rows stay zero."""
+    if output.exists():
+        raise FileExistsError(f"Output already exists: {output}")
+    kg = load_kg(kg_dir)
+    checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
+    manifest = checkpoint["manifest"]
+    if (
+        kg.source != "conceptnet"
+        or manifest.get("kg_source") != "conceptnet"
+        or manifest.get("milestone") != "C.1"
+        or manifest.get("mode") != "reviewed"
+        or manifest.get("review_status") != "human_approved"
+        or manifest.get("input_sha256") != kg.hashes
+        or manifest.get("review_manifest_sha256") != sha256(review_manifest_path)
+    ):
+        raise ValueError("C.2 ConceptNet requires a matching reviewed C.1 checkpoint")
+    check_gate("reviewed", kg, kg_dir, review_manifest_path)
+    review = json.loads(review_manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("review_basis") != review.get("review_basis"):
+        raise ValueError("ConceptNet checkpoint/review basis mismatch")
+    classes, vocab_hash = _read_classes(vocabulary, 150)
+    links = json.loads((kg_dir / "class_concept_links.json").read_text(encoding="utf-8"))["classes"]
+    explicit = json.loads((kg_dir / "class_entity_ids.json").read_text(encoding="utf-8"))["class_entity_ids"]
+    if len(links) != 151 or len(explicit) != 151 or any(links[i]["label"] != label for i, label in classes):
+        raise ValueError("ConceptNet class links do not match exact VG150 vocabulary")
+    dim = manifest.get("dim")
+    weights = checkpoint["model"]["entity.weight"]
+    relations = checkpoint["model"]["relation.weight"]
+    if (
+        type(dim) is not int
+        or dim <= 0
+        or weights.shape != (len(kg.entities), dim)
+        or relations.shape != (len(kg.relations), dim)
+        or not weights.is_floating_point()
+        or not torch.isfinite(weights).all()
+        or not torch.isfinite(weights.to(torch.float32)).all()
+    ):
+        raise ValueError("Invalid ConceptNet checkpoint embeddings")
+    features = torch.zeros((151, dim), dtype=torch.float32)
+    valid = torch.zeros(151, dtype=torch.bool)
+    records = []
+    for row, entity_id in zip(links, explicit, strict=True):
+        class_id = row["class_id"]
+        uri = row["selected_uri"]
+        linked = class_id > 0 and row["decision"] == "accept"
+        if linked:
+            if type(entity_id) is not int or kg.entities[entity_id] != f"cn:{uri}":
+                raise ValueError(f"ConceptNet class/entity alignment mismatch at class {class_id}")
+            features[class_id] = weights[entity_id].detach().to(torch.float32)
+            valid[class_id] = True
+        elif entity_id is not None or uri is not None:
+            raise ValueError(f"Unresolved ConceptNet class has a linked entity at class {class_id}")
+        records.append(
+            {
+                "class_id": class_id,
+                "label": row["label"],
+                "conceptnet_uri": uri,
+                "entity_id": entity_id,
+                "valid": linked,
+                "mapping_status": row["decision"],
+                "review_status": "background" if class_id == 0 else "human_approved",
+            }
+        )
+    if int(valid.sum()) != kg.metadata["resolved_class_count"]:
+        raise ValueError("ConceptNet export coverage differs from reviewed KG")
+    export_manifest = {
+        "schema_version": 1,
+        "milestone": "C.2",
+        "mode": "reviewed",
+        "interpretation": (
+            "human_direct_and_batch_approved_ai_conceptnet_class_links_source_assertions_not_individually_reviewed"
+            if review["review_basis"] == "human_mixed_direct_and_ai_batch"
+            else "human_batch_approved_ai_conceptnet_class_links_source_assertions_not_individually_reviewed"
+            if review["review_basis"] == "human_batch_approved_ai_proposal"
+            else "human_reviewed_conceptnet_class_links_source_assertions_not_individually_reviewed"
+        ),
+        "review_status": "human_approved",
+        "review_basis": review["review_basis"],
+        "review_manifest_sha256": sha256(review_manifest_path),
+        "kg_source": "conceptnet",
+        "source_version": kg.metadata["source_version"],
+        "dim": dim,
+        "class_count": 151,
+        "valid_class_count": int(valid.sum()),
+        "background_policy": "zero_vector_mask_false",
+        "missing_policy": "zero_vector_mask_false",
+        "checkpoint_sha256": sha256(checkpoint_path),
+        "checkpoint_epoch": checkpoint["epoch"],
+        "checkpoint_manifest": manifest,
+        "input_sha256": {
+            **kg.hashes,
+            "vocabulary": vocab_hash,
+            "class_entity_ids.json": sha256(kg_dir / "class_entity_ids.json"),
+            "class_concept_links.json": sha256(kg_dir / "class_concept_links.json"),
+        },
+        "rows": records,
+    }
+    output.mkdir(parents=True, exist_ok=False)
+    tensor_path = output / "class_embeddings.pt"
+    torch.save({"class_embeddings": features, "valid_mask": valid}, tensor_path)
+    export_manifest["tensor_sha256"] = sha256(tensor_path)
+    (output / "review_manifest.json").write_bytes(review_manifest_path.read_bytes())
+    (output / "manifest.json").write_text(json.dumps(export_manifest, indent=2) + "\n", encoding="utf-8")
+    return export_manifest
+
+
 def load_class_features(folder: Path, *, allow_draft: bool = False):
     """Validate the portable C.2 bundle before training or inference."""
     manifest = json.loads((folder / "manifest.json").read_text(encoding="utf-8"))
     if (
         manifest.get("schema_version") != 1
         or manifest.get("milestone") != "C.2"
-        or manifest.get("kg_source") != "wordnet"
+        or manifest.get("kg_source") not in {"wordnet", "conceptnet"}
         or manifest.get("mode") not in {"draft", "reviewed"}
     ):
         raise ValueError("Unsupported C.2 feature manifest")
@@ -173,7 +287,11 @@ def load_class_features(folder: Path, *, allow_draft: bool = False):
         or not isinstance(manifest.get("checkpoint_manifest", {}).get("review_manifest_sha256"), str)
         or manifest.get("review_manifest_sha256")
         != manifest.get("checkpoint_manifest", {}).get("review_manifest_sha256")
-        or manifest.get("valid_class_count") != 150
+        or (
+            manifest.get("valid_class_count") != 150
+            if manifest["kg_source"] == "wordnet"
+            else not (1 <= manifest.get("valid_class_count", 0) <= 150)
+        )
     ):
         raise ValueError("Reviewed features lack approval provenance or full class coverage")
     if manifest["mode"] == "reviewed" and sha256(folder / "review_manifest.json") != manifest["review_manifest_sha256"]:

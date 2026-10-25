@@ -55,6 +55,14 @@ def test_three_seed_mean_and_sample_std(tmp_path):
     assert result["groups"][0]["metrics"]["mR@50"]["sample_std"] == pytest.approx(0.1)
 
 
+def test_conceptnet_group_has_correct_source_name(tmp_path):
+    rows = reports()
+    for row in rows:
+        row["config"]["features"] = "geometry+frozen_clip_vit_b32+frozen_conceptnet+valid_bit"
+    result = call(tmp_path, rows)
+    assert result["groups"][0]["condition"].startswith("gat_kg:conceptnet:")
+
+
 def test_clip_summary_rejects_cross_run_input_budget_drift(tmp_path):
     rows = reports()
     for row in rows:
