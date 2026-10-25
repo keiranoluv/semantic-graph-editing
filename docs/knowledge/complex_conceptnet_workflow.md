@@ -19,6 +19,11 @@ mask false. So sánh với TransE/RotatE là so **pipeline nhúng KG hoàn chỉ
 score, loss và siêu tham số KG khác nhau; không quy chênh lệch cho riêng phép
 nhân phức. Hai bước PredCls và CLIP giữ cùng protocol.
 
+**Trạng thái hiện tại:** KG train đã hoàn tất, chọn `best.pt` epoch 11 theo
+validation MRR 0,01497 trên 512 triple mẫu. C.2 đã export CPU tại
+`data/knowledge/c2-conceptnet-complex-toan-v1/`, shape `[151,64]`, 138 class
+valid. Ba run PredCls KG-on chưa chạy.
+
 ## 1. KG train: Toan chạy GPU
 
 Đứng tại gốc repository. CPU preflight:
