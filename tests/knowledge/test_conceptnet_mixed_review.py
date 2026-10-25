@@ -11,6 +11,7 @@ from scripts.apply_conceptnet_user_review import SELECTION_FIELDS, _csv_bytes, a
 from scripts.build_conceptnet_graph import write_outputs
 from scripts.prepare_conceptnet_review import check, compile_reviewed, prepare
 from scripts.suggest_conceptnet_review import FIELDS
+from src.knowledge.complex import ComplexReviewed
 from src.knowledge.conceptnet_builder import extract_assertions
 from src.knowledge.export import export_conceptnet, load_class_features
 from src.knowledge.rotate import RotateV2
@@ -218,6 +219,49 @@ def test_mixed_direct_and_ai_review_is_bound_to_exact_decisions(tmp_path):
             review_manifest_path=manifest,
             embedding_model="rotate",
         )
+
+    complex_checkpoint = tmp_path / "complex-best.pt"
+    complex_manifest = {
+        **torch.load(checkpoint, map_location="cpu", weights_only=True)["manifest"],
+        "embedding_model": "complex",
+        "embedding_version": 1,
+        "score_function": "real_hermitian_trilinear_product",
+        "loss": "filtered_logistic_l2",
+        "negative_count": 4,
+        "complex_dim": 4,
+        "entity_export": "real_imag_concat_l2_normalized",
+    }
+    torch.save(
+        {
+            "manifest": complex_manifest,
+            "model": ComplexReviewed(len(kg.entities), len(kg.relations), 4).state_dict(),
+            "epoch": 1,
+        },
+        complex_checkpoint,
+    )
+    complex_features_dir = tmp_path / "complex-features"
+    export_conceptnet(
+        complex_checkpoint,
+        compiled_dir,
+        vocabulary,
+        complex_features_dir,
+        review_manifest_path=manifest,
+        embedding_model="complex",
+    )
+    complex_features, complex_valid, complex_export_manifest = load_class_features(complex_features_dir)
+    assert complex_features.shape == (151, 8)
+    assert int(complex_valid.sum()) == 138
+    assert torch.count_nonzero(complex_features[~complex_valid]) == 0
+    assert torch.allclose(torch.linalg.vector_norm(complex_features[complex_valid], dim=1), torch.ones(138), atol=1e-6)
+    assert complex_export_manifest["embedding_model"] == "complex"
+    complex_state = torch.load(complex_checkpoint, map_location="cpu", weights_only=True)["model"]
+    complex_expected = torch.nn.functional.normalize(
+        torch.cat(
+            (complex_state["node_emb.weight"][first_entity_id], complex_state["node_emb_im.weight"][first_entity_id])
+        ),
+        dim=0,
+    )
+    assert torch.allclose(complex_features[1], complex_expected)
 
     direct_file = compiled_dir / "direct_decisions.csv"
     direct = direct_file.read_bytes()

@@ -230,3 +230,6 @@ Thử nghiệm embedding RotatE riêng sau 21 run CLIP được hướng dẫn t
 [rotate_conceptnet_workflow.md](rotate_conceptnet_workflow.md). Nhánh này dùng
 chính ConceptNet reviewed v3 và đường dẫn output mới; không thay các kết quả
 TransE hiện có.
+
+Thử nghiệm ComplEx trên cùng ConceptNet reviewed v3 và cùng giao diện C.2 có
+quy trình riêng ở [complex_conceptnet_workflow.md](complex_conceptnet_workflow.md).
