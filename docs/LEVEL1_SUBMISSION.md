@@ -17,17 +17,18 @@ Không coi các ô trống là kết quả đã có.
    đọc predicate GT; GAT+WordNet thêm TransE 64D và valid bit. Đặc trưng vùng
    ảnh hiện chưa dùng, cần nêu lý do lựa chọn đơn giản hóa.
 4. **Tri thức nền (2 trang).** WordNet noun senses, graph, C.1 TransE và C.2
-   `[151,64]` features; 124/150 coverage của draft AI. Mô tả quy trình người
-   kiểm tra tại [LEVEL1_MAPPING_REVIEW.md](knowledge/LEVEL1_MAPPING_REVIEW.md),
-   số dòng thực tế được chấp nhận/defer sau khi nhóm điền CSV. Không gọi draft
-   là bản đã kiểm duyệt.
+   `[151,64]` features với 150/150 class từ mapping đại diện Toan xác nhận
+   chính thức. Mô tả quy trình tại
+   [LEVEL1_MAPPING_REVIEW.md](knowledge/LEVEL1_MAPPING_REVIEW.md), ghi rõ xác
+   nhận theo lô, thiếu lý do riêng cho phần lớn class và giới hạn nhãn đa nghĩa.
 5. **Protocol (1–2 trang).** Cùng data split, 3 seeds 42/123/3407, chọn
    checkpoint bằng validation mR@50, R@50/100 và mR@50/100, tính mean/sample
    std. Đưa cả ablation tắt KG và bỏ cạnh giữa đối tượng. Phân biệt `--no-knowledge`
    cùng kiến trúc với GAT baseline gốc.
-6. **Kết quả (2–3 trang).** Bảng baseline dưới đây đã kiểm tra lại. Thêm
-   GAT+WordNet và ablation sau khi người dùng chạy GPU; nếu làm draft thì đánh
-   dấu rõ. Thêm per-predicate/long-tail khi dữ liệu thực nghiệm đủ.
+6. **Kết quả (2–3 trang).** Bảng baseline dưới đây đã kiểm tra lại. Ba run
+   GAT+WordNet reviewed đã train xong; thêm kết quả đánh giá độc lập và ablation
+   sau khi người dùng chạy 6 run còn lại. Thêm per-predicate/long-tail khi dữ
+   liệu thực nghiệm đủ.
 7. **Phân tích lỗi (1–2 trang).** Công cụ trích case đã tạo 5 hit/5 missed mẫu
    ở [level1_case_candidates.md](experiments/level1_case_candidates.md).
    Thay hoặc bổ sung case GAT+KG final, xem JPEG và ghi nguyên nhân thực tế.
@@ -79,9 +80,8 @@ Không tự điền tên người kiểm tra WordNet hay tuyên bố họ đã k
 ## Chốt trước nộp
 
 - Có 3 seeds GAT+KG và ablation, cùng split/protocol; hash và config đầy đủ.
-- Có review mapping được ký tên, số accept/defer rõ; kết quả draft và reviewed
-  được đặt tên đúng trạng thái. Nếu chưa có reviewed, báo cáo không gọi kết quả
-  GAT+KG là đã kiểm chứng nguồn tri thức.
+- Có nguồn lựa chọn 150 synset của Toan, approval declaration và manifest
+  reviewed batch gắn hash KG; báo cáo nêu giới hạn thiếu lý do riêng từng class.
 - Đánh giá full validation; chỉ chạy test cuối sau khi đóng băng thiết kế.
 - Có 5 đúng/5 sai được người thật kiểm tra ảnh và giải thích.
 - Notebook chạy được trên máy nhóm; đường dẫn JPEG hoặc demo không ảnh được

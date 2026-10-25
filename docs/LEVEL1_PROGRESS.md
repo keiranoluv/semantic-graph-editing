@@ -37,8 +37,8 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 |---|---|---|---|
 | 1. Kiểm tra nền và môi trường | Xác minh C.1, baseline, phụ thuộc, nguồn dữ liệu và split; hướng dẫn thiết lập cho nhóm | Hoàn thành kiểm tra nền; còn giới hạn về split/ngân sách lịch sử | 150 tests ban đầu PASS, split tái tạo khớp, 9 checkpoint/config/epoch khớp; xem audit |
 | 2. C.2 — Xuất embedding | Chuyển checkpoint TransE thành bảng đặc trưng đúng class ID VG150, kèm mask và provenance | Hoàn thành export reviewed chính [151,64], 150/150 class | `best.pt` epoch 52, hash KG/review và tensor export khớp; `load_class_features` PASS |
-| 3. GAT+WordNet | Tích hợp KG vào đặc trưng đỉnh, có cấu hình và run riêng | Code reviewed và CPU smoke hoàn thành | Reviewed GAT+KG 1 epoch CPU PASS; 3 chế độ KG-on/KG-off/edges-off draft trước đó PASS; baseline được bảo toàn |
-| 4. Thực nghiệm | So sánh cùng protocol với 3 seeds; ablation tri thức/cạnh | 9 baseline đã đánh giá lại full validation; aggregator có; chờ GAT+KG GPU | Chưa có kết quả GAT+KG train dài hoặc mean/std cho nhánh KG |
+| 3. GAT+WordNet | Tích hợp KG vào đặc trưng đỉnh, có cấu hình và run riêng | Hoàn thành code reviewed, CPU smoke và 3 run KG-on GPU | Cả 3 seed có `best.pt` và dừng bằng early stopping; baseline được bảo toàn |
+| 4. Thực nghiệm | So sánh cùng protocol với 3 seeds; ablation tri thức/cạnh | 9 baseline đã đánh giá lại full validation; 3 KG-on đã train xong, chờ đánh giá độc lập và 6 ablation | Chạy KG-off/edges-off, đánh giá lại 9 `best.pt` trên full validation, sau đó chốt protocol để đánh giá test |
 | 5. Phân tích và bộ nộp | 5 đúng/5 sai, notebook, bảng kết quả, hướng dẫn, tài liệu báo cáo/demo | Có case kỹ thuật, notebook đã chạy, bản chuẩn bị báo cáo/slide; phân tích người và kết quả final còn lại | Phân tích thủ công trên model final và bộ nộp hoàn chỉnh |
 
 ## Điểm xuất phát và những điều chưa xác minh
@@ -101,6 +101,10 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | 2026-10-25 | Người dùng chạy TransE reviewed trên GPU | 72 epochs, best epoch 52 theo validation filtered MRR=0,046061, early stop patience 20; test filtered MRR=0,033331 (KG link prediction, không phải PredCls). Cổng review, hash KG/checkpoint và epoch `best.pt` đều PASS; WandB mode online | Người dùng export `best.pt` thành C.2 reviewed, gửi output 150/150 để kiểm tra trước GAT+KG GPU |
 | 2026-10-25 | Người dùng export C.2 reviewed | `[REVIEWED] 150/150 mapped classes`, tensor [151,64], norm class trung bình 1,0; `load_class_features` PASS. GAT+KG CPU smoke 1 epoch với đúng export chính PASS | Người dùng chạy GAT+KG seed 42 GPU, rồi đánh giá PredCls full validation và ablation |
 | 2026-10-25 | Giải thích KG link prediction MRR | KG 1.077 entities/1.312 triples; 629 entities chỉ có 1 cạnh train, 887 có tối đa 2. Test MRR=0,03333, Hits@10=0,05725 so với kỳ vọng random filtered khoảng 0,00704/0,00931; 100 triple train sample MRR=0,12166. IsA test MRR=0,02654, HasPart=0,04094 | MRR của TransE không phải metric VG150 PredCls; xem GAT+KG cùng KG-off để xác định giá trị của embedding |
+| 2026-10-25 | Chuẩn bị ma trận thực nghiệm mức 1 | Launcher ban đầu ở `tools/level1_matrix.py`, dựng 6 ablation còn thiếu (KG-off/edges-off × 3 seeds) và đánh giá 9 checkpoint trên full validation, tổng hợp mean/std; khi 3 run KG-on còn chạy, file nằm ngoài `src/` và `scripts/` nên không đổi code hash của chúng; dry-run cho 6 train và 9 eval PASS. Ba run khi đó dùng 4,5–11,9 GiB/32 GiB GPU trong mẫu 12 giây | Người dùng khởi chạy ablation sau khi KG-on hoàn tất; sau khi toàn bộ 9 run hoàn tất, chạy evaluate và gửi summary |
+| 2026-10-25 | Hoàn tất 3 run GAT+WordNet reviewed GPU | Seeds 42/123/3407 dừng early stopping ở epoch 69/70/45, `best.pt` epoch 54/55/30. Validation mR@50 tại `best.pt`: 20,2079% / 20,0762% / 18,9785%; mean ± sample std 19,7542 ± 0,6750%. GAT baseline cùng seeds: 19,7963 ± 1,0300%. Các số KG-on lấy từ history/checkpoint, chưa chạy evaluator độc lập; seed 42 tăng nhưng hai seed còn lại giảm. | Người dùng chạy 6 ablation GPU, rồi đánh giá độc lập cả 9 checkpoint trên full validation; chưa dùng test để chọn mô hình |
+| 2026-10-25 | Sửa launcher ablation chạy trực tiếp | Lệnh `python tools/level1_matrix.py` ban đầu lỗi `ModuleNotFoundError: src` trước khi khởi chạy GPU; thêm repo root vào import path và cho dry-run kiểm tra feature bundle. Dry-run `--max-parallel 6`, py_compile, ruff và `git diff --check` PASS | Người dùng chạy lại `train-ablations --max-parallel 6`; không có run ablation nào được tạo bởi lần lỗi trước |
+| 2026-10-25 | Chuyển launcher vào `src/` theo yêu cầu người dùng | Đường dẫn hiện tại là `src/level1_matrix.py`, chạy qua `python -m src.level1_matrix`; chỉ chuyển orchestration, không sửa trainer/model. Vì `train_gat_kg.py` hash mọi file Python dưới `src/` và `scripts/`, các ablation mới sẽ ghi thêm hash của launcher so với 3 KG-on đã hoàn tất; ghi rõ khác biệt provenance này khi báo cáo | Người dùng commit file và tài liệu trước khi chạy GPU; Codex không tự commit |
 
 ## B1-01 — Kiểm kê trước khi cài đặt
 
@@ -152,9 +156,22 @@ các URL download trên máy teammate chưa được kiểm chứng bằng một
 - Mapping 150/150 của Toan đã được xác nhận chính thức; KG và manifest reviewed
   batch đã có ở máy hiện tại. Teammate tạo lại bằng lệnh trong
   [c2_gat_wordnet.md](knowledge/c2_gat_wordnet.md).
-- TransE GPU và C.2 reviewed đã hoàn tất; người dùng chạy GAT+KG GPU từ export
-  `[REVIEWED] 150/150`. Lệnh tại tài liệu C.2 nêu trên; gửi output và đường dẫn
-  run để Codex kiểm tra trước khi tổng hợp kết quả.
+- TransE GPU, C.2 reviewed và 3 run GAT+KG KG-on đã hoàn tất. Kết quả
+  validation hiện lấy từ history/checkpoint; chờ đánh giá độc lập `best.pt`
+  và đối chứng KG-off/edges-off trước khi kết luận tác dụng của tri thức.
+- Ma trận 9 run gồm KG-on, KG-off và edges-off, mỗi điều kiện 3 seeds. Ba KG-on
+  đã hoàn tất; còn 6 ablation. Lệnh chuẩn bị và đánh giá:
+
+  ```bash
+  myenv/bin/python -m src.level1_matrix train-ablations --max-parallel 6 --dry-run
+  myenv/bin/python -m src.level1_matrix train-ablations --max-parallel 6
+  # Chỉ chạy sau khi cả 9 run hoàn tất:
+  myenv/bin/python -m src.level1_matrix evaluate --max-parallel 3 --device cuda
+  ```
+
+  Stage evaluate từ chối checkpoint còn đang train, đọc toàn bộ 5.000 ảnh
+  validation cho mỗi `best.pt`, sau đó dùng aggregator hiện có. Mỗi run có
+  output/log riêng và không ghi đè.
 - Manifest ghi nguồn xác nhận theo lô và giới hạn thiếu lý do riêng cho phần lớn
   class. Khi báo cáo, nêu đúng giới hạn này và vấn đề nhãn đa nghĩa.
 - Không đánh dấu bước 4 hoặc 5 hoàn thành trước khi có dữ liệu thực nghiệm,

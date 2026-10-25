@@ -31,8 +31,9 @@ Object bbox geometry (5D) + trainable class embedding (32D)
 ```
 
 This design uses PyG `GATConv` with dropout=0.1 and AdamW. Training
-uses a 32-graph micro-batch with 16 gradient accumulation steps (effective
-512-graph batch), reducing optimizer-step differences versus the MLP baseline. Graphs are
+uses a 512-graph micro-batch with one gradient accumulation step (effective
+512-graph batch) in the three completed baseline runs. Their recorded configs
+are in `reports/level1/gat_seed*_val5000.json`. Graphs are
 independent within each mini-batch; GAT receives **full** message-passing
 connectivity even though classification targets are sampled. Note that
 fully-connected attention is a global context aggregator: shuffling all
@@ -74,9 +75,9 @@ for seed in 42 123 3407; do
     --device cuda \
     --epochs 200 \
     --patience 15 \
-    --batch-size 32 \
-    --accumulation-steps 16 \
-    --val-batch-size 32 \
+    --batch-size 512 \
+    --accumulation-steps 1 \
+    --val-batch-size 128 \
     --max-train-images 57723 \
     --max-val-images 5000 \
     --lr 0.001 \
@@ -105,7 +106,7 @@ an equal-compute comparison. If CUDA OOM, lower `--batch-size` and increase
 ```bash
 python -m scripts.train_gat \
   --resume checkpoints/experiments/gat_seed42/run_0001/last.pt \
-  --epochs 200 --seed 42 --batch-size 32 --accumulation-steps 16 --val-batch-size 32 \
+  --epochs 200 --seed 42 --batch-size 512 --accumulation-steps 1 --val-batch-size 128 \
   --wandb-mode online
 
 python -m scripts.evaluate_gat \
