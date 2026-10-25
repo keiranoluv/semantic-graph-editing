@@ -21,7 +21,9 @@ from scripts.pilot_mlp import (
 )
 from scripts.train_mlp import make_dataset
 from src.evaluation.gat import validate_gat
+from src.features.visual import load_visual_manifest
 from src.graph.gnn_batching import collate_gnn_graphs, forward_gat_batch
+from src.knowledge.transe.core import sha256
 from src.models.gat import build_gat_model
 
 
@@ -86,6 +88,7 @@ def train_one_epoch(
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path("data/raw/vg150"))
+    parser.add_argument("--visual-cache", type=Path, help="Completed frozen CLIP region cache")
     parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
     parser.add_argument("--epochs", type=int, default=200)
     parser.add_argument("--batch-size", type=int, default=32, help="Graphs per GPU micro-batch")
@@ -140,12 +143,16 @@ def parse_args(argv=None):
 
 def frozen_config(args, num_objects, num_predicates, train_limit, val_limit):
     """Everything influencing training or model selection, except max epochs."""
-    return {
+    config = {
         "model": "gat",
         "dataset": "VG150",
-        "features": "geometry+trainable_object_embedding",
+        "features": "geometry+frozen_clip_vit_b32+trainable_object_embedding"
+        if args.visual_cache
+        else "geometry+trainable_object_embedding",
         "topology": "fully_connected_directed_no_predicate_labels",
-        "geometry_dim": args.geometry_dim,
+        "geometry_dim": args.geometry_dim + (512 if args.visual_cache else 0),
+        "visual_cache": str(args.visual_cache.resolve()) if args.visual_cache else None,
+        "visual_cache_manifest_sha256": sha256(args.visual_cache / "manifest.json") if args.visual_cache else None,
         "embedding_dim": args.embedding_dim,
         "hidden_dim": args.hidden_dim,
         "num_heads": args.num_heads,
@@ -170,6 +177,17 @@ def frozen_config(args, num_objects, num_predicates, train_limit, val_limit):
         "selection_metric": "mR@50",
         "evaluation_protocol": "PredCls_graph_constrained_top1_per_pair",
     }
+    if args.visual_cache:
+        config["data_sha256"] = {
+            name: sha256(args.root / name)
+            for name in ("VG-SGG-with-attri.h5", "VG-SGG-dicts-with-attri.json", "image_data.json", "splits.json")
+        }
+        config["code_sha256"] = {
+            str(path): sha256(path)
+            for folder in (Path("src"), Path("scripts"))
+            for path in sorted(folder.rglob("*.py"))
+        }
+    return config
 
 
 def main(argv=None):
@@ -191,8 +209,10 @@ def main(argv=None):
     if num_predicates != 51:
         raise ValueError(f"Expected VG150's 51 classes including background, got {num_predicates}")
 
-    train_dataset = make_dataset(args.root, "train", args.box_policy)
-    val_dataset = make_dataset(args.root, "val", args.box_policy)
+    if args.visual_cache:
+        load_visual_manifest(args.visual_cache, args.root, args.box_policy)
+    train_dataset = make_dataset(args.root, "train", args.box_policy, args.visual_cache)
+    val_dataset = make_dataset(args.root, "val", args.box_policy, args.visual_cache)
     train_limit = min(args.max_train_images, len(train_dataset))
     val_limit = min(args.max_val_images, len(val_dataset))
     if train_limit < 1 or val_limit < 1:

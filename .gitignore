@@ -23,3 +23,4 @@ scripts/pilot_mlp.py.bak
 # Large downloaded external KG data and generated KG artifacts
 /data/external/
 /data/knowledge/
+/data/cache/

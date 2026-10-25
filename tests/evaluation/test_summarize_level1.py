@@ -55,8 +55,20 @@ def test_three_seed_mean_and_sample_std(tmp_path):
     assert result["groups"][0]["metrics"]["mR@50"]["sample_std"] == pytest.approx(0.1)
 
 
+def test_clip_summary_rejects_cross_run_input_budget_drift(tmp_path):
+    rows = reports()
+    for row in rows:
+        row["config"].update(
+            visual_cache_manifest_sha256="same", geometry_dim=517, batch_size=512, code_sha256={"x": "a"}
+        )
+    rows[1]["config"]["batch_size"] = 256
+    with pytest.raises(ValueError, match="shared input or training protocol"):
+        call(tmp_path, rows)
+
+
 @pytest.mark.parametrize(
-    "change", ["subset", "different_split", "different_support", "different_config", "duplicate_seed"]
+    "change",
+    ["subset", "different_split", "different_support", "different_config", "different_cache", "duplicate_seed"],
 )
 def test_rejects_noncomparable_reports(tmp_path, change):
     rows = copy.deepcopy(reports())
@@ -68,6 +80,8 @@ def test_rejects_noncomparable_reports(tmp_path, change):
         rows[1]["per_predicate"]["1"]["support"] = 3
     elif change == "different_config":
         rows[1]["config"]["message_edges"] = "none"
+    elif change == "different_cache":
+        rows[1]["config"]["visual_cache_manifest_sha256"] = "other"
     else:
         rows[1]["seed"] = 42
         rows[1]["config"]["seed"] = 42

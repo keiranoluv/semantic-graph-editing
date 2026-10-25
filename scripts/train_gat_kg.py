@@ -54,13 +54,17 @@ def main(argv=None):
     num_classes = max(vocab["predicate_to_idx"].values()) + 1
     if num_objects != 151 or num_classes != 51:
         raise ValueError("Expected VG150 vocabulary (151 objects / 51 predicates with background)")
-    train = make_dataset(args.root, "train", args.box_policy)
-    val = make_dataset(args.root, "val", args.box_policy)
+    train = make_dataset(args.root, "train", args.box_policy, args.visual_cache)
+    val = make_dataset(args.root, "val", args.box_policy, args.visual_cache)
     train_limit, val_limit = min(args.max_train_images, len(train)), min(args.max_val_images, len(val))
     config = frozen_config(args, num_objects, num_classes, train_limit, val_limit)
     config.update(
         model="gat_kg",
-        features="geometry+trainable_object_embedding+frozen_wordnet+valid_bit",
+        features=(
+            "geometry+frozen_clip_vit_b32+trainable_object_embedding+frozen_wordnet+valid_bit"
+            if args.visual_cache
+            else "geometry+trainable_object_embedding+frozen_wordnet+valid_bit"
+        ),
         kg_dim=feature_manifest["dim"],
         kg_manifest_sha256=sha256(kg_args.kg_features / "manifest.json"),
         use_knowledge=not kg_args.no_knowledge,

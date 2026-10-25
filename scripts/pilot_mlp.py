@@ -17,6 +17,8 @@ from scripts.evaluate_mlp import build_model
 from scripts.train_mlp import make_dataset
 from src.evaluation.batched import evaluate_graph_batch
 from src.evaluation.scene_graph import summarize_evaluation
+from src.features.visual import load_visual_manifest
+from src.knowledge.transe.core import sha256
 from src.training.sampling import sample_training_pairs
 
 
@@ -208,6 +210,10 @@ def check_resume_compatibility(saved, current):
         "val_limit",
         "selection_metric",
         "dataset",
+        "geometry_dim",
+        "visual_cache_manifest_sha256",
+        "data_sha256",
+        "code_sha256",
     )
     for key in frozen:
         if saved.get(key) != current.get(key):
@@ -258,6 +264,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", choices=["mlp", "mlp_semantic"], required=True)
     parser.add_argument("--root", type=Path, default=Path("data/raw/vg150"))
+    parser.add_argument("--visual-cache", type=Path, help="Completed frozen CLIP region cache")
     parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
     parser.add_argument("--batch-size", type=int, default=512)
     parser.add_argument("--val-batch-size", type=int, default=128)
@@ -317,15 +324,24 @@ def main():
     if num_classes != 51:
         raise ValueError(f"Expected 51 classes; got {num_classes}")
 
-    train_data = make_dataset(args.root, "train", args.box_policy)
-    val_data = make_dataset(args.root, "val", args.box_policy)
+    train_data = make_dataset(args.root, "train", args.box_policy, args.visual_cache)
+    val_data = make_dataset(args.root, "val", args.box_policy, args.visual_cache)
     train_limit = min(args.max_train_images, len(train_data))
     val_limit = min(args.max_val_images, len(val_data))
 
     config = {
         "model": args.model,
         "dataset": "VG150",
-        "features": "geometry" if args.model == "mlp" else "geometry+trainable_object_embedding",
+        "features": (
+            "geometry+frozen_clip_vit_b32"
+            if args.model == "mlp"
+            else "geometry+frozen_clip_vit_b32+trainable_object_embedding"
+        )
+        if args.visual_cache
+        else ("geometry" if args.model == "mlp" else "geometry+trainable_object_embedding"),
+        "geometry_dim": 517 if args.visual_cache else 5,
+        "visual_cache": str(args.visual_cache.resolve()) if args.visual_cache else None,
+        "visual_cache_manifest_sha256": sha256(args.visual_cache / "manifest.json") if args.visual_cache else None,
         "hidden_dim": args.hidden_dim,
         "embedding_dim": args.embedding_dim,
         "num_object_classes": num_objects,
@@ -344,6 +360,17 @@ def main():
         "val_limit": val_limit,
         "selection_metric": "mR@50",
     }
+    if args.visual_cache:
+        load_visual_manifest(args.visual_cache, args.root, args.box_policy)
+        config["data_sha256"] = {
+            name: sha256(args.root / name)
+            for name in ("VG-SGG-with-attri.h5", "VG-SGG-dicts-with-attri.json", "image_data.json", "splits.json")
+        }
+        config["code_sha256"] = {
+            str(path): sha256(path)
+            for folder in (Path("src"), Path("scripts"))
+            for path in sorted(folder.rglob("*.py"))
+        }
 
     model = build_model(config).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)

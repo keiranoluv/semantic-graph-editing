@@ -71,9 +71,11 @@ def main():
         p.error("Reviewed outputs must not be mixed into draft/candidate directories")
     if args.output_dir.exists():
         raise FileExistsError(f"Run directory already exists: {args.output_dir}")
-    known = {tuple(map(int, row)) for row in kg.triples}
     splitter = split_triples_transductive if args.split_policy == "transductive" else split_triples
     train, val, test = splitter(kg.triples, args.seed, val_ratio=args.val_ratio, test_ratio=args.test_ratio)
+    train_known = {tuple(map(int, row)) for row in train}
+    val_known = train_known | {tuple(map(int, row)) for row in val}
+    test_known = val_known | {tuple(map(int, row)) for row in test}
 
     # Subset evaluation ONLY; training split and the filtered-positive set stay unchanged.
     def eval_subset(data, offset):
@@ -118,6 +120,9 @@ def main():
             else "seeded_unique_triple_random_holdout_not_relation_stratified"
         ),
         "evaluation": "filtered_head_tail_MRR_Hits@1_3_10",
+        "negative_filter": "train_only",
+        "validation_rank_filter": "train_and_validation_only",
+        "test_rank_filter": "train_validation_and_test",
         "interpretation": "technical_only_not_official"
         if args.mode == "draft"
         else "reviewed_KG_link_prediction_not_PredCls",
@@ -165,7 +170,7 @@ def main():
             losses = []
             for chunk in np.array_split(order, max(1, (len(order) + args.batch_size - 1) // args.batch_size)):
                 pos_np = train[chunk]
-                neg_np = negative_sample(pos_np, len(kg.entities), known, rng)
+                neg_np = negative_sample(pos_np, len(kg.entities), train_known, rng)
                 pos = torch.tensor(pos_np, device=device, dtype=torch.long)
                 neg = torch.tensor(neg_np, device=device, dtype=torch.long)
                 optimizer.zero_grad(set_to_none=True)
@@ -177,7 +182,7 @@ def main():
             record = {
                 "epoch": epoch,
                 "train_loss": float(np.mean(losses)),
-                "val": evaluate(model, val_eval, known, device),
+                "val": evaluate(model, val_eval, val_known, device),
             }
             score = record["val"]["MRR"]
             if not math.isfinite(score):
@@ -220,7 +225,7 @@ def main():
         if args.patience is not None:
             best = torch.load(args.output_dir / "best.pt", map_location=device, weights_only=True)
             model.load_state_dict(best["model"])
-        test_metrics = evaluate(model, test_eval, known, device)
+        test_metrics = evaluate(model, test_eval, test_known, device)
         result = {
             "history": history,
             "test": test_metrics,

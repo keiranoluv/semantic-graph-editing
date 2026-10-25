@@ -5,7 +5,6 @@ import torch
 
 from src.features.geometry import GeometryFeatureExtractor
 from src.features.semantic import SemanticFeatureExtractor
-from src.features.visual import VisualFeatureExtractor
 
 
 def test_output_dimensions():
@@ -42,9 +41,3 @@ def test_semantic_placeholder(sample_scene):
     """Semantic features remain unimplemented."""
     with pytest.raises(NotImplementedError):
         SemanticFeatureExtractor(embedding_dim=300).extract(sample_scene)
-
-
-def test_visual_placeholder(sample_scene):
-    """Visual features remain unimplemented."""
-    with pytest.raises(NotImplementedError):
-        VisualFeatureExtractor(embedding_dim=512).extract(sample_scene)

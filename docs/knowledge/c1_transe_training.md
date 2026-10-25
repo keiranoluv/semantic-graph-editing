@@ -72,7 +72,10 @@ Each new exclusive run directory contains `manifest.json` with input hashes,
 checkpoint per epoch (model/optimizer/RNG), and `metrics.json` recording
 filtered head-and-tail MRR/Hits@1/3/10. Validation is computed every epoch;
 test only after all epochs. Split is unique-triple-level, seeded random
-holdout with all positive triples used for filtering corruptions/rankings.
+holdout. Phiên bản hiện tại chỉ lọc negative train theo train positives;
+validation ranking lọc train+validation; test ranking sau chọn checkpoint lọc
+train+validation+test. Các run cũ dùng all-positive filter phải ghi riêng và
+không tái dùng embedding khi so sánh CLIP final.
 The trainer does **not** support resuming from checkpoints. It writes an epoch
 snapshot each epoch and `best.pt` when validation filtered MRR improves. With
 `--patience N`, it stops after N consecutive epochs without a gain exceeding
@@ -125,8 +128,10 @@ ratios; increasing the train fraction is **not a guarantee** of feasibility.
 sampling policy are recorded in the manifest; metrics record both evaluated
 and total holdout counts. `count` in MRR/Hits is **head + tail queries**,
 so 100 triples produce 200 rank queries. Sampling does **not** change the
-train/validation/test splits, and filtered ranking continues to exclude all
-known triples, including unevaluated holdout positives.
+train/validation/test splits. Filtered validation ranking loại train và toàn
+bộ validation positives, gồm cả các triple validation không được lấy vào
+subset; nó không tham chiếu KG test. Filtered test ranking loại toàn bộ
+train/validation/test positives.
 
 These subset metrics are **technical diagnostics**, never official benchmark
 results. Omitting the flag evaluates the complete holdout, maintaining the

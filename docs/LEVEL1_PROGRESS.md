@@ -6,8 +6,8 @@ Cập nhật: 2026-10-25.
 
 - Codex sửa code/tài liệu và được chạy kiểm tra môi trường, dữ liệu, tests,
   thiết lập môi trường và smoke tests nhỏ trên CPU.
-- Người dùng chạy các lệnh train GPU. Codex cung cấp lệnh và giải thích mục đích;
-  không tự khởi chạy train GPU.
+- Người dùng chạy các lệnh train/đánh giá PredCls GPU. Codex cung cấp lệnh và
+  giải thích mục đích; TransE v2 GPU là ngoại lệ đã được người dùng yêu cầu chạy trực tiếp.
 - Mỗi nhóm lệnh phải có mục đích, thư mục thực thi và đầu ra cần gửi lại.
 - Chỉ đánh dấu kiểm tra PASS khi có đầu ra thực tế, ghi rõ môi trường và phạm vi.
 - Không ghi đè baseline, checkpoint hoặc dữ liệu hiện có. Không tự commit/push.
@@ -38,7 +38,7 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | 1. Kiểm tra nền và môi trường | Xác minh C.1, baseline, phụ thuộc, nguồn dữ liệu và split; hướng dẫn thiết lập cho nhóm | Hoàn thành kiểm tra nền; còn giới hạn về split/ngân sách lịch sử | 150 tests ban đầu PASS, split tái tạo khớp, 9 checkpoint/config/epoch khớp; xem audit |
 | 2. C.2 — Xuất embedding | Chuyển checkpoint TransE thành bảng đặc trưng đúng class ID VG150, kèm mask và provenance | Hoàn thành export reviewed chính [151,64], 150/150 class | `best.pt` epoch 52, hash KG/review và tensor export khớp; `load_class_features` PASS |
 | 3. GAT+WordNet | Tích hợp KG vào đặc trưng đỉnh, có cấu hình và run riêng | Hoàn thành code reviewed, CPU smoke và 3 run KG-on GPU | Cả 3 seed có `best.pt` và dừng bằng early stopping; baseline được bảo toàn |
-| 4. Thực nghiệm | So sánh cùng protocol với 3 seeds; ablation tri thức/cạnh | 9 baseline và 9 KG-on/ablation checkpoint đã đánh giá độc lập trên đủ 5.000 ảnh validation | Chốt và giải trình lựa chọn đầu vào theo PDF; nếu bổ sung vùng ảnh, train và so sánh lại trước đánh giá test |
+| 4. Thực nghiệm | So sánh cùng protocol với 3 seeds; ablation tri thức/cạnh | Ma trận annotation-only đã xong; 89.169 JPEG, cache CLIP và TransE/C.2 v2 đã xác minh; 15 run PredCls GPU còn chờ | Người dùng chạy ma trận 15 run rồi đánh giá đủ validation |
 | 5. Phân tích và bộ nộp | 5 đúng/5 sai, notebook, bảng kết quả, hướng dẫn, tài liệu báo cáo/demo | Có case kỹ thuật, notebook đã chạy, bản chuẩn bị báo cáo/slide; phân tích người và kết quả final còn lại | Phân tích thủ công trên model final và bộ nộp hoàn chỉnh |
 
 ## Điểm xuất phát và những điều chưa xác minh
@@ -46,14 +46,14 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 - Đã đọc PDF, code GAT, phần nạp KG của TransE và các ghi chú handoff.
 - Theo ghi chú baseline, đã có 9 runs MLP/GAT cho seeds 42, 123, 3407;
   các số liệu được ghi là validation, chưa phải đánh giá held-out test cuối cùng.
-- Full suite hiện tại có 176 tests PASS; lint/format trên các file mới/sửa
+- Full suite hiện tại có 184 tests PASS; lint/format trên các file mới/sửa
   đã sửa PASS. Chưa báo cáo toàn bộ pre-commit `--all-files` PASS.
 - `myenv` ban đầu chỉ có pip; đã cài dependencies và chạy CPU smoke. Sau đó đổi
-  sang torch 2.7.0+cu128: CUDA available, nhận RTX 5090; full suite hiện tại 176 tests PASS.
+  sang torch 2.7.0+cu128: CUDA available, nhận RTX 5090; full suite hiện tại 184 tests PASS.
 - Mapping AI-provisional cần phân biệt với mapping được người kiểm tra chấp thuận.
 - README đã cập nhật phạm vi C.1/C.2/GAT+WordNet draft; không khẳng định train GPU đã xong.
 - Cần xác minh tính tương đương split, giới hạn số ảnh và protocol của các baseline.
-- Baseline hiện tại không có đặc trưng vùng ảnh. Lúc bắt đầu pipeline chưa tải JPEG;
+- Ma trận annotation-only lịch sử không có đặc trưng vùng ảnh. Lúc bắt đầu pipeline chưa tải JPEG;
   237 JPEG hiện có được tải sau đó chỉ để review synset, không phải tập ảnh
   huấn luyện. PDF mục 4.1 (trang 2) nêu nhãn/vùng ảnh/hình học là cách tổ chức
   input được đề xuất và cho phép input khác; trang 3 nói kiến trúc cấp độ 1
@@ -117,6 +117,14 @@ sau khi có kết quả và đánh giá thời gian. Không giả định hai kh
 | 2026-10-25 | KG-off đủ 3 seed hoàn tất | Seed 123 exit=0, `best.pt` epoch 53, validation mR@50=18,9907%. KG-off seeds 42/123/3407: 19,6313%/18,9907%/18,8603%, mean ± sample std 19,1608 ± 0,4127%. KG-on tương ứng 19,7542 ± 0,6750%, paired delta +0,5934 điểm %, dương cả 3 seed. Đây là validation lấy từ history, chưa đánh giá độc lập; edges-off seed 3407 vẫn chạy | Chờ run cuối rồi chạy stage evaluate cho cả 9 checkpoint; không đánh giá test trước khi chốt protocol |
 | 2026-10-25 | Cả 6 ablation hoàn tất | Kiểm tra đủ 9 cặp `best.pt`/`last.pt`, tất cả dừng ở `bad_epochs=15`, không còn tiến trình train. `edges_off` seed 3407 best epoch 74, validation mR@50=19,9819%. Ba seed `edges_off`: 19,4674%/19,2297%/19,9819%, mean ± sample std 19,5597 ± 0,3845%. KG-on hơn `edges_off` trung bình +0,1945 điểm %, nhưng seed 3407 thấp hơn 1,0034 điểm %. Số này lấy từ checkpoint/history, chưa phải lượt evaluate độc lập | Người dùng chạy `myenv/bin/python -m src.level1_matrix evaluate --max-parallel 3 --device cuda` để đánh giá 9 checkpoint trên toàn bộ validation và tạo summary; chưa dùng test |
 | 2026-10-25 | Đánh giá độc lập cả 9 checkpoint hoàn tất | Đủ 9 report, mỗi report `split=val`, `images_evaluated=5000`, `full_split=true`; summary 3 nhóm. Validation mR@50 mean ± sample std: KG-on 19,7542 ± 0,6750%, KG-off 19,1608 ± 0,4127%, edges-off 19,5597 ± 0,3845%; GAT baseline 19,7963 ± 1,0300%. KG-on hơn KG-off +0,5934 điểm %, hơn edges-off +0,1945 điểm %; vẫn thấp hơn GAT baseline gốc 0,0421 điểm %. R@50 KG-on 64,1446%, thấp hơn KG-off 64,3164% và edges-off 64,7673%. Đây là kết quả annotation-only với embedding TransE hiện tại; không có VG150 test hoặc đặc trưng vùng ảnh | Giữ kết quả làm baseline kỹ thuật, bổ sung vùng ảnh và quyết định sửa protocol TransE trước đợt train final; không dùng test để chọn giữa các phương án |
+| 2026-10-25 | Checkpoint Git trước nhánh ảnh | Người dùng commit `38b35ec` cho PDF, tài liệu và report annotation-only; Codex không tự commit | Tách rõ thay đổi CLIP/TransE v2 khỏi kết quả cũ |
+| 2026-10-25 | Tải đủ JPEG VG150 theo split | 89.169/89.169 JPEG train/val/test, 12 GiB ảnh và 15 GiB archive; giải mã và SHA-256 từng ảnh, hash archive trong `images_manifest.json`. Có 15 ảnh khác kích thước metadata, gồm ảnh 61530: JPEG 1000×586 so với metadata 1024×768. Dữ liệu local, không commit | Khi crop CLIP, scale GT box theo từng trục sang kích thước JPEG; giữ hình học GT gốc |
+| 2026-10-25 | CLIP vùng ảnh và TransE filter v2 | Thay placeholder bằng cache HDF5 theo GT box, CLIP OpenAI ViT-B/32 đóng băng, vector 512D chuẩn hóa L2; MLP semantic/GAT/GAT+KG cùng đọc cache. CPU smoke 1 ảnh train/14 box: 14 vector hữu hạn, norm 0,99989–1,00014 sau float16; cache chính có 1/89.169 ảnh. Negative TransE chỉ lọc train; validation train+val; test sau chọn checkpoint lọc cả ba split. Full suite 183 tests PASS, ruff/black/isort và `git diff --check` PASS; TransE reviewed dry-run PASS (1.050/131/131 triples). Chưa chạy GPU train/eval hoặc cache CLIP đầy đủ | Người dùng chạy tạo cache CLIP GPU đầy đủ, TransE GPU v2, export C.2 mới, rồi ma trận 15 run; lệnh ở `docs/experiments/level1_clip_regions.md` |
+| 2026-10-25 | Người dùng khởi chạy tạo cache CLIP GPU | Kiểm tra tiến trình thấy `scripts.cache_vg150_regions --device cuda --batch-size 64` đang chạy; file HDF5 còn khóa ghi, chưa có manifest hoàn tất. Codex không khởi chạy tiến trình GPU này | Chờ dòng `[OK]` và `manifest.json`, rồi kiểm tra 89.169 ảnh/GT box trước ma trận train |
+| 2026-10-25 | Làm rõ nguồn dữ liệu theo phản hồi người dùng | `scripts/download_vg150_images.py` nay khai báo trực tiếp hai URL ZIP mirror Hugging Face và `--dry-run` in URL; annotations HDF5/từ điển/metadata vẫn có URL riêng trong `scripts/download_vg150.sh`. Cập nhật hướng dẫn teammate; dry-run, ruff/black/isort và `git diff --check` PASS. Không thay `images_manifest.json` hoặc cache CLIP đang chạy | Người dùng/teammate có thể kiểm tra chính xác nguồn và hash trước khi tái lập |
+| 2026-10-25 | Cache CLIP hoàn tất và audit input 15 run | `features.h5` + `manifest.json` có 89.169/89.169 ảnh được đánh dấu hoàn tất, vector 512D; đồ thị train/val/test đầu tiên đều có `x` 517D hữu hạn. Đối chiếu PDF: class ID→embedding nhãn 32D, GT box→hình học 5D, crop→CLIP 512D đóng băng, GAT+KG thêm TransE 64D; MLP không truyền tin, GAT dùng topology đầy đủ không đọc predicate GT. Hai lựa chọn cần giải thích trong báo cáo: embedding nhãn học được thay vì GloVe/CLIP text gợi ý; fully-connected candidate graph thay vì dùng cạnh quan hệ GT (tránh lộ nhãn). Checkpoint MLP/GAT CLIP nay khóa hash dữ liệu/code, summary từ chối khác input/budget; full suite 184 tests PASS, lint/format và diff check PASS | TransE v2/export mới vẫn chưa có; sau đó mới chạy ma trận 15 run và đánh giá validation |
+| 2026-10-25 | CPU smoke ba mô hình với cache CLIP hoàn chỉnh | MLP, GAT và GAT+KG đều train 1 epoch CPU trên 8 train/8 val images, tạo `best.pt` và evaluate CPU 8 ảnh validation ra report hữu hạn. KG smoke dùng export WordNet cũ chỉ để kiểm tra wiring. Sửa hai help string còn ghi ResNet18. Audit rủi ro và lệnh 15 run ở `docs/experiments/level1_clip_regions.md` | Chờ TransE v2/export mới trước 15 GPU run |
+| 2026-10-25 | Train TransE v2 và export WordNet | Theo yêu cầu mới của người dùng, Codex chạy đúng lệnh TransE GPU seed 42 với filter train-only/validation train+val; exit 0, early stop epoch 60, `best.pt` epoch 40, validation MRR 0,0441983 và KG test MRR 0,0260909. CPU export từ `best.pt` tạo C.2 v2 shape [151,64], 150/150 class valid. Launcher ma trận CLIP dry-run PASS với 15 jobs tuần tự; chưa chạy PredCls GPU. Run dữ liệu/W&B không commit | Người dùng commit code/tài liệu rồi chạy 15 PredCls GPU run và đánh giá validation |
 
 ## B1-01 — Kiểm kê trước khi cài đặt
 
@@ -155,39 +163,23 @@ Nhóm kiểm tra này đã được Codex chạy sau khi người dùng cho phé
 ## Thiết lập máy thành viên và tải dữ liệu
 
 Đã có hướng dẫn tại [TEAM_SETUP_LEVEL1.md](TEAM_SETUP_LEVEL1.md): Python/venv,
-PyTorch CPU/CUDA, dependencies, download annotations VG150, tạo split, hash tham
-chiếu, WordNet corpus và lệnh smoke. JPEG tùy chọn cho notebook có lệnh tải
-theo image ID; host ảnh không kết nối được ở môi trường kiểm tra này.
-
-Không tải lại toàn bộ dataset trong phiên này vì dữ liệu đã có. Đã xác minh
-HDF5 checksum và tái tạo split/metadata từ input đang có. Tính sẵn sàng của
-các URL download trên máy teammate chưa được kiểm chứng bằng một lượt tải mới.
+PyTorch CPU/CUDA, dependencies, annotation VG150, split, WordNet corpus và
+lệnh smoke. Ma trận CLIP cần đủ 89.169 JPEG; lệnh tải hai archive mirror,
+manifest/hash và lệnh cache được ghi trong hướng dẫn teammate và
+[level1_clip_regions.md](experiments/level1_clip_regions.md). Máy hiện tại đã
+tải và xác minh toàn bộ; máy teammate chưa được kiểm chứng bằng lượt tải mới.
 
 ## Bước tiếp theo do người dùng thực hiện
 
-- Mapping 150/150 của Toan đã được xác nhận chính thức; KG và manifest reviewed
-  batch đã có ở máy hiện tại. Teammate tạo lại bằng lệnh trong
-  [c2_gat_wordnet.md](knowledge/c2_gat_wordnet.md).
-- TransE GPU, C.2 reviewed và 3 run GAT+KG KG-on đã hoàn tất. Kết quả
-  validation hiện lấy từ history/checkpoint; chờ đánh giá độc lập `best.pt`
-  và đối chứng KG-off/edges-off trước khi kết luận tác dụng của tri thức.
-- Ma trận 9 run gồm KG-on, KG-off và edges-off, mỗi điều kiện 3 seeds. Ba KG-on
-  đã hoàn tất; 6 ablation đã được khởi chạy trên máy này. Lệnh tái lập cho máy
-  khác và đánh giá sau khi hoàn tất:
-
-  ```bash
-  myenv/bin/python -m src.level1_matrix train-ablations --max-parallel 6 --dry-run
-  myenv/bin/python -m src.level1_matrix train-ablations --max-parallel 6
-  # Chỉ chạy sau khi cả 9 run hoàn tất:
-  myenv/bin/python -m src.level1_matrix evaluate --max-parallel 3 --device cuda
-  ```
-
-  Stage evaluate từ chối checkpoint còn đang train, đọc toàn bộ 5.000 ảnh
-  validation cho mỗi `best.pt`, sau đó dùng aggregator hiện có. Mỗi run có
-  output/log riêng và không ghi đè.
-- Manifest ghi nguồn xác nhận theo lô và giới hạn thiếu lý do riêng cho phần lớn
-  class. Khi báo cáo, nêu đúng giới hạn này và vấn đề nhãn đa nghĩa.
-- Không đánh dấu bước 4 hoặc 5 hoàn thành trước khi có dữ liệu thực nghiệm,
-  phân tích 5 đúng/5 sai và notebook/demo thực tế.
+- TransE v2 GPU và export WordNet 150/150 đã hoàn tất trên máy hiện tại;
+  lệnh tái lập ở [level1_clip_regions.md](experiments/level1_clip_regions.md).
+- Người dùng commit code/tài liệu, sau đó train 15 run CLIP bằng GPU;
+  tiếp đó đánh giá đủ 5.000 ảnh validation cho mỗi checkpoint. Launcher mặc
+  định chạy tuần tự, giữ riêng output/log và không ghi đè.
+- Dùng các report mới để phân tích ít nhất 5 đúng/5 sai, hoàn thiện báo cáo,
+  slide và notebook/demo; chỉ đánh giá test sau khi khóa pipeline.
+- Teammate tải lại annotation và JPEG theo
+  [TEAM_SETUP_LEVEL1.md](TEAM_SETUP_LEVEL1.md); mapping reviewed có lệnh tái lập
+  ở [c2_gat_wordnet.md](knowledge/c2_gat_wordnet.md).
 
 Không commit dữ liệu tải về, checkpoint, credentials hoặc đường dẫn riêng của máy.

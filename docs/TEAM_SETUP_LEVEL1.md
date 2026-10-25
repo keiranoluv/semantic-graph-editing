@@ -108,23 +108,47 @@ sha256sum data/raw/vg150/VG-SGG-with-attri.h5 \
   data/raw/vg150/image_data.json data/raw/vg150/splits.json
 ```
 
-Pipeline hiện tại không đọc pixel ảnh nên chưa cần tải JPEG Visual Genome.
-Notebook minh họa ảnh ở bước 5 sẽ cần ảnh tương ứng; hướng dẫn ảnh sẽ được
-bổ sung tại bước đó, không coi annotations là ảnh đã download. Để tải đúng một
-JPEG cho notebook sau khi biết `image_id`:
+Các run annotation-only trước đây không đọc pixel ảnh. Ma trận CLIP mới cần
+đủ JPEG theo hướng dẫn ngay dưới. Để tải riêng một JPEG cho notebook sau khi
+biết `image_id`:
 
 ```bash
 python -m scripts.download_vg150_image --image-id IMAGE_ID
 ```
 
 Script lấy URL từ `image_data.json` và lưu vào `data/raw/vg150/images/`.
-Ảnh tùy chọn cho demo; không ảnh hưởng dữ liệu huấn luyện geometry.
+Ảnh đơn lẻ này chỉ phục vụ demo, không đủ cho ma trận CLIP.
 Trong môi trường kiểm tra ngày 2026-10-24, host JPEG trả lỗi kết nối; notebook
 vẫn chạy với hộp và đồ thị trên nền trống. Nếu máy teammate cũng không truy cập
 được, dùng [trang tải Visual Genome chính thức](https://visualgenome.org/api/v0/api_home)
 để tải archive ảnh part 1/2, rồi đặt JPEG cần dùng vào thư mục `images/`.
-Các archive nhiều GB, chỉ tải khi thực sự cần ảnh cho demo/phân tích; giữ nguyên
-`image_id` và kiểm tra hình khớp metadata.
+
+### JPEG đầy đủ cho ma trận CLIP PredCls
+
+Sau khi có `image_data.json` và `splits.json`, teammate chạy từ gốc repo:
+
+```bash
+myenv/bin/python -m scripts.download_vg150_images --dry-run
+myenv/bin/python -m scripts.download_vg150_images
+```
+
+Lệnh tải đúng 89.169 ảnh train/val/test từ hai archive qua mirror đã dùng cho
+review, tiếp tục được nếu tải dở. Kết quả gồm `data/raw/vg150/images/*.jpg`,
+hai ZIP trong `data/raw/vg150/archives/` và `images_manifest.json` chứa hash
+từng ảnh, kích thước JPEG thực và hash archive. Không commit các file dữ liệu.
+URL tải JPEG được ghi trực tiếp trong `scripts/download_vg150_images.py`:
+
+- `https://huggingface.co/datasets/pppop7/VisualGenome_VG_100K_1_and_2/resolve/main/images.zip`
+- `https://huggingface.co/datasets/pppop7/VisualGenome_VG_100K_1_and_2/resolve/main/images2.zip`
+
+Đây là mirror của hai archive ảnh [Visual Genome](https://visualgenome.org/api/v0/api_home).
+Annotation HDF5, từ điển nhãn và metadata dùng các URL riêng đã khai báo ngay
+đầu `scripts/download_vg150.sh`.
+Một số JPEG có kích thước thực khác metadata; script ghi cả hai kích thước để
+trích vùng ảnh quy đổi tọa độ GT box theo từng trục. Cache CLIP và lệnh train
+đầy đủ ở [level1_clip_regions.md](experiments/level1_clip_regions.md).
+Hai archive nhiều GB là bắt buộc nếu teammate tái lập ma trận CLIP đầy đủ;
+giữ nguyên `image_id` và kiểm tra hình khớp metadata.
 
 Để review WordNet với 5 JPEG train cho mỗi class mà không tải toàn bộ
 archive, dùng lệnh sau sau khi đã tạo `train_examples_with_boxes.csv`:

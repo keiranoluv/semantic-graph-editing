@@ -30,6 +30,25 @@ def summarize(paths, *, expected_seeds=(42, 123, 3407), allow_subset=False):
     if not allow_subset and not reference.get("full_split"):
         raise ValueError("Subset evaluation is technical only; full split required")
     ref_support = {key: value["support"] for key, value in reference["per_predicate"].items()}
+    ref_visual = reference["config"].get("visual_cache_manifest_sha256")
+    matched_config_keys = (
+        "geometry_dim",
+        "box_policy",
+        "train_limit",
+        "val_limit",
+        "negative_ratio",
+        "batch_size",
+        "val_batch_size",
+        "patience",
+        "min_delta",
+        "lr",
+        "weight_decay",
+        "hidden_dim",
+        "embedding_dim",
+        "deterministic",
+        "code_sha256",
+    )
+    ref_matched_config = {key: reference["config"].get(key) for key in matched_config_keys}
     groups = {}
     for report in reports:
         if any(report.get(k) != reference.get(k) for k in keys):
@@ -40,6 +59,10 @@ def summarize(paths, *, expected_seeds=(42, 123, 3407), allow_subset=False):
         if support != ref_support:
             raise ValueError("Per-predicate support differs; evaluated images/protocol may differ")
         config = report["config"]
+        if config.get("visual_cache_manifest_sha256") != ref_visual:
+            raise ValueError("Reports use different frozen visual caches")
+        if ref_visual is not None and {key: config.get(key) for key in matched_config_keys} != ref_matched_config:
+            raise ValueError("CLIP reports differ in shared input or training protocol")
         if config.get("seed") != report.get("seed"):
             raise ValueError("Checkpoint config seed differs from evaluation report")
         if config.get("val_limit") is not None and config["val_limit"] != report["images_evaluated"]:
@@ -80,6 +103,7 @@ def summarize(paths, *, expected_seeds=(42, 123, 3407), allow_subset=False):
         "interpretation": "technical_subset_only" if not reference["full_split"] else "validation_not_final_test",
         "data_sha256": reference["data_sha256"],
         "protocol": reference["protocol"],
+        "visual_cache_manifest_sha256": ref_visual,
         "metrics_unit": "fraction_0_to_1",
         "std_definition": "sample_standard_deviation_ddof_1",
         "groups": output,

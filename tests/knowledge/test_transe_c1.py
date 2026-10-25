@@ -51,12 +51,21 @@ def test_kg_and_splits(tmp_path):
     assert len(a[0]) + len(a[1]) + len(a[2]) == 12
 
 
-def test_negative_excludes_all_true(tmp_path):
+def test_negative_excludes_visible_true(tmp_path):
     kg = load_kg(make_kg(tmp_path))
     known = set(map(tuple, kg.triples))
     neg = negative_sample(kg.triples, len(kg.entities), known, np.random.default_rng(17))
     assert not set(map(tuple, neg)) & known
     assert all(a[1] == b[1] for a, b in zip(kg.triples, neg, strict=False))
+
+
+def test_negative_filter_does_not_consult_holdout():
+    positives = np.array([[0, 0, 1]], dtype=np.int64)
+    train_known = {(0, 0, 1)}
+    # Entity 2 is the only possible head corruption. Even if a held-out
+    # positive uses it, train-time sampling cannot inspect that holdout.
+    negative = negative_sample(positives, 3, train_known | {(0, 0, 2), (0, 0, 0), (1, 0, 1)}, np.random.default_rng(2))
+    assert tuple(negative[0]) == (2, 0, 1)
 
 
 def test_reviewed_fails_closed(tmp_path):
@@ -172,6 +181,8 @@ def test_cli_bounded_evaluation_and_split_ratios(tmp_path, monkeypatch, capsys):
     train_transe.main()
     manifest = json.loads(capsys.readouterr().out)
     assert manifest["eval_subset"] is True
+    assert manifest["negative_filter"] == "train_only"
+    assert manifest["validation_rank_filter"] == "train_and_validation_only"
     assert manifest["train_count"] == 8 and manifest["val_count"] == 2 and manifest["test_count"] == 2
     assert not output.exists()
     monkeypatch.setattr("sys.argv", args)
@@ -181,6 +192,39 @@ def test_cli_bounded_evaluation_and_split_ratios(tmp_path, monkeypatch, capsys):
     assert metrics["test"]["count"] == 2
     assert metrics["evaluation_protocol"]["val_total"] == 2
     assert metrics["evaluation_protocol"]["subset"] is True
+
+
+def test_cli_filters_do_not_read_holdout_early(tmp_path, monkeypatch):
+    from scripts import train_transe
+
+    folder = make_kg(tmp_path)
+    output = tmp_path / "filters"
+    negative_sets = []
+    evaluation_sets = []
+    original_negative = train_transe.negative_sample
+    original_evaluate = train_transe.evaluate
+
+    def capture_negative(positives, n_entities, known, rng):
+        negative_sets.append(set(known))
+        return original_negative(positives, n_entities, known, rng)
+
+    def capture_evaluate(model, triples, known, device):
+        evaluation_sets.append(set(known))
+        return original_evaluate(model, triples, known, device)
+
+    monkeypatch.setattr(train_transe, "negative_sample", capture_negative)
+    monkeypatch.setattr(train_transe, "evaluate", capture_evaluate)
+    monkeypatch.setattr(
+        "sys.argv",
+        ["train_transe", "--kg-dir", str(folder), "--output-dir", str(output), "--epochs", "1", "--dim", "8"],
+    )
+    train_transe.main()
+    with np.load(output / "split_indices.npz") as split:
+        train = set(map(tuple, split["train"]))
+        val = set(map(tuple, split["val"]))
+        test = set(map(tuple, split["test"]))
+    assert negative_sets and all(item == train for item in negative_sets)
+    assert evaluation_sets == [train | val, train | val | test]
 
 
 def test_cli_invalid_ratios_and_eval_limit(tmp_path, monkeypatch):

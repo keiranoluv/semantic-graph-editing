@@ -18,7 +18,7 @@ class KnowledgeGAT(GATPredicateClassifier):
         if config["message_edges"] not in {"full", "none"}:
             raise ValueError("Unsupported message edge ablation")
         super().__init__(
-            geometry_dim=5 + config["kg_dim"] + 1,
+            geometry_dim=config.get("geometry_dim", 5) + config["kg_dim"] + 1,
             num_object_classes=config["num_object_classes"],
             embedding_dim=config["embedding_dim"],
             hidden_dim=config["hidden_dim"],
@@ -29,12 +29,13 @@ class KnowledgeGAT(GATPredicateClassifier):
         )
         self.use_knowledge = config["use_knowledge"]
         self.message_edges = config["message_edges"]
+        self.base_input_dim = config.get("geometry_dim", 5)
         self.register_buffer("kg_features", features.detach().clone())
         self.register_buffer("kg_valid", valid.detach().clone())
 
     def forward(self, x, edge_index, edge_label_index, object_labels):
-        if x.ndim != 2 or x.shape[1] != 5:
-            raise ValueError("Expected 5D geometry input")
+        if x.ndim != 2 or x.shape[1] != self.base_input_dim:
+            raise ValueError("Unexpected geometry/visual input width")
         if object_labels.dtype != torch.long or object_labels.shape != (x.shape[0],):
             raise ValueError("Invalid object_labels")
         if object_labels.numel() and (object_labels.min() < 0 or object_labels.max() >= self.kg_features.shape[0]):

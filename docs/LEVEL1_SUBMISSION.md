@@ -15,9 +15,11 @@ Không coi các ô trống là kết quả đã có.
 3. **Mô hình (2–3 trang).** Geometry MLP 5D; Semantic MLP thêm embedding nhãn
    học được 32D; GAT truyền tin trên fully-connected directed topology không
    đọc predicate GT; GAT+WordNet thêm TransE 64D và valid bit. Đặc trưng vùng
-   ảnh hiện chưa dùng, cần nêu lý do lựa chọn đơn giản hóa. PDF mục 4.1 đề xuất
-   vùng ảnh nhưng cho phép input khác; trang 3 cho phép điều chỉnh kiến trúc
-   nếu giải thích cơ chế. Xác nhận với giảng viên nếu xem đây là thay đổi lớn.
+   ảnh chưa dùng trong bảng kết quả lịch sử bên dưới. Nhánh CLIP ViT-B/32 đang
+   chuẩn bị theo [level1_clip_regions.md](experiments/level1_clip_regions.md):
+   vùng ảnh 512D sẽ vào cùng MLP semantic/GAT/GAT+WordNet trước đợt train mới.
+   PDF mục 4.1 đề xuất vùng ảnh, trang 3 cho phép điều chỉnh kiến trúc nếu giải
+   thích cơ chế.
 4. **Tri thức nền (2 trang).** WordNet noun senses, graph, C.1 TransE và C.2
    `[151,64]` features với 150/150 class từ mapping đại diện Toan xác nhận
    chính thức. Mô tả quy trình tại
@@ -27,9 +29,10 @@ Không coi các ô trống là kết quả đã có.
    checkpoint bằng validation mR@50, R@50/100 và mR@50/100, tính mean/sample
    std. Đưa cả ablation tắt KG và bỏ cạnh giữa đối tượng. Phân biệt `--no-knowledge`
    cùng kiến trúc với GAT baseline gốc.
-6. **Kết quả (2–3 trang).** Bảng dưới đây là đánh giá độc lập đủ 5.000 ảnh
-   validation cho mỗi checkpoint, ba seed mỗi điều kiện. Thêm per-predicate/
-   long-tail và kết quả test chỉ sau khi chốt pipeline final.
+6. **Kết quả (2–3 trang).** Bảng dưới đây là đánh giá annotation-only độc lập
+   đủ 5.000 ảnh validation cho mỗi checkpoint, ba seed mỗi điều kiện. Thay bằng
+   hoặc bổ sung bảng CLIP khi 15 run mới hoàn tất. Thêm per-predicate/long-tail
+   và kết quả test chỉ sau khi chốt pipeline final.
 7. **Phân tích lỗi (1–2 trang).** Công cụ trích case đã tạo 5 hit/5 missed mẫu
    ở [level1_case_candidates.md](experiments/level1_case_candidates.md).
    Thay hoặc bổ sung case GAT+KG final, xem JPEG và ghi nguyên nhân thực tế.

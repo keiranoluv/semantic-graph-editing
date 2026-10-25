@@ -11,21 +11,27 @@ from torch.nn import functional as F
 import wandb
 from src.datasets.vg150 import VG150AnnotationLoader, VG150GraphDataset
 from src.features.geometry import GeometryFeatureExtractor
+from src.features.visual import GeometryVisualFeatureExtractor, VisualFeatureExtractor
 from src.graph.builder import SceneGraphBuilder
 from src.models.mlp import MLPPredicateClassifier
 from src.training.trainer import train_step
 
 
-def make_dataset(root, split, box_policy):
+def make_dataset(root, split, box_policy, visual_cache=None):
     loader = VG150AnnotationLoader(
         root=root,
         split=split,
         split_manifest=root / "splits.json",
         box_policy=box_policy,
     )
+    extractor = (
+        GeometryVisualFeatureExtractor(VisualFeatureExtractor(visual_cache, root, box_policy))
+        if visual_cache is not None
+        else GeometryFeatureExtractor()
+    )
     return VG150GraphDataset(
         loader=loader,
-        feature_extractor=GeometryFeatureExtractor(),
+        feature_extractor=extractor,
         graph_builder=SceneGraphBuilder(),
     )
 

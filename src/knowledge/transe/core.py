@@ -14,7 +14,11 @@ from torch.nn import functional as F
 
 
 def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 @dataclass
@@ -249,7 +253,7 @@ class TransE(nn.Module):
 def negative_sample(
     positives: np.ndarray, n_entities: int, known: set[tuple[int, int, int]], rng: np.random.Generator
 ) -> np.ndarray:
-    """Uniform head/tail corruption, filtered against ALL known true KG triples."""
+    """Uniform head/tail corruption, filtered against caller-visible positives."""
     negatives = positives.copy()
     for i, (h, r, t) in enumerate(positives):
         # O(batch) expected rejection sampling; bounded fallback for dense graphs.
