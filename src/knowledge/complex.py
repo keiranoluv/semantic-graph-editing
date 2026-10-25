@@ -57,7 +57,9 @@ def evaluate_complex(
                     coefficient_im = entity_im[h] * relation_re[r] + entity_re[h] * relation_im[r]
                     gold_id = t
                     filtered = tail_known.get((h, r), ())
-                scores = entity_re @ coefficient_re + entity_im @ coefficient_im
+                # Explicit products avoid CUDA matvec/CuBLAS, which requires an
+                # extra workspace setting when deterministic algorithms are on.
+                scores = (entity_re * coefficient_re).sum(dim=1) + (entity_im * coefficient_im).sum(dim=1)
                 gold = scores[gold_id]
                 excluded = [index for index in filtered if index != gold_id]
                 if excluded:

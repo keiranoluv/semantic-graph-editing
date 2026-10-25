@@ -34,10 +34,11 @@ myenv/bin/python -m scripts.train_complex \
   --batch-size 512 --seed 42 --device cpu --wandb-mode disabled --dry-run
 ```
 
-**Sau khi commit code, Toan chạy GPU**:
+**Sau khi commit code, Toan chạy GPU**. Biến môi trường được đặt trước khi
+Python khởi động để CUDA/CuBLAS tương thích với deterministic mode:
 
 ```bash
-myenv/bin/python -u -m scripts.train_complex \
+CUBLAS_WORKSPACE_CONFIG=:4096:8 myenv/bin/python -u -m scripts.train_complex \
   --kg-dir data/knowledge/conceptnet-reviewed-toan-v3 \
   --mode reviewed --review-manifest data/knowledge/conceptnet-reviewed-toan-v3/review_manifest.json \
   --split-policy transductive --val-ratio 0.08 --test-ratio 0.08 \
@@ -51,6 +52,13 @@ myenv/bin/python -u -m scripts.train_complex \
 Split dự kiến 47.631 train / 4.536 validation / 4.536 KG test triples, với
 512 triple mẫu mỗi val/test. Chọn `best.pt` bằng validation filtered MRR.
 Chỉ xem KG test sau khi chọn checkpoint; không dùng VG150 test để chọn mô hình.
+
+Lần chạy đầu tiên dừng ở validation epoch 1 vì evaluator dùng phép nhân
+ma trận CuBLAS khi deterministic mode đang bật; chưa ghi checkpoint epoch nào.
+Artifact đã được giữ tại
+`runs/complex/conceptnet-toan-v3-seed42-failed-cublas-20261025-1755/`.
+Evaluator hiện dùng phép nhân từng chiều rồi cộng để tránh CuBLAS; lệnh GPU
+trên cũng đặt workspace config để bảo vệ các phép CuBLAS khác.
 
 ## 2. C.2 export trên CPU
 
