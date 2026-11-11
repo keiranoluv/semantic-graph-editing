@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "decided_at": "2026-11-12T00:30:03.968497+07:00",
+  "status": "selected_not_implemented",
+  "selected_method": {
+    "name": "Prototype-Based Embedding Network for Scene Graph Generation",
+    "short_name": "PE-Net",
+    "venue": "CVPR",
+    "year": 2023,
+    "paper_url": "https://openaccess.thecvf.com/content/CVPR2023/html/Zheng_Prototype-Based_Embedding_Network_for_Scene_Graph_Generation_CVPR_2023_paper.html",
+    "full_text_read": "https://arxiv.org/html/2303.07096v1",
+    "official_repository": "https://github.com/VL-Group/PENET",
+    "pinned_commit": "9c9f50777c66647799cb7a17dfb855aa98aecd1e",
+    "project_name": "PE-Net adapted to frozen-CLIP PredCls",
+    "exact_paper_reproduction_claimed": false
+  },
+  "reviewed_upstream_files": [
+    {
+      "path": "LICENSE",
+      "url": "https://github.com/VL-Group/PENET/blob/9c9f50777c66647799cb7a17dfb855aa98aecd1e/LICENSE",
+      "local_review_text_sha256": "a3a92ad0429b82684cbf1f4c932deeedee17e760b4012cf2d8991d98e6759964",
+      "local_copy": "data/external/penet-review-9c9f507/LICENSE"
+    },
+    {
+      "path": "maskrcnn_benchmark/data/datasets/evaluation/vg/sgg_eval.py",
+      "url": "https://github.com/VL-Group/PENET/blob/9c9f50777c66647799cb7a17dfb855aa98aecd1e/maskrcnn_benchmark/data/datasets/evaluation/vg/sgg_eval.py",
+      "local_review_text_sha256": "75a5c247ec809be6e007997fb68572a753dd5d2bddbac0e868c8a1c90069c7ec",
+      "local_copy": "data/external/penet-review-9c9f507/maskrcnn_benchmark/data/datasets/evaluation/vg/sgg_eval.py"
+    },
+    {
+      "path": "maskrcnn_benchmark/modeling/roi_heads/relation_head/loss.py",
+      "url": "https://github.com/VL-Group/PENET/blob/9c9f50777c66647799cb7a17dfb855aa98aecd1e/maskrcnn_benchmark/modeling/roi_heads/relation_head/loss.py",
+      "local_review_text_sha256": "bce59b09860320c88942bdca6f2add988f8899785b1701117e1173174f0b8494",
+      "local_copy": "data/external/penet-review-9c9f507/maskrcnn_benchmark/modeling/roi_heads/relation_head/loss.py"
+    },
+    {
+      "path": "maskrcnn_benchmark/modeling/roi_heads/relation_head/roi_relation_predictors.py",
+      "url": "https://github.com/VL-Group/PENET/blob/9c9f50777c66647799cb7a17dfb855aa98aecd1e/maskrcnn_benchmark/modeling/roi_heads/relation_head/roi_relation_predictors.py",
+      "local_review_text_sha256": "f57e2d5aa44c46f07d585b3b5fbe3220098617ec3bd699ceb20496467acaa42d",
+      "local_copy": "data/external/penet-review-9c9f507/maskrcnn_benchmark/modeling/roi_heads/relation_head/roi_relation_predictors.py"
+    },
+    {
+      "path": "maskrcnn_benchmark/modeling/roi_heads/relation_head/utils_motifs.py",
+      "url": "https://github.com/VL-Group/PENET/blob/9c9f50777c66647799cb7a17dfb855aa98aecd1e/maskrcnn_benchmark/modeling/roi_heads/relation_head/utils_motifs.py",
+      "local_review_text_sha256": "45fbd57d65464f6c1834d2c71929085751dac891f928beab4c8a2549dbbfae31",
+      "local_copy": "data/external/penet-review-9c9f507/maskrcnn_benchmark/modeling/roi_heads/relation_head/utils_motifs.py"
+    },
+    {
+      "path": "tools/relation_train_net.py",
+      "url": "https://github.com/VL-Group/PENET/blob/9c9f50777c66647799cb7a17dfb855aa98aecd1e/tools/relation_train_net.py",
+      "local_review_text_sha256": "84b32547c1611bb95c745363ae278024f53ca15ff5f8c9d4e90e9a034664b53f",
+      "local_copy": "data/external/penet-review-9c9f507/tools/relation_train_net.py"
+    }
+  ],
+  "other_candidates": [
+    {
+      "name": "EGTR",
+      "year": 2024,
+      "source": "https://github.com/naver-ai/egtr/blob/main/README.md",
+      "decision": "not selected",
+      "reason": "DETR decoder/query inputs and detector-dependent multi-task training differ from frozen CLIP PredCls pipeline"
+    },
+    {
+      "name": "LLM4SGG",
+      "year": 2024,
+      "source": "https://github.com/rlqja1107/torch-LLM4SGG/blob/master/README.md",
+      "decision": "not selected",
+      "reason": "caption triplet extraction/alignment and grounding change supervision and require additional data/provenance work"
+    }
+  ],
+  "implementation_contract": {
+    "retain": [
+      "subject/object semantic prototypes and gated visual residuals",
+      "author fusion function and predicate residual matching",
+      "cosine prototype logits with learned temperature",
+      "PL cosine CE and Euclidean margin",
+      "PR cosine and Euclidean separation"
+    ],
+    "adaptations": [
+      "frozen CLIP+geometry instead of detector ROI features",
+      "ordered concatenated object features as learned pair visual proxy; no true union-box crop",
+      "initial semantic width 256 and projection 512 instead of 2048/4096",
+      "dynamic 51 or 311 total classes",
+      "uniform multilabel supervision; exclude all known positives from negatives",
+      "shared frozen evaluator without upstream relation NMS",
+      "common pipeline sampling/optimizer budget requires new matched runs"
+    ],
+    "text_initialization": "GloVe 6B 300D; trainable class embeddings after initialization; mapping/asset not yet prepared",
+    "loss_reference": "pinned official implementation, with deviations from paper equations documented",
+    "initial_loss_parameters": {
+      "k1": 10,
+      "k2": 1,
+      "gamma1": 1.0,
+      "gamma2": 7.0,
+      "temperature_initial": 0.07,
+      "loss_weights": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "PR_implementation_notes": [
+      "l21 normalized by C squared",
+      "stop-gradient right prototype branch",
+      "per-row hinge then mean for Euclidean PR"
+    ],
+    "multilabel_PL_Euclidean": "mean positive-label hinges per pair against nearest negatives outside full positive set; mean over pairs",
+    "training_recipe_finalized": false
+  },
+  "planned_controls": [
+    "MLP",
+    "GAT",
+    "GAT+KG",
+    "PE-CE",
+    "PE-PL",
+    "PE-PLPR"
+  ],
+  "planned_seeds": [
+    42,
+    123,
+    3407
+  ],
+  "datasets": {
+    "VG150": "existing project split, new matched baseline runs if supervision changes",
+    "GQA": "69942 project train / 5000 project val; custom 310 predicates"
+  },
+  "guardrails": [
+    "no detector/visual encoder training",
+    "no test-based prototype/prior/hyperparameter selection",
+    "no VG150-trained model transfer to GQA without overlap audit",
+    "no paper SGDet scores versus project PredCls",
+    "do not relabel prototype word vectors as external graph KG",
+    "preserve historical Level1 evaluators/checkpoints"
+  ],
+  "next_step": "GloVe provenance/coverage; port adapter and losses; reference tests; real 512/128 pilot and stress benchmark",
+  "implementation_completed": false,
+  "training_performed": false,
+  "new_results": null,
+  "human_review_samples": 0,
+  "decision_document": "docs/LEVEL2_METHOD_DECISION.md",
+  "decision_document_sha256": "6586dbcda96049583f1852269df7d5a5339773802128ee37a42eb3234e5819ff",
+  "verification": {
+    "source_review": "official code read without executing legacy stack",
+    "checks": "JSON parse, pinned source text hashes, document links and pre-commit; no model tests newly required for documentation-only change",
+    "personal_notebook_sha256": "786c3eff8b7d4abd93c1546dba3b9d9d4ff635fc160fa80a59c0eefdd8952c19"
+  }
+}

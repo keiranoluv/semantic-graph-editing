@@ -8,6 +8,8 @@ Mốc pilot đã commit tại **`f36ff65`**. Audit tiếp theo đã đọc đủ
 
 Benchmark tiếp theo: MLP/GAT đã chạy qua batch 64 graph lớn nhất; GAT train peak allocated **6,76 GiB**. Đề xuất khởi điểm **train batch 64 / validation batch 32**, cần xác nhận launcher full train và chất lượng học. [Benchmark và dự toán có điều kiện](../reports/level2/GQA_BENCHMARK.md). Chưa có checkpoint huấn luyện chính.
 
+Đã chốt phương pháp 2023+: **PE-Net (CVPR 2023), bản adapted to frozen-CLIP PredCls**, giữ PL/PR và công bố các thay đổi so với code gốc. **Chưa triển khai/train PE-Net.** [Quyết định, nguồn và thiết kế đối chứng](LEVEL2_METHOD_DECISION.md).
+
 ## 1. Đề yêu cầu gì?
 
 Đối chiếu [PDF](../Project01_Graph_Editing.pdf), trang 3–5:
@@ -15,7 +17,7 @@ Benchmark tiếp theo: MLP/GAT đã chạy qua batch 64 graph lớn nhất; GAT 
 | Hạng mục bắt buộc | Trạng thái |
 |---|---|
 | Thực nghiệm ít nhất hai dataset có sẵn | VG150 đã có; GQA đã có **pilot MLP/GAT một seed**, chưa có thực nghiệm chính ba seed/KG |
-| Triển khai/tái lập một phương pháp từ 2023 trở lại đây về SGG hoặc dự đoán quan hệ có tri thức | Chưa triển khai; cần chốt phương pháp phù hợp với thị giác đóng băng và PredCls |
+| Triển khai/tái lập một phương pháp từ 2023 trở lại đây về SGG hoặc dự đoán quan hệ có tri thức | Đã chọn **PE-Net (CVPR 2023), bản thích nghi frozen-CLIP PredCls**; chưa triển khai/train |
 | Ít nhất 300 cặp `(đồ thị nguồn, câu yêu cầu, thao tác đích)` từ MagicBrush/InstructPix2Pix | Chưa xây; ví dụ tổng hợp để kiểm code không được tính vào 300 cặp |
 | Kiểm tay ít nhất 20 mẫu và báo cáo độ tin cậy | Chưa có; cần người trong nhóm xác nhận, không tự đánh dấu hoàn thành |
 | Huấn luyện model dự đoán thao tác, nhúng câu đóng băng | Chưa triển khai/train |
@@ -103,7 +105,7 @@ GQA dùng ảnh Visual Genome: hai thực nghiệm riêng không chứng minh ch
 ## 5. Thứ tự triển khai tiếp
 
 1. **Mở rộng sau GQA pilot:** cache CLIP và launcher MLP/GAT đã chạy được trên subset cố định; tiếp theo audit quy mô/độ phủ lớp, cache cho cohort chính, mapping KG riêng, GAT+KG và ba seed. Evaluator cần tham số hóa taxonomy 310 predicate; không đổi evaluator VG150 đã khóa, không mặc định 50 lớp.
-2. **Chốt phương pháp 2023+:** đọc phương pháp và code, xác định phần graph được train, phần vision giữ frozen và đầu ra so sánh trên cùng PredCls pipeline. EGTR/LLM4SGG là ứng viên trong đề; chưa chọn hay tuyên bố đã tái lập. Không lấy điểm SGDet từ paper so với PredCls của nhóm.
+2. **Triển khai PE-Net adapted (CVPR 2023):** chuẩn bị GloVe mapping có provenance, port prototype head + PL/PR, test theo code reference và chạy pilot/benchmark riêng. Dùng chung frozen CLIP và evaluator; công bố pair-feature proxy, đa nhãn và mọi thay đổi. [Chi tiết quyết định](LEVEL2_METHOD_DECISION.md). EGTR/LLM4SGG đã được đối chiếu nhưng không chọn cho pipeline hiện tại.
 3. **MagicBrush:** chọn subset train/dev có provenance, ít nhất 300 cặp; sinh graph nguồn/đích bằng model tiền huấn luyện hoặc caption; căn chỉnh instance trước khi diff. Giữ mọi turn của cùng `img_id`/ảnh gốc trong một split. Có thể dùng train để tạo validation nội bộ và giữ dev làm test dự án; nếu làm vậy phải gọi đúng là split dự án. Không đưa official test vào train.
 4. Khóa bộ nhãn sinh tự động, lấy ít nhất 20 mẫu ngẫu nhiên để nhóm kiểm; báo tỷ lệ đúng/mức agreement và lỗi alignment/thuộc tính. Không sửa riêng nhãn test dựa trên review. Những câu sửa style/toàn cảnh không biểu diễn được bằng schema phải được thống kê, không âm thầm ép thành no-op.
 5. Train baseline và mô hình graph + embedding câu frozen; đánh giá ba seed bằng P/R/F1 từng loại, exact match trên tập yêu cầu đơn giản được xác định trước và validity. Phân tách đánh giá trên graph GT/pseudo-GT với graph model dự đoán để không che lỗi đầu vào.
