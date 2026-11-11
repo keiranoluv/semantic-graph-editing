@@ -1,0 +1,1086 @@
+{
+  "scope": "engineering benchmark only; disposable optimizer updates, no trained checkpoints or quality scores",
+  "device": "NVIDIA GeForce RTX 5090",
+  "total_device_bytes": 33671348224,
+  "torch_version": "2.7.0+cu128",
+  "seed": 42,
+  "dtype": "float32; no AMP or TF32",
+  "deterministic_algorithms": true,
+  "cpu_threads": 1,
+  "warmup_batches": 2,
+  "repeats": 5,
+  "batch_sizes": [
+    32,
+    64
+  ],
+  "timing": "perf_counter with CUDA synchronization before and after each measured batch; includes CPU collate and H2D",
+  "model_config_sha256": "cf1ecd246dbcfa3ed5779188536e24fc6220c84233781be75e309533f580720d",
+  "cohort_sha256": "a2dcbcbe16c97beb44d2e8b3f496e85b82855a75ef31b5570fdb8141a3a6cc43",
+  "source_sha256": {
+    "tools/benchmark_gqa_scale.py": "e5a38ab3ac5e0ff1bf07a0c6c8326b7df40444c62cd186656d95df8a1cffc06b",
+    "tools/train_gqa_pilot.py": "24dd7c7d39333e315c7cdff48bebfa9f589929f4b3885843f36b3a2eb23ffefc",
+    "src/training/gqa_pilot.py": "d8dc567a032f7af046f53d2bc86b4fee5aef1f306f9188b1017fddf2d277cdbd"
+  },
+  "prepare": {
+    "total_prepare_seconds": 19.07302714099933,
+    "stress_cache_extract_or_verify_seconds": 0.001874428999144584,
+    "graph_build_and_hdf5_read_seconds": 0.5730856510053854,
+    "host_ru_maxrss_bytes_linux_process_high_water": 3715129344,
+    "stress_cache_manifest_sha256": "07c89c5148e5eba0394b1dd036a6259a313e55015328be5391d5bbeba423b68b",
+    "stress_graphs": [
+      {
+        "image_id": "2337434",
+        "objects": 126,
+        "candidate_pairs": 15750,
+        "gt_rows": 798
+      },
+      {
+        "image_id": "2409218",
+        "objects": 112,
+        "candidate_pairs": 12432,
+        "gt_rows": 848
+      },
+      {
+        "image_id": "497948",
+        "objects": 104,
+        "candidate_pairs": 10712,
+        "gt_rows": 1057
+      },
+      {
+        "image_id": "2335601",
+        "objects": 92,
+        "candidate_pairs": 8372,
+        "gt_rows": 409
+      },
+      {
+        "image_id": "2339926",
+        "objects": 88,
+        "candidate_pairs": 7656,
+        "gt_rows": 743
+      },
+      {
+        "image_id": "2357209",
+        "objects": 83,
+        "candidate_pairs": 6806,
+        "gt_rows": 1657
+      },
+      {
+        "image_id": "2324781",
+        "objects": 78,
+        "candidate_pairs": 6006,
+        "gt_rows": 488
+      },
+      {
+        "image_id": "2325727",
+        "objects": 78,
+        "candidate_pairs": 6006,
+        "gt_rows": 754
+      },
+      {
+        "image_id": "2412465",
+        "objects": 78,
+        "candidate_pairs": 6006,
+        "gt_rows": 1131
+      },
+      {
+        "image_id": "2345634",
+        "objects": 77,
+        "candidate_pairs": 5852,
+        "gt_rows": 722
+      },
+      {
+        "image_id": "2335661",
+        "objects": 73,
+        "candidate_pairs": 5256,
+        "gt_rows": 424
+      },
+      {
+        "image_id": "1592851",
+        "objects": 71,
+        "candidate_pairs": 4970,
+        "gt_rows": 492
+      },
+      {
+        "image_id": "2317464",
+        "objects": 70,
+        "candidate_pairs": 4830,
+        "gt_rows": 441
+      },
+      {
+        "image_id": "2317923",
+        "objects": 70,
+        "candidate_pairs": 4830,
+        "gt_rows": 350
+      },
+      {
+        "image_id": "2344647",
+        "objects": 70,
+        "candidate_pairs": 4830,
+        "gt_rows": 805
+      },
+      {
+        "image_id": "2320173",
+        "objects": 69,
+        "candidate_pairs": 4692,
+        "gt_rows": 607
+      },
+      {
+        "image_id": "2335647",
+        "objects": 69,
+        "candidate_pairs": 4692,
+        "gt_rows": 1399
+      },
+      {
+        "image_id": "2340741",
+        "objects": 69,
+        "candidate_pairs": 4692,
+        "gt_rows": 592
+      },
+      {
+        "image_id": "2364547",
+        "objects": 69,
+        "candidate_pairs": 4692,
+        "gt_rows": 378
+      },
+      {
+        "image_id": "2346117",
+        "objects": 68,
+        "candidate_pairs": 4556,
+        "gt_rows": 686
+      },
+      {
+        "image_id": "2378423",
+        "objects": 68,
+        "candidate_pairs": 4556,
+        "gt_rows": 271
+      },
+      {
+        "image_id": "3495",
+        "objects": 68,
+        "candidate_pairs": 4556,
+        "gt_rows": 316
+      },
+      {
+        "image_id": "2332409",
+        "objects": 66,
+        "candidate_pairs": 4290,
+        "gt_rows": 137
+      },
+      {
+        "image_id": "2355116",
+        "objects": 66,
+        "candidate_pairs": 4290,
+        "gt_rows": 229
+      },
+      {
+        "image_id": "2390709",
+        "objects": 66,
+        "candidate_pairs": 4290,
+        "gt_rows": 448
+      },
+      {
+        "image_id": "3234",
+        "objects": 66,
+        "candidate_pairs": 4290,
+        "gt_rows": 487
+      },
+      {
+        "image_id": "1255",
+        "objects": 65,
+        "candidate_pairs": 4160,
+        "gt_rows": 470
+      },
+      {
+        "image_id": "2328333",
+        "objects": 65,
+        "candidate_pairs": 4160,
+        "gt_rows": 818
+      },
+      {
+        "image_id": "2349205",
+        "objects": 65,
+        "candidate_pairs": 4160,
+        "gt_rows": 286
+      },
+      {
+        "image_id": "2328400",
+        "objects": 64,
+        "candidate_pairs": 4032,
+        "gt_rows": 374
+      },
+      {
+        "image_id": "2374171",
+        "objects": 64,
+        "candidate_pairs": 4032,
+        "gt_rows": 526
+      },
+      {
+        "image_id": "1034",
+        "objects": 63,
+        "candidate_pairs": 3906,
+        "gt_rows": 301
+      },
+      {
+        "image_id": "2345252",
+        "objects": 63,
+        "candidate_pairs": 3906,
+        "gt_rows": 400
+      },
+      {
+        "image_id": "2356099",
+        "objects": 63,
+        "candidate_pairs": 3906,
+        "gt_rows": 353
+      },
+      {
+        "image_id": "2372263",
+        "objects": 63,
+        "candidate_pairs": 3906,
+        "gt_rows": 404
+      },
+      {
+        "image_id": "2376105",
+        "objects": 63,
+        "candidate_pairs": 3906,
+        "gt_rows": 229
+      },
+      {
+        "image_id": "2410236",
+        "objects": 63,
+        "candidate_pairs": 3906,
+        "gt_rows": 261
+      },
+      {
+        "image_id": "2326115",
+        "objects": 62,
+        "candidate_pairs": 3782,
+        "gt_rows": 143
+      },
+      {
+        "image_id": "2343296",
+        "objects": 61,
+        "candidate_pairs": 3660,
+        "gt_rows": 569
+      },
+      {
+        "image_id": "2408366",
+        "objects": 61,
+        "candidate_pairs": 3660,
+        "gt_rows": 430
+      },
+      {
+        "image_id": "1159308",
+        "objects": 60,
+        "candidate_pairs": 3540,
+        "gt_rows": 820
+      },
+      {
+        "image_id": "2349432",
+        "objects": 60,
+        "candidate_pairs": 3540,
+        "gt_rows": 440
+      },
+      {
+        "image_id": "3120",
+        "objects": 60,
+        "candidate_pairs": 3540,
+        "gt_rows": 436
+      },
+      {
+        "image_id": "3800",
+        "objects": 60,
+        "candidate_pairs": 3540,
+        "gt_rows": 631
+      },
+      {
+        "image_id": "1159328",
+        "objects": 59,
+        "candidate_pairs": 3422,
+        "gt_rows": 542
+      },
+      {
+        "image_id": "1160118",
+        "objects": 59,
+        "candidate_pairs": 3422,
+        "gt_rows": 664
+      },
+      {
+        "image_id": "2350844",
+        "objects": 59,
+        "candidate_pairs": 3422,
+        "gt_rows": 132
+      },
+      {
+        "image_id": "2385960",
+        "objects": 59,
+        "candidate_pairs": 3422,
+        "gt_rows": 335
+      },
+      {
+        "image_id": "2412717",
+        "objects": 59,
+        "candidate_pairs": 3422,
+        "gt_rows": 272
+      },
+      {
+        "image_id": "3185",
+        "objects": 59,
+        "candidate_pairs": 3422,
+        "gt_rows": 619
+      },
+      {
+        "image_id": "1159356",
+        "objects": 58,
+        "candidate_pairs": 3306,
+        "gt_rows": 596
+      },
+      {
+        "image_id": "2316721",
+        "objects": 58,
+        "candidate_pairs": 3306,
+        "gt_rows": 446
+      },
+      {
+        "image_id": "2346068",
+        "objects": 58,
+        "candidate_pairs": 3306,
+        "gt_rows": 387
+      },
+      {
+        "image_id": "2350723",
+        "objects": 58,
+        "candidate_pairs": 3306,
+        "gt_rows": 230
+      },
+      {
+        "image_id": "2362390",
+        "objects": 58,
+        "candidate_pairs": 3306,
+        "gt_rows": 653
+      },
+      {
+        "image_id": "2368140",
+        "objects": 58,
+        "candidate_pairs": 3306,
+        "gt_rows": 617
+      },
+      {
+        "image_id": "2372030",
+        "objects": 58,
+        "candidate_pairs": 3306,
+        "gt_rows": 419
+      },
+      {
+        "image_id": "2376120",
+        "objects": 58,
+        "candidate_pairs": 3306,
+        "gt_rows": 794
+      },
+      {
+        "image_id": "1564",
+        "objects": 57,
+        "candidate_pairs": 3192,
+        "gt_rows": 399
+      },
+      {
+        "image_id": "1885",
+        "objects": 57,
+        "candidate_pairs": 3192,
+        "gt_rows": 410
+      },
+      {
+        "image_id": "2328415",
+        "objects": 57,
+        "candidate_pairs": 3192,
+        "gt_rows": 426
+      },
+      {
+        "image_id": "2341625",
+        "objects": 57,
+        "candidate_pairs": 3192,
+        "gt_rows": 471
+      },
+      {
+        "image_id": "2345300",
+        "objects": 57,
+        "candidate_pairs": 3192,
+        "gt_rows": 457
+      },
+      {
+        "image_id": "2360687",
+        "objects": 57,
+        "candidate_pairs": 3192,
+        "gt_rows": 688
+      }
+    ]
+  },
+  "cases": [
+    {
+      "model": "mlp",
+      "mode": "stress_sampled_train",
+      "batch_size": 1,
+      "images_per_repeat": 1,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.008945562003646046,
+        0.00907857199490536,
+        0.008789069994236343,
+        0.008315647995914333,
+        0.08824498800095171
+      ],
+      "median_seconds": 0.008945562003646046,
+      "images_per_second": 111.78727503005608,
+      "collate_cpu_seconds_per_repeat": [
+        0.006716321004205383,
+        0.006617630002438091,
+        0.006375069002388045,
+        0.006382038991432637,
+        0.08606154700100888
+      ],
+      "pairs_scored_per_repeat": [
+        3180,
+        3180,
+        3180,
+        3180,
+        3180
+      ],
+      "candidate_edges_per_repeat": 15750,
+      "peak_cuda_allocated_bytes": 118510080,
+      "peak_cuda_reserved_bytes": 130023424,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "mlp",
+      "mode": "stress_all_pairs_inference",
+      "batch_size": 1,
+      "images_per_repeat": 1,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.01786407300096471,
+        0.01816679400508292,
+        0.0177892020001309,
+        0.018337614004849456,
+        0.10210328099492472
+      ],
+      "median_seconds": 0.01816679400508292,
+      "images_per_second": 55.045485720827145,
+      "collate_cpu_seconds_per_repeat": [
+        0.015628881999873556,
+        0.015909224006463774,
+        0.01557480200426653,
+        0.01610320400504861,
+        0.09983783100324217
+      ],
+      "pairs_scored_per_repeat": [
+        15750,
+        15750,
+        15750,
+        15750,
+        15750
+      ],
+      "candidate_edges_per_repeat": 15750,
+      "peak_cuda_allocated_bytes": 207959552,
+      "peak_cuda_reserved_bytes": 232783872,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "mlp",
+      "mode": "stress_sampled_train",
+      "batch_size": 32,
+      "images_per_repeat": 32,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.1961658729996998,
+        0.19125451099534985,
+        0.1945397969975602,
+        0.27713095500075724,
+        0.19519825800671242
+      ],
+      "median_seconds": 0.19519825800671242,
+      "images_per_second": 163.93588921730844,
+      "collate_cpu_seconds_per_repeat": [
+        0.18186324799899012,
+        0.17701458498777356,
+        0.18023711099522188,
+        0.2627118579985108,
+        0.1808712220081361
+      ],
+      "pairs_scored_per_repeat": [
+        76636,
+        76636,
+        76636,
+        76636,
+        76636
+      ],
+      "candidate_edges_per_repeat": 184360,
+      "peak_cuda_allocated_bytes": 1055465984,
+      "peak_cuda_reserved_bytes": 1398800384,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "mlp",
+      "mode": "stress_all_pairs_inference",
+      "batch_size": 32,
+      "images_per_repeat": 32,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.24209677099133842,
+        0.24746416498965118,
+        0.24701270399964415,
+        0.3312347979954211,
+        0.24663420900469646
+      ],
+      "median_seconds": 0.24701270399964415,
+      "images_per_second": 129.54799280301833,
+      "collate_cpu_seconds_per_repeat": [
+        0.21855569299077615,
+        0.2238469570002053,
+        0.22345064600813203,
+        0.30705245699209627,
+        0.22293983100098558
+      ],
+      "pairs_scored_per_repeat": [
+        184360,
+        184360,
+        184360,
+        184360,
+        184360
+      ],
+      "candidate_edges_per_repeat": 184360,
+      "peak_cuda_allocated_bytes": 1701701632,
+      "peak_cuda_reserved_bytes": 1715470336,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "mlp",
+      "mode": "stress_sampled_train",
+      "batch_size": 64,
+      "images_per_repeat": 64,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.26770424300048035,
+        0.34889643400674686,
+        0.2668459580017952,
+        0.34750566398724914,
+        0.2672811990050832
+      ],
+      "median_seconds": 0.26770424300048035,
+      "images_per_second": 239.0698006227909,
+      "collate_cpu_seconds_per_repeat": [
+        0.2435144519986352,
+        0.3246985130099347,
+        0.2424639870005194,
+        0.3233175639907131,
+        0.24289869799395092
+      ],
+      "pairs_scored_per_repeat": [
+        135032,
+        135032,
+        135032,
+        135032,
+        135032
+      ],
+      "candidate_edges_per_repeat": 295284,
+      "peak_cuda_allocated_bytes": 1702674432,
+      "peak_cuda_reserved_bytes": 2405433344,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "mlp",
+      "mode": "stress_all_pairs_inference",
+      "batch_size": 64,
+      "images_per_repeat": 64,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.31514726400200743,
+        0.3995871549996082,
+        0.31574302399531007,
+        0.39768254599766806,
+        0.31537932000355795
+      ],
+      "median_seconds": 0.31574302399531007,
+      "images_per_second": 202.69648143026157,
+      "collate_cpu_seconds_per_repeat": [
+        0.27784029400208965,
+        0.36234829599561635,
+        0.27854610499343835,
+        0.3604086470004404,
+        0.2777799390023574
+      ],
+      "pairs_scored_per_repeat": [
+        295284,
+        295284,
+        295284,
+        295284,
+        295284
+      ],
+      "candidate_edges_per_repeat": 295284,
+      "peak_cuda_allocated_bytes": 2686188544,
+      "peak_cuda_reserved_bytes": 2711617536,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "mlp",
+      "mode": "typical_sampled_train",
+      "batch_size": 32,
+      "images_per_repeat": 512,
+      "batches_per_repeat": 16,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.148151732981205,
+        0.13917105995642487,
+        0.13817587798985187,
+        0.13859471700561699,
+        0.13821187704161275
+      ],
+      "median_seconds": 0.13859471700561699,
+      "images_per_second": 3694.224506257692,
+      "collate_cpu_seconds_per_repeat": [
+        0.10803815095277969,
+        0.10411966095853131,
+        0.10374878998845816,
+        0.1045534730219515,
+        0.10359902802156284
+      ],
+      "pairs_scored_per_repeat": [
+        102592,
+        102592,
+        102592,
+        102592,
+        102592
+      ],
+      "candidate_edges_per_repeat": 164902,
+      "peak_cuda_allocated_bytes": 192352768,
+      "peak_cuda_reserved_bytes": 308281344,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "mlp",
+      "mode": "typical_validation_gc_ng",
+      "batch_size": 32,
+      "status": "PASS",
+      "images_per_repeat": 128,
+      "repeat_wall_seconds": [
+        0.25828875800652895,
+        0.256925911991857,
+        0.25711370099452324,
+        0.256633099008468,
+        0.2567875890090363
+      ],
+      "median_seconds": 0.256925911991857,
+      "images_per_second": 498.19809534842415,
+      "peak_cuda_allocated_bytes": 186522112,
+      "peak_cuda_reserved_bytes": 299892736
+    },
+    {
+      "model": "mlp",
+      "mode": "typical_sampled_train",
+      "batch_size": 64,
+      "images_per_repeat": 512,
+      "batches_per_repeat": 8,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.13947570901655126,
+        0.1324724669830175,
+        0.13464472601481248,
+        0.1321994880127022,
+        0.13286506898293737
+      ],
+      "median_seconds": 0.13286506898293737,
+      "images_per_second": 3853.5335428588187,
+      "collate_cpu_seconds_per_repeat": [
+        0.10675107096903957,
+        0.10661185097706039,
+        0.10871287004556507,
+        0.10597204702207819,
+        0.10669736999261659
+      ],
+      "pairs_scored_per_repeat": [
+        102592,
+        102592,
+        102592,
+        102592,
+        102592
+      ],
+      "candidate_edges_per_repeat": 164902,
+      "peak_cuda_allocated_bytes": 295141376,
+      "peak_cuda_reserved_bytes": 446693376,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "mlp",
+      "mode": "typical_validation_gc_ng",
+      "batch_size": 64,
+      "status": "PASS",
+      "images_per_repeat": 128,
+      "repeat_wall_seconds": [
+        0.2588771250011632,
+        0.25856162200216204,
+        0.2589259749947814,
+        0.2578026589908404,
+        0.2583307200111449
+      ],
+      "median_seconds": 0.25856162200216204,
+      "images_per_second": 495.04639941858693,
+      "peak_cuda_allocated_bytes": 284976128,
+      "peak_cuda_reserved_bytes": 402653184
+    },
+    {
+      "model": "gat",
+      "mode": "stress_sampled_train",
+      "batch_size": 1,
+      "images_per_repeat": 1,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.013668020998011343,
+        0.01373449199309107,
+        0.0135260399983963,
+        0.013584701009676792,
+        0.09567752901057247
+      ],
+      "median_seconds": 0.013668020998011343,
+      "images_per_second": 73.16348139540443,
+      "collate_cpu_seconds_per_repeat": [
+        0.006354797995300032,
+        0.006316137994872406,
+        0.006391388000338338,
+        0.006364998000208288,
+        0.08789294400776271
+      ],
+      "pairs_scored_per_repeat": [
+        3180,
+        3180,
+        3180,
+        3180,
+        3180
+      ],
+      "candidate_edges_per_repeat": 15750,
+      "peak_cuda_allocated_bytes": 456099840,
+      "peak_cuda_reserved_bytes": 515899392,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "gat",
+      "mode": "stress_all_pairs_inference",
+      "batch_size": 1,
+      "images_per_repeat": 1,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.012882638009614311,
+        0.012776257994119078,
+        0.012812686996767297,
+        0.013283480002428405,
+        0.09213826300401706
+      ],
+      "median_seconds": 0.012882638009614311,
+      "images_per_second": 77.62385306904534,
+      "collate_cpu_seconds_per_repeat": [
+        0.007423994000419043,
+        0.007275033000041731,
+        0.007361462994595058,
+        0.007638284005224705,
+        0.08643834800750483
+      ],
+      "pairs_scored_per_repeat": [
+        15750,
+        15750,
+        15750,
+        15750,
+        15750
+      ],
+      "candidate_edges_per_repeat": 15750,
+      "peak_cuda_allocated_bytes": 434166272,
+      "peak_cuda_reserved_bytes": 442499072,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "gat",
+      "mode": "stress_sampled_train",
+      "batch_size": 32,
+      "images_per_repeat": 32,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.22790635099227075,
+        0.2316378870018525,
+        0.23075020199758,
+        0.3241532289976021,
+        0.23098557199409697
+      ],
+      "median_seconds": 0.23098557199409697,
+      "images_per_second": 138.5367913837397,
+      "collate_cpu_seconds_per_repeat": [
+        0.1692858390015317,
+        0.1730240339966258,
+        0.17208088000188582,
+        0.2654781660094159,
+        0.1723000299971318
+      ],
+      "pairs_scored_per_repeat": [
+        76636,
+        76636,
+        76636,
+        76636,
+        76636
+      ],
+      "candidate_edges_per_repeat": 184360,
+      "peak_cuda_allocated_bytes": 4551567872,
+      "peak_cuda_reserved_bytes": 5194645504,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "gat",
+      "mode": "stress_all_pairs_inference",
+      "batch_size": 32,
+      "images_per_repeat": 32,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.2669469800021034,
+        0.26852816800237633,
+        0.26465288900362793,
+        0.3485591909993673,
+        0.26666579699667636
+      ],
+      "median_seconds": 0.2669469800021034,
+      "images_per_second": 119.87399145608562,
+      "collate_cpu_seconds_per_repeat": [
+        0.20388187900243793,
+        0.20579154799634125,
+        0.20204489999741782,
+        0.2858925220061792,
+        0.20407465800235514
+      ],
+      "pairs_scored_per_repeat": [
+        184360,
+        184360,
+        184360,
+        184360,
+        184360
+      ],
+      "candidate_edges_per_repeat": 184360,
+      "peak_cuda_allocated_bytes": 4320784896,
+      "peak_cuda_reserved_bytes": 5184159744,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "gat",
+      "mode": "stress_sampled_train",
+      "batch_size": 64,
+      "images_per_repeat": 64,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.33156538200273644,
+        0.4194099590094993,
+        0.3346526340028504,
+        0.4194063869945239,
+        0.3355021140014287
+      ],
+      "median_seconds": 0.3355021140014287,
+      "images_per_second": 190.75885763189993,
+      "collate_cpu_seconds_per_repeat": [
+        0.23805745800200384,
+        0.32579897400864866,
+        0.2412073300074553,
+        0.32593333299155347,
+        0.24201832999824546
+      ],
+      "pairs_scored_per_repeat": [
+        135032,
+        135032,
+        135032,
+        135032,
+        135032
+      ],
+      "candidate_edges_per_repeat": 295284,
+      "peak_cuda_allocated_bytes": 7262318592,
+      "peak_cuda_reserved_bytes": 8266973184,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "gat",
+      "mode": "stress_all_pairs_inference",
+      "batch_size": 64,
+      "images_per_repeat": 64,
+      "batches_per_repeat": 1,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.381048572002328,
+        0.4624459780025063,
+        0.3743561090086587,
+        0.46245605500007514,
+        0.38137016700056847
+      ],
+      "median_seconds": 0.38137016700056847,
+      "images_per_second": 167.81595818926394,
+      "collate_cpu_seconds_per_repeat": [
+        0.28156053301063366,
+        0.3629844989918638,
+        0.2748777310043806,
+        0.3630028379993746,
+        0.2819178400095552
+      ],
+      "pairs_scored_per_repeat": [
+        295284,
+        295284,
+        295284,
+        295284,
+        295284
+      ],
+      "candidate_edges_per_repeat": 295284,
+      "peak_cuda_allocated_bytes": 6893689344,
+      "peak_cuda_reserved_bytes": 8258584576,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "gat",
+      "mode": "typical_sampled_train",
+      "batch_size": 32,
+      "images_per_repeat": 512,
+      "batches_per_repeat": 16,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.20680937798169907,
+        0.20726237101189326,
+        0.20704223998473026,
+        0.2076347010297468,
+        0.2089054490061244
+      ],
+      "median_seconds": 0.20726237101189326,
+      "images_per_second": 2470.2988656374105,
+      "collate_cpu_seconds_per_repeat": [
+        0.10476450798159931,
+        0.10547087198938243,
+        0.10516354300489184,
+        0.10537465498782694,
+        0.10544357402250171
+      ],
+      "pairs_scored_per_repeat": [
+        102592,
+        102592,
+        102592,
+        102592,
+        102592
+      ],
+      "candidate_edges_per_repeat": 164902,
+      "peak_cuda_allocated_bytes": 445791232,
+      "peak_cuda_reserved_bytes": 679477248,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "gat",
+      "mode": "typical_validation_gc_ng",
+      "batch_size": 32,
+      "status": "PASS",
+      "images_per_repeat": 128,
+      "repeat_wall_seconds": [
+        0.2685865770035889,
+        0.2676718019938562,
+        0.26707647000148427,
+        0.26686718700511847,
+        0.26659225500770845
+      ],
+      "median_seconds": 0.26707647000148427,
+      "images_per_second": 479.26348584466706,
+      "peak_cuda_allocated_bytes": 384823808,
+      "peak_cuda_reserved_bytes": 639631360
+    },
+    {
+      "model": "gat",
+      "mode": "typical_sampled_train",
+      "batch_size": 64,
+      "images_per_repeat": 512,
+      "batches_per_repeat": 8,
+      "warmup_batches": 2,
+      "repeats": 5,
+      "status": "PASS",
+      "repeat_wall_seconds": [
+        0.19200972697581165,
+        0.18824067398963962,
+        0.18749164998007473,
+        0.18794675897515845,
+        0.19044865199248306
+      ],
+      "median_seconds": 0.18824067398963962,
+      "images_per_second": 2719.922263071473,
+      "collate_cpu_seconds_per_repeat": [
+        0.10820377098571043,
+        0.1059817240020493,
+        0.10647239598620217,
+        0.10611559197423048,
+        0.10714904899941757
+      ],
+      "pairs_scored_per_repeat": [
+        102592,
+        102592,
+        102592,
+        102592,
+        102592
+      ],
+      "candidate_edges_per_repeat": 164902,
+      "peak_cuda_allocated_bytes": 694365184,
+      "peak_cuda_reserved_bytes": 1107296256,
+      "loss_and_gradient_finite": true
+    },
+    {
+      "model": "gat",
+      "mode": "typical_validation_gc_ng",
+      "batch_size": 64,
+      "status": "PASS",
+      "images_per_repeat": 128,
+      "repeat_wall_seconds": [
+        0.2714762929972494,
+        0.27078592899488285,
+        0.27124100099899806,
+        0.27039831699221395,
+        0.2700473129953025
+      ],
+      "median_seconds": 0.27078592899488285,
+      "images_per_second": 472.69812163105,
+      "peak_cuda_allocated_bytes": 649398784,
+      "peak_cuda_reserved_bytes": 880803840
+    }
+  ],
+  "test_used": false,
+  "checkpoint_saved": false,
+  "memory_notes": "Peaks include model/AdamW state for training after warmup; allocated/reserved exclude CUDA context and other processes. Inference excludes optimizer state, which is lazy and uninitialized."
+}

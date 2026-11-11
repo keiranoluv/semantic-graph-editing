@@ -1,0 +1,50 @@
+{
+  "measured_full_epoch": false,
+  "source": "reports/level2/gqa-benchmark-v1-repeat/results.json",
+  "method": "image-count linear extrapolation from median RAM-resident training and GC+NG validation times",
+  "train_images": 69942,
+  "val_images": 5000,
+  "seed_count_scenario": 3,
+  "excludes": [
+    "full cache extraction",
+    "startup and full dataset load",
+    "per-batch disk I/O",
+    "checkpoint/logging",
+    "distribution shift in graph size",
+    "KG/new methods"
+  ],
+  "models": {
+    "mlp": {
+      "train_batch_size": 64,
+      "validation_batch_size": 32,
+      "estimated_train_seconds_per_epoch": 18.150095028915246,
+      "estimated_gc_ng_validation_seconds_per_epoch": 10.036168437181914,
+      "estimated_total_seconds_per_epoch": 28.18626346609716,
+      "repeat_min_max_scaled_seconds_per_epoch": [
+        28.08390345850347,
+        29.142549219074624
+      ],
+      "scenario_50_epochs_3_seeds_minutes": 70.46565866524291,
+      "scenario_100_epochs_3_seeds_minutes": 140.93131733048583
+    },
+    "gat": {
+      "train_batch_size": 64,
+      "validation_batch_size": 32,
+      "estimated_train_seconds_per_epoch": 25.714705508170653,
+      "estimated_gc_ng_validation_seconds_per_epoch": 10.43267460943298,
+      "estimated_total_seconds_per_epoch": 36.14738011760363,
+      "repeat_min_max_scaled_seconds_per_epoch": [
+        36.02614469347765,
+        36.72124192229296
+      ],
+      "scenario_50_epochs_3_seeds_minutes": 90.36845029400908,
+      "scenario_100_epochs_3_seeds_minutes": 180.73690058801816
+    }
+  },
+  "two_models_50_epochs_3_seeds_total_hours": 2.6805684826542,
+  "recommended_starting_batch_sizes": {
+    "train": 64,
+    "validation": 32
+  },
+  "training_hyperparameters_locked": false
+}

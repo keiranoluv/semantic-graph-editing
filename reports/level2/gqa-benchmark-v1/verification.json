@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-11-12T00:21:37.750780+07:00",
+  "base_commit": "6415735487d915b666fd26b2348ca7b7edce1483",
+  "scope": "real-image engineering GPU stress and throughput benchmark only",
+  "tests": {
+    "passed": 280,
+    "new_cases": 4,
+    "command": "myenv/bin/python -m pytest -q"
+  },
+  "pre_commit": "PASS all applicable hooks on benchmark code, reports and progress document",
+  "checks": {
+    "measured_cases": 56,
+    "first_run_repeats": 3,
+    "confirmation_run_repeats": 5,
+    "all_cases_passed": true,
+    "cuda_oom_cases": 0,
+    "training_loss_and_gradients_finite": true,
+    "all_case_source_and_cohort_hashes_verified": true,
+    "stress_cache_image_groups": 64,
+    "stress_features_finite_and_l2_normalized": true,
+    "stress_and_pilot_clip_weight_hashes_equal": true,
+    "pilot_checkpoint_and_source_hashes_unchanged": true,
+    "level1_and_pilot_reports_unchanged": true,
+    "personal_notebook_sha256": "786c3eff8b7d4abd93c1546dba3b9d9d4ff635fc160fa80a59c0eefdd8952c19",
+    "personal_notebook_preserved": true,
+    "test_annotation_opened": false,
+    "new_checkpoint_saved": false
+  },
+  "recommendation": {
+    "train_batch_size": 64,
+    "validation_batch_size": 32,
+    "scope": "MLP/GAT pilot architecture float32 on RTX5090 only; not KG/new methods",
+    "training_hyperparameters_locked": false,
+    "requires_full_loader_epoch_timing": true
+  },
+  "artifact_sha256": {
+    "reports/level2/GQA_BENCHMARK.md": "e302261f95a2a89e32e1ad5665c464b5a8831063f34e0fc16ce2b21cc7620602",
+    "reports/level2/gqa-benchmark-v1/budget-projection.json": "de1fa7920c9933ea4f3de70913c862190ab7d0867ce5bc26ee76ef8e8c26765b",
+    "reports/level2/gqa-benchmark-v1/results.json": "7e8dac5c8464edd515842d8de5239a040df4b28afa52bf85d176506a0ad1e6f2",
+    "reports/level2/gqa-benchmark-v1/cohort.json": "a2dcbcbe16c97beb44d2e8b3f496e85b82855a75ef31b5570fdb8141a3a6cc43",
+    "reports/level2/gqa-benchmark-v1-repeat/results.json": "1da8832c3c22d3d35dda66d0c618cadb96f732ab71315a6d068cc60b382c2b9e",
+    "reports/level2/gqa-benchmark-v1-repeat/cohort.json": "a2dcbcbe16c97beb44d2e8b3f496e85b82855a75ef31b5570fdb8141a3a6cc43"
+  },
+  "additional_source_sha256": {
+    "tests/training/test_gqa_benchmark.py": "5313aff0d25d570cf6e1ca03563cac7740c32142af97b06e72eec0efe39f3609"
+  },
+  "remote_push_performed": false
+}

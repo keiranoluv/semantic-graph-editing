@@ -6,6 +6,8 @@ Cập nhật GQA pilot: **512 train / 128 validation, seed 42, 5 epoch**, CLIP �
 
 Mốc pilot đã commit tại **`f36ff65`**. Audit tiếp theo đã đọc đủ **69.942 train / 5.000 validation**, không mở annotation test: full train phủ 310 predicate, validation phủ 267; trái/phải vẫn chiếm khoảng 89%. Đề xuất ưu tiên full train sau khi đo batch graph lớn. [Báo cáo audit quy mô](../reports/level2/GQA_SCALE_AUDIT.md). Chưa khóa/chạy thực nghiệm chính.
 
+Benchmark tiếp theo: MLP/GAT đã chạy qua batch 64 graph lớn nhất; GAT train peak allocated **6,76 GiB**. Đề xuất khởi điểm **train batch 64 / validation batch 32**, cần xác nhận launcher full train và chất lượng học. [Benchmark và dự toán có điều kiện](../reports/level2/GQA_BENCHMARK.md). Chưa có checkpoint huấn luyện chính.
+
 ## 1. Đề yêu cầu gì?
 
 Đối chiếu [PDF](../Project01_Graph_Editing.pdf), trang 3–5:
