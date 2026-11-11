@@ -1,6 +1,82 @@
 # Theo dõi Project 01 — Mức 1
 
-Cập nhật: 2026-10-25.
+Cập nhật: 2026-11-11.
+
+## Zero-shot reference hoàn tất cho 9 checkpoint fusion (2026-11-11)
+
+Đã chấm GPU baseline / pair KG thật / pair KG xáo trộn × ba seed trên đủ 5.000 ảnh validation; không train/chọn lại. Vocabulary chỉ từ toàn bộ annotation train có 29.283 bộ ba. Có 1.130 annotation zero-shot trong 722 ảnh validation, thuộc 851 tổ hợp. Giữ ranking toàn ảnh, chấm image-macro recall trên ảnh có GT zero-shot.
+
+KG thật đạt **NG zR@100 = 28,90%**, hơn baseline **28,06%** và shuffled **27,36%** ở cả ba seed, nhưng mức hơn baseline ở một seed chỉ +0,031 điểm. NG@50 lại thấp hơn baseline trung bình (16,98% so 17,41%). Có tín hiệu tại NG@100; không kết luận cải thiện chung ở mọi cutoff/protocol.
+
+**239 tests PASS**; differential check 100 ca tổng hợp + 32 ảnh thật; chín run tái lập metric GC/NG toàn tập cũ. [Bảng và cách đọc](../reports/level1/zero-shot-reference-v1/analysis.md) · [Biên bản](../reports/level1/zero-shot-reference-v1/verification.json). Phạm vi zero-shot hiện là 9/54 checkpoint hợp lệ; SGCls chưa triển khai. Các mốc bên dưới giữ kết quả lịch sử.
+
+## Mở rộng long-tail reference hoàn tất (2026-11-11)
+
+Đã tổng hợp **54 checkpoint / 108 report GC–NG** trên cùng validation, không
+train hoặc inference lại. Chia head/body/tail = 10/20/20 lớp theo annotation
+train (giữ dòng trùng và cặp đa predicate), đồng hạng theo ID tăng dần.
+Head chiếm 88,40% annotation train; tail chỉ 1,46%.
+
+Loss điều chỉnh khi KG-off tăng tail mR@50 **+6,14 điểm GC / +4,56 điểm NG**,
+cả ba seed tăng. Pair fusion KG thật hơn shuffled **+1,86 điểm tail NG@50**
+qua cả ba seed, nhưng thấp hơn baseline không KG **−0,41 điểm**. Không suy
+từ cải thiện metric toàn bộ rằng nhóm quan hệ hiếm cũng được cải thiện.
+
+[Bảng đầy đủ và cách tính](../reports/level1/long-tail-reference-v1/analysis.md) ·
+[Báo cáo diễn giải mục 5c](LEVEL1_REPORT.md) · [Hướng dẫn mục 13](LEVEL1_MODEL_GUIDE.md).
+**233 tests PASS**; kiểm tái dựng mR đủ 216 trường hợp (108 report × 2 K).
+`flying in` vắng GT validation vẫn đóng góp 0 trong mẫu số 20 lớp tail.
+Zero-shot, SGCls và các thí nghiệm train bổ sung chưa thực hiện.
+
+## Bổ sung no graph constraint (2026-11-11)
+
+Đã chạy thêm **54/54 checkpoint hợp lệ bằng GPU**, cùng 5.000 ảnh validation,
+3 seed; không train/chọn lại. Có [bảng đối chiếu 108 report GC/NG](../reports/level1/reference-comparison/comparison.md).
+GAT ng-mR@50 = **33,21%**, MLP = **31,37%**. Loss điều chỉnh tăng ng-mR@50
+**+3,81 điểm** qua cả ba seed. Pair fusion KG thật đạt **37,93%**, hơn shuffled
+**+1,31 điểm** qua cả ba seed; hơn baseline trung bình **+0,80 điểm** nhưng một seed giảm.
+Vì vậy có tín hiệu tích cực ở NG, chưa kết luận KG vượt cả hai đối chứng ổn định.
+
+**224 tests PASS**; cả GC/NG khớp upstream trên 100 ca tổng hợp + 16 ảnh thật.
+Notebook thêm danh sách GT cùng cặp và thứ hạng NG; miss05 chứng minh `with`
+hạng 5, `has` hạng 7 cùng vào top-50, recall ảnh tăng 4/6 → 6/6. Đã sửa nhận xét
+miss05: `with` cũng là GT, chỉ `has` bị bỏ lỡ trong GC. Human review vẫn chờ nhóm.
+Sáu relation-prior L1/L2 tiếp tục bị loại. Các phần dưới giữ lịch sử GC/legacy.
+
+## Hoàn thiện bản gọn sau rescoring (2026-11-11)
+
+Đã chấm lại đủ **54 run reference-v1 full validation**: 27 chính + 12 pair/loss
++ 15 fusion. Loss điều chỉnh tăng mR@50 **+6,62 điểm** qua cả ba seed;
+KG thêm sau loss chỉ **+0,17 điểm**, một seed giảm. Pair/visual KG thật chưa
+vượt baseline và shuffled ổn định. Sáu run relation prior L1/L2 được để riêng,
+không train lại và không dùng trong kết luận chính.
+
+Đã có [báo cáo .md ngắn](LEVEL1_REPORT.md), [case có ảnh và nhận xét AI](../reports/level1/submission/cases/analysis.md),
+phiếu review còn trống và [demo reference-v1](../notebooks/level1_reference_demo.ipynb)
+đã chạy CPU thành công. 215 tests PASS. Chưa xác nhận người thật, chưa thử trên
+máy teammate, chưa quay video. Người dùng sẽ tự tổng hợp báo cáo chi tiết;
+không làm slide/PDF trong lượt này. [Bộ bàn giao](LEVEL1_SUBMISSION.md).
+
+Các mục bên dưới giữ lại lịch sử; mốc mới nhất ở phần này thay thế những chỗ
+nói 12/21 run chưa được rescoring (15/21 fusion đã chấm; 6 relation bị loại).
+
+## Cập nhật evaluator và kết quả reference-v1 (2026-11-11)
+
+Đã bổ sung evaluator reference-v1: matching nhãn đối tượng + IoU hai hộp >= 0,5,
+giữ GT trùng, mR trung bình theo ảnh trong mỗi lớp rồi trên 50 predicate.
+Legacy vẫn giữ để tái lập và vẫn là metric chọn checkpoint của các run hiện có.
+Đã evaluate GPU đủ **27/27 checkpoint chính trên 5.000 ảnh validation**, không train lại.
+GAT mR@50 = **19,55%**, MLP = **17,21%**, WordNet = **18,46%**;
+bốn nhánh KG-on chưa vượt GAT về mR@50 trung bình.
+[Bảng mới và mean/std](../reports/level1/reference-v1/27run-val5000-summary.md).
+
+212 tests PASS; đối chiếu code tham chiếu trên 100 ca tổng hợp + 16 ảnh thật PASS;
+27/27 report khớp hash và support. [Cách chạy](evaluation/PredCls.md).
+Các bảng phía dưới là lịch sử **legacy** nếu không ghi reference-v1, gồm cả
+12 run pair/loss và 21 run fusion. Bất nhất L1/L2 relation prior chưa được sửa
+trong đợt đổi evaluator này. Chưa có test reference-v1; chưa xác nhận tay đủ
+5 đúng/5 sai hoặc hoàn tất bộ nộp.
+
 
 ## Nhánh KG theo cặp × loss điều chỉnh
 
@@ -29,7 +105,7 @@ Xem [summary 12 run](../reports/level1/clip-pair-kg-v1-12run-val5000-summary.jso
 VG150 test đã được đánh giá cho các nhánh trước. Nhánh mới được chọn theo val;
 không dùng lại test như held-out độc lập để chỉnh mô hình.
 
-## Ma trận fusion có đối chứng KG xáo trộn (chuẩn bị, chưa train GPU)
+## Ma trận fusion có đối chứng KG xáo trộn (đã evaluate đủ 21 run)
 
 Repo sạch ở commit `664b2d3` trước khi tạo nhánh code mới. Đã chuẩn bị
 [level1_fusion_v1.md](experiments/level1_fusion_v1.md): 7 điều kiện × 3 seed
@@ -45,6 +121,20 @@ PASS. Toàn bộ 204 tests, ruff, black và launcher dry-run 21 jobs PASS. Lện
 GPU nằm trong tài liệu thí nghiệm; người dùng chạy sau commit. Thiết kế này
 sau khi xem test cũ, nên test cũ không phải holdout độc lập cho phương pháp
 mới.
+
+Toan đã train đủ 21 run; ngày 2026-10-26 Codex evaluate GPU tuần tự đủ 21
+`best.pt` trên toàn bộ val 5.000 ảnh. Audit CPU 21/21 report PASS: SHA-256,
+epoch, bốn metric checkpoint, hash dữ liệu/CLIP và support predicate đồng nhất.
+Mean ba seed (R@50 / mR@50, %): baseline 60,864 / 26,037; pair real
+61,470 / 26,071, shuffled 61,234 / 26,228; visual real 61,681 / 25,534,
+shuffled 61,708 / 26,570; relation real 61,103 / 25,904, shuffled
+61,191 / 25,863. Không nhánh KG thật nào thắng baseline **và** shuffled
+trên cả ba seed ở mR@50; không đạt tiêu chí +0,5 điểm đã đặt trước. Pair real
+tăng R@50 +0,606 điểm so baseline nhưng mR@50 gần hòa và thua shuffled.
+Visual real tăng R@50 +0,817 điểm nhưng giảm mR@50 −0,503 điểm; tail cũng
+giảm 10,010% → 8,954%. [Bảng và paired delta](experiments/level1_fusion_v1.md)
+đã ghi đủ 7 điều kiện và head/body/tail. Không dùng test cũ như holdout độc
+lập cho nhánh này; giữ kết luận ở mức validation và không chọn một seed thắng.
 
 ## Cách phối hợp
 

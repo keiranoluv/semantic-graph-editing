@@ -1,100 +1,56 @@
-# Bộ nộp mức 1 — bản chuẩn bị
+# Bộ bàn giao Mức 1 — bản gọn
 
-Nguồn yêu cầu: `Project01_Graph_Editing.pdf`, trang 3–6. File này tập hợp
-nội dung đã kiểm chứng và những chỗ nhóm cần điền sau train GPU/review.
-Không coi các ô trống là kết quả đã có.
+Cập nhật 2026-11-11. Theo yêu cầu hiện tại, chỉ chuẩn bị báo cáo Markdown và demo đơn giản; chưa làm slide/PDF hoặc tổng hợp báo cáo kỹ thuật dài.
 
-## Báo cáo kỹ thuật (mục tiêu 12–18 trang)
+## Mở các file này trước
 
-1. **Bài toán và phạm vi (1 trang).** VG150 PredCls: cho trước nhãn/hộp,
-   dự đoán predicate; mức 1 tập trung vào mô hình đồ thị và tri thức nền.
-   Giải thích vì sao không huấn luyện detector hoặc generator.
-2. **Dữ liệu/split (2 trang).** HDF5/vocabulary/metadata và hash ở
-   [TEAM_SETUP_LEVEL1.md](TEAM_SETUP_LEVEL1.md). Split theo ảnh 57.723 / 5.000 /
-   26.446, `box_policy=clip`; nêu giới hạn so sánh benchmark.
-3. **Mô hình (2–3 trang).** Bảng hiện tại dùng hình học hộp 5D, đặc trưng
-   vùng ảnh CLIP ViT-B/32 đóng băng 512D và embedding nhãn học được 32D cho
-   MLP semantic/GAT/GAT+KG. GAT truyền tin trên fully-connected directed
-   topology không đọc predicate GT. Nhánh KG thêm vector 64D và valid bit từ
-   WordNet TransE hoặc ConceptNet TransE/RotatE/ComplEx; chi tiết ở
-   [level1_clip_regions.md](experiments/level1_clip_regions.md). Bảng
-   annotation-only bên dưới là kết quả lịch sử riêng, không trộn với CLIP.
-4. **Tri thức nền (2 trang).** WordNet noun senses, graph, C.1 TransE và C.2
-   `[151,64]` features với 150/150 class từ mapping đại diện Toan xác nhận
-   chính thức. Mô tả quy trình tại
-   [LEVEL1_MAPPING_REVIEW.md](knowledge/LEVEL1_MAPPING_REVIEW.md), ghi rõ xác
-   nhận theo lô, thiếu lý do riêng cho phần lớn class và giới hạn nhãn đa nghĩa.
-5. **Protocol (1–2 trang).** Cùng data split, 3 seeds 42/123/3407, chọn
-   checkpoint bằng validation mR@50, R@50/100 và mR@50/100, tính mean/sample
-   std. Đưa cả ablation tắt KG và bỏ cạnh giữa đối tượng. Phân biệt `--no-knowledge`
-   cùng kiến trúc với GAT baseline gốc.
-6. **Kết quả (2–3 trang).** Dùng [bảng CLIP validation 27 run](../reports/level1/clip-all-27run-val5000-summary.md),
-   [summary held-out test 27 run](../reports/level1/clip-all-27run-test26446-summary.json)
-   và [phân tích test](../reports/level1/clip-all-27run-test26446-analysis.md)
-   làm nguồn chính. Mỗi điều kiện có ba seed và cùng protocol. Bảng dưới đây
-   chỉ là kết quả annotation-only lịch sử; nêu rõ sự khác nhau về input và KG.
-7. **Phân tích lỗi (1–2 trang).** Công cụ trích case đã tạo 5 hit/5 missed mẫu
-   ở [level1_case_candidates.md](experiments/level1_case_candidates.md).
-   Thay hoặc bổ sung case GAT+KG final, xem JPEG và ghi nguyên nhân thực tế.
-8. **Tái lập, giới hạn và đạo đức dữ liệu (1–2 trang).** Môi trường, lệnh tải,
-   hash, hạn chế mapping, split/protocol, khai báo mã nguồn mở/AI theo PDF.
-   Nêu rõ không dùng relation annotation validation/test để dựng KG.
+1. [Báo cáo kết quả ngắn](LEVEL1_REPORT.md): pipeline, protocol, bảng 54 run, diễn giải và giới hạn.
+2. [Phân tích 5 hit / 5 miss có ảnh](../reports/level1/submission/cases/analysis.md): nhận xét AI sau khi quan sát ảnh; người trong nhóm chưa xác nhận.
+3. [Phiếu review](../reports/level1/submission/cases/human-review.csv): để nhóm ghi người review, xác nhận hộp/GT và sửa nhận xét.
+4. [Notebook demo reference-v1](../notebooks/level1_reference_demo.ipynb): nạp GAT+CLIP, suy luận CPU một ảnh và giải thích ranking/R@50.
+5. [So sánh GC và NG cho đủ 54 checkpoint](../reports/level1/reference-comparison/comparison.md): ng-R/ng-mR ở K=50/100, mean/std và chênh lệch theo seed.
+6. [Long-tail: head/body/tail trên cả 54 checkpoint](../reports/level1/long-tail-reference-v1/analysis.md): chia nhóm từ train, mR theo nhóm ở K=50/100, mean/std, paired delta và số annotation từng lớp.
 
-### Bảng annotation-only lịch sử (full validation, %, 3 seeds)
+7. [Zero-shot trên 9 checkpoint fusion](../reports/level1/zero-shot-reference-v1/analysis.md): tổ hợp chưa gặp trong annotation train, GC/NG@50/100, ví dụ chấm, mean/std và paired delta.
 
-| Model | R@50 | R@100 | mR@50 | mR@100 |
-|---|---:|---:|---:|---:|
-| Geometry MLP | 49.00 ± 0.08 | 51.59 ± 0.08 | 4.95 ± 0.06 | 5.47 ± 0.08 |
-| Semantic MLP | 64.26 ± 0.09 | 66.33 ± 0.02 | 17.67 ± 0.27 | 19.76 ± 0.34 |
-| GAT | 64.22 ± 0.14 | 66.35 ± 0.25 | 19.80 ± 1.03 | 22.00 ± 1.07 |
-| GAT+WordNet | 64.14 ± 0.05 | 66.25 ± 0.15 | 19.75 ± 0.67 | 21.89 ± 0.59 |
-| Cùng kiến trúc, KG off | 64.32 ± 0.20 | 66.41 ± 0.17 | 19.16 ± 0.41 | 21.15 ± 0.25 |
-| GAT+WordNet, no inter-object edges | 64.77 ± 0.21 | 66.77 ± 0.14 | 19.56 ± 0.38 | 21.52 ± 0.32 |
+## Phần đã thực hiện
 
-Số đầy đủ: [level1_baseline_verified.md](experiments/level1_baseline_verified.md).
-Cả 9 report mới và summary nằm ở `reports/level1/wordnet-reviewed-*-val5000.json`
-và `reports/level1/wordnet-reviewed-ablation-3seed-val5000-summary.json`.
-KG-on hơn KG-off 0,59 điểm % mR@50 trung bình, nhưng không hơn GAT baseline
-gốc (19,75% so với 19,80%); lợi thế so với bỏ cạnh chỉ 0,19 điểm % và đảo
-chiều ở seed 3407. Đây là pipeline annotation-only, chưa có đặc trưng vùng
-ảnh; TransE hiện tại còn hạn chế bộ lọc triple KG test lúc train.
-Các checkpoint baseline cũ không ghi hash split lúc train/max_epochs; nêu
-giới hạn này trước khi kết luận chênh lệch nhỏ có ý nghĩa.
+- 27 run chính, 12 run pair/loss và 15 run fusion đã được chấm bằng reference-v1 trên đủ 5.000 ảnh validation, dùng GPU. Có 3 seed, mean/sample std, paired delta và nguồn report/checkpoint.
+- Cùng 54 checkpoint đã chấm thêm `reference-ng-v1` bằng GPU, cho phép nhiều predicate trên một cặp. Hai protocol có bảng riêng và bảng đối chiếu; không train/chọn lại checkpoint.
+- Sáu run relation prior được để riêng do bất nhất L1/L2; không xóa hay train lại. [Danh sách](../reports/level1/submission/excluded-relation-prior.json).
+- 10 case được chọn bằng quy tắc cố định; ảnh có hộp subject/object, GT, dự đoán và thứ hạng. Có kiểm tra tự động hit/miss khớp evaluator.
+- Notebook chạy thành công từ đầu tới cuối trên CPU tại workspace hiện tại. Mặc định ảnh 89, GT `shelf → on → table`: dự đoán `on` hạng 64 nên missed@50; R@50 ảnh 70%, R@100 ảnh 90%.
+- Bộ test hiện tại: **239 PASS**, gồm kiểm tra phân nhóm chỉ từ train, xử lý lớp vắng và phép trung bình long-tail. Cả hai evaluator đã khớp upstream trên 100 ca tổng hợp + 16 ảnh thật.
+- Phân tích long-tail đã hoàn tất cho 54 checkpoint, dùng report có sẵn. Head 10 lớp chiếm 88,40% annotation train; tail 20 lớp chỉ 1,46%. Loss điều chỉnh cải thiện tail ở cả GC/NG; pair fusion KG thật hơn shuffled ở tail NG@50 nhưng chưa hơn baseline không KG.
 
-## Slide và demo vấn đáp
+- Zero-shot đã chấm GPU cho baseline / pair KG thật / pair KG xáo trộn × ba seed, đủ 5.000 ảnh validation. Có 1.130 GT zero-shot trong 722 ảnh. KG thật hơn hai đối chứng ở NG@100 qua ba seed, chưa cải thiện nhất quán ở NG@50/GC. Kiểm evaluator upstream 100 ca tổng hợp + 32 ảnh thật, tái lập metric toàn tập cũ và kiểm số liệu từng ảnh.
 
-Giới hạn theo PDF: tối đa 20 phút trình bày **gồm slide và demo**, sau đó hỏi
-đáp. Gợi ý phân bổ: 12–15 phút slide, 3–5 phút notebook/demo.
+## Chạy demo trong khoảng 3 phút
 
-Slide nên có: câu hỏi nghiên cứu; VG150 PredCls và leak-safe split; sơ đồ
-MLP → GAT → GAT+KG; WordNet mapping/review; bảng 3 seeds; ablation; một hit
-và một missed được nhóm xác minh; giới hạn/kết luận; phân công.
+```bash
+myenv/bin/jupyter lab notebooks/level1_reference_demo.ipynb
+```
 
-Demo: khởi động `myenv`, mở [notebook mức 1](../notebooks/level1_scene_graph_demo.ipynb)
-với checkpoint đã kiểm thử và ảnh JPEG nếu đã tải. Chuẩn bị video dự phòng
-≤5 phút như PDF. Notebook hiện minh họa dự đoán quan hệ cho mức 1. Mục nộp
-chung trong PDF có ví dụ câu chỉnh sửa và thao tác đồ thị, trong khi mô hình
-thao tác thuộc mức 2; nhóm cần hỏi giảng viên phạm vi demo mức 1 trước ngày nộp.
+Chọn kernel `Python (semantic-graph myenv)`, chạy từng ô bằng Shift+Enter.
 
-## Phân công cần người thật điền
+- 0:00–0:45: giải thích ảnh, hộp và nhãn object được cho sẵn; 517D gồm hình học và CLIP.
+- 0:45–1:30: xem hai hộp, phân biệt input với predicate GT dùng để chấm.
+- 1:30–2:30: forward CPU, đọc predicate `on`, hạng 64, giải thích cutoff 50/100.
+- 2:30–3:00: đổi `CASE_ID = 'hit01'` rồi chạy lại; phân biệt recall một ảnh với mR toàn tập.
 
-| Thành viên | Dataset/split | MLP/GAT/KG | Review mapping | Thực nghiệm/đánh giá | Báo cáo/demo | Commit/minh chứng |
-|---|---|---|---|---|---|---|
-| Tên 1 |  |  |  |  |  |  |
-| Tên 2 |  |  |  |  |  |  |
-| Tên 3 |  |  |  |  |  |  |
+Để giải thích nhiều quan hệ cùng cặp, đổi `CASE_ID = 'miss05'`: GT cặp girl → hair là has, has, with, with. GC chỉ giữ with; NG có with hạng 5 và has hạng 7, tăng recall ảnh từ 4/6 lên 6/6. Cả miss03 và miss05 đã chạy notebook CPU thành công.
 
-Điền theo đóng góp thực tế, giữ lịch sử commit và bản phân công trong báo cáo.
-Không tự điền tên người kiểm tra WordNet hay tuyên bố họ đã kiểm tra.
+Checkpoint và dữ liệu đã có trên máy này; hướng dẫn dựng máy khác ở [TEAM_SETUP_LEVEL1.md](TEAM_SETUP_LEVEL1.md). Chưa kiểm chứng một máy teammate độc lập, chưa quay video vấn đáp và chưa có xác nhận người thật cho 10 case.
 
-## Chốt trước nộp
+## Phần nhóm sẽ tổng hợp sau
 
-- Có 3 seeds GAT+KG và ablation, cùng split/protocol; hash và config đầy đủ.
-- Có nguồn lựa chọn 150 synset của Toan, approval declaration và manifest
-  reviewed batch gắn hash KG; báo cáo nêu giới hạn thiếu lý do riêng từng class.
-- Đánh giá full validation và held-out test đã hoàn tất cho 27 run CLIP sau
-  khi [plan khóa checkpoint](../reports/level1/clip-all-27run-test-plan.json)
-  được tạo. Không dùng test này để chọn thiết kế mới rồi báo lại như held-out.
-- Có 5 đúng/5 sai được người thật kiểm tra ảnh và giải thích.
-- Notebook chạy được trên máy nhóm; đường dẫn JPEG hoặc demo không ảnh được
-  công bố rõ. Environment, data, commands và nguồn ảnh/tri thức kèm hash.
+- Xác nhận và hoàn thiện 5 đúng/5 sai; không tự động coi nhận xét AI là review của nhóm.
+- Báo cáo chính 12–18 trang, slide, phân công và khai báo mã nguồn mở/AI theo đề.
+- Chạy thử máy trình bày, video dự phòng ≤5 phút; hỏi giảng viên về phạm vi notebook Mức 1 nếu cần.
+- Thông tin nhóm/thành viên chưa điền theo yêu cầu hiện tại.
+
+Chưa cần thêm mô hình để hoàn thành yêu cầu cốt lõi Mức 1. Mọi bảng mới là validation của checkpoint được chọn bằng metric legacy; không dùng như test độc lập và không chọn một seed tốt nhất để đại diện kết quả.
+
+## Kiểm tra trước khi chuyển sang Mức 2
+
+[Biên bản pre-commit](../reports/level1/precommit-2026-11-11.json) ghi lần kiểm lại 239 tests, 108 report GC/NG, long-tail, zero-shot và notebook CPU. Demo reference đã tách ô thiết lập đường dẫn khỏi ô import; kết quả hai case vẫn khớp lần kiểm trước. Notebook walkthrough cũ được ghi rõ là legacy. Các hash notebook trong biên bản lịch sử mô tả phiên bản tại thời điểm đó; hash phiên bản hiện tại ở biên bản pre-commit.

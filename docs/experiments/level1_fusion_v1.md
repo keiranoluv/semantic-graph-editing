@@ -1,5 +1,7 @@
 # Mức 1: kiểm tra lợi ích KG bằng fusion và đối chứng xáo trộn
 
+> Cập nhật 2026-11-11: đã có [15 run reference-v1 full validation](../../reports/level1/reference-v1-fusion/15run-val5000-analysis.md). Các bảng cũ bên dưới dùng protocol legacy. Sáu run relation prior được để riêng vì bất nhất L1/L2; không dùng cho kết luận mới. Xem [báo cáo gọn](../LEVEL1_REPORT.md).
+
 ## Câu hỏi và giới hạn
 
 Ma trận trước trên VG150 PredCls + CLIP cho `adjusted_on − adjusted_off` chỉ
@@ -93,3 +95,57 @@ paired mR@50 dương ở cả ba seed so với **cả baseline và shuffled**, m
 ít nhất 0,5 điểm phần trăm; đây là ngưỡng thực dụng đặt trước run, không phải
 kiểm định thống kê với chỉ ba seed. Báo cáo mọi tradeoff R@50 và không chọn
 condition theo một seed hoặc một lớp có lợi.
+
+## Kết quả validation (2026-10-26)
+
+Đã train và evaluate đủ **21/21** checkpoint trên toàn bộ 5.000 ảnh val.
+Audit CPU xác nhận từng report khớp SHA-256 `best.pt`, epoch và bốn metric
+R@50/mR@50/R@100/mR@100 trong checkpoint; 21 report có cùng hash dữ liệu,
+CLIP cache, protocol và support theo predicate. Xem [summary JSON](../../reports/level1/clip-fusion-v1-21run-val5000-summary.json).
+Đơn vị bảng dưới là **%**, dạng trung bình ± độ lệch chuẩn mẫu của ba seed.
+
+| Điều kiện | R@50 | mR@50 | R@100 | mR@100 |
+|---|---:|---:|---:|---:|
+| `baseline` | 60,864 ± 0,610 | 26,037 ± 0,706 | 63,481 ± 0,470 | 29,051 ± 0,526 |
+| `pair_real` | 61,470 ± 0,433 | 26,071 ± 0,215 | 63,849 ± 0,462 | 28,540 ± 0,143 |
+| `pair_shuffled` | 61,234 ± 0,111 | 26,228 ± 0,093 | 63,720 ± 0,271 | 28,891 ± 0,289 |
+| `visual_real` | 61,681 ± 0,085 | 25,534 ± 0,495 | 64,139 ± 0,091 | 28,193 ± 0,776 |
+| `visual_shuffled` | 61,708 ± 0,470 | 26,570 ± 1,093 | 64,273 ± 0,051 | 29,466 ± 0,370 |
+| `relation_real` | 61,103 ± 0,766 | 25,904 ± 0,450 | 63,505 ± 0,733 | 28,444 ± 0,681 |
+| `relation_shuffled` | 61,191 ± 0,363 | 25,863 ± 0,232 | 63,707 ± 0,424 | 28,462 ± 0,393 |
+
+Paired delta **mR@50** theo thứ tự seed 42/123/3407, đơn vị điểm phần trăm:
+
+| Fusion | Real − baseline | Real − shuffled |
+|---|---:|---:|
+| Pair | +0,197 / −0,527 / +0,431 (mean +0,034) | −0,251 / +0,082 / −0,303 (mean −0,157) |
+| Visual gate | −0,232 / −0,848 / −0,429 (mean −0,503) | −1,451 / +0,646 / −2,303 (mean −1,036) |
+| Relation prior | +0,534 / −1,097 / +0,164 (mean −0,133) | +0,343 / −0,187 / −0,032 (mean +0,041) |
+
+Không nhánh KG thật nào vượt **cả** baseline và shuffled trên cả ba seed;
+không nhánh nào đạt ngưỡng mean +0,5 điểm đã định trước. `pair_real` tăng
+R@50 so baseline +0,606 điểm trung bình (cả ba seed dương), nhưng mR@50 chỉ
++0,034 điểm và thua `pair_shuffled` −0,157 điểm. `visual_real` cũng tăng R@50
++0,817 điểm nhưng giảm mR@50 −0,503 điểm; bản shuffled có mR@50 cao hơn
+real +1,036 điểm và dao động lớn giữa seed. `relation_real` gần hòa
+`relation_shuffled` về mR@50 (+0,041 điểm), và thấp hơn baseline −0,133 điểm.
+Đây là bằng chứng **chưa thấy lợi ích ngữ nghĩa KG ổn định** trong ba kiểu
+fusion này; không đủ để khẳng định KG nói chung không hữu ích.
+
+Head/body/tail định nghĩa theo tần suất predicate train (10/20/19 lớp có
+support trên val). Recall@50 trung bình theo lớp, đơn vị %:
+
+| Điều kiện | Head 10 | Body 20 | Tail 19 |
+|---|---:|---:|---:|
+| `baseline` | 45,269 | 31,646 | 10,010 |
+| `pair_real` | 46,249 | 31,663 | 9,564 |
+| `pair_shuffled` | 45,754 | 30,849 | 11,087 |
+| `visual_real` | 44,656 | 31,723 | 8,954 |
+| `visual_shuffled` | 45,121 | 30,846 | 12,304 |
+| `relation_real` | 45,797 | 31,841 | 9,185 |
+| `relation_shuffled` | 45,767 | 31,269 | 9,696 |
+
+Tail chỉ có 444 GT relation trong 5.000 ảnh val, nên các khác biệt nhỏ theo
+lớp có độ bất định đáng kể. Val cũng dùng để chọn `best.pt`; đây là so sánh
+phương pháp trên tập phát triển, chưa là kiểm định held-out mới. Kết quả test
+cũ đã được xem trước khi thiết kế ma trận này.

@@ -1,5 +1,7 @@
 # VG150 PredCls: KG theo cặp và logit adjustment
 
+> Cập nhật 2026-11-11: đã có [12 run reference-v1 full validation](../../reports/level1/reference-v1-pair/12run-val5000-analysis.md). Các bảng cũ bên dưới dùng protocol legacy. Xem [báo cáo gọn](../LEVEL1_REPORT.md).
+
 ## Thiết kế
 
 Thử nghiệm 2 × 2 trên cùng VG150 train/val, CLIP ViT-B/32 vùng ảnh đã cache,
