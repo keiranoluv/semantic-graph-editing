@@ -1,0 +1,11 @@
+case_id,image_id,reviewer,boxes_confirmed,gt_semantics,agreed_analysis,correction,review_date
+hit01,40,,,,,,
+hit02,7,,,,,,
+hit03,89,,,,,,
+hit04,81,,,,,,
+hit05,3,,,,,,
+miss01,40,,,,,,
+miss02,7,,,,,,
+miss03,89,,,,,,
+miss04,81,,,,,,
+miss05,3,,,,,,
