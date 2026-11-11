@@ -7,8 +7,9 @@ scripts/run_gqa_full_parallel.sh
 This coordinator schedules the existing 15 model/seed runs onto two persistent,
 isolated Python processes sharing the GPU. Each trainer owns eight logical CPUs
 through OS affinity, for a total budget of 16 out of 32. Four CPU loader processes
-per trainer inherit that affinity. Numerical Torch operations retain the frozen
-one-thread setting. Allocating 16 CPUs does not mean 50% continuous utilization;
+per trainer inherit that affinity. Tensor assembly uses eight threads per trainer;
+the previous thread count is restored before model, loss, and optimizer operations.
+Numerical Torch operations retain the frozen one-thread setting. Allocating 16 CPUs does not mean 50% continuous utilization;
 actual utilization depends on the training and validation phases.
 
 Each trainer retains prepared graphs/supervision and up to 2.5 GiB of immutable

@@ -20,6 +20,16 @@ from tools import run_gqa_full_ram as ram
 from tools.run_gqa_full_prepared import load_prepared_shard, prepared_collate
 
 
+def threaded_collate(graphs, num_classes, generator=None):
+    """Eight threads for tensor assembly only; restore numerical runtime afterwards."""
+    previous = torch.get_num_threads()
+    try:
+        torch.set_num_threads(8)
+        return prepared_collate(graphs, num_classes, generator)
+    finally:
+        torch.set_num_threads(previous)
+
+
 class ValidationCache:
     """Bounded cache of immutable batches; training never enters this cache."""
 
@@ -29,12 +39,12 @@ class ValidationCache:
 
     def __call__(self, graphs, num_classes, generator=None):
         if generator is not None:
-            return prepared_collate(graphs, num_classes, generator)
+            return threaded_collate(graphs, num_classes, generator)
         key = (num_classes, tuple(id(g) for g in graphs))
         if key in self.batches:
             self.hits += 1
             return self.batches[key]
-        batch, slices = prepared_collate(graphs, num_classes)
+        batch, slices = threaded_collate(graphs, num_classes)
         size = sum(t.numel() * t.element_size() for t in batch.values())
         if self.bytes + size <= self.max_bytes:
             self.batches[key] = batch, slices
@@ -71,7 +81,14 @@ def worker(slot, cpus, config, metadata, experiment, jobs, messages, stopped, lo
     from tools.run_gqa_full import exclusive
 
     gqa_full.setup_runtime(config)
-    runtime = {"slot": slot, "pid": os.getpid(), "cpus": cpus, "loader_workers": 4, "source_sha256": source_hashes}
+    runtime = {
+        "slot": slot,
+        "pid": os.getpid(),
+        "cpus": cpus,
+        "loader_workers": 4,
+        "collate_threads": 8,
+        "source_sha256": source_hashes,
+    }
     runtime_path = Path(config["output"]) / f"runtime-parallel-worker-{os.getpid()}.json"
 
     class ParallelTracker(RunTracker):
@@ -83,6 +100,7 @@ def worker(slot, cpus, config, metadata, experiment, jobs, messages, stopped, lo
                         {
                             "runtime/parallel_workers": 2,
                             "runtime/cpu_affinity": cpus,
+                            "runtime/collate_threads": 8,
                             "runtime/parallel_source_sha256": source_hashes,
                         }
                     )
@@ -101,7 +119,7 @@ def worker(slot, cpus, config, metadata, experiment, jobs, messages, stopped, lo
             validation(val[begin : begin + config["val_batch_size"]], experiment["dimensions"]["num_classes"])
         runtime.update(train=train.statistics, val=val.statistics, validation_cache_bytes=validation.bytes)
         atomic_write(runtime_path, runtime)
-        gqa_full.collate, evaluator.collate, gqa_full.RunTracker = prepared_collate, validation, ParallelTracker
+        gqa_full.collate, evaluator.collate, gqa_full.RunTracker = threaded_collate, validation, ParallelTracker
         vectors = gqa_full.load_vectors(config, experiment["dimensions"])
         messages.put({"event": "ready", **runtime})
         while not stopped.is_set():

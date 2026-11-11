@@ -1,0 +1,184 @@
+{
+  "implementation_commit": "896a3d4",
+  "coordinator_pid": 228138,
+  "observations": {
+    "events": {
+      "0": [
+        {
+          "monotonic_seconds": 136692.21088376,
+          "utc": "2026-11-11T19:40:56Z",
+          "line": "[EPOCH] mlp/42 59/200 R50=0.761246 mR50=0.027031"
+        },
+        {
+          "monotonic_seconds": 136716.653553595,
+          "utc": "2026-11-11T19:41:20Z",
+          "line": "[EPOCH] mlp/42 60/200 R50=0.761763 mR50=0.025971"
+        },
+        {
+          "monotonic_seconds": 136740.694920443,
+          "utc": "2026-11-11T19:41:44Z",
+          "line": "[EPOCH] mlp/42 61/200 R50=0.762181 mR50=0.025461"
+        }
+      ],
+      "1": [
+        {
+          "monotonic_seconds": 136699.623821625,
+          "utc": "2026-11-11T19:41:03Z",
+          "line": "[EPOCH] mlp/123 1/200 R50=0.244246 mR50=0.002167"
+        },
+        {
+          "monotonic_seconds": 136724.867400725,
+          "utc": "2026-11-11T19:41:28Z",
+          "line": "[EPOCH] mlp/123 2/200 R50=0.348229 mR50=0.003844"
+        },
+        {
+          "monotonic_seconds": 136749.310514922,
+          "utc": "2026-11-11T19:41:53Z",
+          "line": "[EPOCH] mlp/123 3/200 R50=0.352368 mR50=0.004166"
+        }
+      ]
+    },
+    "memory_samples": [
+      {
+        "time": 136626.116262834,
+        "used_fraction": 0.25001934206316734,
+        "used_bytes": 16161677312
+      },
+      {
+        "time": 136631.122701825,
+        "used_fraction": 0.285128434150841,
+        "used_bytes": 18431188992
+      },
+      {
+        "time": 136636.128419675,
+        "used_fraction": 0.3254841836416901,
+        "used_bytes": 21039853568
+      },
+      {
+        "time": 136641.134290019,
+        "used_fraction": 0.36346274446165916,
+        "used_bytes": 23494852608
+      },
+      {
+        "time": 136646.140438626,
+        "used_fraction": 0.387491194688115,
+        "used_bytes": 25048092672
+      },
+      {
+        "time": 136651.147500931,
+        "used_fraction": 0.39839238782569675,
+        "used_bytes": 25752764416
+      },
+      {
+        "time": 136656.153293177,
+        "used_fraction": 0.4327795029511141,
+        "used_bytes": 27975606272
+      },
+      {
+        "time": 136661.161050304,
+        "used_fraction": 0.4638744436820268,
+        "used_bytes": 29985636352
+      },
+      {
+        "time": 136666.168353837,
+        "used_fraction": 0.456742053928777,
+        "used_bytes": 29524586496
+      },
+      {
+        "time": 136671.175468214,
+        "used_fraction": 0.457132506977875,
+        "used_bytes": 29549826048
+      },
+      {
+        "time": 136676.183804695,
+        "used_fraction": 0.48460926212674493,
+        "used_bytes": 31325970432
+      },
+      {
+        "time": 136681.191928141,
+        "used_fraction": 0.4868760061912344,
+        "used_bytes": 31472496640
+      },
+      {
+        "time": 136686.200364577,
+        "used_fraction": 0.4878477666522808,
+        "used_bytes": 31535312896
+      },
+      {
+        "time": 136691.20929804,
+        "used_fraction": 0.4921358434441685,
+        "used_bytes": 31812501504
+      },
+      {
+        "time": 136696.218291453,
+        "used_fraction": 0.49565036443868704,
+        "used_bytes": 32039686144
+      },
+      {
+        "time": 136701.22681224,
+        "used_fraction": 0.49313396360473205,
+        "used_bytes": 31877021696
+      },
+      {
+        "time": 136706.235860804,
+        "used_fraction": 0.4924849827334463,
+        "used_bytes": 31835070464
+      },
+      {
+        "time": 136711.244068214,
+        "used_fraction": 0.4936899251517599,
+        "used_bytes": 31912960000
+      },
+      {
+        "time": 136716.253013419,
+        "used_fraction": 0.4962293907227925,
+        "used_bytes": 32077115392
+      },
+      {
+        "time": 136721.261155298,
+        "used_fraction": 0.496412514596842,
+        "used_bytes": 32088952832
+      },
+      {
+        "time": 136726.269983803,
+        "used_fraction": 0.5003060196365821,
+        "used_bytes": 32340635648
+      },
+      {
+        "time": 136731.278160791,
+        "used_fraction": 0.5020943605007,
+        "used_bytes": 32456237056
+      },
+      {
+        "time": 136736.2875252,
+        "used_fraction": 0.5072711266813575,
+        "used_bytes": 32790872064
+      },
+      {
+        "time": 136741.296194241,
+        "used_fraction": 0.4964652973605387,
+        "used_bytes": 32092364800
+      },
+      {
+        "time": 136746.30502847,
+        "used_fraction": 0.49862419476979203,
+        "used_bytes": 32231919616
+      }
+    ]
+  },
+  "mean_epoch_seconds": {
+    "0": 24.24201834149426,
+    "1": 24.8433466485003
+  },
+  "aggregate_speedup_over_single_trainer": 1.8923524167041852,
+  "resource_sample": {
+    "cpu_sample_seconds": 10.00034865399357,
+    "cpu_core_equivalents": 1.9959304110891287,
+    "cpu_utilization_fraction_of_32": 0.06237282534653527,
+    "allowed_logical_cpus": 16,
+    "mem_total_bytes": 64641708032,
+    "mem_used_estimate_bytes": 32254107648,
+    "mem_used_fraction": 0.498967441145476
+  },
+  "note": "initial parallel deployment, before scoped eight-thread collation"
+}

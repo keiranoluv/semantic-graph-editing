@@ -1,0 +1,18 @@
+[
+  {
+    "model": "mlp",
+    "seed": 42,
+    "epoch": 68,
+    "next_index": 15872,
+    "completed_epochs": 67,
+    "checkpoint_sha256": "a28c866843b713404320b38fabd7736fd8b9a216e4c9aeb54ad1fb1988592f61"
+  },
+  {
+    "model": "mlp",
+    "seed": 123,
+    "epoch": 9,
+    "next_index": 57856,
+    "completed_epochs": 8,
+    "checkpoint_sha256": "8405ee79dd7927974c9a951e6a90912cac74cfe524dbb4926adebaecb66feaff"
+  }
+]

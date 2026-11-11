@@ -11,7 +11,7 @@ from src.training import gqa_full
 from tests.training.test_gqa_full import assert_nested_equal, fixtures
 from tools import train_gqa_pilot as evaluator
 from tools.run_gqa_full import exclusive
-from tools.run_gqa_full_parallel import ValidationCache, coordinator_lock
+from tools.run_gqa_full_parallel import ValidationCache, coordinator_lock, threaded_collate
 from tools.run_gqa_full_prepared import prepare_supervision, prepared_collate
 
 
@@ -66,18 +66,42 @@ def test_validation_cache_is_bounded_and_does_not_cache_training():
 
 
 @pytest.mark.parametrize("kind", gqa_full.MODELS)
-def test_cached_validation_does_not_change_training_or_mutate_batches(tmp_path, monkeypatch, kind):
+@pytest.mark.parametrize("device", ["cpu", "cuda"])
+def test_cached_validation_does_not_change_training_or_mutate_batches(tmp_path, monkeypatch, kind, device):
+    if device == "cuda" and not torch.cuda.is_available():
+        pytest.skip("CUDA unavailable")
+    monkeypatch.setenv("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
     torch.set_num_threads(1)
-    train, val, vectors, experiment = fixtures("cpu")
+    train, val, vectors, experiment = fixtures(device)
     original = gqa_full.train_run(kind, 42, train, val, vectors, experiment, tmp_path / "reference")
     for graph in train + val:
         prepare_supervision(graph, 4)
     cache = ValidationCache()
     before = {k: t.clone() for k, t in cache(val, 4)[0].items()}
-    monkeypatch.setattr(gqa_full, "collate", prepared_collate)
+    monkeypatch.setattr(gqa_full, "collate", threaded_collate)
     monkeypatch.setattr(evaluator, "collate", cache)
     actual = gqa_full.train_run(kind, 42, train, val, vectors, experiment, tmp_path / "cached")
     assert_nested_equal(original["history"], actual["history"])
     assert_nested_equal(original["validation"], actual["validation"])
     assert_nested_equal(before, cache(val, 4)[0])
     assert cache.hits >= 3
+    left, right = [
+        torch.load(tmp_path / name / "last.pt", map_location="cpu", weights_only=True)
+        for name in ("reference", "cached")
+    ]
+    for key in ("model", "optimizer", "torch_rng", "cuda_rng", "sampler_rng"):
+        assert_nested_equal(left[key], right[key])
+
+
+def test_thread_count_and_sampler_are_restored_even_on_error():
+    torch.set_num_threads(1)
+    train, _, _, _ = fixtures("cpu")
+    for graph in train:
+        prepare_supervision(graph, 4)
+    a, b = [torch.Generator().manual_seed(42) for _ in range(2)]
+    assert_nested_equal(prepared_collate(train, 4, a), threaded_collate(train, 4, b))
+    assert_nested_equal(a.get_state(), b.get_state())
+    assert torch.get_num_threads() == 1
+    with pytest.raises(ValueError, match="vocabulary"):
+        threaded_collate(train, 5)
+    assert torch.get_num_threads() == 1
