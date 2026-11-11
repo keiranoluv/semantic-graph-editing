@@ -35,3 +35,12 @@ benchmark in `reports/level2/gqa-ram-loader-v1/benchmark.json` measures data loa
 plus collation only: 4.70 seconds versus 1.10 seconds for eight batches, about
 4.29 times faster. This ratio is not an end-to-end training speedup estimate.
 GPU epoch timings must be measured separately. No test split is accessed.
+
+The live MLP seed 42 run resumed at epoch 11, image offset 25,600, on the same
+W&B run. Two subsequent complete epochs took 35.64 and 36.24 seconds, versus
+103.51 seconds on average for nine complete epoch intervals before the change:
+about 2.88 times faster. These wall times include training, validation and
+checkpoint work. The partial resumed epoch is excluded. See
+`reports/level2/gqa-ram-loader-v1/live-resume.json` for measurements and provenance.
+This comparison does not establish GAT or PE throughput. The full test suite
+passed all 320 tests before launch.

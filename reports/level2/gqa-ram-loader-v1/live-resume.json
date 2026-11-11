@@ -1,0 +1,75 @@
+{
+  "status": "RUNNING",
+  "pid": 194363,
+  "tmux": "0:gqa-ram",
+  "implementation_commit": "846206f",
+  "resume": {
+    "epoch": 11,
+    "next_index": 25600,
+    "same_checkpoint": true,
+    "frozen_source_hashes_unchanged": true
+  },
+  "completed_epochs_at_verification": 13,
+  "wandb_run_id": "9891472bf7dd689242464bc0",
+  "runtime": {
+    "scope": "performance-only RAM graph loading; training recipe and checkpoint identity unchanged",
+    "pid": 194363,
+    "workers": 8,
+    "source_sha256": {
+      "tools/run_gqa_full_ram.py": "8752a4be0bf041b721e1dddcc23d9c9c4221e779ef6cf520596ed840df6e852c"
+    },
+    "dataset_implementation": "original GQAFullDataset in spawned CPU workers; all tensor bytes verified after IPC",
+    "datasets": {
+      "train": {
+        "split": "train",
+        "images": 69942,
+        "workers": 8,
+        "serialized_shard_bytes": 3550616378,
+        "tensor_bytes": 3395143240,
+        "load_seconds": 27.04352569297771,
+        "all_worker_parent_tensor_digests_equal": true
+      },
+      "val": {
+        "split": "val",
+        "images": 5000,
+        "workers": 8,
+        "serialized_shard_bytes": 253638340,
+        "tensor_bytes": 242539924,
+        "load_seconds": 3.882430349010974,
+        "all_worker_parent_tensor_digests_equal": true
+      }
+    }
+  },
+  "timing": {
+    "model": "mlp",
+    "seed": 42,
+    "old_complete_epoch_intervals_seconds": [
+      103.12895560264587,
+      103.21029424667358,
+      103.38855648040771,
+      103.39986419677734,
+      103.48875164985657,
+      103.43015837669373,
+      103.12665295600891,
+      104.79669976234436,
+      103.62156057357788
+    ],
+    "old_mean_seconds": 103.51016598277621,
+    "new_complete_epoch_intervals_seconds": [
+      35.63703101099236,
+      36.23735083799693
+    ],
+    "new_mean_seconds": 35.937190924494644,
+    "speedup": 2.880307651208879,
+    "old_measurement": "successive local W&B history _timestamp values, epochs 1 through 10",
+    "new_measurement": "successive EPOCH log lines polled at 0.2s, epochs 11 through 13; resumed partial epoch excluded",
+    "limitation": "MLP only; GAT and PE throughput not measured by this comparison"
+  },
+  "validation": {
+    "pytest_passed": 320,
+    "real_data_graphs_equal": 4096,
+    "sampled_batch_hashes_equal": true,
+    "synthetic_exact_resume": true,
+    "test_split_used": false
+  }
+}
