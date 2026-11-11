@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "date": "2026-11-11",
+  "split": "val",
+  "gpu_checkpoints": 9,
+  "images_per_checkpoint": 5000,
+  "zero_shot_images": 722,
+  "zero_shot_annotations": 1130,
+  "unique_zero_shot_triples": 851,
+  "independent_numpy_per_image_metric_checks": 36,
+  "group_and_paired_statistics_checked": true,
+  "historical_full_set_R_mR_and_per_predicate_reproduced": true,
+  "unit_tests": {
+    "command": "myenv/bin/python -m pytest -q",
+    "passed": 239
+  },
+  "differential_check_sha256": "e76f99e4330d4f28a2484794bce2f56f4ac1ace0e752a3f553d3a764a866be1e",
+  "summary_sha256": "27ab9b0f39ab7e2ca061dfddc424d5c51eda58d05932ccf0021af696ed168781",
+  "analysis_sha256": "5838a9a9708958d9fbc6b283e191e37b49fe16d080bce63a7d3effe879860d9b",
+  "training_performed": false,
+  "checkpoint_reselection": false,
+  "test_evaluation_performed": false,
+  "resume_checked": true,
+  "resume_result": "all nine immutable reports and summary reused unchanged",
+  "test_log_sha256": "fdb14fb218aacf55414542ec770592985bd737780178de5d2ec4900f92c11818",
+  "test_log": "test-results.txt"
+}
