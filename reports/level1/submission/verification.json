@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-11",
+  "unique_evaluated_checkpoints": 54,
+  "full_validation_images": 5000,
+  "report_hashes_and_evaluator_hashes": "PASS",
+  "shared_predicate_support": "PASS",
+  "mean_sample_std_recomputed": "PASS",
+  "excluded_relation_prior_runs": 6,
+  "human_review_rows": 10,
+  "human_review_status": "pending",
+  "notebook_cpu_execution": "PASS",
+  "teammate_machine_execution": "not_performed",
+  "tests_passed": 215,
+  "outputs": [
+    "docs/LEVEL1_REPORT.md",
+    "reports/level1/submission/cases/analysis.md",
+    "notebooks/level1_reference_demo.ipynb"
+  ]
+}

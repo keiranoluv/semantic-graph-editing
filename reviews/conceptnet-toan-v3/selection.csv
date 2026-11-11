@@ -1,0 +1,5 @@
+class_id,selected_uri,evidence_reference,rationale
+11,/c/en/bike,"/a/[/r/HasA/,/c/en/bike/,/c/en/two_wheels/]",Toan quyết định accept ID 11; Codex chọn URI bike và cạnh hai bánh làm bằng chứng. URI này còn trộn xe đạp với nghĩa VG đại diện là xe máy.
+54,/c/en/glass,"/a/[/r/UsedFor/,/c/en/glass/,/c/en/drinking/]",Toan quyết định accept ID 54; Codex chọn URI glass và cạnh dùng để uống. URI này còn trộn cốc uống với chất liệu kính.
+123,/c/en/stand/n,"/a/[/r/IsA/,/c/en/stand/n/,/c/en/object_supporting_furniture/n/]","Toan quyết định accept ID 123; Codex chọn URI danh từ chỉ vật đỡ đồ nội thất, gần nghĩa chân đế VG."
+143,/c/en/wave,"/a/[/r/PartOf/,/c/en/wave/,/c/en/ocean/]",Toan quyết định accept ID 143; Codex chọn URI wave và cạnh thuộc đại dương. URI này còn có nghĩa cử chỉ và dao động khác.

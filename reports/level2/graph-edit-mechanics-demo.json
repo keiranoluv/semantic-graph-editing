@@ -1,0 +1,159 @@
+{
+  "example_type": "synthetic_mechanics_demo_not_MagicBrush_not_model_prediction",
+  "source": {
+    "nodes": [
+      {
+        "id": "girl-1",
+        "label": "girl",
+        "attributes": []
+      },
+      {
+        "id": "shirt-1",
+        "label": "shirt",
+        "attributes": [
+          "red"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "wear-1",
+        "subject": "girl-1",
+        "predicate": "wearing",
+        "object": "shirt-1"
+      }
+    ]
+  },
+  "instruction": "Change the girl's red shirt to blue.",
+  "expected_operations": [
+    {
+      "kind": "replace_node",
+      "before": {
+        "id": "shirt-1",
+        "label": "shirt",
+        "attributes": [
+          "red"
+        ]
+      },
+      "after": {
+        "id": "shirt-1",
+        "label": "shirt",
+        "attributes": [
+          "blue"
+        ]
+      }
+    }
+  ],
+  "reconstructed_target": {
+    "nodes": [
+      {
+        "id": "girl-1",
+        "label": "girl",
+        "attributes": []
+      },
+      {
+        "id": "shirt-1",
+        "label": "shirt",
+        "attributes": [
+          "blue"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "wear-1",
+        "subject": "girl-1",
+        "predicate": "wearing",
+        "object": "shirt-1"
+      }
+    ]
+  },
+  "deliberately_wrong_prediction": {
+    "kind": "replace_node",
+    "before": {
+      "id": "girl-1",
+      "label": "girl",
+      "attributes": []
+    },
+    "after": {
+      "id": "girl-1",
+      "label": "girl",
+      "attributes": [
+        "blue"
+      ]
+    }
+  },
+  "wrong_prediction_metrics": {
+    "protocol": "graph_edit_exact_payload_aligned_ids_v1",
+    "examples": 1,
+    "per_type": {
+      "add_node": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "support": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "delete_node": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "support": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "replace_node": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 1,
+        "support": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "add_edge": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "support": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "delete_edge": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "support": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "replace_edge": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "support": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      }
+    },
+    "micro": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 1,
+      "support": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "macro_f1_supported_types": 0.0,
+    "exact_operation_set_accuracy": 0.0,
+    "valid_transaction_rate": 1.0,
+    "exact_target_graph_accuracy": 0.0
+  }
+}

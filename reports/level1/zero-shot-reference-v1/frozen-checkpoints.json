@@ -1,0 +1,158 @@
+{
+  "entries": [
+    {
+      "condition": "baseline",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-baseline-seed42-v1/best.pt",
+      "checkpoint_sha256": "bceb28e3ca429c766a156a766069484e462c4d6213b498f6b7aafe706e703529",
+      "old_reports": {
+        "GC": {
+          "path": "reports/level1/reference-v1-fusion/baseline-seed42-val5000.json",
+          "sha256": "5d66410d8cf78cb23796449d5e2ae05604cd9aba6fdae1488a4e207bd49b1cfa"
+        },
+        "NG": {
+          "path": "reports/level1/reference-ng-v1-fusion/baseline-seed42-val5000.json",
+          "sha256": "996257d7231305c087d4fdd4ad2ded78549d0c04d4c5d1026d02bc01a51b4d23"
+        }
+      }
+    },
+    {
+      "condition": "baseline",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-baseline-seed123-v1/best.pt",
+      "checkpoint_sha256": "15cd92df422cc7945fa3cdb8257b615cce06c2e6012a78dd53755dbb8f08a4b1",
+      "old_reports": {
+        "GC": {
+          "path": "reports/level1/reference-v1-fusion/baseline-seed123-val5000.json",
+          "sha256": "4e1a2c23b6da2595c08edb1e8deefc8b1c3ce42eaea42411e8d05f4603199c75"
+        },
+        "NG": {
+          "path": "reports/level1/reference-ng-v1-fusion/baseline-seed123-val5000.json",
+          "sha256": "7b9c4b499f0e10e7ac9ef2219446e00faa1d5c29a0511ac3630e9d21445c9b08"
+        }
+      }
+    },
+    {
+      "condition": "baseline",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-baseline-seed3407-v1/best.pt",
+      "checkpoint_sha256": "42aaaa3696e007cfeee31bfa4090283368bdb6ec57e74b0bdb9a1d4e6913be2c",
+      "old_reports": {
+        "GC": {
+          "path": "reports/level1/reference-v1-fusion/baseline-seed3407-val5000.json",
+          "sha256": "77439c24c9ae74a7a4fc4a0858e2378ebffc2d9e1d56a3c61e42eda0240d7087"
+        },
+        "NG": {
+          "path": "reports/level1/reference-ng-v1-fusion/baseline-seed3407-val5000.json",
+          "sha256": "77d07d691053f32bbd7e867e4c0e04b5cb174a3e62bdf535788e2cd6eb93d995"
+        }
+      }
+    },
+    {
+      "condition": "pair_real",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_real-seed42-v1/best.pt",
+      "checkpoint_sha256": "d9ebe6b5bb9a00d48178c4f4f278a4397735758c269d664029b64d43ac4d02e5",
+      "old_reports": {
+        "GC": {
+          "path": "reports/level1/reference-v1-fusion/pair_real-seed42-val5000.json",
+          "sha256": "6be65a150b0f33727650eda8b53cbc38a51d400083a5be06809c12b8adb02784"
+        },
+        "NG": {
+          "path": "reports/level1/reference-ng-v1-fusion/pair_real-seed42-val5000.json",
+          "sha256": "74d0c4c67d2bacfc74feff3949dfed6901adf2e630795b9fd3018f20c2b9ce8a"
+        }
+      }
+    },
+    {
+      "condition": "pair_real",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_real-seed123-v1/best.pt",
+      "checkpoint_sha256": "5ffb7afdbd9a5cd3322ccb733863d5de549737a4d5ae9b5eae368beb20056821",
+      "old_reports": {
+        "GC": {
+          "path": "reports/level1/reference-v1-fusion/pair_real-seed123-val5000.json",
+          "sha256": "e62f3a784a8cdd8e0678a7fd895beb5863f8c95727b918919a151595fee22672"
+        },
+        "NG": {
+          "path": "reports/level1/reference-ng-v1-fusion/pair_real-seed123-val5000.json",
+          "sha256": "45a0714b2c0fe360cb61487a23ac81fce117575e6a6687155d5866e47750c4e3"
+        }
+      }
+    },
+    {
+      "condition": "pair_real",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_real-seed3407-v1/best.pt",
+      "checkpoint_sha256": "dddb192c813ca53be33bb2586c55559f7793213159bbf38baa3d799beb771653",
+      "old_reports": {
+        "GC": {
+          "path": "reports/level1/reference-v1-fusion/pair_real-seed3407-val5000.json",
+          "sha256": "96fa78a20a171c49a3338a60d9e66050c4b51ee5a60a2f3b18116c4e163ccc77"
+        },
+        "NG": {
+          "path": "reports/level1/reference-ng-v1-fusion/pair_real-seed3407-val5000.json",
+          "sha256": "e0e379cb127e1f9d53d14dfbd00fc9278d5419d66e43eaad130d17baf72cf1bc"
+        }
+      }
+    },
+    {
+      "condition": "pair_shuffled",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_shuffled-seed42-v1/best.pt",
+      "checkpoint_sha256": "80b41a3b5159cdeebc3394b291575f9b4642e8eb1ac575dd31db6d4ff83ae1bd",
+      "old_reports": {
+        "GC": {
+          "path": "reports/level1/reference-v1-fusion/pair_shuffled-seed42-val5000.json",
+          "sha256": "e53101e82fbca35eedb7c1b1bfb869f0663acf8e793cab39f044769604c75920"
+        },
+        "NG": {
+          "path": "reports/level1/reference-ng-v1-fusion/pair_shuffled-seed42-val5000.json",
+          "sha256": "d4ea94ffd01a59ebebee14a8f5094aefa2257e721e9c3ddb2da1833ef9df0280"
+        }
+      }
+    },
+    {
+      "condition": "pair_shuffled",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_shuffled-seed123-v1/best.pt",
+      "checkpoint_sha256": "eb79eeea0d9fde1595ce7f971d0a30027baed3c4385364ccd83faf3576e1f4a5",
+      "old_reports": {
+        "GC": {
+          "path": "reports/level1/reference-v1-fusion/pair_shuffled-seed123-val5000.json",
+          "sha256": "4e00018a78732f2402b8eef98b569533a74efe753e691ae4934884f234f353d7"
+        },
+        "NG": {
+          "path": "reports/level1/reference-ng-v1-fusion/pair_shuffled-seed123-val5000.json",
+          "sha256": "2ec63d1da3b20f901d9c50f5134d6e1c2d290d6e459cab2024b7d7da53f19752"
+        }
+      }
+    },
+    {
+      "condition": "pair_shuffled",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_shuffled-seed3407-v1/best.pt",
+      "checkpoint_sha256": "ca8c67b6933f1f4afb4424875599db3435bf287fbbc2606f4b2d27d635ed0584",
+      "old_reports": {
+        "GC": {
+          "path": "reports/level1/reference-v1-fusion/pair_shuffled-seed3407-val5000.json",
+          "sha256": "fddc6a0ddaa68bb270c8a009b30b29ddd16890e4eb2fd2b7b4b47a41b6001b67"
+        },
+        "NG": {
+          "path": "reports/level1/reference-ng-v1-fusion/pair_shuffled-seed3407-val5000.json",
+          "sha256": "eb67c07e40e9b4206e327a02d67968c9cc8b8da202199a434de91880db1b5952"
+        }
+      }
+    }
+  ],
+  "conditions": [
+    "baseline",
+    "pair_real",
+    "pair_shuffled"
+  ],
+  "seeds": [
+    42,
+    123,
+    3407
+  ]
+}

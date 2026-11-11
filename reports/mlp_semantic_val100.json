@@ -1,0 +1,21 @@
+{
+  "num_images": 100,
+  "num_images_with_gt": 100,
+  "num_predicates_with_gt": 32,
+  "R@50": 0.3219065461885895,
+  "mR@50": 0.044697331653853395,
+  "R@100": 0.36319894850591444,
+  "mR@100": 0.05068319361797623,
+  "dataset": "VG150",
+  "model": "mlp_semantic",
+  "features": "geometry+trainable_object_embedding",
+  "split": "val",
+  "images_evaluated": 100,
+  "box_policy": "clip",
+  "checkpoint": "checkpoints/mlp_semantic_smoke.pt",
+  "checkpoint_epoch": 2,
+  "seed": 42,
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "recall_aggregation": "image_macro",
+  "mean_recall_aggregation": "predicate_macro"
+}

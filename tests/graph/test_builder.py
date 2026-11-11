@@ -1,4 +1,4 @@
-"""Builder placeholder test; functional graph assertions are pending."""
+"""Smoke tests for scene graph construction."""
 
 import pytest
 import torch
@@ -8,17 +8,14 @@ pytest.importorskip("torch_geometric")
 from src.graph.builder import SceneGraphBuilder  # noqa: E402
 
 
-def test_builder_placeholder(sample_scene):
-    features = torch.zeros((len(sample_scene.objects), 4), dtype=torch.float32)
-    with pytest.raises(NotImplementedError):
-        SceneGraphBuilder().build(sample_scene, features)
+def test_builder_returns_graph(sample_scene):
+    features = torch.zeros(
+        (len(sample_scene.objects), 5),
+        dtype=torch.float32,
+    )
 
+    graph = SceneGraphBuilder().build(sample_scene, features)
 
-@pytest.mark.skip(reason="Phase 4: assert 3-node directed edge_index shape [2, 6]")
-def test_fully_connected_topology():
-    pass
-
-
-@pytest.mark.skip(reason="Phase 4: verify candidate predicate labels and background=0")
-def test_candidate_pair_targets():
-    pass
+    assert graph.num_nodes == 3
+    assert graph.edge_index.shape == (2, 6)
+    assert graph.gt_predicate.tolist() == [1]

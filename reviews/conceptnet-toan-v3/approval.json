@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "approval_scope": "conceptnet_ai_134_plus_16_direct_focus",
+  "approver": "Toan",
+  "proposal_sha256": "b7d5733e5aa5b7ebb369af16bea4cdfb6a07d200f5f0972a5b901006c694a293",
+  "focus_sha256": "67fee89db7e76f6fae94d5fb467c5e5163897194ff2e14fc6e3a18a1b9365a98",
+  "selection_sha256": "f14d7339802196d6a05a9085262910382583d6ac70644c2bf13b99e669b6c833",
+  "accepted_focus_class_ids": [
+    11,
+    54,
+    123,
+    143
+  ],
+  "reject_remaining_focus": true,
+  "approve_non_focus_ai_proposals": true,
+  "statement": "Accept: 54, 11. 123, 143; còn lại reject  <== Còn lại mình duyệt và đã review => OK",
+  "approved_at_utc": "2026-10-25T09:44:10Z",
+  "source": "Toan message in this conversation"
+}

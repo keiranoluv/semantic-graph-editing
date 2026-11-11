@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "device": "cpu",
+  "checkpoint_sha256": "79eebd6324c1581513e408866791c9a8caa46ab3c7d864bd6847b7132df216d8",
+  "notebook": "notebooks/level1_reference_demo.ipynb",
+  "notebook_sha256": "694f65ec7ca2aab83c72ee8d4285e7061b9f61bc93dbe76415869e3d6ef5f306",
+  "executions": [
+    {
+      "case_id": "miss03",
+      "status": "PASS",
+      "stdout": [
+        "Ảnh 89 | node: 15 | cặp ứng viên: 210\nĐặc trưng mỗi node: 517 = 5 hình học + 512 CLIP\n",
+        "GT: shelf → on → table\nGT annotation row: 3\nTất cả annotation GT của cặp này: ['on']\nHit/miss đang xét annotation đã chọn, không đại diện mọi quan hệ của cặp.\n",
+        "Suy luận lại: on | hạng cặp: 64\nR@50 ảnh: 7/10 = 70.00%\nR@100 ảnh: 9/10 = 90.00%\nMatching GT ở hạng: 64\nCase thuộc nhóm: miss\nLưu ý: reference matching dùng nhãn + IoU; đôi khi dự đoán từ node trùng/overlap cũng match GT.\n",
+        "GT on: hạng NG của đúng cặp = 93; trong top 50: False\nẢnh này — R@50: 7/10; ng-R@50: 7/10\nẢnh này — R@100: 9/10; ng-R@100: 9/10\nHai cách chấm khác nhau; điểm NG cao hơn không có nghĩa là mô hình đã được cải thiện.\n"
+      ]
+    },
+    {
+      "case_id": "miss05",
+      "status": "PASS",
+      "stdout": [
+        "Ảnh 3 | node: 8 | cặp ứng viên: 56\nĐặc trưng mỗi node: 517 = 5 hình học + 512 CLIP\n",
+        "GT: girl → has → hair\nGT annotation row: 0\nTất cả annotation GT của cặp này: ['has', 'has', 'with', 'with']\nHit/miss đang xét annotation đã chọn, không đại diện mọi quan hệ của cặp.\n",
+        "Suy luận lại: with | hạng cặp: 5\nR@50 ảnh: 4/6 = 66.67%\nR@100 ảnh: 4/6 = 66.67%\nMatching GT ở hạng: None\nCase thuộc nhóm: miss\nLưu ý: reference matching dùng nhãn + IoU; đôi khi dự đoán từ node trùng/overlap cũng match GT.\n",
+        "GT has: hạng NG của đúng cặp = 7; trong top 50: True\nGT with: hạng NG của đúng cặp = 5; trong top 50: True\nẢnh này — R@50: 4/6; ng-R@50: 6/6\nẢnh này — R@100: 4/6; ng-R@100: 6/6\nHai cách chấm khác nhau; điểm NG cao hơn không có nghĩa là mô hình đã được cải thiện.\n"
+      ]
+    }
+  ]
+}

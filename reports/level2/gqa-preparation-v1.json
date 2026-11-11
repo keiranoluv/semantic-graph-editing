@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "protocol": "GQA_project_full_train_vocabulary_box_PredCls_v1",
+  "manifest": "data/processed/level2/gqa-v1/manifest.json",
+  "manifest_sha256": "c953dc40d4b0a880ccd142f36670388ebffb7d7e2bb341d661b8b45781046c2a",
+  "annotation_sha256": {
+    "train_sceneGraphs.json": "db9de9f9ec49336e85b02d4e3b8588ccc8f72365e6d60839344c294c093bc00b",
+    "val_sceneGraphs.json": "3224baf1e87e56d0faa52a9d62bbd5cd79a6528e15957d0bd886de7f0d6c9a41"
+  },
+  "split_policy": "official train -> project train/val; official val -> project held-out test",
+  "seed": 42,
+  "split_counts": {
+    "train": 69942,
+    "val": 5000,
+    "test": 10696
+  },
+  "vocabulary_sizes": {
+    "label_to_idx": 1699,
+    "predicate_to_idx": 310,
+    "attribute_to_idx": 617
+  },
+  "statistics": {
+    "train": {
+      "clipped_objects": 11683,
+      "dropped_invalid_box_objects": 157,
+      "dropped_relations_filtered_endpoint": 364,
+      "dropped_self_relations": 2305,
+      "images": 69942,
+      "images_fewer_than_two_objects": 957,
+      "images_without_relations": 2208,
+      "objects": 1148828,
+      "raw_objects": 1148985,
+      "raw_relations": 3544394,
+      "relations": 3541725
+    },
+    "val": {
+      "clipped_objects": 859,
+      "dropped_invalid_box_objects": 3,
+      "dropped_oov_objects": 25,
+      "dropped_relations_filtered_endpoint": 318,
+      "dropped_self_relations": 189,
+      "images": 5000,
+      "images_fewer_than_two_objects": 61,
+      "images_without_relations": 153,
+      "objects": 82121,
+      "raw_objects": 82149,
+      "raw_relations": 251513,
+      "relations": 251006
+    },
+    "test": {
+      "clipped_objects": 1783,
+      "dropped_invalid_box_objects": 87,
+      "dropped_oov_objects": 3,
+      "dropped_relations_filtered_endpoint": 146,
+      "dropped_self_relations": 306,
+      "images": 10696,
+      "images_fewer_than_two_objects": 187,
+      "images_without_relations": 398,
+      "objects": 174241,
+      "raw_objects": 174331,
+      "raw_relations": 534889,
+      "relations": 534437
+    }
+  },
+  "image_archive": "data/raw/gqa/archives/images.zip",
+  "image_archive_coverage": "all split image IDs found; one training image decoded",
+  "smoke_image": {
+    "image_id": "10",
+    "width": 800,
+    "height": 600
+  },
+  "smoke_graph": {
+    "nodes": 29,
+    "candidate_pairs": 812,
+    "gt_annotation_rows": 172,
+    "feature_dim": 5
+  },
+  "source_sha256": {
+    "src/datasets/gqa.py": "83e1c9686c989a1ab910ba05393a39122ff71957678232802718cea7addf6ab6",
+    "tools/prepare_level2_gqa.py": "fbf75b933ef2eddc9022370cb16a684f006283f7e82c37ce56cf53c1b10bbfa7"
+  },
+  "training_performed": false,
+  "model_evaluation_performed": false,
+  "limitations": [
+    "GQA shares Visual Genome images: separate training is not cross-dataset generalization",
+    "Custom full-train vocabulary; not GQA200 or a directly comparable paper benchmark",
+    "OOV objects/predicates are dropped and counted; held-out GT support is filtered",
+    "Image archive contents were indexed; only the smoke image was decoded in this command",
+    "CLIP cache, KG mapping and model runs on GQA are not implemented by this command"
+  ]
+}

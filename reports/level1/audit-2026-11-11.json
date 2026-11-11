@@ -1,0 +1,106 @@
+{
+  "reference": {
+    "repository": "KaihuaTang/Scene-Graph-Benchmark.pytorch",
+    "commit": "ceb71fa88461c2a97a6258a80f47669d89207296",
+    "sgg_eval_sha256": "73fc981a9ecf2a406b335bb6b4cfa5b473c695d0d2c7b194cb8aa827b55ce7b0",
+    "visual_genome_sha256": "7febbdbd8b3eac204ca34b9febc594198736726c078bad1694393aaaf2bec21a"
+  },
+  "mean_recall_probe": {
+    "one_supported_class": {
+      "project": 0.9,
+      "reference": 0.5
+    },
+    "one_supported_one_absent": {
+      "project": 0.9,
+      "reference": 0.25
+    }
+  },
+  "split": {
+    "counts": {
+      "train": 57723,
+      "val": 5000,
+      "test": 26446
+    },
+    "matches_reference_before_optional_nonoverlap_filter": true,
+    "unique_image_ids": true
+  },
+  "ambiguous_training_pairs": {
+    "total_positive_pairs": 297318,
+    "multi_predicate_pairs": 16894,
+    "annotations": 405860,
+    "annotations_on_ignored_pairs": 48516
+  },
+  "report_integrity": {
+    "count": 87,
+    "groups": {
+      "gat_kg:val": 21,
+      "gat_kg_fusion:val": 21,
+      "gat_pair_kg:val": 12,
+      "gat:val": 3,
+      "mlp_semantic:val": 3,
+      "gat_kg:test": 21,
+      "gat:test": 3,
+      "mlp_semantic:test": 3
+    },
+    "failures": [],
+    "shared_config_values": {
+      "train_limit": [
+        "57723"
+      ],
+      "val_limit": [
+        "5000"
+      ],
+      "negative_ratio": [
+        "3"
+      ],
+      "batch_size": [
+        "512"
+      ],
+      "lr": [
+        "0.001"
+      ],
+      "weight_decay": [
+        "0.01"
+      ],
+      "geometry_dim": [
+        "517"
+      ],
+      "box_policy": [
+        "clip"
+      ],
+      "selection_metric": [
+        "mR@50"
+      ]
+    }
+  },
+  "test_plan_checkpoint_hashes_match": true,
+  "train_prior_recomputed_equal": true,
+  "relation_score_max_difference": {
+    "1": 2.134766101837158,
+    "2": 0.0
+  },
+  "visual_cache_content_hash_verified": true,
+  "kg_buffers": {
+    "checkpoints_checked": 21,
+    "all_match_c2": true,
+    "bundles": [
+      {
+        "path": "data/knowledge/c2-conceptnet-complex-toan-v1",
+        "valid_class_count": 138
+      },
+      {
+        "path": "data/knowledge/c2-conceptnet-toan-v3",
+        "valid_class_count": 138
+      },
+      {
+        "path": "data/knowledge/c2-conceptnet-rotate-toan-v2",
+        "valid_class_count": 138
+      },
+      {
+        "path": "data/knowledge/c2-wordnet-reviewed-filtered-v2",
+        "valid_class_count": 150
+      }
+    ]
+  },
+  "scope": "CPU artifact integrity and synthetic protocol probes; no full-split inference or retraining"
+}

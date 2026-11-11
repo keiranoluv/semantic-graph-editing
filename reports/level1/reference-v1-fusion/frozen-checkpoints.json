@@ -1,0 +1,137 @@
+{
+  "purpose": "fixed_checkpoint_validation_rescore",
+  "entries": [
+    {
+      "condition": "baseline",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-baseline-seed42-v1/best.pt",
+      "checkpoint_sha256": "bceb28e3ca429c766a156a766069484e462c4d6213b498f6b7aafe706e703529",
+      "legacy_report": "reports/level1/clip-fusion-v1-baseline-seed42-val5000.json",
+      "legacy_report_sha256": "f368749c58e8595d9669676cd7829c14296620d9226e046427e11d4f3350a066"
+    },
+    {
+      "condition": "baseline",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-baseline-seed123-v1/best.pt",
+      "checkpoint_sha256": "15cd92df422cc7945fa3cdb8257b615cce06c2e6012a78dd53755dbb8f08a4b1",
+      "legacy_report": "reports/level1/clip-fusion-v1-baseline-seed123-val5000.json",
+      "legacy_report_sha256": "fe0bc053c689749380c91ada22521c4609a8bbd0d6f2770328e12fcd909216e3"
+    },
+    {
+      "condition": "baseline",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-baseline-seed3407-v1/best.pt",
+      "checkpoint_sha256": "42aaaa3696e007cfeee31bfa4090283368bdb6ec57e74b0bdb9a1d4e6913be2c",
+      "legacy_report": "reports/level1/clip-fusion-v1-baseline-seed3407-val5000.json",
+      "legacy_report_sha256": "82dfe1ab479662f8b13f08da2b3eefa1ebb5cc5c877ec715b689075786681938"
+    },
+    {
+      "condition": "pair_real",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_real-seed42-v1/best.pt",
+      "checkpoint_sha256": "d9ebe6b5bb9a00d48178c4f4f278a4397735758c269d664029b64d43ac4d02e5",
+      "legacy_report": "reports/level1/clip-fusion-v1-pair_real-seed42-val5000.json",
+      "legacy_report_sha256": "626d4d861f9b15c6bde52c6bba291c20eddf2f8d62fc75807b9892c0e158f247"
+    },
+    {
+      "condition": "pair_real",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_real-seed123-v1/best.pt",
+      "checkpoint_sha256": "5ffb7afdbd9a5cd3322ccb733863d5de549737a4d5ae9b5eae368beb20056821",
+      "legacy_report": "reports/level1/clip-fusion-v1-pair_real-seed123-val5000.json",
+      "legacy_report_sha256": "1032e217b9f86b9892e138d2eb3d19ef2150eb360f62207f2551f20deb1c2879"
+    },
+    {
+      "condition": "pair_real",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_real-seed3407-v1/best.pt",
+      "checkpoint_sha256": "dddb192c813ca53be33bb2586c55559f7793213159bbf38baa3d799beb771653",
+      "legacy_report": "reports/level1/clip-fusion-v1-pair_real-seed3407-val5000.json",
+      "legacy_report_sha256": "bfaf52dba132f11609fd920a2ecd6bd619af89631a58832a114f556f1bf2c540"
+    },
+    {
+      "condition": "pair_shuffled",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_shuffled-seed42-v1/best.pt",
+      "checkpoint_sha256": "80b41a3b5159cdeebc3394b291575f9b4642e8eb1ac575dd31db6d4ff83ae1bd",
+      "legacy_report": "reports/level1/clip-fusion-v1-pair_shuffled-seed42-val5000.json",
+      "legacy_report_sha256": "852594b280a6078a111b935a58223009d30ea8bd36b44eedef6890da233b48cd"
+    },
+    {
+      "condition": "pair_shuffled",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_shuffled-seed123-v1/best.pt",
+      "checkpoint_sha256": "eb79eeea0d9fde1595ce7f971d0a30027baed3c4385364ccd83faf3576e1f4a5",
+      "legacy_report": "reports/level1/clip-fusion-v1-pair_shuffled-seed123-val5000.json",
+      "legacy_report_sha256": "3be7e9063c950a50c3bcbea44ae8c8dfa6359edc055651377be502f98a3f9063"
+    },
+    {
+      "condition": "pair_shuffled",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_shuffled-seed3407-v1/best.pt",
+      "checkpoint_sha256": "ca8c67b6933f1f4afb4424875599db3435bf287fbbc2606f4b2d27d635ed0584",
+      "legacy_report": "reports/level1/clip-fusion-v1-pair_shuffled-seed3407-val5000.json",
+      "legacy_report_sha256": "f5f45de23f9fe2a055b04d1e23bfc48d7d7d6f27013e1ff66f6d22c6d10ae7a6"
+    },
+    {
+      "condition": "visual_real",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_real-seed42-v1/best.pt",
+      "checkpoint_sha256": "c0bda272f8065d7a1c100538632aef15f38dab99d770cd9055bf5e49e236339c",
+      "legacy_report": "reports/level1/clip-fusion-v1-visual_real-seed42-val5000.json",
+      "legacy_report_sha256": "b82d3399c3b58bf54574e0c178b4962ebf049d397fb47983c2c15ccf9bd518b7"
+    },
+    {
+      "condition": "visual_real",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_real-seed123-v1/best.pt",
+      "checkpoint_sha256": "e29d25ad56fb182a5a4754fd78354c042d0a8546bc48c0792918dbe7155c8975",
+      "legacy_report": "reports/level1/clip-fusion-v1-visual_real-seed123-val5000.json",
+      "legacy_report_sha256": "f586fd5504e2453cf7a819944b456681ab77362c810e60eb5b2e9548d3b60848"
+    },
+    {
+      "condition": "visual_real",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_real-seed3407-v1/best.pt",
+      "checkpoint_sha256": "e299ac11a87c45634ca27b44e9a3ef62576a849853377729ae7937c303f57e46",
+      "legacy_report": "reports/level1/clip-fusion-v1-visual_real-seed3407-val5000.json",
+      "legacy_report_sha256": "9833a8c114ce3815088ef1c9db706cb184138aeab36a4052524b962d11a679ca"
+    },
+    {
+      "condition": "visual_shuffled",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_shuffled-seed42-v1/best.pt",
+      "checkpoint_sha256": "aa7fbe9eaac63252f294d5a222da6115b5f5dbdde49ce76dc1e709c2ba2616ed",
+      "legacy_report": "reports/level1/clip-fusion-v1-visual_shuffled-seed42-val5000.json",
+      "legacy_report_sha256": "b00f7d57d31920db116beb000a89acb513cc16627117ec10b65777c6fefa6dc5"
+    },
+    {
+      "condition": "visual_shuffled",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_shuffled-seed123-v1/best.pt",
+      "checkpoint_sha256": "36207dcae3e801e3dc543a1e1d8ced6b1c48417563ad8fb8e7e2ddbb77feb32b",
+      "legacy_report": "reports/level1/clip-fusion-v1-visual_shuffled-seed123-val5000.json",
+      "legacy_report_sha256": "81deecdb0a8b133f460a1cb077a9a3d24d89cde200ae95c317874a8ba0795cfd"
+    },
+    {
+      "condition": "visual_shuffled",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_shuffled-seed3407-v1/best.pt",
+      "checkpoint_sha256": "582ef1e9c412fa8d53925ad8543a33440abfce685f07233422649abf7674cf61",
+      "legacy_report": "reports/level1/clip-fusion-v1-visual_shuffled-seed3407-val5000.json",
+      "legacy_report_sha256": "03f2bf8517b2fa9e9acdde76764204b4859def77b556426103a945c3f4eec0b6"
+    }
+  ],
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "visual_cache_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+  "excluded_conditions": [
+    "relation_real",
+    "relation_shuffled"
+  ],
+  "exclusion_reason": "TransE training L1 versus relation-score export L2; audited before rescoring"
+}

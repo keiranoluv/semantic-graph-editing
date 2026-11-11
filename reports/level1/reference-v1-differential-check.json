@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "synthetic_images": 100,
+  "real_validation_images": 16,
+  "real_checkpoint_sha256": "79eebd6324c1581513e408866791c9a8caa46ab3c7d864bd6847b7132df216d8",
+  "interpretation": "differential_test_metrics_on_combined_cases_not_model_benchmark",
+  "reference_commit": "ceb71fa88461c2a97a6258a80f47669d89207296",
+  "source_sha256": {
+    "structures/bounding_box.py": "53d06a6f71d682a51cc7783944639f826770a6ce87457ad55d5579e92ff0fd64",
+    "structures/boxlist_ops.py": "322b2fae5e0d389d581ad43bba377b4ac4f0cdd7008452146605a01ea766eaaf",
+    "utils/miscellaneous.py": "8247d228d24967ed7cc87d275a5edae2f58e60445c85c904a709b9adb73977c4",
+    "data/datasets/evaluation/vg/sgg_eval.py": "73fc981a9ecf2a406b335bb6b4cfa5b473c695d0d2c7b194cb8aa827b55ce7b0"
+  },
+  "metrics": {
+    "num_images": 116,
+    "num_images_with_gt": 116,
+    "num_predicates_with_gt": 50,
+    "num_predicates_for_mean": 50,
+    "R@50": 0.7926029875792063,
+    "mR@50": 0.7480352432101937,
+    "R@100": 0.9354898569524015,
+    "mR@100": 0.9410209303280748
+  }
+}

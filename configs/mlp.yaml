@@ -1,0 +1,10 @@
+model:
+  name: mlp
+  input_dim: 5
+  hidden_dim: 256
+  num_classes: 51
+
+features:
+  geometry: true
+  semantic: false
+  visual: false

@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "images_evaluated": 5000,
+  "full_split": true,
+  "interpretation": "validation_not_final_test",
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "visual_cache_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+  "metrics_unit": "fraction_0_to_1",
+  "std_definition": "sample_standard_deviation_ddof_1",
+  "groups": [
+    {
+      "condition": "gat_kg_fusion:off:none:loss_logit_adjusted",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-baseline-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-baseline-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-baseline-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6086397667409302,
+          "sample_std": 0.006103443887418294
+        },
+        "R@100": {
+          "mean": 0.6348082455692843,
+          "sample_std": 0.004695300010670566
+        },
+        "mR@50": {
+          "mean": 0.26036937683990047,
+          "sample_std": 0.007062025995785393
+        },
+        "mR@100": {
+          "mean": 0.2905131882570075,
+          "sample_std": 0.005255981366358417
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "gat_kg_fusion:pair:real:loss_logit_adjusted",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_real-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_real-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_real-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.614696025631179,
+          "sample_std": 0.004328261703435693
+        },
+        "R@100": {
+          "mean": 0.6384899491496501,
+          "sample_std": 0.004615004108436942
+        },
+        "mR@50": {
+          "mean": 0.2607082028550535,
+          "sample_std": 0.0021500900553934857
+        },
+        "mR@100": {
+          "mean": 0.2854047515007897,
+          "sample_std": 0.001427733025006713
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "gat_kg_fusion:pair:shuffled:loss_logit_adjusted",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_shuffled-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_shuffled-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-pair_shuffled-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6123429585811496,
+          "sample_std": 0.0011094351003512264
+        },
+        "R@100": {
+          "mean": 0.6371956304114006,
+          "sample_std": 0.0027064264883657403
+        },
+        "mR@50": {
+          "mean": 0.26227942861934644,
+          "sample_std": 0.0009315467360231576
+        },
+        "mR@100": {
+          "mean": 0.2889138604939911,
+          "sample_std": 0.002890461363379071
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "gat_kg_fusion:relation_prior:real:loss_logit_adjusted",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_real-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_real-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_real-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6110301688230965,
+          "sample_std": 0.00765729324455529
+        },
+        "R@100": {
+          "mean": 0.6350482381362474,
+          "sample_std": 0.007333510288399203
+        },
+        "mR@50": {
+          "mean": 0.25904164150949177,
+          "sample_std": 0.004503943204032115
+        },
+        "mR@100": {
+          "mean": 0.2844422345401002,
+          "sample_std": 0.006807139382937257
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "gat_kg_fusion:relation_prior:shuffled:loss_logit_adjusted",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_shuffled-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_shuffled-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_shuffled-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.611908787036006,
+          "sample_std": 0.003628436491626233
+        },
+        "R@100": {
+          "mean": 0.6370726485294345,
+          "sample_std": 0.004238047224882479
+        },
+        "mR@50": {
+          "mean": 0.2586283353156814,
+          "sample_std": 0.0023187997970665164
+        },
+        "mR@100": {
+          "mean": 0.284623951425992,
+          "sample_std": 0.003932929675458267
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "gat_kg_fusion:visual_gate:real:loss_logit_adjusted",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_real-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_real-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_real-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6168130034035276,
+          "sample_std": 0.000846118421995521
+        },
+        "R@100": {
+          "mean": 0.6413939841233617,
+          "sample_std": 0.000909583487420267
+        },
+        "mR@50": {
+          "mean": 0.25533669279953247,
+          "sample_std": 0.0049514689001857026
+        },
+        "mR@100": {
+          "mean": 0.2819279140514573,
+          "sample_std": 0.007756764982985088
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "gat_kg_fusion:visual_gate:shuffled:loss_logit_adjusted",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_shuffled-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_shuffled-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-visual_shuffled-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6170757143895703,
+          "sample_std": 0.004700533100935993
+        },
+        "R@100": {
+          "mean": 0.6427288086543276,
+          "sample_std": 0.0005123195574787832
+        },
+        "mR@50": {
+          "mean": 0.2656967432854242,
+          "sample_std": 0.010927841951435095
+        },
+        "mR@100": {
+          "mean": 0.29465653669146674,
+          "sample_std": 0.0037029689077207038
+        }
+      },
+      "max_epochs_recorded": 200
+    }
+  ]
+}

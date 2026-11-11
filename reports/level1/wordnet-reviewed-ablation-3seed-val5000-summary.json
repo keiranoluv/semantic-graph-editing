@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "images_evaluated": 5000,
+  "full_split": true,
+  "interpretation": "validation_not_final_test",
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "metrics_unit": "fraction_0_to_1",
+  "std_definition": "sample_standard_deviation_ddof_1",
+  "groups": [
+    {
+      "condition": "gat_kg:wordnet:68914e5c1f29:kg_0:edges_full",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1/wordnet-reviewed-kg_off-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1/wordnet-reviewed-kg_off-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1/wordnet-reviewed-kg_off-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6431638696782844,
+          "sample_std": 0.0019652223301988543
+        },
+        "R@100": {
+          "mean": 0.6641334955886978,
+          "sample_std": 0.0017022216748619433
+        },
+        "mR@50": {
+          "mean": 0.19160782941258578,
+          "sample_std": 0.0041266757051784805
+        },
+        "mR@100": {
+          "mean": 0.21150990039938358,
+          "sample_std": 0.002508943084933048
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "gat_kg:wordnet:68914e5c1f29:kg_1:edges_full",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1/wordnet-reviewed-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1/wordnet-reviewed-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1/wordnet-reviewed-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6414460819928998,
+          "sample_std": 0.0005240591410982806
+        },
+        "R@100": {
+          "mean": 0.6624845885522608,
+          "sample_std": 0.0015113482405718385
+        },
+        "mR@50": {
+          "mean": 0.197542138279693,
+          "sample_std": 0.006749803752456666
+        },
+        "mR@100": {
+          "mean": 0.2189348993923128,
+          "sample_std": 0.005867174576142442
+        }
+      },
+      "max_epochs_recorded": 200
+    },
+    {
+      "condition": "gat_kg:wordnet:68914e5c1f29:kg_1:edges_none",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1/wordnet-reviewed-edges_off-seed42-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1/wordnet-reviewed-edges_off-seed123-v1/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1/wordnet-reviewed-edges_off-seed3407-v1/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6476727088885333,
+          "sample_std": 0.0020909989393203435
+        },
+        "R@100": {
+          "mean": 0.6677022022609092,
+          "sample_std": 0.0014048943547385353
+        },
+        "mR@50": {
+          "mean": 0.1955968089894862,
+          "sample_std": 0.0038446231295466674
+        },
+        "mR@100": {
+          "mean": 0.21521396220501196,
+          "sample_std": 0.00315283565761507
+        }
+      },
+      "max_epochs_recorded": 200
+    }
+  ]
+}

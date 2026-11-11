@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "split": "test",
+  "images_evaluated": 26446,
+  "full_split": true,
+  "interpretation": "held_out_test_no_tuning",
+  "plan_sha256": "2220ff667068691a4cae6334a0bf3f529e75b3e9e652f4f46cbab58d986c8add",
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "visual_cache_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+  "metrics_unit": "fraction_0_to_1",
+  "std_definition": "sample_standard_deviation_ddof_1",
+  "num_predicates_with_gt": 50,
+  "groups": [
+    {
+      "condition": "mlp_semantic",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "reports/level1/test-v1/mlp_semantic-seed42-test26446.json",
+        "reports/level1/test-v1/mlp_semantic-seed123-test26446.json",
+        "reports/level1/test-v1/mlp_semantic-seed3407-test26446.json"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.623454891523567,
+          "sample_std": 0.006962667603234115
+        },
+        "mR@50": {
+          "mean": 0.1654802090870156,
+          "sample_std": 0.014313605359405847
+        },
+        "R@100": {
+          "mean": 0.653096528804139,
+          "sample_std": 0.0023113441017381087
+        },
+        "mR@100": {
+          "mean": 0.19363111761986873,
+          "sample_std": 0.012324074398967112
+        }
+      }
+    },
+    {
+      "condition": "gat",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "reports/level1/test-v1/gat-seed42-test26446.json",
+        "reports/level1/test-v1/gat-seed123-test26446.json",
+        "reports/level1/test-v1/gat-seed3407-test26446.json"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6264388702376463,
+          "sample_std": 0.007830499071407582
+        },
+        "mR@50": {
+          "mean": 0.18372388557209407,
+          "sample_std": 0.0019481285353153176
+        },
+        "R@100": {
+          "mean": 0.6509831638294821,
+          "sample_std": 0.007585805963080864
+        },
+        "mR@100": {
+          "mean": 0.21041429341490095,
+          "sample_std": 0.001721927741062557
+        }
+      }
+    },
+    {
+      "condition": "kg_off",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "reports/level1/test-v1/kg_off-seed42-test26446.json",
+        "reports/level1/test-v1/kg_off-seed123-test26446.json",
+        "reports/level1/test-v1/kg_off-seed3407-test26446.json"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.626599707903189,
+          "sample_std": 0.003978212392380953
+        },
+        "mR@50": {
+          "mean": 0.18254137387779834,
+          "sample_std": 0.0018423950577391595
+        },
+        "R@100": {
+          "mean": 0.6514076683446834,
+          "sample_std": 0.003216243369741855
+        },
+        "mR@100": {
+          "mean": 0.20836931263084937,
+          "sample_std": 0.0037371329127112666
+        }
+      }
+    },
+    {
+      "condition": "wordnet_kg_on",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "reports/level1/test-v1/wordnet_kg_on-seed42-test26446.json",
+        "reports/level1/test-v1/wordnet_kg_on-seed123-test26446.json",
+        "reports/level1/test-v1/wordnet_kg_on-seed3407-test26446.json"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.629880608761138,
+          "sample_std": 0.0031406237923326994
+        },
+        "mR@50": {
+          "mean": 0.17817710220069852,
+          "sample_std": 0.0012273331692401492
+        },
+        "R@100": {
+          "mean": 0.6565852511912352,
+          "sample_std": 0.0038451038242843724
+        },
+        "mR@100": {
+          "mean": 0.20621782666276767,
+          "sample_std": 0.0008894399632504723
+        }
+      }
+    },
+    {
+      "condition": "wordnet_edges_off",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "reports/level1/test-v1/wordnet_edges_off-seed42-test26446.json",
+        "reports/level1/test-v1/wordnet_edges_off-seed123-test26446.json",
+        "reports/level1/test-v1/wordnet_edges_off-seed3407-test26446.json"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6278258318107769,
+          "sample_std": 0.013774059100676394
+        },
+        "mR@50": {
+          "mean": 0.1794736173667569,
+          "sample_std": 0.007634157263546369
+        },
+        "R@100": {
+          "mean": 0.6526394373102727,
+          "sample_std": 0.013541251275843826
+        },
+        "mR@100": {
+          "mean": 0.20575428735697826,
+          "sample_std": 0.005821165964513252
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_transe_kg_on",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "reports/level1/test-v1/conceptnet_transe_kg_on-seed42-test26446.json",
+        "reports/level1/test-v1/conceptnet_transe_kg_on-seed123-test26446.json",
+        "reports/level1/test-v1/conceptnet_transe_kg_on-seed3407-test26446.json"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6289654563887743,
+          "sample_std": 0.003272018298037407
+        },
+        "mR@50": {
+          "mean": 0.18140004462977571,
+          "sample_std": 0.0008430096335460095
+        },
+        "R@100": {
+          "mean": 0.6537106433262859,
+          "sample_std": 0.0033799032103449525
+        },
+        "mR@100": {
+          "mean": 0.20772411089149567,
+          "sample_std": 0.0019166180773871086
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_transe_edges_off",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "reports/level1/test-v1/conceptnet_transe_edges_off-seed42-test26446.json",
+        "reports/level1/test-v1/conceptnet_transe_edges_off-seed123-test26446.json",
+        "reports/level1/test-v1/conceptnet_transe_edges_off-seed3407-test26446.json"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6341470422686422,
+          "sample_std": 0.0021621135725319513
+        },
+        "mR@50": {
+          "mean": 0.17859646959100195,
+          "sample_std": 0.0021407824416264914
+        },
+        "R@100": {
+          "mean": 0.6590410921712019,
+          "sample_std": 0.0020383231291827403
+        },
+        "mR@100": {
+          "mean": 0.2059790802731179,
+          "sample_std": 0.0036543088983748626
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_rotate_kg_on",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "reports/level1/test-v1/conceptnet_rotate_kg_on-seed42-test26446.json",
+        "reports/level1/test-v1/conceptnet_rotate_kg_on-seed123-test26446.json",
+        "reports/level1/test-v1/conceptnet_rotate_kg_on-seed3407-test26446.json"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6302964904057375,
+          "sample_std": 0.004212413361632419
+        },
+        "mR@50": {
+          "mean": 0.18388299486825743,
+          "sample_std": 0.003433840650522054
+        },
+        "R@100": {
+          "mean": 0.6554497111798442,
+          "sample_std": 0.005274395984068098
+        },
+        "mR@100": {
+          "mean": 0.2106788926252571,
+          "sample_std": 0.0017615237828002242
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_complex_kg_on",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "reports/level1/test-v1/conceptnet_complex_kg_on-seed42-test26446.json",
+        "reports/level1/test-v1/conceptnet_complex_kg_on-seed123-test26446.json",
+        "reports/level1/test-v1/conceptnet_complex_kg_on-seed3407-test26446.json"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6321957970957116,
+          "sample_std": 0.001952394785630534
+        },
+        "mR@50": {
+          "mean": 0.18144867204895287,
+          "sample_std": 0.0018047648125560636
+        },
+        "R@100": {
+          "mean": 0.6575851221156956,
+          "sample_std": 0.0027690519463662968
+        },
+        "mR@100": {
+          "mean": 0.20881058259214588,
+          "sample_std": 0.0016956303174369882
+        }
+      }
+    }
+  ]
+}

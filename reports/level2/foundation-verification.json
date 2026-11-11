@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-11-11T23:36:44.440452+07:00",
+  "level1_base_commit": "4d34d37",
+  "scope": "Level 2 foundation only; no trained Level 2 models or completed edit dataset",
+  "tests": {
+    "passed": 260,
+    "added_since_level1": 21,
+    "command": "myenv/bin/python -m pytest -q"
+  },
+  "pre_commit": "PASS all applicable hooks on new/changed Level 2 files",
+  "gqa": {
+    "preparation_report_sha256": "2688686a1be0e5149b0e8899baa212bb11d0b9cecfbe8088d11001e7237f0430",
+    "manifest_sha256": "c953dc40d4b0a880ccd142f36670388ebffb7d7e2bb341d661b8b45781046c2a",
+    "normalized_image_graphs": 85638,
+    "count_conservation": "PASS objects and relation annotations by split",
+    "immutable_resume": "PASS unchanged manifest/report",
+    "all_image_ids_in_zip": true,
+    "smoke_training_image": "10: decoded RGB dimensions match; PyG 29 nodes / 812 candidates / 172 GT rows",
+    "real_loader_smoke": "validation image 1: 26 nodes / 238 GT rows"
+  },
+  "graph_edit_checks": [
+    "all six operation types and all 720 operation orderings",
+    "atomic failure with source preserved",
+    "wrong instance IDs fail exact matching",
+    "duplicate predictions count as FP",
+    "multiple predicates per pair retained; duplicate semantic edges rejected",
+    "empty/noop metric behavior",
+    "JSON round trip",
+    "multi-turn grouped splits independent of row order"
+  ],
+  "demo": {
+    "path": "reports/level2/graph-edit-mechanics-demo.json",
+    "sha256": "d95c18022b1fcb4ec309c40ba10b378fcd5aa9d07fb7e7ee78159fe27f62d848",
+    "synthetic": true,
+    "trained_prediction": false
+  },
+  "training_performed": false,
+  "human_review_samples": 0,
+  "completed_MagicBrush_pairs": 0,
+  "source_sha256": {
+    "src/datasets/gqa.py": "83e1c9686c989a1ab910ba05393a39122ff71957678232802718cea7addf6ab6",
+    "src/editing/operations.py": "a4fb5a647eb0ff718015e77e1b56e9a3a925a316775f49888907faf95fa6fa44",
+    "src/editing/evaluation.py": "3c7e4d267901b2eea27a8e5be749e15446454fb3ce7a9dcb6a0b28c60a43a76d",
+    "src/editing/splits.py": "827390288d25f7c4c2fffdae89c5747745d40c97d44b6e2207a2188deedaa6bd",
+    "tools/prepare_level2_gqa.py": "fbf75b933ef2eddc9022370cb16a684f006283f7e82c37ce56cf53c1b10bbfa7",
+    "tools/demo_level2_edits.py": "2cc16b8c0276825a787f32ae99f4a43742e5db5d3d7efdb7a27db556b09e147c",
+    "tests/datasets/test_gqa.py": "05a8e970f34f22096bd90d56142f77c79561eabe052f02ba238b6adb3a6a7240",
+    "tests/editing/test_operations.py": "b1dd96cd22533fb16927bffcf053aa79582f743977580ec150f2277cecc5103a"
+  }
+}

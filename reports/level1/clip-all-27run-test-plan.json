@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "purpose": "one_pass_held_out_test_after_validation_model_selection",
+  "split": "test",
+  "test_images": 26446,
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "visual_cache_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+  "shared_training_config": {
+    "train_limit": 57723,
+    "val_limit": 5000,
+    "batch_size": 512,
+    "val_batch_size": 512,
+    "negative_ratio": 3,
+    "geometry_dim": 517,
+    "box_policy": "clip",
+    "hidden_dim": 256,
+    "embedding_dim": 32,
+    "patience": 15,
+    "min_delta": 0.0,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "deterministic": false
+  },
+  "evaluation": {
+    "batch_size": 512,
+    "num_workers": 0,
+    "device": "cuda"
+  },
+  "source_sha256": {
+    "tools/level1_test_matrix.py": "e3d64ce0cdf129e4e62b452e2a815e16229f039816bc2e57faee98950867ce6c",
+    "scripts/evaluate_level1.py": "a746204e6e8cd717845a302e69981c03ab6f7dc09c16649fed173a5b40bc22f0",
+    "scripts/evaluate_mlp.py": "924a93a4de98a9a23c55644a6c7bea7e34a80f4bae38094068722f9d7de8cd5b",
+    "scripts/pilot_mlp.py": "d378fbead50bef395134b574321dfdd1f81fd7cd40f96dbceba82266aa82ee92",
+    "scripts/train_mlp.py": "360b900ff33dcdbb4bcb63d3e2d2be3a774e962f518ec6abfe7e1c43b1b90a74",
+    "src/datasets/batching.py": "dbadb4216157ba6d4bd0686f904d7f2435295bfdacf276adfe1f3148ae17c450",
+    "src/datasets/hdf5_session.py": "8c634333d21fa4d299654f6204b5072d9943cc39d0ac827a777b21aab9be2f2e",
+    "src/datasets/schemas.py": "d01126cdb95da4b555e82d011685ee792bf8ebee6facd566593e3cd0e1a20dad",
+    "src/datasets/vg150.py": "48365e5bed0b9da7663ad8b489a5a811a6362263d402462199dd1be75c863776",
+    "src/evaluation/batched.py": "f5ffb7ff168da76719c4b7860ff9660f1e10fce82f49d1dd2ee1dc5aa018349e",
+    "src/evaluation/gat.py": "5dcc70d7c2606c5acc6530eef228f354aa379c11f57ec506adbfe4fb76bb43b9",
+    "src/evaluation/scene_graph.py": "48a9527d02c3bdc6ec92feb44b46d341f3d6fbf23a6a57a36263ee69a4c085f9",
+    "src/features/geometry.py": "fe7818323445d1b35a876033d634457310fd5e567497a5185a74da2eb46ad2d5",
+    "src/features/visual.py": "12679300334149acca8e58b9ff4c3be441d518e620444dde0082bc1b7be91f1f",
+    "src/graph/builder.py": "8258c92406fbcb9bfb3c175edc3434d74d0271a7c10f6424c4096dd7d124e7e2",
+    "src/graph/gnn_batching.py": "80d3726d96dd0a8a66882cb817b0c260bcd85960e33be5918d68be7b0189a99e",
+    "src/models/gat.py": "17b8e7d5fcdff509d3c97710ee4aab94af1c5ad5c992bd987aa8eafe6a13d52b",
+    "src/models/gat_kg.py": "26fd74543c9c3941ad12be91dd1beb8e72b2e2b1a61c2603e5cfab2c84ab573f",
+    "src/models/mlp_semantic.py": "b435961576068dde62c3f0ded2379ca88a09d334b0a87b0434c9b19b3110e2b8"
+  },
+  "conditions": [
+    "mlp_semantic",
+    "gat",
+    "kg_off",
+    "wordnet_kg_on",
+    "wordnet_edges_off",
+    "conceptnet_transe_kg_on",
+    "conceptnet_transe_edges_off",
+    "conceptnet_rotate_kg_on",
+    "conceptnet_complex_kg_on"
+  ],
+  "seeds": [
+    42,
+    123,
+    3407
+  ],
+  "entries": [
+    {
+      "condition": "mlp_semantic",
+      "seed": 42,
+      "validation_report": "reports/level1/clip-v1-mlp_semantic-seed42-val5000.json",
+      "validation_report_sha256": "82956de8326060ffb287340986b5bdc8e38247000aee7fccb306467688223be4",
+      "checkpoint": "runs/level1-clip-v1/clip-mlp_semantic-seed42-v1/run_0001/best.pt",
+      "checkpoint_sha256": "4dbc1e2f1d6c6085a4c586764b93f6955d835b224ba8ab96522af3fae14fd2d4",
+      "checkpoint_epoch": 81,
+      "validation_mR@50": 0.18176057942305013
+    },
+    {
+      "condition": "mlp_semantic",
+      "seed": 123,
+      "validation_report": "reports/level1/clip-v1-mlp_semantic-seed123-val5000.json",
+      "validation_report_sha256": "39d6457477ed7957fef4ca2a27b52892f3afad302a5684ea85a11d1722678f1e",
+      "checkpoint": "runs/level1-clip-v1/clip-mlp_semantic-seed123-v1/run_0001/best.pt",
+      "checkpoint_sha256": "774c8aeb120bc9937d74ca107adaa3cda820ffa141408086a300fc81421b45eb",
+      "checkpoint_epoch": 20,
+      "validation_mR@50": 0.16093696167336283
+    },
+    {
+      "condition": "mlp_semantic",
+      "seed": 3407,
+      "validation_report": "reports/level1/clip-v1-mlp_semantic-seed3407-val5000.json",
+      "validation_report_sha256": "2097ab16a2f96ed3fdca95e94bcc393573ca11935cad8db8989a7c031c077bca",
+      "checkpoint": "runs/level1-clip-v1/clip-mlp_semantic-seed3407-v1/run_0001/best.pt",
+      "checkpoint_sha256": "40db44fa49a7989a4f2504958684948d04f783c290d43b7c00a42d5a2123afe9",
+      "checkpoint_epoch": 78,
+      "validation_mR@50": 0.1784120832031295
+    },
+    {
+      "condition": "gat",
+      "seed": 42,
+      "validation_report": "reports/level1/clip-v1-gat-seed42-val5000.json",
+      "validation_report_sha256": "39234ed43ed92b7f570710ce50f986d597ad0f1730a00f98e9094f7cc8561df2",
+      "checkpoint": "runs/level1-clip-v1/clip-gat-seed42-v1/run_0001/best.pt",
+      "checkpoint_sha256": "79eebd6324c1581513e408866791c9a8caa46ab3c7d864bd6847b7132df216d8",
+      "checkpoint_epoch": 45,
+      "validation_mR@50": 0.20345144845912272
+    },
+    {
+      "condition": "gat",
+      "seed": 123,
+      "validation_report": "reports/level1/clip-v1-gat-seed123-val5000.json",
+      "validation_report_sha256": "139a0915247d002d302749a5751c51680526755870acf073665c633bb03abe6f",
+      "checkpoint": "runs/level1-clip-v1/clip-gat-seed123-v1/run_0001/best.pt",
+      "checkpoint_sha256": "ad731104b74e64c6716d1a6b4447701b572b0cbd837402e93051f82fc4db27a2",
+      "checkpoint_epoch": 45,
+      "validation_mR@50": 0.1944063962700742
+    },
+    {
+      "condition": "gat",
+      "seed": 3407,
+      "validation_report": "reports/level1/clip-v1-gat-seed3407-val5000.json",
+      "validation_report_sha256": "645bd4dbffa5fa4bea742ccb196711ead3b01d9de23200f704e9ca5b0e84de41",
+      "checkpoint": "runs/level1-clip-v1/clip-gat-seed3407-v1/run_0001/best.pt",
+      "checkpoint_sha256": "a633a2a6ca6906599c129223f78f3e476c3d2f46ab3dcc5773911683a6dc47e7",
+      "checkpoint_epoch": 85,
+      "validation_mR@50": 0.201439330094758
+    },
+    {
+      "condition": "kg_off",
+      "seed": 42,
+      "validation_report": "reports/level1/clip-v1-kg_off-seed42-val5000.json",
+      "validation_report_sha256": "58afcc08dc69b9537d6531dd994b7fba45b95fc78d3ac787e86db66f89cadac6",
+      "checkpoint": "runs/level1-clip-v1/clip-kg_off-seed42-v1/best.pt",
+      "checkpoint_sha256": "5bd6efdaa64d766bcf0497dacb849c1903b9fae0a40854ebaf3d89ca92be5b66",
+      "checkpoint_epoch": 55,
+      "validation_mR@50": 0.1988651718813568
+    },
+    {
+      "condition": "kg_off",
+      "seed": 123,
+      "validation_report": "reports/level1/clip-v1-kg_off-seed123-val5000.json",
+      "validation_report_sha256": "894a5c8342d488661723f6036077e2dd49bf2fdcaf28ae1e1225e56708f0c1ff",
+      "checkpoint": "runs/level1-clip-v1/clip-kg_off-seed123-v1/best.pt",
+      "checkpoint_sha256": "dfaf9c439da3d0092613c943495f527791071c59c445da8094acae1c67d0bf21",
+      "checkpoint_epoch": 43,
+      "validation_mR@50": 0.19388054815072583
+    },
+    {
+      "condition": "kg_off",
+      "seed": 3407,
+      "validation_report": "reports/level1/clip-v1-kg_off-seed3407-val5000.json",
+      "validation_report_sha256": "5885c282ff870b01c8970a20eaf3ee9e5d16037236ab2a38a085b1bf8b910222",
+      "checkpoint": "runs/level1-clip-v1/clip-kg_off-seed3407-v1/best.pt",
+      "checkpoint_sha256": "fe4920348f9827c1cedb7cf1d8045cba963b5454634afad112f0acc4cc4c13e3",
+      "checkpoint_epoch": 60,
+      "validation_mR@50": 0.19610612965934907
+    },
+    {
+      "condition": "wordnet_kg_on",
+      "seed": 42,
+      "validation_report": "reports/level1/clip-v1-kg_on-seed42-val5000.json",
+      "validation_report_sha256": "91af394a020174ee8b663d5c99f03c2e384865168f48d970704600dbee447e81",
+      "checkpoint": "runs/level1-clip-v1/clip-kg_on-seed42-v1/best.pt",
+      "checkpoint_sha256": "fdde565d649a83050c28b6eaaaadea8fd998c1dc81c76e3298d4d14bf044841d",
+      "checkpoint_epoch": 26,
+      "validation_mR@50": 0.19275930630567095
+    },
+    {
+      "condition": "wordnet_kg_on",
+      "seed": 123,
+      "validation_report": "reports/level1/clip-v1-kg_on-seed123-val5000.json",
+      "validation_report_sha256": "7f0ea86a5eef50f70767678d90981b5483e37ee2f80b10904be8bed12220b470",
+      "checkpoint": "runs/level1-clip-v1/clip-kg_on-seed123-v1/best.pt",
+      "checkpoint_sha256": "e14d43b7bfedf9f8a6aabf7286d5345a6a9d1cfb4103ac4b59c7b7e60225b341",
+      "checkpoint_epoch": 48,
+      "validation_mR@50": 0.18788001016847375
+    },
+    {
+      "condition": "wordnet_kg_on",
+      "seed": 3407,
+      "validation_report": "reports/level1/clip-v1-kg_on-seed3407-val5000.json",
+      "validation_report_sha256": "ac280bcaf5726557b4ba4bdef0c1b2deff182fb1d17b4c8497d2a05d2918e19c",
+      "checkpoint": "runs/level1-clip-v1/clip-kg_on-seed3407-v1/best.pt",
+      "checkpoint_sha256": "7c28e66490fd6eb19e3b185ff11e6574a30ff6546ca9a7cfba689e2a7e39f0e4",
+      "checkpoint_epoch": 27,
+      "validation_mR@50": 0.1848168442266455
+    },
+    {
+      "condition": "wordnet_edges_off",
+      "seed": 42,
+      "validation_report": "reports/level1/clip-v1-edges_off-seed42-val5000.json",
+      "validation_report_sha256": "b6d6947360aa0c7a3a039f9f8e7d3acd03a894f9cc38d6f93ff8902fd8bc96e0",
+      "checkpoint": "runs/level1-clip-v1/clip-edges_off-seed42-v1/best.pt",
+      "checkpoint_sha256": "b94e7f509764e994ee42534be386ce6fef1a300ab09560f2382f25aaac793848",
+      "checkpoint_epoch": 26,
+      "validation_mR@50": 0.18700065375825003
+    },
+    {
+      "condition": "wordnet_edges_off",
+      "seed": 123,
+      "validation_report": "reports/level1/clip-v1-edges_off-seed123-val5000.json",
+      "validation_report_sha256": "770473aff5cf43dc59c50382be654d7a86b98df410bc16030f16b03c33276bbe",
+      "checkpoint": "runs/level1-clip-v1/clip-edges_off-seed123-v1/best.pt",
+      "checkpoint_sha256": "5792730503e5b97c2e31bd54c8f9e7b70f2520b70c8e23f61f5f21d39e4ba834",
+      "checkpoint_epoch": 108,
+      "validation_mR@50": 0.20957604045139747
+    },
+    {
+      "condition": "wordnet_edges_off",
+      "seed": 3407,
+      "validation_report": "reports/level1/clip-v1-edges_off-seed3407-val5000.json",
+      "validation_report_sha256": "10f82439194c131ed5a8c151864edf444a5d74a0a845df7b4c5fc8f31d2d76d5",
+      "checkpoint": "runs/level1-clip-v1/clip-edges_off-seed3407-v1/best.pt",
+      "checkpoint_sha256": "0b96029a4fef8af495c2fb0b5ffe9697fb2b39ec76e4cb0bdd798069ee928dc6",
+      "checkpoint_epoch": 41,
+      "validation_mR@50": 0.19365371265105416
+    },
+    {
+      "condition": "conceptnet_transe_kg_on",
+      "seed": 42,
+      "validation_report": "reports/level1/clip-conceptnet-v1-kg_on-seed42-val5000.json",
+      "validation_report_sha256": "3d7af49428375806b0618916faaebac666470f312f3f8403c4bb6ff9745481aa",
+      "checkpoint": "runs/level1-clip-conceptnet-v1/clip-conceptnet-kg_on-seed42-v1/best.pt",
+      "checkpoint_sha256": "d19762e9148b70b2589038baa8bd8d3bffbb76241c6f19bfc1fd320cc9e58288",
+      "checkpoint_epoch": 45,
+      "validation_mR@50": 0.20421510945579324
+    },
+    {
+      "condition": "conceptnet_transe_kg_on",
+      "seed": 123,
+      "validation_report": "reports/level1/clip-conceptnet-v1-kg_on-seed123-val5000.json",
+      "validation_report_sha256": "f3913434a69a5530bcd6b8ca16d9858a931ce54723fe7b9fcf2112a6daa8aaae",
+      "checkpoint": "runs/level1-clip-conceptnet-v1/clip-conceptnet-kg_on-seed123-v1/best.pt",
+      "checkpoint_sha256": "c238dbb310ccc91a1922aa2fb762dbb87cbce0bfbd5d1f0040e12fbb2c759997",
+      "checkpoint_epoch": 56,
+      "validation_mR@50": 0.19278501532749895
+    },
+    {
+      "condition": "conceptnet_transe_kg_on",
+      "seed": 3407,
+      "validation_report": "reports/level1/clip-conceptnet-v1-kg_on-seed3407-val5000.json",
+      "validation_report_sha256": "ab9f5747e939385eed44af849db175b1bf8b3595c8e7d87f89b6d8b48cfe4f71",
+      "checkpoint": "runs/level1-clip-conceptnet-v1/clip-conceptnet-kg_on-seed3407-v1/best.pt",
+      "checkpoint_sha256": "689b99c827a01018de7e2ff93f01685e5be70f57451568356373b0e8a0f1cb09",
+      "checkpoint_epoch": 42,
+      "validation_mR@50": 0.19293269704566146
+    },
+    {
+      "condition": "conceptnet_transe_edges_off",
+      "seed": 42,
+      "validation_report": "reports/level1/clip-conceptnet-v1-edges_off-seed42-val5000.json",
+      "validation_report_sha256": "7d06d8c01734c1465d5a02426772b008f09809c1f017595bd7f39e4fde24d8aa",
+      "checkpoint": "runs/level1-clip-conceptnet-v1/clip-conceptnet-edges_off-seed42-v1/best.pt",
+      "checkpoint_sha256": "5e068ef9490eb2f371eeaa82fcfd76fcffd399c10d91f1f46c0ccec5f21a6eba",
+      "checkpoint_epoch": 40,
+      "validation_mR@50": 0.19582126945787376
+    },
+    {
+      "condition": "conceptnet_transe_edges_off",
+      "seed": 123,
+      "validation_report": "reports/level1/clip-conceptnet-v1-edges_off-seed123-val5000.json",
+      "validation_report_sha256": "08bd4cac95ae957c59488687f26453589de95b894405f75491595f6651a56958",
+      "checkpoint": "runs/level1-clip-conceptnet-v1/clip-conceptnet-edges_off-seed123-v1/best.pt",
+      "checkpoint_sha256": "ca2fa4594ef4955122cf8df641a49062e17812031dd01a50fb6e7f1b42e61e7b",
+      "checkpoint_epoch": 35,
+      "validation_mR@50": 0.1918416248163557
+    },
+    {
+      "condition": "conceptnet_transe_edges_off",
+      "seed": 3407,
+      "validation_report": "reports/level1/clip-conceptnet-v1-edges_off-seed3407-val5000.json",
+      "validation_report_sha256": "075b9599a3557d2fb3ed63eecdda74faef7b3517e9021adb4b075d281a6e0f6d",
+      "checkpoint": "runs/level1-clip-conceptnet-v1/clip-conceptnet-edges_off-seed3407-v1/best.pt",
+      "checkpoint_sha256": "06a7e800617b188ff877a02f3717c51726d085ff62d837bce18f94f067447689",
+      "checkpoint_epoch": 29,
+      "validation_mR@50": 0.20815687174691003
+    },
+    {
+      "condition": "conceptnet_rotate_kg_on",
+      "seed": 42,
+      "validation_report": "reports/level1/clip-rotate-v2-kg_on-seed42-val5000.json",
+      "validation_report_sha256": "07d6f129e5c00dadfcd4bfd42088c67e3b3ba6945fcec1ea6b98b4300fd1f58d",
+      "checkpoint": "runs/level1-clip-rotate-v2/clip-rotate-kg_on-seed42-v2/best.pt",
+      "checkpoint_sha256": "f916abf32aeaf38375b24b7d028e33b07d12e4981c682fcdab645cf0b9a1e4d9",
+      "checkpoint_epoch": 60,
+      "validation_mR@50": 0.1963152154330615
+    },
+    {
+      "condition": "conceptnet_rotate_kg_on",
+      "seed": 123,
+      "validation_report": "reports/level1/clip-rotate-v2-kg_on-seed123-val5000.json",
+      "validation_report_sha256": "7ccec890bd4e3b354b461ad8301cb0263eb5a888ab45bcf36d99e0ad10bc87c0",
+      "checkpoint": "runs/level1-clip-rotate-v2/clip-rotate-kg_on-seed123-v2/best.pt",
+      "checkpoint_sha256": "dd8acfd0c0464962269d21e301022447e6eec8dc7445deeab58162e54d5a2039",
+      "checkpoint_epoch": 38,
+      "validation_mR@50": 0.1931796798795356
+    },
+    {
+      "condition": "conceptnet_rotate_kg_on",
+      "seed": 3407,
+      "validation_report": "reports/level1/clip-rotate-v2-kg_on-seed3407-val5000.json",
+      "validation_report_sha256": "a4762e1f0da6ea300cce095bb802f030b375379c42f73b8a6ba554801c1e38f5",
+      "checkpoint": "runs/level1-clip-rotate-v2/clip-rotate-kg_on-seed3407-v2/best.pt",
+      "checkpoint_sha256": "c7e4c7e905f69f9c3721ec1b67f595d1324a4d7768d580cb5a8b7a6f11b03097",
+      "checkpoint_epoch": 32,
+      "validation_mR@50": 0.1829554525977831
+    },
+    {
+      "condition": "conceptnet_complex_kg_on",
+      "seed": 42,
+      "validation_report": "reports/level1/clip-complex-v1-kg_on-seed42-val5000.json",
+      "validation_report_sha256": "b88e5391987866b2052d8458ad3ffa7a56a7d83a3c1309567824f55f616a810b",
+      "checkpoint": "runs/level1-clip-complex-v1/clip-complex-kg_on-seed42-v1/best.pt",
+      "checkpoint_sha256": "49ece24ac6713c51b15c190823a416bfbfb300e60a7f3fb1b1aa4f7ec07c0615",
+      "checkpoint_epoch": 48,
+      "validation_mR@50": 0.19816136782278587
+    },
+    {
+      "condition": "conceptnet_complex_kg_on",
+      "seed": 123,
+      "validation_report": "reports/level1/clip-complex-v1-kg_on-seed123-val5000.json",
+      "validation_report_sha256": "710fe82bf4ff699adaf3d8a71c73212e3af8992565d8bf1b6211974112646d2f",
+      "checkpoint": "runs/level1-clip-complex-v1/clip-complex-kg_on-seed123-v1/best.pt",
+      "checkpoint_sha256": "8a013cc0e6ae111b7aaeb3c679e0276713bb612bfc21ec592dfcdccbcc3803a7",
+      "checkpoint_epoch": 33,
+      "validation_mR@50": 0.19577214435543694
+    },
+    {
+      "condition": "conceptnet_complex_kg_on",
+      "seed": 3407,
+      "validation_report": "reports/level1/clip-complex-v1-kg_on-seed3407-val5000.json",
+      "validation_report_sha256": "be50bb0c0078df0b949439640da55240ec20d9dc6491e30535f37fb27e6a005f",
+      "checkpoint": "runs/level1-clip-complex-v1/clip-complex-kg_on-seed3407-v1/best.pt",
+      "checkpoint_sha256": "6db710ee5336dab591a890ca1d181d0409d20b9814e9a8f766ab4740b0528157",
+      "checkpoint_epoch": 32,
+      "validation_mR@50": 0.19541316451203927
+    }
+  ]
+}

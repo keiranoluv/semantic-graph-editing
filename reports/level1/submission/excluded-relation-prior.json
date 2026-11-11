@@ -1,0 +1,53 @@
+{
+  "decision": "exclude_pending_separate_corrected_experiment",
+  "entries": [
+    {
+      "condition": "relation_real",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_real-seed42-v1/best.pt",
+      "checkpoint_sha256": "cad097dd625a35ded842d24226bd214bb912a14ca01b127857a255d6c5ec5b4a",
+      "legacy_report": "reports/level1/clip-fusion-v1-relation_real-seed42-val5000.json",
+      "reason": "L1-trained TransE exported as L2 relation scores; not rerun, excluded from final reference-v1 conclusions"
+    },
+    {
+      "condition": "relation_real",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_real-seed123-v1/best.pt",
+      "checkpoint_sha256": "72c0fe92e5679795bc840bd61cd1dc5eaedd77b14c63335589f0a2c1956366f8",
+      "legacy_report": "reports/level1/clip-fusion-v1-relation_real-seed123-val5000.json",
+      "reason": "L1-trained TransE exported as L2 relation scores; not rerun, excluded from final reference-v1 conclusions"
+    },
+    {
+      "condition": "relation_real",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_real-seed3407-v1/best.pt",
+      "checkpoint_sha256": "40dbc6ea0aed36b6a967d18c207942920ec5f2f5d2cf5d3be64f784e8299ef7f",
+      "legacy_report": "reports/level1/clip-fusion-v1-relation_real-seed3407-val5000.json",
+      "reason": "L1-trained TransE exported as L2 relation scores; not rerun, excluded from final reference-v1 conclusions"
+    },
+    {
+      "condition": "relation_shuffled",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_shuffled-seed42-v1/best.pt",
+      "checkpoint_sha256": "ffb06770f72eb39ed2cc1b754410a2cc11fda245d4a5fb4657ed16890729e801",
+      "legacy_report": "reports/level1/clip-fusion-v1-relation_shuffled-seed42-val5000.json",
+      "reason": "L1-trained TransE exported as L2 relation scores; not rerun, excluded from final reference-v1 conclusions"
+    },
+    {
+      "condition": "relation_shuffled",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_shuffled-seed123-v1/best.pt",
+      "checkpoint_sha256": "2e26318c94d2ed6dead7c79f522926d26f35d75352cf7f6f053f593555625191",
+      "legacy_report": "reports/level1/clip-fusion-v1-relation_shuffled-seed123-val5000.json",
+      "reason": "L1-trained TransE exported as L2 relation scores; not rerun, excluded from final reference-v1 conclusions"
+    },
+    {
+      "condition": "relation_shuffled",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-fusion-v1/clip-fusion-relation_shuffled-seed3407-v1/best.pt",
+      "checkpoint_sha256": "93c5f72f8c0c0a4911d2e9eb9fa19c17b2dced01d6cfbf832ffc911ea8798380",
+      "legacy_report": "reports/level1/clip-fusion-v1-relation_shuffled-seed3407-val5000.json",
+      "reason": "L1-trained TransE exported as L2 relation scores; not rerun, excluded from final reference-v1 conclusions"
+    }
+  ]
+}

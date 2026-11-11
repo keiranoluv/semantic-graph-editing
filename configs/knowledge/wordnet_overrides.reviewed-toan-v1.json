@@ -1,0 +1,1207 @@
+{
+  "version": 1,
+  "mappings": {
+    "airplane": "airplane.n.01",
+    "animal": "animal.n.01",
+    "arm": "arm.n.01",
+    "bag": "bag.n.01",
+    "banana": "banana.n.02",
+    "basket": "basket.n.01",
+    "beach": "beach.n.01",
+    "bear": "bear.n.01",
+    "bed": "bed.n.01",
+    "bench": "bench.n.01",
+    "bike": "motorcycle.n.01",
+    "bird": "bird.n.01",
+    "board": "board.n.03",
+    "boat": "boat.n.01",
+    "book": "book.n.02",
+    "boot": "boot.n.01",
+    "bottle": "bottle.n.01",
+    "bowl": "bowl.n.01",
+    "box": "box.n.01",
+    "boy": "male_child.n.01",
+    "branch": "branch.n.02",
+    "building": "building.n.01",
+    "bus": "bus.n.01",
+    "cabinet": "cabinet.n.01",
+    "cap": "cap.n.01",
+    "car": "car.n.01",
+    "cat": "cat.n.01",
+    "chair": "chair.n.01",
+    "child": "child.n.01",
+    "clock": "clock.n.01",
+    "coat": "coat.n.01",
+    "counter": "counter.n.01",
+    "cow": "cow.n.01",
+    "cup": "cup.n.01",
+    "curtain": "curtain.n.01",
+    "desk": "desk.n.01",
+    "dog": "dog.n.01",
+    "door": "door.n.01",
+    "drawer": "drawer.n.01",
+    "ear": "ear.n.01",
+    "elephant": "elephant.n.01",
+    "engine": "engine.n.01",
+    "eye": "eye.n.01",
+    "face": "face.n.01",
+    "fence": "fence.n.01",
+    "finger": "finger.n.01",
+    "flag": "flag.n.01",
+    "flower": "flower.n.02",
+    "food": "food.n.01",
+    "fork": "fork.n.01",
+    "fruit": "fruit.n.01",
+    "giraffe": "giraffe.n.01",
+    "girl": "girl.n.01",
+    "glass": "glass.n.02",
+    "glove": "glove.n.02",
+    "guy": "guy.n.01",
+    "hair": "hair.n.01",
+    "hand": "hand.n.01",
+    "handle": "handle.n.01",
+    "hat": "hat.n.01",
+    "head": "head.n.01",
+    "helmet": "helmet.n.02",
+    "hill": "hill.n.01",
+    "horse": "horse.n.01",
+    "house": "house.n.01",
+    "jacket": "jacket.n.01",
+    "jean": "jean.n.01",
+    "kid": "child.n.01",
+    "kite": "kite.n.03",
+    "lady": "lady.n.01",
+    "lamp": "lamp.n.02",
+    "laptop": "laptop.n.01",
+    "leaf": "leaf.n.01",
+    "leg": "leg.n.01",
+    "letter": "letter.n.02",
+    "light": "light.n.02",
+    "logo": "logo.n.01",
+    "man": "man.n.01",
+    "men": "man.n.01",
+    "motorcycle": "motorcycle.n.01",
+    "mountain": "mountain.n.01",
+    "mouth": "mouth.n.02",
+    "neck": "neck.n.01",
+    "nose": "nose.n.01",
+    "number": "numeral.n.01",
+    "orange": "orange.n.01",
+    "pant": "trouser.n.01",
+    "paper": "paper.n.01",
+    "paw": "paw.n.01",
+    "people": "people.n.01",
+    "person": "person.n.01",
+    "phone": "telephone.n.01",
+    "pillow": "pillow.n.01",
+    "pizza": "pizza.n.01",
+    "plane": "airplane.n.01",
+    "plant": "plant.n.02",
+    "plate": "plate.n.04",
+    "player": "player.n.01",
+    "pole": "pole.n.01",
+    "post": "post.n.04",
+    "pot": "pot.n.04",
+    "racket": "racket.n.04",
+    "railing": "railing.n.01",
+    "rock": "rock.n.01",
+    "roof": "roof.n.01",
+    "room": "room.n.01",
+    "screen": "screen.n.03",
+    "seat": "seat.n.03",
+    "sheep": "sheep.n.01",
+    "shelf": "shelf.n.01",
+    "shirt": "shirt.n.01",
+    "shoe": "shoe.n.01",
+    "short": "short_pants.n.01",
+    "sidewalk": "sidewalk.n.01",
+    "sign": "sign.n.02",
+    "sink": "sink.n.01",
+    "skateboard": "skateboard.n.01",
+    "ski": "ski.n.01",
+    "skier": "skier.n.01",
+    "sneaker": "gym_shoe.n.01",
+    "snow": "snow.n.02",
+    "sock": "sock.n.01",
+    "stand": "base.n.08",
+    "street": "street.n.01",
+    "surfboard": "surfboard.n.01",
+    "table": "table.n.02",
+    "tail": "tail.n.01",
+    "tie": "necktie.n.01",
+    "tile": "tile.n.01",
+    "tire": "tire.n.01",
+    "toilet": "toilet.n.02",
+    "towel": "towel.n.01",
+    "tower": "tower.n.01",
+    "track": "path.n.04",
+    "train": "train.n.01",
+    "tree": "tree.n.01",
+    "truck": "truck.n.01",
+    "trunk": "trunk.n.01",
+    "umbrella": "umbrella.n.01",
+    "vase": "vase.n.01",
+    "vegetable": "vegetable.n.01",
+    "vehicle": "vehicle.n.01",
+    "wave": "wave.n.01",
+    "wheel": "wheel.n.01",
+    "window": "window.n.01",
+    "windshield": "windshield.n.01",
+    "wing": "wing.n.01",
+    "wire": "wire.n.02",
+    "woman": "woman.n.01",
+    "zebra": "zebra.n.01"
+  },
+  "review_provenance": {
+    "airplane": {
+      "class_id": 1,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "animal": {
+      "class_id": 2,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "arm": {
+      "class_id": 3,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "bag": {
+      "class_id": 4,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "banana": {
+      "class_id": 5,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "basket": {
+      "class_id": 6,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "beach": {
+      "class_id": 7,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "bear": {
+      "class_id": 8,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "bed": {
+      "class_id": 9,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "bench": {
+      "class_id": 10,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "bike": {
+      "class_id": 11,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale. Codex QA: Representative motorcycle sense. Train examples also include bicycles (for example image 2396132); a single synset does not describe every instance.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "bird": {
+      "class_id": 12,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "board": {
+      "class_id": 13,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "boat": {
+      "class_id": 14,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "book": {
+      "class_id": 15,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "boot": {
+      "class_id": 16,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "bottle": {
+      "class_id": 17,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "bowl": {
+      "class_id": 18,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "box": {
+      "class_id": 19,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "boy": {
+      "class_id": 20,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "branch": {
+      "class_id": 21,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "building": {
+      "class_id": 22,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale. Codex QA: Images 1592671 and 2389149 have low-quality or weakly informative building boxes; other examples show building facades.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "bus": {
+      "class_id": 23,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "cabinet": {
+      "class_id": 24,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "cap": {
+      "class_id": 25,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale. Codex QA: Representative headwear sense. Train examples also include a bottle cap (image 2399043), so a single synset does not describe every instance.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "car": {
+      "class_id": 26,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "cat": {
+      "class_id": 27,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "chair": {
+      "class_id": 28,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "child": {
+      "class_id": 29,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "clock": {
+      "class_id": 30,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "coat": {
+      "class_id": 31,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "counter": {
+      "class_id": 32,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "cow": {
+      "class_id": 33,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "cup": {
+      "class_id": 34,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "curtain": {
+      "class_id": 35,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "desk": {
+      "class_id": 36,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "dog": {
+      "class_id": 37,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "door": {
+      "class_id": 38,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "drawer": {
+      "class_id": 39,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "ear": {
+      "class_id": 40,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale. Codex QA: Five train boxes show visible outer ears; auricle.n.02 is a more specific alternative to the selected broad ear.n.01.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "elephant": {
+      "class_id": 41,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "engine": {
+      "class_id": 42,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "eye": {
+      "class_id": 43,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "face": {
+      "class_id": 44,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "fence": {
+      "class_id": 45,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "finger": {
+      "class_id": 46,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "flag": {
+      "class_id": 47,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "flower": {
+      "class_id": 48,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "food": {
+      "class_id": 49,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "fork": {
+      "class_id": 50,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "fruit": {
+      "class_id": 51,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "giraffe": {
+      "class_id": 52,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "girl": {
+      "class_id": 53,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "glass": {
+      "class_id": 54,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale. Codex QA: Reviewer chose the drinking-vessel sense as representative. Train examples include drinking glasses (2362080, 2398917), eyeglasses (2396412, 2407062), and a small glazed region (2388478).",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "glove": {
+      "class_id": 55,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "guy": {
+      "class_id": 56,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "hair": {
+      "class_id": 57,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "hand": {
+      "class_id": 58,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "handle": {
+      "class_id": 59,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "hat": {
+      "class_id": 60,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "head": {
+      "class_id": 61,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "helmet": {
+      "class_id": 62,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "hill": {
+      "class_id": 63,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "horse": {
+      "class_id": 64,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "house": {
+      "class_id": 65,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "jacket": {
+      "class_id": 66,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "jean": {
+      "class_id": 67,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "kid": {
+      "class_id": 68,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "kite": {
+      "class_id": 69,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "lady": {
+      "class_id": 70,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "lamp": {
+      "class_id": 71,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "laptop": {
+      "class_id": 72,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "leaf": {
+      "class_id": 73,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "leg": {
+      "class_id": 74,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "letter": {
+      "class_id": 75,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "light": {
+      "class_id": 76,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "logo": {
+      "class_id": 77,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "man": {
+      "class_id": 78,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "men": {
+      "class_id": 79,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "motorcycle": {
+      "class_id": 80,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "mountain": {
+      "class_id": 81,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "mouth": {
+      "class_id": 82,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "neck": {
+      "class_id": 83,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "nose": {
+      "class_id": 84,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "number": {
+      "class_id": 85,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "orange": {
+      "class_id": 86,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale. Codex QA: Reviewer corrected color sense orange.n.02 to fruit sense orange.n.01. Most sampled boxes show whole or sliced oranges; image 2399904 is not a clear fruit instance.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "pant": {
+      "class_id": 87,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "paper": {
+      "class_id": 88,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "paw": {
+      "class_id": 89,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "people": {
+      "class_id": 90,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "person": {
+      "class_id": 91,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "phone": {
+      "class_id": 92,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "pillow": {
+      "class_id": 93,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "pizza": {
+      "class_id": 94,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "plane": {
+      "class_id": 95,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "plant": {
+      "class_id": 96,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "plate": {
+      "class_id": 97,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "player": {
+      "class_id": 98,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "pole": {
+      "class_id": 99,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "post": {
+      "class_id": 100,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "pot": {
+      "class_id": 101,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "racket": {
+      "class_id": 102,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "railing": {
+      "class_id": 103,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "rock": {
+      "class_id": 104,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "roof": {
+      "class_id": 105,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "room": {
+      "class_id": 106,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "screen": {
+      "class_id": 107,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale. Codex QA: The selected WordNet definition mentions cathode-ray tubes, while sample boxes also include phone and modern television screens; treat this as an approximate representative sense.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "seat": {
+      "class_id": 108,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "sheep": {
+      "class_id": 109,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "shelf": {
+      "class_id": 110,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "shirt": {
+      "class_id": 111,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "shoe": {
+      "class_id": 112,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "short": {
+      "class_id": 113,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale. Codex QA: Reviewer selected short pants. This noun synset was added to the review candidates with explicit WordNet 3.0 provenance.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "sidewalk": {
+      "class_id": 114,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "sign": {
+      "class_id": 115,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "sink": {
+      "class_id": 116,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "skateboard": {
+      "class_id": 117,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "ski": {
+      "class_id": 118,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "skier": {
+      "class_id": 119,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "sneaker": {
+      "class_id": 120,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "snow": {
+      "class_id": 121,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "sock": {
+      "class_id": 122,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "stand": {
+      "class_id": 123,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale. Codex QA: Reviewer corrected stand.n.02 (a position) to base.n.08 (a physical support); samples include a TV stand, motorcycle kickstand, and microphone stand.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "street": {
+      "class_id": 124,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "surfboard": {
+      "class_id": 125,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "table": {
+      "class_id": 126,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "tail": {
+      "class_id": 127,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "tie": {
+      "class_id": 128,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "tile": {
+      "class_id": 129,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "tire": {
+      "class_id": 130,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "toilet": {
+      "class_id": 131,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "towel": {
+      "class_id": 132,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "tower": {
+      "class_id": 133,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "track": {
+      "class_id": 134,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "train": {
+      "class_id": 135,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "tree": {
+      "class_id": 136,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "truck": {
+      "class_id": 137,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "trunk": {
+      "class_id": 138,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale. Codex QA: Representative tree-trunk sense. Train image 2376992 shows an elephant trunk, so the class is polysemous.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "umbrella": {
+      "class_id": 139,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "vase": {
+      "class_id": 140,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "vegetable": {
+      "class_id": 141,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "vehicle": {
+      "class_id": 142,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "wave": {
+      "class_id": 143,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "wheel": {
+      "class_id": 144,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "window": {
+      "class_id": 145,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "windshield": {
+      "class_id": 146,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "wing": {
+      "class_id": 147,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale. Codex QA: Representative animal-wing sense. Train images 2386268 and 2388990 show airplane wings, so the class is polysemous.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "wire": {
+      "class_id": 148,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "woman": {
+      "class_id": 149,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    },
+    "zebra": {
+      "class_id": 150,
+      "reviewer": "Toan",
+      "notes": "Toan supplied this selection as verified on 2026-10-25; the pasted column did not include a separate per-class rationale.",
+      "candidate_source": "wordnet",
+      "source_version": "3.0"
+    }
+  }
+}

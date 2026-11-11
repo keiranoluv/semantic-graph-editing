@@ -6,5 +6,21 @@ data/processed/*
 __pycache__/
 *.pyc
 .venv/
+myenv/
 *.pt
 *.pth
+/data/raw/
+
+/reports/vg150_graph_statistics.json
+/wandb/
+/checkpoints/
+/runs/
+/reports/mlp_evaluation.json
+/reports/eval_bs*.json
+/logs/
+scripts/pilot_mlp.py.bak
+
+# Large downloaded external KG data and generated KG artifacts
+/data/external/
+/data/knowledge/
+/data/cache/

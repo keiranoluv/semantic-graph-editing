@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "images_evaluated": 5000,
+  "full_split": true,
+  "interpretation": "validation_not_final_test",
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "protocol": "PredCls_graph_constrained_top1_per_pair",
+  "visual_cache_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+  "metrics_unit": "fraction_0_to_1",
+  "std_definition": "sample_standard_deviation_ddof_1",
+  "groups": [
+    {
+      "condition": "gat_kg:conceptnet:11168ee4f271:kg_1:edges_full",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "reports": [
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-rotate-v2/clip-rotate-kg_on-seed42-v2/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-rotate-v2/clip-rotate-kg_on-seed123-v2/best.pt",
+        "/workspace/workspace/semantic-graph-editing/runs/level1-clip-rotate-v2/clip-rotate-kg_on-seed3407-v2/best.pt"
+      ],
+      "metrics": {
+        "R@50": {
+          "mean": 0.6354347243039895,
+          "sample_std": 0.007740582588572254
+        },
+        "R@100": {
+          "mean": 0.6574838823552,
+          "sample_std": 0.008088426780660352
+        },
+        "mR@50": {
+          "mean": 0.1908167826367934,
+          "sample_std": 0.0069862921702817824
+        },
+        "mR@100": {
+          "mean": 0.2106713039968786,
+          "sample_std": 0.005924442634837454
+        }
+      },
+      "max_epochs_recorded": 200
+    }
+  ]
+}

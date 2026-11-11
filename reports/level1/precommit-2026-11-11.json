@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-11-11T23:19:57.991330+07:00",
+  "scope": "Level 1 commit readiness; no training or new full-dataset inference",
+  "tests": {
+    "command": "myenv/bin/python -m pytest -q",
+    "passed": 239
+  },
+  "python_checks": {
+    "ruff": "PASS",
+    "black_check": "PASS",
+    "files": 21
+  },
+  "artifact_checks": {
+    "gc_ng_comparison": "54 checkpoints / 108 reports; hashes, inputs, support and three-seed statistics PASS",
+    "long_tail": "immutable regeneration and 216 mR reconstruction checks PASS",
+    "zero_shot": "nine frozen reports and summary validated/reused unchanged",
+    "case_assets": "checkpoint and original image SHA-256 verified",
+    "json_and_notebook_structure": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "demo_cpu_cases": [
+    "miss03",
+    "miss05"
+  ],
+  "historical_walkthrough": "Added explicit legacy-protocol notice and reference-demo link",
+  "excluded_from_commits": [
+    "notebooks/level1_scene_graph_demo.ipynb: existing personal kernel metadata change retained in working tree"
+  ],
+  "pending_human_work": [
+    "Confirm qualitative cases",
+    "Prepare final report/slides/contribution and AI declarations",
+    "Rehearse on presentation machine and prepare backup video"
+  ],
+  "evidence": [
+    {
+      "path": "reports/level1/reference-comparison/comparison.json",
+      "sha256": "d8270ee3d180d615b84510bdfebafaa615104bff44efb2e236409cb1b7fd7f0a"
+    },
+    {
+      "path": "reports/level1/long-tail-reference-v1/analysis.json",
+      "sha256": "2a92cf30c8c0a76cd8929d4edfec88b4ade6d0809aa8e3cd5407dec7e2fc3581"
+    },
+    {
+      "path": "reports/level1/zero-shot-reference-v1/9run-val5000-summary.json",
+      "sha256": "27ab9b0f39ab7e2ca061dfddc424d5c51eda58d05932ccf0021af696ed168781"
+    },
+    {
+      "path": "notebooks/level1_reference_demo.ipynb",
+      "sha256": "7ddea75f7bc43e84566f3c34be46c7be52ce07ae47f3205c4adf634069c8dffd"
+    },
+    {
+      "path": "notebooks/level1_one_image_walkthrough.ipynb",
+      "sha256": "a0adac30da7028a6d196b04feefab2ae87d958a2f5bb6a8000e4a03e5ce60263"
+    }
+  ],
+  "hook_policy": {
+    "runtime": "pre-commit hook reinstalled with project myenv interpreter",
+    "large_file_exceptions": "four reviewed evidence artifacts, each below 1.5 MB",
+    "isort_exceptions": "four frozen evaluator files retain existing source SHA-256; Black/Ruff still checked",
+    "audit_import_order": "sorted with isort; not part of frozen evaluator hashes"
+  },
+  "notebook_checks": [
+    {
+      "notebook": "notebooks/level1_reference_demo.ipynb",
+      "sha256": "7ddea75f7bc43e84566f3c34be46c7be52ce07ae47f3205c4adf634069c8dffd",
+      "case": "miss03",
+      "status": "PASS",
+      "stdout_matches_historical_demo": true
+    },
+    {
+      "notebook": "notebooks/level1_reference_demo.ipynb",
+      "sha256": "7ddea75f7bc43e84566f3c34be46c7be52ce07ae47f3205c4adf634069c8dffd",
+      "case": "miss05",
+      "status": "PASS",
+      "stdout_matches_historical_demo": true
+    },
+    {
+      "notebook": "notebooks/level1_one_image_walkthrough.ipynb",
+      "sha256": "a0adac30da7028a6d196b04feefab2ae87d958a2f5bb6a8000e4a03e5ce60263",
+      "case": null,
+      "status": "PASS"
+    }
+  ],
+  "notebook_revision": "Separated path bootstrap from imports, split import statements and added stable cell IDs; reference outputs match historical demo-check.json exactly. Historical notebook hashes remain in their original dated evidence."
+}
