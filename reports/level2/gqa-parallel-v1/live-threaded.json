@@ -1,0 +1,256 @@
+{
+  "status": "RUNNING",
+  "implementation_commit": "b3861c0",
+  "tmux": "0:gqa-ram",
+  "coordinator": {
+    "pid": 236293,
+    "status": "running",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "workers": 2,
+    "ram_target": "approximately half of host RAM; two prepared graph copies plus bounded validation caches",
+    "source_sha256": {
+      "tools/run_gqa_full_parallel.py": "bf213f81169a5b9e5393fec137df5c0acd44fc0ec72d09f9835545817c687e8e",
+      "tools/run_gqa_full_ram.py": "8752a4be0bf041b721e1dddcc23d9c9c4221e779ef6cf520596ed840df6e852c",
+      "tools/run_gqa_full_prepared.py": "e575ea139e3760f16e2e11913c5b7e66525765efcab192299d4660db0787f097"
+    },
+    "active": {
+      "0": {
+        "event": "start",
+        "slot": 0,
+        "model": "mlp",
+        "seed": 42
+      },
+      "1": {
+        "event": "start",
+        "slot": 1,
+        "model": "mlp",
+        "seed": 123
+      }
+    },
+    "completed": [],
+    "logs": [
+      "logs/gqa-parallel-236293-worker0.log",
+      "logs/gqa-parallel-236293-worker1.log"
+    ],
+    "worker_pids": [
+      236639,
+      236677
+    ]
+  },
+  "workers": [
+    {
+      "slot": 0,
+      "pid": 236639,
+      "cpus": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "loader_workers": 4,
+      "collate_threads": 8,
+      "source_sha256": {
+        "tools/run_gqa_full_parallel.py": "bf213f81169a5b9e5393fec137df5c0acd44fc0ec72d09f9835545817c687e8e",
+        "tools/run_gqa_full_ram.py": "8752a4be0bf041b721e1dddcc23d9c9c4221e779ef6cf520596ed840df6e852c",
+        "tools/run_gqa_full_prepared.py": "e575ea139e3760f16e2e11913c5b7e66525765efcab192299d4660db0787f097"
+      },
+      "train": {
+        "split": "train",
+        "images": 69942,
+        "workers": 4,
+        "serialized_shard_bytes": 8108755638,
+        "tensor_bytes": 7903105868,
+        "load_seconds": 44.03066194898565,
+        "all_worker_parent_tensor_digests_equal": true
+      },
+      "val": {
+        "split": "val",
+        "images": 5000,
+        "workers": 4,
+        "serialized_shard_bytes": 576865388,
+        "tensor_bytes": 562182372,
+        "load_seconds": 4.8960734689899255,
+        "all_worker_parent_tensor_digests_equal": true
+      },
+      "validation_cache_bytes": 2214050788
+    },
+    {
+      "slot": 1,
+      "pid": 236677,
+      "cpus": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "loader_workers": 4,
+      "collate_threads": 8,
+      "source_sha256": {
+        "tools/run_gqa_full_parallel.py": "bf213f81169a5b9e5393fec137df5c0acd44fc0ec72d09f9835545817c687e8e",
+        "tools/run_gqa_full_ram.py": "8752a4be0bf041b721e1dddcc23d9c9c4221e779ef6cf520596ed840df6e852c",
+        "tools/run_gqa_full_prepared.py": "e575ea139e3760f16e2e11913c5b7e66525765efcab192299d4660db0787f097"
+      },
+      "train": {
+        "split": "train",
+        "images": 69942,
+        "workers": 4,
+        "serialized_shard_bytes": 8108755638,
+        "tensor_bytes": 7903105868,
+        "load_seconds": 45.32919362798566,
+        "all_worker_parent_tensor_digests_equal": true
+      },
+      "val": {
+        "split": "val",
+        "images": 5000,
+        "workers": 4,
+        "serialized_shard_bytes": 576865388,
+        "tensor_bytes": 562182372,
+        "load_seconds": 5.010486207989743,
+        "all_worker_parent_tensor_digests_equal": true
+      },
+      "validation_cache_bytes": 2214050788
+    }
+  ],
+  "resume_verified": true,
+  "frozen_source_hashes_unchanged": true,
+  "test_split_used": false,
+  "pytest_passed": 345,
+  "mean_epoch_seconds_by_slot": {
+    "0": 23.563169798493618,
+    "1": 24.4626574349968
+  },
+  "mlp_aggregate_throughput_speedup_over_single_trainer": 1.9344895006423093,
+  "cpu_core_equivalents_measured": 5.275661925366529,
+  "cpu_host_utilization_fraction": 0.16486443516770402,
+  "ram_used_fraction_range": [
+    0.5031040130298022,
+    0.5211502688530939
+  ],
+  "observations": {
+    "events": {
+      "0": [
+        {
+          "monotonic_seconds": 136995.488208878,
+          "utc": "2026-11-11T19:45:59Z",
+          "line": "[EPOCH] mlp/42 68/200 R50=0.764035 mR50=0.027131"
+        },
+        {
+          "monotonic_seconds": 137019.35186671,
+          "utc": "2026-11-11T19:46:23Z",
+          "line": "[EPOCH] mlp/42 69/200 R50=0.764317 mR50=0.026933"
+        },
+        {
+          "monotonic_seconds": 137042.614548475,
+          "utc": "2026-11-11T19:46:46Z",
+          "line": "[EPOCH] mlp/42 70/200 R50=0.764683 mR50=0.027802"
+        }
+      ],
+      "1": [
+        {
+          "monotonic_seconds": 136990.881628579,
+          "utc": "2026-11-11T19:45:54Z",
+          "line": "[EPOCH] mlp/123 9/200 R50=0.615428 mR50=0.008845"
+        },
+        {
+          "monotonic_seconds": 137015.943070083,
+          "utc": "2026-11-11T19:46:19Z",
+          "line": "[EPOCH] mlp/123 10/200 R50=0.645049 mR50=0.009271"
+        },
+        {
+          "monotonic_seconds": 137039.806943449,
+          "utc": "2026-11-11T19:46:43Z",
+          "line": "[EPOCH] mlp/123 11/200 R50=0.663833 mR50=0.010110"
+        }
+      ]
+    },
+    "resource_samples": [
+      {
+        "time": 136995.488957934,
+        "cpu_seconds": 184.64,
+        "ram_used_fraction": 0.5095712005582174,
+        "ram_used_bytes": 32939552768
+      },
+      {
+        "time": 137000.502845218,
+        "cpu_seconds": 215.12,
+        "ram_used_fraction": 0.5140436051527383,
+        "ram_used_bytes": 33228656640
+      },
+      {
+        "time": 137005.516039338,
+        "cpu_seconds": 247.18,
+        "ram_used_fraction": 0.5160428869776558,
+        "ram_used_bytes": 33357893632
+      },
+      {
+        "time": 137010.529275066,
+        "cpu_seconds": 277.66,
+        "ram_used_fraction": 0.5144862706835722,
+        "ram_used_bytes": 33257271296
+      },
+      {
+        "time": 137015.542187322,
+        "cpu_seconds": 296.36,
+        "ram_used_fraction": 0.5053852676019587,
+        "ram_used_bytes": 32668966912
+      },
+      {
+        "time": 137020.55578995,
+        "cpu_seconds": 318.3,
+        "ram_used_fraction": 0.5031040130298022,
+        "ram_used_bytes": 32521502720
+      },
+      {
+        "time": 137025.568428261,
+        "cpu_seconds": 348.84,
+        "ram_used_fraction": 0.5058637975316549,
+        "ram_used_bytes": 32699899904
+      },
+      {
+        "time": 137030.581795863,
+        "cpu_seconds": 379.38,
+        "ram_used_fraction": 0.5211502688530939,
+        "ram_used_bytes": 33688043520
+      },
+      {
+        "time": 137035.595791237,
+        "cpu_seconds": 408.08,
+        "ram_used_fraction": 0.5193636388348581,
+        "ram_used_bytes": 33572552704
+      },
+      {
+        "time": 137040.60950023,
+        "cpu_seconds": 424.68,
+        "ram_used_fraction": 0.5119672085338006,
+        "ram_used_bytes": 33094434816
+      }
+    ],
+    "cpu_core_equivalents": 5.275661925366529
+  },
+  "limitations": "Two complete MLP epochs per worker. 16 CPUs allocated with eight collate threads each; observed average utilization is lower than 50% of host CPU."
+}

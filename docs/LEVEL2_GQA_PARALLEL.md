@@ -44,3 +44,18 @@ finishes sooner. Validation caching is tested against all five reference models.
 
 The frozen recipe is intentionally unchanged; this runtime scheduling overlay and
 its source hashes must accompany `experiment.json` when reproducing the run.
+
+The live deployment uses coordinator PID 236293 in tmux `0:gqa-ram`. Both MLP
+checkpoints resumed exactly: seed 42 at epoch 68/image 15,872 and seed 123 at
+epoch 9/image 57,856. Two complete epochs per worker averaged 23.56 and 24.46
+seconds, giving about 1.93x aggregate MLP throughput versus the previous single
+trainer's 23.22 seconds/epoch. These are short measurements, not a full-matrix
+completion-time guarantee. The preceding unthreaded parallel deployment measured
+1.89x; the main gain comes from two concurrent trials.
+
+Measured host RAM usage was 50.3–52.1%. Sixteen logical CPUs are allocated, with
+eight threads per trainer during collation; average measured usage was 5.28 CPU
+core equivalents (16.5% of all 32 logical CPUs), not continuous 50% CPU utilization.
+Work outside tensor assembly retains the frozen numerical runtime. The deployment
+passed 345 tests; all five models match reference weights, optimizer, RNG and
+metrics on both CPU and CUDA. See `live-threaded.json` in the report directory.
