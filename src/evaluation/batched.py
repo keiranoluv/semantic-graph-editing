@@ -2,7 +2,7 @@
 
 import torch
 
-from src.evaluation.scene_graph import evaluate_image
+from src.evaluation.protocols import evaluate_graph_image
 
 
 def collate_evaluation_graphs(graphs):
@@ -53,7 +53,7 @@ def forward_evaluation_batch(model, batch, name, device):
 
 
 @torch.no_grad()
-def evaluate_graph_batch(model, graphs, name, device, compute_loss=False):
+def evaluate_graph_batch(model, graphs, name, device, compute_loss=False, *, protocol="legacy"):
     """Return image-level results and optional validation CE statistics."""
     batch, slices = collate_evaluation_graphs(graphs)
     logits = forward_evaluation_batch(model, batch, name, device)
@@ -79,13 +79,6 @@ def evaluate_graph_batch(model, graphs, name, device, compute_loss=False):
     results = []
 
     for graph, (begin, end) in zip(graphs, slices, strict=True):
-        results.append(
-            evaluate_image(
-                logits=logits_cpu[begin:end],
-                candidate_pairs=graph.edge_label_index,
-                gt_pairs=graph.gt_relation_index,
-                gt_predicates=graph.gt_predicate,
-            )
-        )
+        results.append(evaluate_graph_image(logits_cpu[begin:end], graph, protocol))
 
     return results, loss_sum, total_pairs

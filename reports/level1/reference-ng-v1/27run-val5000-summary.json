@@ -1,0 +1,356 @@
+{
+  "protocol": "PredCls_reference_ng_v1_iou50_image_macro_per_predicate_50",
+  "split": "val",
+  "images_evaluated": 5000,
+  "full_split": true,
+  "interpretation": "fixed_legacy_selected_checkpoints_rescored_not_reselected",
+  "plan_sha256": "2220ff667068691a4cae6334a0bf3f529e75b3e9e652f4f46cbab58d986c8add",
+  "metrics_unit": "fraction_0_to_1",
+  "std_definition": "sample_standard_deviation_ddof_1",
+  "reports": [
+    {
+      "path": "reports/level1/reference-ng-v1/mlp_semantic-seed42-val5000.json",
+      "sha256": "7ef3988b212e66a710eb3dbbf1e73280189170c4c9cf6eaf248e88caf807b941"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/mlp_semantic-seed123-val5000.json",
+      "sha256": "d42b26e3f4faad92e97e131c9ef376a15d9547c148c9e1adbf60e823e80fe2dd"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/mlp_semantic-seed3407-val5000.json",
+      "sha256": "6d60614bad52c041b0ff79e8b9e04e4aa1e30c0bdcf79aa0ba9458f9cdc97d8d"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/gat-seed42-val5000.json",
+      "sha256": "87a3e57e899109b51eee96c28c62c3d6739971eb6044023cfbe7f75518a22ca1"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/gat-seed123-val5000.json",
+      "sha256": "36541aa05ddcadcd9d32f7c01dfc8f34b2e2ea5e85ee4c3f47b8fc483c1d0569"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/gat-seed3407-val5000.json",
+      "sha256": "fc11b09b84ef22b607393f2c91b2192e74230fa19736b0a3ff825a3c662bd9a5"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/kg_off-seed42-val5000.json",
+      "sha256": "a8a63096382e13c50073a45fd858f75c30572fc838e2a5d5762a10b324df0bb2"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/kg_off-seed123-val5000.json",
+      "sha256": "40683691af59f7093f6101163b7d5ef0994518f555e17775f6c9c2b76cea422c"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/kg_off-seed3407-val5000.json",
+      "sha256": "e3525dbf2ccfa011f94194390849d608e67b50ea622ad8d19c9f585236087143"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/wordnet_kg_on-seed42-val5000.json",
+      "sha256": "075d4d7e874ae6b64e410700475224b684f49bbd70e9feec0d828e20d7ed2a4e"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/wordnet_kg_on-seed123-val5000.json",
+      "sha256": "74a711d05d36d10bb3d76df7cbfeb8b658dbc6a3413740668f464153f3da72da"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/wordnet_kg_on-seed3407-val5000.json",
+      "sha256": "6d2098132efb46bc4ef1dc6342c8fa7ecc7d5086209c23fd471ec3c89ebb80cb"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/wordnet_edges_off-seed42-val5000.json",
+      "sha256": "b240aa59436692c58cc094ee937178d3646403cb26ccd429ef99a23d583bd162"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/wordnet_edges_off-seed123-val5000.json",
+      "sha256": "fff29284f0f37d0ac27fe2f2868dcea95b8e85ed1381bc531f0d5ab53cb01a80"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/wordnet_edges_off-seed3407-val5000.json",
+      "sha256": "329dbd7ede47cb8348a838d3df670e3bc2e3eed497800a2edb03a9d7c7859fb4"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_transe_kg_on-seed42-val5000.json",
+      "sha256": "6015ad45fbc2a8e1383797c02246454a5f589c3ed1f9401a18bb34fbea75b202"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_transe_kg_on-seed123-val5000.json",
+      "sha256": "74e87bcd0ceb71e71f227c8e8e8002464452d6d2b3954335cc060297b189aebc"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_transe_kg_on-seed3407-val5000.json",
+      "sha256": "6b68195f09694b297738beaedc7c3db428bcb8ddf1db28cde2155e1fcd95f8a1"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_transe_edges_off-seed42-val5000.json",
+      "sha256": "6d822c17a079d0132ceb10f07ec695a32f5a311331c7ece9f58504c96562088e"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_transe_edges_off-seed123-val5000.json",
+      "sha256": "ba5584756bc711a47555b8ef515718427ed4762c103815325d30877542e9a43b"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_transe_edges_off-seed3407-val5000.json",
+      "sha256": "721ea6aedc01274e128d80b26678fc8d626ac52542351cb5f772f3cd6ea5b588"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_rotate_kg_on-seed42-val5000.json",
+      "sha256": "7d64fa2434353f8bccddadf45f939cc28e35c62045b9b8537b18c3095396f1f7"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_rotate_kg_on-seed123-val5000.json",
+      "sha256": "0a7fb692291a9be2e260ab896e79a51ea52827bb2e923f6e50adcaf811b55f55"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_rotate_kg_on-seed3407-val5000.json",
+      "sha256": "2da202295eaae7c907646b9bf29ba1d7bc9e0ef8b947d7542e57e508cb0c99f6"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_complex_kg_on-seed42-val5000.json",
+      "sha256": "8b66bf39c5df55e62cb5c7afc858bb5277978004bcafc6f2af572b44b5aa3b85"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_complex_kg_on-seed123-val5000.json",
+      "sha256": "14f000b2a090f79c3c169f87822e63d9b06c4d68cf5cdf4538157c4acea70548"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1/conceptnet_complex_kg_on-seed3407-val5000.json",
+      "sha256": "a9d9af1f6b4de2f59c65557cf9c9abf8e1583b452fe94820c2eec6f1c549f143"
+    }
+  ],
+  "groups": [
+    {
+      "condition": "mlp_semantic",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7652745845408652,
+          "sample_std": 0.019188037228401608
+        },
+        "ng-R@100": {
+          "mean": 0.8470848905986758,
+          "sample_std": 0.014467830170132027
+        },
+        "ng-mR@50": {
+          "mean": 0.313717681484045,
+          "sample_std": 0.025391289633393932
+        },
+        "ng-mR@100": {
+          "mean": 0.42757455859932336,
+          "sample_std": 0.03256395887515857
+        }
+      }
+    },
+    {
+      "condition": "gat",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7787167282480569,
+          "sample_std": 0.004754867639523753
+        },
+        "ng-R@100": {
+          "mean": 0.8565008177850459,
+          "sample_std": 0.006282742071055059
+        },
+        "ng-mR@50": {
+          "mean": 0.3321372920849624,
+          "sample_std": 0.007008130393341175
+        },
+        "ng-mR@100": {
+          "mean": 0.4386343977350827,
+          "sample_std": 0.021524092772995138
+        }
+      }
+    },
+    {
+      "condition": "kg_off",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7794907833451968,
+          "sample_std": 0.0025294316004731525
+        },
+        "ng-R@100": {
+          "mean": 0.8565781542424842,
+          "sample_std": 0.0036240119720516535
+        },
+        "ng-mR@50": {
+          "mean": 0.32175587611245476,
+          "sample_std": 0.01226542005439886
+        },
+        "ng-mR@100": {
+          "mean": 0.4398868524076855,
+          "sample_std": 0.012769912928755515
+        }
+      }
+    },
+    {
+      "condition": "wordnet_kg_on",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7769058496674235,
+          "sample_std": 0.006890533628990708
+        },
+        "ng-R@100": {
+          "mean": 0.8561560621564236,
+          "sample_std": 0.004326430085765123
+        },
+        "ng-mR@50": {
+          "mean": 0.31838574483357845,
+          "sample_std": 0.012457559674698072
+        },
+        "ng-mR@100": {
+          "mean": 0.4386793289537895,
+          "sample_std": 0.01084879423173429
+        }
+      }
+    },
+    {
+      "condition": "wordnet_edges_off",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.781864207380724,
+          "sample_std": 0.010513681725269916
+        },
+        "ng-R@100": {
+          "mean": 0.8600604234920259,
+          "sample_std": 0.007109676452600995
+        },
+        "ng-mR@50": {
+          "mean": 0.3246690813779676,
+          "sample_std": 0.018348519188676245
+        },
+        "ng-mR@100": {
+          "mean": 0.4383578356832577,
+          "sample_std": 0.02191518881042819
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_transe_kg_on",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7813792845705719,
+          "sample_std": 0.0035657408405935648
+        },
+        "ng-R@100": {
+          "mean": 0.8589567310767304,
+          "sample_std": 0.002426998541721735
+        },
+        "ng-mR@50": {
+          "mean": 0.3150535376828954,
+          "sample_std": 0.009382263038553006
+        },
+        "ng-mR@100": {
+          "mean": 0.4459479299778685,
+          "sample_std": 0.010502005246058908
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_transe_edges_off",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7870860992442331,
+          "sample_std": 0.0018035244601398693
+        },
+        "ng-R@100": {
+          "mean": 0.8629313181798257,
+          "sample_std": 0.0012587183642654915
+        },
+        "ng-mR@50": {
+          "mean": 0.3257772067180181,
+          "sample_std": 0.013225266349203776
+        },
+        "ng-mR@100": {
+          "mean": 0.45434960045869954,
+          "sample_std": 0.00631928107307171
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_rotate_kg_on",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7796656432756218,
+          "sample_std": 0.0028860682201270788
+        },
+        "ng-R@100": {
+          "mean": 0.8576671557096761,
+          "sample_std": 0.0019363372181433072
+        },
+        "ng-mR@50": {
+          "mean": 0.3302418137244792,
+          "sample_std": 0.0076101631747343594
+        },
+        "ng-mR@100": {
+          "mean": 0.4430363585679938,
+          "sample_std": 0.008440979947170833
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_complex_kg_on",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7812337141217232,
+          "sample_std": 0.0015015445320878571
+        },
+        "ng-R@100": {
+          "mean": 0.8592798921668396,
+          "sample_std": 0.0021895536039316117
+        },
+        "ng-mR@50": {
+          "mean": 0.3301807303067261,
+          "sample_std": 0.019002060322830985
+        },
+        "ng-mR@100": {
+          "mean": 0.45016089106298685,
+          "sample_std": 0.005175989500843372
+        }
+      }
+    }
+  ]
+}

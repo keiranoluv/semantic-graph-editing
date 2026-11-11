@@ -1,0 +1,204 @@
+{
+  "protocol": "PredCls_reference_ng_v1_iou50_image_macro_per_predicate_50",
+  "split": "val",
+  "images_evaluated": 5000,
+  "full_split": true,
+  "interpretation": "fixed_legacy_selected_checkpoints_rescored_not_reselected",
+  "plan_sha256": "39e371ee2762521a4c3dea570d0d0526c565d7f47ac2c0fb1ff7de97a8c6382d",
+  "metrics_unit": "fraction_0_to_1",
+  "std_definition": "sample_standard_deviation_ddof_1",
+  "reports": [
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/baseline-seed42-val5000.json",
+      "sha256": "996257d7231305c087d4fdd4ad2ded78549d0c04d4c5d1026d02bc01a51b4d23"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/baseline-seed123-val5000.json",
+      "sha256": "7b9c4b499f0e10e7ac9ef2219446e00faa1d5c29a0511ac3630e9d21445c9b08"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/baseline-seed3407-val5000.json",
+      "sha256": "77d07d691053f32bbd7e867e4c0e04b5cb174a3e62bdf535788e2cd6eb93d995"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/pair_real-seed42-val5000.json",
+      "sha256": "74d0c4c67d2bacfc74feff3949dfed6901adf2e630795b9fd3018f20c2b9ce8a"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/pair_real-seed123-val5000.json",
+      "sha256": "45a0714b2c0fe360cb61487a23ac81fce117575e6a6687155d5866e47750c4e3"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/pair_real-seed3407-val5000.json",
+      "sha256": "e0e379cb127e1f9d53d14dfbd00fc9278d5419d66e43eaad130d17baf72cf1bc"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/pair_shuffled-seed42-val5000.json",
+      "sha256": "d4ea94ffd01a59ebebee14a8f5094aefa2257e721e9c3ddb2da1833ef9df0280"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/pair_shuffled-seed123-val5000.json",
+      "sha256": "2ec63d1da3b20f901d9c50f5134d6e1c2d290d6e459cab2024b7d7da53f19752"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/pair_shuffled-seed3407-val5000.json",
+      "sha256": "eb67c07e40e9b4206e327a02d67968c9cc8b8da202199a434de91880db1b5952"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/visual_real-seed42-val5000.json",
+      "sha256": "9a04b3eda88c8a37417b97442ada7b0a59efd5d2381fcc46f1bb41610a1b111a"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/visual_real-seed123-val5000.json",
+      "sha256": "c3203b05117547f97d13d0464dab35b67ca0e49f70f23418c26be4b4740a1d34"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/visual_real-seed3407-val5000.json",
+      "sha256": "4788ad4f56b67b71ec40997e393ed43cc8742afb2ea225b06012234bb3238bab"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/visual_shuffled-seed42-val5000.json",
+      "sha256": "af91e9101b79739b21c071f0de34d1d03ac89eaf1eb652fe2305bd505bc6d087"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/visual_shuffled-seed123-val5000.json",
+      "sha256": "7f0be469c6bf95df93c4f5be707d9e9ef7ea3022459bbda7408c2b276d550504"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-fusion/visual_shuffled-seed3407-val5000.json",
+      "sha256": "1d8788db1e3f0e2d7a436fe9e069e85bc92794acc0e286b815ccc89e6359e21a"
+    }
+  ],
+  "groups": [
+    {
+      "condition": "baseline",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7499680344207884,
+          "sample_std": 0.009143271711051297
+        },
+        "ng-R@100": {
+          "mean": 0.8375654122965267,
+          "sample_std": 0.004470087280555918
+        },
+        "ng-mR@50": {
+          "mean": 0.3713294637753489,
+          "sample_std": 0.016162250136204905
+        },
+        "ng-mR@100": {
+          "mean": 0.47902696548549684,
+          "sample_std": 0.010638243937874999
+        }
+      }
+    },
+    {
+      "condition": "pair_real",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7591325589412264,
+          "sample_std": 0.0011613021866101797
+        },
+        "ng-R@100": {
+          "mean": 0.8444709116625726,
+          "sample_std": 0.002228668915763015
+        },
+        "ng-mR@50": {
+          "mean": 0.3793183890996525,
+          "sample_std": 0.000953841529119554
+        },
+        "ng-mR@100": {
+          "mean": 0.4887231061098606,
+          "sample_std": 0.00584548545364315
+        }
+      }
+    },
+    {
+      "condition": "pair_shuffled",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7564705661183401,
+          "sample_std": 0.002840531339921436
+        },
+        "ng-R@100": {
+          "mean": 0.8418024108308483,
+          "sample_std": 0.002629441286479847
+        },
+        "ng-mR@50": {
+          "mean": 0.36624109474161903,
+          "sample_std": 0.01089694173335835
+        },
+        "ng-mR@100": {
+          "mean": 0.4821329211867048,
+          "sample_std": 0.0025081198744409576
+        }
+      }
+    },
+    {
+      "condition": "visual_real",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.758193827524639,
+          "sample_std": 0.004499549318019445
+        },
+        "ng-R@100": {
+          "mean": 0.8439636693754248,
+          "sample_std": 0.004674159795788759
+        },
+        "ng-mR@50": {
+          "mean": 0.3698372807346316,
+          "sample_std": 0.009723629095368681
+        },
+        "ng-mR@100": {
+          "mean": 0.4887980267720508,
+          "sample_std": 0.003148502913800996
+        }
+      }
+    },
+    {
+      "condition": "visual_shuffled",
+      "seeds": [
+        42,
+        123,
+        3407
+      ],
+      "metrics": {
+        "ng-R@50": {
+          "mean": 0.7557581664274364,
+          "sample_std": 0.009830172831806285
+        },
+        "ng-R@100": {
+          "mean": 0.8416966516598932,
+          "sample_std": 0.005680971692160947
+        },
+        "ng-mR@50": {
+          "mean": 0.3751336806812386,
+          "sample_std": 0.01162076677489658
+        },
+        "ng-mR@100": {
+          "mean": 0.4908189133859223,
+          "sample_std": 0.006214203863729078
+        }
+      }
+    }
+  ]
+}

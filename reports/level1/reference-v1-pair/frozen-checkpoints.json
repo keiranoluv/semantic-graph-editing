@@ -1,0 +1,110 @@
+{
+  "purpose": "fixed_checkpoint_validation_rescore",
+  "entries": [
+    {
+      "condition": "ce_off",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-ce_off-seed42-v1/best.pt",
+      "checkpoint_sha256": "5164d4519c23e4f97d30b3a82f64ee58f3f01e39eb93726cc9a68a4339bb935b",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-ce_off-seed42-val5000.json",
+      "legacy_report_sha256": "b1cbf813718ee47384f02ca45092b1fe1fd2889291e05edcd96487ff04971bb8"
+    },
+    {
+      "condition": "ce_off",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-ce_off-seed123-v1/best.pt",
+      "checkpoint_sha256": "cb30e3eb183b07f444a97b5e622f581755459347d6e0547fdc45ef61cf894e60",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-ce_off-seed123-val5000.json",
+      "legacy_report_sha256": "e8899e09bfcc9eedb7cf5d909531c6a810eec6d95538d6653ff452eec3d28ead"
+    },
+    {
+      "condition": "ce_off",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-ce_off-seed3407-v1/best.pt",
+      "checkpoint_sha256": "df5b812584fa8eb1108a88296029723e8b25ff86fd2853d04bead20ca6934022",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-ce_off-seed3407-val5000.json",
+      "legacy_report_sha256": "b59651afeb7ef4bd9cbebdf652816dbad00dcdb8fadbd0a0193bceb6f38ed880"
+    },
+    {
+      "condition": "ce_on",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-ce_on-seed42-v1/best.pt",
+      "checkpoint_sha256": "19eed218fb50935a894141f43f25905995864bae829c8fe7fbdd24dfe53d5413",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-ce_on-seed42-val5000.json",
+      "legacy_report_sha256": "9e6d0491d064c0505a581ae19c575d215a5cbcf889e8b38a1dd14ba3392d268e"
+    },
+    {
+      "condition": "ce_on",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-ce_on-seed123-v1/best.pt",
+      "checkpoint_sha256": "30220f75b490de6594ffd121cbe7995e044d4d1263ee80a635f6b98b59073071",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-ce_on-seed123-val5000.json",
+      "legacy_report_sha256": "7d157909292b068d83a290c295cd668399f2dbd688f42c18bc7a747f2a7880f7"
+    },
+    {
+      "condition": "ce_on",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-ce_on-seed3407-v1/best.pt",
+      "checkpoint_sha256": "2543e1b6de6df956614bd753a7e7ac4bf79b3980d87f7169262d63dbb03a9d7a",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-ce_on-seed3407-val5000.json",
+      "legacy_report_sha256": "f6ed48099c423f12bff629843ceb497b8c645abb0017d2a891990d3be824c193"
+    },
+    {
+      "condition": "adjusted_off",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-adjusted_off-seed42-v1/best.pt",
+      "checkpoint_sha256": "c5dd3d81e610367a3d66e678396ff953d1f124c9e956d1a9009157b12377db2b",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-adjusted_off-seed42-val5000.json",
+      "legacy_report_sha256": "f805bd1e88f189c34af548a52b738865b08cc789ebf4212f7c28a378098c2e98"
+    },
+    {
+      "condition": "adjusted_off",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-adjusted_off-seed123-v1/best.pt",
+      "checkpoint_sha256": "391e8e204c7b9e039dcfb81fd735dc1604a876b523815990debc3ad2abcf54c6",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-adjusted_off-seed123-val5000.json",
+      "legacy_report_sha256": "06db971d44e8b9076fc680d90ef8b923b56102a1687dd5679f6ab95403c43dff"
+    },
+    {
+      "condition": "adjusted_off",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-adjusted_off-seed3407-v1/best.pt",
+      "checkpoint_sha256": "d8d98556c7cad983a55cd931d58d29680d93f9fb692b5b158249ba7f1a6b21e3",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-adjusted_off-seed3407-val5000.json",
+      "legacy_report_sha256": "c64b87883b46817b489b619ed5b9fc7d0160a652e72d3cfda515eabfe1595921"
+    },
+    {
+      "condition": "adjusted_on",
+      "seed": 42,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-adjusted_on-seed42-v1/best.pt",
+      "checkpoint_sha256": "c193c120930e210956131d27ffb277d477576287976a8c5826c8fec7b7064f14",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-adjusted_on-seed42-val5000.json",
+      "legacy_report_sha256": "fd04b60a6a182f1344deb51059963f4dd28a6805249ee26b05022b9b00655980"
+    },
+    {
+      "condition": "adjusted_on",
+      "seed": 123,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-adjusted_on-seed123-v1/best.pt",
+      "checkpoint_sha256": "4e4bd0a6b44b8f02837255c259af9a7ded8b1812aed63fec7ef0d15f72b490f4",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-adjusted_on-seed123-val5000.json",
+      "legacy_report_sha256": "c5a90f6e8346a3a7ec8ef99debebbfe98e67a7a5102c74763adcf8bd5a3d05b2"
+    },
+    {
+      "condition": "adjusted_on",
+      "seed": 3407,
+      "checkpoint": "/workspace/workspace/semantic-graph-editing/runs/level1-clip-pair-kg-v1/clip-pair-kg-adjusted_on-seed3407-v1/best.pt",
+      "checkpoint_sha256": "f558ef8f8aee7f1890813ae3dfa949371f1caa9729b03739bf14596d0f03b7b6",
+      "legacy_report": "reports/level1/clip-pair-kg-v1-adjusted_on-seed3407-val5000.json",
+      "legacy_report_sha256": "5bef0234b9852cf9baabc33368cbbe5ac3c0f6d888be9268a67e95e7b53547e0"
+    }
+  ],
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "visual_cache_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+  "excluded_conditions": [],
+  "exclusion_reason": null
+}

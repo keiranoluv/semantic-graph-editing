@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "completed_at_utc": "2026-11-11T15:17:43.935717+00:00",
+  "new_no_graph_constraint_evaluations": 54,
+  "paired_existing_graph_constraint_evaluations": 54,
+  "unique_checkpoints": 54,
+  "images_per_evaluation": 5000,
+  "split": "val",
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "batch_size": 128,
+  "training_performed": false,
+  "checkpoint_reselection_performed": false,
+  "test_split_evaluated": false,
+  "excluded_relation_prior_runs": 6,
+  "evaluator_differential_check": "PASS: both modes, 100 synthetic + 16 real images",
+  "tests": {
+    "command": "myenv/bin/python -m pytest -q",
+    "passed": 224
+  },
+  "changed_python_files_lint_and_format": "PASS",
+  "all_three_matrix_resume_checks": "PASS",
+  "comparison_checks": [
+    "report_hashes",
+    "checkpoint_hashes",
+    "same_inputs_and_config",
+    "same_class_support",
+    "three_seed_means_and_sample_stds",
+    "current_ng_evaluator_hashes"
+  ],
+  "notebook_cpu_cases": [
+    "miss03",
+    "miss05"
+  ],
+  "human_review_status": "pending",
+  "teammate_machine_execution": "not_performed",
+  "evidence": [
+    {
+      "path": "reports/level1/reference-comparison/comparison.json",
+      "sha256": "d8270ee3d180d615b84510bdfebafaa615104bff44efb2e236409cb1b7fd7f0a"
+    },
+    {
+      "path": "reports/level1/reference-comparison/comparison.md",
+      "sha256": "b83e9a01aabcf3713add316995850f18ee659f898611efeb745a78e3abb2501c"
+    },
+    {
+      "path": "reports/level1/reference-comparison/demo-check.json",
+      "sha256": "e3ceb1b0e8e75a94e2bedb45a0b03836c26d889a7b9fb385fedcdaae39db68f1"
+    },
+    {
+      "path": "reports/level1/reference-ng-v1-differential-check.json",
+      "sha256": "c0ea2455285244e18f8442bd96438eea0b2add924f445acbb737c9f26d30ee44"
+    },
+    {
+      "path": "tools/compare_reference_protocols.py",
+      "sha256": "c0d3cbcf4bcd7c702094b118891c7ec5c44bbdf6b4ca8d202d9095e5d9cf2cdb"
+    }
+  ]
+}

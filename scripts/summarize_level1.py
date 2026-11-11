@@ -6,6 +6,8 @@ import math
 import statistics
 from pathlib import Path
 
+from src.evaluation.reference_predcls import NG_PROTOCOL
+
 METRICS = ("R@50", "R@100", "mR@50", "mR@100")
 
 
@@ -29,6 +31,7 @@ def summarize(paths, *, expected_seeds=(42, 123, 3407), allow_subset=False):
     if len(set(expected_seeds)) != len(expected_seeds) or len(expected_seeds) < 3:
         raise ValueError("Expected at least three distinct seeds")
     reference = reports[0]
+    metrics = tuple("ng-" + key for key in METRICS) if reference.get("protocol") == NG_PROTOCOL else METRICS
     keys = ("split", "protocol", "data_sha256", "images_evaluated", "split_images")
     if reference.get("split") != "val":
         raise ValueError("Only validation reports are summarized before final test release")
@@ -73,7 +76,7 @@ def summarize(paths, *, expected_seeds=(42, 123, 3407), allow_subset=False):
             raise ValueError("Checkpoint config seed differs from evaluation report")
         if config.get("val_limit") is not None and config["val_limit"] != report["images_evaluated"]:
             raise ValueError("Checkpoint selection and evaluation used different validation sizes")
-        if any(not isinstance(report.get(k), (int, float)) or not math.isfinite(report[k]) for k in METRICS):
+        if any(not isinstance(report.get(k), (int, float)) or not math.isfinite(report[k]) for k in metrics):
             raise ValueError("Missing or invalid metric")
         groups.setdefault(condition(report), []).append(report)
     output = []
@@ -96,7 +99,7 @@ def summarize(paths, *, expected_seeds=(42, 123, 3407), allow_subset=False):
                         "mean": statistics.mean(r[metric] for r in rows),
                         "sample_std": statistics.stdev(r[metric] for r in rows),
                     }
-                    for metric in METRICS
+                    for metric in metrics
                 },
                 "max_epochs_recorded": rows[0]["config"].get("max_epochs"),
             }

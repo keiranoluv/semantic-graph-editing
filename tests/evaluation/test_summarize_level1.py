@@ -130,3 +130,28 @@ def test_rejects_noncomparable_reports(tmp_path, change):
         rows[1]["config"]["seed"] = 42
     with pytest.raises(ValueError):
         call(tmp_path, rows)
+
+
+def test_cannot_mix_reference_and_legacy_metrics(tmp_path):
+    rows = reports()
+    from src.evaluation.reference_predcls import PROTOCOL
+
+    rows[1]["protocol"] = PROTOCOL
+    with pytest.raises(ValueError, match="protocol"):
+        call(tmp_path, rows)
+
+
+def test_no_constraint_summary_names_and_mixed_protocol_rejection(tmp_path):
+    from src.evaluation.reference_predcls import NG_PROTOCOL, PROTOCOL
+
+    rows = reports()
+    for row in rows:
+        row["protocol"] = NG_PROTOCOL
+        for key in ("R@50", "R@100", "mR@50", "mR@100"):
+            row["ng-" + key] = row.pop(key)
+    summary = call(tmp_path, rows)
+    assert summary["groups"][0]["metrics"]["ng-mR@50"]["mean"] == pytest.approx(0.2)
+    assert "mR@50" not in summary["groups"][0]["metrics"]
+    rows[1]["protocol"] = PROTOCOL
+    with pytest.raises(ValueError, match="protocol"):
+        call(tmp_path, rows)

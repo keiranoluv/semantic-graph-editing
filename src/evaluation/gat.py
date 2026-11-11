@@ -4,12 +4,13 @@ import torch
 import torch.nn.functional as F
 
 from src.datasets.batching import graph_batches
-from src.evaluation.scene_graph import evaluate_image, summarize_evaluation
+from src.evaluation.scene_graph import summarize_evaluation
+from src.evaluation.protocols import evaluate_graph_image
 from src.graph.gnn_batching import collate_gnn_graphs, forward_gat_batch
 
 
 @torch.inference_mode()
-def evaluate_gat_batch(model, graphs, device, compute_loss=False):
+def evaluate_gat_batch(model, graphs, device, compute_loss=False, *, protocol="legacy"):
     """Batched forward, independently rank predictions within each image."""
     if not graphs:
         return [], 0.0, 0
@@ -29,14 +30,7 @@ def evaluate_gat_batch(model, graphs, device, compute_loss=False):
     logits_cpu = logits.cpu()
     results = []
     for graph, (start, end) in zip(graphs, slices, strict=True):
-        results.append(
-            evaluate_image(
-                logits=logits_cpu[start:end],
-                candidate_pairs=graph.edge_label_index,
-                gt_pairs=graph.gt_relation_index,
-                gt_predicates=graph.gt_predicate,
-            )
-        )
+        results.append(evaluate_graph_image(logits_cpu[start:end], graph, protocol))
     return results, loss_sum, total_pairs
 
 
