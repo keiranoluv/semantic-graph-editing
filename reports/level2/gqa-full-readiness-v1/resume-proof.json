@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "scope": "smoke, not main experiment",
+  "interrupted_after_batches": 1,
+  "exact_history_metrics_and_final_parameters": true,
+  "experiment_sha256": "fde9772161865e1dd1f136894c91dcedc884d1032c791e9346f71297a96a7cf3"
+}

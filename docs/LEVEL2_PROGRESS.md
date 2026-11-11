@@ -12,6 +12,8 @@ Benchmark tiếp theo: MLP/GAT đã chạy qua batch 64 graph lớn nhất; GAT 
 
 Cập nhật triển khai: PE-PL / PE-PLPR có GC mR@50 **0,479% / 0,441%**, đổi lại R@50 thấp hơn PE-CE; chưa đủ kết luận từ một seed. PE-PLPR qua batch 64 graph lớn nhất, peak allocated **8,97 GiB**. **296 tests PASS**; có CLI demo checkpoint thật. [Báo cáo PE-Net pilot, ablation và benchmark](../reports/level2/PENET_PILOT.md).
 
+Đã chuẩn bị **bộ chạy full GQA 15 lượt** (MLP/GAT/PE-CE/PE-PL/PE-PLPR × 42/123/3407), cache chia shard và resume giữa epoch. Mặc định 20 epoch, batch 64/32; smoke thật và 310 tests pass. **Chưa chạy full cache/train.** [Lệnh chạy và hướng dẫn resume](LEVEL2_GQA_FULL_RUN.md). GAT+KG/VG150 mới để đợt sau theo phạm vi đã chốt.
+
 ## 1. Đề yêu cầu gì?
 
 Đối chiếu [PDF](../Project01_Graph_Editing.pdf), trang 3–5:

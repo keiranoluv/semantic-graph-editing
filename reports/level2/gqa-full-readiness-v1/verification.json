@@ -1,0 +1,62 @@
+{
+  "status": "READY_NOT_FULL_TRAINED",
+  "checked_at": "2026-11-11T18:04:29.515829+00:00",
+  "implementation_commit": "fff1cb4",
+  "authorized_scope": "GQA MLP/GAT/PE-CE/PE-PL/PE-PLPR x seeds 42/123/3407; 15 runs",
+  "config_sha256": "4caec55118150df3690a4182bf23593657f18e2bd9bf994511d1367db276f2cf",
+  "tests": {
+    "command": "myenv/bin/python -m pytest -q",
+    "passed": 310,
+    "new_cases": 14,
+    "log_sha256": "3f99664a28eaadfa0b27492d529f3afb98cdb28bfedbd6d7a920944c19406aa9"
+  },
+  "pre_commit": "PASS all applicable hooks",
+  "checks": {
+    "full_preflight": "PASS 69942/5000, 311 outputs, RTX5090, required assets verified",
+    "real_smoke_runs_completed": 15,
+    "smoke_train_val_images": [
+      32,
+      16
+    ],
+    "smoke_epochs_each": 2,
+    "real_smoke_cache_vectors": 845,
+    "feature_max_absolute_difference_vs_frozen_pilot": 0.0,
+    "record_and_JPEG_hash_parity": "PASS all 48 images",
+    "real_interrupted_resumed_PE_PLPR": "PASS exact parameters/history/GC/NG metrics",
+    "real_SIGTERM_launcher": "PASS SIGTERM after checkpoint; exit 130; rerun completed all 15 smoke runs",
+    "SIGTERM_resumed_matrix_vs_uninterrupted": "PASS all 15 histories and metrics identical",
+    "synthetic_cache_interruption_corruption_and_marker_recovery": "PASS",
+    "synthetic_resume_model_optimizer_rng_exact": "PASS all five models on CPU and CUDA",
+    "old_GQA_PE_reports_sources_checkpoints_preserved": true,
+    "frozen_Level1_evaluator_and_reports_preserved": true,
+    "personal_notebook_sha256": "786c3eff8b7d4abd93c1546dba3b9d9d4ff635fc160fa80a59c0eefdd8952c19",
+    "completed_smoke_idempotent_rerun": "PASS cache verified; all 15 runs and resume proof skipped/revalidated"
+  },
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.7.0+cu128",
+    "torchvision": "0.22.0",
+    "numpy": "2.2.6",
+    "h5py": "3.13.0",
+    "Pillow": "11.2.1",
+    "torch-geometric": "2.6.1",
+    "clip": "1.0"
+  },
+  "full_cache_created": false,
+  "full_training_started": false,
+  "test_used": false,
+  "remote_push_performed": false,
+  "artifact_sha256": {
+    "reports/level2/gqa-full-readiness-v1/preflight.json": "557047c62fbaa31b9a7315fa31b087d19791efb98136e0ffde3efbb9ae1c3df1",
+    "reports/level2/gqa-full-readiness-v1/resume-proof.json": "e3d86f539e7b6038afea13b91b00c198c5f546264d81838fc554fe2a17b991d9",
+    "reports/level2/gqa-full-readiness-v1/smoke-experiment.json": "50b9a4672ccbada1f8f624dbee80a544f7ebc2c699435092a27b122816ca881d",
+    "reports/level2/gqa-full-readiness-v1/smoke-runs.json": "3c19ddc68847b60d003610ae045bf3616e43698df8eeee35c72bfb696da5bbdd",
+    "reports/level2/gqa-full-readiness-v1/smoke-summary.json": "22c50e236098fbd895391a779ef1b4921ca4700e09e61691e869e9ba3d39ae6e",
+    "docs/LEVEL2_GQA_FULL_RUN.md": "1af74f32967d68cf43895127a3579dc345866bc71bc2f98d10740a7abc2b46b7"
+  },
+  "additional_source_sha256": {
+    "scripts/run_gqa_full.sh": "1e833c1d37d38c30dc8ac9c1b12f2470924b1c34292957d0f6239c366f7f1224",
+    "tests/training/test_gqa_full.py": "303c276732850a377753aee61fbc7ffde7c47743e0fce39c6b17b4112bc31ffe",
+    "configs/level2/gqa-full-v1.json": "4caec55118150df3690a4182bf23593657f18e2bd9bf994511d1367db276f2cf"
+  }
+}
