@@ -1,0 +1,64 @@
+{
+  "status": "RUNNING",
+  "pid": 212047,
+  "tmux": "0:gqa-ram",
+  "implementation_commit": "f5ca902",
+  "resume": {
+    "epoch": 27,
+    "next_index": 69120,
+    "frozen_source_hashes_unchanged": true
+  },
+  "completed_epochs_at_verification": 30,
+  "wandb_run_id": "9891472bf7dd689242464bc0",
+  "runtime": {
+    "scope": "performance-only prepared supervision; exact sampling/targets; frozen training recipe unchanged",
+    "pid": 212047,
+    "workers": 8,
+    "source_sha256": {
+      "tools/run_gqa_full_prepared.py": "e575ea139e3760f16e2e11913c5b7e66525765efcab192299d4660db0787f097",
+      "tools/run_gqa_full_ram.py": "8752a4be0bf041b721e1dddcc23d9c9c4221e779ef6cf520596ed840df6e852c"
+    },
+    "supervision": "original soft_targets float32 positive rows and candidate index lists; backgrounds implicit",
+    "datasets": {
+      "train": {
+        "split": "train",
+        "images": 69942,
+        "workers": 8,
+        "serialized_shard_bytes": 8108755638,
+        "tensor_bytes": 7903105868,
+        "load_seconds": 39.2434335850121,
+        "all_worker_parent_tensor_digests_equal": true
+      },
+      "val": {
+        "split": "val",
+        "images": 5000,
+        "workers": 8,
+        "serialized_shard_bytes": 576865388,
+        "tensor_bytes": 562182372,
+        "load_seconds": 4.779861688002711,
+        "all_worker_parent_tensor_digests_equal": true
+      }
+    }
+  },
+  "timing": {
+    "model": "mlp",
+    "seed": 42,
+    "complete_epoch_intervals_seconds": [
+      23.013183016999392,
+      23.423251346015604
+    ],
+    "mean_seconds": 23.218217181507498,
+    "previous_ram_only_mean_seconds": 35.937190924494644,
+    "speedup_over_ram_only": 1.547801480344381,
+    "speedup_over_original_loader": 4.45814444638835,
+    "measurement": "successive EPOCH log lines polled at 0.2s; complete epochs 28 and 29; excludes partial resumed epoch 27",
+    "limitation": "two MLP epochs only; other models not measured"
+  },
+  "validation": {
+    "pytest_passed": 332,
+    "real_data_graphs": 4096,
+    "all_batch_tensors_slices_and_sampler_states_equal": true,
+    "exact_resume_all_five_models_cpu_cuda": true,
+    "test_split_used": false
+  }
+}
