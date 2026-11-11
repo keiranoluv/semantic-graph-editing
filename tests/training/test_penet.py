@@ -12,6 +12,13 @@ from src.models.penet import PENetPredicateClassifier
 from src.training.penet import prototype_losses
 
 
+@pytest.fixture(autouse=True)
+def deterministic_cuda_workspace(monkeypatch):
+    # Other training tests enable global deterministic algorithms. Match the
+    # pilot launcher so CUDA matmul also works when this module runs last.
+    monkeypatch.setenv("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+
+
 def upstream_reference(logits, relation, proto, labels):
     # Literal broadcast/sort loss behavior of the pinned 51-class implementation.
     unit = proto / proto.norm(dim=1, keepdim=True)
