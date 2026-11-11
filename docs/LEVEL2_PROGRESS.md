@@ -16,6 +16,8 @@ Cập nhật triển khai: PE-PL / PE-PLPR có GC mR@50 **0,479% / 0,441%**, đ�
 
 Cập nhật **full GQA v2** theo yêu cầu: trần **200 epoch**, early stopping **patience 15 / min_delta 0**, best theo validation GC mR@50 và xuất `best.pt` ngay khi cải thiện; `last.pt` giữ đủ trạng thái resume. Đã tích hợp W&B online vào `keiranoluv-hcmus/semantic-graph-editing`, kiểm online resume và 318 tests pass. **V2 là mặc định mới; chưa chạy full.** [Hướng dẫn v2](LEVEL2_GQA_FULL_V2_RUN.md).
 
+Theo yêu cầu tiếp theo, v2 được dừng an toàn và chuyển sang **v3 batch train/validation 512/512**, train lại từ đầu, dùng cache full đã hoàn tất. Đã benchmark cả 5 model trên batch 512 nặng của epoch đầu/validation: 15 case pass, peak train cao nhất 7,79 GiB. [Config, kiểm bộ nhớ và cửa sổ tmux mới](LEVEL2_GQA_BATCH512.md). Các trạng thái “chưa chạy full” ở mốc trước là lịch sử.
+
 ## 1. Đề yêu cầu gì?
 
 Đối chiếu [PDF](../Project01_Graph_Editing.pdf), trang 3–5:

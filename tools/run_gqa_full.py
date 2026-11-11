@@ -257,7 +257,7 @@ def run_matrix(config, manifest, args, stopped):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", type=Path, default=Path("configs/level2/gqa-full-v2.json"))
+    parser.add_argument("--config", type=Path, default=Path("configs/level2/gqa-full-v3-bs512.json"))
     parser.add_argument(
         "--stage", choices=("preflight", "cache", "train", "summary", "all", "smoke"), default="preflight"
     )
