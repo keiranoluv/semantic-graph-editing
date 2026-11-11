@@ -14,6 +14,8 @@ Cập nhật triển khai: PE-PL / PE-PLPR có GC mR@50 **0,479% / 0,441%**, đ�
 
 Đã chuẩn bị **bộ chạy full GQA 15 lượt** (MLP/GAT/PE-CE/PE-PL/PE-PLPR × 42/123/3407), cache chia shard và resume giữa epoch. Mặc định 20 epoch, batch 64/32; smoke thật và 310 tests pass. **Chưa chạy full cache/train.** [Lệnh chạy và hướng dẫn resume](LEVEL2_GQA_FULL_RUN.md). GAT+KG/VG150 mới để đợt sau theo phạm vi đã chốt.
 
+Cập nhật **full GQA v2** theo yêu cầu: trần **200 epoch**, early stopping **patience 15 / min_delta 0**, best theo validation GC mR@50 và xuất `best.pt` ngay khi cải thiện; `last.pt` giữ đủ trạng thái resume. Đã tích hợp W&B online vào `keiranoluv-hcmus/semantic-graph-editing`, kiểm online resume và 318 tests pass. **V2 là mặc định mới; chưa chạy full.** [Hướng dẫn v2](LEVEL2_GQA_FULL_V2_RUN.md).
+
 ## 1. Đề yêu cầu gì?
 
 Đối chiếu [PDF](../Project01_Graph_Editing.pdf), trang 3–5:

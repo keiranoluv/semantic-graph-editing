@@ -1,0 +1,62 @@
+{
+  "status": "READY_V2_NOT_FULL_TRAINED",
+  "checked_at": "2026-11-11T18:17:46.912558+00:00",
+  "base_commit_before_integration": "0c1cf20",
+  "implementation_commit": "81ce621",
+  "request": {
+    "max_epochs": 200,
+    "early_stopping_patience": 15,
+    "min_delta": 0.0,
+    "wandb_entity": "keiranoluv-hcmus",
+    "wandb_project": "semantic-graph-editing"
+  },
+  "selection_metric": "maximum validation GC mR@50 over all 310 predicates; earliest epoch on ties",
+  "checkpoints": "last.pt model/optimizer/RNG/order/history/patience; best.pt exported after each best validation; rebuilt from last on resume",
+  "tests": {
+    "command": "myenv/bin/python -m pytest -q",
+    "passed": 318,
+    "new_cases": 8,
+    "log_sha256": "b3c71bf21c9e665c71915ff04f9b3664a5def064642a98bbaf4ea61bb6d410ce"
+  },
+  "pre_commit": "PASS all applicable hooks",
+  "checks": {
+    "early_stopping_patience_ties_reset_min_delta": "PASS",
+    "stopping_state_resumed_without_reset": "PASS",
+    "best_exists_before_training_finishes_and_recovers_from_last": "PASS",
+    "best_absolute_max_preserved_independently_of_min_delta": "PASS",
+    "logging_failure_after_epoch_keeps_durable_checkpoint": "PASS",
+    "common_sampling_prefix_allows_different_lengths_rejects_drift": "PASS",
+    "offline_real_smoke_runs": 15,
+    "smoke_train_val": [
+      32,
+      16
+    ],
+    "smoke_epochs": 2,
+    "all_15_offline_runs_equal_pre_integration_weights_and_original_history": "PASS exact",
+    "online_resume_same_id_exactly_one_row_per_epoch": "PASS epochs [1,2]",
+    "online_final_metrics": "PASS all eight GC/NG metrics and checkpoint hash match server",
+    "online_run_url": "https://wandb.ai/keiranoluv-hcmus/semantic-graph-editing/runs/2c9d570f4e33d570688b6586",
+    "frozen_model_evaluator_pilot_reports_and_v1_readiness_artifacts_unchanged": true,
+    "personal_notebook_sha256": "786c3eff8b7d4abd93c1546dba3b9d9d4ff635fc160fa80a59c0eefdd8952c19"
+  },
+  "wandb_sdk_version": "0.18.7",
+  "offline_strategy": "new physical snapshot ID per invocation; replay full durable history; sync latest only",
+  "online_strategy": "stable ID, resume allow, explicit epoch step with commit True, replay only missing durable history",
+  "full_cache_created": false,
+  "full_training_started": false,
+  "test_used": false,
+  "remote_push_performed": false,
+  "artifact_sha256": {
+    "reports/level2/gqa-full-readiness-v2/online-experiment.json": "3cf459533eb4a9e511a310746b57d214d2d56c884fb271395f578cf2f9bd5151",
+    "reports/level2/gqa-full-readiness-v2/online-resume-proof.json": "f11356ac64e04a53e80f6d5c3ea3e979b97188a9db776189e17e3f222893df08",
+    "reports/level2/gqa-full-readiness-v2/preflight.json": "7d50d98a2df423b27bd87f5ea52dcf60704ab7ef4d6b59604e08556095603672",
+    "reports/level2/gqa-full-readiness-v2/smoke-experiment.json": "4c92fecd1b16e8214b45bb3adc1d8a6d53952eb629306007e45204908bdc7131",
+    "reports/level2/gqa-full-readiness-v2/smoke-resume-proof.json": "9f1c0ae41edbe02ca071d78dad34e19cc35a0bd8d6222d498dc0a12828e024d9",
+    "reports/level2/gqa-full-readiness-v2/smoke-summary.json": "9e99b3e35fc99b28a9581ae2d16374f9e08874b068d0a9fd88733e90c75789a1"
+  },
+  "additional_source_sha256": {
+    "configs/level2/gqa-full-v2.json": "144dd93718cdabdc7c76039b157ccc631fa60fd8fca6edc59bacb1920faecce5",
+    "tests/training/test_gqa_tracking.py": "ff54b781df4436df98d4110b428a34d119cddf52e14291a330ab0ae0e23fa592",
+    "docs/LEVEL2_GQA_FULL_V2_RUN.md": "1168696bda54ac732339b03d0c431f4a1f41aaf769b1a9efa5c02b1ae870334c"
+  }
+}

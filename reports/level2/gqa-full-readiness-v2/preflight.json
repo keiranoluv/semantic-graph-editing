@@ -1,0 +1,25 @@
+{
+  "status": "READY",
+  "scope": "full",
+  "train_images": 69942,
+  "val_images": 5000,
+  "runs": 15,
+  "epochs_each": 200,
+  "early_stopping": {
+    "enabled": true,
+    "patience": 15,
+    "min_delta": 0.0
+  },
+  "wandb": {
+    "mode": "online",
+    "entity": "keiranoluv-hcmus",
+    "project": "semantic-graph-editing"
+  },
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "free_disk_bytes_workspace": 651915300864,
+  "cache_complete": false,
+  "manifest_sha256": "c953dc40d4b0a880ccd142f36670388ebffb7d7e2bb341d661b8b45781046c2a",
+  "test_annotation_opened": false,
+  "note": "Fixed shared starting recipe, not a convergence guarantee. No full training is started by preflight."
+}

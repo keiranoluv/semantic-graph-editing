@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "scope": "real-data integration smoke, not full experiment",
+  "online_run_path": "keiranoluv-hcmus/semantic-graph-editing/2c9d570f4e33d570688b6586",
+  "url": "https://wandb.ai/keiranoluv-hcmus/semantic-graph-editing/runs/2c9d570f4e33d570688b6586",
+  "same_run_id_after_resume": true,
+  "logged_epochs_exactly_once": [
+    1,
+    2
+  ],
+  "metrics_match_local_checkpoint_history": true,
+  "summary_completed": true,
+  "interrupted_after_batches": 5,
+  "test_used": false
+}
