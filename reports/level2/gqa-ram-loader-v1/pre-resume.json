@@ -1,0 +1,9 @@
+{
+  "epoch": 11,
+  "next_index": 25600,
+  "completed_epochs": 10,
+  "steps": 50,
+  "checkpoint_sha256": "37a80c225de744c4eab86bd43b0b3a7646ee5799b67f16bc612cc5dd1221f7c8",
+  "frozen_source_hashes_unchanged": true,
+  "old_pid": 176217
+}

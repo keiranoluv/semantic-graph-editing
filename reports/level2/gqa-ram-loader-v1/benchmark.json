@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "scope": "CPU loader+collate only; not end-to-end training speedup",
+  "images": 4096,
+  "workers": 8,
+  "batch_size": 512,
+  "selection": "first images of seed42 first-epoch shuffle, no label/metric filtering",
+  "all_graph_tensors_equal": true,
+  "all_sampled_batch_tensors_equal": true,
+  "ram_preload": {
+    "split": "train",
+    "images": 4096,
+    "workers": 8,
+    "serialized_shard_bytes": 208118838,
+    "tensor_bytes": 198932492,
+    "load_seconds": 3.5959344069997314,
+    "all_worker_parent_tensor_digests_equal": true
+  },
+  "measurements": {
+    "lazy": [
+      {
+        "loader_and_collate_seconds": 4.718798337999033,
+        "sampled_pairs": 799866,
+        "batch_tensor_sha256": "ff53470a0628debf8e07e1a5b30a998c6866c32efd8da071ec9fb5102c8d97c4"
+      },
+      {
+        "loader_and_collate_seconds": 4.687723722017836,
+        "sampled_pairs": 799866,
+        "batch_tensor_sha256": "ff53470a0628debf8e07e1a5b30a998c6866c32efd8da071ec9fb5102c8d97c4"
+      },
+      {
+        "loader_and_collate_seconds": 4.70185760903405,
+        "sampled_pairs": 799866,
+        "batch_tensor_sha256": "ff53470a0628debf8e07e1a5b30a998c6866c32efd8da071ec9fb5102c8d97c4"
+      }
+    ],
+    "ram": [
+      {
+        "loader_and_collate_seconds": 1.1340818379831035,
+        "sampled_pairs": 799866,
+        "batch_tensor_sha256": "ff53470a0628debf8e07e1a5b30a998c6866c32efd8da071ec9fb5102c8d97c4"
+      },
+      {
+        "loader_and_collate_seconds": 1.0142678990087006,
+        "sampled_pairs": 799866,
+        "batch_tensor_sha256": "ff53470a0628debf8e07e1a5b30a998c6866c32efd8da071ec9fb5102c8d97c4"
+      },
+      {
+        "loader_and_collate_seconds": 1.1398704609600827,
+        "sampled_pairs": 799866,
+        "batch_tensor_sha256": "ff53470a0628debf8e07e1a5b30a998c6866c32efd8da071ec9fb5102c8d97c4"
+      }
+    ]
+  },
+  "mean_seconds": {
+    "lazy": 4.702793223016973,
+    "ram": 1.0960733993172955
+  },
+  "loader_collate_speedup": 4.290582387955197,
+  "cache_manifest_sha256": "e337266e93fc36822ad13d0023f5cdddf9a80b9a9f32818343298710b3fc6407",
+  "source_sha256": {
+    "tools/benchmark_gqa_ram_loader.py": "c43aa0af4df87f62a5b41583868ff0dae880f8a1c41825cdf8d79fdb45e30680",
+    "tools/run_gqa_full_ram.py": "8752a4be0bf041b721e1dddcc23d9c9c4221e779ef6cf520596ed840df6e852c"
+  },
+  "gpu_used": false,
+  "test_used": false
+}
