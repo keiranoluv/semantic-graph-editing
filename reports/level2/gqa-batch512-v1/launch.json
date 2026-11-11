@@ -1,0 +1,37 @@
+{
+  "status": "RUNNING",
+  "checked_at": "2026-11-12T01:57:10.178130+07:00",
+  "implementation_commit": "97adf15",
+  "old_run": {
+    "output": "runs/level2/gqa-full-v2",
+    "signal": "SIGTERM",
+    "status": "interrupted_checkpoint_saved",
+    "epoch": 5,
+    "next_index": 17024,
+    "completed_epochs": 4
+  },
+  "new_run": {
+    "output": "runs/level2/gqa-full-v3-bs512",
+    "fresh_training": true,
+    "train_batch_size": 512,
+    "val_batch_size": 512,
+    "clip_batch_size": 64,
+    "cache_reused": true,
+    "pid": 176217,
+    "tmux_window": "0:gqa-bs512",
+    "log": "logs/gqa-full-20261111T185551Z-176217.log",
+    "observed_epoch": 1,
+    "observed_total_batches": 90,
+    "wandb_url": "https://wandb.ai/keiranoluv-hcmus/semantic-graph-editing/runs/9891472bf7dd689242464bc0"
+  },
+  "checks": {
+    "gpu_benchmark_cases_passed": 15,
+    "tests_passed": 318,
+    "pre_commit": "PASS",
+    "source_hashes": "PASS",
+    "personal_notebook_sha256": "786c3eff8b7d4abd93c1546dba3b9d9d4ff635fc160fa80a59c0eefdd8952c19"
+  },
+  "benchmark_sha256": "eee29be42932da9774e4c0af93c931ad423cbc826a4319326acf4e93e4055fc7",
+  "config_sha256": "7a1e9b3d768df9dcf8abc72028431da6305e8ac088e6bbdb6426acf0a200fe22",
+  "test_used": false
+}
