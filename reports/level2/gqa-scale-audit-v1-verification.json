@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-11-12T00:10:48.274099+07:00",
+  "pilot_commit": "f36ff65f0f111eac84995ae4a7651bf7edd017f1",
+  "scope": "Commit pilot and audit scale; no new training or final experiment manifest",
+  "tests": {
+    "passed": 276,
+    "added_for_audit": 3,
+    "command": "myenv/bin/python -m pytest -q"
+  },
+  "pre_commit": "PASS all applicable hooks on pilot and audit files",
+  "checks": {
+    "normalized_graphs": 74942,
+    "normalized_train_val_counts_match_preparation_report": true,
+    "per_predicate_row_totals_match_gt": true,
+    "pilot_512_128_statistics_unchanged": true,
+    "audit_source_hashes_match": true,
+    "immutable_rerun": "PASS identical JSON",
+    "test_annotation_opened": false,
+    "new_model_training": false,
+    "personal_notebook_preserved": true,
+    "personal_notebook_sha256": "786c3eff8b7d4abd93c1546dba3b9d9d4ff635fc160fa80a59c0eefdd8952c19",
+    "pilot_commit_excludes_personal_notebook": true
+  },
+  "artifact_sha256": {
+    "reports/level2/gqa-scale-audit-v1.json": "226a6209f120d2d66c945fcee616d06236d9281b1b30ed1531fdb660abe25b92",
+    "reports/level2/GQA_SCALE_AUDIT.md": "a2d58717e24c6dccc86b8063b280f3f7302e991c087e51aa8c20c8784e6bd3ba"
+  },
+  "additional_source_sha256": {
+    "tests/datasets/test_gqa_scale_audit.py": "29e9ce38bca18805fd8f27281aa4d0a714d4872994b9d75e7a600febd8ea4eaa",
+    "src/datasets/vg150.py": "48365e5bed0b9da7663ad8b489a5a811a6362263d402462199dd1be75c863776",
+    "src/datasets/schemas.py": "d01126cdb95da4b555e82d011685ee792bf8ebee6facd566593e3cd0e1a20dad",
+    "tools/prepare_level2_gqa.py": "fbf75b933ef2eddc9022370cb16a684f006283f7e82c37ce56cf53c1b10bbfa7"
+  },
+  "recommendation": {
+    "train_images": 69942,
+    "validation_images": 5000,
+    "requires_large_graph_memory_measurement_before_main_runs": true,
+    "main_cohort_frozen": false
+  },
+  "remote_push_performed": false
+}

@@ -4,6 +4,8 @@ Mốc 2026-11-11, sau sáu commit bàn giao Level 1 (HEAD `4d34d37`). **Mốc kh
 
 Cập nhật GQA pilot: **512 train / 128 validation, seed 42, 5 epoch**, CLIP đóng băng; GC R@50 MLP **30,99%**, GAT **29,87%**. Đây là kiểm pipeline một seed, chưa phải thực nghiệm chính. [Báo cáo, protocol và lệnh demo](../reports/level2/GQA_PILOT.md).
 
+Mốc pilot đã commit tại **`f36ff65`**. Audit tiếp theo đã đọc đủ **69.942 train / 5.000 validation**, không mở annotation test: full train phủ 310 predicate, validation phủ 267; trái/phải vẫn chiếm khoảng 89%. Đề xuất ưu tiên full train sau khi đo batch graph lớn. [Báo cáo audit quy mô](../reports/level2/GQA_SCALE_AUDIT.md). Chưa khóa/chạy thực nghiệm chính.
+
 ## 1. Đề yêu cầu gì?
 
 Đối chiếu [PDF](../Project01_Graph_Editing.pdf), trang 3–5:
