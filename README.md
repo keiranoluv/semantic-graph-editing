@@ -13,6 +13,7 @@ VG150 scene graph learning, external knowledge exploration and planned controlla
 - [Frozen CLIP region features and matched Level 1 GPU matrix](docs/experiments/level1_clip_regions.md)
 - [WordNet mapping review and representative-sense notes](docs/knowledge/LEVEL1_MAPPING_REVIEW.md)
 - [Level 1 handoff: Markdown report and demo](docs/LEVEL1_SUBMISSION.md)
+- [Level 2 startup: GQA adapter, graph-edit operations, scoring and remaining requirements](docs/LEVEL2_PROGRESS.md)
 
 - [Team reproducibility guide and offline/online + two evaluation modes](docs/TEAM_REPRODUCIBILITY_AND_PROTOCOLS.md)
 - [Step 6 repository audit and known issues](docs/STEP6_REPOSITORY_AUDIT.md)

@@ -1,5 +1,11 @@
 # Dữ liệu thứ hai cho cấp độ 2: GQA và PSG
 
+Cập nhật 2026-11-11: **GQA đã có adapter, split/vocabulary train-only và audit
+toàn bộ graph**; xem [tiến độ Level 2](../LEVEL2_PROGRESS.md) và
+[report](../../reports/level2/gqa-preparation-v1.json). Chưa có CLIP cache mới,
+run train hoặc kết quả model trên GQA. Các mục dưới giữ ghi chép khảo sát/tải
+dữ liệu ngày 2026-10-25; trạng thái “chưa có adapter” bên dưới là tại mốc đó.
+
 Ghi nhận ngày 2026-10-25. Đây là bước khảo sát và tải trước dữ liệu, chưa có
 adapter, cache CLIP, run huấn luyện hay kết quả đánh giá trên GQA/PSG. Đề bài
 `Project01_Graph_Editing.pdf` (trang 3–5) yêu cầu cấp độ 2 thực nghiệm trên ít
