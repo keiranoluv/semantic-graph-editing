@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "completed_at_utc": "2026-11-11T15:55:15.035982+00:00",
+  "scope": "54_existing_checkpoints_108_reference_reports_full_validation_5000_images",
+  "group_sizes": {
+    "head": 10,
+    "body": 20,
+    "tail": 20
+  },
+  "frequency_source": "raw_train_annotations_only_including_duplicates_and_multi_predicate_pairs",
+  "fresh_train_counts_match_prior_statistics_for_all_50_predicates": true,
+  "group_definition_frozen_before_metric_aggregation": true,
+  "overall_mr_reconstruction_checks": 216,
+  "source_report_checkpoint_hashes_and_support": "PASS",
+  "independent_numpy_recomputation": {
+    "conditions": 18,
+    "per_predicate_csv_rows": 900,
+    "paired_comparisons": 15,
+    "absolute_tolerance": 1e-12,
+    "status": "PASS"
+  },
+  "repeat_execution_unchanged_outputs": "PASS",
+  "tests": {
+    "command": "myenv/bin/python -m pytest -q",
+    "passed": 233,
+    "new_long_tail_tests": 9
+  },
+  "lint_format_and_diff_checks": "PASS",
+  "training_performed": false,
+  "inference_performed": false,
+  "checkpoint_reselection_performed": false,
+  "test_split_metrics_computed": false,
+  "zero_shot_implemented": false,
+  "excluded_relation_prior_checkpoints": 6,
+  "evidence": [
+    {
+      "path": "reports/level1/long-tail-reference-v1/predicate-groups.json",
+      "sha256": "d2a71fea26b0474f3003c4b41ec6f9dbad42371bd8bc5526089081663ebe26f5"
+    },
+    {
+      "path": "reports/level1/long-tail-reference-v1/analysis.json",
+      "sha256": "2a92cf30c8c0a76cd8929d4edfec88b4ade6d0809aa8e3cd5407dec7e2fc3581"
+    },
+    {
+      "path": "reports/level1/long-tail-reference-v1/analysis.md",
+      "sha256": "0dfdc6a930ba9cf037344027fe26b73c2aad5028dd3b8d8d236e5ca7eb1830e0"
+    },
+    {
+      "path": "reports/level1/long-tail-reference-v1/per-predicate.csv",
+      "sha256": "bce1544476e9f48cb5a586fd59f0e34917a6b570af64b42719487c35c5c6aa97"
+    }
+  ]
+}

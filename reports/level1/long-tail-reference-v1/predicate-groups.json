@@ -1,0 +1,442 @@
+{
+  "schema_version": 1,
+  "frequency_source": "all_raw_train_annotation_rows_including_duplicates_and_multilabel_pairs",
+  "sort_rule": "descending_train_count_then_ascending_predicate_id",
+  "group_rule": "head_ranks_1_to_10_body_11_to_30_tail_31_to_50",
+  "selection_note": "project_analysis_convention_fixed_before_group_metric_aggregation_not_a_universal_benchmark_partition",
+  "total_train_annotations": 405860,
+  "groups": {
+    "head": [
+      31,
+      20,
+      48,
+      30,
+      22,
+      29,
+      8,
+      50,
+      21,
+      1
+    ],
+    "body": [
+      40,
+      49,
+      43,
+      38,
+      23,
+      41,
+      6,
+      11,
+      7,
+      46,
+      33,
+      16,
+      25,
+      47,
+      19,
+      24,
+      14,
+      5,
+      9,
+      35
+    ],
+    "tail": [
+      44,
+      13,
+      10,
+      4,
+      12,
+      36,
+      26,
+      32,
+      42,
+      45,
+      28,
+      2,
+      3,
+      17,
+      18,
+      34,
+      37,
+      27,
+      39,
+      15
+    ]
+  },
+  "group_train_support": {
+    "head": {
+      "classes": 10,
+      "annotations": 358780,
+      "annotation_share": 0.8839994086630858
+    },
+    "body": {
+      "classes": 20,
+      "annotations": 41145,
+      "annotation_share": 0.10137732222934016
+    },
+    "tail": {
+      "classes": 20,
+      "annotations": 5935,
+      "annotation_share": 0.01462326910757404
+    }
+  },
+  "predicates": [
+    {
+      "id": 31,
+      "name": "on",
+      "train_rank": 1,
+      "train_annotations": 118037,
+      "group": "head"
+    },
+    {
+      "id": 20,
+      "name": "has",
+      "train_rank": 2,
+      "train_annotations": 69007,
+      "group": "head"
+    },
+    {
+      "id": 48,
+      "name": "wearing",
+      "train_rank": 3,
+      "train_annotations": 48582,
+      "group": "head"
+    },
+    {
+      "id": 30,
+      "name": "of",
+      "train_rank": 4,
+      "train_annotations": 32770,
+      "group": "head"
+    },
+    {
+      "id": 22,
+      "name": "in",
+      "train_rank": 5,
+      "train_annotations": 24470,
+      "group": "head"
+    },
+    {
+      "id": 29,
+      "name": "near",
+      "train_rank": 6,
+      "train_annotations": 20759,
+      "group": "head"
+    },
+    {
+      "id": 8,
+      "name": "behind",
+      "train_rank": 7,
+      "train_annotations": 13047,
+      "group": "head"
+    },
+    {
+      "id": 50,
+      "name": "with",
+      "train_rank": 8,
+      "train_annotations": 12215,
+      "group": "head"
+    },
+    {
+      "id": 21,
+      "name": "holding",
+      "train_rank": 9,
+      "train_annotations": 11482,
+      "group": "head"
+    },
+    {
+      "id": 1,
+      "name": "above",
+      "train_rank": 10,
+      "train_annotations": 8411,
+      "group": "head"
+    },
+    {
+      "id": 40,
+      "name": "sitting on",
+      "train_rank": 11,
+      "train_annotations": 5355,
+      "group": "body"
+    },
+    {
+      "id": 49,
+      "name": "wears",
+      "train_rank": 12,
+      "train_annotations": 4939,
+      "group": "body"
+    },
+    {
+      "id": 43,
+      "name": "under",
+      "train_rank": 13,
+      "train_annotations": 4732,
+      "group": "body"
+    },
+    {
+      "id": 38,
+      "name": "riding",
+      "train_rank": 14,
+      "train_annotations": 4507,
+      "group": "body"
+    },
+    {
+      "id": 23,
+      "name": "in front of",
+      "train_rank": 15,
+      "train_annotations": 3808,
+      "group": "body"
+    },
+    {
+      "id": 41,
+      "name": "standing on",
+      "train_rank": 16,
+      "train_annotations": 2496,
+      "group": "body"
+    },
+    {
+      "id": 6,
+      "name": "at",
+      "train_rank": 17,
+      "train_annotations": 2109,
+      "group": "body"
+    },
+    {
+      "id": 11,
+      "name": "carrying",
+      "train_rank": 18,
+      "train_annotations": 1705,
+      "group": "body"
+    },
+    {
+      "id": 7,
+      "name": "attached to",
+      "train_rank": 19,
+      "train_annotations": 1586,
+      "group": "body"
+    },
+    {
+      "id": 46,
+      "name": "walking on",
+      "train_rank": 20,
+      "train_annotations": 1322,
+      "group": "body"
+    },
+    {
+      "id": 33,
+      "name": "over",
+      "train_rank": 21,
+      "train_annotations": 1277,
+      "group": "body"
+    },
+    {
+      "id": 16,
+      "name": "for",
+      "train_rank": 22,
+      "train_annotations": 1116,
+      "group": "body"
+    },
+    {
+      "id": 25,
+      "name": "looking at",
+      "train_rank": 23,
+      "train_annotations": 1026,
+      "group": "body"
+    },
+    {
+      "id": 47,
+      "name": "watching",
+      "train_rank": 24,
+      "train_annotations": 907,
+      "group": "body"
+    },
+    {
+      "id": 19,
+      "name": "hanging from",
+      "train_rank": 25,
+      "train_annotations": 807,
+      "group": "body"
+    },
+    {
+      "id": 24,
+      "name": "laying on",
+      "train_rank": 26,
+      "train_annotations": 779,
+      "group": "body"
+    },
+    {
+      "id": 14,
+      "name": "eating",
+      "train_rank": 27,
+      "train_annotations": 702,
+      "group": "body"
+    },
+    {
+      "id": 5,
+      "name": "and",
+      "train_rank": 28,
+      "train_annotations": 679,
+      "group": "body"
+    },
+    {
+      "id": 9,
+      "name": "belonging to",
+      "train_rank": 29,
+      "train_annotations": 652,
+      "group": "body"
+    },
+    {
+      "id": 35,
+      "name": "parked on",
+      "train_rank": 30,
+      "train_annotations": 641,
+      "group": "body"
+    },
+    {
+      "id": 44,
+      "name": "using",
+      "train_rank": 31,
+      "train_annotations": 580,
+      "group": "tail"
+    },
+    {
+      "id": 13,
+      "name": "covering",
+      "train_rank": 32,
+      "train_annotations": 512,
+      "group": "tail"
+    },
+    {
+      "id": 10,
+      "name": "between",
+      "train_rank": 33,
+      "train_annotations": 511,
+      "group": "tail"
+    },
+    {
+      "id": 4,
+      "name": "along",
+      "train_rank": 34,
+      "train_annotations": 493,
+      "group": "tail"
+    },
+    {
+      "id": 12,
+      "name": "covered in",
+      "train_rank": 35,
+      "train_annotations": 485,
+      "group": "tail"
+    },
+    {
+      "id": 36,
+      "name": "part of",
+      "train_rank": 36,
+      "train_annotations": 435,
+      "group": "tail"
+    },
+    {
+      "id": 26,
+      "name": "lying on",
+      "train_rank": 37,
+      "train_annotations": 369,
+      "group": "tail"
+    },
+    {
+      "id": 32,
+      "name": "on back of",
+      "train_rank": 38,
+      "train_annotations": 343,
+      "group": "tail"
+    },
+    {
+      "id": 42,
+      "name": "to",
+      "train_rank": 39,
+      "train_annotations": 327,
+      "group": "tail"
+    },
+    {
+      "id": 45,
+      "name": "walking in",
+      "train_rank": 40,
+      "train_annotations": 289,
+      "group": "tail"
+    },
+    {
+      "id": 28,
+      "name": "mounted on",
+      "train_rank": 41,
+      "train_annotations": 265,
+      "group": "tail"
+    },
+    {
+      "id": 2,
+      "name": "across",
+      "train_rank": 42,
+      "train_annotations": 263,
+      "group": "tail"
+    },
+    {
+      "id": 3,
+      "name": "against",
+      "train_rank": 43,
+      "train_annotations": 224,
+      "group": "tail"
+    },
+    {
+      "id": 17,
+      "name": "from",
+      "train_rank": 44,
+      "train_annotations": 198,
+      "group": "tail"
+    },
+    {
+      "id": 18,
+      "name": "growing on",
+      "train_rank": 45,
+      "train_annotations": 172,
+      "group": "tail"
+    },
+    {
+      "id": 34,
+      "name": "painted on",
+      "train_rank": 46,
+      "train_annotations": 153,
+      "group": "tail"
+    },
+    {
+      "id": 37,
+      "name": "playing",
+      "train_rank": 47,
+      "train_annotations": 134,
+      "group": "tail"
+    },
+    {
+      "id": 27,
+      "name": "made of",
+      "train_rank": 48,
+      "train_annotations": 128,
+      "group": "tail"
+    },
+    {
+      "id": 39,
+      "name": "says",
+      "train_rank": 49,
+      "train_annotations": 49,
+      "group": "tail"
+    },
+    {
+      "id": 15,
+      "name": "flying in",
+      "train_rank": 50,
+      "train_annotations": 5,
+      "group": "tail"
+    }
+  ],
+  "train_images": 57723,
+  "data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  }
+}
