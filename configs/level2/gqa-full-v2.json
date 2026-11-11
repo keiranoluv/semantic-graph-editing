@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "scope": "full",
+  "root": "data/raw/gqa",
+  "manifest": "data/processed/level2/gqa-v1/manifest.json",
+  "weights": "data/cache/vg150-clip-vit-b32-v1/weights/ViT-B-32.pt",
+  "glove": "data/processed/level2/gqa-glove-v1",
+  "cache": "data/cache/gqa-full-clip-v1",
+  "output": "runs/level2/gqa-full-v2",
+  "models": [
+    "mlp",
+    "gat",
+    "pe-ce",
+    "pe-pl",
+    "pe-plpr"
+  ],
+  "seeds": [
+    42,
+    123,
+    3407
+  ],
+  "epochs": 200,
+  "train_batch_size": 64,
+  "val_batch_size": 32,
+  "lr": 0.001,
+  "weight_decay": 0.01,
+  "gradient_clip_norm": 5.0,
+  "checkpoint_every_batches": 100,
+  "cache_shard_size": 256,
+  "clip_batch_size": 64,
+  "device": "cuda",
+  "num_threads": 1,
+  "early_stopping": {
+    "enabled": true,
+    "patience": 15,
+    "min_delta": 0.0
+  },
+  "wandb": {
+    "mode": "online",
+    "entity": "keiranoluv-hcmus",
+    "project": "semantic-graph-editing"
+  }
+}

@@ -4,6 +4,7 @@ import argparse
 import copy
 import fcntl
 import gc
+import importlib.metadata
 import json
 import shutil
 import signal
@@ -52,8 +53,28 @@ def load_config(path):
         "device",
         "num_threads",
     }
-    if set(config) != required or config["schema_version"] != 1 or config["scope"] != "full":
-        raise ValueError("Expected full experiment schema v1 with exactly the documented fields")
+    if config.get("schema_version") == 2:
+        required |= {"early_stopping", "wandb"}
+    if set(config) != required or config["schema_version"] not in (1, 2) or config["scope"] != "full":
+        raise ValueError("Expected full experiment schema v1/v2 with exactly the documented fields")
+    if config["schema_version"] == 2:
+        early, tracking = config["early_stopping"], config["wandb"]
+        if (
+            set(early) != {"enabled", "patience", "min_delta"}
+            or type(early["enabled"]) is not bool
+            or type(early["patience"]) is not int
+            or early["patience"] <= 0
+            or not isinstance(early["min_delta"], (int, float))
+            or early["min_delta"] < 0
+            or not torch.isfinite(torch.tensor(early["min_delta"]))
+        ):
+            raise ValueError("Invalid early stopping configuration")
+        if (
+            set(tracking) != {"mode", "entity", "project"}
+            or tracking["mode"] not in ("online", "offline", "disabled")
+            or any(not isinstance(tracking[k], str) or not tracking[k].strip() for k in ("entity", "project"))
+        ):
+            raise ValueError("Invalid W&B configuration")
     if config["models"] != list(MODELS) or config["seeds"] != [42, 123, 3407]:
         raise ValueError("Full matrix must contain all five models and seeds 42/123/3407")
     for key in (
@@ -123,6 +144,8 @@ def preflight(config):
         "val_images": len(cohort["val"]),
         "runs": len(config["models"]) * len(config["seeds"]),
         "epochs_each": config["epochs"],
+        "early_stopping": config.get("early_stopping", {"enabled": False}),
+        "wandb": config.get("wandb", {"mode": "disabled"}),
         "device": config["device"],
         "gpu": torch.cuda.get_device_name() if config["device"] == "cuda" else None,
         "free_disk_bytes_workspace": shutil.disk_usage(Path.cwd()).free,
@@ -151,10 +174,13 @@ def experiment_identity(config, manifest):
         "glove_manifest_sha256": sha256(Path(config["glove"]) / "manifest.json"),
         "code_sha256": {str(f): sha256(f) for f in files},
         "torch_version": str(torch.__version__),
+        "wandb_version": importlib.metadata.version("wandb")
+        if config.get("wandb", {}).get("mode", "disabled") != "disabled"
+        else None,
         "gpu": torch.cuda.get_device_name() if config["device"] == "cuda" else None,
         "protocol": "unchanged GQA GC/NG reference IoU50; mR over all 310 predicates; uniform multi-positive CE",
         "sampling": "all positives + up to 3 backgrounds per positive; no-GT up to 32; empty batch no update",
-        "selection": "validation GC mR@50; earliest tie; fixed epoch budget; no scheduler or early stopping",
+        "selection": "maximum validation GC mR@50; earliest tie; optional patience/min_delta early stopping; no scheduler",
         "resume": "model+optimizer+CPU/CUDA/sampler RNG+order+offset+best+history; atomic last.pt",
         "test_used": False,
     }
@@ -231,7 +257,7 @@ def run_matrix(config, manifest, args, stopped):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", type=Path, default=Path("configs/level2/gqa-full-v1.json"))
+    parser.add_argument("--config", type=Path, default=Path("configs/level2/gqa-full-v2.json"))
     parser.add_argument(
         "--stage", choices=("preflight", "cache", "train", "summary", "all", "smoke"), default="preflight"
     )
@@ -260,6 +286,8 @@ def main(argv=None):
             cache=config["cache"] + "-smoke",
             output=config["output"] + "-smoke",
         )
+        if "wandb" in config:
+            config["wandb"]["mode"] = "offline"
     stop = {"requested": False}
 
     def request_stop(signum, frame):

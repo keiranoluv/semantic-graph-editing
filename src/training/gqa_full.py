@@ -13,6 +13,7 @@ from src.datasets.gqa_full import atomic_write, digest, pin_json
 from src.knowledge.transe.core import sha256
 from src.models.penet import PENetPredicateClassifier
 from src.training.gqa_pilot import collate, cross_entropy_sum, forward
+from src.training.gqa_tracking import RunTracker
 from src.training.penet import prototype_losses
 from tools.train_gqa_pilot import build_model, compact_metrics, evaluate
 from tools.train_penet_pilot import state_hash
@@ -88,6 +89,66 @@ def save_training(path, state, model, optimizer, generator):
 def train_run(
     kind, seed, train, val, vectors, experiment, directory, *, stop_requested=lambda: False, stop_after_batches=None
 ):
+    directory = Path(directory)
+    directory.mkdir(parents=True, exist_ok=True)
+    identity = {"experiment_sha256": digest(experiment), "model": kind, "seed": seed}
+    pin_json(directory / "identity.json", identity)
+    tracker = RunTracker(experiment, identity, directory)
+    status = "failed"
+    try:
+        result = _train_run(
+            kind,
+            seed,
+            train,
+            val,
+            vectors,
+            experiment,
+            directory,
+            tracker=tracker,
+            stop_requested=stop_requested,
+            stop_after_batches=stop_after_batches,
+        )
+        if result is not None:
+            tracker.complete(result)
+        status = "completed" if result is not None else "interrupted"
+        return result
+    finally:
+        tracker.finish(status)
+
+
+def update_early_stopping(state, score, settings):
+    """Patience counts consecutive validations without improvement beyond min_delta."""
+    if not settings.get("enabled", False):
+        return
+    if score > state["stopping_best"] + settings["min_delta"]:
+        state["stopping_best"], state["bad_epochs"] = score, 0
+    else:
+        state["bad_epochs"] += 1
+    state["stopped_early"] = state["bad_epochs"] >= settings["patience"]
+
+
+def publish_best(directory, state, dimensions):
+    """last.pt is authoritative; this derived export can be rebuilt after a crash."""
+    if state["best_model"] is None:
+        return
+    best = Path(directory) / "best.pt"
+    with best.with_suffix(".pt.tmp").open("wb") as f:
+        torch.save(
+            {
+                "model": state["best_model"],
+                "identity": state["identity"],
+                "dimensions": dimensions,
+                "epoch": state["best_epoch"],
+                "score": state["best_score"],
+            },
+            f,
+        )
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(best.with_suffix(".pt.tmp"), best)
+
+
+def _train_run(kind, seed, train, val, vectors, experiment, directory, *, tracker, stop_requested, stop_after_batches):
     """Resume automatically. Diagnostic stop count is per invocation, not experiment budget."""
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=True)
@@ -118,6 +179,9 @@ def train_run(
         "best_model": None,
         "total_batches": 0,
         "train_seconds": 0.0,
+        "bad_epochs": 0,
+        "stopping_best": -1.0,
+        "stopped_early": False,
     }
     if last.exists():
         saved = torch.load(last, map_location="cpu", weights_only=True)
@@ -131,13 +195,15 @@ def train_run(
         if device == "cuda":
             torch.cuda.set_rng_state_all(cuda_rng)
         state = saved
+        publish_best(directory, state, dimensions)
         print(f"[RESUME] {kind} seed={seed} epoch={state['epoch']} next_index={state['next_index']}", flush=True)
     else:
         save_training(last, state, model, optimizer, generator)
+    tracker.replay(state["history"])
     this_invocation = 0
     if device == "cuda":
         torch.cuda.reset_peak_memory_stats()
-    while state["epoch"] <= config["epochs"]:
+    while state["epoch"] <= config["epochs"] and not state["stopped_early"]:
         if state["order"] is None:
             state.update(
                 order=torch.randperm(len(train), generator=generator).tolist(),
@@ -225,9 +291,16 @@ def train_run(
                 "max_gradient_norm_before_clip": state["max_grad_norm"],
             }
         )
-        if validation["mR@50"] > state["best_score"]:
+        improved = validation["mR@50"] > state["best_score"]
+        if improved:
             state["best_score"], state["best_epoch"] = validation["mR@50"], state["epoch"]
             state["best_model"] = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
+        update_early_stopping(state, validation["mR@50"], config.get("early_stopping", {}))
+        state["history"][-1].update(
+            best_score=state["best_score"],
+            best_epoch=state["best_epoch"],
+            early_stopping_bad_epochs=state["bad_epochs"],
+        )
         print(
             f"[EPOCH] {kind}/{seed} {state['epoch']}/{config['epochs']} R50={validation['R@50']:.6f} mR50={validation['mR@50']:.6f}",
             flush=True,
@@ -235,7 +308,10 @@ def train_run(
         state["epoch"] += 1
         state["order"] = None
         save_training(last, state, model, optimizer, generator)
+        if improved:
+            publish_best(directory, state, dimensions)
         atomic_write(directory / "history.json", state["history"])
+        tracker.replay(state["history"][-1:])
     if stop_requested():
         return None
     model.load_state_dict(state["best_model"])
@@ -250,25 +326,15 @@ def train_run(
     if final["gc"]["mR@50"] != state["best_score"]:
         raise AssertionError("Best checkpoint reload metric differs")
     best = directory / "best.pt"
-    with best.with_suffix(".pt.tmp").open("wb") as f:
-        torch.save(
-            {
-                "model": state["best_model"],
-                "identity": identity,
-                "dimensions": dimensions,
-                "epoch": state["best_epoch"],
-            },
-            f,
-        )
-        f.flush()
-        os.fsync(f.fileno())
-    os.replace(best.with_suffix(".pt.tmp"), best)
     result = {
         "status": "PASS",
         "scope": config["scope"],
         "identity": identity,
         "initial_state_sha256": state["initial_state_sha256"],
         "selected_epoch": state["best_epoch"],
+        "epochs_completed": len(state["history"]),
+        "stopping_reason": "early_stopping" if state["stopped_early"] else "max_epochs",
+        "early_stopping_bad_epochs": state["bad_epochs"],
         "history": state["history"],
         "validation": final,
         "checkpoint_sha256": sha256(best),
@@ -305,7 +371,8 @@ def summarize_matrix(experiment, directory):
             rows[model].append(result)
     for i, seed in enumerate(config["seeds"]):
         traces = [[h["sampling_trace_sha256"] for h in rows[m][i]["history"]] for m in config["models"]]
-        if any(t != traces[0] for t in traces):
+        longest = max(traces, key=len)
+        if any(t != longest[: len(t)] for t in traces):
             raise AssertionError(f"Sampling not matched for seed {seed}")
         initial = [rows[m][i]["initial_state_sha256"] for m in config["models"] if m.startswith("pe-")]
         if len(set(initial)) != 1:
@@ -329,6 +396,19 @@ def summarize_matrix(experiment, directory):
         "seeds": config["seeds"],
         "models": summaries,
         "matched_sampling": True,
+        "sampling_comparison": "identical common epoch prefixes; early stopping can change run lengths",
+        "training_lengths": {
+            model: [
+                {
+                    "seed": seed,
+                    "epochs_completed": r["epochs_completed"],
+                    "stopping_reason": r["stopping_reason"],
+                    "selected_epoch": r["selected_epoch"],
+                }
+                for seed, r in zip(config["seeds"], results, strict=True)
+            ]
+            for model, results in rows.items()
+        },
         "matched_pe_initialization": True,
         "units": "fractions, multiply by 100 for percent",
         "test_used": False,
