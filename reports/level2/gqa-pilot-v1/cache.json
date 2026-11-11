@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "cohort_sha256": "9352450849c4921c98fde3a2ef5267fca7a257e72300bb91f4cf49e7fd6b0094",
+  "manifest_sha256": "c953dc40d4b0a880ccd142f36670388ebffb7d7e2bb341d661b8b45781046c2a",
+  "encoder": "openai.CLIP.ViT-B/32",
+  "weights_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "preprocess": "default CLIP; GT xyxy scaled to JPEG, floor/ceil crop; L2 normalized",
+  "visual_dim": 512,
+  "dtype": "float16",
+  "code_sha256": {
+    "tools/cache_gqa_pilot.py": "372a598016d9c81c533c0e3f2f802d009b357b3dcb8c3894678b5647b499436b",
+    "src/datasets/gqa.py": "83e1c9686c989a1ab910ba05393a39122ff71957678232802718cea7addf6ab6",
+    "src/datasets/gqa_pilot.py": "077b167cadf8febc643be345c46f0e50357cb9a0be3f63d9ec661ff916ff81be",
+    "scripts/cache_vg150_regions.py": "c9441599ce09b795cd9854e0ab0f131ffcd1f11c5d1d42e10d83db54b54ff069"
+  },
+  "complete": true,
+  "features_sha256": "d13a0ba521a2c9e55c6cc206fd17811f78b82a01a383492bf30c046a9386562e",
+  "statistics": {
+    "train": {
+      "raw_objects": 8350,
+      "raw_relations": 26672,
+      "clipped_objects": 108,
+      "objects": 8350,
+      "relations": 26651,
+      "images": 512,
+      "images_without_relations": 16,
+      "images_fewer_than_two_objects": 6,
+      "candidate_pairs": 164902,
+      "unique_gt_triplets": 26651,
+      "jpeg_size_mismatches": 2,
+      "dropped_self_relations": 21
+    },
+    "val": {
+      "raw_objects": 2124,
+      "raw_relations": 6187,
+      "clipped_objects": 19,
+      "objects": 2124,
+      "relations": 6175,
+      "images": 128,
+      "images_without_relations": 7,
+      "images_fewer_than_two_objects": 0,
+      "candidate_pairs": 40418,
+      "unique_gt_triplets": 6175,
+      "jpeg_size_mismatches": 0,
+      "dropped_self_relations": 12
+    }
+  },
+  "wall_seconds_this_invocation": 19.00572881399421,
+  "images_encoded_this_invocation": 640,
+  "feature_file_bytes": 11965312,
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "torch_version": "2.7.0+cu128",
+  "trainable_encoder_parameters": 0,
+  "jpeg_provenance": "SHA256 of each decoded source JPEG stored in its HDF5 group"
+}

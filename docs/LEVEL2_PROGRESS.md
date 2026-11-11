@@ -1,6 +1,8 @@
 # Level 2 — khởi động và trạng thái triển khai
 
-Mốc 2026-11-11, sau sáu commit bàn giao Level 1 (HEAD `4d34d37`). **Đã có nền dữ liệu GQA và thao tác/chấm đồ thị; chưa hoàn thành Level 2 và chưa train model Level 2.** Các kết quả Level 1 được giữ nguyên. Tài liệu hiện tại là Markdown, chưa tạo báo cáo PDF/slide.
+Mốc 2026-11-11, sau sáu commit bàn giao Level 1 (HEAD `4d34d37`). **Mốc khởi động đã có nền dữ liệu GQA và thao tác/chấm đồ thị. Cập nhật tiếp theo: đã train/eval GQA pilot MLP/GAT, nhưng chưa hoàn thành Level 2.** Các kết quả Level 1 được giữ nguyên. Tài liệu hiện tại là Markdown, chưa tạo báo cáo PDF/slide.
+
+Cập nhật GQA pilot: **512 train / 128 validation, seed 42, 5 epoch**, CLIP đóng băng; GC R@50 MLP **30,99%**, GAT **29,87%**. Đây là kiểm pipeline một seed, chưa phải thực nghiệm chính. [Báo cáo, protocol và lệnh demo](../reports/level2/GQA_PILOT.md).
 
 ## 1. Đề yêu cầu gì?
 
@@ -8,7 +10,7 @@ Mốc 2026-11-11, sau sáu commit bàn giao Level 1 (HEAD `4d34d37`). **Đã có
 
 | Hạng mục bắt buộc | Trạng thái |
 |---|---|
-| Thực nghiệm ít nhất hai dataset có sẵn | VG150 đã có; GQA mới có adapter, split và kiểm dữ liệu, **chưa có thực nghiệm model** |
+| Thực nghiệm ít nhất hai dataset có sẵn | VG150 đã có; GQA đã có **pilot MLP/GAT một seed**, chưa có thực nghiệm chính ba seed/KG |
 | Triển khai/tái lập một phương pháp từ 2023 trở lại đây về SGG hoặc dự đoán quan hệ có tri thức | Chưa triển khai; cần chốt phương pháp phù hợp với thị giác đóng băng và PredCls |
 | Ít nhất 300 cặp `(đồ thị nguồn, câu yêu cầu, thao tác đích)` từ MagicBrush/InstructPix2Pix | Chưa xây; ví dụ tổng hợp để kiểm code không được tính vào 300 cặp |
 | Kiểm tay ít nhất 20 mẫu và báo cáo độ tin cậy | Chưa có; cần người trong nhóm xác nhận, không tự đánh dấu hoàn thành |
@@ -96,7 +98,7 @@ GQA dùng ảnh Visual Genome: hai thực nghiệm riêng không chứng minh ch
 
 ## 5. Thứ tự triển khai tiếp
 
-1. **Hoàn thiện pipeline GQA:** cache CLIP đóng băng, mapping KG riêng, launcher MLP/GAT/GAT+KG, cùng split và ba seed. Evaluator cần tham số hóa taxonomy 310 predicate; không đổi evaluator VG150 đã khóa, không mặc định 50 lớp.
+1. **Mở rộng sau GQA pilot:** cache CLIP và launcher MLP/GAT đã chạy được trên subset cố định; tiếp theo audit quy mô/độ phủ lớp, cache cho cohort chính, mapping KG riêng, GAT+KG và ba seed. Evaluator cần tham số hóa taxonomy 310 predicate; không đổi evaluator VG150 đã khóa, không mặc định 50 lớp.
 2. **Chốt phương pháp 2023+:** đọc phương pháp và code, xác định phần graph được train, phần vision giữ frozen và đầu ra so sánh trên cùng PredCls pipeline. EGTR/LLM4SGG là ứng viên trong đề; chưa chọn hay tuyên bố đã tái lập. Không lấy điểm SGDet từ paper so với PredCls của nhóm.
 3. **MagicBrush:** chọn subset train/dev có provenance, ít nhất 300 cặp; sinh graph nguồn/đích bằng model tiền huấn luyện hoặc caption; căn chỉnh instance trước khi diff. Giữ mọi turn của cùng `img_id`/ảnh gốc trong một split. Có thể dùng train để tạo validation nội bộ và giữ dev làm test dự án; nếu làm vậy phải gọi đúng là split dự án. Không đưa official test vào train.
 4. Khóa bộ nhãn sinh tự động, lấy ít nhất 20 mẫu ngẫu nhiên để nhóm kiểm; báo tỷ lệ đúng/mức agreement và lỗi alignment/thuộc tính. Không sửa riêng nhãn test dựa trên review. Những câu sửa style/toàn cảnh không biểu diễn được bằng schema phải được thống kê, không âm thầm ép thành no-op.
@@ -108,6 +110,6 @@ Nguồn đã kiểm tra:
 - [EGTR — code chính thức](https://github.com/naver-ai/egtr).
 - [LLM4SGG — CVPR 2024](https://openaccess.thecvf.com/content/CVPR2024/html/Kim_LLM4SGG_Large_Language_Models_for_Weakly_Supervised_Scene_Graph_Generation_CVPR_2024_paper.html), [code chính thức](https://github.com/rlqja1107/torch-LLM4SGG).
 
-Mốc này bổ sung code nền và kiểm dữ liệu, không có điểm model Level 2, không có 300 cặp đã hoàn thiện, không có human review. [Biên bản kiểm chứng](../reports/level2/foundation-verification.json).
+Mốc khởi động bên trên bổ sung code nền và kiểm dữ liệu; report foundation vẫn được giữ nguyên như provenance lịch sử. Mốc pilot tiếp theo đã có điểm MLP/GAT GQA, vẫn chưa có 300 cặp đã hoàn thiện hoặc human review. [Biên bản kiểm chứng](../reports/level2/foundation-verification.json).
 
 Kiểm chứng mốc khởi động: **260 tests PASS** (21 ca mới), mọi hook pre-commit áp dụng đều pass. Chạy lại chuẩn bị GQA giữ nguyên manifest/report; kiểm độc lập cân bằng số object/relation trước và sau xử lý ở cả ba split. Loader thật đã đọc thêm ảnh validation ID `1` với 26 node, 238 GT annotation.

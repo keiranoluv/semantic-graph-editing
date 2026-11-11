@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-11-12T00:01:15.314384+07:00",
+  "scope": "GQA pilot only; no main three-seed study, KG or editing model",
+  "tests": {
+    "passed": 273,
+    "new_cases": 13,
+    "command": "myenv/bin/python -m pytest -q"
+  },
+  "pre_commit": "PASS all applicable hooks on pilot code, reports and progress document",
+  "real_training": {
+    "models": [
+      "mlp",
+      "gat"
+    ],
+    "train_images": 512,
+    "validation_images": 128,
+    "seed": 42,
+    "epochs_each": 5
+  },
+  "checks": {
+    "cohort_manifest_cache_checkpoint_and_source_hashes": "PASS",
+    "all_640_cache_groups_match_cohort": true,
+    "cached_vectors": 10474,
+    "finite_l2_norm_min": 0.9997842311859131,
+    "finite_l2_norm_max": 1.000209093093872,
+    "mR_recomputed_from_310_per_predicate_rows": "PASS GC/NG at 50/100 for both models",
+    "cache_immutable_rerun": "PASS existing completed cache verified",
+    "best_checkpoint_reload_metrics": "PASS exactly equal to selection metric on training device",
+    "level1_evaluator_and_report_files": "unchanged relative to HEAD",
+    "foundation_source_hashes": "unchanged",
+    "personal_notebook_sha256": "786c3eff8b7d4abd93c1546dba3b9d9d4ff635fc160fa80a59c0eefdd8952c19",
+    "personal_notebook_preserved": true,
+    "demo": "PASS real GAT checkpoint, pinned validation index 0; no human review"
+  },
+  "test_split_model_evaluated": false,
+  "human_review_samples": 0,
+  "completed_MagicBrush_pairs": 0,
+  "artifact_sha256": {
+    "reports/level2/gqa-pilot-v1/demo-gat.json": "905b612e4bcd75309c6a005003d822e9b3f9517fc476da95769469524be3e918",
+    "reports/level2/gqa-pilot-v1/cache.json": "96a74ea2e7c9d766727082602194c5be625e23a0080ab8d2e4233da4fe03f118",
+    "reports/level2/gqa-pilot-v1/gat.json": "24ea728d594a9a8e1f5925c0d11b3339585e71c0643b0fdfbcb87586fc4dc969",
+    "reports/level2/gqa-pilot-v1/mlp.json": "6ea5a7a5996714b0e8c0f32d89e5db533cd5f308cfcdd91eec0cd872f5c2ad46",
+    "reports/level2/gqa-pilot-v1/config.json": "cf1ecd246dbcfa3ed5779188536e24fc6220c84233781be75e309533f580720d"
+  },
+  "additional_source_sha256": {
+    "tools/demo_gqa_pilot.py": "451098d6ed2569d5e8fddc3043c8fe13d90682153314598b1047e758577f3703",
+    "tests/training/test_gqa_pilot.py": "057db4665e8ee93432ea94d538b8045b735eb38b5dcd39ed88c5ef882a48eb4e"
+  }
+}

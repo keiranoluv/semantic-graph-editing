@@ -1,0 +1,148 @@
+{
+  "synthetic": false,
+  "trained_prediction": true,
+  "human_reviewed": false,
+  "model": "gat",
+  "checkpoint_sha256": "41f14a4549c8abc9e07cbc00919b88b841fd3acebccc517a0b9ea0fdd288a948",
+  "image_id": "2407303",
+  "selection": "pinned validation cohort index 0",
+  "input": "real cached frozen CLIP crops + GT geometry and object labels; no GT relation input",
+  "objects": 7,
+  "candidate_pairs": 42,
+  "gt_rows": 11,
+  "top_predictions_gc": [
+    {
+      "subject": {
+        "instance_id": 282005,
+        "label": "onion"
+      },
+      "predicate": "to the right of",
+      "object": {
+        "instance_id": 282007,
+        "label": "cauliflower"
+      },
+      "score": 0.22986261546611786,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282007,
+        "label": "cauliflower"
+      },
+      "predicate": "to the left of",
+      "object": {
+        "instance_id": 282005,
+        "label": "onion"
+      },
+      "score": 0.2087530940771103,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282005,
+        "label": "onion"
+      },
+      "predicate": "to the right of",
+      "object": {
+        "instance_id": 282004,
+        "label": "lemon"
+      },
+      "score": 0.16701388359069824,
+      "exact_instance_triplet_in_gt": true
+    },
+    {
+      "subject": {
+        "instance_id": 282006,
+        "label": "lettuce"
+      },
+      "predicate": "to the right of",
+      "object": {
+        "instance_id": 282007,
+        "label": "cauliflower"
+      },
+      "score": 0.16280807554721832,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282007,
+        "label": "cauliflower"
+      },
+      "predicate": "to the left of",
+      "object": {
+        "instance_id": 282006,
+        "label": "lettuce"
+      },
+      "score": 0.15399537980556488,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282004,
+        "label": "lemon"
+      },
+      "predicate": "to the left of",
+      "object": {
+        "instance_id": 282005,
+        "label": "onion"
+      },
+      "score": 0.14840254187583923,
+      "exact_instance_triplet_in_gt": true
+    },
+    {
+      "subject": {
+        "instance_id": 282009,
+        "label": "tray"
+      },
+      "predicate": "to the right of",
+      "object": {
+        "instance_id": 282007,
+        "label": "cauliflower"
+      },
+      "score": 0.12212155759334564,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282006,
+        "label": "lettuce"
+      },
+      "predicate": "to the right of",
+      "object": {
+        "instance_id": 282004,
+        "label": "lemon"
+      },
+      "score": 0.11415194720029831,
+      "exact_instance_triplet_in_gt": true
+    },
+    {
+      "subject": {
+        "instance_id": 282007,
+        "label": "cauliflower"
+      },
+      "predicate": "to the left of",
+      "object": {
+        "instance_id": 282004,
+        "label": "lemon"
+      },
+      "score": 0.11384087055921555,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282004,
+        "label": "lemon"
+      },
+      "predicate": "to the right of",
+      "object": {
+        "instance_id": 282007,
+        "label": "cauliflower"
+      },
+      "score": 0.10711284726858139,
+      "exact_instance_triplet_in_gt": false
+    }
+  ],
+  "image_R@50": 0.7272727272727273,
+  "image_R@100": 0.7272727272727273,
+  "note": "Exact-instance flags are automatic annotation checks, not human review; official pilot metric allows class/IoU matching. This demo predicts relations, not graph-edit instructions."
+}
