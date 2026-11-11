@@ -1,0 +1,149 @@
+{
+  "synthetic": false,
+  "trained_prediction": true,
+  "human_reviewed": false,
+  "model": "penet",
+  "variant": "plpr",
+  "checkpoint_sha256": "b605d0248bfd661e6aac836e1761a1589300466875494798d9165cf8aec970d3",
+  "image_id": "2407303",
+  "selection": "pinned validation cohort index 0",
+  "input": "real cached frozen CLIP crops + GT geometry and object labels; no GT relation input",
+  "objects": 7,
+  "candidate_pairs": 42,
+  "gt_rows": 11,
+  "top_predictions_gc": [
+    {
+      "subject": {
+        "instance_id": 282004,
+        "label": "lemon"
+      },
+      "predicate": "on",
+      "object": {
+        "instance_id": 282009,
+        "label": "tray"
+      },
+      "score": 0.2698107957839966,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282004,
+        "label": "lemon"
+      },
+      "predicate": "on",
+      "object": {
+        "instance_id": 282013,
+        "label": "table"
+      },
+      "score": 0.23553147912025452,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282005,
+        "label": "onion"
+      },
+      "predicate": "on",
+      "object": {
+        "instance_id": 282009,
+        "label": "tray"
+      },
+      "score": 0.21754442155361176,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282006,
+        "label": "lettuce"
+      },
+      "predicate": "on",
+      "object": {
+        "instance_id": 282009,
+        "label": "tray"
+      },
+      "score": 0.1983572542667389,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282005,
+        "label": "onion"
+      },
+      "predicate": "on",
+      "object": {
+        "instance_id": 282013,
+        "label": "table"
+      },
+      "score": 0.17094388604164124,
+      "exact_instance_triplet_in_gt": true
+    },
+    {
+      "subject": {
+        "instance_id": 282004,
+        "label": "lemon"
+      },
+      "predicate": "to the right of",
+      "object": {
+        "instance_id": 282005,
+        "label": "onion"
+      },
+      "score": 0.17050479352474213,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282003,
+        "label": "carrot"
+      },
+      "predicate": "on",
+      "object": {
+        "instance_id": 282009,
+        "label": "tray"
+      },
+      "score": 0.15799535810947418,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282003,
+        "label": "carrot"
+      },
+      "predicate": "to the right of",
+      "object": {
+        "instance_id": 282005,
+        "label": "onion"
+      },
+      "score": 0.156779944896698,
+      "exact_instance_triplet_in_gt": false
+    },
+    {
+      "subject": {
+        "instance_id": 282006,
+        "label": "lettuce"
+      },
+      "predicate": "to the right of",
+      "object": {
+        "instance_id": 282005,
+        "label": "onion"
+      },
+      "score": 0.1525697410106659,
+      "exact_instance_triplet_in_gt": true
+    },
+    {
+      "subject": {
+        "instance_id": 282006,
+        "label": "lettuce"
+      },
+      "predicate": "on",
+      "object": {
+        "instance_id": 282013,
+        "label": "table"
+      },
+      "score": 0.14569620788097382,
+      "exact_instance_triplet_in_gt": true
+    }
+  ],
+  "image_R@50": 0.6363636363636364,
+  "image_R@100": 0.6363636363636364,
+  "note": "Exact-instance flags are automatic annotation checks, not human review; official pilot metric allows class/IoU matching. This demo predicts relations, not graph-edit instructions."
+}

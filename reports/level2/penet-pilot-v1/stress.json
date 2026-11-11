@@ -1,0 +1,223 @@
+{
+  "scope": "PE-PLPR stress memory/latency; disposable updates; no quality metrics or saved training",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "torch_version": "2.7.0+cu128",
+  "pilot_report_sha256": "ff28112c72f862db6f9f75ce1cdd02c3e3827b4e7504b36684a9dd334dc35e78",
+  "cohort_sha256": "a2dcbcbe16c97beb44d2e8b3f496e85b82855a75ef31b5570fdb8141a3a6cc43",
+  "cache_manifest_sha256": "07c89c5148e5eba0394b1dd036a6259a313e55015328be5391d5bbeba423b68b",
+  "code_sha256": {
+    "tools/benchmark_penet_pilot.py": "ba3b6d989db90181e4b8efb1d6258e2d4aead490755deeff252c284a6f5f5757"
+  },
+  "cases": [
+    {
+      "batch_size": 1,
+      "mode": "sampled_train_plpr",
+      "objects": 126,
+      "candidate_pairs": 15750,
+      "warmup_batches": 2,
+      "measured_batches": 3,
+      "status": "PASS",
+      "measurements": [
+        {
+          "wall_seconds": 0.014195787996868603,
+          "pairs_scored": 3180
+        },
+        {
+          "wall_seconds": 0.014443534993915819,
+          "pairs_scored": 3180
+        },
+        {
+          "wall_seconds": 0.014317886001663283,
+          "pairs_scored": 3180
+        }
+      ],
+      "mean_wall_seconds": 0.014319069664149234,
+      "peak_cuda_allocated_bytes": 326290944,
+      "peak_cuda_reserved_bytes": 385875968
+    },
+    {
+      "batch_size": 8,
+      "mode": "sampled_train_plpr",
+      "objects": 761,
+      "candidate_pairs": 73740,
+      "warmup_batches": 2,
+      "measured_batches": 3,
+      "status": "PASS",
+      "measurements": [
+        {
+          "wall_seconds": 0.1424204970098799,
+          "pairs_scored": 26932
+        },
+        {
+          "wall_seconds": 0.06594889899133705,
+          "pairs_scored": 26932
+        },
+        {
+          "wall_seconds": 0.14467870999942534,
+          "pairs_scored": 26932
+        }
+      ],
+      "mean_wall_seconds": 0.11768270200021409,
+      "peak_cuda_allocated_bytes": 2000961024,
+      "peak_cuda_reserved_bytes": 2445279232
+    },
+    {
+      "batch_size": 32,
+      "mode": "sampled_train_plpr",
+      "objects": 2400,
+      "candidate_pairs": 184360,
+      "warmup_batches": 2,
+      "measured_batches": 3,
+      "status": "PASS",
+      "measurements": [
+        {
+          "wall_seconds": 0.24505583100835793,
+          "pairs_scored": 76636
+        },
+        {
+          "wall_seconds": 0.26710394099063706,
+          "pairs_scored": 76636
+        },
+        {
+          "wall_seconds": 0.33629129799373914,
+          "pairs_scored": 76636
+        }
+      ],
+      "mean_wall_seconds": 0.28281702333091135,
+      "peak_cuda_allocated_bytes": 5510113280,
+      "peak_cuda_reserved_bytes": 6245318656
+    },
+    {
+      "batch_size": 64,
+      "mode": "sampled_train_plpr",
+      "objects": 4299,
+      "candidate_pairs": 295284,
+      "warmup_batches": 2,
+      "measured_batches": 3,
+      "status": "PASS",
+      "measurements": [
+        {
+          "wall_seconds": 0.3557315829966683,
+          "pairs_scored": 135032
+        },
+        {
+          "wall_seconds": 0.43233068399422336,
+          "pairs_scored": 135032
+        },
+        {
+          "wall_seconds": 0.3550873350031907,
+          "pairs_scored": 135032
+        }
+      ],
+      "mean_wall_seconds": 0.38104986733136076,
+      "peak_cuda_allocated_bytes": 9628606464,
+      "peak_cuda_reserved_bytes": 10873733120
+    },
+    {
+      "batch_size": 1,
+      "mode": "all_pairs_forward",
+      "objects": 126,
+      "candidate_pairs": 15750,
+      "warmup_batches": 2,
+      "measured_batches": 3,
+      "status": "PASS",
+      "measurements": [
+        {
+          "wall_seconds": 0.011981274001300335,
+          "pairs_scored": 15750
+        },
+        {
+          "wall_seconds": 0.011765246992581524,
+          "pairs_scored": 15750
+        },
+        {
+          "wall_seconds": 0.011799957006587647,
+          "pairs_scored": 15750
+        }
+      ],
+      "mean_wall_seconds": 0.011848826000156501,
+      "peak_cuda_allocated_bytes": 292127744,
+      "peak_cuda_reserved_bytes": 320864256
+    },
+    {
+      "batch_size": 8,
+      "mode": "all_pairs_forward",
+      "objects": 761,
+      "candidate_pairs": 73740,
+      "warmup_batches": 2,
+      "measured_batches": 3,
+      "status": "PASS",
+      "measurements": [
+        {
+          "wall_seconds": 0.15112900800886564,
+          "pairs_scored": 73740
+        },
+        {
+          "wall_seconds": 0.07541288700303994,
+          "pairs_scored": 73740
+        },
+        {
+          "wall_seconds": 0.14852623900515027,
+          "pairs_scored": 73740
+        }
+      ],
+      "mean_wall_seconds": 0.12502271133901863,
+      "peak_cuda_allocated_bytes": 1070931968,
+      "peak_cuda_reserved_bytes": 1342177280
+    },
+    {
+      "batch_size": 32,
+      "mode": "all_pairs_forward",
+      "objects": 2400,
+      "candidate_pairs": 184360,
+      "warmup_batches": 2,
+      "measured_batches": 3,
+      "status": "PASS",
+      "measurements": [
+        {
+          "wall_seconds": 0.26693403300305363,
+          "pairs_scored": 184360
+        },
+        {
+          "wall_seconds": 0.2639304169861134,
+          "pairs_scored": 184360
+        },
+        {
+          "wall_seconds": 0.3412521529971855,
+          "pairs_scored": 184360
+        }
+      ],
+      "mean_wall_seconds": 0.29070553432878415,
+      "peak_cuda_allocated_bytes": 2563356160,
+      "peak_cuda_reserved_bytes": 3560964096
+    },
+    {
+      "batch_size": 64,
+      "mode": "all_pairs_forward",
+      "objects": 4299,
+      "candidate_pairs": 295284,
+      "warmup_batches": 2,
+      "measured_batches": 3,
+      "status": "PASS",
+      "measurements": [
+        {
+          "wall_seconds": 0.3647873449954204,
+          "pairs_scored": 295284
+        },
+        {
+          "wall_seconds": 0.44788569200318307,
+          "pairs_scored": 295284
+        },
+        {
+          "wall_seconds": 0.3647612889908487,
+          "pairs_scored": 295284
+        }
+      ],
+      "mean_wall_seconds": 0.39247810866315075,
+      "peak_cuda_allocated_bytes": 4059035648,
+      "peak_cuda_reserved_bytes": 5653921792
+    }
+  ],
+  "checkpoint_unchanged": true,
+  "test_used": false
+}

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "identical_initial_state": true,
+  "identical_epoch_sampling_traces": true,
+  "variants": [
+    "ce",
+    "pl",
+    "plpr"
+  ],
+  "test_used": false
+}

@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-11-11T17:47:49.898556+00:00",
+  "scope": "adapted PE-Net implementation and one-seed GQA pilot; main study incomplete",
+  "implementation_commits": [
+    "f8b6b78",
+    "106a7ea",
+    "75cdd34"
+  ],
+  "tests": {
+    "command": "myenv/bin/python -m pytest -q",
+    "passed": 296,
+    "new_cases": 16,
+    "log_sha256": "c3d8b5d583abfb0882cb35e8c7020de22239443a94c73f08ac2d717b4e4c542f"
+  },
+  "pre_commit": "PASS all applicable hooks on changed code and reports",
+  "checks": {
+    "source_data_cache_glove_hashes": "PASS",
+    "checkpoints_selection_and_310_class_GC_NG_mR": "PASS",
+    "identical_initialization_and_sampling": "PASS",
+    "prior_GQA_reports_checkpoints_and_source_unchanged": "PASS",
+    "tracked_Level1_evaluator_reports_and_historical_method_decision_unchanged": "PASS",
+    "personal_notebook_sha256": "786c3eff8b7d4abd93c1546dba3b9d9d4ff635fc160fa80a59c0eefdd8952c19",
+    "stress_cases_passed": 8,
+    "stress_peak_train64_allocated_bytes": 9628606464,
+    "demo_image_id": "2407303"
+  },
+  "test_used": false,
+  "human_review_samples": 0,
+  "completed_MagicBrush_pairs": 0,
+  "remote_push_performed": false,
+  "artifact_sha256": {
+    "reports/level2/penet-pilot-v1/ce.json": "823093d184243882e421857022d9f6be3a71408c98609d9ec444e6063ef533bd",
+    "reports/level2/penet-pilot-v1/config.json": "eee64135b47a5f7c79faa858031472015830b14e018aef71d5ec601a1c451cf7",
+    "reports/level2/penet-pilot-v1/demo.json": "7aa708db9396c3e05aa972580dfbeabed6b891eeca24e7a47e09d2590a2a4d3d",
+    "reports/level2/penet-pilot-v1/matched-controls.json": "8d2a0c9a624bd3858584ab1c2d298b3641c28bafbd18fded4eeb7db020434da0",
+    "reports/level2/penet-pilot-v1/pl.json": "265aa58977c29ed950b0be5e4a9c4a146bd91bcee08497f911d76c33d8cbd7c1",
+    "reports/level2/penet-pilot-v1/plpr.json": "ff28112c72f862db6f9f75ce1cdd02c3e3827b4e7504b36684a9dd334dc35e78",
+    "reports/level2/penet-pilot-v1/stress.json": "ffe2c24c984c939de36e937e9d6dc2f477699b26347a273fdf64d5a35f7edc7a",
+    "reports/level2/PENET_PILOT.md": "8826811d1fda13a7791c950448c160f3fe02f36a8605b0bca83a11fba38d1b14",
+    "reports/level2/penet-glove-v1.json": "e046bbcae01c38f18a4930b3ca10651c3c20eaa58920c77a31f9f2281b4ec826"
+  },
+  "additional_source_sha256": {
+    "tools/demo_penet_pilot.py": "40a0856d1579248958015905d4353f51b64520699a4e65984747ee427c9e96a9",
+    "tools/benchmark_penet_pilot.py": "ba3b6d989db90181e4b8efb1d6258e2d4aead490755deeff252c284a6f5f5757",
+    "tests/training/test_penet.py": "29e9b230e5a5ed283b09100f8e03006f3e7797f6f33c72a807f220794974553d",
+    "tests/features/test_glove.py": "227fa124d463cb32a3a8a04aeb6f7ebf441bbe0cc9f87f832d5f0dfcb844c2db"
+  }
+}
