@@ -1,0 +1,10 @@
+{
+  "old_pid": 212047,
+  "model": "mlp",
+  "seed": 42,
+  "epoch": 59,
+  "next_index": 11264,
+  "completed_epochs": 58,
+  "checkpoint_sha256": "5e61c7d42ca4b0b8f58be527a36d5de75ca4a076f7e51bff80632ae645a77a02",
+  "frozen_source_hashes_unchanged": true
+}
