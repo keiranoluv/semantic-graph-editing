@@ -1,0 +1,2791 @@
+{
+  "schema_version": 1,
+  "dataset": "VG150 official frozen Level1 splits; new multi-positive supervision",
+  "artifacts": {
+    "data_sha256": {
+      "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+      "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+      "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+      "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+    },
+    "visual_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+    "visual_features_sha256": "dc9604132a0f71b7e8176465b977be3b3d27b43f06cbfdea994e6590b2916e42",
+    "kg_manifest_sha256": "a0d6573fbf27f706eaed81ed333d2238665bc3898a65636fd6bc76caeaeeee26",
+    "kg_tensor_sha256": "b602be3a13be72f3d3a54be071e5ec2b6edda24fe9b01feded2feaea8aa5e530",
+    "kg_review_sha256": "9d71181c1e8e4bef914c51e530aa33d4bf2970e599236724a57dc16b1af51d0f"
+  },
+  "split_sizes": {
+    "train": 57723,
+    "val": 5000,
+    "test": 26446
+  },
+  "split_rows_sha256": {
+    "train": "3bc0449e12fd0f1f71c9dedf168cd967452a8a4fc93b617e6013305752d46c1b",
+    "val": "d8865d7391e966b82b6c46c54c0fd8745061d9d63b1ccd63249c077228e90171",
+    "test": "9a566c57753fb3bd604eeff6d72746879d55f47310aeec427baa81db50f6f65b"
+  },
+  "pilot": {
+    "train": [
+      56543,
+      48218,
+      18542,
+      66564,
+      58928,
+      74617,
+      21203,
+      43918,
+      63828,
+      57058,
+      25655,
+      62327,
+      29309,
+      61721,
+      56281,
+      41762,
+      21318,
+      55089,
+      24898,
+      36294,
+      38753,
+      59773,
+      50098,
+      30587,
+      33522,
+      65025,
+      69230,
+      29722,
+      33400,
+      42026,
+      32768,
+      58856,
+      32042,
+      63899,
+      39809,
+      39236,
+      57964,
+      19963,
+      38738,
+      53297,
+      63807,
+      47983,
+      33952,
+      20268,
+      11118,
+      48711,
+      42989,
+      18724,
+      60133,
+      66010,
+      11501,
+      25299,
+      26878,
+      22682,
+      42189,
+      6768,
+      48726,
+      10201,
+      36646,
+      17362,
+      25862,
+      70375,
+      54474,
+      60241,
+      23133,
+      35501,
+      68087,
+      55821,
+      53113,
+      12328,
+      75173,
+      71529,
+      16602,
+      23586,
+      7685,
+      17106,
+      66590,
+      24779,
+      42640,
+      44395,
+      51174,
+      35537,
+      57775,
+      61783,
+      8725,
+      37200,
+      39295,
+      72529,
+      39851,
+      14133,
+      57921,
+      58229,
+      61930,
+      73116,
+      34503,
+      51117,
+      27784,
+      74852,
+      37263,
+      50924,
+      50795,
+      37855,
+      12836,
+      34891,
+      25203,
+      9516,
+      66333,
+      49652,
+      28351,
+      41435,
+      34213,
+      22863,
+      18682,
+      39910,
+      55806,
+      64450,
+      51258,
+      70818,
+      26664,
+      51494,
+      67784,
+      56438,
+      52536,
+      19990,
+      67516,
+      34150,
+      64778,
+      61412,
+      33335,
+      47806,
+      20090,
+      57591,
+      27916,
+      39870,
+      47464,
+      42579,
+      37754,
+      69833,
+      16925,
+      62630,
+      46678,
+      19642,
+      37563,
+      53155,
+      38093,
+      22136,
+      13338,
+      22314,
+      10208,
+      69405,
+      33236,
+      23753,
+      45182,
+      69507,
+      17628,
+      11536,
+      31521,
+      72767,
+      53664,
+      56208,
+      11694,
+      37139,
+      61524,
+      66175,
+      70909,
+      63825,
+      59798,
+      9507,
+      41949,
+      49547,
+      67684,
+      36639,
+      47101,
+      58855,
+      58528,
+      24106,
+      44943,
+      46776,
+      61465,
+      20083,
+      67881,
+      64867,
+      52171,
+      26967,
+      71160,
+      71006,
+      64361,
+      48381,
+      31612,
+      45120,
+      35950,
+      35616,
+      9746,
+      57386,
+      75000,
+      63814,
+      71222,
+      71603,
+      48613,
+      23112,
+      17990,
+      54512,
+      56519,
+      55128,
+      59357,
+      74227,
+      19105,
+      59502,
+      17137,
+      17338,
+      25019,
+      25917,
+      22290,
+      7365,
+      56221,
+      33996,
+      11461,
+      8054,
+      8480,
+      62353,
+      18779,
+      21161,
+      71096,
+      23606,
+      27135,
+      64852,
+      18071,
+      73450,
+      65422,
+      40377,
+      20226,
+      21458,
+      8977,
+      23502,
+      46851,
+      54969,
+      14915,
+      31258,
+      24952,
+      17420,
+      69680,
+      40903,
+      59521,
+      28632,
+      26879,
+      37573,
+      51598,
+      67029,
+      8871,
+      57375,
+      18285,
+      72167,
+      21768,
+      42578,
+      45550,
+      40699,
+      48630,
+      61535,
+      33841,
+      49076,
+      42321,
+      12035,
+      35463,
+      74684,
+      43246,
+      49790,
+      26277,
+      48896,
+      7288,
+      38410,
+      10930,
+      68638,
+      34172,
+      16534,
+      62280,
+      33867,
+      72835,
+      12316,
+      45509,
+      20874,
+      35530,
+      60434,
+      45937,
+      57799,
+      40287,
+      50600,
+      70639,
+      48946,
+      54788,
+      42680,
+      74402,
+      44849,
+      30434,
+      61354,
+      56180,
+      68541,
+      32310,
+      38930,
+      47731,
+      55482,
+      59624,
+      64826,
+      59458,
+      64336,
+      34071,
+      23699,
+      50721,
+      51411,
+      6725,
+      56204,
+      67350,
+      26177,
+      73549,
+      43301,
+      13414,
+      61401,
+      63186,
+      39264,
+      38343,
+      38782,
+      69196,
+      48185,
+      56989,
+      22022,
+      11995,
+      42499,
+      19813,
+      20779,
+      63945,
+      66600,
+      61839,
+      59098,
+      67576,
+      52793,
+      23275,
+      36886,
+      74545,
+      13610,
+      65250,
+      70016,
+      63202,
+      48351,
+      64631,
+      15030,
+      38426,
+      56813,
+      45149,
+      29426,
+      65031,
+      50730,
+      35883,
+      24871,
+      26987,
+      20889,
+      42671,
+      19529,
+      17652,
+      31452,
+      61246,
+      72056,
+      13850,
+      13586,
+      34610,
+      46271,
+      14678,
+      19438,
+      55550,
+      25372,
+      64389,
+      70822,
+      43639,
+      45146,
+      18894,
+      13472,
+      12005,
+      25852,
+      15535,
+      46339,
+      75626,
+      9202,
+      43658,
+      44872,
+      75044,
+      58001,
+      54677,
+      56885,
+      40900,
+      25631,
+      18590,
+      29970,
+      74242,
+      17848,
+      10215,
+      11906,
+      68453,
+      17670,
+      34356,
+      71079,
+      61597,
+      32645,
+      21927,
+      9641,
+      60439,
+      25858,
+      49651,
+      17304,
+      64807,
+      32937,
+      57748,
+      68184,
+      15580,
+      46720,
+      62505,
+      57264,
+      19019,
+      7153,
+      40814,
+      53481,
+      38706,
+      32777,
+      47934,
+      19086,
+      19082,
+      23523,
+      49878,
+      21702,
+      27472,
+      21727,
+      35871,
+      41178,
+      62752,
+      27232,
+      50739,
+      72601,
+      41492,
+      72850,
+      48629,
+      6646,
+      69761,
+      34884,
+      17237,
+      65175,
+      55571,
+      71598,
+      72409,
+      12871,
+      41073,
+      57967,
+      50163,
+      51114,
+      49426,
+      41319,
+      75162,
+      42471,
+      57691,
+      12793,
+      33549,
+      12817,
+      30687,
+      29505,
+      10256,
+      61922,
+      9941,
+      69743,
+      15326,
+      68221,
+      37102,
+      6747,
+      63776,
+      64217,
+      16000,
+      35704,
+      60657,
+      55324,
+      30407,
+      12851,
+      59547,
+      25693,
+      25811,
+      9371,
+      11131,
+      39414,
+      57976,
+      14673,
+      64020,
+      16956,
+      23616,
+      44364,
+      56182,
+      60998,
+      65058,
+      14809,
+      30412,
+      30565,
+      47877,
+      47028,
+      20275,
+      10753,
+      55785,
+      36663,
+      52412,
+      66812,
+      48687,
+      19616,
+      14835,
+      44192,
+      41525,
+      19038,
+      51853,
+      27294,
+      23061,
+      31731
+    ],
+    "val": [
+      5891,
+      844,
+      6478,
+      728,
+      142,
+      6329,
+      3148,
+      4375,
+      3663,
+      6133,
+      682,
+      4984,
+      4458,
+      5616,
+      1762,
+      5014,
+      4997,
+      2960,
+      6369,
+      727,
+      3555,
+      2240,
+      6194,
+      1218,
+      196,
+      5039,
+      319,
+      3413,
+      4367,
+      6475,
+      2312,
+      4524,
+      4720,
+      3051,
+      5240,
+      2741,
+      5876,
+      5855,
+      1199,
+      4594,
+      2932,
+      6123,
+      5217,
+      1147,
+      5900,
+      157,
+      3010,
+      5537,
+      108,
+      3223,
+      2594,
+      1879,
+      710,
+      482,
+      708,
+      2658,
+      2911,
+      1320,
+      3471,
+      3814,
+      6334,
+      285,
+      3585,
+      2156,
+      3213,
+      1739,
+      1532,
+      4276,
+      5192,
+      5086,
+      182,
+      2137,
+      3291,
+      3998,
+      4627,
+      5671,
+      2640,
+      3725,
+      1968,
+      2563,
+      3919,
+      6099,
+      2247,
+      204,
+      5458,
+      1493,
+      4931,
+      940,
+      3013,
+      6053,
+      3679,
+      1455,
+      6012,
+      3675,
+      3694,
+      1173,
+      2372,
+      4856,
+      5160,
+      6472,
+      1277,
+      5083,
+      2103,
+      3499,
+      1366,
+      1519,
+      1509,
+      2431,
+      271,
+      2729,
+      636,
+      1915,
+      4075,
+      895,
+      266,
+      5096,
+      6290,
+      3736,
+      93,
+      6173,
+      3667,
+      5157,
+      1990,
+      3412,
+      2438,
+      3994,
+      5053,
+      3494
+    ]
+  },
+  "vocabulary": {
+    "label_to_idx": {
+      "kite": 69,
+      "pant": 87,
+      "bowl": 18,
+      "laptop": 72,
+      "paper": 88,
+      "motorcycle": 80,
+      "railing": 103,
+      "chair": 28,
+      "windshield": 146,
+      "tire": 130,
+      "cup": 34,
+      "bench": 10,
+      "tail": 127,
+      "bike": 11,
+      "board": 13,
+      "orange": 86,
+      "hat": 60,
+      "finger": 46,
+      "plate": 97,
+      "woman": 149,
+      "handle": 59,
+      "branch": 21,
+      "food": 49,
+      "bear": 8,
+      "vase": 140,
+      "vegetable": 141,
+      "giraffe": 52,
+      "desk": 36,
+      "lady": 70,
+      "towel": 132,
+      "glove": 55,
+      "bag": 4,
+      "nose": 84,
+      "rock": 104,
+      "guy": 56,
+      "shoe": 112,
+      "sneaker": 120,
+      "fence": 45,
+      "people": 90,
+      "house": 65,
+      "seat": 108,
+      "hair": 57,
+      "street": 124,
+      "roof": 105,
+      "racket": 102,
+      "logo": 77,
+      "girl": 53,
+      "arm": 3,
+      "flower": 48,
+      "leaf": 73,
+      "clock": 30,
+      "hill": 63,
+      "bird": 12,
+      "umbrella": 139,
+      "leg": 74,
+      "screen": 107,
+      "men": 79,
+      "sink": 116,
+      "trunk": 138,
+      "post": 100,
+      "sidewalk": 114,
+      "box": 19,
+      "boy": 20,
+      "cow": 33,
+      "skateboard": 117,
+      "plane": 95,
+      "stand": 123,
+      "pillow": 93,
+      "ski": 118,
+      "wire": 148,
+      "toilet": 131,
+      "pot": 101,
+      "sign": 115,
+      "number": 85,
+      "pole": 99,
+      "table": 126,
+      "boat": 14,
+      "sheep": 109,
+      "horse": 64,
+      "eye": 43,
+      "sock": 122,
+      "window": 145,
+      "vehicle": 142,
+      "curtain": 35,
+      "kid": 68,
+      "banana": 5,
+      "engine": 42,
+      "head": 61,
+      "door": 38,
+      "bus": 23,
+      "cabinet": 24,
+      "glass": 54,
+      "flag": 47,
+      "train": 135,
+      "child": 29,
+      "ear": 40,
+      "surfboard": 125,
+      "room": 106,
+      "player": 98,
+      "car": 26,
+      "cap": 25,
+      "tree": 136,
+      "bed": 9,
+      "cat": 27,
+      "coat": 31,
+      "skier": 119,
+      "zebra": 150,
+      "fork": 50,
+      "drawer": 39,
+      "airplane": 1,
+      "helmet": 62,
+      "shirt": 111,
+      "paw": 89,
+      "boot": 16,
+      "snow": 121,
+      "lamp": 71,
+      "book": 15,
+      "animal": 2,
+      "elephant": 41,
+      "tile": 129,
+      "tie": 128,
+      "beach": 7,
+      "pizza": 94,
+      "wheel": 144,
+      "plant": 96,
+      "tower": 133,
+      "mountain": 81,
+      "track": 134,
+      "hand": 58,
+      "fruit": 51,
+      "mouth": 82,
+      "letter": 75,
+      "shelf": 110,
+      "wave": 143,
+      "man": 78,
+      "building": 22,
+      "short": 113,
+      "neck": 83,
+      "phone": 92,
+      "light": 76,
+      "counter": 32,
+      "dog": 37,
+      "face": 44,
+      "jacket": 66,
+      "person": 91,
+      "truck": 137,
+      "bottle": 17,
+      "basket": 6,
+      "jean": 67,
+      "wing": 147
+    },
+    "predicate_to_idx": {
+      "and": 5,
+      "says": 39,
+      "belonging to": 9,
+      "over": 33,
+      "parked on": 35,
+      "growing on": 18,
+      "standing on": 41,
+      "made of": 27,
+      "attached to": 7,
+      "at": 6,
+      "in": 22,
+      "hanging from": 19,
+      "wears": 49,
+      "in front of": 23,
+      "from": 17,
+      "for": 16,
+      "watching": 47,
+      "lying on": 26,
+      "to": 42,
+      "behind": 8,
+      "flying in": 15,
+      "looking at": 25,
+      "on back of": 32,
+      "holding": 21,
+      "between": 10,
+      "laying on": 24,
+      "riding": 38,
+      "has": 20,
+      "across": 2,
+      "wearing": 48,
+      "walking on": 46,
+      "eating": 14,
+      "above": 1,
+      "part of": 36,
+      "walking in": 45,
+      "sitting on": 40,
+      "under": 43,
+      "covered in": 12,
+      "carrying": 11,
+      "using": 44,
+      "along": 4,
+      "with": 50,
+      "on": 31,
+      "covering": 13,
+      "of": 30,
+      "against": 3,
+      "playing": 37,
+      "near": 29,
+      "painted on": 34,
+      "mounted on": 28
+    }
+  },
+  "train_statistics": {
+    "images": 57723,
+    "objects": 670591,
+    "candidate_pairs": 9029910,
+    "positive_pairs": 297318,
+    "multi_predicate_pairs": 16894,
+    "GT_rows": 405860,
+    "unique_GT_triplets": 315642,
+    "self_GT_rows_excluded": 0,
+    "images_without_GT": 0,
+    "objects_per_image": {
+      "50": 11.0,
+      "90": 19.0,
+      "99": 29.0,
+      "100": 62.0
+    },
+    "object_support": {
+      "1": 934,
+      "2": 1420,
+      "3": 5874,
+      "4": 4491,
+      "5": 2437,
+      "6": 1505,
+      "7": 2127,
+      "8": 1923,
+      "9": 1893,
+      "10": 3258,
+      "11": 2935,
+      "12": 2226,
+      "13": 2479,
+      "14": 2870,
+      "15": 2464,
+      "16": 1794,
+      "17": 3580,
+      "18": 2767,
+      "19": 2978,
+      "20": 4375,
+      "21": 3612,
+      "22": 17118,
+      "23": 3064,
+      "24": 2243,
+      "25": 2453,
+      "26": 9187,
+      "27": 2190,
+      "28": 6720,
+      "29": 1836,
+      "30": 2862,
+      "31": 2479,
+      "32": 2326,
+      "33": 2562,
+      "34": 2391,
+      "35": 1815,
+      "36": 1375,
+      "37": 2745,
+      "38": 7567,
+      "39": 1352,
+      "40": 7611,
+      "41": 2920,
+      "42": 1670,
+      "43": 3285,
+      "44": 5421,
+      "45": 7399,
+      "46": 1739,
+      "47": 1871,
+      "48": 4453,
+      "49": 3281,
+      "50": 1490,
+      "51": 1192,
+      "52": 2903,
+      "53": 3752,
+      "54": 6658,
+      "55": 2503,
+      "56": 1115,
+      "57": 11126,
+      "58": 10798,
+      "59": 4390,
+      "60": 5331,
+      "61": 13055,
+      "62": 3855,
+      "63": 2417,
+      "64": 3130,
+      "65": 2725,
+      "66": 6505,
+      "67": 3494,
+      "68": 1020,
+      "69": 1972,
+      "70": 1308,
+      "71": 2310,
+      "72": 1854,
+      "73": 7286,
+      "74": 13112,
+      "75": 3430,
+      "76": 8188,
+      "77": 2901,
+      "78": 33535,
+      "79": 1136,
+      "80": 2575,
+      "81": 2743,
+      "82": 2258,
+      "83": 2875,
+      "84": 3762,
+      "85": 1906,
+      "86": 1387,
+      "87": 8095,
+      "88": 2512,
+      "89": 1561,
+      "90": 8147,
+      "91": 20966,
+      "92": 1545,
+      "93": 3126,
+      "94": 2012,
+      "95": 2644,
+      "96": 3348,
+      "97": 6437,
+      "98": 2406,
+      "99": 12666,
+      "100": 3597,
+      "101": 1448,
+      "102": 1591,
+      "103": 1755,
+      "104": 4533,
+      "105": 3938,
+      "106": 1346,
+      "107": 1356,
+      "108": 2603,
+      "109": 2116,
+      "110": 3012,
+      "111": 21672,
+      "112": 7743,
+      "113": 5018,
+      "114": 5267,
+      "115": 13679,
+      "116": 1707,
+      "117": 2374,
+      "118": 2307,
+      "119": 1348,
+      "120": 1368,
+      "121": 5598,
+      "122": 1967,
+      "123": 1543,
+      "124": 6081,
+      "125": 2270,
+      "126": 10640,
+      "127": 5578,
+      "128": 1623,
+      "129": 3318,
+      "130": 3524,
+      "131": 1288,
+      "132": 1725,
+      "133": 1614,
+      "134": 4284,
+      "135": 3765,
+      "136": 28976,
+      "137": 2650,
+      "138": 3223,
+      "139": 3828,
+      "140": 1538,
+      "141": 1074,
+      "142": 1778,
+      "143": 3298,
+      "144": 5620,
+      "145": 21705,
+      "146": 1990,
+      "147": 2616,
+      "148": 2489,
+      "149": 15372,
+      "150": 2499
+    },
+    "predicate_support": {
+      "1": 8411,
+      "2": 263,
+      "3": 224,
+      "4": 493,
+      "5": 679,
+      "6": 2109,
+      "7": 1586,
+      "8": 13047,
+      "9": 652,
+      "10": 511,
+      "11": 1705,
+      "12": 485,
+      "13": 512,
+      "14": 702,
+      "15": 5,
+      "16": 1116,
+      "17": 198,
+      "18": 172,
+      "19": 807,
+      "20": 69007,
+      "21": 11482,
+      "22": 24470,
+      "23": 3808,
+      "24": 779,
+      "25": 1026,
+      "26": 369,
+      "27": 128,
+      "28": 265,
+      "29": 20759,
+      "30": 32770,
+      "31": 118037,
+      "32": 343,
+      "33": 1277,
+      "34": 153,
+      "35": 641,
+      "36": 435,
+      "37": 134,
+      "38": 4507,
+      "39": 49,
+      "40": 5355,
+      "41": 2496,
+      "42": 327,
+      "43": 4732,
+      "44": 580,
+      "45": 289,
+      "46": 1322,
+      "47": 907,
+      "48": 48582,
+      "49": 4939,
+      "50": 12215
+    },
+    "absent_object_ids": [],
+    "absent_predicate_ids": [],
+    "statistics_source": "train only; annotation rows retained for evaluation, distinct positive pairs for sampling"
+  },
+  "glove": {
+    "source": {
+      "repo": "stanfordnlp/glove",
+      "revision": "1db2080b2d94def6e5b0386a523102f9d8849e9d",
+      "file": {
+        "rfilename": "glove.6B.zip",
+        "blobId": "6c103e180ab00be320009820952ecd2fd94b37c1",
+        "size": 862182753,
+        "lfs": {
+          "sha256": "6471382cdd837544bf3ac72497a38715e845897d265b2b424b4761832009c837",
+          "size": 862182753,
+          "pointerSize": 134
+        }
+      },
+      "url": "https://huggingface.co/stanfordnlp/glove/resolve/1db2080b2d94def6e5b0386a523102f9d8849e9d/glove.6B.zip",
+      "upstream": "https://nlp.stanford.edu/projects/glove/",
+      "text_sha256": "a12599d41e3589c7160be27fffe5b0080eccd0f0c75f46666c59f90188093c40"
+    },
+    "rows_scanned": 400001,
+    "arrays_sha256": "aedaa60ba6ea8233ec108aaad4b2bd216e7dd7325f4d40822e8b8cb1af3b9347",
+    "dimension": 300,
+    "objects": {
+      "counts": {
+        "background": 1,
+        "exact": 150
+      },
+      "rows": [
+        {
+          "id": 0,
+          "label": "__background__",
+          "status": "background",
+          "used_tokens": []
+        },
+        {
+          "id": 1,
+          "label": "airplane",
+          "status": "exact",
+          "used_tokens": [
+            "airplane"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "animal",
+          "status": "exact",
+          "used_tokens": [
+            "animal"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "arm",
+          "status": "exact",
+          "used_tokens": [
+            "arm"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "bag",
+          "status": "exact",
+          "used_tokens": [
+            "bag"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "banana",
+          "status": "exact",
+          "used_tokens": [
+            "banana"
+          ]
+        },
+        {
+          "id": 6,
+          "label": "basket",
+          "status": "exact",
+          "used_tokens": [
+            "basket"
+          ]
+        },
+        {
+          "id": 7,
+          "label": "beach",
+          "status": "exact",
+          "used_tokens": [
+            "beach"
+          ]
+        },
+        {
+          "id": 8,
+          "label": "bear",
+          "status": "exact",
+          "used_tokens": [
+            "bear"
+          ]
+        },
+        {
+          "id": 9,
+          "label": "bed",
+          "status": "exact",
+          "used_tokens": [
+            "bed"
+          ]
+        },
+        {
+          "id": 10,
+          "label": "bench",
+          "status": "exact",
+          "used_tokens": [
+            "bench"
+          ]
+        },
+        {
+          "id": 11,
+          "label": "bike",
+          "status": "exact",
+          "used_tokens": [
+            "bike"
+          ]
+        },
+        {
+          "id": 12,
+          "label": "bird",
+          "status": "exact",
+          "used_tokens": [
+            "bird"
+          ]
+        },
+        {
+          "id": 13,
+          "label": "board",
+          "status": "exact",
+          "used_tokens": [
+            "board"
+          ]
+        },
+        {
+          "id": 14,
+          "label": "boat",
+          "status": "exact",
+          "used_tokens": [
+            "boat"
+          ]
+        },
+        {
+          "id": 15,
+          "label": "book",
+          "status": "exact",
+          "used_tokens": [
+            "book"
+          ]
+        },
+        {
+          "id": 16,
+          "label": "boot",
+          "status": "exact",
+          "used_tokens": [
+            "boot"
+          ]
+        },
+        {
+          "id": 17,
+          "label": "bottle",
+          "status": "exact",
+          "used_tokens": [
+            "bottle"
+          ]
+        },
+        {
+          "id": 18,
+          "label": "bowl",
+          "status": "exact",
+          "used_tokens": [
+            "bowl"
+          ]
+        },
+        {
+          "id": 19,
+          "label": "box",
+          "status": "exact",
+          "used_tokens": [
+            "box"
+          ]
+        },
+        {
+          "id": 20,
+          "label": "boy",
+          "status": "exact",
+          "used_tokens": [
+            "boy"
+          ]
+        },
+        {
+          "id": 21,
+          "label": "branch",
+          "status": "exact",
+          "used_tokens": [
+            "branch"
+          ]
+        },
+        {
+          "id": 22,
+          "label": "building",
+          "status": "exact",
+          "used_tokens": [
+            "building"
+          ]
+        },
+        {
+          "id": 23,
+          "label": "bus",
+          "status": "exact",
+          "used_tokens": [
+            "bus"
+          ]
+        },
+        {
+          "id": 24,
+          "label": "cabinet",
+          "status": "exact",
+          "used_tokens": [
+            "cabinet"
+          ]
+        },
+        {
+          "id": 25,
+          "label": "cap",
+          "status": "exact",
+          "used_tokens": [
+            "cap"
+          ]
+        },
+        {
+          "id": 26,
+          "label": "car",
+          "status": "exact",
+          "used_tokens": [
+            "car"
+          ]
+        },
+        {
+          "id": 27,
+          "label": "cat",
+          "status": "exact",
+          "used_tokens": [
+            "cat"
+          ]
+        },
+        {
+          "id": 28,
+          "label": "chair",
+          "status": "exact",
+          "used_tokens": [
+            "chair"
+          ]
+        },
+        {
+          "id": 29,
+          "label": "child",
+          "status": "exact",
+          "used_tokens": [
+            "child"
+          ]
+        },
+        {
+          "id": 30,
+          "label": "clock",
+          "status": "exact",
+          "used_tokens": [
+            "clock"
+          ]
+        },
+        {
+          "id": 31,
+          "label": "coat",
+          "status": "exact",
+          "used_tokens": [
+            "coat"
+          ]
+        },
+        {
+          "id": 32,
+          "label": "counter",
+          "status": "exact",
+          "used_tokens": [
+            "counter"
+          ]
+        },
+        {
+          "id": 33,
+          "label": "cow",
+          "status": "exact",
+          "used_tokens": [
+            "cow"
+          ]
+        },
+        {
+          "id": 34,
+          "label": "cup",
+          "status": "exact",
+          "used_tokens": [
+            "cup"
+          ]
+        },
+        {
+          "id": 35,
+          "label": "curtain",
+          "status": "exact",
+          "used_tokens": [
+            "curtain"
+          ]
+        },
+        {
+          "id": 36,
+          "label": "desk",
+          "status": "exact",
+          "used_tokens": [
+            "desk"
+          ]
+        },
+        {
+          "id": 37,
+          "label": "dog",
+          "status": "exact",
+          "used_tokens": [
+            "dog"
+          ]
+        },
+        {
+          "id": 38,
+          "label": "door",
+          "status": "exact",
+          "used_tokens": [
+            "door"
+          ]
+        },
+        {
+          "id": 39,
+          "label": "drawer",
+          "status": "exact",
+          "used_tokens": [
+            "drawer"
+          ]
+        },
+        {
+          "id": 40,
+          "label": "ear",
+          "status": "exact",
+          "used_tokens": [
+            "ear"
+          ]
+        },
+        {
+          "id": 41,
+          "label": "elephant",
+          "status": "exact",
+          "used_tokens": [
+            "elephant"
+          ]
+        },
+        {
+          "id": 42,
+          "label": "engine",
+          "status": "exact",
+          "used_tokens": [
+            "engine"
+          ]
+        },
+        {
+          "id": 43,
+          "label": "eye",
+          "status": "exact",
+          "used_tokens": [
+            "eye"
+          ]
+        },
+        {
+          "id": 44,
+          "label": "face",
+          "status": "exact",
+          "used_tokens": [
+            "face"
+          ]
+        },
+        {
+          "id": 45,
+          "label": "fence",
+          "status": "exact",
+          "used_tokens": [
+            "fence"
+          ]
+        },
+        {
+          "id": 46,
+          "label": "finger",
+          "status": "exact",
+          "used_tokens": [
+            "finger"
+          ]
+        },
+        {
+          "id": 47,
+          "label": "flag",
+          "status": "exact",
+          "used_tokens": [
+            "flag"
+          ]
+        },
+        {
+          "id": 48,
+          "label": "flower",
+          "status": "exact",
+          "used_tokens": [
+            "flower"
+          ]
+        },
+        {
+          "id": 49,
+          "label": "food",
+          "status": "exact",
+          "used_tokens": [
+            "food"
+          ]
+        },
+        {
+          "id": 50,
+          "label": "fork",
+          "status": "exact",
+          "used_tokens": [
+            "fork"
+          ]
+        },
+        {
+          "id": 51,
+          "label": "fruit",
+          "status": "exact",
+          "used_tokens": [
+            "fruit"
+          ]
+        },
+        {
+          "id": 52,
+          "label": "giraffe",
+          "status": "exact",
+          "used_tokens": [
+            "giraffe"
+          ]
+        },
+        {
+          "id": 53,
+          "label": "girl",
+          "status": "exact",
+          "used_tokens": [
+            "girl"
+          ]
+        },
+        {
+          "id": 54,
+          "label": "glass",
+          "status": "exact",
+          "used_tokens": [
+            "glass"
+          ]
+        },
+        {
+          "id": 55,
+          "label": "glove",
+          "status": "exact",
+          "used_tokens": [
+            "glove"
+          ]
+        },
+        {
+          "id": 56,
+          "label": "guy",
+          "status": "exact",
+          "used_tokens": [
+            "guy"
+          ]
+        },
+        {
+          "id": 57,
+          "label": "hair",
+          "status": "exact",
+          "used_tokens": [
+            "hair"
+          ]
+        },
+        {
+          "id": 58,
+          "label": "hand",
+          "status": "exact",
+          "used_tokens": [
+            "hand"
+          ]
+        },
+        {
+          "id": 59,
+          "label": "handle",
+          "status": "exact",
+          "used_tokens": [
+            "handle"
+          ]
+        },
+        {
+          "id": 60,
+          "label": "hat",
+          "status": "exact",
+          "used_tokens": [
+            "hat"
+          ]
+        },
+        {
+          "id": 61,
+          "label": "head",
+          "status": "exact",
+          "used_tokens": [
+            "head"
+          ]
+        },
+        {
+          "id": 62,
+          "label": "helmet",
+          "status": "exact",
+          "used_tokens": [
+            "helmet"
+          ]
+        },
+        {
+          "id": 63,
+          "label": "hill",
+          "status": "exact",
+          "used_tokens": [
+            "hill"
+          ]
+        },
+        {
+          "id": 64,
+          "label": "horse",
+          "status": "exact",
+          "used_tokens": [
+            "horse"
+          ]
+        },
+        {
+          "id": 65,
+          "label": "house",
+          "status": "exact",
+          "used_tokens": [
+            "house"
+          ]
+        },
+        {
+          "id": 66,
+          "label": "jacket",
+          "status": "exact",
+          "used_tokens": [
+            "jacket"
+          ]
+        },
+        {
+          "id": 67,
+          "label": "jean",
+          "status": "exact",
+          "used_tokens": [
+            "jean"
+          ]
+        },
+        {
+          "id": 68,
+          "label": "kid",
+          "status": "exact",
+          "used_tokens": [
+            "kid"
+          ]
+        },
+        {
+          "id": 69,
+          "label": "kite",
+          "status": "exact",
+          "used_tokens": [
+            "kite"
+          ]
+        },
+        {
+          "id": 70,
+          "label": "lady",
+          "status": "exact",
+          "used_tokens": [
+            "lady"
+          ]
+        },
+        {
+          "id": 71,
+          "label": "lamp",
+          "status": "exact",
+          "used_tokens": [
+            "lamp"
+          ]
+        },
+        {
+          "id": 72,
+          "label": "laptop",
+          "status": "exact",
+          "used_tokens": [
+            "laptop"
+          ]
+        },
+        {
+          "id": 73,
+          "label": "leaf",
+          "status": "exact",
+          "used_tokens": [
+            "leaf"
+          ]
+        },
+        {
+          "id": 74,
+          "label": "leg",
+          "status": "exact",
+          "used_tokens": [
+            "leg"
+          ]
+        },
+        {
+          "id": 75,
+          "label": "letter",
+          "status": "exact",
+          "used_tokens": [
+            "letter"
+          ]
+        },
+        {
+          "id": 76,
+          "label": "light",
+          "status": "exact",
+          "used_tokens": [
+            "light"
+          ]
+        },
+        {
+          "id": 77,
+          "label": "logo",
+          "status": "exact",
+          "used_tokens": [
+            "logo"
+          ]
+        },
+        {
+          "id": 78,
+          "label": "man",
+          "status": "exact",
+          "used_tokens": [
+            "man"
+          ]
+        },
+        {
+          "id": 79,
+          "label": "men",
+          "status": "exact",
+          "used_tokens": [
+            "men"
+          ]
+        },
+        {
+          "id": 80,
+          "label": "motorcycle",
+          "status": "exact",
+          "used_tokens": [
+            "motorcycle"
+          ]
+        },
+        {
+          "id": 81,
+          "label": "mountain",
+          "status": "exact",
+          "used_tokens": [
+            "mountain"
+          ]
+        },
+        {
+          "id": 82,
+          "label": "mouth",
+          "status": "exact",
+          "used_tokens": [
+            "mouth"
+          ]
+        },
+        {
+          "id": 83,
+          "label": "neck",
+          "status": "exact",
+          "used_tokens": [
+            "neck"
+          ]
+        },
+        {
+          "id": 84,
+          "label": "nose",
+          "status": "exact",
+          "used_tokens": [
+            "nose"
+          ]
+        },
+        {
+          "id": 85,
+          "label": "number",
+          "status": "exact",
+          "used_tokens": [
+            "number"
+          ]
+        },
+        {
+          "id": 86,
+          "label": "orange",
+          "status": "exact",
+          "used_tokens": [
+            "orange"
+          ]
+        },
+        {
+          "id": 87,
+          "label": "pant",
+          "status": "exact",
+          "used_tokens": [
+            "pant"
+          ]
+        },
+        {
+          "id": 88,
+          "label": "paper",
+          "status": "exact",
+          "used_tokens": [
+            "paper"
+          ]
+        },
+        {
+          "id": 89,
+          "label": "paw",
+          "status": "exact",
+          "used_tokens": [
+            "paw"
+          ]
+        },
+        {
+          "id": 90,
+          "label": "people",
+          "status": "exact",
+          "used_tokens": [
+            "people"
+          ]
+        },
+        {
+          "id": 91,
+          "label": "person",
+          "status": "exact",
+          "used_tokens": [
+            "person"
+          ]
+        },
+        {
+          "id": 92,
+          "label": "phone",
+          "status": "exact",
+          "used_tokens": [
+            "phone"
+          ]
+        },
+        {
+          "id": 93,
+          "label": "pillow",
+          "status": "exact",
+          "used_tokens": [
+            "pillow"
+          ]
+        },
+        {
+          "id": 94,
+          "label": "pizza",
+          "status": "exact",
+          "used_tokens": [
+            "pizza"
+          ]
+        },
+        {
+          "id": 95,
+          "label": "plane",
+          "status": "exact",
+          "used_tokens": [
+            "plane"
+          ]
+        },
+        {
+          "id": 96,
+          "label": "plant",
+          "status": "exact",
+          "used_tokens": [
+            "plant"
+          ]
+        },
+        {
+          "id": 97,
+          "label": "plate",
+          "status": "exact",
+          "used_tokens": [
+            "plate"
+          ]
+        },
+        {
+          "id": 98,
+          "label": "player",
+          "status": "exact",
+          "used_tokens": [
+            "player"
+          ]
+        },
+        {
+          "id": 99,
+          "label": "pole",
+          "status": "exact",
+          "used_tokens": [
+            "pole"
+          ]
+        },
+        {
+          "id": 100,
+          "label": "post",
+          "status": "exact",
+          "used_tokens": [
+            "post"
+          ]
+        },
+        {
+          "id": 101,
+          "label": "pot",
+          "status": "exact",
+          "used_tokens": [
+            "pot"
+          ]
+        },
+        {
+          "id": 102,
+          "label": "racket",
+          "status": "exact",
+          "used_tokens": [
+            "racket"
+          ]
+        },
+        {
+          "id": 103,
+          "label": "railing",
+          "status": "exact",
+          "used_tokens": [
+            "railing"
+          ]
+        },
+        {
+          "id": 104,
+          "label": "rock",
+          "status": "exact",
+          "used_tokens": [
+            "rock"
+          ]
+        },
+        {
+          "id": 105,
+          "label": "roof",
+          "status": "exact",
+          "used_tokens": [
+            "roof"
+          ]
+        },
+        {
+          "id": 106,
+          "label": "room",
+          "status": "exact",
+          "used_tokens": [
+            "room"
+          ]
+        },
+        {
+          "id": 107,
+          "label": "screen",
+          "status": "exact",
+          "used_tokens": [
+            "screen"
+          ]
+        },
+        {
+          "id": 108,
+          "label": "seat",
+          "status": "exact",
+          "used_tokens": [
+            "seat"
+          ]
+        },
+        {
+          "id": 109,
+          "label": "sheep",
+          "status": "exact",
+          "used_tokens": [
+            "sheep"
+          ]
+        },
+        {
+          "id": 110,
+          "label": "shelf",
+          "status": "exact",
+          "used_tokens": [
+            "shelf"
+          ]
+        },
+        {
+          "id": 111,
+          "label": "shirt",
+          "status": "exact",
+          "used_tokens": [
+            "shirt"
+          ]
+        },
+        {
+          "id": 112,
+          "label": "shoe",
+          "status": "exact",
+          "used_tokens": [
+            "shoe"
+          ]
+        },
+        {
+          "id": 113,
+          "label": "short",
+          "status": "exact",
+          "used_tokens": [
+            "short"
+          ]
+        },
+        {
+          "id": 114,
+          "label": "sidewalk",
+          "status": "exact",
+          "used_tokens": [
+            "sidewalk"
+          ]
+        },
+        {
+          "id": 115,
+          "label": "sign",
+          "status": "exact",
+          "used_tokens": [
+            "sign"
+          ]
+        },
+        {
+          "id": 116,
+          "label": "sink",
+          "status": "exact",
+          "used_tokens": [
+            "sink"
+          ]
+        },
+        {
+          "id": 117,
+          "label": "skateboard",
+          "status": "exact",
+          "used_tokens": [
+            "skateboard"
+          ]
+        },
+        {
+          "id": 118,
+          "label": "ski",
+          "status": "exact",
+          "used_tokens": [
+            "ski"
+          ]
+        },
+        {
+          "id": 119,
+          "label": "skier",
+          "status": "exact",
+          "used_tokens": [
+            "skier"
+          ]
+        },
+        {
+          "id": 120,
+          "label": "sneaker",
+          "status": "exact",
+          "used_tokens": [
+            "sneaker"
+          ]
+        },
+        {
+          "id": 121,
+          "label": "snow",
+          "status": "exact",
+          "used_tokens": [
+            "snow"
+          ]
+        },
+        {
+          "id": 122,
+          "label": "sock",
+          "status": "exact",
+          "used_tokens": [
+            "sock"
+          ]
+        },
+        {
+          "id": 123,
+          "label": "stand",
+          "status": "exact",
+          "used_tokens": [
+            "stand"
+          ]
+        },
+        {
+          "id": 124,
+          "label": "street",
+          "status": "exact",
+          "used_tokens": [
+            "street"
+          ]
+        },
+        {
+          "id": 125,
+          "label": "surfboard",
+          "status": "exact",
+          "used_tokens": [
+            "surfboard"
+          ]
+        },
+        {
+          "id": 126,
+          "label": "table",
+          "status": "exact",
+          "used_tokens": [
+            "table"
+          ]
+        },
+        {
+          "id": 127,
+          "label": "tail",
+          "status": "exact",
+          "used_tokens": [
+            "tail"
+          ]
+        },
+        {
+          "id": 128,
+          "label": "tie",
+          "status": "exact",
+          "used_tokens": [
+            "tie"
+          ]
+        },
+        {
+          "id": 129,
+          "label": "tile",
+          "status": "exact",
+          "used_tokens": [
+            "tile"
+          ]
+        },
+        {
+          "id": 130,
+          "label": "tire",
+          "status": "exact",
+          "used_tokens": [
+            "tire"
+          ]
+        },
+        {
+          "id": 131,
+          "label": "toilet",
+          "status": "exact",
+          "used_tokens": [
+            "toilet"
+          ]
+        },
+        {
+          "id": 132,
+          "label": "towel",
+          "status": "exact",
+          "used_tokens": [
+            "towel"
+          ]
+        },
+        {
+          "id": 133,
+          "label": "tower",
+          "status": "exact",
+          "used_tokens": [
+            "tower"
+          ]
+        },
+        {
+          "id": 134,
+          "label": "track",
+          "status": "exact",
+          "used_tokens": [
+            "track"
+          ]
+        },
+        {
+          "id": 135,
+          "label": "train",
+          "status": "exact",
+          "used_tokens": [
+            "train"
+          ]
+        },
+        {
+          "id": 136,
+          "label": "tree",
+          "status": "exact",
+          "used_tokens": [
+            "tree"
+          ]
+        },
+        {
+          "id": 137,
+          "label": "truck",
+          "status": "exact",
+          "used_tokens": [
+            "truck"
+          ]
+        },
+        {
+          "id": 138,
+          "label": "trunk",
+          "status": "exact",
+          "used_tokens": [
+            "trunk"
+          ]
+        },
+        {
+          "id": 139,
+          "label": "umbrella",
+          "status": "exact",
+          "used_tokens": [
+            "umbrella"
+          ]
+        },
+        {
+          "id": 140,
+          "label": "vase",
+          "status": "exact",
+          "used_tokens": [
+            "vase"
+          ]
+        },
+        {
+          "id": 141,
+          "label": "vegetable",
+          "status": "exact",
+          "used_tokens": [
+            "vegetable"
+          ]
+        },
+        {
+          "id": 142,
+          "label": "vehicle",
+          "status": "exact",
+          "used_tokens": [
+            "vehicle"
+          ]
+        },
+        {
+          "id": 143,
+          "label": "wave",
+          "status": "exact",
+          "used_tokens": [
+            "wave"
+          ]
+        },
+        {
+          "id": 144,
+          "label": "wheel",
+          "status": "exact",
+          "used_tokens": [
+            "wheel"
+          ]
+        },
+        {
+          "id": 145,
+          "label": "window",
+          "status": "exact",
+          "used_tokens": [
+            "window"
+          ]
+        },
+        {
+          "id": 146,
+          "label": "windshield",
+          "status": "exact",
+          "used_tokens": [
+            "windshield"
+          ]
+        },
+        {
+          "id": 147,
+          "label": "wing",
+          "status": "exact",
+          "used_tokens": [
+            "wing"
+          ]
+        },
+        {
+          "id": 148,
+          "label": "wire",
+          "status": "exact",
+          "used_tokens": [
+            "wire"
+          ]
+        },
+        {
+          "id": 149,
+          "label": "woman",
+          "status": "exact",
+          "used_tokens": [
+            "woman"
+          ]
+        },
+        {
+          "id": 150,
+          "label": "zebra",
+          "status": "exact",
+          "used_tokens": [
+            "zebra"
+          ]
+        }
+      ]
+    },
+    "predicates": {
+      "counts": {
+        "background": 1,
+        "exact": 30,
+        "word_mean": 20
+      },
+      "rows": [
+        {
+          "id": 0,
+          "label": "__background__",
+          "status": "background",
+          "used_tokens": []
+        },
+        {
+          "id": 1,
+          "label": "above",
+          "status": "exact",
+          "used_tokens": [
+            "above"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "across",
+          "status": "exact",
+          "used_tokens": [
+            "across"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "against",
+          "status": "exact",
+          "used_tokens": [
+            "against"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "along",
+          "status": "exact",
+          "used_tokens": [
+            "along"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "and",
+          "status": "exact",
+          "used_tokens": [
+            "and"
+          ]
+        },
+        {
+          "id": 6,
+          "label": "at",
+          "status": "exact",
+          "used_tokens": [
+            "at"
+          ]
+        },
+        {
+          "id": 7,
+          "label": "attached to",
+          "status": "word_mean",
+          "used_tokens": [
+            "attached",
+            "to"
+          ]
+        },
+        {
+          "id": 8,
+          "label": "behind",
+          "status": "exact",
+          "used_tokens": [
+            "behind"
+          ]
+        },
+        {
+          "id": 9,
+          "label": "belonging to",
+          "status": "word_mean",
+          "used_tokens": [
+            "belonging",
+            "to"
+          ]
+        },
+        {
+          "id": 10,
+          "label": "between",
+          "status": "exact",
+          "used_tokens": [
+            "between"
+          ]
+        },
+        {
+          "id": 11,
+          "label": "carrying",
+          "status": "exact",
+          "used_tokens": [
+            "carrying"
+          ]
+        },
+        {
+          "id": 12,
+          "label": "covered in",
+          "status": "word_mean",
+          "used_tokens": [
+            "covered",
+            "in"
+          ]
+        },
+        {
+          "id": 13,
+          "label": "covering",
+          "status": "exact",
+          "used_tokens": [
+            "covering"
+          ]
+        },
+        {
+          "id": 14,
+          "label": "eating",
+          "status": "exact",
+          "used_tokens": [
+            "eating"
+          ]
+        },
+        {
+          "id": 15,
+          "label": "flying in",
+          "status": "word_mean",
+          "used_tokens": [
+            "flying",
+            "in"
+          ]
+        },
+        {
+          "id": 16,
+          "label": "for",
+          "status": "exact",
+          "used_tokens": [
+            "for"
+          ]
+        },
+        {
+          "id": 17,
+          "label": "from",
+          "status": "exact",
+          "used_tokens": [
+            "from"
+          ]
+        },
+        {
+          "id": 18,
+          "label": "growing on",
+          "status": "word_mean",
+          "used_tokens": [
+            "growing",
+            "on"
+          ]
+        },
+        {
+          "id": 19,
+          "label": "hanging from",
+          "status": "word_mean",
+          "used_tokens": [
+            "hanging",
+            "from"
+          ]
+        },
+        {
+          "id": 20,
+          "label": "has",
+          "status": "exact",
+          "used_tokens": [
+            "has"
+          ]
+        },
+        {
+          "id": 21,
+          "label": "holding",
+          "status": "exact",
+          "used_tokens": [
+            "holding"
+          ]
+        },
+        {
+          "id": 22,
+          "label": "in",
+          "status": "exact",
+          "used_tokens": [
+            "in"
+          ]
+        },
+        {
+          "id": 23,
+          "label": "in front of",
+          "status": "word_mean",
+          "used_tokens": [
+            "in",
+            "front",
+            "of"
+          ]
+        },
+        {
+          "id": 24,
+          "label": "laying on",
+          "status": "word_mean",
+          "used_tokens": [
+            "laying",
+            "on"
+          ]
+        },
+        {
+          "id": 25,
+          "label": "looking at",
+          "status": "word_mean",
+          "used_tokens": [
+            "looking",
+            "at"
+          ]
+        },
+        {
+          "id": 26,
+          "label": "lying on",
+          "status": "word_mean",
+          "used_tokens": [
+            "lying",
+            "on"
+          ]
+        },
+        {
+          "id": 27,
+          "label": "made of",
+          "status": "word_mean",
+          "used_tokens": [
+            "made",
+            "of"
+          ]
+        },
+        {
+          "id": 28,
+          "label": "mounted on",
+          "status": "word_mean",
+          "used_tokens": [
+            "mounted",
+            "on"
+          ]
+        },
+        {
+          "id": 29,
+          "label": "near",
+          "status": "exact",
+          "used_tokens": [
+            "near"
+          ]
+        },
+        {
+          "id": 30,
+          "label": "of",
+          "status": "exact",
+          "used_tokens": [
+            "of"
+          ]
+        },
+        {
+          "id": 31,
+          "label": "on",
+          "status": "exact",
+          "used_tokens": [
+            "on"
+          ]
+        },
+        {
+          "id": 32,
+          "label": "on back of",
+          "status": "word_mean",
+          "used_tokens": [
+            "on",
+            "back",
+            "of"
+          ]
+        },
+        {
+          "id": 33,
+          "label": "over",
+          "status": "exact",
+          "used_tokens": [
+            "over"
+          ]
+        },
+        {
+          "id": 34,
+          "label": "painted on",
+          "status": "word_mean",
+          "used_tokens": [
+            "painted",
+            "on"
+          ]
+        },
+        {
+          "id": 35,
+          "label": "parked on",
+          "status": "word_mean",
+          "used_tokens": [
+            "parked",
+            "on"
+          ]
+        },
+        {
+          "id": 36,
+          "label": "part of",
+          "status": "word_mean",
+          "used_tokens": [
+            "part",
+            "of"
+          ]
+        },
+        {
+          "id": 37,
+          "label": "playing",
+          "status": "exact",
+          "used_tokens": [
+            "playing"
+          ]
+        },
+        {
+          "id": 38,
+          "label": "riding",
+          "status": "exact",
+          "used_tokens": [
+            "riding"
+          ]
+        },
+        {
+          "id": 39,
+          "label": "says",
+          "status": "exact",
+          "used_tokens": [
+            "says"
+          ]
+        },
+        {
+          "id": 40,
+          "label": "sitting on",
+          "status": "word_mean",
+          "used_tokens": [
+            "sitting",
+            "on"
+          ]
+        },
+        {
+          "id": 41,
+          "label": "standing on",
+          "status": "word_mean",
+          "used_tokens": [
+            "standing",
+            "on"
+          ]
+        },
+        {
+          "id": 42,
+          "label": "to",
+          "status": "exact",
+          "used_tokens": [
+            "to"
+          ]
+        },
+        {
+          "id": 43,
+          "label": "under",
+          "status": "exact",
+          "used_tokens": [
+            "under"
+          ]
+        },
+        {
+          "id": 44,
+          "label": "using",
+          "status": "exact",
+          "used_tokens": [
+            "using"
+          ]
+        },
+        {
+          "id": 45,
+          "label": "walking in",
+          "status": "word_mean",
+          "used_tokens": [
+            "walking",
+            "in"
+          ]
+        },
+        {
+          "id": 46,
+          "label": "walking on",
+          "status": "word_mean",
+          "used_tokens": [
+            "walking",
+            "on"
+          ]
+        },
+        {
+          "id": 47,
+          "label": "watching",
+          "status": "exact",
+          "used_tokens": [
+            "watching"
+          ]
+        },
+        {
+          "id": 48,
+          "label": "wearing",
+          "status": "exact",
+          "used_tokens": [
+            "wearing"
+          ]
+        },
+        {
+          "id": 49,
+          "label": "wears",
+          "status": "exact",
+          "used_tokens": [
+            "wears"
+          ]
+        },
+        {
+          "id": 50,
+          "label": "with",
+          "status": "exact",
+          "used_tokens": [
+            "with"
+          ]
+        }
+      ]
+    },
+    "policy": "fixed taxonomy; exact / object-longest-word / predicate-word-mean / label-keyed seeded fallback",
+    "fallback_seed": 42
+  },
+  "source_sha256": {
+    "/workspace/workspace/semantic-graph-editing/tools/vg150_penet_v1/prepare.py": "e95a5c888c842d6936b69d8d3fbee1bcbd8c3f6d45e419db4e445e9bd2f22ffd",
+    "/workspace/workspace/semantic-graph-editing/tools/vg150_penet_v1/data.py": "5379d486a2608ba2b931a7433041b4811fb0b12a603403dbaab9ca231c1d3c36",
+    "src/features/glove.py": "e9f2e8b5fb41206dc88f8a31ba3d1dd169ef56f1949d2ee6fc9558fb6f486feb",
+    "src/datasets/vg150.py": "48365e5bed0b9da7663ad8b489a5a811a6362263d402462199dd1be75c863776",
+    "src/features/visual.py": "12679300334149acca8e58b9ff4c3be441d518e620444dde0082bc1b7be91f1f",
+    "src/graph/builder.py": "8258c92406fbcb9bfb3c175edc3434d74d0271a7c10f6424c4096dd7d124e7e2",
+    "tools/run_gqa_full_prepared.py": "e575ea139e3760f16e2e11913c5b7e66525765efcab192299d4660db0787f097"
+  },
+  "val_annotation_labels_used_for_statistics_or_mapping": false,
+  "test_annotation_labels_opened": false,
+  "GPU_compute_started": false,
+  "new_training_started": false
+}

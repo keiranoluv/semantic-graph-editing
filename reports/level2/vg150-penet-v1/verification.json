@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "scope": "VG150 code/preparation/CPU tests; no GPU training started by assistant",
+  "baseline_commit": "4dfc4ed",
+  "new_VG150_GPU_runs_started": 0,
+  "new_VG150_real_data_optimizer_updates": 0,
+  "cpu_tests": {
+    "passed": 50,
+    "GPU_cases_deselected": 7,
+    "new_VG150_tests_passed": 17,
+    "command": "myenv/bin/python -m pytest -q tests/training/test_vg150_penet_v1.py tests/training/test_penet.py tests/training/test_gqa_full.py tests/evaluation/test_reference_predcls.py -k 'not cuda'"
+  },
+  "contracts": [
+    "all six models forward/backward CPU",
+    "mid-epoch checkpoint resume exact model/optimizer/RNG/metrics for six models",
+    "matched sampling traces across six models and matched initialization for PE variants",
+    "duplicate GT rows and multiple positive predicates retained without train overcount",
+    "label-independent full topology; self-GT excluded explicitly",
+    "train-only frequency/mapping statistics; test dataset rejected",
+    "reference evaluator differential check and fixed 50-predicate denominator",
+    "full training gate requires six verified pilots; one model/seed per invocation",
+    "private trainer module does not mutate frozen GQA module globals"
+  ],
+  "real_wiring_smoke_sha256": "8957a8a9c115052f76e1556c1090c3c0a51b9139fde7709d7d584190054d71c3",
+  "prepared_manifest_sha256": "e8a3e3128066959abd68ce8c7a303d41c4e9c41577b5f9360dc30a5ba6468700",
+  "split_counts": {
+    "train": 57723,
+    "val": 5000,
+    "test": 26446
+  },
+  "train_statistics": {
+    "images": 57723,
+    "objects": 670591,
+    "candidate_pairs": 9029910,
+    "positive_pairs": 297318,
+    "multi_predicate_pairs": 16894,
+    "GT_rows": 405860,
+    "unique_GT_triplets": 315642,
+    "self_GT_rows_excluded": 0,
+    "images_without_GT": 0,
+    "objects_per_image": {
+      "50": 11.0,
+      "90": 19.0,
+      "99": 29.0,
+      "100": 62.0
+    },
+    "absent_object_ids": [],
+    "absent_predicate_ids": [],
+    "statistics_source": "train only; annotation rows retained for evaluation, distinct positive pairs for sampling"
+  },
+  "glove_coverage": {
+    "objects": {
+      "background": 1,
+      "exact": 150
+    },
+    "predicates": {
+      "background": 1,
+      "exact": 30,
+      "word_mean": 20
+    }
+  },
+  "legacy": {
+    "GQA_reference_source_hash_counts": {
+      "runs/level2/gqa-full-v3-bs512/experiment.json": 73,
+      "runs/level2/gqa-wordnet-full-v2-bs512/experiment.json": 80
+    },
+    "GQA_completed_results_and_best_checkpoints_verified": 15,
+    "GQA_KG_three_completed_results": [
+      {
+        "seed": 42,
+        "result_sha256": "2e92448b69899072199535d12809dcbbc0d62252de98e1d0cde822b023577a3a",
+        "best_checkpoint_sha256": "7b814e5185b4b5329091f62a2669d009094fcc455e121f6ac99e8df2eb7b1a96"
+      },
+      {
+        "seed": 123,
+        "result_sha256": "ff25565f3bdf03498a464bb13a7059a73a0d9418c5802e82aeef444275004489",
+        "best_checkpoint_sha256": "045e4231f84e877c81d6447ba486e7357b4c2c6cb356b51d84cb830e5b65ba7b"
+      },
+      {
+        "seed": 3407,
+        "result_sha256": "1a4c9f6ae7ead23e1024b220cf9649e3c1bdc7b3b5117336cab192ebed7df813",
+        "best_checkpoint_sha256": "081f8299aadf40841cf909624f871ff0f4425be5255a9fa90251440b333d30bd"
+      }
+    ],
+    "VG150_split_annotation_cache_and_reviewed_KG_hashes_verified": true,
+    "MagicBrush_code_config_tests_hashes_preserved": true,
+    "historical_tracked_artifacts_unchanged": true,
+    "personal_notebook_unchanged_and_not_in_commit": true,
+    "user_generated_GQA_summary_not_in_commit": true
+  },
+  "new_source_sha256": {
+    "configs/level2/vg150-penet-v1.json": "8182cdb1a04d3831cdc6a32d25554dbda57b415e35282f0685d8fe7274b5451d",
+    "tests/training/test_vg150_penet_v1.py": "8bbe7867d3b53325bc1994ea5e7451d974d8e246f42933c9044c4a34bdba45be",
+    "tools/run_vg150_penet.py": "708872448bf1a67e72e354b7629b2a930e29a1d54210a2a413fafa1569dc51b4",
+    "tools/vg150_penet_v1/__init__.py": "a8cf16d660d7a7f2cd05476bbb643e30086e8283e060a7e3126c48bfd1cdb28e",
+    "tools/vg150_penet_v1/data.py": "5379d486a2608ba2b931a7433041b4811fb0b12a603403dbaab9ca231c1d3c36",
+    "tools/vg150_penet_v1/experiment.py": "cd8cae51e6efaabf1f99bf9c2026ffb1e4bc37561baa924f6beec6630c9c107f",
+    "tools/vg150_penet_v1/prepare.py": "e95a5c888c842d6936b69d8d3fbee1bcbd8c3f6d45e419db4e445e9bd2f22ffd"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "scope": "real pinned train sample forward/backward on CPU; no optimizer updates or GPU training",
+  "train_image_id": "2363731",
+  "val_image_id_loaded_for_structure_check": "285889",
+  "x_shape": [
+    12,
+    517
+  ],
+  "val_x_shape": [
+    9,
+    517
+  ],
+  "models": {
+    "mlp": {
+      "status": "PASS",
+      "parameters": 299283,
+      "logit_shape": [
+        16,
+        51
+      ],
+      "finite_gradients": true,
+      "initial_state_sha256": "04f817a591336e3c991078200d4be3b9d29edcdd7c97193ded00a79a34f7ee04",
+      "optimizer_updates": 0
+    },
+    "gat": {
+      "status": "PASS",
+      "parameters": 423699,
+      "logit_shape": [
+        16,
+        51
+      ],
+      "finite_gradients": true,
+      "initial_state_sha256": "6c46e40b1e8f400a801b2d285e22bb387f51fc408f552f48e19f9c5ef5282d59",
+      "optimizer_updates": 0
+    },
+    "gat-kg": {
+      "status": "PASS",
+      "parameters": 440339,
+      "logit_shape": [
+        16,
+        51
+      ],
+      "finite_gradients": true,
+      "initial_state_sha256": "52cd95ebf81127585625a3624d2630c61d60301a6afe9b6fe1e21805ebdd6a0f",
+      "optimizer_updates": 0
+    },
+    "pe-ce": {
+      "status": "PASS",
+      "parameters": 1924409,
+      "logit_shape": [
+        16,
+        51
+      ],
+      "finite_gradients": true,
+      "initial_state_sha256": "48cdbc6a9d1d41e9867aa12ece77933f81f7a612dc12781ae7919e8f97aae7d3",
+      "optimizer_updates": 0
+    },
+    "pe-pl": {
+      "status": "PASS",
+      "parameters": 1924409,
+      "logit_shape": [
+        16,
+        51
+      ],
+      "finite_gradients": true,
+      "initial_state_sha256": "48cdbc6a9d1d41e9867aa12ece77933f81f7a612dc12781ae7919e8f97aae7d3",
+      "optimizer_updates": 0
+    },
+    "pe-plpr": {
+      "status": "PASS",
+      "parameters": 1924409,
+      "logit_shape": [
+        16,
+        51
+      ],
+      "finite_gradients": true,
+      "initial_state_sha256": "48cdbc6a9d1d41e9867aa12ece77933f81f7a612dc12781ae7919e8f97aae7d3",
+      "optimizer_updates": 0
+    }
+  },
+  "test_used": false,
+  "CUDA_initialized": false
+}
