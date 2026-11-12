@@ -3,9 +3,10 @@
 **Cập nhật 2026-11-12:** 15/15 lượt GQA full (MLP/GAT/PE-CE/PE-PL/PE-PLPR ×
 42/123/3407) đã hoàn tất và kiểm chứng; đây là điểm **validation**, chưa dùng
 test. [Bảng kết quả cuối](../reports/level2/gqa-full-v3-results-v1/README.md).
-GAT+WordNet đã có mapping riêng 693/1.699 lớp, TransE mới và pilot ba đối chứng
-PASS về sampling/exact resume; **chưa có mapping human review mới và chưa train
-GAT+KG full ba seed**. [Kết quả và cách tiếp tục](LEVEL2_GQA_KG.md).
+GAT+WordNet v2 đã áp dụng review mẫu **23 accept / 7 defer**, liên kết 701/1.699
+lớp và phủ 64,69% object trên full train. TransE mới và pilot ba đối chứng đã
+PASS; **full GAT+KG ba seed đang chạy tuần tự**, chưa có bảng kết quả hoàn chỉnh.
+[Trạng thái, protocol và bàn giao GPU](LEVEL2_GQA_WORDNET_V2.md).
 Các mốc phía dưới là nhật ký lịch sử; những câu “chưa chạy full” không còn mô tả
 trạng thái mới nhất. Bộ ≥300 cặp chỉnh sửa và human review ≥20 cặp vẫn chưa xong.
 

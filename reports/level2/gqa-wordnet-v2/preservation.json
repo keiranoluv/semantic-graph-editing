@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "old_reference_source_files_unchanged": 73,
+  "no_new_src_python_files": true,
+  "fifteen_full_GQA_results_checkpoints_summary_unchanged": true,
+  "v1_KG_embedding_checkpoint_and_feature_bundle_unchanged": true,
+  "personal_notebook_sha256": "786c3eff8b7d4abd93c1546dba3b9d9d4ff635fc160fa80a59c0eefdd8952c19",
+  "unreviewed_mapping_rows_preserved": true,
+  "seven_deferred_classes_unlinked_and_masked": true,
+  "v2_mapping_sha256": "ab95e29b0f0040d0091f1d9afb0a143d19f9a1deaa8b03425fe0890581b8993b",
+  "v2_feature_manifest_sha256": "15fb1bf98d9d9f12370530e9448d9ff6c483e7fc17d77d9d4201d8b335f1f3e5",
+  "v2_pilot_exact_resume_verified": true,
+  "full_run_sampling_matches_GAT_for_completed_epochs_at_audit": 21,
+  "training_stage_at_audit": "full_seed42_running; seeds123_3407_queued_by_existing_job",
+  "new_GPU_launch_policy": "commit code first, then provide commands for user to execute",
+  "held_out_GQA_test_evaluated": false,
+  "sample_review_scope_only": true
+}
