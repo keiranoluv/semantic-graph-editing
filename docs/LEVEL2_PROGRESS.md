@@ -1,5 +1,14 @@
 # Level 2 — khởi động và trạng thái triển khai
 
+**Cập nhật 2026-11-12:** 15/15 lượt GQA full (MLP/GAT/PE-CE/PE-PL/PE-PLPR ×
+42/123/3407) đã hoàn tất và kiểm chứng; đây là điểm **validation**, chưa dùng
+test. [Bảng kết quả cuối](../reports/level2/gqa-full-v3-results-v1/README.md).
+GAT+WordNet đã có mapping riêng 693/1.699 lớp, TransE mới và pilot ba đối chứng
+PASS về sampling/exact resume; **chưa có mapping human review mới và chưa train
+GAT+KG full ba seed**. [Kết quả và cách tiếp tục](LEVEL2_GQA_KG.md).
+Các mốc phía dưới là nhật ký lịch sử; những câu “chưa chạy full” không còn mô tả
+trạng thái mới nhất. Bộ ≥300 cặp chỉnh sửa và human review ≥20 cặp vẫn chưa xong.
+
 Mốc 2026-11-11, sau sáu commit bàn giao Level 1 (HEAD `4d34d37`). **Mốc khởi động đã có nền dữ liệu GQA và thao tác/chấm đồ thị. Cập nhật tiếp theo: đã train/eval GQA pilot MLP/GAT, nhưng chưa hoàn thành Level 2.** Các kết quả Level 1 được giữ nguyên. Tài liệu hiện tại là Markdown, chưa tạo báo cáo PDF/slide.
 
 Cập nhật GQA pilot: **512 train / 128 validation, seed 42, 5 epoch**, CLIP đóng băng; GC R@50 MLP **30,99%**, GAT **29,87%**. Đây là kiểm pipeline một seed, chưa phải thực nghiệm chính. [Báo cáo, protocol và lệnh demo](../reports/level2/GQA_PILOT.md).
@@ -24,8 +33,8 @@ Theo yêu cầu tiếp theo, v2 được dừng an toàn và chuyển sang **v3 
 
 | Hạng mục bắt buộc | Trạng thái |
 |---|---|
-| Thực nghiệm ít nhất hai dataset có sẵn | VG150 đã có; GQA đã có **pilot MLP/GAT một seed**, chưa có thực nghiệm chính ba seed/KG |
-| Triển khai/tái lập một phương pháp từ 2023 trở lại đây về SGG hoặc dự đoán quan hệ có tri thức | Đã chọn **PE-Net (CVPR 2023), bản thích nghi frozen-CLIP PredCls**; đã port + pilot GQA, chưa main study |
+| Thực nghiệm ít nhất hai dataset có sẵn | VG150 đã có; GQA đã hoàn tất 15 lượt full ba seed, GAT+KG mới ở pilot |
+| Triển khai/tái lập một phương pháp từ 2023 trở lại đây về SGG hoặc dự đoán quan hệ có tri thức | **PE-Net (CVPR 2023), bản thích nghi frozen-CLIP PredCls** đã có ba cấu hình full GQA × ba seed; còn đối chứng VG150 cùng protocol mới |
 | Ít nhất 300 cặp `(đồ thị nguồn, câu yêu cầu, thao tác đích)` từ MagicBrush/InstructPix2Pix | Chưa xây; ví dụ tổng hợp để kiểm code không được tính vào 300 cặp |
 | Kiểm tay ít nhất 20 mẫu và báo cáo độ tin cậy | Chưa có; cần người trong nhóm xác nhận, không tự đánh dấu hoàn thành |
 | Huấn luyện model dự đoán thao tác, nhúng câu đóng băng | Chưa triển khai/train |

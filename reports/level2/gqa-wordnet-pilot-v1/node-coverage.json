@@ -1,0 +1,12 @@
+{
+  "train": {
+    "objects": 8350,
+    "objects_with_valid_KG": 5483,
+    "object_KG_coverage": 0.656646728515625
+  },
+  "val": {
+    "objects": 2124,
+    "objects_with_valid_KG": 1359,
+    "object_KG_coverage": 0.6398305296897888
+  }
+}
