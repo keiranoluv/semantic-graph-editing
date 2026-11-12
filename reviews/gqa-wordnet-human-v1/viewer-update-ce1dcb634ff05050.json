@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "csv_path": "reviews/gqa-wordnet-human-v1/submissions/review-ce1dcb634ff05050.csv",
+  "csv_sha256": "ce1dcb634ff050505862b57b12aafafc2c3a11edd64018359a587893eea36657",
+  "packet_sha256": "07b738f58453a42c3f4a69ed04ba3859777e6d27712c5fcfcf611bc6bc0370e1",
+  "packet_file_sha256": "fa6acc94c57b50a2e3d04546a116b2228b54482a6d1e42fdf708ebd00f736753",
+  "decision_counts": {
+    "accept": 23,
+    "defer": 7
+  },
+  "baseline_index_sha256": "92556ce49082ed2a55c8a40bf5abffc792f84ad3f3188e49a7d594bf503a1942",
+  "updated_index_sha256": "936dbcb38e2788c11a5cfe5f01c8f517b68bb713de24c32bfa65d6d6842bebe5",
+  "browser_draft_backup_before_import": true,
+  "same_snapshot_preserves_subsequent_browser_edits": true,
+  "mapping_updated": false,
+  "training_launched": false,
+  "source_sha256": {
+    "/workspace/workspace/semantic-graph-editing/tools/apply_gqa_review_snapshot.py": "a29f7af0f53e2c58b89e992add1159d8727895b93d7901199c8e3249709074e3",
+    "/workspace/workspace/semantic-graph-editing/tools/gqa_review_snapshot.js": "3403ec08b7f9534b6db6b356f3e7a62ad9dcfcdf683f364b422cf63eb5590462"
+  }
+}

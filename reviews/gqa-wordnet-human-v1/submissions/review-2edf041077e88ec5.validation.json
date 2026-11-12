@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "scope": "validate_explicit_human_sample_review_only_no_mapping_update",
+  "source_csv": "reviews/gqa-wordnet-human-v1/submissions/review-2edf041077e88ec5.csv",
+  "source_csv_sha256": "2edf041077e88ec56172803a3fd66c3bcc8c3c5095915c703c34cbf41b4abc61",
+  "review_packet_sha256": "07b738f58453a42c3f4a69ed04ba3859777e6d27712c5fcfcf611bc6bc0370e1",
+  "filename_content_hash_matches": true,
+  "rows": 30,
+  "decision_counts": {
+    "accept": 23,
+    "pending": 7
+  },
+  "reviewer_names_as_entered": {
+    "Toan": 28,
+    "Toàn": 2
+  },
+  "accepted": [
+    {
+      "class_id": 20,
+      "label": "animal",
+      "selected_synset": "animal.n.01",
+      "reviewer": "Toan",
+      "notes": "Đều chỉ con vật",
+      "csv_line": 2
+    },
+    {
+      "class_id": 56,
+      "label": "bacon",
+      "selected_synset": "bacon.n.01",
+      "reviewer": "Toan",
+      "notes": "Đúng là thịt",
+      "csv_line": 3
+    },
+    {
+      "class_id": 106,
+      "label": "bear",
+      "selected_synset": "bear.n.01",
+      "reviewer": "Toan",
+      "notes": "Gấu",
+      "csv_line": 4
+    },
+    {
+      "class_id": 117,
+      "label": "beer bottle",
+      "selected_synset": "beer_bottle.n.01",
+      "reviewer": "Toan",
+      "notes": "BIA",
+      "csv_line": 5
+    },
+    {
+      "class_id": 181,
+      "label": "box",
+      "selected_synset": "box.n.01",
+      "reviewer": "Toàn",
+      "notes": "",
+      "csv_line": 6
+    },
+    {
+      "class_id": 217,
+      "label": "burner",
+      "selected_synset": "burner.n.02",
+      "reviewer": "Toàn",
+      "notes": "",
+      "csv_line": 7
+    },
+    {
+      "class_id": 267,
+      "label": "caramel",
+      "selected_synset": "caramel.n.02",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 8
+    },
+    {
+      "class_id": 421,
+      "label": "cream",
+      "selected_synset": "cream.n.02",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 9
+    },
+    {
+      "class_id": 472,
+      "label": "display",
+      "selected_synset": "display.n.02",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 10
+    },
+    {
+      "class_id": 486,
+      "label": "door",
+      "selected_synset": "door.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 11
+    },
+    {
+      "class_id": 516,
+      "label": "dumplings",
+      "selected_synset": "dumpling.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 12
+    },
+    {
+      "class_id": 584,
+      "label": "fishing pole",
+      "selected_synset": "fishing_rod.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 13
+    },
+    {
+      "class_id": 600,
+      "label": "folding chair",
+      "selected_synset": "folding_chair.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 14
+    },
+    {
+      "class_id": 601,
+      "label": "food",
+      "selected_synset": "food.n.02",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 15
+    },
+    {
+      "class_id": 910,
+      "label": "minute hand",
+      "selected_synset": "minute_hand.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 19
+    },
+    {
+      "class_id": 1269,
+      "label": "sea",
+      "selected_synset": "sea.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 23
+    },
+    {
+      "class_id": 1297,
+      "label": "shoe",
+      "selected_synset": "shoe.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 24
+    },
+    {
+      "class_id": 1370,
+      "label": "sofa",
+      "selected_synset": "sofa.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 25
+    },
+    {
+      "class_id": 1401,
+      "label": "stapler",
+      "selected_synset": "stapler.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 26
+    },
+    {
+      "class_id": 1498,
+      "label": "tennis ball",
+      "selected_synset": "tennis_ball.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 27
+    },
+    {
+      "class_id": 1502,
+      "label": "terminal",
+      "selected_synset": "terminal.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 28
+    },
+    {
+      "class_id": 1622,
+      "label": "visitor",
+      "selected_synset": "visitor.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 30
+    },
+    {
+      "class_id": 1678,
+      "label": "wire",
+      "selected_synset": "wire.n.01",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 31
+    }
+  ],
+  "explicit_defer": [],
+  "pending": [
+    {
+      "class_id": 604,
+      "label": "food truck",
+      "selected_synset": "",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 16,
+      "candidate_count": 0,
+      "classification": "unsupported_mapping_no_explicit_decision"
+    },
+    {
+      "class_id": 682,
+      "label": "hair clip",
+      "selected_synset": "",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 17,
+      "candidate_count": 0,
+      "classification": "unsupported_mapping_no_explicit_decision"
+    },
+    {
+      "class_id": 899,
+      "label": "mexican food",
+      "selected_synset": "",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 18,
+      "candidate_count": 0,
+      "classification": "unsupported_mapping_no_explicit_decision"
+    },
+    {
+      "class_id": 932,
+      "label": "mouse pad",
+      "selected_synset": "",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 20,
+      "candidate_count": 0,
+      "classification": "unsupported_mapping_no_explicit_decision"
+    },
+    {
+      "class_id": 1091,
+      "label": "picnic table",
+      "selected_synset": "",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 21,
+      "candidate_count": 0,
+      "classification": "unsupported_mapping_no_explicit_decision"
+    },
+    {
+      "class_id": 1125,
+      "label": "pizza slice",
+      "selected_synset": "",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 22,
+      "candidate_count": 0,
+      "classification": "unsupported_mapping_no_explicit_decision"
+    },
+    {
+      "class_id": 1542,
+      "label": "touchpad",
+      "selected_synset": "",
+      "reviewer": "Toan",
+      "notes": "",
+      "csv_line": 29,
+      "candidate_count": 0,
+      "classification": "unsupported_mapping_no_explicit_decision"
+    }
+  ],
+  "proposed_mapping_changes": [
+    {
+      "class_id": 56,
+      "label": "bacon",
+      "previous_synset": null,
+      "accepted_synset": "bacon.n.01",
+      "kind": "new_link"
+    },
+    {
+      "class_id": 217,
+      "label": "burner",
+      "previous_synset": null,
+      "accepted_synset": "burner.n.02",
+      "kind": "new_link"
+    },
+    {
+      "class_id": 267,
+      "label": "caramel",
+      "previous_synset": null,
+      "accepted_synset": "caramel.n.02",
+      "kind": "new_link"
+    },
+    {
+      "class_id": 421,
+      "label": "cream",
+      "previous_synset": null,
+      "accepted_synset": "cream.n.02",
+      "kind": "new_link"
+    },
+    {
+      "class_id": 472,
+      "label": "display",
+      "previous_synset": null,
+      "accepted_synset": "display.n.02",
+      "kind": "new_link"
+    },
+    {
+      "class_id": 516,
+      "label": "dumplings",
+      "previous_synset": null,
+      "accepted_synset": "dumpling.n.01",
+      "kind": "new_link"
+    },
+    {
+      "class_id": 601,
+      "label": "food",
+      "previous_synset": "food.n.01",
+      "accepted_synset": "food.n.02",
+      "kind": "changed_link"
+    },
+    {
+      "class_id": 1269,
+      "label": "sea",
+      "previous_synset": null,
+      "accepted_synset": "sea.n.01",
+      "kind": "new_link"
+    },
+    {
+      "class_id": 1502,
+      "label": "terminal",
+      "previous_synset": null,
+      "accepted_synset": "terminal.n.01",
+      "kind": "new_link"
+    },
+    {
+      "class_id": 1678,
+      "label": "wire",
+      "previous_synset": "wire.n.02",
+      "accepted_synset": "wire.n.01",
+      "kind": "changed_link"
+    }
+  ],
+  "accepted_new_links": 8,
+  "accepted_changed_links": 2,
+  "accepted_reaffirmed_links": 13,
+  "all_original_ids_labels_statuses_candidates_preserved": true,
+  "all_evidence_assets_verified_and_in_train_split": true,
+  "source_csv_modified": false,
+  "no_implicit_accept_or_defer_created": true,
+  "mapping_updated": false,
+  "training_launched": false,
+  "interpretation": "23 explicit accept decisions; 7 unsupported rows are pending, not explicit defer. Sample decisions are not accuracy or approval for all 1699 classes."
+}
