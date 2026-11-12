@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+  "revision": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+  "device": "cuda",
+  "dtype": "bfloat16",
+  "batch_size": 1,
+  "seed": 42,
+  "max_new_tokens": 1536,
+  "min_pixels": 100352,
+  "max_pixels": 401408,
+  "attention": "sdpa",
+  "prompt_version": "single_image_scene_graph_absolute_pixels_v1",
+  "output": "data/processed/level2/magicbrush-v1/graphs-qwen25vl3b-bs1"
+}

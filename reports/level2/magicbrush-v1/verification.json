@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "scope": "CPU preparation only; not graph-label quality approval",
+  "baseline_commit": "a43a080",
+  "dataset_manifest_sha256": "4e815988bb39c130fb912ce5aea0686317d6a0c1647840cbc204b6317834f776",
+  "pairs": 602,
+  "unique_original_images_sha_and_RGB_verified": 912,
+  "source_groups": 310,
+  "split_counts": {
+    "train": 415,
+    "val": 97,
+    "test": 90
+  },
+  "groups_and_RGB_disjoint_across_splits": true,
+  "official_dev_test_annotations_used": false,
+  "review_ids_frozen_before_graphs": 20,
+  "graph_labels_generated": 0,
+  "human_reviews_completed": 0,
+  "minimum_300_graph_pairs_requirement_complete": false,
+  "gpu_compute_started_by_this_task": false,
+  "cpu_pytest": {
+    "passed": 35,
+    "skipped": 0,
+    "command": "myenv/bin/python -m pytest -q tests/editing/test_magicbrush_pipeline.py tests/editing/test_magicbrush_review_browser.py tests/editing/test_operations.py"
+  },
+  "cpu_processor_smoke": {
+    "status": "PASS",
+    "batch_size": 2,
+    "frames": [
+      [
+        840,
+        420
+      ],
+      [
+        392,
+        812
+      ]
+    ],
+    "model_weights_loaded": false,
+    "cuda_initialized": false,
+    "actual_grid_matches_declared_frame": true
+  },
+  "browser_real_viewer_qa": {
+    "status": "PASS",
+    "pairs": 20,
+    "images_loaded": 40,
+    "decisions_disabled_without_graphs": true,
+    "javascript_errors": 0,
+    "mobile_width": 390,
+    "horizontal_overflow": false,
+    "chromium_disable_gpu": true,
+    "server_stopped": true
+  },
+  "legacy": {
+    "source_files_verified_per_experiment": {
+      "runs/level2/gqa-full-v3-bs512/experiment.json": 73,
+      "runs/level2/gqa-wordnet-full-v2-bs512/experiment.json": 80
+    },
+    "results_and_best_checkpoints_verified": 15,
+    "reference_summary_manifest_cache_glove_hashes_match": true,
+    "wordnet_v2_kg_files_verified": 4,
+    "existing_tracked_artifacts_unchanged_except_personal_notebook": true,
+    "personal_notebook_sha256": "786c3eff8b7d4abd93c1546dba3b9d9d4ff635fc160fa80a59c0eefdd8952c19",
+    "personal_notebook_included_in_commit": false
+  },
+  "review_packet_sha256": "ed5b20a2af78c79be7d5ed6261d809e85099d9d1766b308fcdb3eb5ccbdaf947",
+  "versions": {
+    "torch": "2.7.0+cu128",
+    "torchvision": "0.22.0",
+    "numpy": "2.2.6",
+    "Pillow": "11.2.1",
+    "pyarrow": "26.0.1",
+    "scipy": "1.15.3",
+    "transformers": "4.51.3",
+    "playwright": "1.65.1"
+  },
+  "new_source_sha256": {
+    "configs/level2/magicbrush-graphs-qwen25vl3b-v1.json": "51a06bd186a172c2382b1a0dc7bd7efd2d2d1f5fdda2261a13d95244742f4f00",
+    "requirements-magicbrush.txt": "e0ca551f565408d612416458566a801178d73dd2f9d2418d64eed169723a1f19",
+    "tests/editing/test_magicbrush_pipeline.py": "fb5a0cfbcde9a3ef570ccba69b6416806b107c880e33e5cbbb1572c8b9e2064e",
+    "tests/editing/test_magicbrush_review_browser.py": "db51faf7762a4285a360f215e926c6bdd7e6b16d4a03d8af0c72b8d612a3215b",
+    "tools/infer_magicbrush_graphs.py": "3b5807762d017db4b08f908adcd45d8dabe382bc9b75c578521bed4c4dfe9e82",
+    "tools/magicbrush_graphs.py": "6fd566c6320d44620712a9522078e5b5a7b804cb870e41cb96a0a81c64aa3252",
+    "tools/magicbrush_review_assets/index.html": "d7a7edcce62541ba86b02c75875d7c613b0a23392bf0b43a434ca55a8167ca38",
+    "tools/magicbrush_review_assets/viewer.css": "3fbebc3f69fd59887a99d8290f584805bc1326fc150688455d569123021e6540",
+    "tools/magicbrush_review_assets/viewer.js": "f02e7de48b9c802d21c08d8d760ab636d921f1fe8557beffcc1a81ec5f919e94",
+    "tools/prepare_magicbrush.py": "2e9531842da9a8ea8d585da9263c3aa136f620e699ed8cd54decb77990c1345d",
+    "tools/review_magicbrush.py": "13ebbfaf79357778ac6017b6154d1a2b65893e88ab1a9c58f9bda389c745cc8a"
+  }
+}

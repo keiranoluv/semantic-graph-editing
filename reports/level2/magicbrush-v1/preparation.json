@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "scope": "real_raw_edit_pairs_preparation_not_graph_labels",
+  "pairs": 602,
+  "source_groups": 310,
+  "split_counts": {
+    "train": 415,
+    "val": 97,
+    "test": 90
+  },
+  "review_pairs": 20,
+  "unique_images": 912,
+  "pixel_overlap_between_project_splits": false,
+  "official_dev_test_opened": false,
+  "dataset_revision": "6c254560879df7851233ea0fd2ae2a62764d0ef2",
+  "manifest_sha256": "4e815988bb39c130fb912ce5aea0686317d6a0c1647840cbc204b6317834f776",
+  "graph_labels_generated": false,
+  "human_review_completed": false,
+  "source_shards": [
+    {
+      "path": "data/train-00000-of-00051-9fd9f23e2b1cb397.parquet",
+      "sha256": "ed417a2c264d464e07fb7c25f707cb2fdfab71391499628df81d5a613c1b21cf",
+      "bytes": 506325698
+    },
+    {
+      "path": "data/train-00001-of-00051-7fc041c6c75c7a1b.parquet",
+      "sha256": "73031cc623a6c342dc5120b455729f3d48071a0062daac77a6d9f967b1f0f8ab",
+      "bytes": 492637680
+    },
+    {
+      "path": "data/train-00002-of-00051-4683be833ed06f1c.parquet",
+      "sha256": "c6e08d3e628fbd4641612033721a2e3535e02c5ff7833ff255e9a03b26b5f667",
+      "bytes": 479910801
+    },
+    {
+      "path": "data/train-00003-of-00051-dbbf01b8d4790783.parquet",
+      "sha256": "39baaa23486ec828a0c34db4561dce69b015117d2834d97d3c238de034b06308",
+      "bytes": 533312047
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MagicBrush · Kiểm tra nhãn đồ thị</title><link rel="stylesheet" href="viewer.css"><script src="viewer.js" defer></script></head>
+<body><header><div><span class="eyebrow">LEVEL 2 · TRAIN SAMPLE · HUMAN REVIEW</span><h1>MagicBrush / Đồ thị & thao tác</h1></div>
+<div class="actions"><label class="button">Nhập CSV<input id="import" type="file" accept=".csv" hidden></label><button id="export">Xuất CSV</button><button id="save" class="primary">Lưu vào reviews/</button></div></header>
+<div id="message" role="status" aria-live="polite"></div><div class="layout"><aside><p id="progress"></p>
+<label>Tên người duyệt mặc định<input id="default-reviewer" autocomplete="name"></label><nav id="cases" aria-label="20 cặp train"></nav>
+<p class="muted">Mẫu được khóa trước khi sinh graph. Các graph là nhãn dự đoán; cần kiểm tra cả lỗi bỏ sót.</p></aside>
+<main><section><p id="pair-id" class="eyebrow"></p><h2 id="instruction"></h2><p id="status" class="warning"></p>
+<div class="pair"><article><h3>Ảnh nguồn</h3><div class="photo" id="source-photo"></div><p class="muted" id="source-meta"></p></article>
+<article><h3>Ảnh đích</h3><div class="photo" id="target-photo"></div><p class="muted" id="target-meta"></p></article></div>
+<p class="muted">Ảnh từ MagicBrush. Khung vàng, khi có, là bounding box do model dự đoán, không phải box GT.</p></section>
+<section><h3>Đồ thị và phép biến đổi</h3><div class="pair"><article><h4>Graph nguồn</h4><div id="source-graph"></div></article>
+<article><h4>Graph đích đã căn chỉnh ID</h4><div id="target-graph"></div></article></div><h4>Thao tác đích (pseudo label)</h4><div id="operations"></div>
+<details><summary>Chi tiết alignment và dữ liệu có cấu trúc</summary><pre id="raw"></pre></details></section>
+<section><h3>Đánh giá của người duyệt</h3><p class="muted">Chấm graph, identity và thao tác theo hai ảnh thật và câu yêu cầu. Không chỉ chấm xem code có tái tạo được target graph.</p>
+<div id="ratings" class="form"></div><div class="form"><label>Kết luận chung<select id="decision"><option value="">Chưa kiểm tra</option><option value="correct">Đúng</option><option value="incorrect">Sai</option><option value="uncertain">Chưa đủ căn cứ</option></select></label>
+<label>Người duyệt cặp này<input id="reviewer" autocomplete="name"></label><label class="wide">Ghi chú<textarea id="notes" rows="3" placeholder="Object/thuộc tính/quan hệ nào bị thiếu hoặc sai? Alignment có ghép nhầm instance không?"></textarea></label></div>
+<p id="validation" class="warning"></p></section><footer><button id="previous">← Cặp trước</button><span id="position"></span><button id="next">Cặp tiếp →</button></footer></main></div>
+<script id="review-data" type="application/json">__REVIEW_DATA__</script></body></html>

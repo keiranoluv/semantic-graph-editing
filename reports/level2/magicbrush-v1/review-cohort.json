@@ -1,0 +1,27 @@
+{
+  "seed": 42,
+  "split": "train",
+  "ids": [
+    "magicbrush:108514:1",
+    "magicbrush:50058:2",
+    "magicbrush:208423:1",
+    "magicbrush:181992:1",
+    "magicbrush:364102:2",
+    "magicbrush:334954:1",
+    "magicbrush:279710:1",
+    "magicbrush:213009:3",
+    "magicbrush:210671:1",
+    "magicbrush:435242:2",
+    "magicbrush:514725:1",
+    "magicbrush:429991:2",
+    "magicbrush:525176:2",
+    "magicbrush:441199:1",
+    "magicbrush:485926:2",
+    "magicbrush:451690:2",
+    "magicbrush:102632:1",
+    "magicbrush:488240:2",
+    "magicbrush:292512:1",
+    "magicbrush:411384:3"
+  ],
+  "selection": "lowest SHA256 over all train candidate IDs before graph generation"
+}

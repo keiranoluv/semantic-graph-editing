@@ -1,0 +1,5 @@
+# Additional CPU preparation / user-run frozen VLM inference dependencies.
+# Keep the repository's existing torch/torchvision/numpy versions unchanged.
+pyarrow==26.0.1
+scipy==1.15.3
+transformers==4.51.3
