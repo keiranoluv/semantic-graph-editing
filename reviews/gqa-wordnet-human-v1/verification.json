@@ -1,0 +1,113 @@
+{
+  "status": "PASS",
+  "base_commit": "87394aead350e4321e92109e68983e14537196c8",
+  "review_packet_sha256": "07b738f58453a42c3f4a69ed04ba3859777e6d27712c5fcfcf611bc6bc0370e1",
+  "sample_classes": 30,
+  "example_count": 150,
+  "asset_count": 300,
+  "unique_train_images": 150,
+  "all_examples_in_project_train_only": true,
+  "all_assets_match_pinned_sha256": true,
+  "original_sample_and_mapping_unchanged": true,
+  "historical_tracked_files_unchanged_except_personal_notebook": true,
+  "personal_notebook_matches_handoff_sha256": "786c3eff8b7d4abd93c1546dba3b9d9d4ff635fc160fa80a59c0eefdd8952c19",
+  "all_source_hashes_of_full_and_KG_pilot_experiments_unchanged": true,
+  "fifteen_full_GQA_results_best_checkpoints_summary_unchanged": true,
+  "GQA_KG_embedding_checkpoint_features_graph_and_pilot_checkpoints_unchanged": true,
+  "training_launched": false,
+  "validation_test_annotation_records_opened": false,
+  "real_human_reviews_or_approval_files_created": 0,
+  "existing_report_files_written": false,
+  "class_status_counts": {
+    "linked_manual": 7,
+    "ambiguous": 8,
+    "linked_auto": 8,
+    "unmatched": 7
+  },
+  "ambiguous_classes": [
+    {
+      "class_id": 56,
+      "label": "bacon"
+    },
+    {
+      "class_id": 217,
+      "label": "burner"
+    },
+    {
+      "class_id": 267,
+      "label": "caramel"
+    },
+    {
+      "class_id": 421,
+      "label": "cream"
+    },
+    {
+      "class_id": 472,
+      "label": "display"
+    },
+    {
+      "class_id": 516,
+      "label": "dumplings"
+    },
+    {
+      "class_id": 1269,
+      "label": "sea"
+    },
+    {
+      "class_id": 1502,
+      "label": "terminal"
+    }
+  ],
+  "unsupported_mapping_classes": [
+    {
+      "class_id": 604,
+      "label": "food truck"
+    },
+    {
+      "class_id": 682,
+      "label": "hair clip"
+    },
+    {
+      "class_id": 899,
+      "label": "mexican food"
+    },
+    {
+      "class_id": 932,
+      "label": "mouse pad"
+    },
+    {
+      "class_id": 1091,
+      "label": "picnic table"
+    },
+    {
+      "class_id": 1125,
+      "label": "pizza slice"
+    },
+    {
+      "class_id": 1542,
+      "label": "touchpad"
+    }
+  ],
+  "classes_with_insufficient_image_evidence": [],
+  "qa": {
+    "related_tests_passed": 31,
+    "browser_fixture_tests_passed": 2,
+    "real_viewer_labels_and_assets_loaded": true,
+    "real_viewer_javascript_errors": 0,
+    "mobile_390px_has_no_horizontal_overflow": true,
+    "browser_QA_wrote_no_real_review_decisions": true
+  },
+  "environment": {
+    "Pillow": "11.2.1",
+    "h5py": "3.13.0",
+    "nltk": "3.9.1",
+    "playwright": "1.65.1"
+  },
+  "files": {
+    "reviews/gqa-wordnet-human-v1/README.md": "1262693afcd2d109b80c6f358e880b8a0fb786beeef5054fa9944e280eea8edc",
+    "reviews/gqa-wordnet-human-v1/index.html": "92556ce49082ed2a55c8a40bf5abffc792f84ad3f3188e49a7d594bf503a1942",
+    "reviews/gqa-wordnet-human-v1/review-data.json": "fa6acc94c57b50a2e3d04546a116b2228b54482a6d1e42fdf708ebd00f736753",
+    "reviews/gqa-wordnet-human-v1/viewer.css": "116f4895134fb4f4186c9b2a4655a9ca21e2915576e3f34f0a0cccc5aeecdf96",
+    "reviews/gqa-wordnet-human-v1/viewer.js": "f6b3a872762aefc8eec99938ede7593bd3ac4977f30f25c48ed30938c2b5961e"
+  }
+}

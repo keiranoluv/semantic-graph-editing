@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GQA · WordNet human review</title>
+  <link rel="stylesheet" href="viewer.css">
+  <script src="viewer.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div><span class="eyebrow">SEMANTIC GRAPH EDITING / TRAIN ONLY</span><h1>WordNet · Human review</h1></div>
+    <div class="actions">
+      <label class="import-button">Nhập CSV<input id="import-csv" type="file" accept=".csv,text/csv" hidden></label>
+      <button id="export-csv">Xuất CSV</button>
+      <button id="save-csv" class="primary">Lưu CSV vào reviews/</button>
+    </div>
+  </header>
+  <div id="message" role="status" aria-live="polite"></div>
+  <div class="workspace">
+    <aside>
+      <div class="sidebar-head">
+        <p id="progress"></p>
+        <label>Tìm nhãn hoặc class ID<input id="search" type="search" placeholder="Ví dụ: cream, 421"></label>
+        <label>Lọc danh sách<select id="filter">
+          <option value="all">Tất cả nhãn</option><option value="pending">Chưa quyết định</option>
+          <option value="accept">Đã chọn accept</option><option value="defer">Đã chọn defer</option>
+          <option value="ambiguous">Nhãn đa nghĩa</option><option value="unsupported">Không có ứng viên / thiếu ảnh</option>
+        </select></label>
+        <label>Người duyệt mặc định<input id="default-reviewer" autocomplete="name" placeholder="Tên người thực sự kiểm tra"></label>
+      </div>
+      <nav id="class-list" aria-label="30 nhãn cần kiểm tra"></nav>
+      <p class="sidebar-note">Lựa chọn được lưu trên trình duyệt này. Xuất hoặc lưu CSV để giữ kết quả độc lập với trình duyệt.</p>
+    </aside>
+    <main id="main" tabindex="-1">
+      <section class="intro">
+        <div class="title-row"><div><p id="position" class="eyebrow"></p><h2 id="class-title"></h2></div><div id="badges"></div></div>
+        <p id="mapping-current"></p>
+        <p id="mapping-definition" class="definition"></p>
+        <p id="class-warning" class="warning"></p>
+      </section>
+      <section class="evidence-section" aria-labelledby="evidence-title">
+        <div class="section-heading"><h3 id="evidence-title">Bằng chứng từ ảnh train</h3><span id="evidence-count"></span></div>
+        <p class="muted">Khung đỏ khoanh đúng instance được lấy từ annotation. Crop bên dưới phóng to vùng đó. Bấm ảnh để mở bản lớn.</p>
+        <div id="examples" class="examples"></div>
+      </section>
+      <section class="decision-section" aria-labelledby="candidate-title">
+        <h3 id="candidate-title">Chọn nghĩa WordNet</h3>
+        <p class="muted">Xem tất cả ảnh trước khi quyết định. Chọn synset không tự động tạo quyết định accept.</p>
+        <div id="candidates"></div>
+        <button id="clear-synset" class="quiet">Bỏ chọn synset</button>
+        <div class="review-form">
+          <label>Quyết định<select id="decision"><option value="">Chưa quyết định</option><option value="accept">Accept — chọn nghĩa này</option><option value="defer">Defer — chưa đủ căn cứ / chưa có nghĩa phù hợp</option></select></label>
+          <label>Người duyệt nhãn này<input id="reviewer" autocomplete="name" placeholder="Bắt buộc khi accept hoặc defer"></label>
+          <label class="notes-label">Ghi chú<textarea id="notes" rows="3" placeholder="Ảnh nào hỗ trợ hoặc phản bác mapping? Có nhiều nghĩa trong cùng một nhãn không?"></textarea></label>
+        </div>
+        <p id="validation" class="warning" role="status"></p>
+      </section>
+      <footer><button id="previous">← Nhãn trước</button><span>Review chỉ ghi lựa chọn của người duyệt; không sửa mapping, KG hoặc checkpoint.</span><button id="next">Nhãn tiếp →</button></footer>
+    </main>
+  </div>
+  <script id="review-data" type="application/json">__REVIEW_DATA__</script>
+</body>
+</html>
