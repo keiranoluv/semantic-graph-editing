@@ -1,0 +1,117 @@
+{
+  "status": "PASS",
+  "scope": "v1 diagnostics and v2 CPU preparation only; no v2 model inference",
+  "baseline_commit": "e75d3fb",
+  "v1": {
+    "images": 40,
+    "structural_status_counts": {
+      "PASS": 24,
+      "ERROR": 16
+    },
+    "primary_error_counts": {
+      "Invalid predicted edge endpoint/schema": 8,
+      "Invalid pixel box": 7,
+      "'bbox'": 1
+    },
+    "pairs_with_both_graphs": 7,
+    "candidate_pairs": 3,
+    "human_reviews_completed": 0,
+    "cache_manifest_sha256": "1cc215818ec89d6df4d249b39b29931046ce75006044c2352014ab5b7904e941",
+    "prediction_sha256": {
+      "019d3037ea2cb59a51db84f1030b39ff55da4adccadd6be5eb00b943bdfb485a.json": "ebf02e22222c7f22b4e1afc13ccca72285bc33f7c9850b4ee04d4faab28e6b87",
+      "02b2cd34290d8c94becf979cb088ea7df3221cb52505bd562eabf95eaca161b2.json": "b1a0c43e2af92325107e07e51692f9b1db690e96dde86a3a9a0b043c84c32196",
+      "02cce7253f3cba22f4b2676b63445c47f1f1c4af6255d6d5a7e625a6e3c782e4.json": "6cb7d6be3c2571bd77e33405d0a5fcbec59f8d6b737b00586b74d1a19327fb4c",
+      "02e8a86deca1649e8c6786dd3f87178346ef477fccf35a49c8e033aba78ef1ac.json": "756672611d8940223e0aa7161847e2c270772bb601b02386506b2c2105fd1815",
+      "18a195fdab89372710b16407395a36fc7c01b59371b0113d84f5432323111dfe.json": "cb7aeb38d48509c0328b1ad99004782fa6d3d1be2b94e8c24d523d0e9030f304",
+      "1b7e351e03840b5a8ada4fad60ca090f8e1d0d8b89dccb37435a9204e8e69fa3.json": "cf2129d59bb4fcec64bf34da214b3603c17582460134d5cb5885f6522f398d2d",
+      "2f2e60acbfe2c3cfc15135dcb397971c5c74caaf7d7a03e476d1d0521c15f63a.json": "9e9232c1377e27ad950fc5ad85b40ea471a7efe7f282f1a4a70ba08cacadc655",
+      "33462bb0b9abcac41a8d52968977f6b90e3386f7f70ba9d34e34d78499405972.json": "bc7ce22b4b4de86d0706573734d8a058cbcd71fea452fb3ae2dcbece5725f162",
+      "33c11e48652eeff7016bafdcfac0f860ef391fec9e070a6bbc890e88d94d4116.json": "d3d79a9cfb6bb435f2a91b5b1348f53eac629d1b62b51afcbfbe2bd96a4eb104",
+      "35c4278d1ea378ddeed99790f06848718e578a8ae7d4a6aa9079959a8a2bed15.json": "c20c98312ff2436614bed851e236d5071a77211af9450d76f64564e34e494eae",
+      "36c255e3d0d82c5baaa2d2d18f0be6aa800d2a072a82f9160253bf6bb7e47a11.json": "3e5def77c32252d61c13285880da2522d260373d69a0435e4bbfedd222bb9182",
+      "480db1c90d43a2c533bd0bf587a0bf3dfc87ebf70ca66061d5b4f8a164951e65.json": "2b5570f0dbd33b5e1187632f8f7e577419560e2995b5ddb5f8b25b80050324cd",
+      "5f9af4dec667a9230d7b33173caa49e1b97239506e0248fa2d1dc00705114d72.json": "150fb0745c98c102239f3e8cd04f4d97df1dd2c4ed0d4e8eac95032c0bb3d027",
+      "61e20f5491830af7074c1b4f6ae7257617459af4dbaa337a07aa3f84998c39a1.json": "be09db9e98a20b4fa7aa0f1ce87d09510a6d00cdbf4d31c493d4b8484689f808",
+      "64bc3c0f5cf0da3501e6dbd474e08b57fc8c0d8f361093f5eda342a88fa5f377.json": "dcd1bfe57ab5f639210ae2feb92c5c53d047ef4aad688c7ead012555b04ec54a",
+      "6a3ddbf5b29530c1179d9f5f6b64c2a5fa934276516d8277ddf217b1fb249fe8.json": "a6df064e06d4102acf51397a89580947261eb9f63a48af6013b4c813e665a236",
+      "7470fa1fc8d5e01de3f9a651918532e2512aa40312c004110191e34adb52c305.json": "ed26e3f653a713e49696009644e24241e55f91d41b4416e1674914832f4192ce",
+      "7a301a956b859f7e64f51ad7e4f8e309eb5cae48f3e7bc3bdb83a1c14792f2e0.json": "4139c127e34fb1b4e8fe1ee4cbb4e4898f5f2537f4176c28805920674898a22e",
+      "7fc84debb98b2efde8cf29d2b3508048c73f898d66dfebb1c1d05b7c2d01297a.json": "d79c01a7e7081b1171656f62f213c15be1d8f681b78eb15de5a604dde9a6aefe",
+      "870e9f01d8e9f390211cca13115ec6d4a814615fe5d1914051b4c1ec7e37fa3a.json": "5b4da7192fb2e489c5c40cad3058443291a8f84e7b5e1a8f1898de3a62f97141",
+      "95cdafb645a90f64887fa71f66748f1608e9a040c636e2f443513a5c5316ca06.json": "ac7f14b965b79da9b8298f9e4acddc15c9bf2e59ea771b91a64fea8efc386250",
+      "9d76e0b6143baec2f607383555d30e3757240b8cffe5f3b6be6c55f6f6eeee8c.json": "4ea14fc13a0b3dfde0a89d8b15e6446df79c8f26f9aa52f7332149ca789b7877",
+      "aa99775f926573325752afc415d3d136b3d3fdcf39b969e6126ec02f7a9ab8a8.json": "42593d9dedb3f34dcd3acccd69d1c9620a6777324a2620b11fe63593d359740a",
+      "ac7e92339533fc10bf3121d7c9d884ea96ff949a2592af7d18d1e6b115bbf5e6.json": "4221e2b70b6ab5c0f342df8b4cf89509d53837c3f60b8999c71f399a5222a4f4",
+      "ae92aad18f0dbcb79ce3673c8944111ac0f19a43badd5cd40e9b03dce4181eb4.json": "59fbc061fd65cef89af15f5d047db989c9bcfde2ecc580452ec94dc6a9ca1586",
+      "b3756320115ad17069ad7a5e436b4172045f7bb485fabb2676f698db7b0e9fa9.json": "e3341a84cceee8c8b2019b62c33aac6d8cf9964ff25a5e89d29e4c058fbd5b74",
+      "b5aff4c014e5514768a281dea7e6a66f50c082581d3a02f0a59ab3a86596ec94.json": "89c4e58e4fecbdbfb156ab77b41e188242371870f185829178d639f891faa5bf",
+      "b748d0fd31a141f9a0802e0a9082a553ae0480bb7d874634db0aed120d0136e5.json": "fd12b4cf9334ed6f7370c615678995ba845a69b66cf3394f22a5fa502412da65",
+      "be50a99ef89ad5f8dceb13bd36c6cc9938d2e0b18db7cbd497d80505306b82b7.json": "989ec573d0b37dd9a6a2a9be398312c3b92ec10d798b1f8158aad73c81d15302",
+      "c1706e06f3dea81e4613c1c1d1b0fa5563dc9c28e118f348dcd36df4e463bbf2.json": "c13ab406f33fbaa3bd63072af048206fdb6532d2f0c34b8f37b53c9bb64aea6e",
+      "cbae86028d0ab8ae8be98992f9583fcc93b803280dd9b7747108eabe7156b6bd.json": "e1090efe2b7df8e61fb89e93fb78666513e6e13b1234a19f35cbdf3dc2833cb7",
+      "d699d7541424df0871663865035363d74f08ed30727374e05c01b9f95cceaeda.json": "7a78a982763bd503813f8a3dcac7027d1c4308ec4d7cff1c3c64502dd05bff18",
+      "d7baaf399b68a680a0c15e3db47329102467e7709b12f5d26ff4718e8255e2d7.json": "1a988b24ccd6e923fc2173fbc281e4fca4b08f5714c68f4a5defb2f413a559ab",
+      "dceb0aae13428860798f38a3b360ee5758d0ee34563cb5768f7645e6e5931e17.json": "3c5a65c9b59041b7e33ad8f5869ec2c9e99616bff5562c46d7f7994fb3dc5928",
+      "df5d3596913b200a36eb76531392f5debbfd72d49a8cd0c8dd4f1a4cc45dea02.json": "304d17e31273c19270a847a738d020636dafd212de291635ea3aa79d91359c71",
+      "e25e4791d7eb414b0020020d9c0b2ca93caba600dbb13f8f8bd7ed12d6f6b369.json": "6a5f2a3b103f4db1aae18ea8ba29be1d41b3abf8437e1893735f29214126533f",
+      "e5da1578f94f00326afe81984930ba5b096d24ef5ce6a0b988b8bcba0d8ca47b.json": "2ec4539fb9839c6dae3c088f16aa2303ec4db221b1b3972ba8730f07a572c255",
+      "ef50e291cb160b4b95d30d0d58617163d14b58ca930f5465a3da293e1f588cb3.json": "01f149f28c105dff72993e11ee6b7a88b10d40bc616da59c07d4dc8128c0dba6",
+      "f02e82b516784e5c5d2d133673be0e1f80793b8a79d3b95e0cb7d163bae5902c.json": "3c9475c2be5c02c1ea123cbec6ed9b5e8fc5551aac6d6ea05d2c826dbedd3c04",
+      "fb2c2f4b48f4314b41f8c7fe2018c04525c3ff62ec13a2fbc9286f2d281b8eba.json": "51e905846ae9184ca7da52269fdb9c3ff26929d9b06be6cd96ec13f702261897"
+    }
+  },
+  "retrospective_v2_parser_on_v1_raw_responses": {
+    "counts": {
+      "PASS": 29,
+      "ERROR": 11
+    },
+    "interpretation": "CPU-only format compatibility check, NOT new v2 inference or semantic accuracy; no v1 files rewritten"
+  },
+  "v2": {
+    "inference_started": false,
+    "GPU_started_by_assistant": false,
+    "human_reviews_created": 0,
+    "same_original_20_train_ids": true,
+    "normalizations": "bbox_2d key alias and one singleton bbox dimension only; no clipping/deletion/endpoint guessing",
+    "full_inference_gate": "40 structurally valid pilot images, current prediction hashes, actual human CSV/packet; 20 determinate reviews and >=80% correct"
+  },
+  "cpu_tests": {
+    "passed": 72,
+    "skipped": 0,
+    "command": "myenv/bin/python -m pytest -q tests/editing/test_magicbrush_schema_v2.py tests/editing/test_magicbrush_pipeline.py tests/editing/test_magicbrush_review_browser.py tests/editing/test_edit_model_v1.py tests/editing/test_operations.py"
+  },
+  "CPU_processor_smoke": {
+    "status": "PASS",
+    "batch": 2,
+    "frames": [
+      [
+        840,
+        420
+      ],
+      [
+        392,
+        812
+      ]
+    ],
+    "input_ids_shape": [
+      2,
+      908
+    ],
+    "model_weights_loaded": false,
+    "CUDA_initialized": false,
+    "grid_matches_actual_frame": true
+  },
+  "preservation": {
+    "v1_cache_and_source_hashes_verified": true,
+    "previous_MagicBrush_and_VG150_source_config_test_hashes_verified": true,
+    "tracked_historical_artifacts_unchanged": true,
+    "personal_notebook_unchanged_and_excluded": true
+  },
+  "new_source_sha256": {
+    "tools/infer_magicbrush_graphs_v2.py": "2b022d6c74966aaf78fa02bc5f6265a0e1faac4888a67f06407c6d8effe9bce9",
+    "tools/magicbrush_review_gate_v2.py": "28296213088b9a691992d25cdfcffeb4a69448ad2049a31ae7251ced7dd0efdd",
+    "tests/editing/test_magicbrush_schema_v2.py": "4e5ed4702cd8f6de9a8480dd4a3a131245ef51e47f19819d7c247b6d9471adff",
+    "configs/level2/magicbrush-graphs-qwen25vl3b-v2.json": "08d5dbf32857d5f4e6a2d676e0a93297515a0f2379e8ad9dd3548a2544f592ce",
+    "configs/level2/magicbrush-edit-model-v2.json": "f61b432cb143050010ee1d4d3be7b7f7939e33383177a8ac805538b3ae6505f0"
+  }
+}

@@ -1,0 +1,2 @@
+# Preserve exact human CSV bytes, including BOM and CRLF, at every depth.
+*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
