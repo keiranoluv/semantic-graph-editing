@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "scope": "step4 code and synthetic CPU tests only; no real trained-model result",
+  "baseline_commit": "afc3317",
+  "real_dataset_training_started": false,
+  "GPU_compute_started": false,
+  "CUDA_initialized_by_audit": false,
+  "real_CLIP_embedding_cache_created": false,
+  "human_reviews_fabricated": false,
+  "preflight_ready": false,
+  "blocked_on": [
+    "edits",
+    "reviews_csv"
+  ],
+  "cpu_pytest": {
+    "passed": 60,
+    "skipped": 0,
+    "command": "myenv/bin/python -m pytest -q tests/editing/test_edit_model_v1.py tests/editing/test_magicbrush_pipeline.py tests/editing/test_magicbrush_review_browser.py tests/editing/test_operations.py"
+  },
+  "default_architecture_synthetic_cpu_smoke": {
+    "mlp": {
+      "trainable_parameters": 674819,
+      "default_512_dim_forward_backward": "PASS",
+      "frozen_text_gradients_absent": true
+    },
+    "gnn": {
+      "trainable_parameters": 1119107,
+      "default_512_dim_forward_backward": "PASS",
+      "frozen_text_gradients_absent": true
+    }
+  },
+  "checked_contracts": [
+    "six operation types, Unicode and full payload codec round trip",
+    "source/target input isolation, no test graph deserialization",
+    "independent new-node/edge ID canonicalization, unsupported symmetry explicit",
+    "parse errors never become valid empty predictions; duplicate predictions remain FP",
+    "graph/session/RGB split leakage rejected",
+    "long validation labels stay in evaluation denominator",
+    "human-review CSV/packet/per-pair evidence gate",
+    "frozen text tensors detached and outside optimizer",
+    "causal teacher forcing and greedy first-token agreement",
+    "finite gradients and loss reduction for both models on synthetic CPU fixture",
+    "next optimizer step equal after CPU checkpoint restore",
+    "continuous versus interrupted/resumed CPU training has identical final weights/history",
+    "completed-run hash verification and corrupted checkpoint rejection",
+    "blocked preflight and source fingerprinting never query CUDA"
+  ],
+  "legacy": {
+    "old_results_and_best_checkpoints_verified": 15,
+    "source_hash_counts_per_experiment": {
+      "runs/level2/gqa-full-v3-bs512/experiment.json": 73,
+      "runs/level2/gqa-wordnet-full-v2-bs512/experiment.json": 80
+    },
+    "GQA_KG_feature_manifest_and_tensor_unchanged": true,
+    "WordNet_KG_files_unchanged": true,
+    "previous_MagicBrush_code_config_tests_and_manifest_hashes_unchanged": true,
+    "existing_tracked_files_unchanged_except_personal_notebook": true,
+    "personal_notebook_excluded_from_commit": true
+  },
+  "new_source_sha256": {
+    "configs/level2/magicbrush-edit-model-v1.json": "cd2e2a7a1abcea3f105d2954a3ad9240000bdc3d1ad88b4e9bc1793524a27648",
+    "tests/editing/test_edit_model_v1.py": "039acc67bf77acebfe91675ea37e3f7ac4308d4c4bfdf9c33d1aa742aa9ac5ad",
+    "tools/edit_model_v1/__init__.py": "2cfbd62b0871638e2d6d1c4d59fdd019c176239c9a9747b8b999e3009410ab16",
+    "tools/edit_model_v1/codec.py": "9ef6b5777a2a201efe33d185af77a3063f4665e75626090d7cd175ad986a16d7",
+    "tools/edit_model_v1/data.py": "b805008ec3d6d1afb8b4ebdccfaec1ef19a960372c4c2b46e1d545aded27271a",
+    "tools/edit_model_v1/model.py": "200a1bbbdeb18a99e65b0ad5fe149e542591272af55d803b240ce99a11cd3f92",
+    "tools/edit_model_v1/runner.py": "6df7b76f644bd7133e905e60a52851e6649ffd3d5fdf8b96b4b0eea164f104eb",
+    "tools/edit_model_v1/text.py": "55ff4793135427302276bbed37a7b02c0c74188ce9155a3bbd06421029d3ff2f",
+    "tools/train_magicbrush_edits.py": "cd344c062c8c35582ed34c2d7c7987334517a788d4582c5023beaff97b6b48ae"
+  },
+  "versions": {
+    "torch": "2.7.0+cu128",
+    "torchvision": "0.22.0",
+    "numpy": "2.2.6",
+    "clip": "1.0",
+    "wandb": "0.18.7"
+  }
+}

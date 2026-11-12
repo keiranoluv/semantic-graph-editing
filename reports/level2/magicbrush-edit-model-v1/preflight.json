@@ -1,0 +1,13 @@
+{
+  "stage": "CPU_preflight_no_GPU",
+  "ready": false,
+  "missing": [
+    "edits",
+    "reviews_csv"
+  ],
+  "test_used": false,
+  "raw_pairs": 602,
+  "usable_pairs": {},
+  "minimum_usable_train_plus_val": 300,
+  "reason": "Need frozen full labels, >=300 usable train+val pairs, nonempty val and verified human review gate"
+}
