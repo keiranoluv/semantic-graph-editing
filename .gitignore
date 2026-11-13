@@ -30,3 +30,6 @@ scripts/pilot_mlp.py.bak
 /reports/level2/magicbrush-joint-*/
 /models/
 *.safetensors
+
+# Caption graph v1: immutable generated viewers, packets and human submissions.
+/reviews/instructpix2pix-caption-graph-v1/

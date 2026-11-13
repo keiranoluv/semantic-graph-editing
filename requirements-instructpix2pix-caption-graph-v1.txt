@@ -1,0 +1,6 @@
+# Additional CPU-only caption data pipeline; install existing base requirements first.
+# No spaCy, datasets, VLM, image generator or vision weights are required.
+pyarrow==26.0.1
+nltk==3.9.1
+Pillow==11.2.1
+requests==2.34.2

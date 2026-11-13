@@ -1,0 +1,741 @@
+{
+  "selection": {
+    "schema_version": 1,
+    "source_sha256": "3c1c2e919ead277942eeab689a0397cbd9d1edc069af35ef9551124484c5e5e6",
+    "seed": 42,
+    "count": 100,
+    "sampling": "uniform_random_permutation_all_pinned_train_rows_prefix_before_filters",
+    "records": [
+      {
+        "global_row": 134009,
+        "shard": "data/train-00112-of-00262-593c63720c7553ee.parquet",
+        "row_index": 169,
+        "shard_size": 505210656
+      },
+      {
+        "global_row": 19948,
+        "shard": "data/train-00016-of-00262-2658ed9e0c2bd371.parquet",
+        "row_index": 828,
+        "shard_size": 497588794
+      },
+      {
+        "global_row": 311916,
+        "shard": "data/train-00261-of-00262-f83a5c837b1853c5.parquet",
+        "row_index": 100,
+        "shard_size": 495992031
+      },
+      {
+        "global_row": 32201,
+        "shard": "data/train-00026-of-00262-99aa228747108104.parquet",
+        "row_index": 1131,
+        "shard_size": 491384372
+      },
+      {
+        "global_row": 253370,
+        "shard": "data/train-00212-of-00262-f33b7881722068c6.parquet",
+        "row_index": 60,
+        "shard_size": 500448512
+      },
+      {
+        "global_row": 288654,
+        "shard": "data/train-00241-of-00262-6004ecc68944de6c.parquet",
+        "row_index": 718,
+        "shard_size": 495916671
+      },
+      {
+        "global_row": 243954,
+        "shard": "data/train-00204-of-00262-5228dbcecf7b9fc2.parquet",
+        "row_index": 196,
+        "shard_size": 496312802
+      },
+      {
+        "global_row": 151749,
+        "shard": "data/train-00126-of-00262-090a876d0b8fc4bc.parquet",
+        "row_index": 1179,
+        "shard_size": 495090742
+      },
+      {
+        "global_row": 304441,
+        "shard": "data/train-00254-of-00262-4783f46886e44625.parquet",
+        "row_index": 983,
+        "shard_size": 502074113
+      },
+      {
+        "global_row": 160977,
+        "shard": "data/train-00134-of-00262-689a69924a6d1906.parquet",
+        "row_index": 847,
+        "shard_size": 497895938
+      },
+      {
+        "global_row": 309852,
+        "shard": "data/train-00259-of-00262-fc82adc18af82c76.parquet",
+        "row_index": 424,
+        "shard_size": 497336040
+      },
+      {
+        "global_row": 63554,
+        "shard": "data/train-00053-of-00262-bb493048cb8ef0e9.parquet",
+        "row_index": 219,
+        "shard_size": 492387274
+      },
+      {
+        "global_row": 78837,
+        "shard": "data/train-00065-of-00262-9c61dafe68b72d2f.parquet",
+        "row_index": 1162,
+        "shard_size": 501665888
+      },
+      {
+        "global_row": 96026,
+        "shard": "data/train-00080-of-00262-697ac76012c162d2.parquet",
+        "row_index": 426,
+        "shard_size": 497553773
+      },
+      {
+        "global_row": 130445,
+        "shard": "data/train-00109-of-00262-61e2ff9a99cfb6ea.parquet",
+        "row_index": 190,
+        "shard_size": 497162703
+      },
+      {
+        "global_row": 230193,
+        "shard": "data/train-00192-of-00262-a2de89ad89dd9f38.parquet",
+        "row_index": 763,
+        "shard_size": 497354487
+      },
+      {
+        "global_row": 49787,
+        "shard": "data/train-00041-of-00262-e11c1916b111f1a7.parquet",
+        "row_index": 792,
+        "shard_size": 500459882
+      },
+      {
+        "global_row": 199558,
+        "shard": "data/train-00166-of-00262-3ee0ed202ceed14d.parquet",
+        "row_index": 1188,
+        "shard_size": 497107549
+      },
+      {
+        "global_row": 194366,
+        "shard": "data/train-00162-of-00262-ecef0b42617e12f4.parquet",
+        "row_index": 776,
+        "shard_size": 498120800
+      },
+      {
+        "global_row": 43879,
+        "shard": "data/train-00036-of-00262-a85573beb0b32828.parquet",
+        "row_index": 859,
+        "shard_size": 500624112
+      },
+      {
+        "global_row": 193679,
+        "shard": "data/train-00162-of-00262-ecef0b42617e12f4.parquet",
+        "row_index": 89,
+        "shard_size": 498120800
+      },
+      {
+        "global_row": 211091,
+        "shard": "data/train-00176-of-00262-82f083cc2f5c2e15.parquet",
+        "row_index": 771,
+        "shard_size": 494128697
+      },
+      {
+        "global_row": 63597,
+        "shard": "data/train-00053-of-00262-bb493048cb8ef0e9.parquet",
+        "row_index": 262,
+        "shard_size": 492387274
+      },
+      {
+        "global_row": 83839,
+        "shard": "data/train-00070-of-00262-fae9ce3edabe5aeb.parquet",
+        "row_index": 189,
+        "shard_size": 500666085
+      },
+      {
+        "global_row": 285774,
+        "shard": "data/train-00239-of-00262-b24f77cc5a2348dc.parquet",
+        "row_index": 226,
+        "shard_size": 499136696
+      },
+      {
+        "global_row": 257718,
+        "shard": "data/train-00215-of-00262-f1de90c87bcfb837.parquet",
+        "row_index": 826,
+        "shard_size": 497637690
+      },
+      {
+        "global_row": 116108,
+        "shard": "data/train-00097-of-00262-e74bc5acd30efa90.parquet",
+        "row_index": 193,
+        "shard_size": 497972369
+      },
+      {
+        "global_row": 186329,
+        "shard": "data/train-00155-of-00262-e1b5a992f6ba4942.parquet",
+        "row_index": 1104,
+        "shard_size": 498513601
+      },
+      {
+        "global_row": 64639,
+        "shard": "data/train-00054-of-00262-de6b1c31d0fe9042.parquet",
+        "row_index": 109,
+        "shard_size": 497439785
+      },
+      {
+        "global_row": 309797,
+        "shard": "data/train-00259-of-00262-fc82adc18af82c76.parquet",
+        "row_index": 369,
+        "shard_size": 497336040
+      },
+      {
+        "global_row": 2131,
+        "shard": "data/train-00001-of-00262-b4c37264e7cef478.parquet",
+        "row_index": 936,
+        "shard_size": 489231476
+      },
+      {
+        "global_row": 275245,
+        "shard": "data/train-00230-of-00262-3887a4cc0e56b18d.parquet",
+        "row_index": 443,
+        "shard_size": 494104925
+      },
+      {
+        "global_row": 272376,
+        "shard": "data/train-00227-of-00262-8d5306edfbf19c98.parquet",
+        "row_index": 1156,
+        "shard_size": 498254066
+      },
+      {
+        "global_row": 237482,
+        "shard": "data/train-00198-of-00262-bdac6fa9fd0ba1c8.parquet",
+        "row_index": 888,
+        "shard_size": 498462448
+      },
+      {
+        "global_row": 147620,
+        "shard": "data/train-00123-of-00262-53ee0d860c9bafa4.parquet",
+        "row_index": 635,
+        "shard_size": 499072671
+      },
+      {
+        "global_row": 31052,
+        "shard": "data/train-00025-of-00262-04f952fcf7dc96a0.parquet",
+        "row_index": 1177,
+        "shard_size": 496820800
+      },
+      {
+        "global_row": 132634,
+        "shard": "data/train-00110-of-00262-86f3a61a14cd9b6a.parquet",
+        "row_index": 1184,
+        "shard_size": 500316729
+      },
+      {
+        "global_row": 242559,
+        "shard": "data/train-00202-of-00262-0dd3c59cdd7776a7.parquet",
+        "row_index": 1189,
+        "shard_size": 494720740
+      },
+      {
+        "global_row": 304335,
+        "shard": "data/train-00254-of-00262-4783f46886e44625.parquet",
+        "row_index": 877,
+        "shard_size": 502074113
+      },
+      {
+        "global_row": 147324,
+        "shard": "data/train-00123-of-00262-53ee0d860c9bafa4.parquet",
+        "row_index": 339,
+        "shard_size": 499072671
+      },
+      {
+        "global_row": 138932,
+        "shard": "data/train-00116-of-00262-510e0b79dd92d290.parquet",
+        "row_index": 312,
+        "shard_size": 490132808
+      },
+      {
+        "global_row": 10497,
+        "shard": "data/train-00008-of-00262-4e5e78b39e2746ac.parquet",
+        "row_index": 937,
+        "shard_size": 491094521
+      },
+      {
+        "global_row": 66385,
+        "shard": "data/train-00055-of-00262-4e5fedfc81c02bbe.parquet",
+        "row_index": 660,
+        "shard_size": 498695514
+      },
+      {
+        "global_row": 178714,
+        "shard": "data/train-00149-of-00262-458d644a52374b05.parquet",
+        "row_index": 659,
+        "shard_size": 494612946
+      },
+      {
+        "global_row": 219179,
+        "shard": "data/train-00183-of-00262-930b19126975870e.parquet",
+        "row_index": 495,
+        "shard_size": 496596922
+      },
+      {
+        "global_row": 23400,
+        "shard": "data/train-00019-of-00262-dbb9c716f5acb3d6.parquet",
+        "row_index": 695,
+        "shard_size": 498541612
+      },
+      {
+        "global_row": 283321,
+        "shard": "data/train-00237-of-00262-6d781d8da43a36a6.parquet",
+        "row_index": 161,
+        "shard_size": 492391396
+      },
+      {
+        "global_row": 210593,
+        "shard": "data/train-00176-of-00262-82f083cc2f5c2e15.parquet",
+        "row_index": 273,
+        "shard_size": 494128697
+      },
+      {
+        "global_row": 110356,
+        "shard": "data/train-00092-of-00262-fd2a7ce971dbefd0.parquet",
+        "row_index": 416,
+        "shard_size": 495725158
+      },
+      {
+        "global_row": 239930,
+        "shard": "data/train-00200-of-00262-4dd196cc0de8277f.parquet",
+        "row_index": 948,
+        "shard_size": 500098135
+      },
+      {
+        "global_row": 105476,
+        "shard": "data/train-00088-of-00262-76540558ae4ab8f8.parquet",
+        "row_index": 316,
+        "shard_size": 495514508
+      },
+      {
+        "global_row": 297607,
+        "shard": "data/train-00249-of-00262-945508bc9fe14042.parquet",
+        "row_index": 119,
+        "shard_size": 498778784
+      },
+      {
+        "global_row": 285311,
+        "shard": "data/train-00238-of-00262-640abf8e3a141f10.parquet",
+        "row_index": 957,
+        "shard_size": 496857135
+      },
+      {
+        "global_row": 3531,
+        "shard": "data/train-00002-of-00262-b42012f7e4ae416f.parquet",
+        "row_index": 1141,
+        "shard_size": 503852396
+      },
+      {
+        "global_row": 10143,
+        "shard": "data/train-00008-of-00262-4e5e78b39e2746ac.parquet",
+        "row_index": 583,
+        "shard_size": 491094521
+      },
+      {
+        "global_row": 308558,
+        "shard": "data/train-00258-of-00262-bd30683a71a530de.parquet",
+        "row_index": 324,
+        "shard_size": 495390771
+      },
+      {
+        "global_row": 11467,
+        "shard": "data/train-00009-of-00262-5ddcb95d9ecfa62c.parquet",
+        "row_index": 712,
+        "shard_size": 496868807
+      },
+      {
+        "global_row": 249450,
+        "shard": "data/train-00208-of-00262-f357688baf6675d5.parquet",
+        "row_index": 916,
+        "shard_size": 493722851
+      },
+      {
+        "global_row": 312242,
+        "shard": "data/train-00261-of-00262-f83a5c837b1853c5.parquet",
+        "row_index": 426,
+        "shard_size": 495992031
+      },
+      {
+        "global_row": 29049,
+        "shard": "data/train-00024-of-00262-5173c68fd5f8727e.parquet",
+        "row_index": 369,
+        "shard_size": 498114009
+      },
+      {
+        "global_row": 128200,
+        "shard": "data/train-00107-of-00262-2b4c99237515019b.parquet",
+        "row_index": 335,
+        "shard_size": 500614135
+      },
+      {
+        "global_row": 102554,
+        "shard": "data/train-00085-of-00262-f89019e9eb744ede.parquet",
+        "row_index": 979,
+        "shard_size": 493550006
+      },
+      {
+        "global_row": 85312,
+        "shard": "data/train-00071-of-00262-4167e57af458aa55.parquet",
+        "row_index": 467,
+        "shard_size": 497704343
+      },
+      {
+        "global_row": 263270,
+        "shard": "data/train-00220-of-00262-e998c3cf6d63ba9d.parquet",
+        "row_index": 408,
+        "shard_size": 497614691
+      },
+      {
+        "global_row": 97342,
+        "shard": "data/train-00081-of-00262-99e69627e07cad28.parquet",
+        "row_index": 547,
+        "shard_size": 500225886
+      },
+      {
+        "global_row": 172029,
+        "shard": "data/train-00143-of-00262-7c1e1cb62a1d77ef.parquet",
+        "row_index": 1144,
+        "shard_size": 500002665
+      },
+      {
+        "global_row": 9597,
+        "shard": "data/train-00008-of-00262-4e5e78b39e2746ac.parquet",
+        "row_index": 37,
+        "shard_size": 491094521
+      },
+      {
+        "global_row": 306258,
+        "shard": "data/train-00256-of-00262-ca4690f09beb1768.parquet",
+        "row_index": 412,
+        "shard_size": 494321392
+      },
+      {
+        "global_row": 102307,
+        "shard": "data/train-00085-of-00262-f89019e9eb744ede.parquet",
+        "row_index": 732,
+        "shard_size": 493550006
+      },
+      {
+        "global_row": 242373,
+        "shard": "data/train-00202-of-00262-0dd3c59cdd7776a7.parquet",
+        "row_index": 1003,
+        "shard_size": 494720740
+      },
+      {
+        "global_row": 279489,
+        "shard": "data/train-00233-of-00262-dc0459ad4b47afee.parquet",
+        "row_index": 1105,
+        "shard_size": 495753105
+      },
+      {
+        "global_row": 89984,
+        "shard": "data/train-00075-of-00262-905553099f896ee0.parquet",
+        "row_index": 359,
+        "shard_size": 494860031
+      },
+      {
+        "global_row": 196009,
+        "shard": "data/train-00164-of-00262-2bad338d48aad2b9.parquet",
+        "row_index": 29,
+        "shard_size": 495249281
+      },
+      {
+        "global_row": 68075,
+        "shard": "data/train-00056-of-00262-d26c52baed82e477.parquet",
+        "row_index": 1155,
+        "shard_size": 498094396
+      },
+      {
+        "global_row": 86208,
+        "shard": "data/train-00072-of-00262-e523c7df7a4e85e3.parquet",
+        "row_index": 168,
+        "shard_size": 498418201
+      },
+      {
+        "global_row": 178675,
+        "shard": "data/train-00149-of-00262-458d644a52374b05.parquet",
+        "row_index": 620,
+        "shard_size": 494612946
+      },
+      {
+        "global_row": 105133,
+        "shard": "data/train-00087-of-00262-9390f2a4a33ee122.parquet",
+        "row_index": 1168,
+        "shard_size": 498195429
+      },
+      {
+        "global_row": 221020,
+        "shard": "data/train-00184-of-00262-4e01ec2c064fb1d4.parquet",
+        "row_index": 1142,
+        "shard_size": 497529504
+      },
+      {
+        "global_row": 84128,
+        "shard": "data/train-00070-of-00262-fae9ce3edabe5aeb.parquet",
+        "row_index": 478,
+        "shard_size": 500666085
+      },
+      {
+        "global_row": 233374,
+        "shard": "data/train-00195-of-00262-3a395569b4c23fa7.parquet",
+        "row_index": 362,
+        "shard_size": 494227014
+      },
+      {
+        "global_row": 28953,
+        "shard": "data/train-00024-of-00262-5173c68fd5f8727e.parquet",
+        "row_index": 273,
+        "shard_size": 498114009
+      },
+      {
+        "global_row": 291721,
+        "shard": "data/train-00244-of-00262-a960fd64570e804e.parquet",
+        "row_index": 203,
+        "shard_size": 494647103
+      },
+      {
+        "global_row": 251143,
+        "shard": "data/train-00210-of-00262-5e90bfa12a003d45.parquet",
+        "row_index": 221,
+        "shard_size": 490886419
+      },
+      {
+        "global_row": 162761,
+        "shard": "data/train-00136-of-00262-fee5835f7ea0ca69.parquet",
+        "row_index": 241,
+        "shard_size": 500917178
+      },
+      {
+        "global_row": 303222,
+        "shard": "data/train-00253-of-00262-6e4b6f0eb2a5628a.parquet",
+        "row_index": 958,
+        "shard_size": 496951326
+      },
+      {
+        "global_row": 304529,
+        "shard": "data/train-00254-of-00262-4783f46886e44625.parquet",
+        "row_index": 1071,
+        "shard_size": 502074113
+      },
+      {
+        "global_row": 17253,
+        "shard": "data/train-00014-of-00262-54441bd3e6d6dbc2.parquet",
+        "row_index": 523,
+        "shard_size": 492183497
+      },
+      {
+        "global_row": 221704,
+        "shard": "data/train-00185-of-00262-2647e3b59eed9706.parquet",
+        "row_index": 632,
+        "shard_size": 492734558
+      },
+      {
+        "global_row": 244113,
+        "shard": "data/train-00204-of-00262-5228dbcecf7b9fc2.parquet",
+        "row_index": 355,
+        "shard_size": 496312802
+      },
+      {
+        "global_row": 123168,
+        "shard": "data/train-00103-of-00262-9e2e195bc5516d3e.parquet",
+        "row_index": 83,
+        "shard_size": 501403873
+      },
+      {
+        "global_row": 57317,
+        "shard": "data/train-00047-of-00262-419148cef11ede85.parquet",
+        "row_index": 1152,
+        "shard_size": 497374174
+      },
+      {
+        "global_row": 26223,
+        "shard": "data/train-00021-of-00262-29125cbd3c68e59a.parquet",
+        "row_index": 1128,
+        "shard_size": 498584137
+      },
+      {
+        "global_row": 72855,
+        "shard": "data/train-00060-of-00262-e54c1afe5edf0c0b.parquet",
+        "row_index": 1155,
+        "shard_size": 495475868
+      },
+      {
+        "global_row": 153798,
+        "shard": "data/train-00128-of-00262-b5eae431370d14f0.parquet",
+        "row_index": 838,
+        "shard_size": 500573897
+      },
+      {
+        "global_row": 105572,
+        "shard": "data/train-00088-of-00262-76540558ae4ab8f8.parquet",
+        "row_index": 412,
+        "shard_size": 495514508
+      },
+      {
+        "global_row": 8014,
+        "shard": "data/train-00006-of-00262-481bca8919ed76bd.parquet",
+        "row_index": 844,
+        "shard_size": 497545797
+      },
+      {
+        "global_row": 155984,
+        "shard": "data/train-00130-of-00262-53190bcf27f6670c.parquet",
+        "row_index": 634,
+        "shard_size": 496748094
+      },
+      {
+        "global_row": 298072,
+        "shard": "data/train-00249-of-00262-945508bc9fe14042.parquet",
+        "row_index": 584,
+        "shard_size": 498778784
+      },
+      {
+        "global_row": 10136,
+        "shard": "data/train-00008-of-00262-4e5e78b39e2746ac.parquet",
+        "row_index": 576,
+        "shard_size": 491094521
+      },
+      {
+        "global_row": 83356,
+        "shard": "data/train-00069-of-00262-dd6c226669bad6c4.parquet",
+        "row_index": 901,
+        "shard_size": 498558707
+      }
+    ],
+    "diagnostic_ids": [
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00112-of-00262-593c63720c7553ee.parquet:169",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00016-of-00262-2658ed9e0c2bd371.parquet:828",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00261-of-00262-f83a5c837b1853c5.parquet:100",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00026-of-00262-99aa228747108104.parquet:1131",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00212-of-00262-f33b7881722068c6.parquet:60",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00241-of-00262-6004ecc68944de6c.parquet:718",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00204-of-00262-5228dbcecf7b9fc2.parquet:196",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00126-of-00262-090a876d0b8fc4bc.parquet:1179",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00254-of-00262-4783f46886e44625.parquet:983",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00134-of-00262-689a69924a6d1906.parquet:847",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00259-of-00262-fc82adc18af82c76.parquet:424",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00053-of-00262-bb493048cb8ef0e9.parquet:219",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00065-of-00262-9c61dafe68b72d2f.parquet:1162",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00080-of-00262-697ac76012c162d2.parquet:426",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00109-of-00262-61e2ff9a99cfb6ea.parquet:190",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00192-of-00262-a2de89ad89dd9f38.parquet:763",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00041-of-00262-e11c1916b111f1a7.parquet:792",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00166-of-00262-3ee0ed202ceed14d.parquet:1188",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00162-of-00262-ecef0b42617e12f4.parquet:776",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00036-of-00262-a85573beb0b32828.parquet:859",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00162-of-00262-ecef0b42617e12f4.parquet:89",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00176-of-00262-82f083cc2f5c2e15.parquet:771",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00053-of-00262-bb493048cb8ef0e9.parquet:262",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00070-of-00262-fae9ce3edabe5aeb.parquet:189",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00239-of-00262-b24f77cc5a2348dc.parquet:226",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00215-of-00262-f1de90c87bcfb837.parquet:826",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00097-of-00262-e74bc5acd30efa90.parquet:193",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00155-of-00262-e1b5a992f6ba4942.parquet:1104",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00054-of-00262-de6b1c31d0fe9042.parquet:109",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00259-of-00262-fc82adc18af82c76.parquet:369",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00001-of-00262-b4c37264e7cef478.parquet:936",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00230-of-00262-3887a4cc0e56b18d.parquet:443",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00227-of-00262-8d5306edfbf19c98.parquet:1156",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00198-of-00262-bdac6fa9fd0ba1c8.parquet:888",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00123-of-00262-53ee0d860c9bafa4.parquet:635",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00025-of-00262-04f952fcf7dc96a0.parquet:1177",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00110-of-00262-86f3a61a14cd9b6a.parquet:1184",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00202-of-00262-0dd3c59cdd7776a7.parquet:1189",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00254-of-00262-4783f46886e44625.parquet:877",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00123-of-00262-53ee0d860c9bafa4.parquet:339",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00116-of-00262-510e0b79dd92d290.parquet:312",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00008-of-00262-4e5e78b39e2746ac.parquet:937",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00055-of-00262-4e5fedfc81c02bbe.parquet:660",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00149-of-00262-458d644a52374b05.parquet:659",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00183-of-00262-930b19126975870e.parquet:495",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00019-of-00262-dbb9c716f5acb3d6.parquet:695",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00237-of-00262-6d781d8da43a36a6.parquet:161",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00176-of-00262-82f083cc2f5c2e15.parquet:273",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00092-of-00262-fd2a7ce971dbefd0.parquet:416",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00200-of-00262-4dd196cc0de8277f.parquet:948",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00088-of-00262-76540558ae4ab8f8.parquet:316",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00249-of-00262-945508bc9fe14042.parquet:119",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00238-of-00262-640abf8e3a141f10.parquet:957",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00002-of-00262-b42012f7e4ae416f.parquet:1141",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00008-of-00262-4e5e78b39e2746ac.parquet:583",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00258-of-00262-bd30683a71a530de.parquet:324",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00009-of-00262-5ddcb95d9ecfa62c.parquet:712",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00208-of-00262-f357688baf6675d5.parquet:916",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00261-of-00262-f83a5c837b1853c5.parquet:426",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00024-of-00262-5173c68fd5f8727e.parquet:369",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00107-of-00262-2b4c99237515019b.parquet:335",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00085-of-00262-f89019e9eb744ede.parquet:979",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00071-of-00262-4167e57af458aa55.parquet:467",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00220-of-00262-e998c3cf6d63ba9d.parquet:408",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00081-of-00262-99e69627e07cad28.parquet:547",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00143-of-00262-7c1e1cb62a1d77ef.parquet:1144",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00008-of-00262-4e5e78b39e2746ac.parquet:37",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00256-of-00262-ca4690f09beb1768.parquet:412",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00085-of-00262-f89019e9eb744ede.parquet:732",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00202-of-00262-0dd3c59cdd7776a7.parquet:1003",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00233-of-00262-dc0459ad4b47afee.parquet:1105",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00075-of-00262-905553099f896ee0.parquet:359",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00164-of-00262-2bad338d48aad2b9.parquet:29",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00056-of-00262-d26c52baed82e477.parquet:1155",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00072-of-00262-e523c7df7a4e85e3.parquet:168",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00149-of-00262-458d644a52374b05.parquet:620",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00087-of-00262-9390f2a4a33ee122.parquet:1168",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00184-of-00262-4e01ec2c064fb1d4.parquet:1142",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00070-of-00262-fae9ce3edabe5aeb.parquet:478",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00195-of-00262-3a395569b4c23fa7.parquet:362",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00024-of-00262-5173c68fd5f8727e.parquet:273",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00244-of-00262-a960fd64570e804e.parquet:203",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00210-of-00262-5e90bfa12a003d45.parquet:221",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00136-of-00262-fee5835f7ea0ca69.parquet:241",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00253-of-00262-6e4b6f0eb2a5628a.parquet:958",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00254-of-00262-4783f46886e44625.parquet:1071",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00014-of-00262-54441bd3e6d6dbc2.parquet:523",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00185-of-00262-2647e3b59eed9706.parquet:632",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00204-of-00262-5228dbcecf7b9fc2.parquet:355",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00103-of-00262-9e2e195bc5516d3e.parquet:83",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00047-of-00262-419148cef11ede85.parquet:1152",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00021-of-00262-29125cbd3c68e59a.parquet:1128",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00060-of-00262-e54c1afe5edf0c0b.parquet:1155",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00128-of-00262-b5eae431370d14f0.parquet:838",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00088-of-00262-76540558ae4ab8f8.parquet:412",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00006-of-00262-481bca8919ed76bd.parquet:844",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00130-of-00262-53190bcf27f6670c.parquet:634",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00249-of-00262-945508bc9fe14042.parquet:584",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00008-of-00262-4e5e78b39e2746ac.parquet:576",
+      "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00069-of-00262-dd6c226669bad6c4.parquet:901"
+    ],
+    "test_policy": "source-family-hash holdout; test captions not parsed or inspected; diagnostic train/val only reported separately"
+  },
+  "split_counts": {
+    "train": 100,
+    "val": 0,
+    "test": 0
+  },
+  "review_ids": [
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00198-of-00262-bdac6fa9fd0ba1c8.parquet:888",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00254-of-00262-4783f46886e44625.parquet:1071",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00215-of-00262-f1de90c87bcfb837.parquet:826",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00065-of-00262-9c61dafe68b72d2f.parquet:1162",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00149-of-00262-458d644a52374b05.parquet:620",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00239-of-00262-b24f77cc5a2348dc.parquet:226",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00072-of-00262-e523c7df7a4e85e3.parquet:168",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00238-of-00262-640abf8e3a141f10.parquet:957",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00008-of-00262-4e5e78b39e2746ac.parquet:576",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00195-of-00262-3a395569b4c23fa7.parquet:362",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00208-of-00262-f357688baf6675d5.parquet:916",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00041-of-00262-e11c1916b111f1a7.parquet:792",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00087-of-00262-9390f2a4a33ee122.parquet:1168",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00016-of-00262-2658ed9e0c2bd371.parquet:828",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00164-of-00262-2bad338d48aad2b9.parquet:29",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00071-of-00262-4167e57af458aa55.parquet:467",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00112-of-00262-593c63720c7553ee.parquet:169",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00176-of-00262-82f083cc2f5c2e15.parquet:771",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00025-of-00262-04f952fcf7dc96a0.parquet:1177",
+    "ip2p:aa665b890915f7a42f8615bee868a9f3447e178f:train-00136-of-00262-fee5835f7ea0ca69.parquet:241"
+  ]
+}
