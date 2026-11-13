@@ -24,3 +24,9 @@ scripts/pilot_mlp.py.bak
 /data/external/
 /data/knowledge/
 /data/cache/
+
+# Joint local VLM annotation v1: raw responses, images, reports and human submissions.
+/reviews/magicbrush-joint-*/
+/reports/level2/magicbrush-joint-*/
+/models/
+*.safetensors

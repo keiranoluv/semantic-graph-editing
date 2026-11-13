@@ -1,0 +1,4 @@
+# CPU client/tests reuse requests and Pillow from the existing environment.
+# Install the GPU server separately in its own environment/container.
+requests>=2.32.3,<3
+Pillow>=10.4.0,<13
