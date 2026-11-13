@@ -1,0 +1,8 @@
+body {font:16px system-ui,sans-serif; margin:24px; color:#163047; background:#f4f7fa}
+header, section {background:white; border:1px solid #cad4df; padding:16px; margin:12px 0; border-radius:8px}
+header {position:sticky; top:0; z-index:1} nav {display:flex; gap:12px; align-items:center}
+main {display:grid; grid-template-columns:1fr 1fr; gap:16px} main section {min-width:0}
+pre {font-size:13px; overflow:auto; max-height:480px; white-space:pre-wrap; overflow-wrap:anywhere}
+label {display:block; margin:10px 0} input,textarea,select,button {font:inherit; padding:7px}
+textarea {width:95%; min-height:70px} button {cursor:pointer} #saved {overflow-wrap:anywhere}
+@media(max-width:800px) {main {grid-template-columns:1fr} header {position:static}}

@@ -33,3 +33,6 @@ scripts/pilot_mlp.py.bak
 
 # Caption graph v1: immutable generated viewers, packets and human submissions.
 /reviews/instructpix2pix-caption-graph-v1/
+
+# Official EMNLP dataset terms unspecified; keep records/review evidence local.
+/reviews/emnlp2020-*/
