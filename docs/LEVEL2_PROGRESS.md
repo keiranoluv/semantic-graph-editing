@@ -1,5 +1,15 @@
 # Level 2 — khởi động và trạng thái triển khai
 
+**Cập nhật 2026-11-13 — phương án EMNLP 2020:** đã thêm adapter CPU cho
+graph crowdsourced có sẵn và pilot đúng 100 train (seed 42 trước lọc),
+100/100 qua transaction/codec/loader; có support 5/6 phép. File graph vô hướng,
+ID bị đánh lại ở 31 cặp; giữ attribute nodes và mã hóa link bằng cung đối xứng.
+Đã build 34 case review nhưng **chưa có kiểm tay**, chưa mở rộng ≥300,
+chưa train. Đây là nguồn thay thế **chờ giảng viên chấp thuận**, không tự
+đáp ứng yêu cầu MagicBrush/InstructPix2Pix của đề.
+[Báo cáo và giới hạn](../reports/level2/emnlp2020-crowdsourced-pilot-v1/README.md),
+[lệnh review/mở rộng](LEVEL2_EMNLP2020_GRAPH_MODIFICATION_V1.md).
+
 **Cập nhật 2026-11-12:** 15/15 lượt GQA full (MLP/GAT/PE-CE/PE-PL/PE-PLPR ×
 42/123/3407) đã hoàn tất và kiểm chứng; đây là điểm **validation**, chưa dùng
 test. [Bảng kết quả cuối](../reports/level2/gqa-full-v3-results-v1/README.md).

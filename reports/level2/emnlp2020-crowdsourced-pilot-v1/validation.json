@@ -1,0 +1,67 @@
+{
+  "adapter_tests": {
+    "failed": 0,
+    "passed": 42,
+    "synthetic_fixtures_not_counted_as_pilot": true
+  },
+  "data_output": "data/processed/level2/emnlp2020-crowdsourced-pilot-v1-run1",
+  "editing_pytest": {
+    "command": "CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 myenv/bin/python -m pytest -q tests/editing",
+    "failed": 0,
+    "passed": 259,
+    "seconds": 16.42
+  },
+  "gpu_computation_started": false,
+  "human_review": {
+    "automatically_approved": false,
+    "candidate_conditional": {
+      "complete": false,
+      "correct_fraction_among_determinate": null,
+      "correct_fraction_entire_cohort": null,
+      "decision_counts": {
+        "unreviewed": 20
+      },
+      "determinate": 0,
+      "size": 20
+    },
+    "diagnostic": {
+      "complete": false,
+      "correct_fraction_among_determinate": null,
+      "correct_fraction_entire_cohort": null,
+      "decision_counts": {
+        "unreviewed": 20
+      },
+      "determinate": 0,
+      "size": 20
+    },
+    "image_accuracy": null,
+    "inter_rater_agreement": null,
+    "minimum_correct_fraction": 0.8,
+    "minimum_determinate_candidate_reviews": 20,
+    "ready": false,
+    "rejected_ids": [],
+    "review_csv_sha256": null,
+    "review_packet_sha256": "66fafcca4dc889fbc53b6265cfca953f2a7c7b25cac39d9c75960b0c41b2a48c",
+    "reviewed_pairs": 0
+  },
+  "pre_commit": "all_applicable_hooks_passed",
+  "raw_receipt_sha256": "2ca30b3ba3d35c2a2030b8780a1d47085d21da645795e49a15f94728d6461a02",
+  "real_viewer_smoke": {
+    "browser_gpu_disabled": true,
+    "cases_rendered": 34,
+    "graph_panels_per_case": 4,
+    "human_verdicts_created": 0,
+    "images_required": false,
+    "javascript_errors": []
+  },
+  "resume": {
+    "all_output_receipt_hashes_verified": true,
+    "cohort_unchanged": true,
+    "console_vs_full_json_bytes_equal": false,
+    "console_comparison_explanation": "CLI intentionally omits code metadata; compare the frozen summary artifact instead of console serialization",
+    "same_summary_artifact_bytes": true
+  },
+  "review_directory": "reviews/emnlp2020-crowdsourced-pilot-v1-run1",
+  "review_packet_sha256": "66fafcca4dc889fbc53b6265cfca953f2a7c7b25cac39d9c75960b0c41b2a48c",
+  "source_file_hashes_match_manifest": true
+}

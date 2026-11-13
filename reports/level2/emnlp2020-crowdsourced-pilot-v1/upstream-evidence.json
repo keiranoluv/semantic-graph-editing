@@ -1,0 +1,32 @@
+{
+  "commit": "6e1b396007a0c938bccda2bbddade332745b3f42",
+  "dataset_construction_code_released": false,
+  "environment": {
+    "platform": "Linux-6.17.0-23-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "reader": "stdlib pickletools + inert Symbol state in Linux seccomp/chroot subprocess; no NetworkX runtime construction"
+  },
+  "graph_reader_evidence": "code/data_utils.py Graph.read_data parse_graph builds symmetric adjacency and uses node feature / edge feature",
+  "identity_guarantee": "no_public_construction_code_guaranteeing_cross_graph_ID_preservation",
+  "license_file_present": false,
+  "license_terms_in_README": "not_specified",
+  "paper_evidence": "sections2.1-2.4 caption-derived graph construction and MTurk instructions; section3.1 topological ordering; section3.2.5 triangular decoding; section4 approximate partitions",
+  "paper_sha256": "5eb71133daaa2da82db478bbf3667e66eb1afcba40565e3f94f3658d9f24d01c",
+  "paper_url": "https://aclanthology.org/2020.findings-emnlp.87.pdf",
+  "redistributed_upstream_bytes": false,
+  "repository": "https://github.com/xlhex/SceneGraphModification",
+  "source_file_sha256": {
+    "README.md": "02101bf4ef46bcffda178b69d8b9ca54c85ad55ddcfbe8b0a5e2ce266136df5e",
+    "code/data_utils.py": "239e2b70efc3a22ec203b655bee38344b65ea39cf3b7c045754edd38b8ccd74e",
+    "code/models.py": "3a80a781ddd58d90fbc57764531ef9e6e3f9186dbc2a8b2e71cc6a51f34c7d1d",
+    "code/preprocess.py": "cb01bb4d480759e5a7aa15f02ca38c13ee698dea61c06ad6876b235e84f710bc",
+    "code/search.py": "ff41396c4a094fda910535526c0695f4f0b3a87867836e9ceaed604e41e60186",
+    "code/train.py": "117c778d0383e7f69c0ffaad0a42bd0ee71ed96d380e91b586a3569f63e0467b",
+    "code/utils.py": "cc43c6e37094b966086600c3c637476e0b46b92cc7c85f04ea87ee5766cc7a6a",
+    "demo/graphtrans_demo1.gif": "55a162b7f708a3dcd3f9138667237ed0ed228b049d617323311fec4c24f936c5",
+    "demo/graphtrans_demo2.gif": "4915812e90d0255ac3ae012122388fd9c77a9db5a889b3b8b177bcfe310a1888",
+    "scripts/visualisation.py": "f52b773d4e4a436492afac3673a3aaf85ca571cb26c174b62758ab312e8e471e"
+  },
+  "verified_date": "2026-11-13",
+  "visualizer_evidence": "scripts/visualisation.py loads concatenated pickles; renderer reverses att presentation relative to other links"
+}
