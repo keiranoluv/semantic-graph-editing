@@ -1,5 +1,13 @@
 # Level 2 — khởi động và trạng thái triển khai
 
+**Cập nhật 2026-11-13 — giao diện gán tay MagicBrush:** đã có công cụ local
+với ảnh nguồn → xác nhận nguồn → sửa bản graph sao chép ở ảnh đích → kiểm
+diff và hoàn thành. Có autosave, lịch sử, undo/redo, điểm đánh dấu, khôi phục
+JSON và phát hiện xung đột. Mặc định đúng 20 ID train đã chọn trước; có thể
+mở 415 train +97 val, không mở test. **Chưa có nhãn tay hoặc review thật**;
+export vẫn chờ kiểm chéo, chưa đủ ≥300 hay sẵn sàng train.
+[Hướng dẫn chạy và thao tác](LEVEL2_MAGICBRUSH_MANUAL_V1.md).
+
 **Cập nhật 2026-11-13 — phương án EMNLP 2020:** đã thêm adapter CPU cho
 graph crowdsourced có sẵn và pilot đúng 100 train (seed 42 trước lọc),
 100/100 qua transaction/codec/loader; có support 5/6 phép. File graph vô hướng,
