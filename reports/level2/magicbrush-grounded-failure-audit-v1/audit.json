@@ -1,0 +1,890 @@
+{
+  "schema_version": 1,
+  "GPU_started": false,
+  "training_started": false,
+  "summary": {
+    "pilot_pairs": 20,
+    "status_counts": {
+      "needs_review": 18,
+      "unsupported": 2
+    },
+    "nonempty_operation_pairs": 0,
+    "empty_operation_pairs": 18,
+    "pairs_without_graph_transaction": 2,
+    "passed_automatic_filters": 0,
+    "problem_counts": {
+      "requested_change_not_verified": 18,
+      "source_context_not_visually_stable": 8,
+      "source_focus_reference_not_unique": 5,
+      "target_focus_reference_not_unique": 8,
+      "unexplained_target_detection": 12,
+      "no_grounded_source_objects": 2,
+      "color_change_has_insufficient_visual_evidence": 3,
+      "replacement_has_insufficient_visual_evidence": 2,
+      "deletion_has_insufficient_visual_evidence": 2,
+      "addition_has_insufficient_visual_evidence": 1
+    },
+    "verified_noop_pairs": 0,
+    "interpretation": "Rejected empty transactions and missing graphs are unassigned labels, not verified no-op answers. No no-op verification exists in this recipe."
+  },
+  "user_qualitative_failed_cases": 5,
+  "saved_human_review_csv_created": false,
+  "full_dataset_accuracy_estimated": false,
+  "ready_for_training": false,
+  "pdf_requirements": {
+    "file_sha256": "8f3354ba1e2195fdf4212aa3a745c363d0858cc69173724bea0d83dc95fac373",
+    "pages": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "minimum_pairs": 300,
+    "minimum_human_checks": 20,
+    "must_represent_requested_node_edge_edits": true
+  },
+  "input_sha256": {
+    "data/processed/level2/magicbrush-grounded-anchor-v2/manifest.json": "ee6d6a93c492108492a44381231df1433f2a1008b98a103a5d3046b71a7a0065",
+    "data/processed/level2/magicbrush-grounded-anchor-v2/edits-a5e687060af3b146.json": "859d2bc893cf414d55a5d587d0bf42cd1fa8b51876a0c3d3d79787930bc13065",
+    "data/processed/level2/magicbrush-grounded-anchor-v2/inference-identity.json": "879566fdd2ed2cffb9b394533975f81506f6f44fdc56379ed32f1eca9087783a"
+  },
+  "records": [
+    {
+      "id": "magicbrush:73536:1",
+      "instruction": "swap the tree for a pinata",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "requested_change_not_verified",
+        "source_context_not_visually_stable",
+        "source_focus_reference_not_unique",
+        "target_focus_reference_not_unique",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 0,
+        "focus_target_detection_count": 0,
+        "source_presence_scores": {
+          "pinata": 0.2882333993911743,
+          "tree": 0.31743574142456055,
+          "christmas tree": 0.5398715734481812,
+          "food": 0.37645602226257324,
+          "plate": 0.4716658294200897,
+          "table": 0.382938027381897
+        },
+        "target_presence_scores": {
+          "pinata": 0.2512825131416321,
+          "tree": 0.26454034447669983,
+          "christmas tree": 0.45508873462677,
+          "food": 0.4216451346874237,
+          "plate": 0.5260281562805176,
+          "table": 0.40338262915611267
+        },
+        "source_detection_labels": [
+          "plate",
+          "christmas tree"
+        ],
+        "target_detection_labels": [
+          "plate",
+          "christmas tree"
+        ]
+      },
+      "evidence_sha256": "9191110133c77b81810c548618c43dc0ba684ac06845b01ea7cac28bd7954117",
+      "qualitative_feedback": {
+        "source": "user reported incorrect missing edit; assistant inspected both original images",
+        "expected_main_edit_family": "replace_node",
+        "case": "Tree → piñata",
+        "visual_observation": "Ảnh đích có vật trang trí piñata thay vùng cây; detector vẫn gọi một vùng là christmas tree.",
+        "is_human_review_csv": false,
+        "is_approved_ground_truth": false
+      }
+    },
+    {
+      "id": "magicbrush:473215:1",
+      "instruction": "change the cherry to a strawberry",
+      "label_state": "unassigned",
+      "historical_status": "unsupported",
+      "historical_operation_count": 0,
+      "problems": [
+        "no_grounded_source_objects"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 0,
+        "focus_target_detection_count": 0,
+        "source_presence_scores": {
+          "cherry": 0.39687034487724304,
+          "strawberry": 0.25485533475875854,
+          "dessert": 0.39823073148727417,
+          "ice": 0.36033564805984497
+        },
+        "target_presence_scores": {
+          "cherry": 0.24270443618297577,
+          "strawberry": 0.11254721134901047,
+          "dessert": 0.30154168605804443,
+          "ice": 0.41354918479919434
+        },
+        "source_detection_labels": [],
+        "target_detection_labels": []
+      },
+      "evidence_sha256": "76ada74e30b607e2d936cf984d2a0d78488cd80cb7f607d2aeaf1e4e899e219f"
+    },
+    {
+      "id": "magicbrush:349918:1",
+      "instruction": "Let the chair be yellow.",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "color_change_has_insufficient_visual_evidence",
+        "requested_change_not_verified",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 1,
+        "focus_target_detection_count": 1,
+        "source_presence_scores": {
+          "chair": 0.7533298134803772,
+          "computer desk": 0.28131866455078125,
+          "monitor": 0.7916101217269897
+        },
+        "target_presence_scores": {
+          "chair": 0.8070634603500366,
+          "computer desk": 0.2967666983604431,
+          "monitor": 0.794279158115387
+        },
+        "source_detection_labels": [
+          "monitor",
+          "chair"
+        ],
+        "target_detection_labels": [
+          "monitor",
+          "chair"
+        ],
+        "focus_iou": 0.8718051628534241,
+        "focus_crop_cosine": 0.7851422319143134,
+        "source_color_assignment": null,
+        "target_color_assignment": null,
+        "target_focus_anchor_proof": {
+          "cosine": 0.8412980955030696,
+          "mae": 0.11780999228754034,
+          "source_class_score": 0.28800949454307556,
+          "target_class_score": 0.2850591540336609
+        }
+      },
+      "evidence_sha256": "593ff25e97d118294b0d4917982f5952fdf91f0258c7eb032685614e77853bab",
+      "qualitative_feedback": {
+        "source": "user reported incorrect missing edit; assistant inspected both original images",
+        "expected_main_edit_family": "replace_node",
+        "case": "Chair → yellow",
+        "visual_observation": "Cùng chiếc ghế có phần đệm đổi từ tối sang vàng; không cần đổi identity chỉ vì màu thay đổi.",
+        "is_human_review_csv": false,
+        "is_approved_ground_truth": false
+      }
+    },
+    {
+      "id": "magicbrush:423742:1",
+      "instruction": "turn the cat into a hedgehog",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "replacement_has_insufficient_visual_evidence",
+        "requested_change_not_verified",
+        "source_context_not_visually_stable",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 1,
+        "focus_target_detection_count": 1,
+        "source_presence_scores": {
+          "cat": 0.633027970790863,
+          "hedgehog": 0.29794010519981384,
+          "computer": 0.7871949672698975
+        },
+        "target_presence_scores": {
+          "cat": 0.1484563946723938,
+          "hedgehog": 0.5967814922332764,
+          "computer": 0.7235413789749146
+        },
+        "source_detection_labels": [
+          "computer",
+          "cat"
+        ],
+        "target_detection_labels": [
+          "computer",
+          "hedgehog"
+        ],
+        "focus_iou": 0.36417757871858153,
+        "focus_crop_cosine": 0.8552161107884324,
+        "source_color_assignment": null,
+        "target_color_assignment": null,
+        "target_focus_anchor_proof": {
+          "cosine": 0.8413154344564099,
+          "mae": 0.15518540377875414,
+          "source_class_score": 0.2310526967048645,
+          "target_class_score": 0.2630487084388733
+        }
+      },
+      "evidence_sha256": "80d603f87eafb486c7dd83c3151ced54b46babcd4c318cfb0d4b397cb46e4615",
+      "qualitative_feedback": {
+        "source": "user reported incorrect missing edit; assistant inspected both original images",
+        "expected_main_edit_family": "replace_node",
+        "case": "Cat → hedgehog",
+        "visual_observation": "Vùng con mèo bên phải laptop được thay bằng con nhím nhỏ hơn; bbox thay kích thước là điều có thể xảy ra.",
+        "is_human_review_csv": false,
+        "is_approved_ground_truth": false
+      }
+    },
+    {
+      "id": "magicbrush:65562:1",
+      "instruction": "change the baseball bat into a cucumber",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "requested_change_not_verified",
+        "source_focus_reference_not_unique",
+        "target_focus_reference_not_unique",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 0,
+        "focus_target_detection_count": 0,
+        "source_presence_scores": {
+          "baseball bat": 0.35973042249679565,
+          "cucumber": 0.01580921560525894,
+          "baseball player": 0.513229250907898,
+          "bat": 0.35257086157798767,
+          "field": 0.5610764622688293
+        },
+        "target_presence_scores": {
+          "baseball bat": 0.4794034957885742,
+          "cucumber": 0.023674895986914635,
+          "baseball player": 0.4397054612636566,
+          "bat": 0.4662764370441437,
+          "field": 0.55585116147995
+        },
+        "source_detection_labels": [
+          "field",
+          "baseball player"
+        ],
+        "target_detection_labels": [
+          "field",
+          "baseball bat"
+        ]
+      },
+      "evidence_sha256": "a908de4719f887653d66798c5e424613c5d5ea1ff69ed62b4afacd3c09708414"
+    },
+    {
+      "id": "magicbrush:417823:3",
+      "instruction": "add a tree",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "requested_change_not_verified",
+        "target_focus_reference_not_unique",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 0,
+        "focus_target_detection_count": 0,
+        "source_presence_scores": {
+          "tree": 0.278904527425766,
+          "bird": 0.6062527298927307,
+          "chair": 0.5170284509658813
+        },
+        "target_presence_scores": {
+          "tree": 0.2549748718738556,
+          "bird": 0.6089465022087097,
+          "chair": 0.6162816286087036
+        },
+        "source_detection_labels": [
+          "bird",
+          "chair",
+          "bird"
+        ],
+        "target_detection_labels": [
+          "bird",
+          "chair",
+          "bird"
+        ]
+      },
+      "evidence_sha256": "15f2c9697d6a5cdcd174cfcb356dc2235de63e594e53427460fce6e5ed04e4c2"
+    },
+    {
+      "id": "magicbrush:198947:1",
+      "instruction": "turn the dog into a balloon",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "requested_change_not_verified",
+        "source_context_not_visually_stable",
+        "target_focus_reference_not_unique",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 1,
+        "focus_target_detection_count": 0,
+        "source_presence_scores": {
+          "balloon": 0.182709738612175,
+          "dog": 0.8830640912055969,
+          "leash": 0.2978072464466095,
+          "sidewalk": 0.6519954800605774
+        },
+        "target_presence_scores": {
+          "balloon": 0.3514147698879242,
+          "dog": 0.10641700029373169,
+          "leash": 0.1308784782886505,
+          "sidewalk": 0.621525228023529
+        },
+        "source_detection_labels": [
+          "sidewalk",
+          "dog"
+        ],
+        "target_detection_labels": [
+          "sidewalk"
+        ]
+      },
+      "evidence_sha256": "d475d9b232972c929aaf34967bb2b02ac083d8716cc9e22f05bb153d70933226",
+      "qualitative_feedback": {
+        "source": "user reported incorrect missing edit; assistant inspected both original images",
+        "expected_main_edit_family": "replace_node",
+        "case": "Dog → balloon",
+        "visual_observation": "Con chó được thay bằng hình chó làm bằng bóng bay; class/material cần mô tả rõ trong ontology, không tự suy ra thuộc tính từ câu yêu cầu.",
+        "is_human_review_csv": false,
+        "is_approved_ground_truth": false
+      }
+    },
+    {
+      "id": "magicbrush:99372:2",
+      "instruction": "turn the bird black",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "color_change_has_insufficient_visual_evidence",
+        "requested_change_not_verified",
+        "source_context_not_visually_stable",
+        "target_focus_reference_not_unique",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 1,
+        "focus_target_detection_count": 0,
+        "source_presence_scores": {
+          "bird": 0.7995882034301758,
+          "computer": 0.6781846284866333
+        },
+        "target_presence_scores": {
+          "bird": 0.16885030269622803,
+          "computer": 0.5527251958847046
+        },
+        "source_detection_labels": [
+          "computer",
+          "bird"
+        ],
+        "target_detection_labels": [
+          "computer"
+        ]
+      },
+      "evidence_sha256": "8269b08fbf7e8f68215b04ec8a91370351ed3c804c0f141a712de51d0f096385"
+    },
+    {
+      "id": "magicbrush:357057:2",
+      "instruction": "remove that toilet paper",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "deletion_has_insufficient_visual_evidence",
+        "requested_change_not_verified"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 1,
+        "focus_target_detection_count": 0,
+        "source_presence_scores": {
+          "toilet paper": 0.625480055809021,
+          "bathroom": 0.7454100251197815,
+          "mirror": 0.7692039012908936,
+          "toilet sink": 0.5719656944274902
+        },
+        "target_presence_scores": {
+          "toilet paper": 0.3156590461730957,
+          "bathroom": 0.7435776591300964,
+          "mirror": 0.761158287525177,
+          "toilet sink": 0.568454921245575
+        },
+        "source_detection_labels": [
+          "bathroom",
+          "toilet sink",
+          "toilet paper",
+          "mirror",
+          "toilet sink"
+        ],
+        "target_detection_labels": [
+          "bathroom",
+          "toilet sink",
+          "mirror",
+          "toilet sink"
+        ]
+      },
+      "evidence_sha256": "20e44621dc499a4ec5721ece11dad4d0a1c566a8cfa68274ed5dde15c79fe0db"
+    },
+    {
+      "id": "magicbrush:442009:1",
+      "instruction": "let the bathtub be red",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "requested_change_not_verified",
+        "source_context_not_visually_stable",
+        "source_focus_reference_not_unique",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 0,
+        "focus_target_detection_count": 1,
+        "source_presence_scores": {
+          "bathtub": 0.38882437348365784,
+          "bathroom": 0.731458842754364,
+          "sink": 0.3272719979286194,
+          "tub": 0.3633244037628174
+        },
+        "target_presence_scores": {
+          "bathtub": 0.6024312973022461,
+          "bathroom": 0.7265258431434631,
+          "sink": 0.3324804902076721,
+          "tub": 0.26073119044303894
+        },
+        "source_detection_labels": [
+          "bathroom"
+        ],
+        "target_detection_labels": [
+          "bathroom",
+          "bathtub"
+        ],
+        "target_focus_anchor_proof": {
+          "cosine": 0.8230957084944238,
+          "mae": 0.2733520821288702,
+          "source_class_score": 0.24321335554122925,
+          "target_class_score": 0.2526010572910309
+        }
+      },
+      "evidence_sha256": "e48e067aaa10fa1de9a2b5de171439a33359f56cc6e0b38dd61b2d3adef68d66"
+    },
+    {
+      "id": "magicbrush:323791:1",
+      "instruction": "swap the man for a robot",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "requested_change_not_verified",
+        "source_context_not_visually_stable",
+        "target_focus_reference_not_unique"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 1,
+        "focus_target_detection_count": 0,
+        "source_presence_scores": {
+          "man": 0.8246094584465027,
+          "robot": 0.31194496154785156,
+          "air": 0.11221823841333389,
+          "kite": 0.43612995743751526
+        },
+        "target_presence_scores": {
+          "man": 0.3532850444316864,
+          "robot": 0.4237357974052429,
+          "air": 0.09793610125780106,
+          "kite": 0.40496373176574707
+        },
+        "source_detection_labels": [
+          "man"
+        ],
+        "target_detection_labels": []
+      },
+      "evidence_sha256": "ece80a1bfbb6dcc435f25d9dc9db65532e364dbf0ef7f5dd53b9c10c6061d031"
+    },
+    {
+      "id": "magicbrush:208423:2",
+      "instruction": "Add an airplane.",
+      "label_state": "unassigned",
+      "historical_status": "unsupported",
+      "historical_operation_count": 0,
+      "problems": [
+        "no_grounded_source_objects"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 0,
+        "focus_target_detection_count": 1,
+        "source_presence_scores": {
+          "airplane": 0.16778254508972168,
+          "air": 0.07460936903953552,
+          "bunch": 0.34903794527053833
+        },
+        "target_presence_scores": {
+          "airplane": 0.5671884417533875,
+          "air": 0.09211447089910507,
+          "bunch": 0.34500911831855774
+        },
+        "source_detection_labels": [],
+        "target_detection_labels": [
+          "airplane"
+        ],
+        "target_focus_anchor_proof": {
+          "cosine": 0.7963730277770449,
+          "mae": 0.11959794554201707,
+          "source_class_score": 0.2694976329803467,
+          "target_class_score": 0.28075987100601196
+        }
+      },
+      "evidence_sha256": "d84083282492bda81270f3d52ef3c9d96a8667ebe7c51a40835c140baea87546"
+    },
+    {
+      "id": "magicbrush:181992:2",
+      "instruction": "remove the mesh screen",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "requested_change_not_verified",
+        "source_context_not_visually_stable",
+        "source_focus_reference_not_unique"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 0,
+        "focus_target_detection_count": 0,
+        "source_presence_scores": {
+          "mesh screen": 0.2891678810119629,
+          "car": 0.49634677171707153,
+          "stuff": 0.49666664004325867,
+          "trunk": 0.09653714299201965
+        },
+        "target_presence_scores": {
+          "mesh screen": 0.2696193754673004,
+          "car": 0.5256388783454895,
+          "stuff": 0.4482465088367462,
+          "trunk": 0.07682235538959503
+        },
+        "source_detection_labels": [
+          "car",
+          "stuff"
+        ],
+        "target_detection_labels": [
+          "car"
+        ]
+      },
+      "evidence_sha256": "fbc575508562c4a29f77fdfa1557f77cc7a5939bb610066e966255130de39b37"
+    },
+    {
+      "id": "magicbrush:43894:2",
+      "instruction": "let the laptop be black",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "color_change_has_insufficient_visual_evidence",
+        "requested_change_not_verified"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 1,
+        "focus_target_detection_count": 1,
+        "source_presence_scores": {
+          "laptop": 0.5381945371627808,
+          "candy": 0.19086357951164246,
+          "candy candy": 0.2741231918334961,
+          "cup": 0.5214591026306152
+        },
+        "target_presence_scores": {
+          "laptop": 0.5388650894165039,
+          "candy": 0.16510362923145294,
+          "candy candy": 0.25092750787734985,
+          "cup": 0.5816547274589539
+        },
+        "source_detection_labels": [
+          "cup",
+          "laptop"
+        ],
+        "target_detection_labels": [
+          "cup",
+          "laptop"
+        ],
+        "focus_iou": 0.8867327478998337,
+        "focus_crop_cosine": 0.9473092797995355,
+        "source_color_assignment": null,
+        "target_color_assignment": null,
+        "target_focus_anchor_proof": {
+          "cosine": 0.9778136353094545,
+          "mae": 0.1183607335757102,
+          "source_class_score": 0.22335165739059448,
+          "target_class_score": 0.22851599752902985
+        }
+      },
+      "evidence_sha256": "738d52367f8dbf4905e5847e7e0f2c3dc478be160fd7bdda7671a1ffb4080dcc"
+    },
+    {
+      "id": "magicbrush:65562:3",
+      "instruction": "add a boxer",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "requested_change_not_verified",
+        "target_focus_reference_not_unique"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 0,
+        "focus_target_detection_count": 0,
+        "source_presence_scores": {
+          "boxer": 0.293500155210495,
+          "baseball bat": 0.49225035309791565,
+          "boy": 0.4947647750377655,
+          "shirt": 0.3193676769733429
+        },
+        "target_presence_scores": {
+          "boxer": 0.3791709542274475,
+          "baseball bat": 0.49585801362991333,
+          "boy": 0.4481319189071655,
+          "shirt": 0.29959186911582947
+        },
+        "source_detection_labels": [
+          "boy",
+          "baseball bat"
+        ],
+        "target_detection_labels": [
+          "baseball bat"
+        ]
+      },
+      "evidence_sha256": "d9a82ef36fc00516204a5d2eb0509b953e38ef6504e915323f7e5ddf4b98f759"
+    },
+    {
+      "id": "magicbrush:210671:1",
+      "instruction": "Remove the telephone.",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "deletion_has_insufficient_visual_evidence",
+        "requested_change_not_verified"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 1,
+        "focus_target_detection_count": 0,
+        "source_presence_scores": {
+          "telephone": 0.780155599117279,
+          "bed": 0.7741305828094482,
+          "bedroom": 0.698644757270813,
+          "window": 0.4333946704864502
+        },
+        "target_presence_scores": {
+          "telephone": 0.2701377868652344,
+          "bed": 0.7372186779975891,
+          "bedroom": 0.6891948580741882,
+          "window": 0.37383008003234863
+        },
+        "source_detection_labels": [
+          "bedroom",
+          "bed",
+          "telephone"
+        ],
+        "target_detection_labels": [
+          "bedroom",
+          "bed"
+        ]
+      },
+      "evidence_sha256": "63e207670cbc179325fe5801b3237876ed9fc2cc7ea2617a738f5cee7c77314b"
+    },
+    {
+      "id": "magicbrush:495122:2",
+      "instruction": "put a balloon cat in the picture",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "addition_has_insufficient_visual_evidence",
+        "requested_change_not_verified",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 0,
+        "focus_target_detection_count": 1,
+        "source_presence_scores": {
+          "balloon cat": 0.40787404775619507,
+          "kitchen": 0.5228010416030884,
+          "panda bear": 0.6164032220840454
+        },
+        "target_presence_scores": {
+          "balloon cat": 0.742946982383728,
+          "kitchen": 0.5334798097610474,
+          "panda bear": 0.8695084452629089
+        },
+        "source_detection_labels": [
+          "kitchen",
+          "panda bear"
+        ],
+        "target_detection_labels": [
+          "kitchen",
+          "panda bear",
+          "balloon cat"
+        ],
+        "target_focus_anchor_proof": {
+          "cosine": 0.8606884085728614,
+          "mae": 0.12446666430285194,
+          "source_class_score": 0.2366161346435547,
+          "target_class_score": 0.2624940872192383
+        }
+      },
+      "evidence_sha256": "d4fcc1acf4e00ed4447eba68f597420075d5f414c4f53a512d5892370e53b96e"
+    },
+    {
+      "id": "magicbrush:155705:1",
+      "instruction": "Change the racket to a frying pan.",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "requested_change_not_verified",
+        "source_focus_reference_not_unique",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 0,
+        "focus_target_detection_count": 1,
+        "source_presence_scores": {
+          "frying pan": 0.3218591809272766,
+          "racket": 0.4345455765724182,
+          "shirt": 0.6026453971862793,
+          "tennis": 0.9485929012298584,
+          "woman": 0.7423639297485352
+        },
+        "target_presence_scores": {
+          "frying pan": 0.5379893779754639,
+          "racket": 0.07724520564079285,
+          "shirt": 0.5488942265510559,
+          "tennis": 0.9150484800338745,
+          "woman": 0.7929148077964783
+        },
+        "source_detection_labels": [
+          "woman",
+          "tennis",
+          "shirt"
+        ],
+        "target_detection_labels": [
+          "frying pan",
+          "woman",
+          "tennis",
+          "shirt"
+        ],
+        "target_focus_anchor_proof": {
+          "cosine": 0.8350631200402912,
+          "mae": 0.2320682503770739,
+          "source_class_score": 0.23005075752735138,
+          "target_class_score": 0.3108384907245636
+        }
+      },
+      "evidence_sha256": "7428547db8339343cff40b5bef3aa7a6475fa31704e2b4ec9fea2661ab603c83"
+    },
+    {
+      "id": "magicbrush:262207:2",
+      "instruction": "change the television to a refrigerator",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "replacement_has_insufficient_visual_evidence",
+        "requested_change_not_verified",
+        "source_context_not_visually_stable",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 1,
+        "focus_target_detection_count": 1,
+        "source_presence_scores": {
+          "refrigerator": 0.16638392210006714,
+          "television": 0.7538341879844666,
+          "living room": 0.6202927231788635,
+          "video game": 0.2698398232460022,
+          "woman": 0.8143280148506165
+        },
+        "target_presence_scores": {
+          "refrigerator": 0.5196986198425293,
+          "television": 0.28366148471832275,
+          "living room": 0.6185760498046875,
+          "video game": 0.2672232985496521,
+          "woman": 0.7357887029647827
+        },
+        "source_detection_labels": [
+          "living room",
+          "television",
+          "woman"
+        ],
+        "target_detection_labels": [
+          "living room",
+          "woman",
+          "refrigerator"
+        ],
+        "focus_iou": 0.36549455423914295,
+        "focus_crop_cosine": 0.8213001890290165,
+        "source_color_assignment": null,
+        "target_color_assignment": null,
+        "target_focus_anchor_proof": {
+          "cosine": 0.9269743840663661,
+          "mae": 0.20008437209248567,
+          "source_class_score": 0.22309067845344543,
+          "target_class_score": 0.23452527821063995
+        }
+      },
+      "evidence_sha256": "a5be82b46eca5f5b5c546afa771c7f7d6e7d5692509bf3de888b63b9b34af3c0"
+    },
+    {
+      "id": "magicbrush:128175:2",
+      "instruction": "Add a pear.",
+      "label_state": "unassigned",
+      "historical_status": "needs_review",
+      "historical_operation_count": 0,
+      "problems": [
+        "requested_change_not_verified",
+        "target_focus_reference_not_unique",
+        "unexplained_target_detection"
+      ],
+      "measurements": {
+        "focus_source_detection_count": 1,
+        "focus_target_detection_count": 2,
+        "source_presence_scores": {
+          "pear": 0.5731016993522644,
+          "bowl": 0.5784180760383606,
+          "fruit": 0.44073352217674255,
+          "table": 0.4324367046356201
+        },
+        "target_presence_scores": {
+          "pear": 0.6219090223312378,
+          "bowl": 0.6129971146583557,
+          "fruit": 0.4469364881515503,
+          "table": 0.40222999453544617
+        },
+        "source_detection_labels": [
+          "bowl",
+          "pear"
+        ],
+        "target_detection_labels": [
+          "bowl",
+          "pear",
+          "pear"
+        ]
+      },
+      "evidence_sha256": "046fc360cc83dfe8b7ee4be5faf71ba00fee33ab9f83281d0e84c4fbc40371e9",
+      "qualitative_feedback": {
+        "source": "user reported incorrect missing edit; assistant inspected both original images",
+        "expected_main_edit_family": "add_node",
+        "case": "Add a pear",
+        "visual_observation": "Có thêm quả lê ở phía trên bên trái; detection pear cũ vẫn còn. Không đủ căn cứ gọi mọi detection pear là lê thật.",
+        "is_human_review_csv": false,
+        "is_approved_ground_truth": false
+      }
+    }
+  ]
+}
