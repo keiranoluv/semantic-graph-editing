@@ -1,0 +1,39 @@
+{
+  "actual_pair_smoke": {
+    "both_images_visible_before_annotation": true,
+    "desktop_height": 1000,
+    "desktop_width": 1440,
+    "fixed_toolbar_top_px": 925.31,
+    "instruction_visible": true,
+    "source_and_target_bottom_px": 893.94
+  },
+  "actual_v2_annotation_events_created": 0,
+  "code_file_sha256": {
+    "src/editing/operations.py": "a4fb5a647eb0ff718015e77e1b56e9a3a925a316775f49888907faf95fa6fa44",
+    "tools/edit_model_v1/codec.py": "9ef6b5777a2a201efe33d185af77a3063f4665e75626090d7cd175ad986a16d7",
+    "tools/magicbrush_manual_v1/store.py": "59c2a43684c8d1f648369d502ccd38b45264080fb7281f0268a51f6551df3fd7",
+    "tools/magicbrush_manual_v2/__init__.py": "ea28b0365b8168a0dfbb7b3932df020fccca7d0c065f4f89688cb91f8932f97f",
+    "tools/magicbrush_manual_v2/__main__.py": "6acb0f1f7aa222b03573551462b4a5e3abec775edaa04955eda8286acc24f739",
+    "tools/magicbrush_manual_v2/assets/app.css": "e725f22496f4bb7c1ccf00b850b5f71c77f67d164eb65d5f8102d7a4429f49c2",
+    "tools/magicbrush_manual_v2/assets/app.js": "1e8e972449de5eda199273666ed618016dd05719c6838b4fc209c5e90df0ea35",
+    "tools/magicbrush_manual_v2/assets/index.html": "aed6a6cc89dd0c7f922406a0e5fa377fc053318fb7dd5ef9467dd1700d664e01",
+    "tools/magicbrush_manual_v2/proposal.py": "3f7f3c4857891ac5c088ad6aa6003597dcad4d8fee1b6fc119433143723fa1cc",
+    "tools/magicbrush_manual_v2/server.py": "80aa9bdba3e4f522a0f635c170b27351870864ad26b941c7f1509d6622d225a1",
+    "tools/magicbrush_manual_v2/store.py": "d1e0ac65f1e1c8625c5cc85667e82be457021f5953dcbfc47b5f766241923ca3"
+  },
+  "date": "2026-11-13",
+  "external_model_api_calls": 0,
+  "gpu_computation_started": false,
+  "independent_review_completed": false,
+  "legacy_cases_preserved": 1,
+  "legacy_events_preserved": 15,
+  "legacy_files_unchanged": true,
+  "legacy_snapshot_sha256": "68c81ea29a2342e444077aa2063d997b6ff287d4b21beade5543043b4c8f0d6b",
+  "pytest": {
+    "command": "CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 myenv/bin/python -m pytest -q tests/editing",
+    "failed": 0,
+    "passed": 296,
+    "seconds": 24.93,
+    "v2_tests": 16
+  }
+}

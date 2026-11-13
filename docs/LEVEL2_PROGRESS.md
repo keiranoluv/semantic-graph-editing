@@ -1,5 +1,11 @@
 # Level 2 — khởi động và trạng thái triển khai
 
+**Cập nhật 2026-11-13 — MagicBrush annotation v2:** hai ảnh và câu yêu cầu
+hiện ngay khi mở cặp; có tải hai ảnh + prompt zero-shot và nhập JSON của cả
+hai graph, xem trước trước khi áp dụng. Giữ nguyên 15 event v1 hiện có trong
+snapshot, tiếp tục lưu riêng ở v2. Proposal là nháp chờ người đối chiếu;
+chưa tự tạo nhãn/review hay chạy model. [Cách dùng v2](LEVEL2_MAGICBRUSH_MANUAL_V2.md).
+
 **Cập nhật 2026-11-13 — giao diện gán tay MagicBrush:** đã có công cụ local
 với ảnh nguồn → xác nhận nguồn → sửa bản graph sao chép ở ảnh đích → kiểm
 diff và hoàn thành. Có autosave, lịch sử, undo/redo, điểm đánh dấu, khôi phục
