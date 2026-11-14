@@ -1,0 +1,136 @@
+{
+  "baseline_commit": "4e149ce75828f38d5bf81676ff8ac1eee7175279",
+  "branch": "feat/aligng-adapted-v1-p0",
+  "correctness": {
+    "baseline_disabled_logits_relation_prototypes": "exact (atol=0, rtol=0), C=51/311, sampled/full query, multi-image/empty",
+    "empty_batch_optimizer": "parameters and existing AdamW momentum/step unchanged",
+    "evaluator": "unchanged VG150/custom GQA GC/NG, duplicate GT rows and fixed class denominators",
+    "isolation_tolerance_float32": {
+      "atol": 1e-06,
+      "rtol": 1e-06
+    },
+    "label_independence": "full context constructed before targets; full topology validated; P_i identical when labels/sampling change with fixed RNG; forward has no targets argument",
+    "large_synthetic_graph": {
+      "classes": 311,
+      "context_pairs": 15750,
+      "device": "cpu",
+      "finite": true,
+      "full_query_pairs": 15750,
+      "objects": 126,
+      "semantic_dim": 256
+    },
+    "losses": "unchanged PE-Net CE/PL/PR, gamma1=1/gamma2=7/k1=10/k2=1/unit weights",
+    "measured_A_alone_vs_AB_max_abs_error_C311_D16_seed42": 0.0,
+    "upstream_gradient_tolerance_double": {
+      "atol": 1e-10,
+      "rtol": 1e-09
+    },
+    "upstream_output_tolerance_double": {
+      "atol": 2e-12,
+      "rtol": 2e-12
+    }
+  },
+  "cuda_initialized_in_diagnostic": false,
+  "experiment_training_started": false,
+  "heldout_test_annotations_opened": false,
+  "historical_preservation": {
+    "changed_since_task_start": [],
+    "checkpoint_reinference_performed": false,
+    "historical_metadata_hashes_verified": 8,
+    "historical_source_hashes_verified": 73,
+    "preexisting_tracked_files_checked": 1147,
+    "preexisting_user_status": [
+      " M AGENTS.md",
+      " M notebooks/level1_scene_graph_demo.ipynb",
+      "?? magicbrush-manual-9ad27da4ce83.json",
+      "?? reports/level2/gqa-wordnet-full-v2/summary.json",
+      "?? reports/level2/magicbrush-manual-experiment-v3/result-audit.json",
+      "?? reports/level2/magicbrush-manual-task-b-audit-v1/",
+      "?? reviews/magicbrush-grounded-diagnostics-v1/",
+      "?? reviews/magicbrush-grounded-human-v1/",
+      "?? reviews/magicbrush-grounded-human-v2/",
+      "?? reviews/magicbrush-human-v2/index.html",
+      "?? reviews/magicbrush-human-v2/packets/",
+      "?? reviews/magicbrush-human-v2/review-data.json",
+      "?? reviews/magicbrush-human-v2/viewer.css",
+      "?? reviews/magicbrush-human-v2/viewer.js",
+      "?? tools/magicbrush_typed_attrs_v1/"
+    ],
+    "src_inventory_count": 70,
+    "src_inventory_unchanged": true
+  },
+  "implementation_and_evidence_sha256": {
+    "experiments/aligng_adapted_v1/LICENSE-AlignG.txt": "00c6ae6f6a05ee52e208adc59343fee15d66ce9f059ddb1a61f57efceab23072",
+    "experiments/aligng_adapted_v1/README.md": "05155d910b31021fef25b51d28f23331551974da995baad699c2d9beea501e61",
+    "experiments/aligng_adapted_v1/__init__.py": "4122dc75e999678d2725807aa297058693f05f8ba13301006570bccd9d053f84",
+    "experiments/aligng_adapted_v1/batching.py": "9867783faea0dde376d279131f116c4f669cdea45dbc22bf0962596088a65ea5",
+    "experiments/aligng_adapted_v1/cpu-tests.xml": "6ec42f0cf308d14297e78fdf9faca0ee5ca2ed9fba7080c888eec2b49f96e4ad",
+    "experiments/aligng_adapted_v1/feedback.py": "4bb1ba758005e3492fe8adca17b12db23bd12bbdd18c3a60da319cf28e3fa936",
+    "experiments/aligng_adapted_v1/model.py": "55ee3038c858bb64ae6b783da5242a3f9121fa612269d1b16fb9c8361d47aa61",
+    "experiments/aligng_adapted_v1/provenance.json": "2e403be3bd4c99a4997e6636f04bdd69822e3aba0103a5ea87a725b90c5cef0e",
+    "experiments/aligng_adapted_v1/training.py": "dda6cb8497791240cc4430f345973061c1035a63fcb09be62a7a3b72ba4b7db0",
+    "tests/aligng_adapted_v1/__init__.py": "9ff08f7715539cf3bd82966d571b3d71143b7ab1df49ce3142f38ceec6f49518",
+    "tests/aligng_adapted_v1/conftest.py": "8678b2fb8818b5ac96cccd64359d72f43c3090a18b47eaa79371366ba346032f",
+    "tests/aligng_adapted_v1/test_batching.py": "39932af3922c626f6f7bb93916ab7328c0e33282f42409db4e6974558068b332",
+    "tests/aligng_adapted_v1/test_equivalence.py": "ef7c8eec132b91f595227074cad7d99bd6c6b68c61c2538a9efd2656318e13bb",
+    "tests/aligng_adapted_v1/test_feedback.py": "9bf97bfc36db67f8baac33803ad54ff41b4a4ed4391cb4c70714a29cb34c4ad1",
+    "tests/aligng_adapted_v1/test_gradients.py": "ed507aa6bd726ab6ae078c2033931e08e20349bba6823eb6194f376f683fe53e",
+    "tests/aligng_adapted_v1/test_isolation.py": "5856324f4b6dcb11750a8ae4b397b145b8b0cd0e531c7ff7ff5d4ea4a0019864",
+    "tests/aligng_adapted_v1/test_provenance.py": "d4000afe7eea3b30380eb0e42f39f12b5077b4410a1893932bdf8eb2a160dda9",
+    "tests/aligng_adapted_v1/upstream_reference.py": "bb4e7805102ba78b5209e902fa668c2ce3569d789891ece682c3a81f42f5e594"
+  },
+  "implementation_commit": "Resolve via git log -1 --format=%H -- experiments/aligng_adapted_v1; the receipt is part of that commit.",
+  "limitations": [
+    "No GPU VRAM/throughput or mixed-precision validation",
+    "No real-data adapter training or benchmark result",
+    "No P1 launcher, durable resume, or online W&B integration yet",
+    "Residual/EMA prototype modes intentionally not implemented"
+  ],
+  "lint": {
+    "black": "PASS",
+    "git_diff_check": "PASS",
+    "isort": "PASS",
+    "ruff": "PASS"
+  },
+  "no_gpu_tasks_started": true,
+  "no_wandb_runs_started": true,
+  "parameter_counts": {
+    "GQA_custom": {
+      "baseline_parameters": 2467109,
+      "feedback_parameters": 922368,
+      "parameters": 3389477
+    },
+    "VG150": {
+      "baseline_parameters": 1924409,
+      "feedback_parameters": 922368,
+      "parameters": 2846777
+    }
+  },
+  "phase": "P0",
+  "recorded_at": "2026-11-15T02:48:34.728057+07:00",
+  "schema_version": 1,
+  "status": "PASS",
+  "test_data": "synthetic only; optimizer updates in unit tests only",
+  "tests": {
+    "adapter_passed": 72,
+    "command": "CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 myenv/bin/python -m pytest -q tests/aligng_adapted_v1 tests/training/test_penet.py tests/training/test_gqa_pilot.py tests/training/test_gqa_full.py tests/training/test_gqa_prepared_loader.py tests/training/test_vg150_penet_v1.py tests/datasets/test_batching.py tests/graph/test_builder.py tests/evaluation/test_reference_predcls.py -k 'not cuda' --junitxml=/tmp/aligng-p0-cpu.xml",
+    "deselected_cuda": 12,
+    "failed": 0,
+    "junit_xml": "experiments/aligng_adapted_v1/cpu-tests.xml",
+    "passed": 145,
+    "regression_passed": 73,
+    "skipped": 0,
+    "warnings": [
+      "DataLoader pin_memory unused because no accelerator was visible (CPU-only check)."
+    ]
+  },
+  "upstream_commit": "ba2dd471fb3c3bb39030660dcb7f6f105c52446c",
+  "versions": {
+    "black": "23.10.1",
+    "numpy": "2.2.6",
+    "pytest": "8.3.5",
+    "ruff": "0.9.10",
+    "torch": "2.7.0+cu128",
+    "torch-geometric": "2.6.1"
+  }
+}
