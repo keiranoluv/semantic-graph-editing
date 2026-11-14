@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "Ruff/Black/isort passed",
+    "bash -n passed",
+    "CPU preflight verified frozen artifacts and 301/67 split",
+    "structured target budgets checked for all 301 train and 64 scored validation examples",
+    "schema-gap membership fixed before training",
+    "synthetic exact denominator test: empty schema-gap prediction receives no success credit",
+    "synthetic sequential cache/training/validation pipeline passed on CPU",
+    "both models run despite failed quality gates",
+    "queue resume, completed artifact reuse and tamper rejection passed",
+    "original structured trainer early stopping/checkpoint regressions passed"
+  ],
+  "experiment_sha256": "edbadde8d1d35b75c599a7184f95e767ee179940d6b8effb37a0d94ff4e459ea",
+  "files_sha256": {
+    "/workspace/workspace/semantic-graph-editing/configs/level2/magicbrush-compact-pilot-v1.json": "4f2e323d734d1f738a0394f39b2c4b306c2ec7f9e7ac7908e646ba94dc36b54f",
+    "/workspace/workspace/semantic-graph-editing/configs/level2/magicbrush-compact-pilot-v1.lock.json": "a41b699d4538e25021e7967f5ec86969474013b70e34966ce1d4e73eccf1b96b",
+    "reports/level2/magicbrush-compact-pilot-v1/README.md": "a30be1b54f41616ad64238aec914bc50eb3b5fc2a41b1316cdb0e112ec3d40b0",
+    "reports/level2/magicbrush-compact-pilot-v1/preflight.json": "cce162d57402eb17b5e9f5c9b3eb66183a5b6160c305613037d4c3357b4e2662",
+    "tests/editing/test_magicbrush_compact_pilot_v1.py": "241726f405267f17cdfe6972a8c53caf892aeadd6db0ca2d4eae091b26e01e21"
+  },
+  "gpu_jobs_started": false,
+  "pytest": {
+    "command": "myenv/bin/python -m pytest -q tests/editing/test_magicbrush_compact_pilot_v1.py tests/editing/test_magicbrush_compact_overfit_v1.py tests/editing/test_magicbrush_experiment_v3.py tests/editing/test_magicbrush_compact_v1.py",
+    "passed": 40,
+    "seconds": 6.45
+  },
+  "scope": "CPU-only release verification; real GPU caching/training/evaluation not started",
+  "test_labels_decoded": false
+}
