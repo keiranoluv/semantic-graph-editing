@@ -1,0 +1,26 @@
+{
+  "audit_reproduced_in_second_cpu_process": true,
+  "automatic_followup_training": false,
+  "batch_size": 16,
+  "both_runs_completed": true,
+  "files_sha256": {
+    "reports/level2/magicbrush-lexical-pilot-v1/RESULTS.md": "455c4cf28879f6b09b6de988e2a44955b7bf2db2e1f08bb1fcfa1c4396bb3f38",
+    "reports/level2/magicbrush-lexical-pilot-v1/result-audit.json": "35489b687ad14a16f6baa7457cc4edb76da0cec10eb9ceaa242921d520a68cd9",
+    "reports/level2/magicbrush-lexical-pilot-v1/schema-caveat.json": "4c2b4650b0bdd750aea262681649a65469c1856c673cdc47ca1b63ead392c2ef",
+    "runs/level2/magicbrush-lexical-pilot-v1/summary.json": "dc4b06562d09de6e10c1448f14d63c9534d5f60e351df75319045f92f6d88c32",
+    "tools/analyze_magicbrush_lexical_pilot.py": "b50fc4fbfbead8ef0abd2a997d352e98c7ef3dab568299c81e334fedda6f3ed4"
+  },
+  "gpu_released_observation": "nvidia-smi after completion: 96 MiB, utilization 0%",
+  "inference_ablation_variants_per_model": 3,
+  "main_predictions_rescored_for_baseline_and_lexical": true,
+  "runs_sequential": true,
+  "seed": 42,
+  "source_config_and_cache_locks_verified_after_run": true,
+  "test_labels_decoded": false,
+  "training_code_commit": "cb1ef02",
+  "training_models": [
+    "mlp",
+    "gnn"
+  ],
+  "user_authorized_assistant_gpu": true
+}

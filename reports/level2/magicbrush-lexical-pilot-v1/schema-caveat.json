@@ -1,0 +1,53 @@
+{
+  "action_vi": "Giữ nguyên nhãn trong thực nghiệm so sánh đã chạy; báo cáo hạn chế. Nếu sửa schema để bảo toàn thông tin nhiệm vụ phải tạo phiên bản mới và áp dụng nhất quán, không sửa riêng mẫu validation để nâng điểm.",
+  "compact_operations": [
+    {
+      "after": {
+        "attributes": [],
+        "id": "n002",
+        "label": "screen"
+      },
+      "before": {
+        "attributes": [
+          "screen application"
+        ],
+        "id": "n002",
+        "label": "screen"
+      },
+      "kind": "replace_node"
+    }
+  ],
+  "evidence_scope": "graph annotation and deterministic projection, not a new visual review",
+  "id": "magicbrush:357633:1",
+  "images_reinspected": false,
+  "instruction": "put a car on the screen of the laptop.",
+  "observation_vi": "GNN khớp exact nhãn compact bằng việc bỏ screen application. Nhưng chi tiết car image của target gốc đã bị phép rút gọn loại bỏ, nên không được diễn giải exact này là model đã thêm đúng hình xe theo yêu cầu.",
+  "original_operations": [
+    {
+      "after": {
+        "attributes": [
+          "car image"
+        ],
+        "id": "n002",
+        "label": "screen"
+      },
+      "before": {
+        "attributes": [
+          "application windows"
+        ],
+        "id": "n002",
+        "label": "screen"
+      },
+      "kind": "replace_node"
+    }
+  ],
+  "source_sidecar_sha256": "3e75e5db198e7e5b87fefcaeb5091ec412d2538cd9a936a2ab7ae16558d4bae9",
+  "target_attribute_transformations": [
+    {
+      "core": [],
+      "node_id": "n002",
+      "original": "car image",
+      "rule": "detail_only"
+    }
+  ]
+}

@@ -1,0 +1,2034 @@
+{
+  "checks": [
+    "current/parent releases and frozen cache verified by preflight",
+    "both baseline and lexical completion receipts verified",
+    "main raw/constrained predictions rescored with identical 64-case labels",
+    "all 67 prediction IDs/schema-gap accounting verified",
+    "grounding diagnostics recomputed",
+    "ablation artifacts hash-verified; metrics recorded during committed inference runs"
+  ],
+  "execution": {
+    "completed": true,
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "gpu_training_runs": 2,
+    "seed": 42,
+    "sequential_models": [
+      "mlp",
+      "gnn"
+    ],
+    "training_code_commit": "cb1ef02",
+    "user_authorized_assistant_gpu": true
+  },
+  "experiment_sha256": "5254dbdc02583ff241288b10f070c9d6617cf52b49d148484f180947c289c556",
+  "feature_availability_on_validation": {
+    "added_names_in_train_vocabulary": 26,
+    "added_names_outside_train_vocabulary": 16,
+    "in_vocabulary_names_exactly_mentioned": 10,
+    "reference_added_nodes": 42
+  },
+  "interpretation_vi": "Tín hiệu từ vựng giúp chọn đúng tên thêm mới hơn, nhưng ít chuyển thành thao tác đúng đầy đủ. Mức tăng F1 có giới hạn; chỉ một seed, không kết luận ưu thế thống kê hoặc GNN tốt hơn MLP.",
+  "models": {
+    "gnn": {
+      "added_attribute_diagnostics": {
+        "added_name_and_attributes_match_ignoring_id": 0
+      },
+      "baseline": {
+        "conservative_exact_definition": "Correct compact graphs on actionable cases divided by ALL validation pairs; schema-gap cases receive no success credit. Not original full-detail graph accuracy.",
+        "conservative_exact_graph_over_all_pairs": 0.0,
+        "constrained": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 64,
+          "failed_prediction_rate": 0.0,
+          "failed_predictions": 0,
+          "invalid_transactions": 0,
+          "macro_f1_supported_types": 0.10824674058692645,
+          "micro": {
+            "f1": 0.10382513661202186,
+            "fn": 187,
+            "fp": 141,
+            "precision": 0.11875,
+            "recall": 0.09223300970873786,
+            "support": 206,
+            "tp": 19
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.11428571428571428,
+              "fn": 53,
+              "fp": 40,
+              "precision": 0.13043478260869565,
+              "recall": 0.1016949152542373,
+              "support": 59,
+              "tp": 6
+            },
+            "add_node": {
+              "f1": 0.0,
+              "fn": 42,
+              "fp": 34,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 42,
+              "tp": 0
+            },
+            "delete_edge": {
+              "f1": 0.24615384615384617,
+              "fn": 29,
+              "fp": 20,
+              "precision": 0.2857142857142857,
+              "recall": 0.21621621621621623,
+              "support": 37,
+              "tp": 8
+            },
+            "delete_node": {
+              "f1": 0.1509433962264151,
+              "fn": 32,
+              "fp": 13,
+              "precision": 0.23529411764705882,
+              "recall": 0.1111111111111111,
+              "support": 36,
+              "tp": 4
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.029850746268656716,
+              "fn": 31,
+              "fp": 34,
+              "precision": 0.02857142857142857,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 1.0,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "gap_diagnostics": [
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:453731:1",
+            "instruction": "the dog is looking forward",
+            "predicted_operation_count": 2
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:456569:3",
+            "instruction": "let trees border the zoo",
+            "predicted_operation_count": 1
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:503943:1",
+            "instruction": "let the laptop have a red web page",
+            "predicted_operation_count": 2
+          }
+        ],
+        "raw": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 64,
+          "failed_prediction_rate": 0.296875,
+          "failed_predictions": 19,
+          "invalid_transactions": 19,
+          "macro_f1_supported_types": 0.0876135619209609,
+          "micro": {
+            "f1": 0.08695652173913043,
+            "fn": 190,
+            "fp": 146,
+            "precision": 0.09876543209876543,
+            "recall": 0.07766990291262135,
+            "support": 206,
+            "tp": 16
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.12612612612612611,
+              "fn": 52,
+              "fp": 45,
+              "precision": 0.1346153846153846,
+              "recall": 0.11864406779661017,
+              "support": 59,
+              "tp": 7
+            },
+            "add_node": {
+              "f1": 0.0,
+              "fn": 42,
+              "fp": 34,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 42,
+              "tp": 0
+            },
+            "delete_edge": {
+              "f1": 0.13114754098360656,
+              "fn": 33,
+              "fp": 20,
+              "precision": 0.16666666666666666,
+              "recall": 0.10810810810810811,
+              "support": 37,
+              "tp": 4
+            },
+            "delete_node": {
+              "f1": 0.1509433962264151,
+              "fn": 32,
+              "fp": 13,
+              "precision": 0.23529411764705882,
+              "recall": 0.1111111111111111,
+              "support": 36,
+              "tp": 4
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.029850746268656716,
+              "fn": 31,
+              "fp": 34,
+              "precision": 0.02857142857142857,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 0.703125,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "schema_coverage": 0.9552238805970149,
+        "schema_gap_ids": [
+          "magicbrush:453731:1",
+          "magicbrush:456569:3",
+          "magicbrush:503943:1"
+        ],
+        "schema_gap_pairs": 3,
+        "scope": "Primary metrics on fixed actionable compact validation labels; schema gaps retained and not scored as successful empty edits",
+        "scored_pairs": 64,
+        "validation_pairs": 67
+      },
+      "baseline_diagnostics": {
+        "counts": {
+          "correct_added_names_ignoring_attributes_and_ids": 2,
+          "correct_existing_complete_payload": 13,
+          "correct_existing_kind_and_id": 20,
+          "expected_added_names": 42,
+          "expected_existing_ops": 105,
+          "predicted_added_names": 34
+        },
+        "frequent_wrong_added_names": [
+          [
+            "car",
+            5
+          ],
+          [
+            "lion",
+            4
+          ],
+          [
+            "baseball cap",
+            4
+          ],
+          [
+            "duck",
+            3
+          ],
+          [
+            "house",
+            2
+          ]
+        ],
+        "illustrations": [
+          {
+            "expected_added_names": {
+              "gorilla": 1
+            },
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted_added_names": {
+              "lion": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "guitar": 1
+            },
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted_added_names": {
+              "baseball cap": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "lion": 1
+            },
+            "id": "magicbrush:456569:2",
+            "instruction": "let a lion sleep near the giraffes",
+            "predicted_added_names": {
+              "lion": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "laptop": 1
+            },
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted_added_names": {
+              "chair": 1
+            }
+          }
+        ],
+        "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+      },
+      "baseline_f1": 0.10382513661202186,
+      "completion_receipt_sha256": "b3db3f47c7b074999c011365674cce74429fa49252242eb8b097494c84252839",
+      "delta_percentage_points": 0.5166689001057156,
+      "epochs_completed": 46,
+      "exact_cases": [
+        {
+          "id": "magicbrush:357633:1",
+          "instruction": "put a car on the screen of the laptop.",
+          "operations": [
+            {
+              "after": {
+                "attributes": [],
+                "id": "n002",
+                "label": "screen"
+              },
+              "before": {
+                "attributes": [
+                  "screen application"
+                ],
+                "id": "n002",
+                "label": "screen"
+              },
+              "kind": "replace_node"
+            }
+          ]
+        }
+      ],
+      "inference_ablations": {
+        "without_both": {
+          "diagnostics": {
+            "counts": {
+              "correct_added_names_ignoring_attributes_and_ids": 2,
+              "correct_existing_complete_payload": 13,
+              "correct_existing_kind_and_id": 19,
+              "expected_added_names": 42,
+              "expected_existing_ops": 105,
+              "predicted_added_names": 33
+            },
+            "frequent_wrong_added_names": [
+              [
+                "car",
+                5
+              ],
+              [
+                "cream",
+                4
+              ],
+              [
+                "cream swirl",
+                3
+              ],
+              [
+                "vase",
+                2
+              ],
+              [
+                "headband",
+                2
+              ]
+            ],
+            "illustrations": [
+              {
+                "expected_added_names": {
+                  "gorilla": 1
+                },
+                "id": "magicbrush:338078:1",
+                "instruction": "Have there be a gorilla crossing the road",
+                "predicted_added_names": {
+                  "cat": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "guitar": 1
+                },
+                "id": "magicbrush:338078:3",
+                "instruction": "Have the gorilla be playing a guitar",
+                "predicted_added_names": {
+                  "headband": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "lion": 1
+                },
+                "id": "magicbrush:456569:2",
+                "instruction": "let a lion sleep near the giraffes",
+                "predicted_added_names": {
+                  "lion": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "laptop": 1
+                },
+                "id": "magicbrush:484847:1",
+                "instruction": "put a laptop on the table",
+                "predicted_added_names": {
+                  "tissue dispenser": 1
+                }
+              }
+            ],
+            "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+          },
+          "f1": 0.10614525139664804
+        },
+        "without_ids": {
+          "diagnostics": {
+            "counts": {
+              "correct_added_names_ignoring_attributes_and_ids": 8,
+              "correct_existing_complete_payload": 13,
+              "correct_existing_kind_and_id": 19,
+              "expected_added_names": 42,
+              "expected_existing_ops": 105,
+              "predicted_added_names": 33
+            },
+            "frequent_wrong_added_names": [
+              [
+                "car",
+                2
+              ],
+              [
+                "sky",
+                2
+              ],
+              [
+                "can",
+                2
+              ],
+              [
+                "bicycles",
+                1
+              ],
+              [
+                "forest",
+                1
+              ]
+            ],
+            "illustrations": [
+              {
+                "expected_added_names": {
+                  "gorilla": 1
+                },
+                "id": "magicbrush:338078:1",
+                "instruction": "Have there be a gorilla crossing the road",
+                "predicted_added_names": {
+                  "road": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "guitar": 1
+                },
+                "id": "magicbrush:338078:3",
+                "instruction": "Have the gorilla be playing a guitar",
+                "predicted_added_names": {
+                  "headband": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "lion": 1
+                },
+                "id": "magicbrush:456569:2",
+                "instruction": "let a lion sleep near the giraffes",
+                "predicted_added_names": {
+                  "lion": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "laptop": 1
+                },
+                "id": "magicbrush:484847:1",
+                "instruction": "put a laptop on the table",
+                "predicted_added_names": {
+                  "laptop": 1
+                }
+              }
+            ],
+            "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+          },
+          "f1": 0.10614525139664804
+        },
+        "without_labels": {
+          "diagnostics": {
+            "counts": {
+              "correct_added_names_ignoring_attributes_and_ids": 2,
+              "correct_existing_complete_payload": 14,
+              "correct_existing_kind_and_id": 21,
+              "expected_added_names": 42,
+              "expected_existing_ops": 105,
+              "predicted_added_names": 33
+            },
+            "frequent_wrong_added_names": [
+              [
+                "car",
+                5
+              ],
+              [
+                "cream",
+                4
+              ],
+              [
+                "cream swirl",
+                3
+              ],
+              [
+                "vase",
+                2
+              ],
+              [
+                "headband",
+                2
+              ]
+            ],
+            "illustrations": [
+              {
+                "expected_added_names": {
+                  "gorilla": 1
+                },
+                "id": "magicbrush:338078:1",
+                "instruction": "Have there be a gorilla crossing the road",
+                "predicted_added_names": {
+                  "cat": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "guitar": 1
+                },
+                "id": "magicbrush:338078:3",
+                "instruction": "Have the gorilla be playing a guitar",
+                "predicted_added_names": {
+                  "headband": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "lion": 1
+                },
+                "id": "magicbrush:456569:2",
+                "instruction": "let a lion sleep near the giraffes",
+                "predicted_added_names": {
+                  "lion": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "laptop": 1
+                },
+                "id": "magicbrush:484847:1",
+                "instruction": "put a laptop on the table",
+                "predicted_added_names": {
+                  "tissue dispenser": 1
+                }
+              }
+            ],
+            "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+          },
+          "f1": 0.10899182561307902
+        }
+      },
+      "laptop_case": [
+        {
+          "expected": [
+            {
+              "after": {
+                "attributes": [
+                  "black",
+                  "open",
+                  "screen blue"
+                ],
+                "id": "newn001",
+                "label": "laptop"
+              },
+              "before": null,
+              "kind": "add_node"
+            },
+            {
+              "after": null,
+              "before": {
+                "attributes": [],
+                "id": "n002",
+                "label": "books"
+              },
+              "kind": "delete_node"
+            },
+            {
+              "after": null,
+              "before": {
+                "attributes": [],
+                "id": "n003",
+                "label": "remote"
+              },
+              "kind": "delete_node"
+            },
+            {
+              "after": {
+                "id": "newe001",
+                "object": "n001",
+                "predicate": "on",
+                "subject": "newn001"
+              },
+              "before": null,
+              "kind": "add_edge"
+            },
+            {
+              "after": null,
+              "before": {
+                "id": "e001",
+                "object": "n001",
+                "predicate": "on",
+                "subject": "n002"
+              },
+              "kind": "delete_edge"
+            },
+            {
+              "after": null,
+              "before": {
+                "id": "e002",
+                "object": "n001",
+                "predicate": "on",
+                "subject": "n003"
+              },
+              "kind": "delete_edge"
+            }
+          ],
+          "id": "magicbrush:484847:1",
+          "instruction": "put a laptop on the table",
+          "predicted": [
+            {
+              "after": {
+                "attributes": [
+                  "red"
+                ],
+                "id": "newn001",
+                "label": "laptop"
+              },
+              "before": null,
+              "kind": "add_node"
+            },
+            {
+              "after": {
+                "id": "newe001",
+                "object": "n001",
+                "predicate": "on",
+                "subject": "newn001"
+              },
+              "before": null,
+              "kind": "add_edge"
+            },
+            {
+              "after": {
+                "id": "newe002",
+                "object": "n004",
+                "predicate": "on",
+                "subject": "newn001"
+              },
+              "before": null,
+              "kind": "add_edge"
+            }
+          ]
+        }
+      ],
+      "lexical": {
+        "conservative_exact_definition": "Correct compact graphs on actionable cases divided by ALL validation pairs; schema-gap cases receive no success credit. Not original full-detail graph accuracy.",
+        "conservative_exact_graph_over_all_pairs": 0.014925373134328358,
+        "constrained": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.015625,
+          "exact_target_graph_accuracy": 0.015625,
+          "examples": 64,
+          "failed_prediction_rate": 0.0,
+          "failed_predictions": 0,
+          "invalid_transactions": 0,
+          "macro_f1_supported_types": 0.10715336728919071,
+          "micro": {
+            "f1": 0.10899182561307902,
+            "fn": 186,
+            "fp": 141,
+            "precision": 0.12422360248447205,
+            "recall": 0.0970873786407767,
+            "support": 206,
+            "tp": 20
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.12121212121212122,
+              "fn": 53,
+              "fp": 34,
+              "precision": 0.15,
+              "recall": 0.1016949152542373,
+              "support": 59,
+              "tp": 6
+            },
+            "add_node": {
+              "f1": 0.0,
+              "fn": 42,
+              "fp": 33,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 42,
+              "tp": 0
+            },
+            "delete_edge": {
+              "f1": 0.23684210526315788,
+              "fn": 28,
+              "fp": 30,
+              "precision": 0.23076923076923078,
+              "recall": 0.24324324324324326,
+              "support": 37,
+              "tp": 9
+            },
+            "delete_node": {
+              "f1": 0.14545454545454545,
+              "fn": 32,
+              "fp": 15,
+              "precision": 0.21052631578947367,
+              "recall": 0.1111111111111111,
+              "support": 36,
+              "tp": 4
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.03225806451612903,
+              "fn": 31,
+              "fp": 29,
+              "precision": 0.03333333333333333,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.058823529411764705,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 1.0,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "gap_diagnostics": [
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:453731:1",
+            "instruction": "the dog is looking forward",
+            "predicted_operation_count": 0
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:456569:3",
+            "instruction": "let trees border the zoo",
+            "predicted_operation_count": 0
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:503943:1",
+            "instruction": "let the laptop have a red web page",
+            "predicted_operation_count": 1
+          }
+        ],
+        "grounding_diagnostics": {
+          "counts": {
+            "correct_added_names_ignoring_attributes_and_ids": 8,
+            "correct_existing_complete_payload": 14,
+            "correct_existing_kind_and_id": 21,
+            "expected_added_names": 42,
+            "expected_existing_ops": 105,
+            "predicted_added_names": 33
+          },
+          "frequent_wrong_added_names": [
+            [
+              "car",
+              2
+            ],
+            [
+              "sky",
+              2
+            ],
+            [
+              "can",
+              2
+            ],
+            [
+              "bicycles",
+              1
+            ],
+            [
+              "forest",
+              1
+            ]
+          ],
+          "illustrations": [
+            {
+              "expected_added_names": {
+                "gorilla": 1
+              },
+              "id": "magicbrush:338078:1",
+              "instruction": "Have there be a gorilla crossing the road",
+              "predicted_added_names": {
+                "road": 1
+              }
+            },
+            {
+              "expected_added_names": {
+                "guitar": 1
+              },
+              "id": "magicbrush:338078:3",
+              "instruction": "Have the gorilla be playing a guitar",
+              "predicted_added_names": {
+                "headband": 1
+              }
+            },
+            {
+              "expected_added_names": {
+                "lion": 1
+              },
+              "id": "magicbrush:456569:2",
+              "instruction": "let a lion sleep near the giraffes",
+              "predicted_added_names": {
+                "lion": 1
+              }
+            },
+            {
+              "expected_added_names": {
+                "laptop": 1
+              },
+              "id": "magicbrush:484847:1",
+              "instruction": "put a laptop on the table",
+              "predicted_added_names": {
+                "laptop": 1
+              }
+            }
+          ],
+          "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+        },
+        "raw": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.015625,
+          "exact_target_graph_accuracy": 0.015625,
+          "examples": 64,
+          "failed_prediction_rate": 0.234375,
+          "failed_predictions": 15,
+          "invalid_transactions": 15,
+          "macro_f1_supported_types": 0.1075360214524231,
+          "micro": {
+            "f1": 0.10899182561307902,
+            "fn": 186,
+            "fp": 141,
+            "precision": 0.12422360248447205,
+            "recall": 0.0970873786407767,
+            "support": 206,
+            "tp": 20
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.1346153846153846,
+              "fn": 52,
+              "fp": 38,
+              "precision": 0.15555555555555556,
+              "recall": 0.11864406779661017,
+              "support": 59,
+              "tp": 7
+            },
+            "add_node": {
+              "f1": 0.0,
+              "fn": 42,
+              "fp": 33,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 42,
+              "tp": 0
+            },
+            "delete_edge": {
+              "f1": 0.22535211267605634,
+              "fn": 29,
+              "fp": 26,
+              "precision": 0.23529411764705882,
+              "recall": 0.21621621621621623,
+              "support": 37,
+              "tp": 8
+            },
+            "delete_node": {
+              "f1": 0.14545454545454545,
+              "fn": 32,
+              "fp": 15,
+              "precision": 0.21052631578947367,
+              "recall": 0.1111111111111111,
+              "support": 36,
+              "tp": 4
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.03225806451612903,
+              "fn": 31,
+              "fp": 29,
+              "precision": 0.03333333333333333,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.058823529411764705,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 0.765625,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "schema_coverage": 0.9552238805970149,
+        "schema_gap_ids": [
+          "magicbrush:453731:1",
+          "magicbrush:456569:3",
+          "magicbrush:503943:1"
+        ],
+        "schema_gap_pairs": 3,
+        "scope": "Primary metrics on fixed actionable compact validation labels; schema gaps retained and not scored as successful empty edits",
+        "scored_pairs": 64,
+        "validation_pairs": 67
+      },
+      "lexical_diagnostics": {
+        "counts": {
+          "correct_added_names_ignoring_attributes_and_ids": 8,
+          "correct_existing_complete_payload": 14,
+          "correct_existing_kind_and_id": 21,
+          "expected_added_names": 42,
+          "expected_existing_ops": 105,
+          "predicted_added_names": 33
+        },
+        "frequent_wrong_added_names": [
+          [
+            "car",
+            2
+          ],
+          [
+            "sky",
+            2
+          ],
+          [
+            "can",
+            2
+          ],
+          [
+            "bicycles",
+            1
+          ],
+          [
+            "forest",
+            1
+          ]
+        ],
+        "illustrations": [
+          {
+            "expected_added_names": {
+              "gorilla": 1
+            },
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted_added_names": {
+              "road": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "guitar": 1
+            },
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted_added_names": {
+              "headband": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "lion": 1
+            },
+            "id": "magicbrush:456569:2",
+            "instruction": "let a lion sleep near the giraffes",
+            "predicted_added_names": {
+              "lion": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "laptop": 1
+            },
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted_added_names": {
+              "laptop": 1
+            }
+          }
+        ],
+        "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+      },
+      "lexical_f1": 0.10899182561307902,
+      "selected_epoch": 16,
+      "stopping_reason": "early_stopping",
+      "train_val_loss_selected_and_last": [
+        {
+          "epoch": 16,
+          "train_structured_loss": 0.6273015618720323,
+          "validation_structured_loss": 1.7780015468597412
+        },
+        {
+          "epoch": 46,
+          "train_structured_loss": 0.2417800538365627,
+          "validation_structured_loss": 2.2345824241638184
+        }
+      ]
+    },
+    "mlp": {
+      "added_attribute_diagnostics": {
+        "added_name_and_attributes_match_ignoring_id": 1
+      },
+      "baseline": {
+        "conservative_exact_definition": "Correct compact graphs on actionable cases divided by ALL validation pairs; schema-gap cases receive no success credit. Not original full-detail graph accuracy.",
+        "conservative_exact_graph_over_all_pairs": 0.0,
+        "constrained": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 64,
+          "failed_prediction_rate": 0.0,
+          "failed_predictions": 0,
+          "invalid_transactions": 0,
+          "macro_f1_supported_types": 0.11510327009670038,
+          "micro": {
+            "f1": 0.11140583554376658,
+            "fn": 185,
+            "fp": 150,
+            "precision": 0.12280701754385964,
+            "recall": 0.10194174757281553,
+            "support": 206,
+            "tp": 21
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.06315789473684211,
+              "fn": 56,
+              "fp": 33,
+              "precision": 0.08333333333333333,
+              "recall": 0.05084745762711865,
+              "support": 59,
+              "tp": 3
+            },
+            "add_node": {
+              "f1": 0.02666666666666667,
+              "fn": 41,
+              "fp": 32,
+              "precision": 0.030303030303030304,
+              "recall": 0.023809523809523808,
+              "support": 42,
+              "tp": 1
+            },
+            "delete_edge": {
+              "f1": 0.2631578947368421,
+              "fn": 27,
+              "fp": 29,
+              "precision": 0.2564102564102564,
+              "recall": 0.2702702702702703,
+              "support": 37,
+              "tp": 10
+            },
+            "delete_node": {
+              "f1": 0.1935483870967742,
+              "fn": 30,
+              "fp": 20,
+              "precision": 0.23076923076923078,
+              "recall": 0.16666666666666666,
+              "support": 36,
+              "tp": 6
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.028985507246376812,
+              "fn": 31,
+              "fp": 36,
+              "precision": 0.02702702702702703,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 1.0,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "gap_diagnostics": [
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:453731:1",
+            "instruction": "the dog is looking forward",
+            "predicted_operation_count": 0
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:456569:3",
+            "instruction": "let trees border the zoo",
+            "predicted_operation_count": 3
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:503943:1",
+            "instruction": "let the laptop have a red web page",
+            "predicted_operation_count": 4
+          }
+        ],
+        "raw": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 64,
+          "failed_prediction_rate": 0.3125,
+          "failed_predictions": 20,
+          "invalid_transactions": 20,
+          "macro_f1_supported_types": 0.11360130623181428,
+          "micro": {
+            "f1": 0.10723860589812333,
+            "fn": 186,
+            "fp": 147,
+            "precision": 0.11976047904191617,
+            "recall": 0.0970873786407767,
+            "support": 206,
+            "tp": 20
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.08,
+              "fn": 55,
+              "fp": 37,
+              "precision": 0.0975609756097561,
+              "recall": 0.06779661016949153,
+              "support": 59,
+              "tp": 4
+            },
+            "add_node": {
+              "f1": 0.02666666666666667,
+              "fn": 41,
+              "fp": 32,
+              "precision": 0.030303030303030304,
+              "recall": 0.023809523809523808,
+              "support": 42,
+              "tp": 1
+            },
+            "delete_edge": {
+              "f1": 0.23880597014925373,
+              "fn": 29,
+              "fp": 22,
+              "precision": 0.26666666666666666,
+              "recall": 0.21621621621621623,
+              "support": 37,
+              "tp": 8
+            },
+            "delete_node": {
+              "f1": 0.1935483870967742,
+              "fn": 30,
+              "fp": 20,
+              "precision": 0.23076923076923078,
+              "recall": 0.16666666666666666,
+              "support": 36,
+              "tp": 6
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.028985507246376812,
+              "fn": 31,
+              "fp": 36,
+              "precision": 0.02702702702702703,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 0.6875,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "schema_coverage": 0.9552238805970149,
+        "schema_gap_ids": [
+          "magicbrush:453731:1",
+          "magicbrush:456569:3",
+          "magicbrush:503943:1"
+        ],
+        "schema_gap_pairs": 3,
+        "scope": "Primary metrics on fixed actionable compact validation labels; schema gaps retained and not scored as successful empty edits",
+        "scored_pairs": 64,
+        "validation_pairs": 67
+      },
+      "baseline_diagnostics": {
+        "counts": {
+          "correct_added_names_ignoring_attributes_and_ids": 2,
+          "correct_existing_complete_payload": 17,
+          "correct_existing_kind_and_id": 24,
+          "expected_added_names": 42,
+          "expected_existing_ops": 105,
+          "predicted_added_names": 33
+        },
+        "frequent_wrong_added_names": [
+          [
+            "car",
+            4
+          ],
+          [
+            "lion",
+            4
+          ],
+          [
+            "burger",
+            3
+          ],
+          [
+            "lizard",
+            2
+          ],
+          [
+            "spoon",
+            2
+          ]
+        ],
+        "illustrations": [
+          {
+            "expected_added_names": {
+              "gorilla": 1
+            },
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted_added_names": {
+              "dog": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "guitar": 1
+            },
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted_added_names": {}
+          },
+          {
+            "expected_added_names": {
+              "lion": 1
+            },
+            "id": "magicbrush:456569:2",
+            "instruction": "let a lion sleep near the giraffes",
+            "predicted_added_names": {
+              "lion": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "laptop": 1
+            },
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted_added_names": {
+              "chair": 1
+            }
+          }
+        ],
+        "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+      },
+      "baseline_f1": 0.11140583554376658,
+      "completion_receipt_sha256": "8ca7b3ef67cee2d055d677a821e254cbbffe8b64bc9c244f22da6e06bfe5b57e",
+      "delta_percentage_points": 2.1927497789566748,
+      "epochs_completed": 48,
+      "exact_cases": [],
+      "inference_ablations": {
+        "without_both": {
+          "diagnostics": {
+            "counts": {
+              "correct_added_names_ignoring_attributes_and_ids": 1,
+              "correct_existing_complete_payload": 11,
+              "correct_existing_kind_and_id": 15,
+              "expected_added_names": 42,
+              "expected_existing_ops": 105,
+              "predicted_added_names": 33
+            },
+            "frequent_wrong_added_names": [
+              [
+                "car",
+                6
+              ],
+              [
+                "lion",
+                5
+              ],
+              [
+                "spoon",
+                3
+              ],
+              [
+                "cream swirl",
+                2
+              ],
+              [
+                "cockroach",
+                1
+              ]
+            ],
+            "illustrations": [
+              {
+                "expected_added_names": {
+                  "gorilla": 1
+                },
+                "id": "magicbrush:338078:1",
+                "instruction": "Have there be a gorilla crossing the road",
+                "predicted_added_names": {
+                  "dog": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "guitar": 1
+                },
+                "id": "magicbrush:338078:3",
+                "instruction": "Have the gorilla be playing a guitar",
+                "predicted_added_names": {}
+              },
+              {
+                "expected_added_names": {
+                  "lion": 1
+                },
+                "id": "magicbrush:456569:2",
+                "instruction": "let a lion sleep near the giraffes",
+                "predicted_added_names": {
+                  "lion": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "laptop": 1
+                },
+                "id": "magicbrush:484847:1",
+                "instruction": "put a laptop on the table",
+                "predicted_added_names": {
+                  "burger": 1
+                }
+              }
+            ],
+            "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+          },
+          "f1": 0.08383233532934131
+        },
+        "without_ids": {
+          "diagnostics": {
+            "counts": {
+              "correct_added_names_ignoring_attributes_and_ids": 8,
+              "correct_existing_complete_payload": 11,
+              "correct_existing_kind_and_id": 15,
+              "expected_added_names": 42,
+              "expected_existing_ops": 105,
+              "predicted_added_names": 33
+            },
+            "frequent_wrong_added_names": [
+              [
+                "sky",
+                2
+              ],
+              [
+                "can",
+                2
+              ],
+              [
+                "cockroach",
+                1
+              ],
+              [
+                "bicycles",
+                1
+              ],
+              [
+                "forest",
+                1
+              ]
+            ],
+            "illustrations": [
+              {
+                "expected_added_names": {
+                  "gorilla": 1
+                },
+                "id": "magicbrush:338078:1",
+                "instruction": "Have there be a gorilla crossing the road",
+                "predicted_added_names": {
+                  "road": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "guitar": 1
+                },
+                "id": "magicbrush:338078:3",
+                "instruction": "Have the gorilla be playing a guitar",
+                "predicted_added_names": {}
+              },
+              {
+                "expected_added_names": {
+                  "lion": 1
+                },
+                "id": "magicbrush:456569:2",
+                "instruction": "let a lion sleep near the giraffes",
+                "predicted_added_names": {
+                  "lion": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "laptop": 1
+                },
+                "id": "magicbrush:484847:1",
+                "instruction": "put a laptop on the table",
+                "predicted_added_names": {
+                  "laptop": 1
+                }
+              }
+            ],
+            "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+          },
+          "f1": 0.08982035928143713
+        },
+        "without_labels": {
+          "diagnostics": {
+            "counts": {
+              "correct_added_names_ignoring_attributes_and_ids": 1,
+              "correct_existing_complete_payload": 20,
+              "correct_existing_kind_and_id": 26,
+              "expected_added_names": 42,
+              "expected_existing_ops": 105,
+              "predicted_added_names": 33
+            },
+            "frequent_wrong_added_names": [
+              [
+                "car",
+                6
+              ],
+              [
+                "lion",
+                5
+              ],
+              [
+                "spoon",
+                3
+              ],
+              [
+                "cream swirl",
+                2
+              ],
+              [
+                "cockroach",
+                1
+              ]
+            ],
+            "illustrations": [
+              {
+                "expected_added_names": {
+                  "gorilla": 1
+                },
+                "id": "magicbrush:338078:1",
+                "instruction": "Have there be a gorilla crossing the road",
+                "predicted_added_names": {
+                  "dog": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "guitar": 1
+                },
+                "id": "magicbrush:338078:3",
+                "instruction": "Have the gorilla be playing a guitar",
+                "predicted_added_names": {}
+              },
+              {
+                "expected_added_names": {
+                  "lion": 1
+                },
+                "id": "magicbrush:456569:2",
+                "instruction": "let a lion sleep near the giraffes",
+                "predicted_added_names": {
+                  "lion": 1
+                }
+              },
+              {
+                "expected_added_names": {
+                  "laptop": 1
+                },
+                "id": "magicbrush:484847:1",
+                "instruction": "put a laptop on the table",
+                "predicted_added_names": {
+                  "burger": 1
+                }
+              }
+            ],
+            "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+          },
+          "f1": 0.12777777777777777
+        }
+      },
+      "laptop_case": [
+        {
+          "expected": [
+            {
+              "after": {
+                "attributes": [
+                  "black",
+                  "open",
+                  "screen blue"
+                ],
+                "id": "newn001",
+                "label": "laptop"
+              },
+              "before": null,
+              "kind": "add_node"
+            },
+            {
+              "after": null,
+              "before": {
+                "attributes": [],
+                "id": "n002",
+                "label": "books"
+              },
+              "kind": "delete_node"
+            },
+            {
+              "after": null,
+              "before": {
+                "attributes": [],
+                "id": "n003",
+                "label": "remote"
+              },
+              "kind": "delete_node"
+            },
+            {
+              "after": {
+                "id": "newe001",
+                "object": "n001",
+                "predicate": "on",
+                "subject": "newn001"
+              },
+              "before": null,
+              "kind": "add_edge"
+            },
+            {
+              "after": null,
+              "before": {
+                "id": "e001",
+                "object": "n001",
+                "predicate": "on",
+                "subject": "n002"
+              },
+              "kind": "delete_edge"
+            },
+            {
+              "after": null,
+              "before": {
+                "id": "e002",
+                "object": "n001",
+                "predicate": "on",
+                "subject": "n003"
+              },
+              "kind": "delete_edge"
+            }
+          ],
+          "id": "magicbrush:484847:1",
+          "instruction": "put a laptop on the table",
+          "predicted": [
+            {
+              "after": {
+                "attributes": [
+                  "white"
+                ],
+                "id": "newn001",
+                "label": "laptop"
+              },
+              "before": null,
+              "kind": "add_node"
+            },
+            {
+              "after": {
+                "id": "newe001",
+                "object": "n001",
+                "predicate": "on",
+                "subject": "newn001"
+              },
+              "before": null,
+              "kind": "add_edge"
+            }
+          ]
+        }
+      ],
+      "lexical": {
+        "conservative_exact_definition": "Correct compact graphs on actionable cases divided by ALL validation pairs; schema-gap cases receive no success credit. Not original full-detail graph accuracy.",
+        "conservative_exact_graph_over_all_pairs": 0.0,
+        "constrained": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 64,
+          "failed_prediction_rate": 0.0,
+          "failed_predictions": 0,
+          "invalid_transactions": 0,
+          "macro_f1_supported_types": 0.13845753759000157,
+          "micro": {
+            "f1": 0.13333333333333333,
+            "fn": 182,
+            "fp": 130,
+            "precision": 0.15584415584415584,
+            "recall": 0.11650485436893204,
+            "support": 206,
+            "tp": 24
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.06382978723404255,
+              "fn": 56,
+              "fp": 32,
+              "precision": 0.08571428571428572,
+              "recall": 0.05084745762711865,
+              "support": 59,
+              "tp": 3
+            },
+            "add_node": {
+              "f1": 0.02666666666666667,
+              "fn": 41,
+              "fp": 32,
+              "precision": 0.030303030303030304,
+              "recall": 0.023809523809523808,
+              "support": 42,
+              "tp": 1
+            },
+            "delete_edge": {
+              "f1": 0.35135135135135137,
+              "fn": 24,
+              "fp": 24,
+              "precision": 0.35135135135135137,
+              "recall": 0.35135135135135137,
+              "support": 37,
+              "tp": 13
+            },
+            "delete_node": {
+              "f1": 0.21818181818181817,
+              "fn": 30,
+              "fp": 13,
+              "precision": 0.3157894736842105,
+              "recall": 0.16666666666666666,
+              "support": 36,
+              "tp": 6
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.03225806451612903,
+              "fn": 31,
+              "fp": 29,
+              "precision": 0.03333333333333333,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 1.0,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "gap_diagnostics": [
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:453731:1",
+            "instruction": "the dog is looking forward",
+            "predicted_operation_count": 0
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:456569:3",
+            "instruction": "let trees border the zoo",
+            "predicted_operation_count": 4
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:503943:1",
+            "instruction": "let the laptop have a red web page",
+            "predicted_operation_count": 3
+          }
+        ],
+        "grounding_diagnostics": {
+          "counts": {
+            "correct_added_names_ignoring_attributes_and_ids": 8,
+            "correct_existing_complete_payload": 20,
+            "correct_existing_kind_and_id": 26,
+            "expected_added_names": 42,
+            "expected_existing_ops": 105,
+            "predicted_added_names": 33
+          },
+          "frequent_wrong_added_names": [
+            [
+              "sky",
+              2
+            ],
+            [
+              "can",
+              2
+            ],
+            [
+              "cockroach",
+              1
+            ],
+            [
+              "bicycles",
+              1
+            ],
+            [
+              "forest",
+              1
+            ]
+          ],
+          "illustrations": [
+            {
+              "expected_added_names": {
+                "gorilla": 1
+              },
+              "id": "magicbrush:338078:1",
+              "instruction": "Have there be a gorilla crossing the road",
+              "predicted_added_names": {
+                "road": 1
+              }
+            },
+            {
+              "expected_added_names": {
+                "guitar": 1
+              },
+              "id": "magicbrush:338078:3",
+              "instruction": "Have the gorilla be playing a guitar",
+              "predicted_added_names": {}
+            },
+            {
+              "expected_added_names": {
+                "lion": 1
+              },
+              "id": "magicbrush:456569:2",
+              "instruction": "let a lion sleep near the giraffes",
+              "predicted_added_names": {
+                "lion": 1
+              }
+            },
+            {
+              "expected_added_names": {
+                "laptop": 1
+              },
+              "id": "magicbrush:484847:1",
+              "instruction": "put a laptop on the table",
+              "predicted_added_names": {
+                "laptop": 1
+              }
+            }
+          ],
+          "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+        },
+        "raw": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 64,
+          "failed_prediction_rate": 0.28125,
+          "failed_predictions": 18,
+          "invalid_transactions": 18,
+          "macro_f1_supported_types": 0.11474954399330854,
+          "micro": {
+            "f1": 0.10826210826210826,
+            "fn": 187,
+            "fp": 126,
+            "precision": 0.1310344827586207,
+            "recall": 0.09223300970873786,
+            "support": 206,
+            "tp": 19
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.10309278350515463,
+              "fn": 54,
+              "fp": 33,
+              "precision": 0.13157894736842105,
+              "recall": 0.0847457627118644,
+              "support": 59,
+              "tp": 5
+            },
+            "add_node": {
+              "f1": 0.02666666666666667,
+              "fn": 41,
+              "fp": 32,
+              "precision": 0.030303030303030304,
+              "recall": 0.023809523809523808,
+              "support": 42,
+              "tp": 1
+            },
+            "delete_edge": {
+              "f1": 0.1935483870967742,
+              "fn": 31,
+              "fp": 19,
+              "precision": 0.24,
+              "recall": 0.16216216216216217,
+              "support": 37,
+              "tp": 6
+            },
+            "delete_node": {
+              "f1": 0.21818181818181817,
+              "fn": 30,
+              "fp": 13,
+              "precision": 0.3157894736842105,
+              "recall": 0.16666666666666666,
+              "support": 36,
+              "tp": 6
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.03225806451612903,
+              "fn": 31,
+              "fp": 29,
+              "precision": 0.03333333333333333,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 0.71875,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "schema_coverage": 0.9552238805970149,
+        "schema_gap_ids": [
+          "magicbrush:453731:1",
+          "magicbrush:456569:3",
+          "magicbrush:503943:1"
+        ],
+        "schema_gap_pairs": 3,
+        "scope": "Primary metrics on fixed actionable compact validation labels; schema gaps retained and not scored as successful empty edits",
+        "scored_pairs": 64,
+        "validation_pairs": 67
+      },
+      "lexical_diagnostics": {
+        "counts": {
+          "correct_added_names_ignoring_attributes_and_ids": 8,
+          "correct_existing_complete_payload": 20,
+          "correct_existing_kind_and_id": 26,
+          "expected_added_names": 42,
+          "expected_existing_ops": 105,
+          "predicted_added_names": 33
+        },
+        "frequent_wrong_added_names": [
+          [
+            "sky",
+            2
+          ],
+          [
+            "can",
+            2
+          ],
+          [
+            "cockroach",
+            1
+          ],
+          [
+            "bicycles",
+            1
+          ],
+          [
+            "forest",
+            1
+          ]
+        ],
+        "illustrations": [
+          {
+            "expected_added_names": {
+              "gorilla": 1
+            },
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted_added_names": {
+              "road": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "guitar": 1
+            },
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted_added_names": {}
+          },
+          {
+            "expected_added_names": {
+              "lion": 1
+            },
+            "id": "magicbrush:456569:2",
+            "instruction": "let a lion sleep near the giraffes",
+            "predicted_added_names": {
+              "lion": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "laptop": 1
+            },
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted_added_names": {
+              "laptop": 1
+            }
+          }
+        ],
+        "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+      },
+      "lexical_f1": 0.13333333333333333,
+      "selected_epoch": 18,
+      "stopping_reason": "early_stopping",
+      "train_val_loss_selected_and_last": [
+        {
+          "epoch": 18,
+          "train_structured_loss": 0.6599427126966838,
+          "validation_structured_loss": 1.693406581878662
+        },
+        {
+          "epoch": 48,
+          "train_structured_loss": 0.25026227073415963,
+          "validation_structured_loss": 2.0428181290626526
+        }
+      ]
+    }
+  },
+  "next_step_vi": "Giữ nhãn và kết quả hiện tại làm đối chứng. Nếu tiếp tục, ưu tiên cơ chế sao chép tên ngoài từ vựng từ chính câu yêu cầu và phân biệt đối tượng cần thêm với đối tượng làm mốc quan hệ; không dùng target để tạo ứng viên. Chưa mở rộng seed/test hoặc tự giảm thêm nhãn.",
+  "remaining_limitations": [
+    "closed train label vocabulary: gorilla/guitar cannot be emitted",
+    "word mentions do not identify semantic role: road can be chosen instead of requested gorilla",
+    "exact added-node attributes and relations remain difficult",
+    "three validation schema gaps remain unchanged",
+    "inference ablation is conditional on trained weights, not independently retrained models"
+  ],
+  "scope": "Sealed prediction audit; no new GPU/model inference and no test labels",
+  "sources_sha256": {
+    "runs/level2/magicbrush-compact-pilot-v1/summary.json": "911fd7f4248c1f9eb463a76e52df44471e3a0062d4886d170112e26d05394e83",
+    "runs/level2/magicbrush-lexical-pilot-v1/summary.json": "dc4b06562d09de6e10c1448f14d63c9534d5f60e351df75319045f92f6d88c32",
+    "tools/analyze_magicbrush_lexical_pilot.py": "b50fc4fbfbead8ef0abd2a997d352e98c7ef3dab568299c81e334fedda6f3ed4"
+  }
+}
