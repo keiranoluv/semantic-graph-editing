@@ -1,0 +1,152 @@
+{
+  "checkpoint_and_result_receipts_verified": true,
+  "completed_runs": [
+    "mlp/42/completed-receipt.json"
+  ],
+  "config_and_source_lock_verified": true,
+  "epochs_completed": 130,
+  "error_counts": {
+    "parse: Expecting ',' delimiter: line 1 column 116 (char 115)": 1,
+    "parse: Expecting ',' delimiter: line 1 column 135 (char 134)": 1,
+    "parse: Expecting ',' delimiter: line 1 column 171 (char 170)": 1,
+    "parse: Expecting ',' delimiter: line 1 column 238 (char 237)": 1,
+    "parse: Expecting ',' delimiter: line 1 column 250 (char 249)": 1,
+    "parse: Expecting value: line 1 column 43 (char 42)": 1,
+    "parse: Extra data: line 1 column 131 (char 130)": 1,
+    "parse: Extra data: line 1 column 42 (char 41)": 1,
+    "parse: Invalid action arity": 4,
+    "parse: Missing EOS or invalid action byte": 15,
+    "parse: Repeated node attribute": 4,
+    "transaction: Dangling edge endpoint": 5,
+    "transaction: Duplicate semantic edge; deduplicate annotation rows before conversion": 1,
+    "transaction: Multiple writes to the same entity; use one canonical replacement": 6,
+    "valid": 24
+  },
+  "experiment_sha256": "b3d67ea5cf4da73d9ee9ad7b8a0534b886d134a0f9c8bc2d9410e1798dbc8816",
+  "files": {
+    "completed-receipt.json": "f7d80b57926ead5d1da23cc3749b982b0f8ad85bc5c9bde5fc80b0054fa7b79f",
+    "predictions-val.json": "8f1019e4d7992b220c1c777041948865553dfe2a155a394374e0e7b89fba84e1",
+    "result.json": "eaa927c5b44c5fa1036c700cbce18242ba6ffe1cd6545dea8cd50e3c0d7d232d"
+  },
+  "interpretation": [
+    "The v1 zero-F1 epoch-1 selection failure is resolved; some operations are now correct.",
+    "No evaluated checkpoint reaches the predeclared 50% validation transaction-validity gate.",
+    "Training loss decreases while validation token loss rises after its minimum: evidence consistent with overfitting.",
+    "Valid schema alone does not imply correct semantic edits: exact graph and operation-set match are both zero.",
+    "GNN has not run; these results cannot support an MLP-versus-GNN comparison."
+  ],
+  "last_epoch": {
+    "epoch": 130,
+    "train_loss": 0.14919913993984021,
+    "validation_loss": 1.1372728740957319
+  },
+  "maximum_validation_validity": {
+    "epoch": 100,
+    "rate": 0.40298507462686567
+  },
+  "minimum_validation_token_loss": {
+    "epoch": 45,
+    "loss": 0.7303754309257134,
+    "train_loss": 0.5801021986116288
+  },
+  "next_step_proposal": "Keep the frozen failed run. Investigate a structured operation decoder with source-ID selection and copying of unchanged payloads; use train/validation-only diagnostics. More epochs or lowering the gate alone is not a demonstrated solution.",
+  "optimizer_updates": 2470,
+  "quality_gate": {
+    "passed": false,
+    "scope": "validation only; operational sanity check, not proof of useful generalization",
+    "thresholds": {
+      "minimum_micro_f1": 0.01,
+      "minimum_valid_transaction_rate": 0.5
+    },
+    "validation_micro_f1": 0.04697986577181208,
+    "validation_valid_transaction_rate": 0.3582089552238806
+  },
+  "queue_status": "quality_gate_failed",
+  "scope": "CPU-only audit of stored validation predictions; no model inference, GPU jobs or heldout label decoding",
+  "selected_epoch_recomputed": 90,
+  "stored_metrics_recomputed_and_matched": true,
+  "test_evaluation_artifacts_present": false,
+  "validation": {
+    "decode_failures": 31,
+    "exact_operation_set_accuracy": 0.0,
+    "exact_target_graph_accuracy": 0.0,
+    "examples": 67,
+    "failed_prediction_rate": 0.6417910447761194,
+    "failed_predictions": 43,
+    "invalid_transactions": 12,
+    "macro_f1_supported_types": 0.04770652902924795,
+    "micro": {
+      "f1": 0.04697986577181208,
+      "fn": 212,
+      "fp": 72,
+      "precision": 0.08860759493670886,
+      "recall": 0.0319634703196347,
+      "support": 219,
+      "tp": 7
+    },
+    "per_type": {
+      "add_edge": {
+        "f1": 0.056338028169014086,
+        "fn": 57,
+        "fp": 10,
+        "precision": 0.16666666666666666,
+        "recall": 0.03389830508474576,
+        "support": 59,
+        "tp": 2
+      },
+      "add_node": {
+        "f1": 0.0,
+        "fn": 42,
+        "fp": 13,
+        "precision": 0.0,
+        "recall": 0.0,
+        "support": 42,
+        "tp": 0
+      },
+      "delete_edge": {
+        "f1": 0.09523809523809523,
+        "fn": 34,
+        "fp": 23,
+        "precision": 0.11538461538461539,
+        "recall": 0.08108108108108109,
+        "support": 37,
+        "tp": 3
+      },
+      "delete_node": {
+        "f1": 0.08695652173913043,
+        "fn": 34,
+        "fp": 8,
+        "precision": 0.2,
+        "recall": 0.05555555555555555,
+        "support": 36,
+        "tp": 2
+      },
+      "replace_edge": {
+        "f1": 0.0,
+        "fn": 0,
+        "fp": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "support": 0,
+        "tp": 0
+      },
+      "replace_node": {
+        "f1": 0.0,
+        "fn": 45,
+        "fp": 17,
+        "precision": 0.0,
+        "recall": 0.0,
+        "support": 45,
+        "tp": 0
+      }
+    },
+    "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+    "simple_exact_operation_set_accuracy": 0.0,
+    "simple_examples": 18,
+    "unsupported_predicted_identities": 0,
+    "valid_transaction_rate": 0.3582089552238806,
+    "zero_support_types": [
+      "replace_edge"
+    ]
+  }
+}

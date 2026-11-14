@@ -1,0 +1,928 @@
+{
+  "automatic_queue": "both seed-42 pilots run; remaining seeds require both pilots to pass; all runs must pass before test",
+  "code_and_environment_lock_verified": true,
+  "experiment_sha256": "112a5e11d285c786a5637b1e2485b751e3a1ba54083d946091314e6e3fe55c57",
+  "gpu_jobs_started": false,
+  "human_review": {
+    "counts": {
+      "correct": 20,
+      "incorrect": 0,
+      "uncertain": 0
+    },
+    "observed_correct_fraction": 1.0,
+    "per_axis_ratings_invented": false,
+    "ready": true,
+    "rejected_ids": [],
+    "reviewer": "project user",
+    "scope": "overall correctness of fixed 20 train cases"
+  },
+  "loader": {
+    "examples": {
+      "train": 301,
+      "val": 67
+    },
+    "excluded": {
+      "train:missing": 114,
+      "val:missing": 30
+    },
+    "excluded_problem_counts": {},
+    "label_origin": "paired_image_AI_assisted_annotation_with_20_user_reviewed_train_examples",
+    "operation_support": {
+      "train": {
+        "add_edge": 209,
+        "add_node": 159,
+        "delete_edge": 85,
+        "delete_node": 73,
+        "replace_edge": 6,
+        "replace_node": 233
+      },
+      "val": {
+        "add_edge": 59,
+        "add_node": 42,
+        "delete_edge": 37,
+        "delete_node": 36,
+        "replace_node": 45
+      }
+    },
+    "simple_definition": "exactly_one_canonical_GT_operation; graph-level proxy",
+    "test_labels_decoded": false,
+    "validation_labels_exceeding_decode_budget": []
+  },
+  "quality_gate": {
+    "minimum_micro_f1": 0.05,
+    "minimum_valid_transaction_rate": 0.5
+  },
+  "queue": [
+    {
+      "model": "mlp",
+      "seed": 42
+    },
+    {
+      "model": "gnn",
+      "seed": 42
+    },
+    {
+      "model": "mlp",
+      "seed": 123
+    },
+    {
+      "model": "mlp",
+      "seed": 3407
+    },
+    {
+      "model": "gnn",
+      "seed": 123
+    },
+    {
+      "model": "gnn",
+      "seed": 3407
+    }
+  ],
+  "raw_pair_counts": {
+    "test": 90,
+    "train": 415,
+    "val": 97
+  },
+  "ready": true,
+  "stage": "CPU preflight only",
+  "test_evaluation": "all six selected checkpoints must be frozen before opening test labels",
+  "test_targets_decoded": false,
+  "vocabulary_coverage": {
+    "train": {
+      "examples": 301,
+      "excluded_examples": 0,
+      "fully_representable_examples": 301,
+      "oov_cases": [],
+      "oov_payload_fields": 0,
+      "operations": 765,
+      "payload_fields": 1344,
+      "representable_operation_payloads": 765,
+      "scope": "payload vocabulary coverage, not a measured accuracy or full decoder upper bound"
+    },
+    "val": {
+      "examples": 67,
+      "excluded_examples": 0,
+      "fully_representable_examples": 15,
+      "oov_cases": [
+        {
+          "id": "magicbrush:10766:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "purple shoulder strap"
+            },
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "side part"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:130579:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "orange jersey"
+            },
+            {
+              "entity": "newn002",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "gloves"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:130579:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "blue sides"
+            },
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "colored logo"
+            },
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "white front"
+            },
+            {
+              "entity": "n006",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "red logo"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:144298:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "bicycle"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "black saddle"
+            },
+            {
+              "entity": "newn002",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "lane markings"
+            },
+            {
+              "entity": "newn002",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "dashed"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:152176:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "handlebar"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:152176:3",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "leafy canopy"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:171050:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "hanging chains"
+            },
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "rounded cap"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:171050:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "n004",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "gray concrete"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:171472:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "blue and orange labels"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:171472:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "partition"
+            },
+            {
+              "entity": "newn002",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "storage drawers"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:206841:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "several lit"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:21217:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n002",
+              "field": "labels",
+              "operation": "replace_node",
+              "value": "cereal"
+            },
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "yellow flakes"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:21217:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "n008",
+              "field": "labels",
+              "operation": "replace_node",
+              "value": "corn cob"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:21972:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "back turned"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "brown jacket"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:223599:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "larger pile"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:246779:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n001",
+              "field": "labels",
+              "operation": "replace_node",
+              "value": "cookies"
+            },
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "chocolate chip"
+            },
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "paper sleeves"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:246779:3",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "brown and gray"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:270722:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "bear cub"
+            },
+            {
+              "entity": "newn002",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "white edge line"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:270722:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "barefoot"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "gray shorts"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:270722:3",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "wings spread"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:286723:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "undershirt"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "magenta"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "visible at waist"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:298692:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "blue pants"
+            },
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "ginger bob"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:321886:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n005",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "red curb"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:321886:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "blue uniform"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "raised hand"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "reflective vest"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:338078:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "gorilla"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:338078:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "lightning"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "branching"
+            },
+            {
+              "entity": "n005",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "extends beyond frame"
+            },
+            {
+              "entity": "n007",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "bright cloud"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:338078:3",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "guitar"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "dark neck"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:352276:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "pile"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:352276:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "dark head"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:357633:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "car image"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:375645:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n007",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "large portion"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:375645:3",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "napkins"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:376047:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "pink note"
+            },
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "three sections"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:376047:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "drawers"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:378186:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "dark window"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:386224:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n002",
+              "field": "labels",
+              "operation": "replace_node",
+              "value": "photo"
+            },
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "person with raised arms"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:386224:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "frame"
+            },
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "buildings"
+            },
+            {
+              "entity": "newe001",
+              "field": "predicates",
+              "operation": "add_edge",
+              "value": "around"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:453731:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "head raised"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:453731:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "dark blue pot"
+            },
+            {
+              "entity": "n004",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "altered lettering"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:456569:3",
+          "unrepresentable_fields": [
+            {
+              "entity": "n008",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "background row"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:484847:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "cream underside"
+            },
+            {
+              "entity": "n003",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "bright seat"
+            },
+            {
+              "entity": "n004",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "cream underside"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:503943:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "red header"
+            },
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "webpage"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:503943:3",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "bread slice"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:545734:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "white flower"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "yellow center"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:545734:2",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "bee depiction"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "yellow and black"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:548377:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n001",
+              "field": "labels",
+              "operation": "replace_node",
+              "value": "chocolate cake"
+            },
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "cracked top"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:580149:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n002",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "one broad roll"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:65905:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n001",
+              "field": "labels",
+              "operation": "replace_node",
+              "value": "sausages"
+            },
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "brown and pale"
+            },
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "four"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:65905:3",
+          "unrepresentable_fields": [
+            {
+              "entity": "newn001",
+              "field": "labels",
+              "operation": "add_node",
+              "value": "tablecloth"
+            },
+            {
+              "entity": "newn001",
+              "field": "added_attribute",
+              "operation": "add_node",
+              "value": "checkered"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:71476:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "closed mouth"
+            },
+            {
+              "entity": "n001",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "pale muzzle"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:96854:1",
+          "unrepresentable_fields": [
+            {
+              "entity": "n001",
+              "field": "labels",
+              "operation": "replace_node",
+              "value": "burger patties"
+            }
+          ]
+        },
+        {
+          "id": "magicbrush:9772:3",
+          "unrepresentable_fields": [
+            {
+              "entity": "n004",
+              "field": "added_attribute",
+              "operation": "replace_node",
+              "value": "cream panel"
+            }
+          ]
+        }
+      ],
+      "oov_payload_fields": 92,
+      "operations": 219,
+      "payload_fields": 315,
+      "representable_operation_payloads": 154,
+      "scope": "payload vocabulary coverage, not a measured accuracy or full decoder upper bound"
+    }
+  },
+  "weights_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af"
+}
