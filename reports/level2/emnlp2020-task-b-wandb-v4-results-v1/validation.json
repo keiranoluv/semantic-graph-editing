@@ -1,0 +1,20 @@
+{
+  "CPU_tests": {
+    "command": "CUDA_VISIBLE_DEVICES='' myenv/bin/python -m pytest -q tests/editing/test_emnlp2020_task_b_wandb_v4_test_eval_v1.py tests/editing/test_emnlp2020_task_b_wandb_v4_summary_v1.py tests/editing/test_emnlp2020_task_b_v2_report.py tests/editing/test_emnlp2020_task_b_wandb_v4.py",
+    "failed": 0,
+    "passed": 13,
+    "runtime_seconds": 1.45
+  },
+  "WandB_API_used_for_summary": false,
+  "frozen_training_sources_changed": false,
+  "launcher_log_sync_entries": 6,
+  "local_WandB_summaries_verified": 6,
+  "new_model_inference_for_validation_summary": false,
+  "pre_commit": "passed",
+  "prediction_rescoring_device": "cpu",
+  "selected_parameter_comparison_with_v3": "all_6_identical_tensor_values",
+  "validation_examples_rescored_per_run": 532,
+  "validation_prediction_comparison_with_v3": "all_6_identical_file_bytes",
+  "verified_artifact_hashes": 59,
+  "verified_training_runs": 6
+}

@@ -1,7 +1,9 @@
 # EMNLP Task B v4: cấu hình và launcher W&B đã kiểm thử
 
-**Chưa chạy train chính v4.** Người dùng chạy launcher sau khi đăng nhập W&B.
-Assistant chỉ chạy kiểm thử CPU và smoke GPU không W&B.
+**Cập nhật:** người dùng đã hoàn tất 6/6 lượt train chính. Xem
+[tổng hợp kết quả validation v4](../emnlp2020-task-b-wandb-v4-results-v1/README.md).
+Nội dung dưới đây lưu bằng chứng chuẩn bị launcher và smoke trước lần chạy chính;
+assistant chỉ thực hiện kiểm thử CPU/GPU trong giai đoạn chuẩn bị đó.
 
 [Hướng dẫn và lệnh chạy](../../../docs/LEVEL2_EMNLP2020_TASK_B_WANDB_V4.md),
 [config](../../../configs/level2/emnlp2020-task-b-wandb-v4.json),

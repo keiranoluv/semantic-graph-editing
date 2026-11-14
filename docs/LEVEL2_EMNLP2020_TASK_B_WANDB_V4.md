@@ -2,7 +2,8 @@
 
 V4 giữ nguyên dataset, features, vocabulary, model và kết quả cũ. Không sửa
 `src/`, source/manifest/config v2/v3, MagicBrush hoặc notebook cá nhân. Các
-lượt train chính v4 chưa được assistant chạy; launcher dành cho người dùng.
+lượt train chính v4 do người dùng chạy; launcher dành cho người dùng. Đã có
+[tổng hợp sáu lượt validation](../reports/level2/emnlp2020-task-b-wandb-v4-results-v1/README.md).
 
 ## Arguments trước và sau
 
@@ -112,6 +113,5 @@ CUDA_VISIBLE_DEVICES='' myenv/bin/python -m pytest -q tests/editing/test_emnlp20
 
 Test CPU dùng W&B fake để kiểm run IDs, online-only, lỗi logging, resume, per-type
 metrics và early stopping; không truy cập W&B thật. GPU smoke không kiểm kết
-nối tài khoản W&B; kết nối được kiểm khi người dùng khởi chạy main. V4 chưa có
-kết quả main mới. Test EMNLP đã được đánh giá bởi v3, vì vậy đánh giá về sau trên
+nối tài khoản W&B; kết nối được kiểm khi người dùng khởi chạy main. V4 đã hoàn tất sáu lượt train chính do người dùng chạy; báo cáo kết quả ở liên kết đầu tài liệu. Test EMNLP đã được đánh giá bởi v3, vì vậy đánh giá về sau trên
 cùng split phải công bố đây là tập test đã từng xem, không gọi là held-out mới.
