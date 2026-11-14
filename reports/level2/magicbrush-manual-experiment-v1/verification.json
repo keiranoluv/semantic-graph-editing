@@ -1,0 +1,45 @@
+{
+  "automatic_queue": true,
+  "batches": {
+    "clip_text": 128,
+    "train": 64,
+    "validation_test": 32
+  },
+  "checks": [
+    "black --check passed",
+    "ruff check passed",
+    "bash -n launcher passed",
+    "real 301/67 loader and 20/20 review gate passed",
+    "release source/config/package and CLIP weights hashes passed"
+  ],
+  "config_sha256": "0ebab7e83033d848ec16f7dd189c42d4b7fe12d4b43b0b90474a452ec6792326",
+  "default_wandb_mode": "offline",
+  "early_stopping_patience": 10,
+  "epochs_max_per_run": 100,
+  "original_src_trainers_configs_unchanged": true,
+  "preflight_sha256": "93d9543e391917d406075a30d73e474c31c30f68753aed934dd488fb82c36954",
+  "real_clip_cache_created": false,
+  "real_training_output_created": false,
+  "release_lock_sha256": "9e5ff0ecc03652aedb22b72c2db7b3d9060174369a1755dc169c946c7582e897",
+  "scope": "CPU preparation only; no real-data model inference, training, benchmark, or GPU task started by assistant",
+  "synthetic_queue_test": "six CPU-only tiny fixture runs, interrupt after two, resume, test barrier, completed-run reuse, tamper rejection",
+  "tests": {
+    "command": "myenv/bin/python -m pytest -q tests/editing/test_magicbrush_experiment_v1.py tests/editing/test_edit_model_v1.py tests/editing/test_operations.py",
+    "failed": 0,
+    "passed": 52
+  },
+  "tests_sha256": {
+    "tests/editing/test_edit_model_v1.py": "039acc67bf77acebfe91675ea37e3f7ac4308d4c4bfdf9c33d1aa742aa9ac5ad",
+    "tests/editing/test_magicbrush_experiment_v1.py": "2ea5f1f15174cbe9305988c5d87e8927bf483a7e08b270ca03e7b50a57ff30d0",
+    "tests/editing/test_operations.py": "b1dd96cd22533fb16927bffcf053aa79582f743977580ec150f2277cecc5103a"
+  },
+  "training_order": [
+    "mlp/42",
+    "mlp/123",
+    "mlp/3407",
+    "gnn/42",
+    "gnn/123",
+    "gnn/3407"
+  ],
+  "user_command": "bash /workspace/workspace/semantic-graph-editing/scripts/run_magicbrush_manual_full602_v1.sh"
+}

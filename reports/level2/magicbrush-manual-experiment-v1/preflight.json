@@ -1,0 +1,87 @@
+{
+  "automatic_queue": true,
+  "code_and_environment_lock_verified": true,
+  "experiment_sha256": "66658aba7a39e872dd861c04f34646a7b1c96837a48e82cbb71d0478fe048d5c",
+  "gpu_jobs_started": false,
+  "human_review": {
+    "counts": {
+      "correct": 20,
+      "incorrect": 0,
+      "uncertain": 0
+    },
+    "observed_correct_fraction": 1.0,
+    "per_axis_ratings_invented": false,
+    "ready": true,
+    "rejected_ids": [],
+    "reviewer": "project user",
+    "scope": "overall correctness of fixed 20 train cases"
+  },
+  "loader": {
+    "examples": {
+      "train": 301,
+      "val": 67
+    },
+    "excluded": {
+      "train:missing": 114,
+      "val:missing": 30
+    },
+    "excluded_problem_counts": {},
+    "label_origin": "paired_image_AI_assisted_annotation_with_20_user_reviewed_train_examples",
+    "operation_support": {
+      "train": {
+        "add_edge": 209,
+        "add_node": 159,
+        "delete_edge": 85,
+        "delete_node": 73,
+        "replace_edge": 6,
+        "replace_node": 233
+      },
+      "val": {
+        "add_edge": 59,
+        "add_node": 42,
+        "delete_edge": 37,
+        "delete_node": 36,
+        "replace_node": 45
+      }
+    },
+    "simple_definition": "exactly_one_canonical_GT_operation; graph-level proxy",
+    "test_labels_decoded": false,
+    "validation_labels_exceeding_decode_budget": []
+  },
+  "queue": [
+    {
+      "model": "mlp",
+      "seed": 42
+    },
+    {
+      "model": "mlp",
+      "seed": 123
+    },
+    {
+      "model": "mlp",
+      "seed": 3407
+    },
+    {
+      "model": "gnn",
+      "seed": 42
+    },
+    {
+      "model": "gnn",
+      "seed": 123
+    },
+    {
+      "model": "gnn",
+      "seed": 3407
+    }
+  ],
+  "raw_pair_counts": {
+    "test": 90,
+    "train": 415,
+    "val": 97
+  },
+  "ready": true,
+  "stage": "CPU preflight only",
+  "test_evaluation": "all six selected checkpoints must be frozen before opening test labels",
+  "test_targets_decoded": false,
+  "weights_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af"
+}

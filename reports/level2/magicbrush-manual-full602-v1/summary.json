@@ -1,0 +1,75 @@
+{
+  "accepted_operation_support": {
+    "test": {
+      "add_edge": 43,
+      "add_node": 40,
+      "delete_edge": 24,
+      "delete_node": 22,
+      "replace_edge": 0,
+      "replace_node": 59
+    },
+    "train": {
+      "add_edge": 209,
+      "add_node": 159,
+      "delete_edge": 85,
+      "delete_node": 73,
+      "replace_edge": 6,
+      "replace_node": 233
+    },
+    "val": {
+      "add_edge": 59,
+      "add_node": 42,
+      "delete_edge": 37,
+      "delete_node": 36,
+      "replace_edge": 0,
+      "replace_node": 45
+    }
+  },
+  "accepted_pairs": 437,
+  "accepted_splits": {
+    "test": 69,
+    "train": 301,
+    "val": 67
+  },
+  "deferred_pairs": 165,
+  "formal_human_review_evidence_recorded": true,
+  "heldout_test_export": "data/processed/level2/magicbrush-manual-v2/ai-batches/full-602-v1/final-audit-v1/heldout-test",
+  "human_review": {
+    "correct": 20,
+    "evidence": "explicit user confirmation in conversation",
+    "incorrect": 0,
+    "inter_annotator_agreement_measured": false,
+    "matches_export_and_current_revisions": true,
+    "observed_correct_fraction": 1.0,
+    "per_axis_ratings_separately_collected": false,
+    "reviewed": 20,
+    "reviewer": "project user",
+    "scope": "fixed 20 preselected train review_ids; overall correctness",
+    "uncertain": 0
+  },
+  "limitations": [
+    "20/20 is the observed correctness for the reviewed sample, not a measured rate for all 437 accepted examples.",
+    "replace_edge support is 6 train, 0 val, 0 test; metrics with zero support must be explicitly marked, not interpreted as model ability.",
+    "Older export review-pending fields and historical audit files are preserved; this report records subsequent human confirmation."
+  ],
+  "next_steps": [
+    "Bind a new versioned experiment to this train/val export and actual human verdicts, without inventing separate axis ratings.",
+    "Verify loader, review-evidence integration, source-only model inputs, codec and evaluation on CPU.",
+    "Prepare and commit a launcher for frozen CLIP text cache, MLP encoder plus GRU and GNN encoder plus GRU, seeds 42/123/3407; user runs GPU jobs sequentially.",
+    "Select checkpoints using validation, then evaluate heldout test; report operation precision/recall/F1, exact match, invalid outputs, filtering coverage and mean/std across seeds."
+  ],
+  "schema": "magicbrush-manual-full602-report-v1",
+  "scope": "Task B / MagicBrush graph editing dataset and next experiment steps",
+  "sources": {
+    "Project01_Graph_Editing.pdf": "8f3354ba1e2195fdf4212aa3a745c363d0858cc69173724bea0d83dc95fac373",
+    "data/processed/level2/magicbrush-manual-v2/ai-batches/full-602-v1/final-audit-v1/report.json": "c73b2da06e711dafa7edc9e79eb1a19d6fbb54f5806439fc1a3401002a64ae4c",
+    "data/processed/level2/magicbrush-manual-v2/exports/de98771e714df426a93f121f445ded3a3895fdd28c19eeed1550a432960a5197/edits.json": "7cd7f02537fa536c90a762cd015ebafb33e6670d39bd465cf3c1be0c847a369b",
+    "data/processed/level2/magicbrush-manual-v2/exports/de98771e714df426a93f121f445ded3a3895fdd28c19eeed1550a432960a5197/manifest.json": "9b8895b1ea95ec79aa86e4106d8e22571e0111a8130c8361440ca6fea2a78fe4",
+    "data/processed/level2/magicbrush-manual-v2/human-review-attestations/confirmed-20of20-v1.json": "32b1a1a2eec5cf49e5c504bb4ca044122d75ed601fe3bc0ec7e36900606ee0bc"
+  },
+  "total_processed_pairs": 602,
+  "training_launched_for_this_release": false,
+  "training_preflight_completed_for_this_release": false,
+  "trainval_export": "data/processed/level2/magicbrush-manual-v2/exports/de98771e714df426a93f121f445ded3a3895fdd28c19eeed1550a432960a5197",
+  "unique_images": 912
+}
