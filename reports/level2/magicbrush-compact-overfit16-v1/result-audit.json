@@ -1,0 +1,433 @@
+{
+  "checks": [
+    "current and parent source/config locks verified",
+    "frozen CLIP cache identity and vector checksum verified",
+    "16 distinct actual model input tensors verified",
+    "exactly 16 train source IDs in cache verified",
+    "both model completion receipts verified",
+    "stored raw and constrained predictions rescored",
+    "two consecutive perfect checks and stopping conditions verified"
+  ],
+  "comparison_limit_vi": "Cùng 16 ID, seed, ngân sách tối đa và kiến trúc cơ bản. Compact thay cả nhãn, đầu vào thuộc tính nguồn và từ vựng thuộc tính; số thao tác giảm 50 xuống 47. Không gọi đây là mức tăng chất lượng mô hình trên cùng bài chấm.",
+  "experiment_sha256": "5d67e075c338820ffc2496fc31f1d0c8f99df5e17ceb29649556e55f8df51fd3",
+  "gpu_jobs_started_by_audit": false,
+  "interpretation_vi": "Cả MLP và GNN học đúng toàn bộ 16 graph compact và 47 thao tác ở đầu ra thô lẫn đầu ra có ràng buộc. Phép thử học thuộc đã đạt. Không chứng minh tổng quát hóa, độ đúng thị giác của nhãn hoặc lợi ích GNN so với MLP.",
+  "models": {
+    "gnn": {
+      "completion_receipt_sha256": "fa94b2a6eac205c118ed1eabb63f2de090efba1b2d1753ae42385618a102d52f",
+      "constrained": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 1.0,
+        "exact_target_graph_accuracy": 1.0,
+        "examples": 16,
+        "failed_prediction_rate": 0.0,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 1.0,
+        "micro": {
+          "f1": 1.0,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 47,
+          "tp": 47
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 17,
+            "tp": 17
+          },
+          "add_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 16,
+            "tp": 16
+          },
+          "delete_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "delete_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1,
+            "tp": 1
+          },
+          "replace_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 7,
+            "tp": 7
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 1.0,
+        "simple_examples": 4,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0,
+        "zero_support_types": []
+      },
+      "first_perfect_step": 1075,
+      "last_two_checks": [
+        {
+          "constrained_exact": 1.0,
+          "constrained_f1": 1.0,
+          "loss": 0.1588783711194992,
+          "raw_exact": 1.0,
+          "raw_f1": 1.0,
+          "step": 1075,
+          "success_streak": 1
+        },
+        {
+          "constrained_exact": 1.0,
+          "constrained_f1": 1.0,
+          "loss": 0.1548052877187729,
+          "raw_exact": 1.0,
+          "raw_f1": 1.0,
+          "step": 1100,
+          "success_streak": 2
+        }
+      ],
+      "previous_full_detail_probe": {
+        "exact_target_graph_accuracy": 0.9375,
+        "micro": {
+          "f1": 0.98,
+          "fn": 1,
+          "fp": 1,
+          "precision": 0.98,
+          "recall": 0.98,
+          "support": 50,
+          "tp": 49
+        },
+        "status": "NOT_MEMORIZED_WITHIN_BUDGET",
+        "steps_completed": 3000
+      },
+      "raw": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 1.0,
+        "exact_target_graph_accuracy": 1.0,
+        "examples": 16,
+        "failed_prediction_rate": 0.0,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 1.0,
+        "micro": {
+          "f1": 1.0,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 47,
+          "tp": 47
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 17,
+            "tp": 17
+          },
+          "add_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 16,
+            "tp": 16
+          },
+          "delete_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "delete_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1,
+            "tp": 1
+          },
+          "replace_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 7,
+            "tp": 7
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 1.0,
+        "simple_examples": 4,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0,
+        "zero_support_types": []
+      },
+      "selected_step": 1100,
+      "status": "MEMORIZED",
+      "steps_completed": 1100
+    },
+    "mlp": {
+      "completion_receipt_sha256": "253d482c925167cc0b60b87564ff1276594b2055e2b9a3a4503c638a0fcc7b07",
+      "constrained": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 1.0,
+        "exact_target_graph_accuracy": 1.0,
+        "examples": 16,
+        "failed_prediction_rate": 0.0,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 1.0,
+        "micro": {
+          "f1": 1.0,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 47,
+          "tp": 47
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 17,
+            "tp": 17
+          },
+          "add_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 16,
+            "tp": 16
+          },
+          "delete_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "delete_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1,
+            "tp": 1
+          },
+          "replace_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 7,
+            "tp": 7
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 1.0,
+        "simple_examples": 4,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0,
+        "zero_support_types": []
+      },
+      "first_perfect_step": 1050,
+      "last_two_checks": [
+        {
+          "constrained_exact": 1.0,
+          "constrained_f1": 1.0,
+          "loss": 0.1620301604270935,
+          "raw_exact": 1.0,
+          "raw_f1": 1.0,
+          "step": 1050,
+          "success_streak": 1
+        },
+        {
+          "constrained_exact": 1.0,
+          "constrained_f1": 1.0,
+          "loss": 0.15787561237812042,
+          "raw_exact": 1.0,
+          "raw_f1": 1.0,
+          "step": 1075,
+          "success_streak": 2
+        }
+      ],
+      "previous_full_detail_probe": {
+        "exact_target_graph_accuracy": 0.9375,
+        "micro": {
+          "f1": 0.98,
+          "fn": 1,
+          "fp": 1,
+          "precision": 0.98,
+          "recall": 0.98,
+          "support": 50,
+          "tp": 49
+        },
+        "status": "NOT_MEMORIZED_WITHIN_BUDGET",
+        "steps_completed": 3000
+      },
+      "raw": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 1.0,
+        "exact_target_graph_accuracy": 1.0,
+        "examples": 16,
+        "failed_prediction_rate": 0.0,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 1.0,
+        "micro": {
+          "f1": 1.0,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 47,
+          "tp": 47
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 17,
+            "tp": 17
+          },
+          "add_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 16,
+            "tp": 16
+          },
+          "delete_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "delete_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1,
+            "tp": 1
+          },
+          "replace_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 7,
+            "tp": 7
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 1.0,
+        "simple_examples": 4,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0,
+        "zero_support_types": []
+      },
+      "selected_step": 1075,
+      "status": "MEMORIZED",
+      "steps_completed": 1075
+    }
+  },
+  "next_step_vi": "Chuẩn bị pilot trên toàn bộ 301 train compact, MLP/GNN seed 42 tuần tự, chọn checkpoint bằng validation. Báo cáo schema coverage của 67 validation, 3 ca no_core_edit và exact của 64 ca có thao tác; không coi dự đoán rỗng là đáp ứng câu yêu cầu ở 3 ca mất biểu diễn. Chưa dùng test để điều chỉnh. Thực nghiệm chính cần ba seed và cùng split cho cả hai mô hình.",
+  "scope": "CPU read-only audit of user-run compact memorization results; no validation/test performance inference",
+  "sources_sha256": {
+    "configs/level2/magicbrush-compact-overfit16-v1.lock.json": "6663c5d9c14a38eca62c38f0e144887eeb868d09bbd8bbadf443dc0136557159",
+    "runs/level2/magicbrush-compact-overfit16-v1/feature-receipt.json": "5c0c6c54d33c195fd770f4d7737263a3066130ebcba917df0fe46ed3389e2384",
+    "runs/level2/magicbrush-compact-overfit16-v1/summary.json": "318cba64d6e18a7c28bb0b46136d13ba176b28a1784022dd5479a88c5cb791b8",
+    "runs/level2/magicbrush-overfit16-v1/summary.json": "916f41079528cd4238c734af5dc4b467011e1874e1122c7e463a5b9b89063b7a"
+  },
+  "test_labels_decoded": false,
+  "training_identity_sha256": "cbf82b48598da4b165291856900303557125efdb97e2af50365328af197c8635"
+}
