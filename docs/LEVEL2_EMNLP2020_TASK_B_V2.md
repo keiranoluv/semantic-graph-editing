@@ -132,3 +132,14 @@ CUDA_VISIBLE_DEVICES='' myenv/bin/python -m tools.emnlp2020_task_b_v2 \
 Inference chuẩn hóa ID chỉ từ source, trả mapping ID, operations và graph tái
 dựng; prediction không hợp lệ trả lỗi và target null, không trả GT thay thế.
 Batch inference một mẫu, CPU, không tự chạy hàng đợi.
+
+Tổng hợp ba seed, audit dữ liệu và metadata không chứa raw records:
+
+```bash
+CUDA_VISIBLE_DEVICES='' myenv/bin/python -m tools.report_emnlp2020_task_b_v2
+```
+
+Xem báo cáo tại `reports/level2/emnlp2020-task-b-v2/`. Log kiểm thử ghi rõ
+lệnh nguyên bản và CPU test harness dành riêng cho test MagicBrush cũ giả lập
+CUDA availability; shim chỉ thay CUDA graph introspection trong process test,
+không thay source cũ hoặc che kết quả kiểm thử nguyên bản.

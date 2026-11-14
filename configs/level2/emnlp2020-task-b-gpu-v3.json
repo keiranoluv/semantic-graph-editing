@@ -1,0 +1,35 @@
+{
+  "schema": "emnlp2020-task-b-gpu-v3",
+  "dataset": "data/processed/level2/emnlp2020-task-b-v2",
+  "output": "runs/level2/emnlp2020-task-b-gpu-v3",
+  "weights": "data/cache/vg150-clip-vit-b32-v1/weights/ViT-B-32.pt",
+  "device": "cuda",
+  "threads": 4,
+  "batch_size": 128,
+  "text_batch_size": 128,
+  "epochs": 12,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "models": [
+    "mlp",
+    "gnn"
+  ],
+  "hidden": 96,
+  "layers": 2,
+  "max_nodes": 7,
+  "max_edges": 42,
+  "max_decode_tokens": 192,
+  "lr": 0.001,
+  "weight_decay": 0.01,
+  "selection": "minimum_validation_teacher_forced_loss",
+  "automatic_queue": true,
+  "queue_order": "model_then_seed_sequential_one_model_at_a_time",
+  "review_status": "unreviewed_official_graph_supervision",
+  "test_policy": "only_after_all_six_checkpoints_frozen",
+  "interrupted_CPU_output_preserved": "runs/level2/emnlp2020-task-b-v2",
+  "frozen_feature_cache_device": "cpu",
+  "user_authorized_assistant_GPU_execution": true
+}
