@@ -1,0 +1,471 @@
+{
+  "all_checkpoint_and_result_receipts_verified": true,
+  "all_saved_metrics_recomputed_and_matched": true,
+  "experiment_sha256": "4d894beaa0b9853222b78b9726526073b9f796cd0601ebc961054000b717ac01",
+  "findings": [
+    "All six runs stopped after 11 epochs and selected epoch 1.",
+    "Every validation epoch had zero operation F1 and 67 decode failures.",
+    "Selected predictions have no terminating EOS and hit the 2048-token cap.",
+    "Strict F1-only improvement and patience=10 select the first epoch and stop before the decoder can demonstrate valid structured output. Falling teacher-forced training loss is not evidence of valid autoregressive generation.",
+    "The original completion status tracks execution only and does not require a minimum validity or quality."
+  ],
+  "next_experiment_constraints": [
+    "Preserve this failed baseline and create a new version; do not overwrite old files.",
+    "Use train/validation-only diagnostics; test results have already been exposed and must not guide hyperparameter choices.",
+    "Add a development pilot and fail-fast quality gate before automatically launching the remaining seeds or opening test labels.",
+    "Specify minimum training duration and validation-based tie-breaking, plus explicit decoding validity checks; longer training alone is not a demonstrated fix."
+  ],
+  "runs": [
+    {
+      "all_epoch_validation_decode_failures": [
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67
+      ],
+      "epochs_completed": 11,
+      "model": "mlp",
+      "optimizer_updates": 55,
+      "seed": 42,
+      "selected_epoch": 1,
+      "splits": {
+        "test": {
+          "decode_failures": 69,
+          "examples": 69,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              141312
+            ]
+          ],
+          "prediction_sha256": "ca71716c0dd932d972cf1e1adbee109a8625eabcd7376f7cb94b350f9ab614f1",
+          "predictions_at_2048_token_cap": 69,
+          "predictions_ending_in_EOS": 0
+        },
+        "val": {
+          "decode_failures": 67,
+          "examples": 67,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              137216
+            ]
+          ],
+          "prediction_sha256": "05b91074e2d8a98402ac1decb2cae40eeb82fa216e75c7b32bb6bcdf19c7083e",
+          "predictions_at_2048_token_cap": 67,
+          "predictions_ending_in_EOS": 0
+        }
+      },
+      "train_loss_first": 5.076587120402264,
+      "train_loss_last": 2.6793977345717845,
+      "validation_f1_by_epoch": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "all_epoch_validation_decode_failures": [
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67
+      ],
+      "epochs_completed": 11,
+      "model": "mlp",
+      "optimizer_updates": 55,
+      "seed": 123,
+      "selected_epoch": 1,
+      "splits": {
+        "test": {
+          "decode_failures": 69,
+          "examples": 69,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              138909
+            ],
+            [
+              47,
+              ",",
+              2403
+            ]
+          ],
+          "prediction_sha256": "15a798f675da0b5b2582500934e215a7b681d6afd76c7fe8299a3c48459dbbc2",
+          "predictions_at_2048_token_cap": 69,
+          "predictions_ending_in_EOS": 0
+        },
+        "val": {
+          "decode_failures": 67,
+          "examples": 67,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              132463
+            ],
+            [
+              47,
+              ",",
+              4750
+            ],
+            [
+              94,
+              "[",
+              3
+            ]
+          ],
+          "prediction_sha256": "34660e75ba5b6bb925d25933ecfcbf36d3df70d4e15a2e184b67563452abb310",
+          "predictions_at_2048_token_cap": 67,
+          "predictions_ending_in_EOS": 0
+        }
+      },
+      "train_loss_first": 5.255833283122521,
+      "train_loss_last": 2.6979104938326044,
+      "validation_f1_by_epoch": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "all_epoch_validation_decode_failures": [
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67
+      ],
+      "epochs_completed": 11,
+      "model": "mlp",
+      "optimizer_updates": 55,
+      "seed": 3407,
+      "selected_epoch": 1,
+      "splits": {
+        "test": {
+          "decode_failures": 69,
+          "examples": 69,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              141291
+            ],
+            [
+              94,
+              "[",
+              21
+            ]
+          ],
+          "prediction_sha256": "f6a585419f625464bec70f2e6dda54a4b8846c4c34761d39c7746a2b9ce0605f",
+          "predictions_at_2048_token_cap": 69,
+          "predictions_ending_in_EOS": 0
+        },
+        "val": {
+          "decode_failures": 67,
+          "examples": 67,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              135141
+            ],
+            [
+              104,
+              "e",
+              2044
+            ],
+            [
+              94,
+              "[",
+              31
+            ]
+          ],
+          "prediction_sha256": "075620611faac018fa813cb8f8b373c37d70535b7335a2a2a918d2ba2dc7404c",
+          "predictions_at_2048_token_cap": 67,
+          "predictions_ending_in_EOS": 0
+        }
+      },
+      "train_loss_first": 5.141942164159492,
+      "train_loss_last": 2.5784242491382785,
+      "validation_f1_by_epoch": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "all_epoch_validation_decode_failures": [
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67
+      ],
+      "epochs_completed": 11,
+      "model": "gnn",
+      "optimizer_updates": 55,
+      "seed": 42,
+      "selected_epoch": 1,
+      "splits": {
+        "test": {
+          "decode_failures": 69,
+          "examples": 69,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              141312
+            ]
+          ],
+          "prediction_sha256": "ca71716c0dd932d972cf1e1adbee109a8625eabcd7376f7cb94b350f9ab614f1",
+          "predictions_at_2048_token_cap": 69,
+          "predictions_ending_in_EOS": 0
+        },
+        "val": {
+          "decode_failures": 67,
+          "examples": 67,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              137216
+            ]
+          ],
+          "prediction_sha256": "05b91074e2d8a98402ac1decb2cae40eeb82fa216e75c7b32bb6bcdf19c7083e",
+          "predictions_at_2048_token_cap": 67,
+          "predictions_ending_in_EOS": 0
+        }
+      },
+      "train_loss_first": 4.9714992755972105,
+      "train_loss_last": 2.6390865363849345,
+      "validation_f1_by_epoch": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "all_epoch_validation_decode_failures": [
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67
+      ],
+      "epochs_completed": 11,
+      "model": "gnn",
+      "optimizer_updates": 55,
+      "seed": 123,
+      "selected_epoch": 1,
+      "splits": {
+        "test": {
+          "decode_failures": 69,
+          "examples": 69,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              141312
+            ]
+          ],
+          "prediction_sha256": "ca71716c0dd932d972cf1e1adbee109a8625eabcd7376f7cb94b350f9ab614f1",
+          "predictions_at_2048_token_cap": 69,
+          "predictions_ending_in_EOS": 0
+        },
+        "val": {
+          "decode_failures": 67,
+          "examples": 67,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              137216
+            ]
+          ],
+          "prediction_sha256": "05b91074e2d8a98402ac1decb2cae40eeb82fa216e75c7b32bb6bcdf19c7083e",
+          "predictions_at_2048_token_cap": 67,
+          "predictions_ending_in_EOS": 0
+        }
+      },
+      "train_loss_first": 4.96981187697163,
+      "train_loss_last": 2.6197321451457705,
+      "validation_f1_by_epoch": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "all_epoch_validation_decode_failures": [
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67
+      ],
+      "epochs_completed": 11,
+      "model": "gnn",
+      "optimizer_updates": 55,
+      "seed": 3407,
+      "selected_epoch": 1,
+      "splits": {
+        "test": {
+          "decode_failures": 69,
+          "examples": 69,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              141312
+            ]
+          ],
+          "prediction_sha256": "ca71716c0dd932d972cf1e1adbee109a8625eabcd7376f7cb94b350f9ab614f1",
+          "predictions_at_2048_token_cap": 69,
+          "predictions_ending_in_EOS": 0
+        },
+        "val": {
+          "decode_failures": 67,
+          "examples": 67,
+          "invalid_transactions": 0,
+          "micro_f1": 0.0,
+          "most_common_tokens": [
+            [
+              37,
+              "\"",
+              137215
+            ],
+            [
+              94,
+              "[",
+              1
+            ]
+          ],
+          "prediction_sha256": "559154514b7847a31e35edd0d9419827ee6cecfa38e882ed341f7bc21d2de1b0",
+          "predictions_at_2048_token_cap": 67,
+          "predictions_ending_in_EOS": 0
+        }
+      },
+      "train_loss_first": 4.860248163595087,
+      "train_loss_last": 2.722270060502409,
+      "validation_f1_by_epoch": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "scope": "CPU read-only audit of saved outputs; no model inference or GPU tasks",
+  "summary_sha256": "bb4a0190912b9d2cbaaff76bbed74ebd526cbd03469102eeb9a3f4460cde8351"
+}
