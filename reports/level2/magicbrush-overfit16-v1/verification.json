@@ -1,0 +1,31 @@
+{
+  "additional_checks": [
+    "ruff passed",
+    "black check passed",
+    "isort check passed",
+    "bash -n passed",
+    "real-data CPU preflight passed; original v3 release lock verified"
+  ],
+  "artifacts_sha256": {
+    "configs/level2/magicbrush-overfit16-v1.json": "79ba3bb659ed98e986542dc691f594cda6a487ae05d735bfaf9f520f88b0d933",
+    "configs/level2/magicbrush-overfit16-v1.lock.json": "4e8fca0e923f543840668edd55186a8c7538de173f8620de07f673c7dd1d90f4",
+    "reports/level2/magicbrush-overfit16-v1/cohort.json": "9cec2a823702084b265eb2483e71e041d49c6acb6662c92c75fd9a838c05bc65",
+    "reports/level2/magicbrush-overfit16-v1/preflight.json": "5666c8f089dd6f2f33df5ade5ec236d94721a9eb31077872eef3a0b69a3aed7f"
+  },
+  "experiment_sha256": "3e5befcddcaa8a510abfd35dfe834cb4866b486864a5cc0be888dbde9182e298",
+  "gpu_jobs_started": false,
+  "pytest": {
+    "command": "myenv/bin/python -m pytest -q tests/editing/test_magicbrush_overfit_v1.py tests/editing/test_magicbrush_experiment_v3.py tests/editing/test_magicbrush_experiment_v2.py tests/editing/test_magicbrush_experiment_v1.py tests/editing/test_edit_model_v1.py tests/editing/test_operations.py",
+    "passed": 86,
+    "seconds": 13.65
+  },
+  "scope": "CPU verification only; real 16-example GPU probe not run by assistant",
+  "synthetic_regressions": [
+    "deterministic train-only group-distinct selection, six operation kinds and conflicting-input exclusion",
+    "raw and constrained graph/operation exact-match success criterion",
+    "MLP/GNN CPU memorization and stopping",
+    "checkpoint/RNG resume equivalence",
+    "completed-artifact tampering rejection",
+    "sequential queue continues after finite-budget failure and resumes after interruption"
+  ]
+}

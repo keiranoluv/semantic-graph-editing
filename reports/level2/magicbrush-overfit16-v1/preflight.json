@@ -1,0 +1,81 @@
+{
+  "automatic_queue": "always both models sequentially; no full dataset or test queue follows",
+  "cohort_ids": [
+    "magicbrush:166761:1",
+    "magicbrush:192047:2",
+    "magicbrush:210671:2",
+    "magicbrush:290080:1",
+    "magicbrush:332775:1",
+    "magicbrush:426038:1",
+    "magicbrush:435242:1",
+    "magicbrush:441199:2",
+    "magicbrush:452272:2",
+    "magicbrush:453050:1",
+    "magicbrush:458510:1",
+    "magicbrush:510636:3",
+    "magicbrush:548561:1",
+    "magicbrush:557084:1",
+    "magicbrush:575500:3",
+    "magicbrush:85160:1"
+  ],
+  "cohort_vocabulary_coverage": {
+    "examples": 16,
+    "excluded_examples": 0,
+    "fully_representable_examples": 16,
+    "oov_cases": [],
+    "oov_payload_fields": 0,
+    "operations": 50,
+    "payload_fields": 81,
+    "representable_operation_payloads": 50,
+    "scope": "payload vocabulary coverage, not a measured accuracy or full decoder upper bound"
+  },
+  "distinct_actual_tensor_inputs": 16,
+  "evaluation_scope": "same 16 training pairs; not validation/test performance",
+  "experiment_sha256": "3e5befcddcaa8a510abfd35dfe834cb4866b486864a5cc0be888dbde9182e298",
+  "feature_note": "Reuse verified frozen v3 bank; only selected train inputs and train-derived prototypes copied into probe store. Parent preflight also verifies trainval artifacts.",
+  "full_train_vocabulary_preserved": true,
+  "gpu_jobs_started": false,
+  "max_optimizer_updates_per_model": 3000,
+  "parent_release_verified": true,
+  "queue": [
+    {
+      "model": "mlp",
+      "seed": 42
+    },
+    {
+      "model": "gnn",
+      "seed": 42
+    }
+  ],
+  "ready": true,
+  "selection": {
+    "cohort_operation_support": {
+      "add_edge": 17,
+      "add_node": 16,
+      "delete_edge": 3,
+      "delete_node": 3,
+      "replace_edge": 1,
+      "replace_node": 10
+    },
+    "conflicting_input_keys_excluded": 0,
+    "distinct_groups": 16,
+    "full_train_operation_support": {
+      "add_edge": 209,
+      "add_node": 159,
+      "delete_edge": 85,
+      "delete_node": 73,
+      "replace_edge": 6,
+      "replace_node": 233
+    },
+    "policy": "seeded shuffled train list; cover rare operation kinds first, fill to size; distinct source groups and semantic inputs; no performance-based selection",
+    "selection_seed": 20261114
+  },
+  "success": "100% operation-set AND target-graph exact match for raw AND constrained outputs on two successive checks",
+  "test_labels_decoded": false,
+  "validation_used_for_probe_training_selection_or_scoring": false,
+  "vocabulary_sizes": {
+    "attributes": 1448,
+    "labels": 682,
+    "predicates": 81
+  }
+}
