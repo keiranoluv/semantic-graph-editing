@@ -1,0 +1,64 @@
+{
+  "actual_tensor_collision_check": "performed after user builds frozen GPU cache; not yet asserted by CPU plan",
+  "clip_batch_size": 128,
+  "cohort_coverage": {
+    "examples": 16,
+    "excluded_examples": 0,
+    "fully_representable_examples": 16,
+    "oov_cases": [],
+    "oov_payload_fields": 0,
+    "operations": 47,
+    "payload_fields": 68,
+    "representable_operation_payloads": 47,
+    "scope": "payload vocabulary coverage, not a measured accuracy or full decoder upper bound"
+  },
+  "cohort_ids": [
+    "magicbrush:166761:1",
+    "magicbrush:192047:2",
+    "magicbrush:210671:2",
+    "magicbrush:290080:1",
+    "magicbrush:332775:1",
+    "magicbrush:426038:1",
+    "magicbrush:435242:1",
+    "magicbrush:441199:2",
+    "magicbrush:452272:2",
+    "magicbrush:453050:1",
+    "magicbrush:458510:1",
+    "magicbrush:510636:3",
+    "magicbrush:548561:1",
+    "magicbrush:557084:1",
+    "magicbrush:575500:3",
+    "magicbrush:85160:1"
+  ],
+  "cohort_operation_support": {
+    "add_edge": 17,
+    "add_node": 16,
+    "delete_edge": 3,
+    "delete_node": 3,
+    "replace_edge": 1,
+    "replace_node": 7
+  },
+  "comparison_note": "Same cohort, budget and architecture; annotations, source attributes and attribute vocabulary differ. Not evidence of improved generalization.",
+  "experiment_sha256": "5d67e075c338820ffc2496fc31f1d0c8f99df5e17ceb29649556e55f8df51fd3",
+  "gpu_jobs_started": false,
+  "gpu_queue": [
+    "frozen CLIP text cache",
+    "MLP seed 42",
+    "GNN seed 42"
+  ],
+  "max_updates_per_model": 3000,
+  "parent_note": "Parent integrity checks parse trainval artifacts; probe only uses train examples and train-derived vocabulary.",
+  "ready": true,
+  "stop_after_two_models": true,
+  "success": "raw AND constrained operations AND target graph exact 16/16, two successive checks",
+  "test_labels_decoded": false,
+  "text_count_to_encode": 1160,
+  "training_batch_size": 16,
+  "validation_used_for_probe_training_selection_scoring": false,
+  "vocabulary_scope": "all 301 compact train examples, not only 16",
+  "vocabulary_sizes": {
+    "attributes": 298,
+    "labels": 682,
+    "predicates": 81
+  }
+}

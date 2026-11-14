@@ -1,0 +1,31 @@
+{
+  "checks": [
+    "Ruff/Black/isort passed",
+    "bash -n passed",
+    "real 16 compact train labels CPU preflight passed",
+    "full-size MLP/GNN forward/backward on real targets with synthetic 512-dimensional embeddings passed",
+    "train adapter rejects modified labels and ignores validation targets",
+    "same cohort IDs/order and six operation types verified",
+    "synthetic cache + sequential MLP/GNN CPU training and stopping passed",
+    "interrupted queue resume, completed-result reuse and tamper rejection passed",
+    "previous probe checkpoint RNG resume and finite-budget queue regressions passed",
+    "parent v3, original overfit and compact releases unchanged"
+  ],
+  "experiment_sha256": "5d67e075c338820ffc2496fc31f1d0c8f99df5e17ceb29649556e55f8df51fd3",
+  "files_sha256": {
+    "/workspace/workspace/semantic-graph-editing/configs/level2/magicbrush-compact-overfit16-v1.json": "74172927d547cd93e6cd8ec40bd1c52ccffffb0030003e979506d242b8d316b7",
+    "/workspace/workspace/semantic-graph-editing/configs/level2/magicbrush-compact-overfit16-v1.lock.json": "6663c5d9c14a38eca62c38f0e144887eeb868d09bbd8bbadf443dc0136557159",
+    "reports/level2/magicbrush-compact-overfit16-v1/README.md": "fe9b925f285594d1d744dd4445b23f9770aae801172295d4ab8d5009f96e8a68",
+    "reports/level2/magicbrush-compact-overfit16-v1/cohort.json": "a0c9f93a863ef8a39785ac3ee94900a8eafa89254eb6cdd1aa080bf6e143fb33",
+    "reports/level2/magicbrush-compact-overfit16-v1/cpu-shape-check.json": "40bc65b156d3b9fdf057e6a8fa7f64c6ad66f17479b43b95eac55cc681d54445",
+    "reports/level2/magicbrush-compact-overfit16-v1/preflight.json": "7717a2b2d5057b67e9c90e385c327d2587f37598adeb6f5414669190fbf3cc1c",
+    "tests/editing/test_magicbrush_compact_overfit_v1.py": "324aec085db526afeaf2c7a50c728fe9b29785b53fc7e0bea8720cdb5628e1a6"
+  },
+  "gpu_jobs_started": false,
+  "pytest": {
+    "command": "myenv/bin/python -m pytest -q tests/editing/test_magicbrush_compact_overfit_v1.py tests/editing/test_magicbrush_overfit_v1.py tests/editing/test_magicbrush_compact_v1.py tests/editing/test_magicbrush_experiment_v3.py",
+    "passed": 43,
+    "seconds": 6.51
+  },
+  "scope": "CPU checks only; no real CLIP inference or real GPU training started"
+}
