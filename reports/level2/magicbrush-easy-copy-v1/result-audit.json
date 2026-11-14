@@ -1,0 +1,3156 @@
+{
+  "checks": [
+    "preflight verifies locked source and label provenance",
+    "frozen feature identity/hash verified",
+    "four completion receipts verified",
+    "raw and constrained metrics independently rescored",
+    "all prediction IDs/order and error annotations checked",
+    "stored name/ID diagnostics recomputed"
+  ],
+  "comparison": {
+    "gnn": {
+      "delta_f1_percentage_points": -0.02421140011068107,
+      "name_gain_loss_cases": [
+        {
+          "copy": {
+            "bicycle": 1
+          },
+          "expected": {
+            "bicycle": 1,
+            "lane markings": 1
+          },
+          "id": "magicbrush:144298:1",
+          "instruction": "Put a bicycle next to the bus.",
+          "net_name_gain": 1,
+          "no_copy": {
+            "bicycles": 1
+          }
+        },
+        {
+          "copy": {
+            "gorilla": 1
+          },
+          "expected": {
+            "gorilla": 1
+          },
+          "id": "magicbrush:338078:1",
+          "instruction": "Have there be a gorilla crossing the road",
+          "net_name_gain": 1,
+          "no_copy": {
+            "road": 1
+          }
+        },
+        {
+          "copy": {
+            "guitar": 1
+          },
+          "expected": {
+            "guitar": 1
+          },
+          "id": "magicbrush:338078:3",
+          "instruction": "Have the gorilla be playing a guitar",
+          "net_name_gain": 1,
+          "no_copy": {
+            "sombrero": 1
+          }
+        },
+        {
+          "copy": {
+            "cow eat": 1
+          },
+          "expected": {
+            "carrots": 1
+          },
+          "id": "magicbrush:352276:1",
+          "instruction": "have the cow eat from a pile of carrots.",
+          "net_name_gain": -1,
+          "no_copy": {
+            "carrots": 1
+          }
+        }
+      ]
+    },
+    "mlp": {
+      "delta_f1_percentage_points": 0.0,
+      "name_gain_loss_cases": [
+        {
+          "copy": {
+            "bicycle": 1
+          },
+          "expected": {
+            "bicycle": 1,
+            "lane markings": 1
+          },
+          "id": "magicbrush:144298:1",
+          "instruction": "Put a bicycle next to the bus.",
+          "net_name_gain": 1,
+          "no_copy": {
+            "bicycles": 1
+          }
+        },
+        {
+          "copy": {
+            "luxury suv": 1
+          },
+          "expected": {
+            "SUV": 1
+          },
+          "id": "magicbrush:321886:1",
+          "instruction": "let there be a luxury SUV",
+          "net_name_gain": -1,
+          "no_copy": {
+            "SUV": 1
+          }
+        },
+        {
+          "copy": {
+            "gorilla": 1
+          },
+          "expected": {
+            "gorilla": 1
+          },
+          "id": "magicbrush:338078:1",
+          "instruction": "Have there be a gorilla crossing the road",
+          "net_name_gain": 1,
+          "no_copy": {
+            "road": 1
+          }
+        },
+        {
+          "copy": {
+            "guitar": 1
+          },
+          "expected": {
+            "guitar": 1
+          },
+          "id": "magicbrush:338078:3",
+          "instruction": "Have the gorilla be playing a guitar",
+          "net_name_gain": 1,
+          "no_copy": {
+            "bow tie": 1
+          }
+        },
+        {
+          "copy": {
+            "cow eat": 1
+          },
+          "expected": {
+            "carrots": 1
+          },
+          "id": "magicbrush:352276:1",
+          "instruction": "have the cow eat from a pile of carrots.",
+          "net_name_gain": -1,
+          "no_copy": {
+            "carrots": 1
+          }
+        }
+      ]
+    }
+  },
+  "copy_candidate_coverage": {
+    "added_nodes": 42,
+    "instruction_copyable_names": 12,
+    "oov_copyable": [
+      {
+        "id": "magicbrush:144298:1",
+        "name": "bicycle"
+      },
+      {
+        "id": "magicbrush:338078:1",
+        "name": "gorilla"
+      },
+      {
+        "id": "magicbrush:338078:2",
+        "name": "lightning"
+      },
+      {
+        "id": "magicbrush:338078:3",
+        "name": "guitar"
+      }
+    ],
+    "train_vocabulary_names": 26,
+    "vocabulary_or_copy_names": 30
+  },
+  "gpu_jobs_started_by_audit": false,
+  "models": {
+    "copy/gnn": {
+      "completion_receipt_sha256": "ed3b38f52fc537ee4a4e84af69a8daba4d4b1cad444b05132eb439e734ce6d46",
+      "diagnostics": {
+        "counts": {
+          "correct_added_names_ignoring_attributes_and_ids": 9,
+          "correct_existing_complete_payload": 16,
+          "correct_existing_kind_and_id": 38,
+          "expected_added_names": 42,
+          "expected_existing_ops": 118,
+          "predicted_added_names": 28
+        },
+        "frequent_wrong_added_names": [
+          [
+            "picture",
+            2
+          ],
+          [
+            "forest",
+            1
+          ],
+          [
+            "car",
+            1
+          ],
+          [
+            "all",
+            1
+          ],
+          [
+            "fire",
+            1
+          ]
+        ],
+        "illustrations": [
+          {
+            "expected_added_names": {
+              "gorilla": 1
+            },
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted_added_names": {
+              "gorilla": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "guitar": 1
+            },
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted_added_names": {
+              "guitar": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "lion": 1
+            },
+            "id": "magicbrush:456569:2",
+            "instruction": "let a lion sleep near the giraffes",
+            "predicted_added_names": {
+              "lion": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "laptop": 1
+            },
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted_added_names": {
+              "laptop": 1
+            }
+          }
+        ],
+        "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+      },
+      "epochs_completed": 40,
+      "loss_history": [
+        {
+          "epoch": 1,
+          "train_structured_loss": 1.9263700485229491,
+          "validation_structured_loss": 1.5540073487296033
+        },
+        {
+          "epoch": 10,
+          "train_structured_loss": 0.9017610375086467,
+          "validation_structured_loss": 1.5237802142527566
+        },
+        {
+          "epoch": 40,
+          "train_structured_loss": 0.2924786611398061,
+          "validation_structured_loss": 2.1512827375041903
+        }
+      ],
+      "offline_schema_projection": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 0.13414068252255956,
+        "micro": {
+          "f1": 0.11990407673860912,
+          "fn": 194,
+          "fp": 173,
+          "precision": 0.12626262626262627,
+          "recall": 0.1141552511415525,
+          "support": 219,
+          "tp": 25
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.07766990291262135,
+            "fn": 55,
+            "fp": 40,
+            "precision": 0.09090909090909091,
+            "recall": 0.06779661016949153,
+            "support": 59,
+            "tp": 4
+          },
+          "add_node": {
+            "f1": 0.14285714285714285,
+            "fn": 37,
+            "fp": 23,
+            "precision": 0.17857142857142858,
+            "recall": 0.11904761904761904,
+            "support": 42,
+            "tp": 5
+          },
+          "delete_edge": {
+            "f1": 0.2716049382716049,
+            "fn": 26,
+            "fp": 33,
+            "precision": 0.25,
+            "recall": 0.2972972972972973,
+            "support": 37,
+            "tp": 11
+          },
+          "delete_node": {
+            "f1": 0.17857142857142858,
+            "fn": 31,
+            "fp": 15,
+            "precision": 0.25,
+            "recall": 0.1388888888888889,
+            "support": 36,
+            "tp": 5
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 62,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0
+      },
+      "payload_diagnostics": {
+        "counts": {
+          "added_name_and_attributes_match_ignoring_id": 1,
+          "correct_name_but_extraneous_attributes_on_attribute_free_reference": 4,
+          "expected_attribute_free_added_nodes": 9,
+          "oov_added_names_correct": 3,
+          "reference_replace_node": 45,
+          "replace_node_correct_kind_id": 22,
+          "replace_node_correct_kind_id_label": 17,
+          "replace_node_payload_representable_with_copy": 6
+        },
+        "illustrations": [
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [],
+                  "id": "newn001",
+                  "label": "gorilla"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ],
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "black white",
+                    "dark"
+                  ],
+                  "id": "newn001",
+                  "label": "gorilla"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black white"
+                  ],
+                  "id": "n001",
+                  "label": "road"
+                },
+                "before": {
+                  "attributes": [
+                    "curving",
+                    "paved"
+                  ],
+                  "id": "n001",
+                  "label": "road"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [
+                    "dark neck",
+                    "orange"
+                  ],
+                  "id": "newn001",
+                  "label": "guitar"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "upright"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "before": {
+                  "attributes": [
+                    "black",
+                    "knuckle walking"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "newn001",
+                  "predicate": "holding",
+                  "subject": "n001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ],
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "red",
+                    "yellow"
+                  ],
+                  "id": "newn001",
+                  "label": "guitar"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "white icing"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "before": {
+                  "attributes": [
+                    "black",
+                    "knuckle walking"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "newn001",
+                  "predicate": "on",
+                  "subject": "n001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [
+                    "car image"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "before": {
+                  "attributes": [
+                    "application windows"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "kind": "replace_node"
+              }
+            ],
+            "id": "magicbrush:357633:1",
+            "instruction": "put a car on the screen of the laptop.",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "open",
+                    "red"
+                  ],
+                  "id": "n001",
+                  "label": "laptop"
+                },
+                "before": {
+                  "attributes": [
+                    "black keyboard",
+                    "open",
+                    "silver"
+                  ],
+                  "id": "n001",
+                  "label": "laptop"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "black white",
+                    "red"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "before": {
+                  "attributes": [
+                    "application windows"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "kind": "replace_node"
+              }
+            ]
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [],
+                  "id": "newn001",
+                  "label": "laptop"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": null,
+                "before": {
+                  "attributes": [
+                    "stacked"
+                  ],
+                  "id": "n002",
+                  "label": "books"
+                },
+                "kind": "delete_node"
+              },
+              {
+                "after": null,
+                "before": {
+                  "attributes": [
+                    "dark"
+                  ],
+                  "id": "n003",
+                  "label": "remote"
+                },
+                "kind": "delete_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              },
+              {
+                "after": null,
+                "before": {
+                  "id": "e001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "n002"
+                },
+                "kind": "delete_edge"
+              },
+              {
+                "after": null,
+                "before": {
+                  "id": "e002",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "n003"
+                },
+                "kind": "delete_edge"
+              }
+            ],
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "gray"
+                  ],
+                  "id": "newn001",
+                  "label": "laptop"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              },
+              {
+                "after": {
+                  "id": "newe002",
+                  "object": "n009",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          }
+        ]
+      },
+      "raw_validation": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 28,
+        "invalid_transactions": 28,
+        "macro_f1_supported_types": 0.11881381536031861,
+        "micro": {
+          "f1": 0.10952380952380952,
+          "fn": 196,
+          "fp": 178,
+          "precision": 0.11442786069651742,
+          "recall": 0.1050228310502283,
+          "support": 219,
+          "tp": 23
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.14035087719298245,
+            "fn": 51,
+            "fp": 47,
+            "precision": 0.14545454545454545,
+            "recall": 0.13559322033898305,
+            "support": 59,
+            "tp": 8
+          },
+          "add_node": {
+            "f1": 0.02857142857142857,
+            "fn": 41,
+            "fp": 27,
+            "precision": 0.03571428571428571,
+            "recall": 0.023809523809523808,
+            "support": 42,
+            "tp": 1
+          },
+          "delete_edge": {
+            "f1": 0.2465753424657534,
+            "fn": 28,
+            "fp": 27,
+            "precision": 0.25,
+            "recall": 0.24324324324324326,
+            "support": 37,
+            "tp": 9
+          },
+          "delete_node": {
+            "f1": 0.17857142857142858,
+            "fn": 31,
+            "fp": 15,
+            "precision": 0.25,
+            "recall": 0.1388888888888889,
+            "support": 36,
+            "tp": 5
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 62,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 0.582089552238806
+      },
+      "selected_epoch": 10,
+      "stopping_reason": "early_stopping",
+      "validation": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 0.11128353966541668,
+        "micro": {
+          "f1": 0.10071942446043165,
+          "fn": 198,
+          "fp": 177,
+          "precision": 0.10606060606060606,
+          "recall": 0.0958904109589041,
+          "support": 219,
+          "tp": 21
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.07766990291262135,
+            "fn": 55,
+            "fp": 40,
+            "precision": 0.09090909090909091,
+            "recall": 0.06779661016949153,
+            "support": 59,
+            "tp": 4
+          },
+          "add_node": {
+            "f1": 0.02857142857142857,
+            "fn": 41,
+            "fp": 27,
+            "precision": 0.03571428571428571,
+            "recall": 0.023809523809523808,
+            "support": 42,
+            "tp": 1
+          },
+          "delete_edge": {
+            "f1": 0.2716049382716049,
+            "fn": 26,
+            "fp": 33,
+            "precision": 0.25,
+            "recall": 0.2972972972972973,
+            "support": 37,
+            "tp": 11
+          },
+          "delete_node": {
+            "f1": 0.17857142857142858,
+            "fn": 31,
+            "fp": 15,
+            "precision": 0.25,
+            "recall": 0.1388888888888889,
+            "support": 36,
+            "tp": 5
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 62,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0
+      }
+    },
+    "copy/mlp": {
+      "completion_receipt_sha256": "64a0975b9cb2b7900990f8c55340365d913df9008cd75f5d7b0de637cf502cfb",
+      "diagnostics": {
+        "counts": {
+          "correct_added_names_ignoring_attributes_and_ids": 11,
+          "correct_existing_complete_payload": 14,
+          "correct_existing_kind_and_id": 26,
+          "expected_added_names": 42,
+          "expected_existing_ops": 118,
+          "predicted_added_names": 50
+        },
+        "frequent_wrong_added_names": [
+          [
+            "full",
+            2
+          ],
+          [
+            "can",
+            2
+          ],
+          [
+            "picture",
+            2
+          ],
+          [
+            "second",
+            1
+          ],
+          [
+            "hat",
+            1
+          ]
+        ],
+        "illustrations": [
+          {
+            "expected_added_names": {
+              "gorilla": 1
+            },
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted_added_names": {
+              "gorilla": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "guitar": 1
+            },
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted_added_names": {
+              "guitar": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "lion": 1
+            },
+            "id": "magicbrush:456569:2",
+            "instruction": "let a lion sleep near the giraffes",
+            "predicted_added_names": {
+              "lion": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "laptop": 1
+            },
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted_added_names": {
+              "laptop": 1
+            }
+          }
+        ],
+        "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+      },
+      "epochs_completed": 46,
+      "loss_history": [
+        {
+          "epoch": 1,
+          "train_structured_loss": 1.941390682856242,
+          "validation_structured_loss": 1.6115892805270295
+        },
+        {
+          "epoch": 16,
+          "train_structured_loss": 0.7000710876782735,
+          "validation_structured_loss": 1.5662434350198775
+        },
+        {
+          "epoch": 46,
+          "train_structured_loss": 0.27423420985539754,
+          "validation_structured_loss": 2.0352471871162527
+        }
+      ],
+      "offline_schema_projection": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 0.11980270369017172,
+        "micro": {
+          "f1": 0.11793611793611794,
+          "fn": 195,
+          "fp": 164,
+          "precision": 0.1276595744680851,
+          "recall": 0.1095890410958904,
+          "support": 219,
+          "tp": 24
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.08695652173913043,
+            "fn": 54,
+            "fp": 51,
+            "precision": 0.08928571428571429,
+            "recall": 0.0847457627118644,
+            "support": 59,
+            "tp": 5
+          },
+          "add_node": {
+            "f1": 0.10869565217391304,
+            "fn": 37,
+            "fp": 45,
+            "precision": 0.1,
+            "recall": 0.11904761904761904,
+            "support": 42,
+            "tp": 5
+          },
+          "delete_edge": {
+            "f1": 0.2857142857142857,
+            "fn": 26,
+            "fp": 29,
+            "precision": 0.275,
+            "recall": 0.2972972972972973,
+            "support": 37,
+            "tp": 11
+          },
+          "delete_node": {
+            "f1": 0.11764705882352941,
+            "fn": 33,
+            "fp": 12,
+            "precision": 0.2,
+            "recall": 0.08333333333333333,
+            "support": 36,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 27,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0
+      },
+      "payload_diagnostics": {
+        "counts": {
+          "added_name_and_attributes_match_ignoring_id": 1,
+          "correct_name_but_extraneous_attributes_on_attribute_free_reference": 4,
+          "expected_attribute_free_added_nodes": 9,
+          "oov_added_names_correct": 3,
+          "reference_replace_node": 45,
+          "replace_node_correct_kind_id": 12,
+          "replace_node_correct_kind_id_label": 9,
+          "replace_node_payload_representable_with_copy": 6
+        },
+        "illustrations": [
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [],
+                  "id": "newn001",
+                  "label": "gorilla"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ],
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "brown",
+                    "dark brown",
+                    "white"
+                  ],
+                  "id": "newn001",
+                  "label": "gorilla"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "black brown white",
+                    "brown"
+                  ],
+                  "id": "n001",
+                  "label": "road"
+                },
+                "before": {
+                  "attributes": [
+                    "curving",
+                    "paved"
+                  ],
+                  "id": "n001",
+                  "label": "road"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              },
+              {
+                "after": {
+                  "id": "newe002",
+                  "object": "n003",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [
+                    "dark neck",
+                    "orange"
+                  ],
+                  "id": "newn001",
+                  "label": "guitar"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "upright"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "before": {
+                  "attributes": [
+                    "black",
+                    "knuckle walking"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "newn001",
+                  "predicate": "holding",
+                  "subject": "n001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ],
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "yellow",
+                    "yellow green"
+                  ],
+                  "id": "newn001",
+                  "label": "guitar"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "knuckle walking",
+                    "red",
+                    "tan"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "before": {
+                  "attributes": [
+                    "black",
+                    "knuckle walking"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "newn001",
+                  "predicate": "wearing",
+                  "subject": "n001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [
+                    "car image"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "before": {
+                  "attributes": [
+                    "application windows"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "kind": "replace_node"
+              }
+            ],
+            "id": "magicbrush:357633:1",
+            "instruction": "put a car on the screen of the laptop.",
+            "predicted": []
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [],
+                  "id": "newn001",
+                  "label": "laptop"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": null,
+                "before": {
+                  "attributes": [
+                    "stacked"
+                  ],
+                  "id": "n002",
+                  "label": "books"
+                },
+                "kind": "delete_node"
+              },
+              {
+                "after": null,
+                "before": {
+                  "attributes": [
+                    "dark"
+                  ],
+                  "id": "n003",
+                  "label": "remote"
+                },
+                "kind": "delete_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              },
+              {
+                "after": null,
+                "before": {
+                  "id": "e001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "n002"
+                },
+                "kind": "delete_edge"
+              },
+              {
+                "after": null,
+                "before": {
+                  "id": "e002",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "n003"
+                },
+                "kind": "delete_edge"
+              }
+            ],
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "black white",
+                    "dark"
+                  ],
+                  "id": "newn001",
+                  "label": "laptop"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          }
+        ]
+      },
+      "raw_validation": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 20,
+        "invalid_transactions": 20,
+        "macro_f1_supported_types": 0.09840265952378957,
+        "micro": {
+          "f1": 0.09382716049382717,
+          "fn": 200,
+          "fp": 167,
+          "precision": 0.10215053763440861,
+          "recall": 0.0867579908675799,
+          "support": 219,
+          "tp": 19
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.11382113821138211,
+            "fn": 52,
+            "fp": 57,
+            "precision": 0.109375,
+            "recall": 0.11864406779661017,
+            "support": 59,
+            "tp": 7
+          },
+          "add_node": {
+            "f1": 0.021739130434782608,
+            "fn": 41,
+            "fp": 49,
+            "precision": 0.02,
+            "recall": 0.023809523809523808,
+            "support": 42,
+            "tp": 1
+          },
+          "delete_edge": {
+            "f1": 0.23880597014925373,
+            "fn": 29,
+            "fp": 22,
+            "precision": 0.26666666666666666,
+            "recall": 0.21621621621621623,
+            "support": 37,
+            "tp": 8
+          },
+          "delete_node": {
+            "f1": 0.11764705882352941,
+            "fn": 33,
+            "fp": 12,
+            "precision": 0.2,
+            "recall": 0.08333333333333333,
+            "support": 36,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 27,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 0.7014925373134329
+      },
+      "selected_epoch": 16,
+      "stopping_reason": "early_stopping",
+      "validation": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 0.10241139934234562,
+        "micro": {
+          "f1": 0.09828009828009827,
+          "fn": 199,
+          "fp": 168,
+          "precision": 0.10638297872340426,
+          "recall": 0.091324200913242,
+          "support": 219,
+          "tp": 20
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.08695652173913043,
+            "fn": 54,
+            "fp": 51,
+            "precision": 0.08928571428571429,
+            "recall": 0.0847457627118644,
+            "support": 59,
+            "tp": 5
+          },
+          "add_node": {
+            "f1": 0.021739130434782608,
+            "fn": 41,
+            "fp": 49,
+            "precision": 0.02,
+            "recall": 0.023809523809523808,
+            "support": 42,
+            "tp": 1
+          },
+          "delete_edge": {
+            "f1": 0.2857142857142857,
+            "fn": 26,
+            "fp": 29,
+            "precision": 0.275,
+            "recall": 0.2972972972972973,
+            "support": 37,
+            "tp": 11
+          },
+          "delete_node": {
+            "f1": 0.11764705882352941,
+            "fn": 33,
+            "fp": 12,
+            "precision": 0.2,
+            "recall": 0.08333333333333333,
+            "support": 36,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 27,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0
+      }
+    },
+    "no_copy/gnn": {
+      "completion_receipt_sha256": "57641a081f6b021ec5d12c9e65e3cd1423489a29bf85938a7d3f4a453b88d27d",
+      "diagnostics": {
+        "counts": {
+          "correct_added_names_ignoring_attributes_and_ids": 7,
+          "correct_existing_complete_payload": 16,
+          "correct_existing_kind_and_id": 38,
+          "expected_added_names": 42,
+          "expected_existing_ops": 118,
+          "predicted_added_names": 29
+        },
+        "frequent_wrong_added_names": [
+          [
+            "dog",
+            2
+          ],
+          [
+            "sombrero",
+            2
+          ],
+          [
+            "picture",
+            2
+          ],
+          [
+            "bicycles",
+            1
+          ],
+          [
+            "forest",
+            1
+          ]
+        ],
+        "illustrations": [
+          {
+            "expected_added_names": {
+              "gorilla": 1
+            },
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted_added_names": {
+              "road": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "guitar": 1
+            },
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted_added_names": {
+              "sombrero": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "lion": 1
+            },
+            "id": "magicbrush:456569:2",
+            "instruction": "let a lion sleep near the giraffes",
+            "predicted_added_names": {
+              "lion": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "laptop": 1
+            },
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted_added_names": {
+              "laptop": 1
+            }
+          }
+        ],
+        "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+      },
+      "epochs_completed": 40,
+      "loss_history": [
+        {
+          "epoch": 1,
+          "train_structured_loss": 1.9180665111541748,
+          "validation_structured_loss": 1.5491874609420548
+        },
+        {
+          "epoch": 10,
+          "train_structured_loss": 0.8888474790255229,
+          "validation_structured_loss": 1.5281165144336757
+        },
+        {
+          "epoch": 40,
+          "train_structured_loss": 0.2790649950504303,
+          "validation_structured_loss": 2.1645331382751465
+        }
+      ],
+      "offline_schema_projection": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 0.12262295632911484,
+        "micro": {
+          "f1": 0.11057692307692307,
+          "fn": 196,
+          "fp": 174,
+          "precision": 0.116751269035533,
+          "recall": 0.1050228310502283,
+          "support": 219,
+          "tp": 23
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.0784313725490196,
+            "fn": 55,
+            "fp": 39,
+            "precision": 0.09302325581395349,
+            "recall": 0.06779661016949153,
+            "support": 59,
+            "tp": 4
+          },
+          "add_node": {
+            "f1": 0.08450704225352113,
+            "fn": 39,
+            "fp": 26,
+            "precision": 0.10344827586206896,
+            "recall": 0.07142857142857142,
+            "support": 42,
+            "tp": 3
+          },
+          "delete_edge": {
+            "f1": 0.2716049382716049,
+            "fn": 26,
+            "fp": 33,
+            "precision": 0.25,
+            "recall": 0.2972972972972973,
+            "support": 37,
+            "tp": 11
+          },
+          "delete_node": {
+            "f1": 0.17857142857142858,
+            "fn": 31,
+            "fp": 15,
+            "precision": 0.25,
+            "recall": 0.1388888888888889,
+            "support": 36,
+            "tp": 5
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 61,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0
+      },
+      "payload_diagnostics": {
+        "counts": {
+          "added_name_and_attributes_match_ignoring_id": 1,
+          "correct_name_but_extraneous_attributes_on_attribute_free_reference": 2,
+          "expected_attribute_free_added_nodes": 9,
+          "oov_added_names_correct": 0,
+          "reference_replace_node": 45,
+          "replace_node_correct_kind_id": 22,
+          "replace_node_correct_kind_id_label": 16,
+          "replace_node_payload_representable_with_copy": 6
+        },
+        "illustrations": [
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [],
+                  "id": "newn001",
+                  "label": "gorilla"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ],
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "black white",
+                    "dark"
+                  ],
+                  "id": "newn001",
+                  "label": "road"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black white"
+                  ],
+                  "id": "n001",
+                  "label": "road"
+                },
+                "before": {
+                  "attributes": [
+                    "curving",
+                    "paved"
+                  ],
+                  "id": "n001",
+                  "label": "road"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [
+                    "dark neck",
+                    "orange"
+                  ],
+                  "id": "newn001",
+                  "label": "guitar"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "upright"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "before": {
+                  "attributes": [
+                    "black",
+                    "knuckle walking"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "newn001",
+                  "predicate": "holding",
+                  "subject": "n001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ],
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "red",
+                    "yellow"
+                  ],
+                  "id": "newn001",
+                  "label": "sombrero"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "white icing"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "before": {
+                  "attributes": [
+                    "black",
+                    "knuckle walking"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "newn001",
+                  "predicate": "on",
+                  "subject": "n001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [
+                    "car image"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "before": {
+                  "attributes": [
+                    "application windows"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "kind": "replace_node"
+              }
+            ],
+            "id": "magicbrush:357633:1",
+            "instruction": "put a car on the screen of the laptop.",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "open",
+                    "red"
+                  ],
+                  "id": "n001",
+                  "label": "laptop"
+                },
+                "before": {
+                  "attributes": [
+                    "black keyboard",
+                    "open",
+                    "silver"
+                  ],
+                  "id": "n001",
+                  "label": "laptop"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "black white",
+                    "red"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "before": {
+                  "attributes": [
+                    "application windows"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "kind": "replace_node"
+              }
+            ]
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [],
+                  "id": "newn001",
+                  "label": "laptop"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": null,
+                "before": {
+                  "attributes": [
+                    "stacked"
+                  ],
+                  "id": "n002",
+                  "label": "books"
+                },
+                "kind": "delete_node"
+              },
+              {
+                "after": null,
+                "before": {
+                  "attributes": [
+                    "dark"
+                  ],
+                  "id": "n003",
+                  "label": "remote"
+                },
+                "kind": "delete_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              },
+              {
+                "after": null,
+                "before": {
+                  "id": "e001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "n002"
+                },
+                "kind": "delete_edge"
+              },
+              {
+                "after": null,
+                "before": {
+                  "id": "e002",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "n003"
+                },
+                "kind": "delete_edge"
+              }
+            ],
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "gray"
+                  ],
+                  "id": "newn001",
+                  "label": "laptop"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              },
+              {
+                "after": {
+                  "id": "newe002",
+                  "object": "n009",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          }
+        ]
+      },
+      "raw_validation": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 26,
+        "invalid_transactions": 26,
+        "macro_f1_supported_types": 0.11898174109513426,
+        "micro": {
+          "f1": 0.10978520286396182,
+          "fn": 196,
+          "fp": 177,
+          "precision": 0.115,
+          "recall": 0.1050228310502283,
+          "support": 219,
+          "tp": 23
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.1415929203539823,
+            "fn": 51,
+            "fp": 46,
+            "precision": 0.14814814814814814,
+            "recall": 0.13559322033898305,
+            "support": 59,
+            "tp": 8
+          },
+          "add_node": {
+            "f1": 0.028169014084507043,
+            "fn": 41,
+            "fp": 28,
+            "precision": 0.034482758620689655,
+            "recall": 0.023809523809523808,
+            "support": 42,
+            "tp": 1
+          },
+          "delete_edge": {
+            "f1": 0.2465753424657534,
+            "fn": 28,
+            "fp": 27,
+            "precision": 0.25,
+            "recall": 0.24324324324324326,
+            "support": 37,
+            "tp": 9
+          },
+          "delete_node": {
+            "f1": 0.17857142857142858,
+            "fn": 31,
+            "fp": 15,
+            "precision": 0.25,
+            "recall": 0.1388888888888889,
+            "support": 36,
+            "tp": 5
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 61,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 0.6119402985074627
+      },
+      "selected_epoch": 10,
+      "stopping_reason": "early_stopping",
+      "validation": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 0.11135535069531204,
+        "micro": {
+          "f1": 0.10096153846153846,
+          "fn": 198,
+          "fp": 176,
+          "precision": 0.1065989847715736,
+          "recall": 0.0958904109589041,
+          "support": 219,
+          "tp": 21
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.0784313725490196,
+            "fn": 55,
+            "fp": 39,
+            "precision": 0.09302325581395349,
+            "recall": 0.06779661016949153,
+            "support": 59,
+            "tp": 4
+          },
+          "add_node": {
+            "f1": 0.028169014084507043,
+            "fn": 41,
+            "fp": 28,
+            "precision": 0.034482758620689655,
+            "recall": 0.023809523809523808,
+            "support": 42,
+            "tp": 1
+          },
+          "delete_edge": {
+            "f1": 0.2716049382716049,
+            "fn": 26,
+            "fp": 33,
+            "precision": 0.25,
+            "recall": 0.2972972972972973,
+            "support": 37,
+            "tp": 11
+          },
+          "delete_node": {
+            "f1": 0.17857142857142858,
+            "fn": 31,
+            "fp": 15,
+            "precision": 0.25,
+            "recall": 0.1388888888888889,
+            "support": 36,
+            "tp": 5
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 61,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0
+      }
+    },
+    "no_copy/mlp": {
+      "completion_receipt_sha256": "171fbb833a7886207d237aacf1fdadd1fd30da1d7b188745c7416656bce7c100",
+      "diagnostics": {
+        "counts": {
+          "correct_added_names_ignoring_attributes_and_ids": 10,
+          "correct_existing_complete_payload": 14,
+          "correct_existing_kind_and_id": 26,
+          "expected_added_names": 42,
+          "expected_existing_ops": 118,
+          "predicted_added_names": 52
+        },
+        "frequent_wrong_added_names": [
+          [
+            "sky",
+            3
+          ],
+          [
+            "tree",
+            2
+          ],
+          [
+            "bowl",
+            2
+          ],
+          [
+            "can",
+            2
+          ],
+          [
+            "picture",
+            2
+          ]
+        ],
+        "illustrations": [
+          {
+            "expected_added_names": {
+              "gorilla": 1
+            },
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted_added_names": {
+              "road": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "guitar": 1
+            },
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted_added_names": {
+              "bow tie": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "lion": 1
+            },
+            "id": "magicbrush:456569:2",
+            "instruction": "let a lion sleep near the giraffes",
+            "predicted_added_names": {
+              "lion": 1
+            }
+          },
+          {
+            "expected_added_names": {
+              "laptop": 1
+            },
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted_added_names": {
+              "laptop": 1
+            }
+          }
+        ],
+        "scope": "name matching ignores attributes/IDs; source ID/type match ignores payload. Diagnostics only, not replacement metrics."
+      },
+      "epochs_completed": 46,
+      "loss_history": [
+        {
+          "epoch": 1,
+          "train_structured_loss": 1.931567324002584,
+          "validation_structured_loss": 1.6078960539689704
+        },
+        {
+          "epoch": 16,
+          "train_structured_loss": 0.6857176375389099,
+          "validation_structured_loss": 1.5656382717303376
+        },
+        {
+          "epoch": 46,
+          "train_structured_loss": 0.26231855154037476,
+          "validation_structured_loss": 2.0418556537201153
+        }
+      ],
+      "offline_schema_projection": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 0.10719735508985229,
+        "micro": {
+          "f1": 0.10319410319410319,
+          "fn": 198,
+          "fp": 167,
+          "precision": 0.11170212765957446,
+          "recall": 0.0958904109589041,
+          "support": 219,
+          "tp": 21
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.08771929824561403,
+            "fn": 54,
+            "fp": 50,
+            "precision": 0.09090909090909091,
+            "recall": 0.0847457627118644,
+            "support": 59,
+            "tp": 5
+          },
+          "add_node": {
+            "f1": 0.0425531914893617,
+            "fn": 40,
+            "fp": 50,
+            "precision": 0.038461538461538464,
+            "recall": 0.047619047619047616,
+            "support": 42,
+            "tp": 2
+          },
+          "delete_edge": {
+            "f1": 0.2857142857142857,
+            "fn": 26,
+            "fp": 29,
+            "precision": 0.275,
+            "recall": 0.2972972972972973,
+            "support": 37,
+            "tp": 11
+          },
+          "delete_node": {
+            "f1": 0.12,
+            "fn": 33,
+            "fp": 11,
+            "precision": 0.21428571428571427,
+            "recall": 0.08333333333333333,
+            "support": 36,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 27,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0
+      },
+      "payload_diagnostics": {
+        "counts": {
+          "added_name_and_attributes_match_ignoring_id": 1,
+          "correct_name_but_extraneous_attributes_on_attribute_free_reference": 2,
+          "expected_attribute_free_added_nodes": 9,
+          "oov_added_names_correct": 0,
+          "reference_replace_node": 45,
+          "replace_node_correct_kind_id": 12,
+          "replace_node_correct_kind_id_label": 9,
+          "replace_node_payload_representable_with_copy": 6
+        },
+        "illustrations": [
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [],
+                  "id": "newn001",
+                  "label": "gorilla"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ],
+            "id": "magicbrush:338078:1",
+            "instruction": "Have there be a gorilla crossing the road",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "dark brown",
+                    "white"
+                  ],
+                  "id": "newn001",
+                  "label": "road"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "black brown white",
+                    "brown"
+                  ],
+                  "id": "n001",
+                  "label": "road"
+                },
+                "before": {
+                  "attributes": [
+                    "curving",
+                    "paved"
+                  ],
+                  "id": "n001",
+                  "label": "road"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              },
+              {
+                "after": {
+                  "id": "newe002",
+                  "object": "n003",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [
+                    "dark neck",
+                    "orange"
+                  ],
+                  "id": "newn001",
+                  "label": "guitar"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "upright"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "before": {
+                  "attributes": [
+                    "black",
+                    "knuckle walking"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "newn001",
+                  "predicate": "holding",
+                  "subject": "n001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ],
+            "id": "magicbrush:338078:3",
+            "instruction": "Have the gorilla be playing a guitar",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "yellow",
+                    "yellow green"
+                  ],
+                  "id": "newn001",
+                  "label": "bow tie"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "attributes": [
+                    "knuckle walking",
+                    "red",
+                    "tan"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "before": {
+                  "attributes": [
+                    "black",
+                    "knuckle walking"
+                  ],
+                  "id": "n001",
+                  "label": "gorilla"
+                },
+                "kind": "replace_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "newn001",
+                  "predicate": "wearing",
+                  "subject": "n001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [
+                    "car image"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "before": {
+                  "attributes": [
+                    "application windows"
+                  ],
+                  "id": "n002",
+                  "label": "screen"
+                },
+                "kind": "replace_node"
+              }
+            ],
+            "id": "magicbrush:357633:1",
+            "instruction": "put a car on the screen of the laptop.",
+            "predicted": []
+          },
+          {
+            "expected": [
+              {
+                "after": {
+                  "attributes": [],
+                  "id": "newn001",
+                  "label": "laptop"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": null,
+                "before": {
+                  "attributes": [
+                    "stacked"
+                  ],
+                  "id": "n002",
+                  "label": "books"
+                },
+                "kind": "delete_node"
+              },
+              {
+                "after": null,
+                "before": {
+                  "attributes": [
+                    "dark"
+                  ],
+                  "id": "n003",
+                  "label": "remote"
+                },
+                "kind": "delete_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              },
+              {
+                "after": null,
+                "before": {
+                  "id": "e001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "n002"
+                },
+                "kind": "delete_edge"
+              },
+              {
+                "after": null,
+                "before": {
+                  "id": "e002",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "n003"
+                },
+                "kind": "delete_edge"
+              }
+            ],
+            "id": "magicbrush:484847:1",
+            "instruction": "put a laptop on the table",
+            "predicted": [
+              {
+                "after": {
+                  "attributes": [
+                    "black",
+                    "black white",
+                    "dark"
+                  ],
+                  "id": "newn001",
+                  "label": "laptop"
+                },
+                "before": null,
+                "kind": "add_node"
+              },
+              {
+                "after": {
+                  "id": "newe001",
+                  "object": "n001",
+                  "predicate": "on",
+                  "subject": "newn001"
+                },
+                "before": null,
+                "kind": "add_edge"
+              }
+            ]
+          }
+        ]
+      },
+      "raw_validation": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 20,
+        "invalid_transactions": 20,
+        "macro_f1_supported_types": 0.09807837032062436,
+        "micro": {
+          "f1": 0.09336609336609336,
+          "fn": 200,
+          "fp": 169,
+          "precision": 0.10106382978723404,
+          "recall": 0.0867579908675799,
+          "support": 219,
+          "tp": 19
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.11382113821138211,
+            "fn": 52,
+            "fp": 57,
+            "precision": 0.109375,
+            "recall": 0.11864406779661017,
+            "support": 59,
+            "tp": 7
+          },
+          "add_node": {
+            "f1": 0.02127659574468085,
+            "fn": 41,
+            "fp": 51,
+            "precision": 0.019230769230769232,
+            "recall": 0.023809523809523808,
+            "support": 42,
+            "tp": 1
+          },
+          "delete_edge": {
+            "f1": 0.23529411764705882,
+            "fn": 29,
+            "fp": 23,
+            "precision": 0.25806451612903225,
+            "recall": 0.21621621621621623,
+            "support": 37,
+            "tp": 8
+          },
+          "delete_node": {
+            "f1": 0.12,
+            "fn": 33,
+            "fp": 11,
+            "precision": 0.21428571428571427,
+            "recall": 0.08333333333333333,
+            "support": 36,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 27,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 0.7014925373134329
+      },
+      "selected_epoch": 16,
+      "stopping_reason": "early_stopping",
+      "validation": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.0,
+        "exact_target_graph_accuracy": 0.0,
+        "examples": 67,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 0.10294203594091611,
+        "micro": {
+          "f1": 0.09828009828009827,
+          "fn": 199,
+          "fp": 168,
+          "precision": 0.10638297872340426,
+          "recall": 0.091324200913242,
+          "support": 219,
+          "tp": 20
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.08771929824561403,
+            "fn": 54,
+            "fp": 50,
+            "precision": 0.09090909090909091,
+            "recall": 0.0847457627118644,
+            "support": 59,
+            "tp": 5
+          },
+          "add_node": {
+            "f1": 0.02127659574468085,
+            "fn": 41,
+            "fp": 51,
+            "precision": 0.019230769230769232,
+            "recall": 0.023809523809523808,
+            "support": 42,
+            "tp": 1
+          },
+          "delete_edge": {
+            "f1": 0.2857142857142857,
+            "fn": 26,
+            "fp": 29,
+            "precision": 0.275,
+            "recall": 0.2972972972972973,
+            "support": 37,
+            "tp": 11
+          },
+          "delete_node": {
+            "f1": 0.12,
+            "fn": 33,
+            "fp": 11,
+            "precision": 0.21428571428571427,
+            "recall": 0.08333333333333333,
+            "support": 36,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": null,
+            "fn": 0,
+            "fp": 0,
+            "precision": null,
+            "recall": null,
+            "support": 0,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.0,
+            "fn": 45,
+            "fp": 27,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 45,
+            "tp": 0
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 0.0,
+        "simple_examples": 18,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0
+      }
+    }
+  },
+  "offline_schema_projection_scope": "Already frozen annotation rule applied to predicted graphs using only source/instruction/predictions, including predicted duplicate-name guard; same 67-case references and metric. Diagnostic only, not a new trained result or target-aware correction.",
+  "replace_payload_availability": {
+    "cases": [
+      {
+        "available_in_train_context": [],
+        "entity_id": "n001",
+        "id": "magicbrush:10766:2",
+        "missing_attributes": [
+          "purple shoulder strap",
+          "side part"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n002",
+        "id": "magicbrush:130579:2",
+        "missing_attributes": [
+          "blue sides",
+          "colored logo",
+          "white front"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n006",
+        "id": "magicbrush:130579:2",
+        "missing_attributes": [
+          "red logo"
+        ]
+      },
+      {
+        "available_in_train_context": [
+          "rear"
+        ],
+        "entity_id": "n001",
+        "id": "magicbrush:152176:2",
+        "missing_attributes": [
+          "rear"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n001",
+        "id": "magicbrush:171050:1",
+        "missing_attributes": [
+          "hanging chains",
+          "rounded cap"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n004",
+        "id": "magicbrush:171050:2",
+        "missing_attributes": [
+          "gray concrete"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n002",
+        "id": "magicbrush:171472:1",
+        "missing_attributes": [
+          "blue and orange labels"
+        ]
+      },
+      {
+        "available_in_train_context": [
+          "partly visible"
+        ],
+        "entity_id": "n005",
+        "id": "magicbrush:171472:2",
+        "missing_attributes": [
+          "partly visible"
+        ]
+      },
+      {
+        "available_in_train_context": [
+          "turquoise",
+          "white frame"
+        ],
+        "entity_id": "n001",
+        "id": "magicbrush:202066:1",
+        "missing_attributes": [
+          "turquoise",
+          "white frame"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n002",
+        "id": "magicbrush:206841:1",
+        "missing_attributes": [
+          "several lit"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n002",
+        "id": "magicbrush:21217:1",
+        "missing_attributes": [
+          "yellow flakes"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n001",
+        "id": "magicbrush:223599:1",
+        "missing_attributes": [
+          "larger pile"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n001",
+        "id": "magicbrush:246779:1",
+        "missing_attributes": [
+          "chocolate chip",
+          "paper sleeves"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n001",
+        "id": "magicbrush:298692:2",
+        "missing_attributes": [
+          "ginger bob"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n005",
+        "id": "magicbrush:321886:1",
+        "missing_attributes": [
+          "red curb"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n005",
+        "id": "magicbrush:338078:2",
+        "missing_attributes": [
+          "extends beyond frame"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n007",
+        "id": "magicbrush:338078:2",
+        "missing_attributes": [
+          "bright cloud"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n002",
+        "id": "magicbrush:357633:1",
+        "missing_attributes": [
+          "car image"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n007",
+        "id": "magicbrush:375645:1",
+        "missing_attributes": [
+          "large portion"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n001",
+        "id": "magicbrush:376047:1",
+        "missing_attributes": [
+          "pink note",
+          "three sections"
+        ]
+      },
+      {
+        "available_in_train_context": [
+          "golden"
+        ],
+        "entity_id": "n013",
+        "id": "magicbrush:376047:2",
+        "missing_attributes": [
+          "golden"
+        ]
+      },
+      {
+        "available_in_train_context": [
+          "compact"
+        ],
+        "entity_id": "n001",
+        "id": "magicbrush:378186:1",
+        "missing_attributes": [
+          "compact",
+          "dark window"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n002",
+        "id": "magicbrush:386224:1",
+        "missing_attributes": [
+          "person with raised arms"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n002",
+        "id": "magicbrush:386224:2",
+        "missing_attributes": [
+          "buildings"
+        ]
+      },
+      {
+        "available_in_train_context": [
+          "brown and white"
+        ],
+        "entity_id": "n004",
+        "id": "magicbrush:417825:1",
+        "missing_attributes": [
+          "brown and white"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n001",
+        "id": "magicbrush:453731:1",
+        "missing_attributes": [
+          "head raised"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n004",
+        "id": "magicbrush:453731:2",
+        "missing_attributes": [
+          "altered lettering"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n008",
+        "id": "magicbrush:456569:3",
+        "missing_attributes": [
+          "background row"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n003",
+        "id": "magicbrush:484847:2",
+        "missing_attributes": [
+          "bright seat"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n004",
+        "id": "magicbrush:484847:2",
+        "missing_attributes": [
+          "cream underside"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n002",
+        "id": "magicbrush:503943:1",
+        "missing_attributes": [
+          "red header",
+          "webpage"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n001",
+        "id": "magicbrush:548377:1",
+        "missing_attributes": [
+          "cracked top"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n002",
+        "id": "magicbrush:580149:1",
+        "missing_attributes": [
+          "one broad roll"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n001",
+        "id": "magicbrush:65905:1",
+        "missing_attributes": [
+          "brown and pale",
+          "four"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n001",
+        "id": "magicbrush:71476:1",
+        "missing_attributes": [
+          "closed mouth",
+          "pale muzzle"
+        ]
+      },
+      {
+        "available_in_train_context": [
+          "two"
+        ],
+        "entity_id": "n001",
+        "id": "magicbrush:96854:1",
+        "missing_attributes": [
+          "two"
+        ]
+      },
+      {
+        "available_in_train_context": [
+          "golden"
+        ],
+        "entity_id": "n004",
+        "id": "magicbrush:96854:2",
+        "missing_attributes": [
+          "golden"
+        ]
+      },
+      {
+        "available_in_train_context": [
+          "horizontal"
+        ],
+        "entity_id": "n005",
+        "id": "magicbrush:96854:2",
+        "missing_attributes": [
+          "horizontal"
+        ]
+      },
+      {
+        "available_in_train_context": [],
+        "entity_id": "n004",
+        "id": "magicbrush:9772:3",
+        "missing_attributes": [
+          "cream panel"
+        ]
+      }
+    ],
+    "counts": {
+      "added_attribute_unavailable": 39,
+      "name_unavailable_even_with_copy": 4,
+      "reference_replace_node": 45,
+      "representable_current": 6,
+      "representable_if_all_train_context_attribute_prototypes_restored": 13
+    },
+    "scope": "Representability diagnostic, not achieved accuracy; all-context vocabulary uses train only"
+  },
+  "scope": "CPU rescoring of sealed validation predictions, no new model inference, no test targets",
+  "seed": 42,
+  "sources_sha256": {
+    "data/processed/level2/magicbrush-easy-copy-v1/clip-trainval/manifest.json": "a6b1d594b8cc5532f001cc8a40b0a631196a63a24ace24652f14557edc516a1d",
+    "runs/level2/magicbrush-easy-copy-v1/summary.json": "9ae61508bf9b0bae1c548b1378821301a4e5e6bff21efc96098973810e5adbc7",
+    "tools/analyze_magicbrush_easy_copy.py": "cbd05eb93c5784b1acf90a8452a7f56dc61bc82272c36ab07c026009a57ad076"
+  },
+  "test_used": false,
+  "train_pairs": 300,
+  "training_code_commit": "0597661",
+  "training_identity_sha256": "e89a4bd6aea3ade8578524312e98dd7571c8a1beffeccd378489ac4bc2b04aa6",
+  "validation_pairs": 67
+}
