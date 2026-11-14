@@ -1,0 +1,274 @@
+{
+  "gnn": {
+    "seed": 42,
+    "selected_five_correct_five_wrong": [
+      {
+        "category": "correct",
+        "correct": true,
+        "expected_kinds": {
+          "add_edge": 2,
+          "add_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000037",
+        "predicted_kinds": {
+          "add_edge": 2,
+          "add_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "correct",
+        "correct": true,
+        "expected_kinds": {
+          "add_edge": 2,
+          "add_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000809",
+        "predicted_kinds": {
+          "add_edge": 2,
+          "add_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "correct",
+        "correct": true,
+        "expected_kinds": {
+          "delete_edge": 2,
+          "delete_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000045",
+        "predicted_kinds": {
+          "delete_edge": 2,
+          "delete_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "correct",
+        "correct": true,
+        "expected_kinds": {
+          "delete_edge": 2,
+          "delete_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000324",
+        "predicted_kinds": {
+          "delete_edge": 2,
+          "delete_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "correct",
+        "correct": true,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000126",
+        "predicted_kinds": {
+          "replace_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "wrong_payload",
+        "correct": false,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000115",
+        "predicted_kinds": {
+          "replace_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "parse",
+        "correct": false,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000041",
+        "predicted_kinds": {},
+        "reference_OOV": false
+      },
+      {
+        "category": "wrong_entity_identity",
+        "correct": false,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000372",
+        "predicted_kinds": {
+          "replace_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "parse",
+        "correct": false,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000995",
+        "predicted_kinds": {},
+        "reference_OOV": false
+      },
+      {
+        "category": "parse",
+        "correct": false,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000375",
+        "predicted_kinds": {},
+        "reference_OOV": false
+      }
+    ],
+    "test_categories": {
+      "correct": 364,
+      "parse": 23,
+      "transaction": 1,
+      "wrong_entity_identity": 34,
+      "wrong_operation_inventory": 19,
+      "wrong_payload": 89
+    }
+  },
+  "mlp": {
+    "seed": 42,
+    "selected_five_correct_five_wrong": [
+      {
+        "category": "correct",
+        "correct": true,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000041",
+        "predicted_kinds": {
+          "replace_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "correct",
+        "correct": true,
+        "expected_kinds": {
+          "add_edge": 2,
+          "add_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000037",
+        "predicted_kinds": {
+          "add_edge": 2,
+          "add_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "correct",
+        "correct": true,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000372",
+        "predicted_kinds": {
+          "replace_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "correct",
+        "correct": true,
+        "expected_kinds": {
+          "delete_edge": 2,
+          "delete_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000045",
+        "predicted_kinds": {
+          "delete_edge": 2,
+          "delete_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "correct",
+        "correct": true,
+        "expected_kinds": {
+          "delete_edge": 2,
+          "delete_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000324",
+        "predicted_kinds": {
+          "delete_edge": 2,
+          "delete_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "wrong_payload",
+        "correct": false,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000115",
+        "predicted_kinds": {
+          "replace_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "wrong_payload",
+        "correct": false,
+        "expected_kinds": {
+          "add_edge": 2,
+          "add_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000809",
+        "predicted_kinds": {
+          "add_edge": 2,
+          "add_node": 1
+        },
+        "reference_OOV": false
+      },
+      {
+        "category": "parse",
+        "correct": false,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000995",
+        "predicted_kinds": {},
+        "reference_OOV": false
+      },
+      {
+        "category": "parse",
+        "correct": false,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000375",
+        "predicted_kinds": {},
+        "reference_OOV": false
+      },
+      {
+        "category": "wrong_payload",
+        "correct": false,
+        "expected_kinds": {
+          "replace_node": 1
+        },
+        "id": "emnlp2020_crowd_test_000074",
+        "predicted_kinds": {
+          "replace_node": 1
+        },
+        "reference_OOV": false
+      }
+    ],
+    "test_categories": {
+      "correct": 356,
+      "parse": 19,
+      "transaction": 6,
+      "wrong_entity_identity": 30,
+      "wrong_operation_inventory": 24,
+      "wrong_payload": 95
+    }
+  }
+}

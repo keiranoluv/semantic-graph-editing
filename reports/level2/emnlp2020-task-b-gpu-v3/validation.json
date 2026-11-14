@@ -1,0 +1,82 @@
+{
+  "date_client_timezone": "2026-11-15",
+  "cpu_only": false,
+  "focused_emnlp_tests": {
+    "command": "CUDA_VISIBLE_DEVICES='' myenv/bin/python -m pytest -q tests/editing/test_emnlp2020_task_b_v2.py tests/editing/test_emnlp2020_graph_modification_v1.py",
+    "passed": 50,
+    "failed": 0,
+    "runtime_seconds": 11.36
+  },
+  "unmodified_full_editing_command": {
+    "command": "CUDA_VISIBLE_DEVICES='' myenv/bin/python -m pytest -q tests/editing",
+    "passed": 391,
+    "failed": 13,
+    "note": "Run before the additional v2 end-to-end test was added. All 13 failures are legacy MagicBrush tests mocking CUDA availability True while CPU Adam calls CUDA graph introspection; one failing test was reproduced alone. No legacy code or tests changed."
+  },
+  "full_editing_cpu_test_harness": {
+    "passed": 408,
+    "failed": 0,
+    "runtime_seconds": 51.19,
+    "python": "import sys, torch, pytest\nassert not torch.cuda.is_available()\ntorch.cuda.is_current_stream_capturing = lambda: False\nsys.exit(pytest.main(['-q', 'tests/editing']))",
+    "explanation": "Process-local test-only CUDA graph introspection shim for existing queue tests that mock availability. All model tensors/optimizers are on CPU; no GPU workload and no source modifications.",
+    "skipped": 1
+  },
+  "pre_commit": "passed_for_new_code_config_docs_tests_and_report_aggregator",
+  "environment": {
+    "python": "3.12",
+    "torch": "2.7.0+cu128",
+    "torchvision": "0.22.0",
+    "clip": "1.0; requirements.txt pins d05afc436d78f1c48dc0dbf8e5980a9d471f35f6",
+    "numpy": "2.2.6",
+    "networkx": "3.6.1",
+    "pytest": "8.3.5",
+    "device": "cpu",
+    "threads": 4,
+    "training_device": "cuda:0; NVIDIA GeForce RTX 5090"
+  },
+  "synthetic_fixtures_count_as_real_dataset_examples": false,
+  "human_reviews_created": 0,
+  "magicbrush_or_frozen_v1_source_modified": false,
+  "user_notebook_included_in_commit": false,
+  "focused_emnlp_gpu_protocol_CPU": {
+    "passed": 53,
+    "skipped": 1,
+    "failed": 0,
+    "runtime_seconds": 10.63,
+    "command": "CUBLAS_WORKSPACE_CONFIG=:4096:8 CUDA_VISIBLE_DEVICES='' myenv/bin/python -m pytest -q tests/editing/test_emnlp2020_task_b_gpu_v3.py tests/editing/test_emnlp2020_task_b_v2.py tests/editing/test_emnlp2020_task_b_v2_report.py tests/editing/test_emnlp2020_graph_modification_v1.py"
+  },
+  "CUDA_protocol_test": {
+    "passed": 2,
+    "failed": 0,
+    "runtime_seconds": 2.04,
+    "device": "NVIDIA GeForce RTX 5090",
+    "batch_per_synthetic_example": 1,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "commit_before_GPU_execution": "bf985cb",
+    "command": "CUBLAS_WORKSPACE_CONFIG=:4096:8 CUDA_VISIBLE_DEVICES=0 myenv/bin/python -m pytest -q tests/editing/test_emnlp2020_task_b_gpu_v3.py"
+  },
+  "CPU_training_cancelled_at_user_request": true,
+  "GPU_training_and_evaluation_explicitly_authorized_by_user": true,
+  "CPU_and_GPU_results_pooled": false,
+  "source_only_inference_demo": {
+    "id": "emnlp2020_crowd_test_000001",
+    "model": "gnn",
+    "seed": 42,
+    "batch_size": 1,
+    "device": "cuda",
+    "input_fields": [
+      "source_graph",
+      "instruction"
+    ],
+    "matches_existing_evaluator_prediction": true,
+    "valid_transaction": true,
+    "correct_against_reference": false,
+    "selection": "first_usable_test_original_index_not_selected_by_correctness"
+  },
+  "completed_run_hash_verification": "passed_twice_without_GPU_work",
+  "trained_source_and_configs_changed_after_test": false
+}

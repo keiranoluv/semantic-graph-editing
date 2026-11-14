@@ -1,0 +1,30 @@
+{
+  "test": {
+    "conversion_candidates_before_dedup": 998,
+    "conversion_problems": {
+      "ambiguous_node_identity:2": 2
+    },
+    "exclusions": {
+      "conversion_rejected": 2,
+      "source_overlap_earlier_official_split": 468
+    },
+    "human_reviewed": 0,
+    "official_records": 1000,
+    "operation_support": {
+      "add_edge": 210,
+      "add_node": 105,
+      "delete_edge": 728,
+      "delete_node": 363,
+      "replace_edge": 6,
+      "replace_node": 121
+    },
+    "raw_source_nodes": {
+      "1": 288,
+      "2": 398,
+      "3": 314
+    },
+    "reindexed_correspondence_pairs": 181,
+    "semantic_accuracy": null,
+    "usable": 530
+  }
+}

@@ -61,3 +61,16 @@ CUDA_VISIBLE_DEVICES=0 myenv/bin/python -m tools.emnlp2020_task_b_gpu_v3 \
 
 Batch inference 1, GPU, không có hàng đợi. Invalid prediction trả target null
 và lỗi; không dùng reference target để sửa prediction.
+
+Sau khi hoàn tất, kiểm lại source/data/checkpoint/prediction mà không chạy GPU:
+
+```bash
+CUDA_VISIBLE_DEVICES='' myenv/bin/python -m tools.verify_emnlp2020_task_b_gpu_v3
+```
+
+`artifact-receipt.json` khóa mọi output hoàn tất bằng SHA256. Runtime/source đã
+train giữ nguyên ở commit `bf985cb`; commit báo cáo về sau không đổi các source
+hashes đó. Để tái huấn luyện, dùng checkout commit thực nghiệm và output version
+mới. `experiment.json` ghi commit tạo run và là file bất biến: gọi lại stage train
+trong cùng output từ một HEAD khác sẽ bị từ chối ngay cả khi chỉ đổi báo cáo.
+Lệnh verify ở trên là đường kiểm lại run hoàn tất từ commit bàn giao.

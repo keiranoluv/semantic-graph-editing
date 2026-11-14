@@ -1,0 +1,40 @@
+{
+  "conflict_check_scope": "within_this_bundle_only_audit_targets_never_used_to_group_or_repair",
+  "same_source_instruction_with_nonisomorphic_targets": 13,
+  "splits": {
+    "train": {
+      "raw_source_attribute_pairs_all": 14627,
+      "raw_source_self_loops_all": 79,
+      "unique_source_groups_all": 18735,
+      "unique_source_groups_usable": 18699,
+      "usable_alignment_scores": {
+        "[0, 0]": 22793,
+        "[0, 1]": 157,
+        "[1, 0]": 6918
+      },
+      "usable_operation_count_histogram": {
+        "1": 6995,
+        "2": 80,
+        "3": 18168,
+        "6": 4625
+      }
+    },
+    "val": {
+      "raw_source_attribute_pairs_all": 457,
+      "raw_source_self_loops_all": 1,
+      "unique_source_groups_all": 871,
+      "unique_source_groups_usable": 530,
+      "usable_alignment_scores": {
+        "[0, 0]": 387,
+        "[0, 1]": 6,
+        "[1, 0]": 139
+      },
+      "usable_operation_count_histogram": {
+        "1": 140,
+        "2": 5,
+        "3": 324,
+        "6": 63
+      }
+    }
+  }
+}
