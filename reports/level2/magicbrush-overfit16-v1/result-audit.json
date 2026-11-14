@@ -1,0 +1,417 @@
+{
+  "checks": [
+    "current release and parent v3 release verified",
+    "cohort and frozen feature bank verified",
+    "completed receipt hashes verified for both models",
+    "raw and constrained predictions rescored and matched result/summary"
+  ],
+  "cpu_attribute_inspection": {
+    "checkpoint": "best.pt, step 3000, eval mode, one real train example on CPU",
+    "example_id": "magicbrush:548561:1",
+    "gnn": {
+      "green": 2.76703,
+      "white": 2.5457518100738525,
+      "white_and_pale_green": 2.5783448219299316
+    },
+    "mlp": {
+      "green": 2.77261,
+      "white": 2.552562713623047,
+      "white_and_pale_green": 2.5662801265716553
+    },
+    "note": "Logits, not probabilities. Decoder chooses top-2 attributes; expected white ranks third. Similarity does not establish the sole cause of the ranking error.",
+    "prototype_cosine_white_vs_white_and_pale_green": 0.8883591890335083,
+    "prototype_vectors_identical": false,
+    "slot": "new_node slot index 2 (salad)"
+  },
+  "experiment_sha256": "3e5befcddcaa8a510abfd35dfe834cb4866b486864a5cc0be888dbde9182e298",
+  "gpu_jobs_started_by_audit": false,
+  "interpretation_vi": "Cả hai model học đúng 49/50 thao tác và 15/16 graph trên train. Chưa đạt tiêu chí MEMORIZED 16/16 qua hai lần kiểm tra. Lỗi còn lại là thứ hạng thuộc tính thêm vào salad; không phải lỗi ID, loại thao tác hoặc nhãn đối tượng ở checkpoint đã chọn. Đây là bằng chứng pipeline học được gần hết tập nhỏ, không chứng minh mọi phần code đúng, nhãn đúng hay khả năng tổng quát hóa tốt.",
+  "labels_or_locked_code_changed": false,
+  "models": {
+    "gnn": {
+      "constrained": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.9375,
+        "exact_target_graph_accuracy": 0.9375,
+        "examples": 16,
+        "failed_prediction_rate": 0.0,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 0.9895833333333334,
+        "micro": {
+          "f1": 0.98,
+          "fn": 1,
+          "fp": 1,
+          "precision": 0.98,
+          "recall": 0.98,
+          "support": 50,
+          "tp": 49
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 17,
+            "tp": 17
+          },
+          "add_node": {
+            "f1": 0.9375,
+            "fn": 1,
+            "fp": 1,
+            "precision": 0.9375,
+            "recall": 0.9375,
+            "support": 16,
+            "tp": 15
+          },
+          "delete_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "delete_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1,
+            "tp": 1
+          },
+          "replace_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 10,
+            "tp": 10
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 1.0,
+        "simple_examples": 4,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0,
+        "zero_support_types": []
+      },
+      "history_every_500_steps": [
+        {
+          "constrained_exact": 0.0,
+          "constrained_f1": 0.0,
+          "loss": 3.1401784420013428,
+          "raw_exact": 0.0,
+          "raw_f1": 0.0,
+          "step": 0,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.5625,
+          "constrained_f1": 0.82,
+          "loss": 0.2587616741657257,
+          "raw_exact": 0.5625,
+          "raw_f1": 0.82,
+          "step": 500,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.75,
+          "constrained_f1": 0.88,
+          "loss": 0.15873409807682037,
+          "raw_exact": 0.75,
+          "raw_f1": 0.88,
+          "step": 1000,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.875,
+          "constrained_f1": 0.92,
+          "loss": 0.09487800300121307,
+          "raw_exact": 0.875,
+          "raw_f1": 0.92,
+          "step": 1500,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.9375,
+          "constrained_f1": 0.98,
+          "loss": 0.058146506547927856,
+          "raw_exact": 0.9375,
+          "raw_f1": 0.98,
+          "step": 2000,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.9375,
+          "constrained_f1": 0.98,
+          "loss": 0.037314996123313904,
+          "raw_exact": 0.9375,
+          "raw_f1": 0.98,
+          "step": 2500,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.9375,
+          "constrained_f1": 0.98,
+          "loss": 0.024999743327498436,
+          "raw_exact": 0.9375,
+          "raw_f1": 0.98,
+          "step": 3000,
+          "success_streak": 0
+        }
+      ],
+      "loss": 0.024999743327498436,
+      "mismatches": [
+        {
+          "extra": [
+            {
+              "after": {
+                "attributes": [
+                  "green",
+                  "white and pale green"
+                ],
+                "id": "newn003",
+                "label": "salad"
+              },
+              "before": null,
+              "kind": "add_node"
+            }
+          ],
+          "id": "magicbrush:548561:1",
+          "instruction": "Have the kids be eating salad instead of pizza",
+          "missing": [
+            {
+              "after": {
+                "attributes": [
+                  "green",
+                  "white"
+                ],
+                "id": "newn003",
+                "label": "salad"
+              },
+              "before": null,
+              "kind": "add_node"
+            }
+          ]
+        }
+      ],
+      "raw_equals_constrained": true,
+      "receipt_sha256": "3f8e8529e1701b6dda7dccc66ca067c975718e12ca2e01fa215d42ebc30d4161",
+      "selected_step": 3000,
+      "status": "NOT_MEMORIZED_WITHIN_BUDGET",
+      "steps_completed": 3000
+    },
+    "mlp": {
+      "constrained": {
+        "decode_failures": 0,
+        "exact_operation_set_accuracy": 0.9375,
+        "exact_target_graph_accuracy": 0.9375,
+        "examples": 16,
+        "failed_prediction_rate": 0.0,
+        "failed_predictions": 0,
+        "invalid_transactions": 0,
+        "macro_f1_supported_types": 0.9895833333333334,
+        "micro": {
+          "f1": 0.98,
+          "fn": 1,
+          "fp": 1,
+          "precision": 0.98,
+          "recall": 0.98,
+          "support": 50,
+          "tp": 49
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 17,
+            "tp": 17
+          },
+          "add_node": {
+            "f1": 0.9375,
+            "fn": 1,
+            "fp": 1,
+            "precision": 0.9375,
+            "recall": 0.9375,
+            "support": 16,
+            "tp": 15
+          },
+          "delete_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "delete_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 3,
+            "tp": 3
+          },
+          "replace_edge": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 1,
+            "tp": 1
+          },
+          "replace_node": {
+            "f1": 1.0,
+            "fn": 0,
+            "fp": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 10,
+            "tp": 10
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "simple_exact_operation_set_accuracy": 1.0,
+        "simple_examples": 4,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 1.0,
+        "zero_support_types": []
+      },
+      "history_every_500_steps": [
+        {
+          "constrained_exact": 0.0,
+          "constrained_f1": 0.0,
+          "loss": 3.1095194816589355,
+          "raw_exact": 0.0,
+          "raw_f1": 0.0,
+          "step": 0,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.5625,
+          "constrained_f1": 0.82,
+          "loss": 0.2578846514225006,
+          "raw_exact": 0.5625,
+          "raw_f1": 0.82,
+          "step": 500,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.75,
+          "constrained_f1": 0.88,
+          "loss": 0.1580106019973755,
+          "raw_exact": 0.75,
+          "raw_f1": 0.88,
+          "step": 1000,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.875,
+          "constrained_f1": 0.92,
+          "loss": 0.09440483897924423,
+          "raw_exact": 0.875,
+          "raw_f1": 0.92,
+          "step": 1500,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.9375,
+          "constrained_f1": 0.98,
+          "loss": 0.05787602812051773,
+          "raw_exact": 0.9375,
+          "raw_f1": 0.98,
+          "step": 2000,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.9375,
+          "constrained_f1": 0.98,
+          "loss": 0.03716195002198219,
+          "raw_exact": 0.9375,
+          "raw_f1": 0.98,
+          "step": 2500,
+          "success_streak": 0
+        },
+        {
+          "constrained_exact": 0.9375,
+          "constrained_f1": 0.98,
+          "loss": 0.02490963228046894,
+          "raw_exact": 0.9375,
+          "raw_f1": 0.98,
+          "step": 3000,
+          "success_streak": 0
+        }
+      ],
+      "loss": 0.02490963228046894,
+      "mismatches": [
+        {
+          "extra": [
+            {
+              "after": {
+                "attributes": [
+                  "green",
+                  "white and pale green"
+                ],
+                "id": "newn003",
+                "label": "salad"
+              },
+              "before": null,
+              "kind": "add_node"
+            }
+          ],
+          "id": "magicbrush:548561:1",
+          "instruction": "Have the kids be eating salad instead of pizza",
+          "missing": [
+            {
+              "after": {
+                "attributes": [
+                  "green",
+                  "white"
+                ],
+                "id": "newn003",
+                "label": "salad"
+              },
+              "before": null,
+              "kind": "add_node"
+            }
+          ]
+        }
+      ],
+      "raw_equals_constrained": true,
+      "receipt_sha256": "fe11ab302087ef8454a5980697a0a629994ef36d076ac963ea4b9258a41e788b",
+      "selected_step": 3000,
+      "status": "NOT_MEMORIZED_WITHIN_BUDGET",
+      "steps_completed": 3000
+    }
+  },
+  "recommendation_vi": "Giữ v3 và kết quả probe làm đối chứng. Chưa chạy lại full training hoặc sửa nhãn hàng loạt. Bước tiếp theo là soạn quy ước annotation nhất quán từ train, thử áp dụng trên một tập nhỏ và thống kê ảnh hưởng trước khi tạo phiên bản mới; đồng thời giữ lỗi xếp hạng thuộc tính làm ca hồi quy cho thử nghiệm loss nếu cần. Không đổi white thành white and pale green chỉ để khớp dự đoán.",
+  "scope": "Audit of user-run 16-train-example memorization probe; no validation/test performance inferred",
+  "sources_sha256": {
+    "Project01_Graph_Editing.pdf": "8f3354ba1e2195fdf4212aa3a745c363d0858cc69173724bea0d83dc95fac373",
+    "configs/level2/magicbrush-overfit16-v1.lock.json": "4e8fca0e923f543840668edd55186a8c7538de173f8620de07f673c7dd1d90f4",
+    "runs/level2/magicbrush-overfit16-v1/summary.json": "916f41079528cd4238c734af5dc4b467011e1874e1122c7e463a5b9b89063b7a"
+  },
+  "task_alignment_vi": "Nhiệm vụ 2 yêu cầu graph nguồn + nhúng yêu cầu đóng băng → sáu loại thao tác; tối thiểu 300 cặp và 20 mẫu kiểm tra tay, PRF1 theo loại. Probe 16 mẫu chỉ là chẩn đoán, không thay thế thực nghiệm chính và ba seed.",
+  "test_labels_decoded": false
+}
