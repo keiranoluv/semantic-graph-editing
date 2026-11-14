@@ -1,0 +1,11 @@
+{
+  "output": "data/processed/level2/magicbrush-compact-v1",
+  "parent_config": "configs/level2/magicbrush-manual-experiment-v3.json",
+  "parent_config_sha256": "db91b13aa1abb6a5871833c3b81249428be21b5e399a7af5cc9f981e0e486e7d",
+  "policy": "configs/level2/magicbrush-compact-v1-policy.json",
+  "policy_sha256": "24ad7db5445ab6883e73ecbe582a4bcb4cf0a9f057fdbb2d1ccb918895c3d128",
+  "reports": "reports/level2/magicbrush-compact-v1",
+  "review_seed": 20261115,
+  "review_size": 20,
+  "schema": "magicbrush-compact-v1"
+}

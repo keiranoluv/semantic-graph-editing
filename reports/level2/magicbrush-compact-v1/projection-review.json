@@ -1,0 +1,111 @@
+{
+  "cases": [
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:123035:3",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:166565:1",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "scope_note",
+      "id": "magicbrush:208423:1",
+      "note": "Giữ thao tác thêm sun và các quan hệ; bỏ mô tả very bright/radiating light rays, nên không còn biểu diễn riêng độ sáng được nhắc trong yêu cầu. Kite thêm phụ đã có trong nhãn gốc."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:214471:1",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:273420:1",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "scope_note",
+      "id": "magicbrush:279710:1",
+      "note": "Nhãn gốc chỉ đổi thuộc tính footwear, không biểu diễn thay skateboard thành stilt như instruction. Compact giữ trung thực thay đổi đó; vấn đề ngữ nghĩa có sẵn, không tự sửa từ câu yêu cầu."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:279710:2",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:299553:1",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "scope_note",
+      "id": "magicbrush:305351:2",
+      "note": "Thêm clock và xóa beam đều giữ; xóa beam là thay đổi phụ có sẵn, không được loại chỉ vì không nhắc trong instruction."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:31673:1",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:357424:3",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:423742:1",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:442416:1",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:450075:1",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:514607:1",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:524352:2",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "scope_note",
+      "id": "magicbrush:535313:2",
+      "note": "Cả bản gốc và compact không chứa tea ở target. Compact giữ mất coffee/foam, không tự thêm tea. Đây là giới hạn của nhãn đầu vào."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:555684:1",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:555684:3",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    },
+    {
+      "assessment": "core_edit_preserved_under_declared_projection",
+      "id": "magicbrush:63399:1",
+      "note": "Đối chiếu graph/thao tác trước–sau: ý chính có trong annotation gốc được giữ ở mức compact; chi tiết bỏ đi nằm trong file phụ."
+    }
+  ],
+  "conclusion": "Phép rút gọn dễ đọc hơn, nhưng không sửa các thiếu sót ngữ nghĩa/biến đổi phụ của annotation gốc. Không diễn giải 16 ca không có lưu ý riêng là tỷ lệ nhãn thị giác đúng.",
+  "new_visual_accuracy_estimated": false,
+  "packet_sha256": "207102e67a6e9cdd505334de28ba34f5229bf8c3cbdbcae3b5597627b827a8f3",
+  "review_type": "annotation transformation semantics, not a new paired-image visual review",
+  "reviewer": "assistant",
+  "scope": "20 seeded random train cases; original and compact operations examined in full",
+  "user_manual_confirmation_inferred": false
+}

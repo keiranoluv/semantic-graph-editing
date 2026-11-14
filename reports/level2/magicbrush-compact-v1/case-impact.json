@@ -1,0 +1,3717 @@
+[
+  {
+    "after_operations": 7,
+    "before_operations": 7,
+    "flags": [],
+    "id": "magicbrush:101084:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:101420:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:102632:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:108514:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:108514:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 9,
+    "before_operations": 9,
+    "flags": [],
+    "id": "magicbrush:10909:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:109190:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:109190:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:109190:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:121087:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:123035:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:123035:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:123035:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:12647:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:12647:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:128170:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:128175:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:128175:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:128989:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:148999:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:152327:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:155705:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:15839:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:166565:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:166565:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:166761:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:166761:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "background",
+            "large dark windows",
+            "light",
+            "red panel"
+          ],
+          "id": "n003",
+          "label": "building"
+        },
+        "before": {
+          "attributes": [
+            "background",
+            "light"
+          ],
+          "id": "n003",
+          "label": "building"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:181992:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:183888:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:183888:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:189197:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:189648:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "partly hidden",
+            "red",
+            "upper right panel"
+          ],
+          "id": "n003",
+          "label": "spoon"
+        },
+        "before": {
+          "attributes": [
+            "red",
+            "upper right panel"
+          ],
+          "id": "n003",
+          "label": "spoon"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:192047:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:192047:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "reshaped",
+            "silver"
+          ],
+          "id": "n005",
+          "label": "towel holder"
+        },
+        "before": {
+          "attributes": [
+            "silver"
+          ],
+          "id": "n005",
+          "label": "towel holder"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:195525:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:195991:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:195991:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:196663:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:198947:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:205299:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:208423:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:210671:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:210671:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:210671:3",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "coat draped over back",
+            "dark"
+          ],
+          "id": "n006",
+          "label": "chair"
+        },
+        "before": {
+          "attributes": [
+            "dark"
+          ],
+          "id": "n006",
+          "label": "chair"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:212089:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:212089:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:212089:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:213009:3",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "black",
+            "elongated shape",
+            "umpire rear foot"
+          ],
+          "id": "n016",
+          "label": "footwear"
+        },
+        "before": {
+          "attributes": [
+            "black",
+            "low cut",
+            "umpire rear foot"
+          ],
+          "id": "n016",
+          "label": "footwear"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:214471:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:214471:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:214698:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:217753:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:219565:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:219565:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:224522:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:227523:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:227523:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:227523:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:229407:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:229407:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:230739:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "background",
+            "reshaped"
+          ],
+          "id": "n002",
+          "label": "mountains"
+        },
+        "before": {
+          "attributes": [
+            "background"
+          ],
+          "id": "n002",
+          "label": "mountains"
+        },
+        "kind": "replace_node"
+      },
+      {
+        "after": {
+          "attributes": [
+            "numerous",
+            "scattered"
+          ],
+          "id": "n004",
+          "label": "boats"
+        },
+        "before": {
+          "attributes": [
+            "scattered"
+          ],
+          "id": "n004",
+          "label": "boats"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:231874:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:231874:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:238172:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:243783:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:243783:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:243967:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:24689:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:24689:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:247519:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:247838:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:251888:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:253970:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "background",
+            "elongated horizontal",
+            "red"
+          ],
+          "id": "n002",
+          "label": "notebook"
+        },
+        "before": {
+          "attributes": [
+            "background",
+            "partly obscured",
+            "red"
+          ],
+          "id": "n002",
+          "label": "notebook"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:257117:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:262207:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:270303:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "black handle",
+            "silver"
+          ],
+          "id": "n001",
+          "label": "fork"
+        },
+        "before": {
+          "attributes": [
+            "silver"
+          ],
+          "id": "n001",
+          "label": "fork"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:273420:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:274516:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:274516:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:275339:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:278535:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:279710:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:279710:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:289583:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:290080:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "rocky ridge",
+            "snow covered"
+          ],
+          "id": "n008",
+          "label": "mountains"
+        },
+        "before": {
+          "attributes": [
+            "snow covered",
+            "steep"
+          ],
+          "id": "n008",
+          "label": "mountains"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:292512:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:292905:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:293804:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:295049:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:295049:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:299553:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:299553:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:299553:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:299714:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:305351:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:305351:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:307379:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:307379:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:31673:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:323791:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:323791:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:32804:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:329850:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:331093:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:332775:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:334328:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:334954:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:335909:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:335909:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:335909:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:344138:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "lettuce tomato cucumber peppers",
+            "small red tomatoes"
+          ],
+          "id": "n002",
+          "label": "salad"
+        },
+        "before": {
+          "attributes": [
+            "lettuce tomato cucumber peppers"
+          ],
+          "id": "n002",
+          "label": "salad"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:344138:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 7,
+    "before_operations": 7,
+    "flags": [],
+    "id": "magicbrush:344138:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:349918:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:355819:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:355819:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 8,
+    "before_operations": 8,
+    "flags": [],
+    "id": "magicbrush:355819:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:357057:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:357057:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:357057:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:357424:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:357424:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:357424:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:364102:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:364102:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:37009:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:372260:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:372260:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:372260:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:373038:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:379441:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:381257:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:381257:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:381257:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:383704:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:385070:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:385070:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:393223:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:394900:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:395426:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:395822:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:399532:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:399532:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:401182:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:401455:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:409438:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:409438:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:411384:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:411384:3",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "red brick facade",
+            "rows of dark windows"
+          ],
+          "id": "n001",
+          "label": "building"
+        },
+        "before": {
+          "attributes": [
+            "grid of window panes",
+            "reflective glass facade"
+          ],
+          "id": "n001",
+          "label": "building"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:413182:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:413182:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 11,
+    "before_operations": 11,
+    "flags": [],
+    "id": "magicbrush:417164:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 7,
+    "before_operations": 7,
+    "flags": [],
+    "id": "magicbrush:422894:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:422894:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:423742:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:423742:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:426038:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:426038:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:429991:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:429991:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:429991:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:435242:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "cream",
+            "partly distorted lettering",
+            "printed text"
+          ],
+          "id": "n001",
+          "label": "page"
+        },
+        "before": {
+          "attributes": [
+            "cream",
+            "printed text"
+          ],
+          "id": "n001",
+          "label": "page"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:435242:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "black",
+            "concentrated in upper portion",
+            "fewer lines",
+            "large blank area below",
+            "partially distorted",
+            "serif font"
+          ],
+          "id": "n002",
+          "label": "printed text"
+        },
+        "before": {
+          "attributes": [
+            "black",
+            "covers most of page",
+            "dense paragraphs",
+            "left-aligned",
+            "multiple lines",
+            "partially distorted",
+            "serif font"
+          ],
+          "id": "n002",
+          "label": "printed text"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:43894:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:43894:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:44017:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 10,
+    "before_operations": 10,
+    "flags": [],
+    "id": "magicbrush:441199:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:441199:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:442009:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:442231:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:442231:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:442231:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:442416:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:442416:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:442654:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:442654:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:44590:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:448653:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:448653:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:448653:3",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "background",
+            "upside down",
+            "white"
+          ],
+          "id": "n003",
+          "label": "bowl"
+        },
+        "before": {
+          "attributes": [
+            "background",
+            "upright",
+            "white"
+          ],
+          "id": "n003",
+          "label": "bowl"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:450075:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:451690:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:451690:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:452272:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:452272:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 8,
+    "before_operations": 8,
+    "flags": [],
+    "id": "magicbrush:453050:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:453050:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:455381:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:455381:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:455381:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:458510:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:458510:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "green yellow sauce",
+            "stuffed roll",
+            "wider right side"
+          ],
+          "id": "n002",
+          "label": "main dish"
+        },
+        "before": {
+          "attributes": [
+            "green yellow sauce",
+            "stuffed roll"
+          ],
+          "id": "n002",
+          "label": "main dish"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:45942:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:45942:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:459662:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:465327:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:465327:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:468087:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:470931:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:472364:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:472364:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:473215:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:475277:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:475277:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:485526:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:485926:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:485926:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:485926:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:488240:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:488240:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:490160:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:491597:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:49424:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:49424:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:495122:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "gray",
+            "square tile grid"
+          ],
+          "id": "n001",
+          "label": "floor"
+        },
+        "before": {
+          "attributes": [
+            "gray",
+            "smooth"
+          ],
+          "id": "n001",
+          "label": "floor"
+        },
+        "kind": "replace_node"
+      },
+      {
+        "after": {
+          "attributes": [
+            "lower single large door",
+            "white"
+          ],
+          "id": "n002",
+          "label": "cabinets"
+        },
+        "before": {
+          "attributes": [
+            "lower double doors",
+            "white"
+          ],
+          "id": "n002",
+          "label": "cabinets"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:495122:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:499738:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:499738:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:50058:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:50058:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:503935:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:503935:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "lower shelf back right",
+            "pale glaze"
+          ],
+          "id": "n005",
+          "label": "donut"
+        },
+        "before": {
+          "attributes": [
+            "lower shelf back right",
+            "powdered"
+          ],
+          "id": "n005",
+          "label": "donut"
+        },
+        "kind": "replace_node"
+      },
+      {
+        "after": {
+          "attributes": [
+            "lower shelf front right",
+            "pale glaze"
+          ],
+          "id": "n006",
+          "label": "donut"
+        },
+        "before": {
+          "attributes": [
+            "lower shelf front right",
+            "powdered"
+          ],
+          "id": "n006",
+          "label": "donut"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:503935:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:507939:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "dark contents",
+            "front",
+            "upright"
+          ],
+          "id": "n005",
+          "label": "bowl"
+        },
+        "before": {
+          "attributes": [
+            "front",
+            "tilted"
+          ],
+          "id": "n005",
+          "label": "bowl"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:507950:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:507950:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:510636:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:510636:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:510636:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:513551:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:514055:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:514607:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:514725:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:514725:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 12,
+    "before_operations": 12,
+    "flags": [],
+    "id": "magicbrush:51738:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:519112:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:519112:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:519112:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:520701:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:520701:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:520701:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:522195:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:524352:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:524352:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:525176:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "dark",
+            "flat",
+            "on white desk",
+            "rectangular"
+          ],
+          "id": "n011",
+          "label": "black rectangular object"
+        },
+        "before": {
+          "attributes": [
+            "beneath skull",
+            "dark",
+            "flat",
+            "rectangular"
+          ],
+          "id": "n011",
+          "label": "black rectangular object"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:525176:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:526133:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:528432:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:530201:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:530201:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "green",
+            "red and lime green pots visible"
+          ],
+          "id": "n001",
+          "label": "potted plants"
+        },
+        "before": {
+          "attributes": [
+            "green",
+            "pots mostly obscured"
+          ],
+          "id": "n001",
+          "label": "potted plants"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:530457:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:530457:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "black",
+            "oval door"
+          ],
+          "id": "n004",
+          "label": "stove"
+        },
+        "before": {
+          "attributes": [
+            "arched door",
+            "black"
+          ],
+          "id": "n004",
+          "label": "stove"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:533536:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:535313:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:535313:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:535524:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:540122:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:540682:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:542625:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 8,
+    "before_operations": 8,
+    "flags": [],
+    "id": "magicbrush:542625:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 12,
+    "before_operations": 12,
+    "flags": [],
+    "id": "magicbrush:548561:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:548561:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:555684:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:555684:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:555684:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:557084:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:55873:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:560636:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:560636:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:566724:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:566724:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:566823:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:575500:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:575500:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:61184:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:61184:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:62756:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:62756:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:63399:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:63399:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:65562:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:65562:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:7107:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:71838:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:71838:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:71838:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:72795:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:73757:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:74549:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:76476:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:78741:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:85160:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:85160:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:85160:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:88084:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:88084:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:88084:3",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:88412:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:90140:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:99372:1",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:99372:2",
+    "removed_operations": [],
+    "split": "train"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:10766:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:124157:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 7,
+    "before_operations": 7,
+    "flags": [],
+    "id": "magicbrush:130579:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:130579:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "blue sides",
+            "colored logo",
+            "white front"
+          ],
+          "id": "n002",
+          "label": "cap"
+        },
+        "before": {
+          "attributes": [
+            "B logo",
+            "dark"
+          ],
+          "id": "n002",
+          "label": "cap"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:144298:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 9,
+    "before_operations": 9,
+    "flags": [],
+    "id": "magicbrush:152176:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:152176:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:152176:3",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:171050:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:171050:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:171472:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 7,
+    "before_operations": 7,
+    "flags": [],
+    "id": "magicbrush:171472:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:202066:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:206841:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:21217:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:21217:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:21972:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 7,
+    "flags": [],
+    "id": "magicbrush:223599:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "larger pile",
+            "leaves"
+          ],
+          "id": "n001",
+          "label": "oranges"
+        },
+        "before": {
+          "attributes": [
+            "leaves",
+            "pile"
+          ],
+          "id": "n001",
+          "label": "oranges"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:246779:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:246779:3",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:265777:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:265777:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:265777:3",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:270722:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:270722:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:270722:3",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:286723:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:298692:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:298692:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "ginger bob",
+            "gray pants",
+            "pink shirt"
+          ],
+          "id": "n001",
+          "label": "girl"
+        },
+        "before": {
+          "attributes": [
+            "blond ponytail",
+            "gray pants",
+            "pink shirt"
+          ],
+          "id": "n001",
+          "label": "girl"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:321886:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:321886:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:338078:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:338078:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:338078:3",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "black",
+            "upright"
+          ],
+          "id": "n001",
+          "label": "gorilla"
+        },
+        "before": {
+          "attributes": [
+            "black",
+            "knuckle walking"
+          ],
+          "id": "n001",
+          "label": "gorilla"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:352276:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:352276:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:357633:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 7,
+    "flags": [],
+    "id": "magicbrush:375645:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "blueberries",
+            "grapes",
+            "large portion",
+            "strawberries"
+          ],
+          "id": "n007",
+          "label": "fruit"
+        },
+        "before": {
+          "attributes": [
+            "blueberries",
+            "grapes",
+            "small portion",
+            "strawberries"
+          ],
+          "id": "n007",
+          "label": "fruit"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:375645:3",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 8,
+    "before_operations": 8,
+    "flags": [],
+    "id": "magicbrush:376047:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:376047:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:378186:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:386224:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:386224:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "buildings"
+          ],
+          "id": "n002",
+          "label": "photo"
+        },
+        "before": {
+          "attributes": [
+            "person with raised arms"
+          ],
+          "id": "n002",
+          "label": "photo"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:417825:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 0,
+    "before_operations": 1,
+    "flags": [
+      "no_core_edit"
+    ],
+    "id": "magicbrush:453731:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "facing camera",
+            "golden",
+            "head raised",
+            "lying"
+          ],
+          "id": "n001",
+          "label": "dog"
+        },
+        "before": {
+          "attributes": [
+            "facing right",
+            "golden",
+            "head resting",
+            "lying"
+          ],
+          "id": "n001",
+          "label": "dog"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 7,
+    "flags": [],
+    "id": "magicbrush:453731:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "altered lettering",
+            "rear",
+            "wood"
+          ],
+          "id": "n004",
+          "label": "barrel"
+        },
+        "before": {
+          "attributes": [
+            "lettered",
+            "rear",
+            "wood"
+          ],
+          "id": "n004",
+          "label": "barrel"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:456569:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 0,
+    "before_operations": 1,
+    "flags": [
+      "no_core_edit"
+    ],
+    "id": "magicbrush:456569:3",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "background row",
+            "dense"
+          ],
+          "id": "n008",
+          "label": "trees"
+        },
+        "before": {
+          "attributes": [
+            "background",
+            "sparse"
+          ],
+          "id": "n008",
+          "label": "trees"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:477497:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:484847:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:484847:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "bright seat",
+            "brown leather"
+          ],
+          "id": "n003",
+          "label": "sofa"
+        },
+        "before": {
+          "attributes": [
+            "brown leather",
+            "dark seat"
+          ],
+          "id": "n003",
+          "label": "sofa"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 0,
+    "before_operations": 1,
+    "flags": [
+      "no_core_edit"
+    ],
+    "id": "magicbrush:503943:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "red header",
+            "webpage",
+            "white background"
+          ],
+          "id": "n002",
+          "label": "screen"
+        },
+        "before": {
+          "attributes": [
+            "gray desktop"
+          ],
+          "id": "n002",
+          "label": "screen"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:503943:3",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:540097:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:545734:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:545734:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:548377:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:580149:1",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "one broad roll"
+          ],
+          "id": "n002",
+          "label": "toilet paper"
+        },
+        "before": {
+          "attributes": [
+            "two rolls"
+          ],
+          "id": "n002",
+          "label": "toilet paper"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:65905:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 5,
+    "before_operations": 5,
+    "flags": [],
+    "id": "magicbrush:65905:3",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 1,
+    "flags": [],
+    "id": "magicbrush:71476:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 3,
+    "before_operations": 3,
+    "flags": [],
+    "id": "magicbrush:96854:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 1,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:96854:2",
+    "removed_operations": [
+      {
+        "after": {
+          "attributes": [
+            "horizontal",
+            "metal"
+          ],
+          "id": "n005",
+          "label": "tongs"
+        },
+        "before": {
+          "attributes": [
+            "metal",
+            "upright"
+          ],
+          "id": "n005",
+          "label": "tongs"
+        },
+        "kind": "replace_node"
+      }
+    ],
+    "split": "val"
+  },
+  {
+    "after_operations": 2,
+    "before_operations": 2,
+    "flags": [],
+    "id": "magicbrush:9772:1",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 4,
+    "before_operations": 4,
+    "flags": [],
+    "id": "magicbrush:9772:2",
+    "removed_operations": [],
+    "split": "val"
+  },
+  {
+    "after_operations": 6,
+    "before_operations": 6,
+    "flags": [],
+    "id": "magicbrush:9772:3",
+    "removed_operations": [],
+    "split": "val"
+  }
+]

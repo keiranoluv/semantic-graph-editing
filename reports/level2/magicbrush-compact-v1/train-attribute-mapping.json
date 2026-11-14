@@ -1,0 +1,9743 @@
+[
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "11TH ST",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "3-WAY",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "30",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "ALL WAY",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "ARAI 25",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "Apple",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "text CK"
+    ],
+    "occurrences": 1,
+    "original": "CK lettering",
+    "rule": "literal_text"
+  },
+  {
+    "core": [
+      "text DELTA"
+    ],
+    "occurrences": 1,
+    "original": "DELTA lettering",
+    "rule": "literal_text"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "L-shaped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "Mickey Mouse",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "Mike Baird",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "NORTH PARK",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "ONE WAY",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "PetitPlat by sk_",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "SALE",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "text SALE"
+    ],
+    "occurrences": 1,
+    "original": "SALE text",
+    "rule": "literal_text"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "SPRING ST",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "STOP",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "text STOP"
+    ],
+    "occurrences": 4,
+    "original": "STOP text",
+    "rule": "literal_text"
+  },
+  {
+    "core": [
+      "text TREE SQUIRREL"
+    ],
+    "occurrences": 2,
+    "original": "TREE SQUIRREL text",
+    "rule": "literal_text"
+  },
+  {
+    "core": [
+      "text UNITED"
+    ],
+    "occurrences": 1,
+    "original": "UNITED lettering",
+    "rule": "literal_text"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "US",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "abstract",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "abstract red shape",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "adult",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "aged",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "flying"
+    ],
+    "occurrences": 8,
+    "original": "airborne",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "anime character",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "anime drawing",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "screen application"
+    ],
+    "occurrences": 1,
+    "original": "application windows",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "arched",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "arched door",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "arched top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "arched windows",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "armrests present"
+    ],
+    "occurrences": 1,
+    "original": "armrests",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "section articulated"
+    ],
+    "occurrences": 1,
+    "original": "articulated",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 5,
+    "original": "assorted",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "at mouth",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "attached near middle of surfboard",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "attached to partition",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 18,
+    "original": "back",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "back face",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 10,
+    "original": "back facing camera",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position left"
+    ],
+    "occurrences": 10,
+    "original": "back left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "back of lid facing viewer",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position right"
+    ],
+    "occurrences": 14,
+    "original": "back right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "back to camera",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 176,
+    "original": "background",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position center"
+    ],
+    "occurrences": 1,
+    "original": "background center",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position left"
+    ],
+    "occurrences": 3,
+    "original": "background left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center"
+    ],
+    "occurrences": 3,
+    "original": "background middle",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position right"
+    ],
+    "occurrences": 3,
+    "original": "background middle right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position right"
+    ],
+    "occurrences": 7,
+    "original": "background right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "backpack",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "bagged",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "bairdphotos",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "hair bald"
+    ],
+    "occurrences": 1,
+    "original": "bald",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 9,
+    "original": "bare",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "bare legs",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "bare shoulders",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "bathroom",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "beams",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "behind man",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "behind person",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "beige"
+    ],
+    "occurrences": 46,
+    "original": "beige",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "beige fabric",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "pants beige"
+    ],
+    "occurrences": 2,
+    "original": "beige pants",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "beige",
+      "red"
+    ],
+    "occurrences": 2,
+    "original": "beige red",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "beige tiles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "below cooktop",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "below desk",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "below monitor",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "below mouth",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "below window",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "beneath skull",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "bent knees",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "beside cake",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "biplane",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "bird on branch",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "bread bitten"
+    ],
+    "occurrences": 1,
+    "original": "bite missing from bread",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "black"
+    ],
+    "occurrences": 281,
+    "original": "black",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "black",
+      "red"
+    ],
+    "occurrences": 2,
+    "original": "black and red",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "black",
+      "white"
+    ],
+    "occurrences": 9,
+    "original": "black and white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black arrow",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "black base",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "black blotch",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "hair black",
+      "hair bob"
+    ],
+    "occurrences": 1,
+    "original": "black bob hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "black",
+      "brown",
+      "white"
+    ],
+    "occurrences": 1,
+    "original": "black brown white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "cap black"
+    ],
+    "occurrences": 8,
+    "original": "black cap",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "cape black"
+    ],
+    "occurrences": 1,
+    "original": "black cape",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "mustache present"
+    ],
+    "occurrences": 1,
+    "original": "black curled mustache",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "eyes black"
+    ],
+    "occurrences": 1,
+    "original": "black eyes",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black fabric",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "frame black"
+    ],
+    "occurrences": 8,
+    "original": "black frame",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "black glove",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black goggles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "black",
+      "gray"
+    ],
+    "occurrences": 8,
+    "original": "black gray",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "black",
+      "green"
+    ],
+    "occurrences": 4,
+    "original": "black green",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "hair black"
+    ],
+    "occurrences": 3,
+    "original": "black hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "black handle",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "black head",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "black headboard",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black helmet",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "keys black"
+    ],
+    "occurrences": 2,
+    "original": "black keys",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black knob",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "black lower panel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "black opening",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "black orange graphics",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black outline",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "pants black"
+    ],
+    "occurrences": 4,
+    "original": "black pants",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "black pot",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black printed text",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black printing",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "black",
+      "red"
+    ],
+    "occurrences": 2,
+    "original": "black red",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "rim black"
+    ],
+    "occurrences": 1,
+    "original": "black rim",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "screen black"
+    ],
+    "occurrences": 3,
+    "original": "black screen",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "shirt black"
+    ],
+    "occurrences": 22,
+    "original": "black shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black shoe",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "black shoes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "skirt black"
+    ],
+    "occurrences": 2,
+    "original": "black skirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "sleeves black"
+    ],
+    "occurrences": 1,
+    "original": "black sleeves",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black spiky hair",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "suit black"
+    ],
+    "occurrences": 2,
+    "original": "black suit",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "sweater black"
+    ],
+    "occurrences": 2,
+    "original": "black sweater",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black sweatshirt",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "black text logo",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "black tiles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "black top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black tread",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "trim black"
+    ],
+    "occurrences": 3,
+    "original": "black trim",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "pants black"
+    ],
+    "occurrences": 5,
+    "original": "black trousers",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black wells",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "black",
+      "white"
+    ],
+    "occurrences": 10,
+    "original": "black white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "black",
+      "brown",
+      "white"
+    ],
+    "occurrences": 4,
+    "original": "black white and brown",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "black",
+      "red",
+      "white"
+    ],
+    "occurrences": 2,
+    "original": "black white red",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "black wire",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "blind",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "blinds",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "blond",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "hair blond",
+      "hair mohawk"
+    ],
+    "occurrences": 5,
+    "original": "blond mohawk",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "blonde",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "blue"
+    ],
+    "occurrences": 123,
+    "original": "blue",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "blue P",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "blue accents",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "black",
+      "blue"
+    ],
+    "occurrences": 2,
+    "original": "blue and black",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "blue",
+      "green"
+    ],
+    "occurrences": 1,
+    "original": "blue and green",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "blue",
+      "white"
+    ],
+    "occurrences": 2,
+    "original": "blue and white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "blue",
+      "yellow"
+    ],
+    "occurrences": 1,
+    "original": "blue and yellow",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "blue and yellow band",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "border blue"
+    ],
+    "occurrences": 1,
+    "original": "blue border",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "blue carpet",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "blue clothes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "blue costume",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "blue decoration",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "blue dotted dress",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "dress blue"
+    ],
+    "occurrences": 2,
+    "original": "blue dress",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "eyes blue"
+    ],
+    "occurrences": 1,
+    "original": "blue eyes",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "blue flared skirt",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "floral"
+    ],
+    "occurrences": 2,
+    "original": "blue floral pattern",
+    "rule": "pattern_without_detail_color"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "blue fruit print",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "blue",
+      "gray"
+    ],
+    "occurrences": 12,
+    "original": "blue gray",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "blue gray glass",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "blue",
+      "gold",
+      "green"
+    ],
+    "occurrences": 2,
+    "original": "blue green gold",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "blue handles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "blue horizontal stripe",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 5,
+    "original": "blue jeans",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "text blue"
+    ],
+    "occurrences": 1,
+    "original": "blue lettering",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "blue liner edge",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "blue monster illustration",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "blue pattern",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "rim blue"
+    ],
+    "occurrences": 2,
+    "original": "blue rim",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "blue robot costume",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "screen blue"
+    ],
+    "occurrences": 2,
+    "original": "blue screen",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "blue screen stripe",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "shirt blue"
+    ],
+    "occurrences": 24,
+    "original": "blue shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "blue snow pants",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "star patterned"
+    ],
+    "occurrences": 1,
+    "original": "blue star graphic",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "blue stripe on screen",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "tail blue"
+    ],
+    "occurrences": 1,
+    "original": "blue tail",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "boots blue",
+      "boots tall"
+    ],
+    "occurrences": 2,
+    "original": "blue tall boots",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "tie blue"
+    ],
+    "occurrences": 2,
+    "original": "blue tie",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "blue top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "trim blue"
+    ],
+    "occurrences": 2,
+    "original": "blue trim",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "pants blue"
+    ],
+    "occurrences": 2,
+    "original": "blue trousers",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "blue upper body",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "blue",
+      "white"
+    ],
+    "occurrences": 5,
+    "original": "blue white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "blue white markings",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "blurred background",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position lower"
+    ],
+    "occurrences": 3,
+    "original": "bottom",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position lower"
+    ],
+    "occurrences": 2,
+    "original": "bottom center",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position lower"
+    ],
+    "occurrences": 4,
+    "original": "bottom edge",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position left",
+      "position lower"
+    ],
+    "occurrences": 2,
+    "original": "bottom left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position left",
+      "position lower"
+    ],
+    "occurrences": 2,
+    "original": "bottom left edge",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position lower"
+    ],
+    "occurrences": 2,
+    "original": "bottom middle",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position left",
+      "position lower"
+    ],
+    "occurrences": 2,
+    "original": "bottom middle left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position lower",
+      "position right"
+    ],
+    "occurrences": 8,
+    "original": "bottom right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position lower",
+      "position right"
+    ],
+    "occurrences": 2,
+    "original": "bottom-right foreground",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "box body",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "box shaped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "hair braided"
+    ],
+    "occurrences": 3,
+    "original": "braided hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "branded",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "bread intact"
+    ],
+    "occurrences": 1,
+    "original": "bread intact",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "breaking",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "brick"
+    ],
+    "occurrences": 20,
+    "original": "brick",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 18,
+    "original": "bright",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "bright exterior",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "bright halo",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "bright screen",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "broccoli",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "brown"
+    ],
+    "occurrences": 140,
+    "original": "brown",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "brown",
+      "white"
+    ],
+    "occurrences": 4,
+    "original": "brown and white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "bread brown"
+    ],
+    "occurrences": 1,
+    "original": "brown bread",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "brown broth",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "brown contents",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "crust brown"
+    ],
+    "occurrences": 1,
+    "original": "brown crust",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "brown dirt",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "filling brown"
+    ],
+    "occurrences": 2,
+    "original": "brown filling",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "hair brown"
+    ],
+    "occurrences": 2,
+    "original": "brown hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "hair blond",
+      "hair brown"
+    ],
+    "occurrences": 1,
+    "original": "brown hair with blond highlights",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "pants brown"
+    ],
+    "occurrences": 2,
+    "original": "brown pants",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "brown pot",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "shirt brown"
+    ],
+    "occurrences": 8,
+    "original": "brown shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "brown shoulder-length hair",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "brown snacks",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "brown spines",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "brown tiles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "brown transparent",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "brown wood",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "brown wrap",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "browned"
+    ],
+    "occurrences": 4,
+    "original": "browned",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "crust browned"
+    ],
+    "occurrences": 3,
+    "original": "browned crust",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "browned"
+    ],
+    "occurrences": 1,
+    "original": "browned edges",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "browned"
+    ],
+    "occurrences": 1,
+    "original": "browned surface",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "bulbous base",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "bulky",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "bun",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "bunch",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "bunny ears",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "bursting",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "bushy tail",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "busy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "camouflage",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "camouflage uniform",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cardboard",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 10,
+    "original": "carpet",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "carrot",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "carrot shavings on top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cartoon print",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "cat shaped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "celery",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position center"
+    ],
+    "occurrences": 29,
+    "original": "center",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center"
+    ],
+    "occurrences": 2,
+    "original": "center back",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center"
+    ],
+    "occurrences": 6,
+    "original": "center background",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center"
+    ],
+    "occurrences": 3,
+    "original": "center foreground",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position right"
+    ],
+    "occurrences": 2,
+    "original": "center right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position right"
+    ],
+    "occurrences": 2,
+    "original": "center right background",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position right"
+    ],
+    "occurrences": 2,
+    "original": "center-right foreground",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "central left",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "central right",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "central sky",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "ceramic",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 12,
+    "original": "chain link",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "check in counters",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "checked shirt",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 12,
+    "original": "cheese",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "topping bacon",
+      "topping cheese"
+    ],
+    "occurrences": 1,
+    "original": "cheese and bacon strips",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cherries",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "chili onions",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "chili topping",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "chipped paint",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "chocolate icing",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 7,
+    "original": "chocolate sprinkles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "chunky toppings",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "citrus",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "city skyline",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "city view",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "cleaning supplies",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "transparent"
+    ],
+    "occurrences": 29,
+    "original": "clear",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "clear box",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "clear boxes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "clear cap",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "glass",
+      "transparent"
+    ],
+    "occurrences": 2,
+    "original": "clear glass",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "clear lenses",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "plastic",
+      "transparent"
+    ],
+    "occurrences": 7,
+    "original": "clear plastic",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "closed"
+    ],
+    "occurrences": 6,
+    "original": "closed",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "hair shaved"
+    ],
+    "occurrences": 1,
+    "original": "closely shaved hair",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 10,
+    "original": "clouds",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 10,
+    "original": "cloudy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "clustered",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "coat draped over back",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "coffee"
+    ],
+    "occurrences": 1,
+    "original": "coffee",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "coiled",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "collar",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "color blocks",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "colored eyes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "colored label panels",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "colored lines",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "multicolored"
+    ],
+    "occurrences": 10,
+    "original": "colorful",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "colorful mural",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "colorful patterned surface",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "compact",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "concentrated in upper portion",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "concrete"
+    ],
+    "occurrences": 14,
+    "original": "concrete",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cone shaped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "conical",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "conifer",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "conifers",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "conveyor",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "corded",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "corner",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "covered with clothes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "covers most of page",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cow in field",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "cream"
+    ],
+    "occurrences": 35,
+    "original": "cream",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cream-colored",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "crinkle cut",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 22,
+    "original": "cropped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "cropped at left edge",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cropped at right edge",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cropped at top edge",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "cropped bottom left",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "cropped left",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cropped lower left",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "cropped right",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "cropped top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cropped torso",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cropped upper left",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "crouching"
+    ],
+    "occurrences": 3,
+    "original": "crouching",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "crumpled",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "hair curly",
+      "hair gray"
+    ],
+    "occurrences": 3,
+    "original": "curly gray hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "hair curly"
+    ],
+    "occurrences": 1,
+    "original": "curly hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "hair curly",
+      "hair red"
+    ],
+    "occurrences": 2,
+    "original": "curly red hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "cursive",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "curved"
+    ],
+    "occurrences": 10,
+    "original": "curved",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "curved curb",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "curved roof",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "curved streaks",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "curving",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "cut",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "cut cylinder",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "cut face",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cut in middle",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "cut triangular portions",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "cutting cake",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "cutting vegetables",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "cylindrical"
+    ],
+    "occurrences": 5,
+    "original": "cylindrical",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "damaged",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 143,
+    "original": "dark",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dark SUV",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dark band",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dark base",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "beige"
+    ],
+    "occurrences": 2,
+    "original": "dark beige",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "blue"
+    ],
+    "occurrences": 8,
+    "original": "dark blue",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "brown"
+    ],
+    "occurrences": 15,
+    "original": "dark brown",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "icing brown",
+      "icing dark"
+    ],
+    "occurrences": 1,
+    "original": "dark brown icing",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "dark clothes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dark contents",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "dark drink",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "exterior dark"
+    ],
+    "occurrences": 1,
+    "original": "dark exterior",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "dark eye sockets",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "frame dark"
+    ],
+    "occurrences": 4,
+    "original": "dark frame",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "fur dark"
+    ],
+    "occurrences": 2,
+    "original": "dark fur",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "glass"
+    ],
+    "occurrences": 1,
+    "original": "dark glass",
+    "rule": "material_without_shade"
+  },
+  {
+    "core": [
+      "gray"
+    ],
+    "occurrences": 7,
+    "original": "dark gray",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "body dark",
+      "body gray"
+    ],
+    "occurrences": 2,
+    "original": "dark gray body",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "green"
+    ],
+    "occurrences": 7,
+    "original": "dark green",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "pants dark",
+      "pants green"
+    ],
+    "occurrences": 2,
+    "original": "dark green pants",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "dark grout lines",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "hair dark"
+    ],
+    "occurrences": 1,
+    "original": "dark hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dark handle",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "hull dark"
+    ],
+    "occurrences": 1,
+    "original": "dark hull",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "jacket dark"
+    ],
+    "occurrences": 7,
+    "original": "dark jacket",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dark laces",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "dark lenses",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "dark liquid",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "footwear dark",
+      "footwear low"
+    ],
+    "occurrences": 2,
+    "original": "dark low footwear",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "dark masts",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "pants dark"
+    ],
+    "occurrences": 1,
+    "original": "dark pants",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "dark protective helmet",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "purple"
+    ],
+    "occurrences": 2,
+    "original": "dark purple",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "green",
+      "purple"
+    ],
+    "occurrences": 1,
+    "original": "dark purple and green",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "red"
+    ],
+    "occurrences": 4,
+    "original": "dark red",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "screen dark"
+    ],
+    "occurrences": 2,
+    "original": "dark screen",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "shirt dark"
+    ],
+    "occurrences": 9,
+    "original": "dark shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "dark shorts",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "dark shutters",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dark silhouette",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "dark speckles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "suit dark"
+    ],
+    "occurrences": 1,
+    "original": "dark suit",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "teal"
+    ],
+    "occurrences": 2,
+    "original": "dark teal",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "text dark"
+    ],
+    "occurrences": 2,
+    "original": "dark text",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dark textured",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "dark tiles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "dark top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dark trailing tail",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "wood"
+    ],
+    "occurrences": 6,
+    "original": "dark wood",
+    "rule": "material_without_shade"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "daytime",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "decorated",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "decorative",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "denim",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "dense",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dense foliage",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dense paragraphs",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "denser",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "diagonal foreground",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "diamond-shaped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "dirt",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "displaying skull image",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 21,
+    "original": "distant",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dog",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "dog shaped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "dollop",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "dome",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "door closed"
+    ],
+    "occurrences": 1,
+    "original": "door closed",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "door open"
+    ],
+    "occurrences": 1,
+    "original": "door open",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "dotted",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "double",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "double arms",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "double basin",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "double lamp",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "frowning"
+    ],
+    "occurrences": 1,
+    "original": "downturned mouth",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "drum",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "dry"
+    ],
+    "occurrences": 4,
+    "original": "dry",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "elevated",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 9,
+    "original": "elongated",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "elongated horizontal",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "elongated shape",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "elongated tabletop",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "large"
+    ],
+    "occurrences": 1,
+    "original": "enlarged",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "evergreen",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "exposed lower legs",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "extended toward left",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "extended upward"
+    ],
+    "occurrences": 1,
+    "original": "extended upward",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "eyes closed"
+    ],
+    "occurrences": 3,
+    "original": "eyes closed",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "eyes nearly closed",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "eyes open"
+    ],
+    "occurrences": 2,
+    "original": "eyes open",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "fabric"
+    ],
+    "occurrences": 3,
+    "original": "fabric",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "face covered",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "face mask",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 7,
+    "original": "facing camera",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "facing left",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 7,
+    "original": "facing right",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "facing television",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "faint outlines",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "fallen leaves",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "falling person pictogram",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "family slogan",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "far away",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "far background",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "far right",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "far right background",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "few faint clouds",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "fewer lines",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "fibrous",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "filled with books and framed pictures",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "fish shaped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "flakes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "flames",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "flat"
+    ],
+    "occurrences": 10,
+    "original": "flat",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "flat surface",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "flavor labels",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "floating in air",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "floor",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "floral"
+    ],
+    "occurrences": 5,
+    "original": "floral",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "floral hat",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "floral panels",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "flowers",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "fluffy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "fluffy tail",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "flying"
+    ],
+    "occurrences": 4,
+    "original": "flying",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "foam present"
+    ],
+    "occurrences": 1,
+    "original": "foam art",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "foil wrapper",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "folded"
+    ],
+    "occurrences": 5,
+    "original": "folded",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "food",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "food ingredients",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 141,
+    "original": "foreground",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "foreground ground surface",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position left"
+    ],
+    "occurrences": 3,
+    "original": "foreground left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "foreground pair",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position right"
+    ],
+    "occurrences": 7,
+    "original": "foreground right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "foreground strip",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "forest floor",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "forested",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "fourteen",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "fourth",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "fourth from foreground",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 10,
+    "original": "framed",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "framed wall art",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "freestanding",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "fried",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 14,
+    "original": "front",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position center"
+    ],
+    "occurrences": 4,
+    "original": "front center",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position left"
+    ],
+    "occurrences": 8,
+    "original": "front left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position right"
+    ],
+    "occurrences": 8,
+    "original": "front right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "frontal view",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "frowning"
+    ],
+    "occurrences": 1,
+    "original": "frowning",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "fruit flavored envelopes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "fruit illustrations",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "full body",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "full-size",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "screen game"
+    ],
+    "occurrences": 3,
+    "original": "game displayed",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "text illegible"
+    ],
+    "occurrences": 1,
+    "original": "garbled lettering",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "glass"
+    ],
+    "occurrences": 22,
+    "original": "glass",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "glass doors",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "glass facade",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "glass jar",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "glass pot",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "glass top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "glass-like",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 14,
+    "original": "glasses",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "glazed",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "globe",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "gloves",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "glowing",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "glowing fire in lower opening",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "gold"
+    ],
+    "occurrences": 6,
+    "original": "gold",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "frame gold"
+    ],
+    "occurrences": 3,
+    "original": "gold frame",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "gold lower panels",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "gold top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "gold"
+    ],
+    "occurrences": 11,
+    "original": "golden",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "brown",
+      "gold"
+    ],
+    "occurrences": 4,
+    "original": "golden brown",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "grains",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "granola yogurt raspberries",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "grapes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 14,
+    "original": "grass",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "grass and dirt",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "grassy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "gray"
+    ],
+    "occurrences": 199,
+    "original": "gray",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "brown",
+      "gray"
+    ],
+    "occurrences": 1,
+    "original": "gray and brown",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "black",
+      "gray"
+    ],
+    "occurrences": 4,
+    "original": "gray black",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "gray head",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "gray keyboard",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "pants gray",
+      "pants long"
+    ],
+    "occurrences": 1,
+    "original": "gray long trousers",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "pants gray"
+    ],
+    "occurrences": 2,
+    "original": "gray pants",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "gray rolled up trousers",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "shirt gray"
+    ],
+    "occurrences": 2,
+    "original": "gray shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "gray tiles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "uniform gray"
+    ],
+    "occurrences": 6,
+    "original": "gray uniform",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "gray",
+      "white"
+    ],
+    "occurrences": 3,
+    "original": "gray white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "blue",
+      "gray"
+    ],
+    "occurrences": 2,
+    "original": "gray-blue",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "green"
+    ],
+    "occurrences": 195,
+    "original": "green",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "green",
+      "yellow"
+    ],
+    "occurrences": 4,
+    "original": "green and yellow",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "illustration apple"
+    ],
+    "occurrences": 1,
+    "original": "green apple",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "green apron",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "green background",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "green backlit keys",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "blue",
+      "green",
+      "white"
+    ],
+    "occurrences": 4,
+    "original": "green blue white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "brown",
+      "green"
+    ],
+    "occurrences": 4,
+    "original": "green brown",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "green brown pieces",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "green cover",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "green curtains",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "green decoration",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "green decorations",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "dress green"
+    ],
+    "occurrences": 4,
+    "original": "green dress",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "eyes green"
+    ],
+    "occurrences": 2,
+    "original": "green eyes",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "green foliage",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "green grass",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "green handle",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "leaves green"
+    ],
+    "occurrences": 12,
+    "original": "green leaves",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "illustration lime"
+    ],
+    "occurrences": 1,
+    "original": "green lime",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "lipstick green"
+    ],
+    "occurrences": 5,
+    "original": "green lipstick",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "green pods",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "shirt green"
+    ],
+    "occurrences": 5,
+    "original": "green shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "skin green"
+    ],
+    "occurrences": 1,
+    "original": "green skin",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "sweater green",
+      "sweater striped"
+    ],
+    "occurrences": 1,
+    "original": "green striped sweater",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "green tray",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "trim green"
+    ],
+    "occurrences": 1,
+    "original": "green trim",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "green yellow lenses",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "green yellow sauce",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "brown",
+      "green"
+    ],
+    "occurrences": 2,
+    "original": "green-brown",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "grid",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "grid of window panes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "grid panes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "grid printed",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "grilled",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "group",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "group on tray",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "halved",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 10,
+    "original": "handheld",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "handle",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "handset",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "hanging",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "hanging near right cabinet",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "hard surface",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "hat",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "head lowered",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "head obscured",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "head turned",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "held vertically",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "helmet",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "helmets",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "high rise",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "historical scene",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "holding white paper",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "horizontal",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "horizontal waves",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "hot sauce",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "human skull replica",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "lit"
+    ],
+    "occurrences": 2,
+    "original": "illuminated",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "illuminated signs",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "illustrated",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "in plastic box",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "in plastic container",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "inside bus",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "interior illuminated",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "irregular rim",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "ivory white",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "jeans",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "ketchup",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "keypad",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "knee length",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "label",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "laid out",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "landing gear down",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "large"
+    ],
+    "occurrences": 59,
+    "original": "large",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "large blank area below",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "star patterned"
+    ],
+    "occurrences": 1,
+    "original": "large blue star-like graphic",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "large chunks",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "large dark windows",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "eyes green",
+      "eyes large"
+    ],
+    "occurrences": 1,
+    "original": "large green eyes",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "large relative to hydrant top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "text present"
+    ],
+    "occurrences": 1,
+    "original": "large text",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "layered",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 5,
+    "original": "leafy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "leafy green",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "leafy greens",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "leaning backward",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "leather"
+    ],
+    "occurrences": 1,
+    "original": "leather",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "position left"
+    ],
+    "occurrences": 190,
+    "original": "left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position left"
+    ],
+    "occurrences": 8,
+    "original": "left background",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "left bedside",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position center",
+      "position left"
+    ],
+    "occurrences": 2,
+    "original": "left center",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "left child",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position left"
+    ],
+    "occurrences": 4,
+    "original": "left edge",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position left"
+    ],
+    "occurrences": 13,
+    "original": "left foreground",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "left foreground player",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "left hand",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "left horizon",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position center",
+      "position left"
+    ],
+    "occurrences": 2,
+    "original": "left middle",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "left of monitor",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "left of woman",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "left on table",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "left pair",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "left partial",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "left shoreline",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position left"
+    ],
+    "occurrences": 10,
+    "original": "left side",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "left skier",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "left-aligned",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "legs apart",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "legs partially visible",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "legs visible",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "less folded",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "lettering",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "lettuce",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lettuce tomato cucumber peppers",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lid",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "lid closed"
+    ],
+    "occurrences": 1,
+    "original": "lid closed",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 13,
+    "original": "light",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "blue"
+    ],
+    "occurrences": 9,
+    "original": "light blue",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "bread light"
+    ],
+    "occurrences": 1,
+    "original": "light bread",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "brown"
+    ],
+    "occurrences": 6,
+    "original": "light brown",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "hair brown",
+      "hair light"
+    ],
+    "occurrences": 2,
+    "original": "light brown hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "light cabinet",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "light colored",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "light cover",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "light dotted pattern",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "gray"
+    ],
+    "occurrences": 14,
+    "original": "light gray",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "pants light"
+    ],
+    "occurrences": 4,
+    "original": "light pants",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "light pink shoulder accents",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "light rectangular",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "shirt light"
+    ],
+    "occurrences": 1,
+    "original": "light shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "light shorts",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "light sleeveless top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "light top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "light-colored",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "light-colored filling",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "lips pursed",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "lit"
+    ],
+    "occurrences": 14,
+    "original": "lit",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "screen lit"
+    ],
+    "occurrences": 1,
+    "original": "lit screen",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "loaf",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "long"
+    ],
+    "occurrences": 7,
+    "original": "long",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "beard black",
+      "beard long"
+    ],
+    "occurrences": 1,
+    "original": "long black beard",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "hair blond",
+      "hair long"
+    ],
+    "occurrences": 1,
+    "original": "long blond hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "beard dark",
+      "beard long"
+    ],
+    "occurrences": 2,
+    "original": "long dark beard",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "fur long"
+    ],
+    "occurrences": 1,
+    "original": "long fur",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "leaves long"
+    ],
+    "occurrences": 1,
+    "original": "long leaves",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "dress long",
+      "dress red"
+    ],
+    "occurrences": 1,
+    "original": "long red dress",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "hair long",
+      "hair red"
+    ],
+    "occurrences": 1,
+    "original": "long red hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "sleeves long"
+    ],
+    "occurrences": 2,
+    "original": "long sleeves",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "tail long"
+    ],
+    "occurrences": 7,
+    "original": "long tail",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "long tails",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "long thin sticks",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "long trailing string",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "hair long"
+    ],
+    "occurrences": 1,
+    "original": "longer hair",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "looking down",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "loose",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "loose fitting",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "low",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "low cut",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "low posture",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "low roof",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position lower"
+    ],
+    "occurrences": 35,
+    "original": "lower",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position lower"
+    ],
+    "occurrences": 2,
+    "original": "lower center",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lower conveyor",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lower cropped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "lower double doors",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "lower in image",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position left",
+      "position lower"
+    ],
+    "occurrences": 8,
+    "original": "lower left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position left",
+      "position lower"
+    ],
+    "occurrences": 2,
+    "original": "lower left edge",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lower left panel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position center",
+      "position lower"
+    ],
+    "occurrences": 2,
+    "original": "lower middle",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position left",
+      "position lower"
+    ],
+    "occurrences": 2,
+    "original": "lower middle left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 13,
+    "original": "lower panel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position lower",
+      "position right"
+    ],
+    "occurrences": 14,
+    "original": "lower right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lower right panel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lower shelf",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lower shelf back center",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lower shelf back right",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lower shelf front center",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lower shelf front right",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "lower single large door",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "lower wall",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "lower window",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "lumpy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lunging",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "lying"
+    ],
+    "occurrences": 12,
+    "original": "lying",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "lying"
+    ],
+    "occurrences": 1,
+    "original": "lying at a low angle",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "lying flat on sand",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "lying"
+    ],
+    "occurrences": 1,
+    "original": "lying horizontally",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "lying on side",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "mane",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "toppings many"
+    ],
+    "occurrences": 1,
+    "original": "many chunky toppings",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "meat cheese lettuce",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "meat filling",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "meat pieces",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "cheese melted"
+    ],
+    "occurrences": 3,
+    "original": "melted cheese",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "mesh",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "mesh fence",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "metal"
+    ],
+    "occurrences": 95,
+    "original": "metal",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "metal band",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "metal blade",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "metal legs",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "metal lids",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "metal pair",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position center"
+    ],
+    "occurrences": 21,
+    "original": "middle",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position left"
+    ],
+    "occurrences": 4,
+    "original": "middle left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center"
+    ],
+    "occurrences": 2,
+    "original": "middle rear",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position right"
+    ],
+    "occurrences": 2,
+    "original": "middle right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "middle right panel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "middle right sky",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "miniature",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "mint green"
+    ],
+    "occurrences": 1,
+    "original": "mint green",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "misty",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "mixed fruit",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "mixed vegetables",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "monochrome",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "plain"
+    ],
+    "occurrences": 1,
+    "original": "mostly plain surface",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "mottled",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "mounded",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "mouth closed"
+    ],
+    "occurrences": 3,
+    "original": "mouth closed",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "mouth open"
+    ],
+    "occurrences": 10,
+    "original": "mouth open",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "mouth relaxed"
+    ],
+    "occurrences": 1,
+    "original": "mouth relaxed",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "mouth partly open"
+    ],
+    "occurrences": 1,
+    "original": "mouth slightly open",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "mouth wide open"
+    ],
+    "occurrences": 3,
+    "original": "mouth wide open",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "muddy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "muddy water",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "multicolored"
+    ],
+    "occurrences": 16,
+    "original": "multicolored",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "multicolored patchwork quilt",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "multicolored",
+      "patterned"
+    ],
+    "occurrences": 5,
+    "original": "multicolored print",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "multicolored small pattern",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "multicolored sprinkles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "multiple carriages",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "multiple lamps",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "multiple lines",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "multiple parked cars",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "multiple pieces",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "multiple sheets",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "multiple small panes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "multiple small red and blue decorative markings",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "mushroom",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "mushroom slices",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "mushrooms",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "narrow"
+    ],
+    "occurrences": 3,
+    "original": "narrow",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "neck narrow"
+    ],
+    "occurrences": 3,
+    "original": "narrow neck",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "natural",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "lips natural"
+    ],
+    "occurrences": 1,
+    "original": "natural lip color",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "near middle of page",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "near rear of surfboard",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "near upper-left corner",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "nearby",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "nearest",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "nearest foreground",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "expression neutral"
+    ],
+    "occurrences": 1,
+    "original": "neutral expression",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "night",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "foam absent"
+    ],
+    "occurrences": 1,
+    "original": "no foam",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "no parking",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "logo absent"
+    ],
+    "occurrences": 1,
+    "original": "no side logo",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "text absent"
+    ],
+    "occurrences": 1,
+    "original": "no text",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "armrests absent"
+    ],
+    "occurrences": 1,
+    "original": "no visible armrests",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "noodles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "number 18"
+    ],
+    "occurrences": 1,
+    "original": "number 18",
+    "rule": "literal_number"
+  },
+  {
+    "core": [
+      "number 25"
+    ],
+    "occurrences": 2,
+    "original": "number 25",
+    "rule": "literal_number"
+  },
+  {
+    "core": [
+      "number 5"
+    ],
+    "occurrences": 1,
+    "original": "number 5",
+    "rule": "literal_number"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "numerous",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "nut topping",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "oats",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "octagonal"
+    ],
+    "occurrences": 2,
+    "original": "octagonal",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "office",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "office divider",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "office furniture",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "office phone",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "oil and vinegar",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "on",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "on bed",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "on black pole",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "on black screen",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "on blue bear",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "on blue mouse pad",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "on clock post",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "on hillside",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "on horse",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "on multicolored plate",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "on orange bear",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "on road",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "on table",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "on white desk",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "one leg bent",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "panel open"
+    ],
+    "occurrences": 1,
+    "original": "one panel swung inward",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "visible legs one"
+    ],
+    "occurrences": 1,
+    "original": "one visible leg",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "open"
+    ],
+    "occurrences": 40,
+    "original": "open",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "open faced",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "open rear hatch",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "open seat",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "opening visible",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "orange"
+    ],
+    "occurrences": 44,
+    "original": "orange",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "orange accents within blue graphic",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "orange",
+      "yellow"
+    ],
+    "occurrences": 2,
+    "original": "orange and yellow",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "beak orange"
+    ],
+    "occurrences": 2,
+    "original": "orange beak",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "orange bill",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "orange canopy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "orange handle",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "jacket orange"
+    ],
+    "occurrences": 4,
+    "original": "orange jacket",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "orange label",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "orange",
+      "red"
+    ],
+    "occurrences": 1,
+    "original": "orange red",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "orange sleeve",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "orange tiles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "orange",
+      "white"
+    ],
+    "occurrences": 1,
+    "original": "orange white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "brown",
+      "orange"
+    ],
+    "occurrences": 2,
+    "original": "orange-brown",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "ornate",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "outdoor",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 14,
+    "original": "outside",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "outside view",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "oval"
+    ],
+    "occurrences": 5,
+    "original": "oval",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "oval door",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "oval recess",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "overhead",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "packed cargo area",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "padded",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "padded seat",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 5,
+    "original": "pair",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 17,
+    "original": "pale",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "blue"
+    ],
+    "occurrences": 8,
+    "original": "pale blue",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "pale bristles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "pale coating",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "pale contents",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pale crust",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pale cut surface",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pale emblem",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pale face",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "pale flesh",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "pale glaze",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "green"
+    ],
+    "occurrences": 2,
+    "original": "pale green",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 5,
+    "original": "pale icing",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pale interior",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "pink"
+    ],
+    "occurrences": 1,
+    "original": "pale pink",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pale rectangular window",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "yellow"
+    ],
+    "occurrences": 5,
+    "original": "pale yellow",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "pancake and toppings",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "paned",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "paneled",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "paper"
+    ],
+    "occurrences": 2,
+    "original": "paper",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "parked"
+    ],
+    "occurrences": 12,
+    "original": "parked",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "partial",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "partial arm",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "partially cropped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "partially distorted",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "partially exposed",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "partially occluded",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "partially surfaced",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 51,
+    "original": "partially visible",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "partially visible foot",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "partially visible forearm and hand",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "partially visible legs",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "partially visible upper left",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "partly cloudy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "partly coiled",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "partly covered",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 9,
+    "original": "partly cropped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "partly distorted lettering",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "partly exposed",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "partly hidden",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "partly obscured",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 5,
+    "original": "partly occluded",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "partly open"
+    ],
+    "occurrences": 1,
+    "original": "partly open",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "partly visible",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pat",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "patchwork",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "patchwork quilt",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "patterned"
+    ],
+    "occurrences": 21,
+    "original": "patterned",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "patterned cover",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "tie patterned"
+    ],
+    "occurrences": 1,
+    "original": "patterned tie",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "patterned tiles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "upholstery patterned"
+    ],
+    "occurrences": 2,
+    "original": "patterned upholstery",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 7,
+    "original": "paved",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "paw at mouth",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "paw raised",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pendant",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "people and train",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "topping pepperoni"
+    ],
+    "occurrences": 2,
+    "original": "pepperoni",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "peppers",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "period clothing",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "pine needles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "pink"
+    ],
+    "occurrences": 15,
+    "original": "pink",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "pink",
+      "white"
+    ],
+    "occurrences": 2,
+    "original": "pink and white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "outfit pink",
+      "outfit white"
+    ],
+    "occurrences": 1,
+    "original": "pink and white outfit",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "pink band",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "brown",
+      "pink"
+    ],
+    "occurrences": 4,
+    "original": "pink brown",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "pink cardigan",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pink ends",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "pink face covering",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 7,
+    "original": "pink flowers",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "frosting pink"
+    ],
+    "occurrences": 1,
+    "original": "pink frosting",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "icing pink"
+    ],
+    "occurrences": 2,
+    "original": "pink icing",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "pink lining",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pink liquid",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "pink mask",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "pink",
+      "purple"
+    ],
+    "occurrences": 2,
+    "original": "pink purple",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "shirt pink"
+    ],
+    "occurrences": 4,
+    "original": "pink shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "pink sleeve",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "tail pink"
+    ],
+    "occurrences": 1,
+    "original": "pink tail",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pink topping",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pitched roof",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "plaid ribbon",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "plain"
+    ],
+    "occurrences": 8,
+    "original": "plain",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "rim plain"
+    ],
+    "occurrences": 1,
+    "original": "plain rim",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "plaster",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "plastic"
+    ],
+    "occurrences": 5,
+    "original": "plastic",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "pointed nose",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "portrait orientation",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "pots mostly obscured",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "powdered",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 5,
+    "original": "powdered sugar",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 10,
+    "original": "printed",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "printed design",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "printed markings",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "printed packaging",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "text present"
+    ],
+    "occurrences": 3,
+    "original": "printed text",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "propeller",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "puffed shoulders",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "puffy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "purple"
+    ],
+    "occurrences": 23,
+    "original": "purple",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "purple",
+      "yellow"
+    ],
+    "occurrences": 2,
+    "original": "purple and yellow",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "purple branches",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "purple edge",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "purple flowers",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "purple printed text",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "shirt purple"
+    ],
+    "occurrences": 2,
+    "original": "purple shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "purple top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "trim purple"
+    ],
+    "occurrences": 1,
+    "original": "purple trim",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "quilted",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "radiating light rays",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "raised to mouth",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "raised wings",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "raspberries",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "raw"
+    ],
+    "occurrences": 1,
+    "original": "raw",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "realistic",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 19,
+    "original": "rear",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "rear pair",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position right"
+    ],
+    "occurrences": 4,
+    "original": "rear right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "reclining",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "rectangular"
+    ],
+    "occurrences": 52,
+    "original": "rectangular",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "rectangular block",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "rectangular panes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "rectangular shade",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "red"
+    ],
+    "occurrences": 159,
+    "original": "red",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "text STOP"
+    ],
+    "occurrences": 1,
+    "original": "red STOP text",
+    "rule": "literal_text"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red SUV",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "black",
+      "red"
+    ],
+    "occurrences": 2,
+    "original": "red and black",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red and black squares",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red and lime green pots visible",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "red",
+      "white"
+    ],
+    "occurrences": 2,
+    "original": "red and white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red and white details",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "red apron",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red awning",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "beak red"
+    ],
+    "occurrences": 4,
+    "original": "red beak",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "black",
+      "red"
+    ],
+    "occurrences": 2,
+    "original": "red black",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red blue graphic",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "border red"
+    ],
+    "occurrences": 3,
+    "original": "red border",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red brick facade",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "cap red"
+    ],
+    "occurrences": 5,
+    "original": "red cap",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red checkered and gray",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "collar red"
+    ],
+    "occurrences": 1,
+    "original": "red collar",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red collar and sleeve patch",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red contents",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "red cover",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "dress red"
+    ],
+    "occurrences": 4,
+    "original": "red dress",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red edge",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red ends",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red entrance",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red flags",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red flowers",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "frame red"
+    ],
+    "occurrences": 4,
+    "original": "red frame",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "hair red"
+    ],
+    "occurrences": 1,
+    "original": "red hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "red handle",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red illuminated strip",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "jacket red"
+    ],
+    "occurrences": 6,
+    "original": "red jacket",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red jam",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "red light",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red light illuminated",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red nose",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red nose and tail",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "number 9"
+    ],
+    "occurrences": 1,
+    "original": "red number 9",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "red octagon",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "orange",
+      "red"
+    ],
+    "occurrences": 1,
+    "original": "red orange",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "orange",
+      "pink",
+      "red"
+    ],
+    "occurrences": 1,
+    "original": "red orange pale pink",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red panel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red peel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "frame purple",
+      "frame red"
+    ],
+    "occurrences": 1,
+    "original": "red purple frame",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red rear light",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "red sauce",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "red seams",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "shirt red"
+    ],
+    "occurrences": 2,
+    "original": "red shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red shorts",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "skin red"
+    ],
+    "occurrences": 1,
+    "original": "red skin",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red slash",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "sleeves red"
+    ],
+    "occurrences": 2,
+    "original": "red sleeves",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red stripe",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "tail red"
+    ],
+    "occurrences": 1,
+    "original": "red tail",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "text red"
+    ],
+    "occurrences": 2,
+    "original": "red text",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "red tiles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "trim red"
+    ],
+    "occurrences": 5,
+    "original": "red trim",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red vegetables",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red vertical rear lights",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "red",
+      "white"
+    ],
+    "occurrences": 2,
+    "original": "red white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "red white label",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "toppings fewer"
+    ],
+    "occurrences": 1,
+    "original": "reduced chunky toppings",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 10,
+    "original": "reflective",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "reflective glass facade",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "reflective lenses",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "reflective near shoreline",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "reshaped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "reshaped lower body",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "rice",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position right"
+    ],
+    "occurrences": 150,
+    "original": "right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position right"
+    ],
+    "occurrences": 1,
+    "original": "right back",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position right"
+    ],
+    "occurrences": 10,
+    "original": "right background",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position center",
+      "position right"
+    ],
+    "occurrences": 4,
+    "original": "right center",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "right child",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position right"
+    ],
+    "occurrences": 5,
+    "original": "right edge",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position right"
+    ],
+    "occurrences": 10,
+    "original": "right foreground",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "right hand",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position center",
+      "position right"
+    ],
+    "occurrences": 2,
+    "original": "right middle",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "right of monitor",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "right pair",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "right portion",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position right"
+    ],
+    "occurrences": 6,
+    "original": "right side",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "right side of desk",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "right skier",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "ripe",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "ripples",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "road signs",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "roasted",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "rocky",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "rocky ridge",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "roman numerals",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "roof lights",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "round"
+    ],
+    "occurrences": 47,
+    "original": "round",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "round metal blade",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "round pale face",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "rounded",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "rounded basin",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "rows",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "rows of dark windows",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "rugged",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "running",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "running pose",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "salad",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "salmon pink",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "sandals",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "sandy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "sauce",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "sausages",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 7,
+    "original": "scattered",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "scattered printed sheets",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "scattered straw",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "screen webpage"
+    ],
+    "occurrences": 1,
+    "original": "screen displaying webpage",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "screen facing viewer",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "screen illuminated",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "screen off",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "screen lit"
+    ],
+    "occurrences": 5,
+    "original": "screen on",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "screen showing cushions",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "sitting"
+    ],
+    "occurrences": 11,
+    "original": "seated",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "seated on floor",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "seaweed topping",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "second",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "second from foreground",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "second from left background",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "semicircular",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "serif font",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "shaded arms",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "shallow",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "shallow near shore",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "hair shaved sides"
+    ],
+    "occurrences": 2,
+    "original": "shaved sides",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "sheer",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "shin guards visible",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "shops",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "shoreline",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "short"
+    ],
+    "occurrences": 2,
+    "original": "short",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "beard short"
+    ],
+    "occurrences": 3,
+    "original": "short beard",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "hair black",
+      "hair short"
+    ],
+    "occurrences": 1,
+    "original": "short black hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "hair mohawk"
+    ],
+    "occurrences": 1,
+    "original": "short black mohawk",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "hair brown",
+      "hair short"
+    ],
+    "occurrences": 2,
+    "original": "short brown hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "hair dark",
+      "hair short"
+    ],
+    "occurrences": 2,
+    "original": "short dark hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "hair short"
+    ],
+    "occurrences": 1,
+    "original": "short hair",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "short line",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "hair mohawk"
+    ],
+    "occurrences": 2,
+    "original": "short mohawk",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "dress red",
+      "dress short"
+    ],
+    "occurrences": 1,
+    "original": "short red dress",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "sleeves short"
+    ],
+    "occurrences": 4,
+    "original": "short sleeves",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "tail short"
+    ],
+    "occurrences": 1,
+    "original": "short tail",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "short"
+    ],
+    "occurrences": 1,
+    "original": "shorter",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "shouting expression",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "showing nature scene",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "side facing",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "logo present"
+    ],
+    "occurrences": 1,
+    "original": "side logo",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "sidewalk",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "silver"
+    ],
+    "occurrences": 83,
+    "original": "silver",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "silver SUV",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "exterior silver"
+    ],
+    "occurrences": 1,
+    "original": "silver exterior",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "frame silver"
+    ],
+    "occurrences": 2,
+    "original": "silver frame",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "single",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "single central pedestal",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "single door",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "single scoop",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "section single"
+    ],
+    "occurrences": 1,
+    "original": "single section",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "sitting"
+    ],
+    "occurrences": 6,
+    "original": "sitting",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "sitting"
+    ],
+    "occurrences": 1,
+    "original": "sitting on ground",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "sketched",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "skin on",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "skull image",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "sleeveless",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "sliced"
+    ],
+    "occurrences": 6,
+    "original": "sliced",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "slices",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "slightly yellowed edges",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "sloped roof",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "small"
+    ],
+    "occurrences": 50,
+    "original": "small",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "text present"
+    ],
+    "occurrences": 1,
+    "original": "small dark lettering",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "small portion",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "small red tomatoes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "small"
+    ],
+    "occurrences": 2,
+    "original": "smaller",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "smeared",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "smiling"
+    ],
+    "occurrences": 6,
+    "original": "smiling",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "smooth",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "smooth surface",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "snow covered"
+    ],
+    "occurrences": 28,
+    "original": "snow covered",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "snow dusted",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "snow covered"
+    ],
+    "occurrences": 8,
+    "original": "snowy",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "snowy peak",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "soft",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "soft-sided",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "sparse",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "sparse foliage",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "sparse grass",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "speckled",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "spectators",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "spilled",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "spiral bound",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "square"
+    ],
+    "occurrences": 14,
+    "original": "square",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "square rounded corners",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "square tile grid",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "square tiles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 23,
+    "original": "stacked",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "stacked fennel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "standing"
+    ],
+    "occurrences": 15,
+    "original": "standing",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "standing and lying",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "steel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "steep",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "steep slopes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "stemmed",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "stone"
+    ],
+    "occurrences": 12,
+    "original": "stone",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "stone facade",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "stone facing",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "storefront",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "straw",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "straw covered",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "strawberry",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "stream",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "streamlined",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "striped"
+    ],
+    "occurrences": 12,
+    "original": "striped",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "shirt striped"
+    ],
+    "occurrences": 8,
+    "original": "striped shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "sleeves striped"
+    ],
+    "occurrences": 2,
+    "original": "striped sleeves",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "uniform striped"
+    ],
+    "occurrences": 6,
+    "original": "striped uniform",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "stuffed roll",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "stylized",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "succulent",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "sunflower pattern",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "sunglasses",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "supplies",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "swirled",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 12,
+    "original": "tabby",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "tablecloths",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "tails",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "tall"
+    ],
+    "occurrences": 9,
+    "original": "tall",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "tall"
+    ],
+    "occurrences": 1,
+    "original": "taller",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "tan"
+    ],
+    "occurrences": 19,
+    "original": "tan",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "tan cover",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "jacket tan"
+    ],
+    "occurrences": 4,
+    "original": "tan jacket",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "teal"
+    ],
+    "occurrences": 2,
+    "original": "teal",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "teal vest",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "crying"
+    ],
+    "occurrences": 1,
+    "original": "tears on cheek",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "teeth visible"
+    ],
+    "occurrences": 3,
+    "original": "teeth visible",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "terraced",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "text present"
+    ],
+    "occurrences": 1,
+    "original": "text",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 10,
+    "original": "textured",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "thick"
+    ],
+    "occurrences": 3,
+    "original": "thick",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "thick colorful vegetable filling",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "thick strips",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "thin"
+    ],
+    "occurrences": 9,
+    "original": "thin",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "thin blue curved stripe",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "thin green stalk",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "thin strips",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "third",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "third from foreground",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "three",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "three panels",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "three spotlights",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "three tiers",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "three wheeled",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "three-dimensional",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "tiled",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "tiles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 5,
+    "original": "tilted",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "tines visible",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "tinted",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "tipped",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "toddler",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "toiletries",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "toiletries inside",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "topping cheese",
+      "topping tomato"
+    ],
+    "occurrences": 1,
+    "original": "tomato and cheese",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "tongue out"
+    ],
+    "occurrences": 1,
+    "original": "tongue out",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "tongue visible"
+    ],
+    "occurrences": 1,
+    "original": "tongue visible",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "position upper"
+    ],
+    "occurrences": 6,
+    "original": "top",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "top and bottom",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position center",
+      "position upper"
+    ],
+    "occurrences": 2,
+    "original": "top center",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position upper"
+    ],
+    "occurrences": 1,
+    "original": "top edge",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position left",
+      "position upper"
+    ],
+    "occurrences": 2,
+    "original": "top left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "toppings",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "traffic",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "transparent"
+    ],
+    "occurrences": 14,
+    "original": "transparent",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "triangular"
+    ],
+    "occurrences": 12,
+    "original": "triangular",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "trunk lowered",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "trunk raised",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "turquoise"
+    ],
+    "occurrences": 4,
+    "original": "turquoise",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "two",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "panels two"
+    ],
+    "occurrences": 1,
+    "original": "two panels",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "two seated",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "two shades",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "two tusks",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "visible legs two"
+    ],
+    "occurrences": 1,
+    "original": "two visible legs",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "two visible sections",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "umpire rear foot",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "under stage",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "under strawberry",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "uneven",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "unlit"
+    ],
+    "occurrences": 1,
+    "original": "unlit",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "cheese unmelted"
+    ],
+    "occurrences": 1,
+    "original": "unmelted cheese",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "position upper"
+    ],
+    "occurrences": 39,
+    "original": "upper",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position upper"
+    ],
+    "occurrences": 6,
+    "original": "upper background",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "upper body",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position center",
+      "position upper"
+    ],
+    "occurrences": 7,
+    "original": "upper center",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "upper conveyor",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "upper in image",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position left",
+      "position upper"
+    ],
+    "occurrences": 21,
+    "original": "upper left",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "upper left panel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "upper panel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "position right",
+      "position upper"
+    ],
+    "occurrences": 23,
+    "original": "upper right",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [
+      "position right",
+      "position upper"
+    ],
+    "occurrences": 2,
+    "original": "upper right background",
+    "rule": "coarse_position"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "upper right panel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "upper shelf",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "upper sky",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "upper window",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "upper-left corner",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 14,
+    "original": "upright",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "upright ears",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 5,
+    "original": "upside down",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "utensils",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "vegetable filling",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 11,
+    "original": "vegetables",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "vertical",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "vertical bars",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "vertical folds",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "vertically folded",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "very bright",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "eyes partly closed"
+    ],
+    "occurrences": 1,
+    "original": "visible eye nearly closed",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "eyes open"
+    ],
+    "occurrences": 1,
+    "original": "visible eye open",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "visible on both sides",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "visible pockets",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "visible seeds",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "visible through window",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "waffle cone",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "walking"
+    ],
+    "occurrences": 3,
+    "original": "walking",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 10,
+    "original": "wall mounted",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "warm",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "water",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "wave",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "wearing sunglasses",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "wet"
+    ],
+    "occurrences": 12,
+    "original": "wet",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "white"
+    ],
+    "occurrences": 601,
+    "original": "white",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "text BRR"
+    ],
+    "occurrences": 1,
+    "original": "white BRR text",
+    "rule": "literal_text"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white Chinese text",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "black",
+      "white"
+    ],
+    "occurrences": 3,
+    "original": "white and black",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "blue",
+      "white"
+    ],
+    "occurrences": 1,
+    "original": "white and blue",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "orange",
+      "white"
+    ],
+    "occurrences": 2,
+    "original": "white and orange",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "green",
+      "white"
+    ],
+    "occurrences": 1,
+    "original": "white and pale green",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "pink",
+      "white"
+    ],
+    "occurrences": 2,
+    "original": "white and pink",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "icing white",
+      "icing yellow"
+    ],
+    "occurrences": 2,
+    "original": "white and yellow icing",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white arm stripe",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "white background",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "white bedding",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "black",
+      "white"
+    ],
+    "occurrences": 2,
+    "original": "white black",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "keys black",
+      "keys white"
+    ],
+    "occurrences": 1,
+    "original": "white black keys",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white blouse",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "bread white"
+    ],
+    "occurrences": 5,
+    "original": "white bread",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white cabinets",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "cap white"
+    ],
+    "occurrences": 2,
+    "original": "white cap",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "white chest",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "white cloth",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "white clouds",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white cover",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white crest",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "white cushion",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white diagonal stripes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white dollop",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "white face",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "filling white"
+    ],
+    "occurrences": 1,
+    "original": "white filling",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "frame white"
+    ],
+    "occurrences": 6,
+    "original": "white frame",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "frosting white"
+    ],
+    "occurrences": 1,
+    "original": "white frosting",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 8,
+    "original": "white globes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "hull white"
+    ],
+    "occurrences": 1,
+    "original": "white hull",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white ice cream",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "icing white"
+    ],
+    "occurrences": 8,
+    "original": "white icing",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white interior",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "keys white"
+    ],
+    "occurrences": 1,
+    "original": "white keys",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "text white"
+    ],
+    "occurrences": 2,
+    "original": "white lettering",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white marble",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white middle",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "neck white"
+    ],
+    "occurrences": 1,
+    "original": "white neck",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white neck patch",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "pants white"
+    ],
+    "occurrences": 4,
+    "original": "white pants",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white patch",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "white paws",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white pebbles",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white rectangle",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white rectangular",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "red",
+      "white"
+    ],
+    "occurrences": 4,
+    "original": "white red",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "rim white"
+    ],
+    "occurrences": 2,
+    "original": "white rim",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 10,
+    "original": "white shade",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "shirt white"
+    ],
+    "occurrences": 20,
+    "original": "white shirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white shoes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "white shorts",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white sidewall",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "skirt white"
+    ],
+    "occurrences": 3,
+    "original": "white skirt",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white sleeveless shirt",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "sole white"
+    ],
+    "occurrences": 1,
+    "original": "white sole",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white star",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white stick",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "striped"
+    ],
+    "occurrences": 6,
+    "original": "white stripes",
+    "rule": "pattern_without_detail_color"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white surf",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white swirl",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white tank top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white text panel",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white tissue",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white topping",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "uniform white"
+    ],
+    "occurrences": 5,
+    "original": "white uniform",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white upper portion",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white upper section",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "white wake",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "white wings",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "whole"
+    ],
+    "occurrences": 3,
+    "original": "whole",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "wicker"
+    ],
+    "occurrences": 10,
+    "original": "wicker",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "wide"
+    ],
+    "occurrences": 4,
+    "original": "wide",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "body wide"
+    ],
+    "occurrences": 1,
+    "original": "wide body",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "wide brim",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "wider right side",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "windows",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 6,
+    "original": "wire",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "wire posts",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "wire shelves",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "wired",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "with mushrooms",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "woman face",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "print woman face"
+    ],
+    "occurrences": 1,
+    "original": "woman face print",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [
+      "wood"
+    ],
+    "occurrences": 72,
+    "original": "wood",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "wood cabinets",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "wood frame",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "wooded",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "wood"
+    ],
+    "occurrences": 128,
+    "original": "wooden",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "wooden beams",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "working",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "woven",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "wrapped trays",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "yellow"
+    ],
+    "occurrences": 81,
+    "original": "yellow",
+    "rule": "exact_alias"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "yellow accents",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "striped"
+    ],
+    "occurrences": 1,
+    "original": "yellow and black striped",
+    "rule": "pattern_without_detail_color"
+  },
+  {
+    "core": [
+      "green",
+      "yellow"
+    ],
+    "occurrences": 1,
+    "original": "yellow and green",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "red",
+      "yellow"
+    ],
+    "occurrences": 2,
+    "original": "yellow and red",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "black",
+      "yellow"
+    ],
+    "occurrences": 3,
+    "original": "yellow black",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "yellow chest",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 4,
+    "original": "yellow crossing",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow crosswalk",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow design",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "yellow drink",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow emblem",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "yellow flames",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow graphics",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "green",
+      "yellow"
+    ],
+    "occurrences": 4,
+    "original": "yellow green",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [
+      "eyes green",
+      "eyes yellow"
+    ],
+    "occurrences": 1,
+    "original": "yellow green eyes",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow hoodie",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "jacket yellow"
+    ],
+    "occurrences": 1,
+    "original": "yellow jacket",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "yellow label",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 3,
+    "original": "yellow lower body",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "yellow nose",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow pat",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow polo",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "purple",
+      "yellow"
+    ],
+    "occurrences": 2,
+    "original": "yellow purple",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 5,
+    "original": "yellow sauce",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow shoes",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "yellow skirt or dress",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "sole yellow"
+    ],
+    "occurrences": 1,
+    "original": "yellow sole",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow stripe",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow throw",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "yellow top",
+    "rule": "detail_only"
+  },
+  {
+    "core": [
+      "upholstery yellow"
+    ],
+    "occurrences": 1,
+    "original": "yellow upholstery",
+    "rule": "scoped_property"
+  },
+  {
+    "core": [
+      "white",
+      "yellow"
+    ],
+    "occurrences": 2,
+    "original": "yellow white",
+    "rule": "coarse_color_phrase"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow wrapped candy",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "yellow wrappers",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "yogurt",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 2,
+    "original": "young",
+    "rule": "detail_only"
+  },
+  {
+    "core": [],
+    "occurrences": 1,
+    "original": "zippered",
+    "rule": "detail_only"
+  }
+]

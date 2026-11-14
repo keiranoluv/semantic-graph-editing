@@ -1,0 +1,746 @@
+{
+  "color_modifiers": [
+    "light",
+    "dark",
+    "pale",
+    "bright",
+    "deep"
+  ],
+  "color_separators": [
+    "and",
+    "with"
+  ],
+  "design_basis": "Train annotations inspected; category choices are explicit human-readable priors, not fitted from validation/test or model predictions",
+  "empty_operation_policy": "retain_record_and_flag; do_not_silently_count_as_successful_edit",
+  "explicit_aliases": {
+    "application windows": [
+      "screen application"
+    ],
+    "armrests": [
+      "armrests present"
+    ],
+    "armrests absent": [
+      "armrests absent"
+    ],
+    "armrests present": [
+      "armrests present"
+    ],
+    "articulated": [
+      "section articulated"
+    ],
+    "bald": [
+      "hair bald"
+    ],
+    "bite missing from bread": [
+      "bread bitten"
+    ],
+    "black curled mustache": [
+      "mustache present"
+    ],
+    "blond mohawk": [
+      "hair blond",
+      "hair mohawk"
+    ],
+    "blue star graphic": [
+      "star patterned"
+    ],
+    "bread bitten": [
+      "bread bitten"
+    ],
+    "bread intact": [
+      "bread intact"
+    ],
+    "brown hair with blond highlights": [
+      "hair brown",
+      "hair blond"
+    ],
+    "browned": [
+      "browned"
+    ],
+    "browned crust": [
+      "crust browned"
+    ],
+    "browned edges": [
+      "browned"
+    ],
+    "browned surface": [
+      "browned"
+    ],
+    "cheese and bacon strips": [
+      "topping cheese",
+      "topping bacon"
+    ],
+    "cheese melted": [
+      "cheese melted"
+    ],
+    "cheese unmelted": [
+      "cheese unmelted"
+    ],
+    "clear glass": [
+      "transparent",
+      "glass"
+    ],
+    "clear plastic": [
+      "transparent",
+      "plastic"
+    ],
+    "closed mouth": [
+      "mouth closed"
+    ],
+    "closely shaved hair": [
+      "hair shaved"
+    ],
+    "coffee": [
+      "coffee"
+    ],
+    "crust browned": [
+      "crust browned"
+    ],
+    "crying": [
+      "crying"
+    ],
+    "door closed": [
+      "door closed"
+    ],
+    "door open": [
+      "door open"
+    ],
+    "downturned mouth": [
+      "frowning"
+    ],
+    "enlarged": [
+      "large"
+    ],
+    "expression neutral": [
+      "expression neutral"
+    ],
+    "extended upward": [
+      "extended upward"
+    ],
+    "eyes closed": [
+      "eyes closed"
+    ],
+    "eyes open": [
+      "eyes open"
+    ],
+    "eyes partly closed": [
+      "eyes partly closed"
+    ],
+    "foam absent": [
+      "foam absent"
+    ],
+    "foam art": [
+      "foam present"
+    ],
+    "foam present": [
+      "foam present"
+    ],
+    "frowning": [
+      "frowning"
+    ],
+    "game displayed": [
+      "screen game"
+    ],
+    "garbled lettering": [
+      "text illegible"
+    ],
+    "glass": [
+      "glass"
+    ],
+    "green apple": [
+      "illustration apple"
+    ],
+    "green lime": [
+      "illustration lime"
+    ],
+    "hair bald": [
+      "hair bald"
+    ],
+    "hair blond": [
+      "hair blond"
+    ],
+    "hair brown": [
+      "hair brown"
+    ],
+    "hair long": [
+      "hair long"
+    ],
+    "hair mohawk": [
+      "hair mohawk"
+    ],
+    "hair shaved": [
+      "hair shaved"
+    ],
+    "hair shaved sides": [
+      "hair shaved sides"
+    ],
+    "illustration apple": [
+      "illustration apple"
+    ],
+    "illustration lime": [
+      "illustration lime"
+    ],
+    "large": [
+      "large"
+    ],
+    "large blue star-like graphic": [
+      "star patterned"
+    ],
+    "large text": [
+      "text present"
+    ],
+    "lid closed": [
+      "lid closed"
+    ],
+    "lips natural": [
+      "lips natural"
+    ],
+    "lit screen": [
+      "screen lit"
+    ],
+    "logo absent": [
+      "logo absent"
+    ],
+    "logo present": [
+      "logo present"
+    ],
+    "longer hair": [
+      "hair long"
+    ],
+    "lying": [
+      "lying"
+    ],
+    "lying at a low angle": [
+      "lying"
+    ],
+    "lying horizontally": [
+      "lying"
+    ],
+    "many chunky toppings": [
+      "toppings many"
+    ],
+    "melted cheese": [
+      "cheese melted"
+    ],
+    "mostly plain surface": [
+      "plain"
+    ],
+    "mouth closed": [
+      "mouth closed"
+    ],
+    "mouth open": [
+      "mouth open"
+    ],
+    "mouth partly open": [
+      "mouth partly open"
+    ],
+    "mouth relaxed": [
+      "mouth relaxed"
+    ],
+    "mouth slightly open": [
+      "mouth partly open"
+    ],
+    "mouth wide open": [
+      "mouth wide open"
+    ],
+    "multicolored": [
+      "multicolored"
+    ],
+    "multicolored print": [
+      "patterned",
+      "multicolored"
+    ],
+    "mustache present": [
+      "mustache present"
+    ],
+    "natural lip color": [
+      "lips natural"
+    ],
+    "neutral expression": [
+      "expression neutral"
+    ],
+    "no foam": [
+      "foam absent"
+    ],
+    "no side logo": [
+      "logo absent"
+    ],
+    "no text": [
+      "text absent"
+    ],
+    "no visible armrests": [
+      "armrests absent"
+    ],
+    "number 9": [
+      "number 9"
+    ],
+    "one panel swung inward": [
+      "panel open"
+    ],
+    "one visible leg": [
+      "visible legs one"
+    ],
+    "open mouth": [
+      "mouth open"
+    ],
+    "panel open": [
+      "panel open"
+    ],
+    "panels two": [
+      "panels two"
+    ],
+    "patterned": [
+      "patterned"
+    ],
+    "pepperoni": [
+      "topping pepperoni"
+    ],
+    "plain": [
+      "plain"
+    ],
+    "plastic": [
+      "plastic"
+    ],
+    "print woman face": [
+      "print woman face"
+    ],
+    "printed text": [
+      "text present"
+    ],
+    "red number 9": [
+      "number 9"
+    ],
+    "reduced chunky toppings": [
+      "toppings fewer"
+    ],
+    "screen application": [
+      "screen application"
+    ],
+    "screen displaying webpage": [
+      "screen webpage"
+    ],
+    "screen game": [
+      "screen game"
+    ],
+    "screen lit": [
+      "screen lit"
+    ],
+    "screen on": [
+      "screen lit"
+    ],
+    "screen webpage": [
+      "screen webpage"
+    ],
+    "section articulated": [
+      "section articulated"
+    ],
+    "section single": [
+      "section single"
+    ],
+    "shaved sides": [
+      "hair shaved sides"
+    ],
+    "short": [
+      "short"
+    ],
+    "short black mohawk": [
+      "hair mohawk"
+    ],
+    "short mohawk": [
+      "hair mohawk"
+    ],
+    "shorter": [
+      "short"
+    ],
+    "side logo": [
+      "logo present"
+    ],
+    "single section": [
+      "section single"
+    ],
+    "sitting": [
+      "sitting"
+    ],
+    "sitting on ground": [
+      "sitting"
+    ],
+    "small": [
+      "small"
+    ],
+    "small dark lettering": [
+      "text present"
+    ],
+    "smaller": [
+      "small"
+    ],
+    "star patterned": [
+      "star patterned"
+    ],
+    "tall": [
+      "tall"
+    ],
+    "taller": [
+      "tall"
+    ],
+    "tears on cheek": [
+      "crying"
+    ],
+    "teeth visible": [
+      "teeth visible"
+    ],
+    "text": [
+      "text present"
+    ],
+    "text absent": [
+      "text absent"
+    ],
+    "text illegible": [
+      "text illegible"
+    ],
+    "text present": [
+      "text present"
+    ],
+    "tomato and cheese": [
+      "topping tomato",
+      "topping cheese"
+    ],
+    "tongue out": [
+      "tongue out"
+    ],
+    "tongue visible": [
+      "tongue visible"
+    ],
+    "topping bacon": [
+      "topping bacon"
+    ],
+    "topping cheese": [
+      "topping cheese"
+    ],
+    "topping pepperoni": [
+      "topping pepperoni"
+    ],
+    "topping tomato": [
+      "topping tomato"
+    ],
+    "toppings fewer": [
+      "toppings fewer"
+    ],
+    "toppings many": [
+      "toppings many"
+    ],
+    "transparent": [
+      "transparent"
+    ],
+    "two panels": [
+      "panels two"
+    ],
+    "two visible legs": [
+      "visible legs two"
+    ],
+    "unmelted cheese": [
+      "cheese unmelted"
+    ],
+    "visible eye nearly closed": [
+      "eyes partly closed"
+    ],
+    "visible eye open": [
+      "eyes open"
+    ],
+    "visible legs one": [
+      "visible legs one"
+    ],
+    "visible legs two": [
+      "visible legs two"
+    ],
+    "woman face print": [
+      "print woman face"
+    ]
+  },
+  "families": {
+    "color": {
+      "beige": [],
+      "black": [],
+      "blue": [],
+      "brown": [],
+      "cream": [],
+      "cyan": [],
+      "gold": [
+        "golden",
+        "gold colored"
+      ],
+      "gray": [
+        "grey"
+      ],
+      "green": [],
+      "lime green": [],
+      "mint green": [],
+      "multicolored": [
+        "multicolor",
+        "multi colored",
+        "colorful",
+        "rainbow colored"
+      ],
+      "orange": [],
+      "pink": [],
+      "purple": [
+        "violet"
+      ],
+      "red": [],
+      "silver": [
+        "silver colored"
+      ],
+      "tan": [],
+      "teal": [],
+      "turquoise": [],
+      "white": [],
+      "yellow": []
+    },
+    "material": {
+      "brick": [],
+      "concrete": [],
+      "fabric": [
+        "cloth"
+      ],
+      "glass": [],
+      "leather": [],
+      "metal": [
+        "metallic"
+      ],
+      "paper": [],
+      "plastic": [],
+      "rubber": [],
+      "stone": [],
+      "wicker": [],
+      "wood": [
+        "wooden"
+      ]
+    },
+    "pattern": {
+      "checkered": [
+        "checked",
+        "checkerboard",
+        "checkered pattern"
+      ],
+      "floral": [
+        "floral pattern",
+        "flower pattern"
+      ],
+      "plain": [
+        "solid colored"
+      ],
+      "polka dot": [
+        "polka dots",
+        "polka dotted",
+        "polka dot pattern"
+      ],
+      "spotted": [
+        "spots",
+        "spotted pattern"
+      ],
+      "star patterned": [
+        "star pattern",
+        "star patterns",
+        "star design",
+        "star designs",
+        "stars pattern"
+      ],
+      "striped": [
+        "stripes",
+        "stripe pattern",
+        "striped pattern"
+      ]
+    },
+    "shape": {
+      "curved": [],
+      "cylindrical": [],
+      "flat": [],
+      "octagonal": [],
+      "oval": [],
+      "rectangular": [],
+      "round": [
+        "circular"
+      ],
+      "square": [],
+      "triangular": []
+    },
+    "size": {
+      "large": [
+        "big"
+      ],
+      "long": [],
+      "narrow": [],
+      "short": [],
+      "small": [],
+      "tall": [],
+      "thick": [],
+      "thin": [],
+      "wide": []
+    },
+    "state": {
+      "broken": [],
+      "closed": [],
+      "cooked": [],
+      "crouching": [],
+      "crying": [],
+      "dry": [],
+      "empty": [],
+      "flying": [
+        "airborne"
+      ],
+      "folded": [],
+      "frowning": [],
+      "full": [],
+      "intact": [],
+      "lit": [
+        "illuminated"
+      ],
+      "lying": [],
+      "open": [],
+      "parked": [],
+      "partly open": [],
+      "raw": [],
+      "sitting": [
+        "seated"
+      ],
+      "sliced": [],
+      "smiling": [],
+      "snow covered": [
+        "snowy",
+        "covered in snow"
+      ],
+      "standing": [],
+      "transparent": [
+        "clear",
+        "see through"
+      ],
+      "unlit": [],
+      "walking": [],
+      "wet": [],
+      "whole": []
+    }
+  },
+  "instruction_policy": "never synthesize target attributes from instructions; no instruction-conditioned projection",
+  "literal_rules": [
+    "number + digits",
+    "optional basic color + UPPERCASE_OR_DIGITS + text/lettering; exact literal content preserved"
+  ],
+  "material_modifiers": [
+    "light",
+    "dark",
+    "pale",
+    "bright"
+  ],
+  "position_aliases": {
+    "bottom": "lower",
+    "middle": "center",
+    "top": "upper"
+  },
+  "position_policy": "Keep only coarse position tokens from full position phrases, to distinguish repeated instances; discard visibility and fine layout prose.",
+  "position_qualifiers": [
+    "foreground",
+    "background",
+    "front",
+    "back",
+    "rear",
+    "middle",
+    "side",
+    "edge",
+    "top",
+    "bottom"
+  ],
+  "position_tokens": [
+    "left",
+    "right",
+    "center",
+    "upper",
+    "lower"
+  ],
+  "schema": "magicbrush-compact-attributes-v1",
+  "scope": "Deterministic coarse attribute projection, identical for source and target; object labels, IDs, edges and instructions unchanged",
+  "scoped_descriptor_aliases": {
+    "blonde": "blond",
+    "lettering": "text",
+    "trousers": "pants"
+  },
+  "scoped_descriptors": [
+    "blond",
+    "blonde",
+    "dark",
+    "light",
+    "long",
+    "short",
+    "large",
+    "small",
+    "tall",
+    "low",
+    "wide",
+    "narrow",
+    "thin",
+    "thick",
+    "curly",
+    "braided",
+    "shaved",
+    "bob",
+    "striped",
+    "patterned",
+    "plain",
+    "open",
+    "closed",
+    "lit",
+    "unlit"
+  ],
+  "scoped_parts": [
+    "hair",
+    "beard",
+    "mustache",
+    "eyes",
+    "lips",
+    "lipstick",
+    "shirt",
+    "jacket",
+    "coat",
+    "cape",
+    "pants",
+    "trousers",
+    "dress",
+    "skirt",
+    "sweater",
+    "uniform",
+    "suit",
+    "tie",
+    "cap",
+    "hat",
+    "boots",
+    "footwear",
+    "screen",
+    "keys",
+    "hull",
+    "exterior",
+    "border",
+    "rim",
+    "frame",
+    "trim",
+    "icing",
+    "frosting",
+    "filling",
+    "crust",
+    "bread",
+    "beak",
+    "tail",
+    "sleeves",
+    "sole",
+    "body",
+    "neck",
+    "fur",
+    "leaves",
+    "collar",
+    "upholstery",
+    "skin",
+    "outfit",
+    "lettering",
+    "text"
+  ],
+  "test_policy": "freeze this recipe and code before projecting heldout labels; no heldout label reads in build",
+  "unknown_attribute": "drop_from_core_and_preserve_verbatim_in_sidecar",
+  "version": 1
+}
