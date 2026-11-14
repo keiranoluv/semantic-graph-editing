@@ -1,0 +1,68 @@
+{
+  "creation_commit": "de08d3720b9318dcf14977ea510ae7df263876a0",
+  "identity": {
+    "TF32": false,
+    "WandB_initialized": false,
+    "audit_code_sha256": "69363091c3b7c3c5e0b3956ab806eb703b336a59d1409f16d59c80d46d49ebcb",
+    "deterministic_algorithms": true,
+    "device": "cuda",
+    "eval_code_sha256": "1739c5a46ada1a46f36cd9c2912a47d2f07eead66b04b13b43bd406b0d7f91a7",
+    "experiment_identity": "9abac0caeb3ae89c9b54db494477a368fa84aad314524dc1586b592a678961cd",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "schema": "emnlp2020-wandb-v4-test-v1",
+    "test_features_manifest_sha256": "0b7c9f354abec3724c509fc26f5ff4e1275b4aadd86278f911e63f027a1d20f7",
+    "test_features_vectors_sha256": "9176efce604977b165825bf0157d042cb7bcceb288a2855537235f613c223be4",
+    "test_previously_evaluated_in_v3": true,
+    "test_receipt_sha256": "606be34b253d33ff9c3b20f376fccb71796de1de860f93f087bcfe52bc30e95a",
+    "torch": "2.7.0+cu128",
+    "training_config": {
+      "automatic_queue": true,
+      "automatic_test": false,
+      "batch_size": 128,
+      "dataset": "data/processed/level2/emnlp2020-task-b-v2",
+      "device": "cuda",
+      "epochs": 20,
+      "execution": "main",
+      "frozen_feature_cache_device": "cpu",
+      "gradient_clip": 5.0,
+      "hidden": 96,
+      "layers": 2,
+      "lr": 0.001,
+      "main_training_launched_by": "user_only",
+      "max_decode_tokens": 192,
+      "max_edges": 42,
+      "max_nodes": 7,
+      "min_delta": 0.001,
+      "minimum_epochs": 6,
+      "models": [
+        "mlp",
+        "gnn"
+      ],
+      "output": "runs/level2/emnlp2020-task-b-wandb-v4",
+      "patience": 3,
+      "queue_order": "model_then_seed_sequential_one_model_at_a_time",
+      "review_status": "unreviewed_official_graph_supervision",
+      "schema": "emnlp2020-task-b-wandb-v4",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "selection": "minimum_validation_teacher_forced_loss",
+      "test_policy": "not_opened_by_train_v3_test_already_seen",
+      "text_batch_size": 128,
+      "threads": 4,
+      "validation_interval": 1,
+      "wandb": {
+        "entity": null,
+        "mode": "online",
+        "project": "semantic-graph-editing"
+      },
+      "weight_decay": 0.01,
+      "weights": "data/cache/vg150-clip-vit-b32-v1/weights/ViT-B-32.pt"
+    },
+    "training_freeze_sha256": "9800ff797ba124c48f1832ca565644eb69f79a5e5de6e828aa096790c759f4eb",
+    "training_performed": false
+  },
+  "identity_sha256": "8c4893d20c530995629dce21fc1fd659897fd4c5e00d54b146dd4f8f2ef0a363"
+}

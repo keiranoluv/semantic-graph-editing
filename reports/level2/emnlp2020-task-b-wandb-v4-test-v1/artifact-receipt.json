@@ -1,0 +1,15 @@
+{
+  "files": {
+    "runs/level2/emnlp2020-task-b-wandb-v4-test-v1/baselines.json": "4d83e4fefb562de1cd2ba06be96159c1ba6bdeb21be329faedd6b2d4e953178c",
+    "runs/level2/emnlp2020-task-b-wandb-v4-test-v1/identity.json": "19a67d3fa77f31f84b90e765a2d808e2f8a301521d40661c0de29c3380551157",
+    "runs/level2/emnlp2020-task-b-wandb-v4-test-v1/summary.json": "98abf414fb8c9e6a24ac3081582cddbeb6de86a89f5a357a10cba4aaf6102690"
+  },
+  "per_run_receipts": {
+    "gnn-seed42": "9f2d7919bedd27bded638d80acf0fb3977734fa0f7a79f053017362e7341dbcf",
+    "gnn-seed43": "018669f1f70b548b0a757114387a4ae6b191f83db584d2eb4ffff7c8b2cd73bc",
+    "gnn-seed44": "9193338a90db4f7a31c856e9c0dcb766aed4c0090695e7356cca9b3a28a6cac0",
+    "mlp-seed42": "25336026a4d0b988a012b73a7c5f271262929918316f68ed195096f475d28d6f",
+    "mlp-seed43": "87d306dc85d2d2f6c0baf6d0456a680bbf02cc9ff12f2a650697be956d1bfef5",
+    "mlp-seed44": "490b527acbf47ca06ee1210b85baf8358a28eeb8ae98e6ab05a3cd9c91786121"
+  }
+}

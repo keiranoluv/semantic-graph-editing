@@ -1,11 +1,25 @@
 # Tổng hợp EMNLP Task B — W&B v4, kết quả người dùng đã chạy
 
 Ngày tổng hợp: **15/11/2026 (UTC+7)**. **Đủ 6/6 lượt chính**, MLP/GNN với seeds
-42/43/44, W&B online. Đây là **validation trên 532 mẫu**, không phải test v4.
-Assistant chỉ kiểm hash, đọc checkpoint bằng CPU và chấm lại prediction đã lưu;
-không train, model inference, GPU workload hoặc W&B API trong lần tổng hợp này.
+42/43/44, W&B online. Phần audit validation trên **532 mẫu** được thực hiện bằng CPU, không inference.
+Sau đó người dùng cho phép **eval GPU trên 530 test samples**; kết quả mới ở
+[report test v4](../emnlp2020-task-b-wandb-v4-test-v1/README.md). Không có train thêm
+hoặc W&B API trong các bước tổng hợp/eval này.
 
-## Kết quả của best checkpoint
+## Test GPU đã hoàn tất
+
+Trung bình ± sample std qua ba seed, cùng 530 mẫu:
+
+| Model | Micro F1 (%) | Exact operations/target (%) |
+|---|---:|---:|
+| MLP | 81.69 ± 0.31 | 67.74 ± 0.68 |
+| GNN | 82.44 ± 0.39 | 68.55 ± 0.22 |
+
+Đã chạy inference GPU thực tế trên đủ sáu checkpoint. Metrics và prediction
+giống v3, phù hợp trọng số giống nhau. Xem report test cho P/R/F1 sáu loại,
+baselines, OOV, cases và provenance. Test này đã từng được xem ở v3.
+
+## Validation của best checkpoint
 
 Trung bình ± sample standard deviation qua ba seed, đơn vị %. Mọi model/seed
 được chấm trên cùng 532 mẫu/1.500 GT operations. Checkpoint chọn bằng minimum
@@ -114,11 +128,12 @@ nguồn EMNLP thay MagicBrush/InstructPix2Pix vẫn phải được giải trìn
 
 ## Trạng thái test và artifact
 
-`frozen-checkpoints.json` ghi `test_used=false`, `automatic_test=false`; không
-có test-result/test-predictions v4 trong output đã kiểm. Kết quả test của
-[v3](../emnlp2020-task-b-gpu-v3/README.md) thuộc phiên bản cũ, không chép thành
-metric test v4 dù tham số checkpoint giống nhau. Nếu đánh giá v4 về sau cần
-công bố test đã từng được xem ở v3, không gọi là held-out mới.
+`frozen-checkpoints.json` của train ghi `test_used=false`, `automatic_test=false`
+vì đó là trạng thái lúc khóa train. Sau phép eval GPU của người dùng, test đã
+được đo thật trong output riêng, không sửa artifact train.
+[Report test v4](../emnlp2020-task-b-wandb-v4-test-v1/README.md) ghi rõ đây là
+test đã từng được đánh giá ở v3. `summary.json` trong thư mục validation này
+chỉ chứa validation; test metrics nằm trong report test riêng.
 
 Code chạy chính được tạo ở commit **7af91ca** (runtime v4 từ `2821bbd`);
 source/config/data/checkpoint đều được đối chiếu hashes. Xem

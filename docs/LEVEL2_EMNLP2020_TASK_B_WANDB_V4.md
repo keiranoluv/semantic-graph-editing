@@ -115,3 +115,7 @@ Test CPU dùng W&B fake để kiểm run IDs, online-only, lỗi logging, resume
 metrics và early stopping; không truy cập W&B thật. GPU smoke không kiểm kết
 nối tài khoản W&B; kết nối được kiểm khi người dùng khởi chạy main. V4 đã hoàn tất sáu lượt train chính do người dùng chạy; báo cáo kết quả ở liên kết đầu tài liệu. Test EMNLP đã được đánh giá bởi v3, vì vậy đánh giá về sau trên
 cùng split phải công bố đây là tập test đã từng xem, không gọi là held-out mới.
+
+Eval test đã được chạy riêng sau khi người dùng cho phép GPU, giữ nguyên
+checkpoint và W&B train. Xem [kết quả test v4](../reports/level2/emnlp2020-task-b-wandb-v4-test-v1/README.md)
+và [protocol eval](LEVEL2_EMNLP2020_TASK_B_V4_TEST_V1.md).

@@ -1,0 +1,3610 @@
+{
+  "baselines": {
+    "CLIP_nearest_train_program": {
+      "decode_failures": 98,
+      "exact_operation_set_accuracy": 0.33773584905660375,
+      "exact_target_graph_accuracy": 0.33773584905660375,
+      "examples": 530,
+      "failed_predictions": 172,
+      "invalid_transactions": 74,
+      "macro_f1_supported_types": 0.343759508333203,
+      "micro": {
+        "f1": 0.5622086769451416,
+        "fn": 749,
+        "fp": 472,
+        "precision": 0.6242038216560509,
+        "recall": 0.5114155251141552,
+        "support": 1533,
+        "tp": 784
+      },
+      "per_type": {
+        "add_edge": {
+          "f1": 0.20855614973262032,
+          "fn": 171,
+          "fp": 125,
+          "precision": 0.23780487804878048,
+          "recall": 0.18571428571428572,
+          "support": 210,
+          "tp": 39
+        },
+        "add_node": {
+          "f1": 0.2887700534759358,
+          "fn": 78,
+          "fp": 55,
+          "precision": 0.32926829268292684,
+          "recall": 0.2571428571428571,
+          "support": 105,
+          "tp": 27
+        },
+        "delete_edge": {
+          "f1": 0.6966292134831461,
+          "fn": 263,
+          "fp": 142,
+          "precision": 0.7660626029654036,
+          "recall": 0.6387362637362637,
+          "support": 728,
+          "tp": 465
+        },
+        "delete_node": {
+          "f1": 0.7057057057057057,
+          "fn": 128,
+          "fp": 68,
+          "precision": 0.7755775577557755,
+          "recall": 0.6473829201101928,
+          "support": 363,
+          "tp": 235
+        },
+        "replace_edge": {
+          "f1": 0.0,
+          "fn": 6,
+          "fp": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 6,
+          "tp": 0
+        },
+        "replace_node": {
+          "f1": 0.16289592760180996,
+          "fn": 103,
+          "fp": 82,
+          "precision": 0.18,
+          "recall": 0.1487603305785124,
+          "support": 121,
+          "tp": 18
+        }
+      },
+      "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+      "simple_exact_operation_set_accuracy": 0.1487603305785124,
+      "simple_examples": 121,
+      "unsupported_predicted_identities": 0,
+      "valid_transaction_rate": 0.6754716981132075
+    },
+    "no_op": {
+      "decode_failures": 0,
+      "exact_operation_set_accuracy": 0.0,
+      "exact_target_graph_accuracy": 0.0,
+      "examples": 530,
+      "failed_predictions": 0,
+      "invalid_transactions": 0,
+      "macro_f1_supported_types": 0.0,
+      "micro": {
+        "f1": 0.0,
+        "fn": 1533,
+        "fp": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "support": 1533,
+        "tp": 0
+      },
+      "per_type": {
+        "add_edge": {
+          "f1": 0.0,
+          "fn": 210,
+          "fp": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 210,
+          "tp": 0
+        },
+        "add_node": {
+          "f1": 0.0,
+          "fn": 105,
+          "fp": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 105,
+          "tp": 0
+        },
+        "delete_edge": {
+          "f1": 0.0,
+          "fn": 728,
+          "fp": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 728,
+          "tp": 0
+        },
+        "delete_node": {
+          "f1": 0.0,
+          "fn": 363,
+          "fp": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 363,
+          "tp": 0
+        },
+        "replace_edge": {
+          "f1": 0.0,
+          "fn": 6,
+          "fp": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 6,
+          "tp": 0
+        },
+        "replace_node": {
+          "f1": 0.0,
+          "fn": 121,
+          "fp": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 121,
+          "tp": 0
+        }
+      },
+      "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+      "simple_exact_operation_set_accuracy": 0.0,
+      "simple_examples": 121,
+      "unsupported_predicted_identities": 0,
+      "valid_transaction_rate": 1.0
+    }
+  },
+  "comparison_with_v3": {
+    "gnn-seed42": {
+      "metrics_identical_to_v3": true,
+      "prediction_bytes_identical_to_v3": true
+    },
+    "gnn-seed43": {
+      "metrics_identical_to_v3": true,
+      "prediction_bytes_identical_to_v3": true
+    },
+    "gnn-seed44": {
+      "metrics_identical_to_v3": true,
+      "prediction_bytes_identical_to_v3": true
+    },
+    "mlp-seed42": {
+      "metrics_identical_to_v3": true,
+      "prediction_bytes_identical_to_v3": true
+    },
+    "mlp-seed43": {
+      "metrics_identical_to_v3": true,
+      "prediction_bytes_identical_to_v3": true
+    },
+    "mlp-seed44": {
+      "metrics_identical_to_v3": true,
+      "prediction_bytes_identical_to_v3": true
+    }
+  },
+  "evaluation_device": "cuda",
+  "examples": 530,
+  "fresh_GPU_evaluation_of_v4_checkpoints": true,
+  "models": {
+    "gnn": {
+      "exact_operation_set_accuracy": {
+        "mean": 0.6855345911949685,
+        "sample_std": 0.002178680261092927,
+        "values": [
+          0.6867924528301886,
+          0.6830188679245283,
+          0.6867924528301886
+        ]
+      },
+      "exact_target_graph_accuracy": {
+        "mean": 0.6855345911949685,
+        "sample_std": 0.002178680261092927,
+        "values": [
+          0.6867924528301886,
+          0.6830188679245283,
+          0.6867924528301886
+        ]
+      },
+      "macro_f1_supported_types": {
+        "mean": 0.5503398490913876,
+        "sample_std": 0.0027522620630953142,
+        "values": [
+          0.5516040188057335,
+          0.5471826201464541,
+          0.552232908321975
+        ]
+      },
+      "micro": {
+        "f1": {
+          "mean": 0.8244006539772081,
+          "sample_std": 0.003942216924630373,
+          "values": [
+            0.8280632411067194,
+            0.8202283849918434,
+            0.8249103358330616
+          ]
+        },
+        "precision": {
+          "mean": 0.8271549630316586,
+          "sample_std": 0.008209475284638485,
+          "values": [
+            0.8363273453093812,
+            0.8204960835509139,
+            0.8246414602346805
+          ]
+        },
+        "recall": {
+          "mean": 0.8217003696455751,
+          "sample_std": 0.0030129172560450137,
+          "values": [
+            0.8199608610567515,
+            0.8199608610567515,
+            0.8251793868232224
+          ]
+        }
+      },
+      "per_type": {
+        "add_edge": {
+          "f1": {
+            "mean": 0.43561388589982813,
+            "sample_std": 0.019467370249627844,
+            "values": [
+              0.4320388349514563,
+              0.41818181818181815,
+              0.45662100456621
+            ]
+          },
+          "fn": {
+            "mean": 116.33333333333333,
+            "sample_std": 5.686240703077327,
+            "values": [
+              121,
+              118,
+              110
+            ]
+          },
+          "fp": {
+            "mean": 126.33333333333333,
+            "sample_std": 12.583057392117917,
+            "values": [
+              113,
+              138,
+              128
+            ]
+          },
+          "precision": {
+            "mean": 0.42639685021133694,
+            "sample_std": 0.022882151242095396,
+            "values": [
+              0.4405940594059406,
+              0.4,
+              0.43859649122807015
+            ]
+          },
+          "recall": {
+            "mean": 0.446031746031746,
+            "sample_std": 0.027077336681320594,
+            "values": [
+              0.4238095238095238,
+              0.4380952380952381,
+              0.47619047619047616
+            ]
+          },
+          "support": {
+            "mean": 210,
+            "sample_std": 0.0,
+            "values": [
+              210,
+              210,
+              210
+            ]
+          },
+          "tp": {
+            "mean": 93.66666666666667,
+            "sample_std": 5.686240703077327,
+            "values": [
+              89,
+              92,
+              100
+            ]
+          }
+        },
+        "add_node": {
+          "f1": {
+            "mean": 0.6386111413375677,
+            "sample_std": 0.008882802523974585,
+            "values": [
+              0.6310679611650486,
+              0.6363636363636364,
+              0.6484018264840182
+            ]
+          },
+          "fn": {
+            "mean": 36.333333333333336,
+            "sample_std": 3.2145502536643185,
+            "values": [
+              40,
+              35,
+              34
+            ]
+          },
+          "fp": {
+            "mean": 41.333333333333336,
+            "sample_std": 4.725815626252609,
+            "values": [
+              36,
+              45,
+              43
+            ]
+          },
+          "precision": {
+            "mean": 0.6250223420511388,
+            "sample_std": 0.017539594671126788,
+            "values": [
+              0.6435643564356436,
+              0.6086956521739131,
+              0.6228070175438597
+            ]
+          },
+          "recall": {
+            "mean": 0.653968253968254,
+            "sample_std": 0.03061476432061255,
+            "values": [
+              0.6190476190476191,
+              0.6666666666666666,
+              0.6761904761904762
+            ]
+          },
+          "support": {
+            "mean": 105,
+            "sample_std": 0.0,
+            "values": [
+              105,
+              105,
+              105
+            ]
+          },
+          "tp": {
+            "mean": 68.66666666666667,
+            "sample_std": 3.2145502536643185,
+            "values": [
+              65,
+              70,
+              71
+            ]
+          }
+        },
+        "delete_edge": {
+          "f1": {
+            "mean": 0.9764471346933273,
+            "sample_std": 0.002394466026298277,
+            "values": [
+              0.9787525702535984,
+              0.9766162310866575,
+              0.9739726027397261
+            ]
+          },
+          "fn": {
+            "mean": 16.333333333333332,
+            "sample_std": 2.0816659994661326,
+            "values": [
+              14,
+              18,
+              17
+            ]
+          },
+          "fp": {
+            "mean": 18,
+            "sample_std": 2.6457513110645907,
+            "values": [
+              17,
+              16,
+              21
+            ]
+          },
+          "precision": {
+            "mean": 0.9753390313210782,
+            "sample_std": 0.0035406676206557936,
+            "values": [
+              0.9767441860465116,
+              0.977961432506887,
+              0.9713114754098361
+            ]
+          },
+          "recall": {
+            "mean": 0.9775641025641025,
+            "sample_std": 0.0028594313179479743,
+            "values": [
+              0.9807692307692307,
+              0.9752747252747253,
+              0.9766483516483516
+            ]
+          },
+          "support": {
+            "mean": 728,
+            "sample_std": 0.0,
+            "values": [
+              728,
+              728,
+              728
+            ]
+          },
+          "tp": {
+            "mean": 711.6666666666666,
+            "sample_std": 2.0816659994661326,
+            "values": [
+              714,
+              710,
+              711
+            ]
+          }
+        },
+        "delete_node": {
+          "f1": {
+            "mean": 0.9775558543796479,
+            "sample_std": 0.003434174808687672,
+            "values": [
+              0.9807692307692307,
+              0.977961432506887,
+              0.9739368998628258
+            ]
+          },
+          "fn": {
+            "mean": 7.333333333333333,
+            "sample_std": 1.1547005383792515,
+            "values": [
+              6,
+              8,
+              8
+            ]
+          },
+          "fp": {
+            "mean": 9,
+            "sample_std": 1.7320508075688772,
+            "values": [
+              8,
+              8,
+              11
+            ]
+          },
+          "precision": {
+            "mean": 0.9753296598263219,
+            "sample_std": 0.004663335501864315,
+            "values": [
+              0.9780821917808219,
+              0.977961432506887,
+              0.9699453551912568
+            ]
+          },
+          "recall": {
+            "mean": 0.9797979797979798,
+            "sample_std": 0.003180993218675656,
+            "values": [
+              0.9834710743801653,
+              0.977961432506887,
+              0.977961432506887
+            ]
+          },
+          "support": {
+            "mean": 363,
+            "sample_std": 0.0,
+            "values": [
+              363,
+              363,
+              363
+            ]
+          },
+          "tp": {
+            "mean": 355.6666666666667,
+            "sample_std": 1.1547005383792515,
+            "values": [
+              357,
+              355,
+              355
+            ]
+          }
+        },
+        "replace_edge": {
+          "f1": {
+            "mean": 0.0,
+            "sample_std": 0.0,
+            "values": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "fn": {
+            "mean": 6,
+            "sample_std": 0.0,
+            "values": [
+              6,
+              6,
+              6
+            ]
+          },
+          "fp": {
+            "mean": 0.6666666666666666,
+            "sample_std": 1.1547005383792515,
+            "values": [
+              2,
+              0,
+              0
+            ]
+          },
+          "precision": {
+            "mean": 0.0,
+            "sample_std": 0.0,
+            "values": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "recall": {
+            "mean": 0.0,
+            "sample_std": 0.0,
+            "values": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "support": {
+            "mean": 6,
+            "sample_std": 0.0,
+            "values": [
+              6,
+              6,
+              6
+            ]
+          },
+          "tp": {
+            "mean": 0,
+            "sample_std": 0.0,
+            "values": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "replace_node": {
+          "f1": {
+            "mean": 0.27381107823795436,
+            "sample_std": 0.013265937242298206,
+            "values": [
+              0.28699551569506726,
+              0.273972602739726,
+              0.26046511627906976
+            ]
+          },
+          "fn": {
+            "mean": 91,
+            "sample_std": 2.0,
+            "values": [
+              89,
+              91,
+              93
+            ]
+          },
+          "fp": {
+            "mean": 68,
+            "sample_std": 2.0,
+            "values": [
+              70,
+              68,
+              66
+            ]
+          },
+          "precision": {
+            "mean": 0.3059067598670674,
+            "sample_std": 0.007928775489115015,
+            "values": [
+              0.3137254901960784,
+              0.30612244897959184,
+              0.2978723404255319
+            ]
+          },
+          "recall": {
+            "mean": 0.24793388429752067,
+            "sample_std": 0.01652892561983471,
+            "values": [
+              0.2644628099173554,
+              0.24793388429752067,
+              0.23140495867768596
+            ]
+          },
+          "support": {
+            "mean": 121,
+            "sample_std": 0.0,
+            "values": [
+              121,
+              121,
+              121
+            ]
+          },
+          "tp": {
+            "mean": 30,
+            "sample_std": 2.0,
+            "values": [
+              32,
+              30,
+              28
+            ]
+          }
+        }
+      },
+      "simple_exact_operation_set_accuracy": {
+        "mean": 0.24793388429752067,
+        "sample_std": 0.01652892561983471,
+        "values": [
+          0.2644628099173554,
+          0.24793388429752067,
+          0.23140495867768596
+        ]
+      },
+      "valid_transaction_rate": {
+        "mean": 0.9578616352201258,
+        "sample_std": 0.00392767169710591,
+        "values": [
+          0.9547169811320755,
+          0.9622641509433962,
+          0.9566037735849057
+        ]
+      }
+    },
+    "mlp": {
+      "exact_operation_set_accuracy": {
+        "mean": 0.6773584905660377,
+        "sample_std": 0.006802926934837714,
+        "values": [
+          0.6716981132075471,
+          0.6849056603773584,
+          0.6754716981132075
+        ]
+      },
+      "exact_target_graph_accuracy": {
+        "mean": 0.6773584905660377,
+        "sample_std": 0.006802926934837714,
+        "values": [
+          0.6716981132075471,
+          0.6849056603773584,
+          0.6754716981132075
+        ]
+      },
+      "macro_f1_supported_types": {
+        "mean": 0.5424872773111891,
+        "sample_std": 0.005123635001911112,
+        "values": [
+          0.5378012220378346,
+          0.5479579718281636,
+          0.5417026380675688
+        ]
+      },
+      "micro": {
+        "f1": {
+          "mean": 0.8168869547543216,
+          "sample_std": 0.003138268564361718,
+          "values": [
+            0.8136707196845219,
+            0.819940964250574,
+            0.8170491803278689
+          ]
+        },
+        "precision": {
+          "mean": 0.821921250517745,
+          "sample_std": 0.002385763332842004,
+          "values": [
+            0.8198675496688742,
+            0.8245382585751979,
+            0.8213579433091628
+          ]
+        },
+        "recall": {
+          "mean": 0.811915633833442,
+          "sample_std": 0.0039857148901551115,
+          "values": [
+            0.8075668623613829,
+            0.8153946510110893,
+            0.8127853881278538
+          ]
+        }
+      },
+      "per_type": {
+        "add_edge": {
+          "f1": {
+            "mean": 0.43859305947982324,
+            "sample_std": 0.013486375247004521,
+            "values": [
+              0.4439252336448598,
+              0.4485981308411215,
+              0.4232558139534884
+            ]
+          },
+          "fn": {
+            "mean": 116,
+            "sample_std": 2.6457513110645907,
+            "values": [
+              115,
+              114,
+              119
+            ]
+          },
+          "fp": {
+            "mean": 124.66666666666667,
+            "sample_std": 3.7859388972001824,
+            "values": [
+              123,
+              122,
+              129
+            ]
+          },
+          "precision": {
+            "mean": 0.42992771754239645,
+            "sample_std": 0.01429393784184834,
+            "values": [
+              0.43577981651376146,
+              0.44036697247706424,
+              0.41363636363636364
+            ]
+          },
+          "recall": {
+            "mean": 0.44761904761904764,
+            "sample_std": 0.012598815766974228,
+            "values": [
+              0.4523809523809524,
+              0.45714285714285713,
+              0.43333333333333335
+            ]
+          },
+          "support": {
+            "mean": 210,
+            "sample_std": 0.0,
+            "values": [
+              210,
+              210,
+              210
+            ]
+          },
+          "tp": {
+            "mean": 94,
+            "sample_std": 2.6457513110645907,
+            "values": [
+              95,
+              96,
+              91
+            ]
+          }
+        },
+        "add_node": {
+          "f1": {
+            "mean": 0.5971600376729697,
+            "sample_std": 0.032506020364432835,
+            "values": [
+              0.5607476635514018,
+              0.6074766355140186,
+              0.6232558139534884
+            ]
+          },
+          "fn": {
+            "mean": 41,
+            "sample_std": 3.605551275463989,
+            "values": [
+              45,
+              40,
+              38
+            ]
+          },
+          "fp": {
+            "mean": 45.333333333333336,
+            "sample_std": 3.2145502536643185,
+            "values": [
+              49,
+              44,
+              43
+            ]
+          },
+          "precision": {
+            "mean": 0.585293299972199,
+            "sample_std": 0.03083495817439652,
+            "values": [
+              0.5504587155963303,
+              0.5963302752293578,
+              0.6090909090909091
+            ]
+          },
+          "recall": {
+            "mean": 0.6095238095238095,
+            "sample_std": 0.03433858357584752,
+            "values": [
+              0.5714285714285714,
+              0.6190476190476191,
+              0.638095238095238
+            ]
+          },
+          "support": {
+            "mean": 105,
+            "sample_std": 0.0,
+            "values": [
+              105,
+              105,
+              105
+            ]
+          },
+          "tp": {
+            "mean": 64,
+            "sample_std": 3.605551275463989,
+            "values": [
+              60,
+              65,
+              67
+            ]
+          }
+        },
+        "delete_edge": {
+          "f1": {
+            "mean": 0.9710477033288322,
+            "sample_std": 0.003650670359399054,
+            "values": [
+              0.9682320441988951,
+              0.9697386519944979,
+              0.9751724137931035
+            ]
+          },
+          "fn": {
+            "mean": 23.666666666666668,
+            "sample_std": 3.0550504633038935,
+            "values": [
+              27,
+              23,
+              21
+            ]
+          },
+          "fp": {
+            "mean": 18.333333333333332,
+            "sample_std": 3.0550504633038935,
+            "values": [
+              19,
+              21,
+              15
+            ]
+          },
+          "precision": {
+            "mean": 0.9746366226692341,
+            "sample_std": 0.004170655400939699,
+            "values": [
+              0.9736111111111111,
+              0.9710743801652892,
+              0.9792243767313019
+            ]
+          },
+          "recall": {
+            "mean": 0.9674908424908425,
+            "sample_std": 0.004196497889153685,
+            "values": [
+              0.9629120879120879,
+              0.9684065934065934,
+              0.9711538461538461
+            ]
+          },
+          "support": {
+            "mean": 728,
+            "sample_std": 0.0,
+            "values": [
+              728,
+              728,
+              728
+            ]
+          },
+          "tp": {
+            "mean": 704.3333333333334,
+            "sample_std": 3.0550504633038935,
+            "values": [
+              701,
+              705,
+              707
+            ]
+          }
+        },
+        "delete_node": {
+          "f1": {
+            "mean": 0.971007732120499,
+            "sample_std": 0.0036557154826954742,
+            "values": [
+              0.9681881051175657,
+              0.9696969696969697,
+              0.9751381215469613
+            ]
+          },
+          "fn": {
+            "mean": 11.333333333333334,
+            "sample_std": 1.5275252316519468,
+            "values": [
+              13,
+              11,
+              10
+            ]
+          },
+          "fp": {
+            "mean": 9.666666666666666,
+            "sample_std": 1.5275252316519468,
+            "values": [
+              10,
+              11,
+              8
+            ]
+          },
+          "precision": {
+            "mean": 0.9732528423664157,
+            "sample_std": 0.00416787263795925,
+            "values": [
+              0.9722222222222222,
+              0.9696969696969697,
+              0.9778393351800554
+            ]
+          },
+          "recall": {
+            "mean": 0.9687786960514233,
+            "sample_std": 0.004208058489399345,
+            "values": [
+              0.9641873278236914,
+              0.9696969696969697,
+              0.9724517906336089
+            ]
+          },
+          "support": {
+            "mean": 363,
+            "sample_std": 0.0,
+            "values": [
+              363,
+              363,
+              363
+            ]
+          },
+          "tp": {
+            "mean": 351.6666666666667,
+            "sample_std": 1.5275252316519468,
+            "values": [
+              350,
+              352,
+              353
+            ]
+          }
+        },
+        "replace_edge": {
+          "f1": {
+            "mean": 0.0,
+            "sample_std": 0.0,
+            "values": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "fn": {
+            "mean": 6,
+            "sample_std": 0.0,
+            "values": [
+              6,
+              6,
+              6
+            ]
+          },
+          "fp": {
+            "mean": 2,
+            "sample_std": 2.0,
+            "values": [
+              0,
+              2,
+              4
+            ]
+          },
+          "precision": {
+            "mean": 0.0,
+            "sample_std": 0.0,
+            "values": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "recall": {
+            "mean": 0.0,
+            "sample_std": 0.0,
+            "values": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "support": {
+            "mean": 6,
+            "sample_std": 0.0,
+            "values": [
+              6,
+              6,
+              6
+            ]
+          },
+          "tp": {
+            "mean": 0,
+            "sample_std": 0.0,
+            "values": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "replace_node": {
+          "f1": {
+            "mean": 0.27711513126501036,
+            "sample_std": 0.02080069375469697,
+            "values": [
+              0.2857142857142857,
+              0.2922374429223744,
+              0.25339366515837103
+            ]
+          },
+          "fn": {
+            "mean": 90.33333333333333,
+            "sample_std": 2.309401076758503,
+            "values": [
+              89,
+              89,
+              93
+            ]
+          },
+          "fp": {
+            "mean": 69.66666666666667,
+            "sample_std": 3.2145502536643185,
+            "values": [
+              71,
+              66,
+              72
+            ]
+          },
+          "precision": {
+            "mean": 0.3057367412984611,
+            "sample_std": 0.023655833201537232,
+            "values": [
+              0.3106796116504854,
+              0.32653061224489793,
+              0.28
+            ]
+          },
+          "recall": {
+            "mean": 0.2534435261707989,
+            "sample_std": 0.019085959312053744,
+            "values": [
+              0.2644628099173554,
+              0.2644628099173554,
+              0.23140495867768596
+            ]
+          },
+          "support": {
+            "mean": 121,
+            "sample_std": 0.0,
+            "values": [
+              121,
+              121,
+              121
+            ]
+          },
+          "tp": {
+            "mean": 30.666666666666668,
+            "sample_std": 2.309401076758503,
+            "values": [
+              32,
+              32,
+              28
+            ]
+          }
+        }
+      },
+      "simple_exact_operation_set_accuracy": {
+        "mean": 0.2534435261707989,
+        "sample_std": 0.019085959312053744,
+        "values": [
+          0.2644628099173554,
+          0.2644628099173554,
+          0.23140495867768596
+        ]
+      },
+      "valid_transaction_rate": {
+        "mean": 0.9559748427672956,
+        "sample_std": 0.002882123078588578,
+        "values": [
+          0.9528301886792453,
+          0.9584905660377359,
+          0.9566037735849057
+        ]
+      }
+    }
+  },
+  "runs": [
+    {
+      "checkpoint_sha256": "c11ed604fa04ae65d7e12101c42a6dc577a3b1c22e17777c92ee9e67b37eeacc",
+      "evaluation_identity_sha256": "8c4893d20c530995629dce21fc1fd659897fd4c5e00d54b146dd4f8f2ef0a363",
+      "metrics": {
+        "by_reference_edit_kind": {
+          "add_node": {
+            "decode_failures": 1,
+            "exact_operation_set_accuracy": 0.3333333333333333,
+            "exact_target_graph_accuracy": 0.3333333333333333,
+            "examples": 99,
+            "failed_predictions": 2,
+            "invalid_transactions": 1,
+            "macro_f1_supported_types": 0.5321782178217822,
+            "micro": {
+              "f1": 0.5057096247960848,
+              "fn": 160,
+              "fp": 143,
+              "precision": 0.5201342281879194,
+              "recall": 0.49206349206349204,
+              "support": 315,
+              "tp": 155
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.47029702970297027,
+                "fn": 115,
+                "fp": 99,
+                "precision": 0.4896907216494845,
+                "recall": 0.4523809523809524,
+                "support": 210,
+                "tp": 95
+              },
+              "add_node": {
+                "f1": 0.594059405940594,
+                "fn": 45,
+                "fp": 37,
+                "precision": 0.6185567010309279,
+                "recall": 0.5714285714285714,
+                "support": 105,
+                "tp": 60
+              },
+              "delete_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.9797979797979798
+          },
+          "delete_node": {
+            "decode_failures": 1,
+            "exact_operation_set_accuracy": 0.9509803921568627,
+            "exact_target_graph_accuracy": 0.9509803921568627,
+            "examples": 306,
+            "failed_predictions": 5,
+            "invalid_transactions": 4,
+            "macro_f1_supported_types": 0.9735744089012517,
+            "micro": {
+              "f1": 0.9655172413793104,
+              "fn": 39,
+              "fp": 36,
+              "precision": 0.9668508287292817,
+              "recall": 0.9641873278236914,
+              "support": 1089,
+              "tp": 1050
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 12,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.9735744089012517,
+                "fn": 26,
+                "fp": 12,
+                "precision": 0.9831460674157303,
+                "recall": 0.9641873278236914,
+                "support": 726,
+                "tp": 700
+              },
+              "delete_node": {
+                "f1": 0.9735744089012517,
+                "fn": 13,
+                "fp": 6,
+                "precision": 0.9831460674157303,
+                "recall": 0.9641873278236914,
+                "support": 363,
+                "tp": 350
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.9836601307189542
+          },
+          "replace_edge": {
+            "decode_failures": 1,
+            "exact_operation_set_accuracy": 0.0,
+            "exact_target_graph_accuracy": 0.0,
+            "examples": 3,
+            "failed_predictions": 1,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.0,
+            "micro": {
+              "f1": 0.0,
+              "fn": 6,
+              "fp": 6,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 6,
+              "tp": 0
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": 0.0,
+                "fn": 6,
+                "fp": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 6,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.6666666666666666
+          },
+          "replace_node": {
+            "decode_failures": 16,
+            "exact_operation_set_accuracy": 0.2644628099173554,
+            "exact_target_graph_accuracy": 0.2644628099173554,
+            "examples": 121,
+            "failed_predictions": 16,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.2909090909090909,
+            "micro": {
+              "f1": 0.2689075630252101,
+              "fn": 89,
+              "fp": 85,
+              "precision": 0.27350427350427353,
+              "recall": 0.2644628099173554,
+              "support": 121,
+              "tp": 32
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 12,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.2909090909090909,
+                "fn": 89,
+                "fp": 67,
+                "precision": 0.32323232323232326,
+                "recall": 0.2644628099173554,
+                "support": 121,
+                "tp": 32
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": 0.2644628099173554,
+            "simple_examples": 121,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.8677685950413223
+          }
+        },
+        "closed_vocabulary_exact_match_upper_bound": 0.9339622641509434,
+        "decode_failures": 19,
+        "error_categories": {
+          "correct": 356,
+          "parse": 19,
+          "transaction": 6,
+          "valid_but_wrong": 149
+        },
+        "exact_operation_set_accuracy": 0.6716981132075471,
+        "exact_target_graph_accuracy": 0.6716981132075471,
+        "examples": 530,
+        "failed_predictions": 25,
+        "invalid_transactions": 6,
+        "macro_f1_supported_types": 0.5378012220378346,
+        "micro": {
+          "f1": 0.8136707196845219,
+          "fn": 295,
+          "fp": 272,
+          "precision": 0.8198675496688742,
+          "recall": 0.8075668623613829,
+          "support": 1533,
+          "tp": 1238
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.4439252336448598,
+            "fn": 115,
+            "fp": 123,
+            "precision": 0.43577981651376146,
+            "recall": 0.4523809523809524,
+            "support": 210,
+            "tp": 95
+          },
+          "add_node": {
+            "f1": 0.5607476635514018,
+            "fn": 45,
+            "fp": 49,
+            "precision": 0.5504587155963303,
+            "recall": 0.5714285714285714,
+            "support": 105,
+            "tp": 60
+          },
+          "delete_edge": {
+            "f1": 0.9682320441988951,
+            "fn": 27,
+            "fp": 19,
+            "precision": 0.9736111111111111,
+            "recall": 0.9629120879120879,
+            "support": 728,
+            "tp": 701
+          },
+          "delete_node": {
+            "f1": 0.9681881051175657,
+            "fn": 13,
+            "fp": 10,
+            "precision": 0.9722222222222222,
+            "recall": 0.9641873278236914,
+            "support": 363,
+            "tp": 350
+          },
+          "replace_edge": {
+            "f1": 0.0,
+            "fn": 6,
+            "fp": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 6,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.2857142857142857,
+            "fn": 89,
+            "fp": 71,
+            "precision": 0.3106796116504854,
+            "recall": 0.2644628099173554,
+            "support": 121,
+            "tp": 32
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "reference_programs_with_train_vocabulary_OOV": 35,
+        "simple_exact_operation_set_accuracy": 0.2644628099173554,
+        "simple_examples": 121,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 0.9528301886792453
+      },
+      "model": "mlp",
+      "predictions_sha256": "ae58d74e1ef0ae3e1a89028837c7643df2a99df03b5fd9b0572baad331d3107c",
+      "seed": 42,
+      "test_was_previously_evaluated_in_v3": true
+    },
+    {
+      "checkpoint_sha256": "91a06ff2033c03883f64caf6a1382a10a96be7ac080aefd741e49a4bd764b4ba",
+      "evaluation_identity_sha256": "8c4893d20c530995629dce21fc1fd659897fd4c5e00d54b146dd4f8f2ef0a363",
+      "metrics": {
+        "by_reference_edit_kind": {
+          "add_node": {
+            "decode_failures": 2,
+            "exact_operation_set_accuracy": 0.36363636363636365,
+            "exact_target_graph_accuracy": 0.36363636363636365,
+            "examples": 99,
+            "failed_predictions": 2,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.553921568627451,
+            "micro": {
+              "f1": 0.5201938610662359,
+              "fn": 154,
+              "fp": 143,
+              "precision": 0.5296052631578947,
+              "recall": 0.5111111111111111,
+              "support": 315,
+              "tp": 161
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.47058823529411764,
+                "fn": 114,
+                "fp": 102,
+                "precision": 0.48484848484848486,
+                "recall": 0.45714285714285713,
+                "support": 210,
+                "tp": 96
+              },
+              "add_node": {
+                "f1": 0.6372549019607843,
+                "fn": 40,
+                "fp": 34,
+                "precision": 0.6565656565656566,
+                "recall": 0.6190476190476191,
+                "support": 105,
+                "tp": 65
+              },
+              "delete_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.9797979797979798
+          },
+          "delete_node": {
+            "decode_failures": 2,
+            "exact_operation_set_accuracy": 0.9640522875816994,
+            "exact_target_graph_accuracy": 0.9640522875816994,
+            "examples": 306,
+            "failed_predictions": 2,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.9764216366158114,
+            "micro": {
+              "f1": 0.9723756906077348,
+              "fn": 33,
+              "fp": 27,
+              "precision": 0.9750692520775623,
+              "recall": 0.9696969696969697,
+              "support": 1089,
+              "tp": 1056
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 3,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.9764216366158114,
+                "fn": 22,
+                "fp": 12,
+                "precision": 0.9832402234636871,
+                "recall": 0.9696969696969697,
+                "support": 726,
+                "tp": 704
+              },
+              "delete_node": {
+                "f1": 0.9764216366158114,
+                "fn": 11,
+                "fp": 6,
+                "precision": 0.9832402234636871,
+                "recall": 0.9696969696969697,
+                "support": 363,
+                "tp": 352
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.9934640522875817
+          },
+          "replace_edge": {
+            "decode_failures": 0,
+            "exact_operation_set_accuracy": 0.0,
+            "exact_target_graph_accuracy": 0.0,
+            "examples": 3,
+            "failed_predictions": 0,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.0,
+            "micro": {
+              "f1": 0.0,
+              "fn": 6,
+              "fp": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 6,
+              "tp": 0
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": 0.0,
+                "fn": 6,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 6,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 1.0
+          },
+          "replace_node": {
+            "decode_failures": 17,
+            "exact_operation_set_accuracy": 0.2644628099173554,
+            "exact_target_graph_accuracy": 0.2644628099173554,
+            "examples": 121,
+            "failed_predictions": 17,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.29357798165137616,
+            "micro": {
+              "f1": 0.26778242677824265,
+              "fn": 89,
+              "fp": 86,
+              "precision": 0.2711864406779661,
+              "recall": 0.2644628099173554,
+              "support": 121,
+              "tp": 32
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 14,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 7,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.29357798165137616,
+                "fn": 89,
+                "fp": 65,
+                "precision": 0.32989690721649484,
+                "recall": 0.2644628099173554,
+                "support": 121,
+                "tp": 32
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": 0.2644628099173554,
+            "simple_examples": 121,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.859504132231405
+          }
+        },
+        "closed_vocabulary_exact_match_upper_bound": 0.9339622641509434,
+        "decode_failures": 21,
+        "error_categories": {
+          "correct": 363,
+          "parse": 21,
+          "transaction": 1,
+          "valid_but_wrong": 145
+        },
+        "exact_operation_set_accuracy": 0.6849056603773584,
+        "exact_target_graph_accuracy": 0.6849056603773584,
+        "examples": 530,
+        "failed_predictions": 22,
+        "invalid_transactions": 1,
+        "macro_f1_supported_types": 0.5479579718281636,
+        "micro": {
+          "f1": 0.819940964250574,
+          "fn": 283,
+          "fp": 266,
+          "precision": 0.8245382585751979,
+          "recall": 0.8153946510110893,
+          "support": 1533,
+          "tp": 1250
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.4485981308411215,
+            "fn": 114,
+            "fp": 122,
+            "precision": 0.44036697247706424,
+            "recall": 0.45714285714285713,
+            "support": 210,
+            "tp": 96
+          },
+          "add_node": {
+            "f1": 0.6074766355140186,
+            "fn": 40,
+            "fp": 44,
+            "precision": 0.5963302752293578,
+            "recall": 0.6190476190476191,
+            "support": 105,
+            "tp": 65
+          },
+          "delete_edge": {
+            "f1": 0.9697386519944979,
+            "fn": 23,
+            "fp": 21,
+            "precision": 0.9710743801652892,
+            "recall": 0.9684065934065934,
+            "support": 728,
+            "tp": 705
+          },
+          "delete_node": {
+            "f1": 0.9696969696969697,
+            "fn": 11,
+            "fp": 11,
+            "precision": 0.9696969696969697,
+            "recall": 0.9696969696969697,
+            "support": 363,
+            "tp": 352
+          },
+          "replace_edge": {
+            "f1": 0.0,
+            "fn": 6,
+            "fp": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 6,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.2922374429223744,
+            "fn": 89,
+            "fp": 66,
+            "precision": 0.32653061224489793,
+            "recall": 0.2644628099173554,
+            "support": 121,
+            "tp": 32
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "reference_programs_with_train_vocabulary_OOV": 35,
+        "simple_exact_operation_set_accuracy": 0.2644628099173554,
+        "simple_examples": 121,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 0.9584905660377359
+      },
+      "model": "mlp",
+      "predictions_sha256": "81ec77c966ce9eed78fdb8200aac3af9b5716c487754906ac6c965c9b5367a4b",
+      "seed": 43,
+      "test_was_previously_evaluated_in_v3": true
+    },
+    {
+      "checkpoint_sha256": "2392b4d6c524b55f04e38bf1f2f841338067d767048f61aa96c15176476dcbeb",
+      "evaluation_identity_sha256": "8c4893d20c530995629dce21fc1fd659897fd4c5e00d54b146dd4f8f2ef0a363",
+      "metrics": {
+        "by_reference_edit_kind": {
+          "add_node": {
+            "decode_failures": 1,
+            "exact_operation_set_accuracy": 0.3434343434343434,
+            "exact_target_graph_accuracy": 0.3434343434343434,
+            "examples": 99,
+            "failed_predictions": 1,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.5434782608695652,
+            "micro": {
+              "f1": 0.5056,
+              "fn": 157,
+              "fp": 152,
+              "precision": 0.5096774193548387,
+              "recall": 0.5015873015873016,
+              "support": 315,
+              "tp": 158
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.4396135265700483,
+                "fn": 119,
+                "fp": 113,
+                "precision": 0.44607843137254904,
+                "recall": 0.43333333333333335,
+                "support": 210,
+                "tp": 91
+              },
+              "add_node": {
+                "f1": 0.6473429951690821,
+                "fn": 38,
+                "fp": 35,
+                "precision": 0.6568627450980392,
+                "recall": 0.638095238095238,
+                "support": 105,
+                "tp": 67
+              },
+              "delete_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.98989898989899
+          },
+          "delete_node": {
+            "decode_failures": 0,
+            "exact_operation_set_accuracy": 0.9673202614379085,
+            "exact_target_graph_accuracy": 0.9673202614379085,
+            "examples": 306,
+            "failed_predictions": 0,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.9791955617198336,
+            "micro": {
+              "f1": 0.9728984841525035,
+              "fn": 30,
+              "fp": 29,
+              "precision": 0.9733455882352942,
+              "recall": 0.9724517906336089,
+              "support": 1089,
+              "tp": 1059
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 8,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.9791955617198336,
+                "fn": 20,
+                "fp": 10,
+                "precision": 0.9860335195530726,
+                "recall": 0.9724517906336089,
+                "support": 726,
+                "tp": 706
+              },
+              "delete_node": {
+                "f1": 0.9791955617198336,
+                "fn": 10,
+                "fp": 5,
+                "precision": 0.9860335195530726,
+                "recall": 0.9724517906336089,
+                "support": 363,
+                "tp": 353
+              },
+              "replace_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 1.0
+          },
+          "replace_edge": {
+            "decode_failures": 0,
+            "exact_operation_set_accuracy": 0.0,
+            "exact_target_graph_accuracy": 0.0,
+            "examples": 3,
+            "failed_predictions": 0,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.0,
+            "micro": {
+              "f1": 0.0,
+              "fn": 6,
+              "fp": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 6,
+              "tp": 0
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": 0.0,
+                "fn": 6,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 6,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 1.0
+          },
+          "replace_node": {
+            "decode_failures": 21,
+            "exact_operation_set_accuracy": 0.23140495867768596,
+            "exact_target_graph_accuracy": 0.23140495867768596,
+            "examples": 121,
+            "failed_predictions": 21,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.25806451612903225,
+            "micro": {
+              "f1": 0.2445414847161572,
+              "fn": 93,
+              "fp": 80,
+              "precision": 0.25925925925925924,
+              "recall": 0.23140495867768596,
+              "support": 121,
+              "tp": 28
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 8,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.25806451612903225,
+                "fn": 93,
+                "fp": 68,
+                "precision": 0.2916666666666667,
+                "recall": 0.23140495867768596,
+                "support": 121,
+                "tp": 28
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": 0.23140495867768596,
+            "simple_examples": 121,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.8264462809917356
+          }
+        },
+        "closed_vocabulary_exact_match_upper_bound": 0.9339622641509434,
+        "decode_failures": 22,
+        "error_categories": {
+          "correct": 358,
+          "parse": 22,
+          "transaction": 1,
+          "valid_but_wrong": 149
+        },
+        "exact_operation_set_accuracy": 0.6754716981132075,
+        "exact_target_graph_accuracy": 0.6754716981132075,
+        "examples": 530,
+        "failed_predictions": 23,
+        "invalid_transactions": 1,
+        "macro_f1_supported_types": 0.5417026380675688,
+        "micro": {
+          "f1": 0.8170491803278689,
+          "fn": 287,
+          "fp": 271,
+          "precision": 0.8213579433091628,
+          "recall": 0.8127853881278538,
+          "support": 1533,
+          "tp": 1246
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.4232558139534884,
+            "fn": 119,
+            "fp": 129,
+            "precision": 0.41363636363636364,
+            "recall": 0.43333333333333335,
+            "support": 210,
+            "tp": 91
+          },
+          "add_node": {
+            "f1": 0.6232558139534884,
+            "fn": 38,
+            "fp": 43,
+            "precision": 0.6090909090909091,
+            "recall": 0.638095238095238,
+            "support": 105,
+            "tp": 67
+          },
+          "delete_edge": {
+            "f1": 0.9751724137931035,
+            "fn": 21,
+            "fp": 15,
+            "precision": 0.9792243767313019,
+            "recall": 0.9711538461538461,
+            "support": 728,
+            "tp": 707
+          },
+          "delete_node": {
+            "f1": 0.9751381215469613,
+            "fn": 10,
+            "fp": 8,
+            "precision": 0.9778393351800554,
+            "recall": 0.9724517906336089,
+            "support": 363,
+            "tp": 353
+          },
+          "replace_edge": {
+            "f1": 0.0,
+            "fn": 6,
+            "fp": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 6,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.25339366515837103,
+            "fn": 93,
+            "fp": 72,
+            "precision": 0.28,
+            "recall": 0.23140495867768596,
+            "support": 121,
+            "tp": 28
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "reference_programs_with_train_vocabulary_OOV": 35,
+        "simple_exact_operation_set_accuracy": 0.23140495867768596,
+        "simple_examples": 121,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 0.9566037735849057
+      },
+      "model": "mlp",
+      "predictions_sha256": "ae788817be048c0ff066257d237a7c57be6e1b45121f56c7042269615d04b0eb",
+      "seed": 44,
+      "test_was_previously_evaluated_in_v3": true
+    },
+    {
+      "checkpoint_sha256": "7ed060052782898ca9ba058ea4639a2ed91d666839a83c15d98ae2205ff6a0f2",
+      "evaluation_identity_sha256": "8c4893d20c530995629dce21fc1fd659897fd4c5e00d54b146dd4f8f2ef0a363",
+      "metrics": {
+        "by_reference_edit_kind": {
+          "add_node": {
+            "decode_failures": 2,
+            "exact_operation_set_accuracy": 0.32323232323232326,
+            "exact_target_graph_accuracy": 0.32323232323232326,
+            "examples": 99,
+            "failed_predictions": 2,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.5447761194029851,
+            "micro": {
+              "f1": 0.501628664495114,
+              "fn": 161,
+              "fp": 145,
+              "precision": 0.5150501672240803,
+              "recall": 0.4888888888888889,
+              "support": 315,
+              "tp": 154
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.4427860696517413,
+                "fn": 121,
+                "fp": 103,
+                "precision": 0.4635416666666667,
+                "recall": 0.4238095238095238,
+                "support": 210,
+                "tp": 89
+              },
+              "add_node": {
+                "f1": 0.6467661691542289,
+                "fn": 40,
+                "fp": 31,
+                "precision": 0.6770833333333334,
+                "recall": 0.6190476190476191,
+                "support": 105,
+                "tp": 65
+              },
+              "delete_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 5,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.9797979797979798
+          },
+          "delete_node": {
+            "decode_failures": 1,
+            "exact_operation_set_accuracy": 0.9803921568627451,
+            "exact_target_graph_accuracy": 0.9803921568627451,
+            "examples": 306,
+            "failed_predictions": 1,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.9875518672199171,
+            "micro": {
+              "f1": 0.9848275862068966,
+              "fn": 18,
+              "fp": 15,
+              "precision": 0.9861878453038674,
+              "recall": 0.9834710743801653,
+              "support": 1089,
+              "tp": 1071
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.9875518672199171,
+                "fn": 12,
+                "fp": 6,
+                "precision": 0.9916666666666667,
+                "recall": 0.9834710743801653,
+                "support": 726,
+                "tp": 714
+              },
+              "delete_node": {
+                "f1": 0.9875518672199171,
+                "fn": 6,
+                "fp": 3,
+                "precision": 0.9916666666666667,
+                "recall": 0.9834710743801653,
+                "support": 363,
+                "tp": 357
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.9967320261437909
+          },
+          "replace_edge": {
+            "decode_failures": 0,
+            "exact_operation_set_accuracy": 0.0,
+            "exact_target_graph_accuracy": 0.0,
+            "examples": 3,
+            "failed_predictions": 0,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.0,
+            "micro": {
+              "f1": 0.0,
+              "fn": 6,
+              "fp": 8,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 6,
+              "tp": 0
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": 0.0,
+                "fn": 6,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 6,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 1.0
+          },
+          "replace_node": {
+            "decode_failures": 20,
+            "exact_operation_set_accuracy": 0.2644628099173554,
+            "exact_target_graph_accuracy": 0.2644628099173554,
+            "examples": 121,
+            "failed_predictions": 20,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.2922374429223744,
+            "micro": {
+              "f1": 0.2807017543859649,
+              "fn": 89,
+              "fp": 75,
+              "precision": 0.29906542056074764,
+              "recall": 0.2644628099173554,
+              "support": 121,
+              "tp": 32
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 3,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.2922374429223744,
+                "fn": 89,
+                "fp": 66,
+                "precision": 0.32653061224489793,
+                "recall": 0.2644628099173554,
+                "support": 121,
+                "tp": 32
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": 0.2644628099173554,
+            "simple_examples": 121,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.8347107438016529
+          }
+        },
+        "closed_vocabulary_exact_match_upper_bound": 0.9339622641509434,
+        "decode_failures": 23,
+        "error_categories": {
+          "correct": 364,
+          "parse": 23,
+          "transaction": 1,
+          "valid_but_wrong": 142
+        },
+        "exact_operation_set_accuracy": 0.6867924528301886,
+        "exact_target_graph_accuracy": 0.6867924528301886,
+        "examples": 530,
+        "failed_predictions": 24,
+        "invalid_transactions": 1,
+        "macro_f1_supported_types": 0.5516040188057335,
+        "micro": {
+          "f1": 0.8280632411067194,
+          "fn": 276,
+          "fp": 246,
+          "precision": 0.8363273453093812,
+          "recall": 0.8199608610567515,
+          "support": 1533,
+          "tp": 1257
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.4320388349514563,
+            "fn": 121,
+            "fp": 113,
+            "precision": 0.4405940594059406,
+            "recall": 0.4238095238095238,
+            "support": 210,
+            "tp": 89
+          },
+          "add_node": {
+            "f1": 0.6310679611650486,
+            "fn": 40,
+            "fp": 36,
+            "precision": 0.6435643564356436,
+            "recall": 0.6190476190476191,
+            "support": 105,
+            "tp": 65
+          },
+          "delete_edge": {
+            "f1": 0.9787525702535984,
+            "fn": 14,
+            "fp": 17,
+            "precision": 0.9767441860465116,
+            "recall": 0.9807692307692307,
+            "support": 728,
+            "tp": 714
+          },
+          "delete_node": {
+            "f1": 0.9807692307692307,
+            "fn": 6,
+            "fp": 8,
+            "precision": 0.9780821917808219,
+            "recall": 0.9834710743801653,
+            "support": 363,
+            "tp": 357
+          },
+          "replace_edge": {
+            "f1": 0.0,
+            "fn": 6,
+            "fp": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 6,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.28699551569506726,
+            "fn": 89,
+            "fp": 70,
+            "precision": 0.3137254901960784,
+            "recall": 0.2644628099173554,
+            "support": 121,
+            "tp": 32
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "reference_programs_with_train_vocabulary_OOV": 35,
+        "simple_exact_operation_set_accuracy": 0.2644628099173554,
+        "simple_examples": 121,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 0.9547169811320755
+      },
+      "model": "gnn",
+      "predictions_sha256": "59cd37266826f6d0ad5a6e5fa96ad53e8f24310a0e7eaf5a327c7a1b8fd99d67",
+      "seed": 42,
+      "test_was_previously_evaluated_in_v3": true
+    },
+    {
+      "checkpoint_sha256": "8b6df006218840ca7fef1f4ca32a810a2de21ec809d0d95ab8920ea5519177e8",
+      "evaluation_identity_sha256": "8c4893d20c530995629dce21fc1fd659897fd4c5e00d54b146dd4f8f2ef0a363",
+      "metrics": {
+        "by_reference_edit_kind": {
+          "add_node": {
+            "decode_failures": 0,
+            "exact_operation_set_accuracy": 0.3434343434343434,
+            "exact_target_graph_accuracy": 0.3434343434343434,
+            "examples": 99,
+            "failed_predictions": 0,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.5576923076923077,
+            "micro": {
+              "f1": 0.5151033386327504,
+              "fn": 153,
+              "fp": 152,
+              "precision": 0.5159235668789809,
+              "recall": 0.5142857142857142,
+              "support": 315,
+              "tp": 162
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.4423076923076923,
+                "fn": 118,
+                "fp": 114,
+                "precision": 0.44660194174757284,
+                "recall": 0.4380952380952381,
+                "support": 210,
+                "tp": 92
+              },
+              "add_node": {
+                "f1": 0.6730769230769231,
+                "fn": 35,
+                "fp": 33,
+                "precision": 0.6796116504854369,
+                "recall": 0.6666666666666666,
+                "support": 105,
+                "tp": 70
+              },
+              "delete_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 1.0
+          },
+          "delete_node": {
+            "decode_failures": 0,
+            "exact_operation_set_accuracy": 0.9738562091503268,
+            "exact_target_graph_accuracy": 0.9738562091503268,
+            "examples": 306,
+            "failed_predictions": 0,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.9861111111111112,
+            "micro": {
+              "f1": 0.977961432506887,
+              "fn": 24,
+              "fp": 24,
+              "precision": 0.977961432506887,
+              "recall": 0.977961432506887,
+              "support": 1089,
+              "tp": 1065
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 12,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.9861111111111112,
+                "fn": 16,
+                "fp": 4,
+                "precision": 0.9943977591036415,
+                "recall": 0.977961432506887,
+                "support": 726,
+                "tp": 710
+              },
+              "delete_node": {
+                "f1": 0.9861111111111112,
+                "fn": 8,
+                "fp": 2,
+                "precision": 0.9943977591036415,
+                "recall": 0.977961432506887,
+                "support": 363,
+                "tp": 355
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 1.0
+          },
+          "replace_edge": {
+            "decode_failures": 0,
+            "exact_operation_set_accuracy": 0.0,
+            "exact_target_graph_accuracy": 0.0,
+            "examples": 3,
+            "failed_predictions": 0,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.0,
+            "micro": {
+              "f1": 0.0,
+              "fn": 6,
+              "fp": 12,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 6,
+              "tp": 0
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 8,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": 0.0,
+                "fn": 6,
+                "fp": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 6,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 1.0
+          },
+          "replace_node": {
+            "decode_failures": 19,
+            "exact_operation_set_accuracy": 0.24793388429752067,
+            "exact_target_graph_accuracy": 0.24793388429752067,
+            "examples": 121,
+            "failed_predictions": 19,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.2764976958525346,
+            "micro": {
+              "f1": 0.2553191489361702,
+              "fn": 91,
+              "fp": 84,
+              "precision": 0.2631578947368421,
+              "recall": 0.24793388429752067,
+              "support": 121,
+              "tp": 30
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 12,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.2764976958525346,
+                "fn": 91,
+                "fp": 66,
+                "precision": 0.3125,
+                "recall": 0.24793388429752067,
+                "support": 121,
+                "tp": 30
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": 0.24793388429752067,
+            "simple_examples": 121,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.8429752066115702
+          }
+        },
+        "closed_vocabulary_exact_match_upper_bound": 0.9339622641509434,
+        "decode_failures": 19,
+        "error_categories": {
+          "correct": 362,
+          "parse": 19,
+          "transaction": 1,
+          "valid_but_wrong": 148
+        },
+        "exact_operation_set_accuracy": 0.6830188679245283,
+        "exact_target_graph_accuracy": 0.6830188679245283,
+        "examples": 530,
+        "failed_predictions": 20,
+        "invalid_transactions": 1,
+        "macro_f1_supported_types": 0.5471826201464541,
+        "micro": {
+          "f1": 0.8202283849918434,
+          "fn": 276,
+          "fp": 275,
+          "precision": 0.8204960835509139,
+          "recall": 0.8199608610567515,
+          "support": 1533,
+          "tp": 1257
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.41818181818181815,
+            "fn": 118,
+            "fp": 138,
+            "precision": 0.4,
+            "recall": 0.4380952380952381,
+            "support": 210,
+            "tp": 92
+          },
+          "add_node": {
+            "f1": 0.6363636363636364,
+            "fn": 35,
+            "fp": 45,
+            "precision": 0.6086956521739131,
+            "recall": 0.6666666666666666,
+            "support": 105,
+            "tp": 70
+          },
+          "delete_edge": {
+            "f1": 0.9766162310866575,
+            "fn": 18,
+            "fp": 16,
+            "precision": 0.977961432506887,
+            "recall": 0.9752747252747253,
+            "support": 728,
+            "tp": 710
+          },
+          "delete_node": {
+            "f1": 0.977961432506887,
+            "fn": 8,
+            "fp": 8,
+            "precision": 0.977961432506887,
+            "recall": 0.977961432506887,
+            "support": 363,
+            "tp": 355
+          },
+          "replace_edge": {
+            "f1": 0.0,
+            "fn": 6,
+            "fp": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 6,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.273972602739726,
+            "fn": 91,
+            "fp": 68,
+            "precision": 0.30612244897959184,
+            "recall": 0.24793388429752067,
+            "support": 121,
+            "tp": 30
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "reference_programs_with_train_vocabulary_OOV": 35,
+        "simple_exact_operation_set_accuracy": 0.24793388429752067,
+        "simple_examples": 121,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 0.9622641509433962
+      },
+      "model": "gnn",
+      "predictions_sha256": "5746eb475c01aed931812abb46cb268c0073a1755396a4c34f2134126f08b519",
+      "seed": 43,
+      "test_was_previously_evaluated_in_v3": true
+    },
+    {
+      "checkpoint_sha256": "3edd1d1c715997f8b22da4ed01265384b068cec64c0f669be1647e818d39237d",
+      "evaluation_identity_sha256": "8c4893d20c530995629dce21fc1fd659897fd4c5e00d54b146dd4f8f2ef0a363",
+      "metrics": {
+        "by_reference_edit_kind": {
+          "add_node": {
+            "decode_failures": 1,
+            "exact_operation_set_accuracy": 0.3838383838383838,
+            "exact_target_graph_accuracy": 0.3838383838383838,
+            "examples": 99,
+            "failed_predictions": 1,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.5817307692307693,
+            "micro": {
+              "f1": 0.5394321766561514,
+              "fn": 144,
+              "fp": 148,
+              "precision": 0.5360501567398119,
+              "recall": 0.5428571428571428,
+              "support": 315,
+              "tp": 171
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.4807692307692308,
+                "fn": 110,
+                "fp": 106,
+                "precision": 0.4854368932038835,
+                "recall": 0.47619047619047616,
+                "support": 210,
+                "tp": 100
+              },
+              "add_node": {
+                "f1": 0.6826923076923077,
+                "fn": 34,
+                "fp": 32,
+                "precision": 0.6893203883495146,
+                "recall": 0.6761904761904762,
+                "support": 105,
+                "tp": 71
+              },
+              "delete_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 3,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 1,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.98989898989899
+          },
+          "delete_node": {
+            "decode_failures": 0,
+            "exact_operation_set_accuracy": 0.9738562091503268,
+            "exact_target_graph_accuracy": 0.9738562091503268,
+            "examples": 306,
+            "failed_predictions": 0,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.9820193637621023,
+            "micro": {
+              "f1": 0.977961432506887,
+              "fn": 24,
+              "fp": 24,
+              "precision": 0.977961432506887,
+              "recall": 0.977961432506887,
+              "support": 1089,
+              "tp": 1065
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 6,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 3,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.9820193637621023,
+                "fn": 16,
+                "fp": 10,
+                "precision": 0.9861111111111112,
+                "recall": 0.977961432506887,
+                "support": 726,
+                "tp": 710
+              },
+              "delete_node": {
+                "f1": 0.9820193637621023,
+                "fn": 8,
+                "fp": 5,
+                "precision": 0.9861111111111112,
+                "recall": 0.977961432506887,
+                "support": 363,
+                "tp": 355
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 1.0
+          },
+          "replace_edge": {
+            "decode_failures": 1,
+            "exact_operation_set_accuracy": 0.0,
+            "exact_target_graph_accuracy": 0.0,
+            "examples": 3,
+            "failed_predictions": 1,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.0,
+            "micro": {
+              "f1": 0.0,
+              "fn": 6,
+              "fp": 6,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 6,
+              "tp": 0
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 4,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 2,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": 0.0,
+                "fn": 6,
+                "fp": 0,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 6,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": null,
+            "simple_examples": 0,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.6666666666666666
+          },
+          "replace_node": {
+            "decode_failures": 20,
+            "exact_operation_set_accuracy": 0.23140495867768596,
+            "exact_target_graph_accuracy": 0.23140495867768596,
+            "examples": 121,
+            "failed_predictions": 20,
+            "invalid_transactions": 0,
+            "macro_f1_supported_types": 0.2616822429906542,
+            "micro": {
+              "f1": 0.23529411764705882,
+              "fn": 93,
+              "fp": 89,
+              "precision": 0.23931623931623933,
+              "recall": 0.23140495867768596,
+              "support": 121,
+              "tp": 28
+            },
+            "per_type": {
+              "add_edge": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 16,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "add_node": {
+                "f1": 0.0,
+                "fn": 0,
+                "fp": 8,
+                "precision": 0.0,
+                "recall": 0.0,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "delete_node": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_edge": {
+                "f1": null,
+                "fn": 0,
+                "fp": 0,
+                "precision": null,
+                "recall": null,
+                "support": 0,
+                "tp": 0
+              },
+              "replace_node": {
+                "f1": 0.2616822429906542,
+                "fn": 93,
+                "fp": 65,
+                "precision": 0.3010752688172043,
+                "recall": 0.23140495867768596,
+                "support": 121,
+                "tp": 28
+              }
+            },
+            "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+            "simple_exact_operation_set_accuracy": 0.23140495867768596,
+            "simple_examples": 121,
+            "unsupported_predicted_identities": 0,
+            "valid_transaction_rate": 0.8347107438016529
+          }
+        },
+        "closed_vocabulary_exact_match_upper_bound": 0.9339622641509434,
+        "decode_failures": 22,
+        "error_categories": {
+          "correct": 364,
+          "parse": 22,
+          "transaction": 1,
+          "valid_but_wrong": 143
+        },
+        "exact_operation_set_accuracy": 0.6867924528301886,
+        "exact_target_graph_accuracy": 0.6867924528301886,
+        "examples": 530,
+        "failed_predictions": 23,
+        "invalid_transactions": 1,
+        "macro_f1_supported_types": 0.552232908321975,
+        "micro": {
+          "f1": 0.8249103358330616,
+          "fn": 268,
+          "fp": 269,
+          "precision": 0.8246414602346805,
+          "recall": 0.8251793868232224,
+          "support": 1533,
+          "tp": 1265
+        },
+        "per_type": {
+          "add_edge": {
+            "f1": 0.45662100456621,
+            "fn": 110,
+            "fp": 128,
+            "precision": 0.43859649122807015,
+            "recall": 0.47619047619047616,
+            "support": 210,
+            "tp": 100
+          },
+          "add_node": {
+            "f1": 0.6484018264840182,
+            "fn": 34,
+            "fp": 43,
+            "precision": 0.6228070175438597,
+            "recall": 0.6761904761904762,
+            "support": 105,
+            "tp": 71
+          },
+          "delete_edge": {
+            "f1": 0.9739726027397261,
+            "fn": 17,
+            "fp": 21,
+            "precision": 0.9713114754098361,
+            "recall": 0.9766483516483516,
+            "support": 728,
+            "tp": 711
+          },
+          "delete_node": {
+            "f1": 0.9739368998628258,
+            "fn": 8,
+            "fp": 11,
+            "precision": 0.9699453551912568,
+            "recall": 0.977961432506887,
+            "support": 363,
+            "tp": 355
+          },
+          "replace_edge": {
+            "f1": 0.0,
+            "fn": 6,
+            "fp": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 6,
+            "tp": 0
+          },
+          "replace_node": {
+            "f1": 0.26046511627906976,
+            "fn": 93,
+            "fp": 66,
+            "precision": 0.2978723404255319,
+            "recall": 0.23140495867768596,
+            "support": 121,
+            "tp": 28
+          }
+        },
+        "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+        "reference_programs_with_train_vocabulary_OOV": 35,
+        "simple_exact_operation_set_accuracy": 0.23140495867768596,
+        "simple_examples": 121,
+        "unsupported_predicted_identities": 0,
+        "valid_transaction_rate": 0.9566037735849057
+      },
+      "model": "gnn",
+      "predictions_sha256": "6f5e5dd2b6fe91b90bb3ed7968b8f6311c3d4bb678da6f171f7d9faa811c2a0f",
+      "seed": 44,
+      "test_was_previously_evaluated_in_v3": true
+    }
+  ],
+  "test_previously_seen_in_v3": true
+}

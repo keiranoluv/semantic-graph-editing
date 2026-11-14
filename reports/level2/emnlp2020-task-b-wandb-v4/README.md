@@ -2,6 +2,7 @@
 
 **Cập nhật:** người dùng đã hoàn tất 6/6 lượt train chính. Xem
 [tổng hợp kết quả validation v4](../emnlp2020-task-b-wandb-v4-results-v1/README.md).
+Đã có thêm [kết quả test GPU v4](../emnlp2020-task-b-wandb-v4-test-v1/README.md).
 Nội dung dưới đây lưu bằng chứng chuẩn bị launcher và smoke trước lần chạy chính;
 assistant chỉ thực hiện kiểm thử CPU/GPU trong giai đoạn chuẩn bị đó.
 
