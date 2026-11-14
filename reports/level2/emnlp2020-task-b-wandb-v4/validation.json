@@ -1,0 +1,101 @@
+{
+  "CPU_tests": {
+    "CUDA_skipped": 1,
+    "command": "CUDA_VISIBLE_DEVICES='' myenv/bin/python -m pytest -q tests/editing/test_emnlp2020_graph_modification_v1.py tests/editing/test_emnlp2020_task_b_v2.py tests/editing/test_emnlp2020_task_b_v2_report.py tests/editing/test_emnlp2020_task_b_gpu_v3.py tests/editing/test_emnlp2020_task_b_wandb_v4.py",
+    "failed": 0,
+    "passed": 60,
+    "runtime_seconds": 11.21
+  },
+  "GPU_smoke_code_committed_before_execution": "2821bbd",
+  "GPU_smoke_command": "CUDA_VISIBLE_DEVICES=0 myenv/bin/python -m tools.emnlp2020_task_b_wandb_v4 --stage smoke --device cuda",
+  "WandB_requirement": "main online initialization required before first gradient; user logs in and launches",
+  "launcher_shell_syntax": "bash -n passed",
+  "main_output_directory_exists": false,
+  "main_training_executed_by_assistant": false,
+  "new_v4_tests": {
+    "passed": 7,
+    "scope": "CPU with fake W&B; no real network/SDK run"
+  },
+  "pre_commit": "passed",
+  "preflight": {
+    "authentication": "verified_by_online_init_before_first_gradient",
+    "code_and_config_sha256": "cd1b298992fd5799e468d70d3c6111bf08cc31d2030ed32c183a0c0ef12c7d64",
+    "device_workloads": 0,
+    "examples": {
+      "train": 29868,
+      "val": 532
+    },
+    "main_run_not_started": true,
+    "queue": [
+      "mlp/seed42",
+      "mlp/seed43",
+      "mlp/seed44",
+      "gnn/seed42",
+      "gnn/seed43",
+      "gnn/seed44"
+    ],
+    "vocabulary_size": 4762,
+    "wandb_initialized": false,
+    "wandb_required": "online"
+  },
+  "real_WandB_authentication_or_online_connection_tested": false,
+  "smoke": {
+    "cpu": {
+      "actual_diagnostic_batch": 4,
+      "actual_train_batch": 8,
+      "batch_size_argument": 128,
+      "diagnostic_samples_from_train": 4,
+      "not_main_training": true,
+      "official_train_used_for_smoke": true,
+      "runs": [
+        {
+          "checkpoint_sha256": "784073d993fc571b2d3cf7111faeca3b5d27411ac586885d0b955cf92cbfbb0d",
+          "completion_receipt_sha256": "9067828e120d09821de803c847e22ef78dd421b630ad57a1af81c19c39400632",
+          "epochs_completed": 1,
+          "model": "mlp",
+          "seed": 42,
+          "wandb": null
+        },
+        {
+          "checkpoint_sha256": "fb11ecb6a9e57decfca8c7fd364d5340190a88653fa627700d45ca1786e74c67",
+          "completion_receipt_sha256": "b47dd538ba785c7605fa348a91eff125ee36ed1f1288ed23a305abdcda1c1661",
+          "epochs_completed": 1,
+          "model": "gnn",
+          "seed": 42,
+          "wandb": null
+        }
+      ],
+      "test_opened": false,
+      "train_samples": 8
+    },
+    "cuda": {
+      "actual_diagnostic_batch": 4,
+      "actual_train_batch": 8,
+      "batch_size_argument": 128,
+      "diagnostic_samples_from_train": 4,
+      "not_main_training": true,
+      "official_train_used_for_smoke": true,
+      "runs": [
+        {
+          "checkpoint_sha256": "ffe65265c27617743f1cd574ce9c5a1d3c29d4c3f3fd201e0cb213daad7cc5cc",
+          "completion_receipt_sha256": "cb1d9a39911527c2df2e1f19aa338e8382c8307def23594ab12ca1c306496ff7",
+          "epochs_completed": 1,
+          "model": "mlp",
+          "seed": 42,
+          "wandb": null
+        },
+        {
+          "checkpoint_sha256": "e3335c2ef7c0dc80798a3f7549e5b7d1def431533ae38398b23ae914b1cb8945",
+          "completion_receipt_sha256": "362003d26c17d4a1f2cb752fa6e3e5a30ab494010c94c0db8c47a776d1d41cb8",
+          "epochs_completed": 1,
+          "model": "gnn",
+          "seed": 42,
+          "wandb": null
+        }
+      ],
+      "test_opened": false,
+      "train_samples": 8
+    }
+  },
+  "v3_artifacts_preserved": "verify_emnlp2020_task_b_gpu_v3 passed 6 frozen runs / 52 artifact hashes"
+}
