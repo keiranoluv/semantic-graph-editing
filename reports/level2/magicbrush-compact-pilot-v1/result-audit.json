@@ -1,0 +1,908 @@
+{
+  "checks": [
+    "pilot and parent source/config locks verified",
+    "frozen cache vectors and source IDs verified",
+    "both completion receipts verified",
+    "all 67 validation prediction IDs/order verified",
+    "primary/raw metrics and schema-gap accounting rescored",
+    "early stopping 30 epochs after selected checkpoint verified"
+  ],
+  "experiment_sha256": "edbadde8d1d35b75c599a7184f95e767ee179940d6b8effb37a0d94ff4e459ea",
+  "gpu_jobs_started": false,
+  "interpretation_vi": "Pipeline học được 16 mẫu nhưng khả năng tổng quát hóa của pilot còn yếu. Cả hai có exact 0/64, kể cả 17 mẫu đơn giản một thao tác; trên 41 mẫu có toàn bộ payload trong từ vựng train vẫn exact 0. Không thể giải thích toàn bộ lỗi chỉ bằng thuộc tính chi tiết hay OOV. Quality gate chỉ là kiểm tra vận hành, không chứng minh chất lượng đủ tốt.",
+  "limitations": [
+    "one seed only; no evidence GNN is better or worse in general",
+    "train loss falls while validation loss rises, consistent with overfitting; no full-train F1 measured by this audit",
+    "compact labels and primary 64-case population differ from full-detail v3; scores not directly comparable",
+    "source-ID/type matching and multiset added-name matching are diagnostics, not substitutes for official operation metrics"
+  ],
+  "models": {
+    "gnn": {
+      "completion_receipt_sha256": "f986c9debc42372dd624b33da62506f5b03b0438589d965517e915093bc5df36",
+      "diagnostics": {
+        "correct_added_names_ignoring_attributes_and_identity": 2,
+        "correct_existing_complete_payload": 13,
+        "correct_existing_kind_and_id": 20,
+        "expected_added_names": 42,
+        "expected_existing_ops": 105,
+        "matched_replace_attributes_correct": 1,
+        "matched_replace_label_correct": 3,
+        "matched_replace_node": 8,
+        "predicted_added_names": 34
+      },
+      "epochs_completed": 46,
+      "evaluation": {
+        "conservative_exact_definition": "Correct compact graphs on actionable cases divided by ALL validation pairs; schema-gap cases receive no success credit. Not original full-detail graph accuracy.",
+        "conservative_exact_graph_over_all_pairs": 0.0,
+        "constrained": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 64,
+          "failed_prediction_rate": 0.0,
+          "failed_predictions": 0,
+          "invalid_transactions": 0,
+          "macro_f1_supported_types": 0.10824674058692645,
+          "micro": {
+            "f1": 0.10382513661202186,
+            "fn": 187,
+            "fp": 141,
+            "precision": 0.11875,
+            "recall": 0.09223300970873786,
+            "support": 206,
+            "tp": 19
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.11428571428571428,
+              "fn": 53,
+              "fp": 40,
+              "precision": 0.13043478260869565,
+              "recall": 0.1016949152542373,
+              "support": 59,
+              "tp": 6
+            },
+            "add_node": {
+              "f1": 0.0,
+              "fn": 42,
+              "fp": 34,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 42,
+              "tp": 0
+            },
+            "delete_edge": {
+              "f1": 0.24615384615384617,
+              "fn": 29,
+              "fp": 20,
+              "precision": 0.2857142857142857,
+              "recall": 0.21621621621621623,
+              "support": 37,
+              "tp": 8
+            },
+            "delete_node": {
+              "f1": 0.1509433962264151,
+              "fn": 32,
+              "fp": 13,
+              "precision": 0.23529411764705882,
+              "recall": 0.1111111111111111,
+              "support": 36,
+              "tp": 4
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.029850746268656716,
+              "fn": 31,
+              "fp": 34,
+              "precision": 0.02857142857142857,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 1.0,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "gap_diagnostics": [
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:453731:1",
+            "instruction": "the dog is looking forward",
+            "predicted_operation_count": 2
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:456569:3",
+            "instruction": "let trees border the zoo",
+            "predicted_operation_count": 1
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:503943:1",
+            "instruction": "let the laptop have a red web page",
+            "predicted_operation_count": 2
+          }
+        ],
+        "raw": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 64,
+          "failed_prediction_rate": 0.296875,
+          "failed_predictions": 19,
+          "invalid_transactions": 19,
+          "macro_f1_supported_types": 0.0876135619209609,
+          "micro": {
+            "f1": 0.08695652173913043,
+            "fn": 190,
+            "fp": 146,
+            "precision": 0.09876543209876543,
+            "recall": 0.07766990291262135,
+            "support": 206,
+            "tp": 16
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.12612612612612611,
+              "fn": 52,
+              "fp": 45,
+              "precision": 0.1346153846153846,
+              "recall": 0.11864406779661017,
+              "support": 59,
+              "tp": 7
+            },
+            "add_node": {
+              "f1": 0.0,
+              "fn": 42,
+              "fp": 34,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 42,
+              "tp": 0
+            },
+            "delete_edge": {
+              "f1": 0.13114754098360656,
+              "fn": 33,
+              "fp": 20,
+              "precision": 0.16666666666666666,
+              "recall": 0.10810810810810811,
+              "support": 37,
+              "tp": 4
+            },
+            "delete_node": {
+              "f1": 0.1509433962264151,
+              "fn": 32,
+              "fp": 13,
+              "precision": 0.23529411764705882,
+              "recall": 0.1111111111111111,
+              "support": 36,
+              "tp": 4
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.029850746268656716,
+              "fn": 31,
+              "fp": 34,
+              "precision": 0.02857142857142857,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 0.703125,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "schema_coverage": 0.9552238805970149,
+        "schema_gap_ids": [
+          "magicbrush:453731:1",
+          "magicbrush:456569:3",
+          "magicbrush:503943:1"
+        ],
+        "schema_gap_pairs": 3,
+        "scope": "Primary metrics on fixed actionable compact validation labels; schema gaps retained and not scored as successful empty edits",
+        "scored_pairs": 64,
+        "validation_pairs": 67
+      },
+      "frequent_wrong_added_names": [
+        [
+          "car",
+          5
+        ],
+        [
+          "lion",
+          4
+        ],
+        [
+          "baseball cap",
+          4
+        ],
+        [
+          "duck",
+          3
+        ],
+        [
+          "house",
+          2
+        ]
+      ],
+      "fully_train_vocabulary_representable_subset": {
+        "ids": [
+          "magicbrush:10766:2",
+          "magicbrush:124157:1",
+          "magicbrush:130579:2",
+          "magicbrush:152176:1",
+          "magicbrush:152176:2",
+          "magicbrush:152176:3",
+          "magicbrush:171050:1",
+          "magicbrush:171050:2",
+          "magicbrush:171472:1",
+          "magicbrush:202066:1",
+          "magicbrush:206841:1",
+          "magicbrush:223599:1",
+          "magicbrush:246779:3",
+          "magicbrush:265777:1",
+          "magicbrush:265777:2",
+          "magicbrush:265777:3",
+          "magicbrush:270722:2",
+          "magicbrush:270722:3",
+          "magicbrush:298692:1",
+          "magicbrush:298692:2",
+          "magicbrush:321886:1",
+          "magicbrush:352276:1",
+          "magicbrush:352276:2",
+          "magicbrush:357633:1",
+          "magicbrush:375645:1",
+          "magicbrush:376047:1",
+          "magicbrush:378186:1",
+          "magicbrush:417825:1",
+          "magicbrush:453731:2",
+          "magicbrush:456569:2",
+          "magicbrush:477497:1",
+          "magicbrush:484847:1",
+          "magicbrush:484847:2",
+          "magicbrush:540097:1",
+          "magicbrush:545734:1",
+          "magicbrush:580149:1",
+          "magicbrush:71476:1",
+          "magicbrush:96854:2",
+          "magicbrush:9772:1",
+          "magicbrush:9772:2",
+          "magicbrush:9772:3"
+        ],
+        "metrics": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 41,
+          "failed_prediction_rate": 0.0,
+          "failed_predictions": 0,
+          "invalid_transactions": 0,
+          "macro_f1_supported_types": 0.1442455655936897,
+          "micro": {
+            "f1": 0.15517241379310345,
+            "fn": 109,
+            "fp": 87,
+            "precision": 0.17142857142857143,
+            "recall": 0.14173228346456693,
+            "support": 127,
+            "tp": 18
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.17543859649122806,
+              "fn": 24,
+              "fp": 23,
+              "precision": 0.17857142857142858,
+              "recall": 0.1724137931034483,
+              "support": 29,
+              "tp": 5
+            },
+            "add_node": {
+              "f1": 0.0,
+              "fn": 20,
+              "fp": 20,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 20,
+              "tp": 0
+            },
+            "delete_edge": {
+              "f1": 0.3018867924528302,
+              "fn": 22,
+              "fp": 15,
+              "precision": 0.34782608695652173,
+              "recall": 0.26666666666666666,
+              "support": 30,
+              "tp": 8
+            },
+            "delete_node": {
+              "f1": 0.1951219512195122,
+              "fn": 24,
+              "fp": 9,
+              "precision": 0.3076923076923077,
+              "recall": 0.14285714285714285,
+              "support": 28,
+              "tp": 4
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.04878048780487805,
+              "fn": 19,
+              "fp": 20,
+              "precision": 0.047619047619047616,
+              "recall": 0.05,
+              "support": 20,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 12,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 1.0,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        }
+      },
+      "illustration_selection": "Examples whose instruction contains laptop/gorilla/child/lion; illustrative, not random sample",
+      "illustrations": [
+        {
+          "expected_added_names": {
+            "gorilla": 1
+          },
+          "id": "magicbrush:338078:1",
+          "instruction": "Have there be a gorilla crossing the road",
+          "predicted_added_names": {
+            "lion": 1
+          }
+        },
+        {
+          "expected_added_names": {
+            "guitar": 1
+          },
+          "id": "magicbrush:338078:3",
+          "instruction": "Have the gorilla be playing a guitar",
+          "predicted_added_names": {
+            "baseball cap": 1
+          }
+        },
+        {
+          "expected_added_names": {
+            "lion": 1
+          },
+          "id": "magicbrush:456569:2",
+          "instruction": "let a lion sleep near the giraffes",
+          "predicted_added_names": {
+            "lion": 1
+          }
+        },
+        {
+          "expected_added_names": {
+            "laptop": 1
+          },
+          "id": "magicbrush:484847:1",
+          "instruction": "put a laptop on the table",
+          "predicted_added_names": {
+            "chair": 1
+          }
+        }
+      ],
+      "loss_checkpoints": [
+        {
+          "epoch": 1,
+          "train_structured_loss": 2.127629988613319,
+          "validation_structured_loss": 1.7640735507011414
+        },
+        {
+          "epoch": 16,
+          "train_structured_loss": 0.7842592418787884,
+          "validation_structured_loss": 1.9573219418525696
+        },
+        {
+          "epoch": 46,
+          "train_structured_loss": 0.3241636965956007,
+          "validation_structured_loss": 2.4054476022720337
+        }
+      ],
+      "quality_gate": {
+        "passed": true,
+        "scope": "validation only; operational sanity check, not proof of useful generalization",
+        "thresholds": {
+          "minimum_micro_f1": 0.05,
+          "minimum_valid_transaction_rate": 0.5
+        },
+        "validation_micro_f1": 0.10382513661202186,
+        "validation_valid_transaction_rate": 1.0
+      },
+      "selected_epoch": 16,
+      "status": "VALIDATION_GATE_PASSED"
+    },
+    "mlp": {
+      "completion_receipt_sha256": "2d995fb6c99c93191f2f8d3a5a8a2c8d513a14f1d3430d133a571cdc22ddabd0",
+      "diagnostics": {
+        "correct_added_names_ignoring_attributes_and_identity": 2,
+        "correct_existing_complete_payload": 17,
+        "correct_existing_kind_and_id": 24,
+        "expected_added_names": 42,
+        "expected_existing_ops": 105,
+        "matched_replace_attributes_correct": 1,
+        "matched_replace_label_correct": 4,
+        "matched_replace_node": 8,
+        "predicted_added_names": 33
+      },
+      "epochs_completed": 48,
+      "evaluation": {
+        "conservative_exact_definition": "Correct compact graphs on actionable cases divided by ALL validation pairs; schema-gap cases receive no success credit. Not original full-detail graph accuracy.",
+        "conservative_exact_graph_over_all_pairs": 0.0,
+        "constrained": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 64,
+          "failed_prediction_rate": 0.0,
+          "failed_predictions": 0,
+          "invalid_transactions": 0,
+          "macro_f1_supported_types": 0.11510327009670038,
+          "micro": {
+            "f1": 0.11140583554376658,
+            "fn": 185,
+            "fp": 150,
+            "precision": 0.12280701754385964,
+            "recall": 0.10194174757281553,
+            "support": 206,
+            "tp": 21
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.06315789473684211,
+              "fn": 56,
+              "fp": 33,
+              "precision": 0.08333333333333333,
+              "recall": 0.05084745762711865,
+              "support": 59,
+              "tp": 3
+            },
+            "add_node": {
+              "f1": 0.02666666666666667,
+              "fn": 41,
+              "fp": 32,
+              "precision": 0.030303030303030304,
+              "recall": 0.023809523809523808,
+              "support": 42,
+              "tp": 1
+            },
+            "delete_edge": {
+              "f1": 0.2631578947368421,
+              "fn": 27,
+              "fp": 29,
+              "precision": 0.2564102564102564,
+              "recall": 0.2702702702702703,
+              "support": 37,
+              "tp": 10
+            },
+            "delete_node": {
+              "f1": 0.1935483870967742,
+              "fn": 30,
+              "fp": 20,
+              "precision": 0.23076923076923078,
+              "recall": 0.16666666666666666,
+              "support": 36,
+              "tp": 6
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.028985507246376812,
+              "fn": 31,
+              "fp": 36,
+              "precision": 0.02702702702702703,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 1.0,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "gap_diagnostics": [
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:453731:1",
+            "instruction": "the dog is looking forward",
+            "predicted_operation_count": 0
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:456569:3",
+            "instruction": "let trees border the zoo",
+            "predicted_operation_count": 3
+          },
+          {
+            "correctness_assessed": false,
+            "error": null,
+            "id": "magicbrush:503943:1",
+            "instruction": "let the laptop have a red web page",
+            "predicted_operation_count": 4
+          }
+        ],
+        "raw": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 64,
+          "failed_prediction_rate": 0.3125,
+          "failed_predictions": 20,
+          "invalid_transactions": 20,
+          "macro_f1_supported_types": 0.11360130623181428,
+          "micro": {
+            "f1": 0.10723860589812333,
+            "fn": 186,
+            "fp": 147,
+            "precision": 0.11976047904191617,
+            "recall": 0.0970873786407767,
+            "support": 206,
+            "tp": 20
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.08,
+              "fn": 55,
+              "fp": 37,
+              "precision": 0.0975609756097561,
+              "recall": 0.06779661016949153,
+              "support": 59,
+              "tp": 4
+            },
+            "add_node": {
+              "f1": 0.02666666666666667,
+              "fn": 41,
+              "fp": 32,
+              "precision": 0.030303030303030304,
+              "recall": 0.023809523809523808,
+              "support": 42,
+              "tp": 1
+            },
+            "delete_edge": {
+              "f1": 0.23880597014925373,
+              "fn": 29,
+              "fp": 22,
+              "precision": 0.26666666666666666,
+              "recall": 0.21621621621621623,
+              "support": 37,
+              "tp": 8
+            },
+            "delete_node": {
+              "f1": 0.1935483870967742,
+              "fn": 30,
+              "fp": 20,
+              "precision": 0.23076923076923078,
+              "recall": 0.16666666666666666,
+              "support": 36,
+              "tp": 6
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.028985507246376812,
+              "fn": 31,
+              "fp": 36,
+              "precision": 0.02702702702702703,
+              "recall": 0.03125,
+              "support": 32,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 17,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 0.6875,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        },
+        "schema_coverage": 0.9552238805970149,
+        "schema_gap_ids": [
+          "magicbrush:453731:1",
+          "magicbrush:456569:3",
+          "magicbrush:503943:1"
+        ],
+        "schema_gap_pairs": 3,
+        "scope": "Primary metrics on fixed actionable compact validation labels; schema gaps retained and not scored as successful empty edits",
+        "scored_pairs": 64,
+        "validation_pairs": 67
+      },
+      "frequent_wrong_added_names": [
+        [
+          "car",
+          4
+        ],
+        [
+          "lion",
+          4
+        ],
+        [
+          "burger",
+          3
+        ],
+        [
+          "lizard",
+          2
+        ],
+        [
+          "spoon",
+          2
+        ]
+      ],
+      "fully_train_vocabulary_representable_subset": {
+        "ids": [
+          "magicbrush:10766:2",
+          "magicbrush:124157:1",
+          "magicbrush:130579:2",
+          "magicbrush:152176:1",
+          "magicbrush:152176:2",
+          "magicbrush:152176:3",
+          "magicbrush:171050:1",
+          "magicbrush:171050:2",
+          "magicbrush:171472:1",
+          "magicbrush:202066:1",
+          "magicbrush:206841:1",
+          "magicbrush:223599:1",
+          "magicbrush:246779:3",
+          "magicbrush:265777:1",
+          "magicbrush:265777:2",
+          "magicbrush:265777:3",
+          "magicbrush:270722:2",
+          "magicbrush:270722:3",
+          "magicbrush:298692:1",
+          "magicbrush:298692:2",
+          "magicbrush:321886:1",
+          "magicbrush:352276:1",
+          "magicbrush:352276:2",
+          "magicbrush:357633:1",
+          "magicbrush:375645:1",
+          "magicbrush:376047:1",
+          "magicbrush:378186:1",
+          "magicbrush:417825:1",
+          "magicbrush:453731:2",
+          "magicbrush:456569:2",
+          "magicbrush:477497:1",
+          "magicbrush:484847:1",
+          "magicbrush:484847:2",
+          "magicbrush:540097:1",
+          "magicbrush:545734:1",
+          "magicbrush:580149:1",
+          "magicbrush:71476:1",
+          "magicbrush:96854:2",
+          "magicbrush:9772:1",
+          "magicbrush:9772:2",
+          "magicbrush:9772:3"
+        ],
+        "metrics": {
+          "decode_failures": 0,
+          "exact_operation_set_accuracy": 0.0,
+          "exact_target_graph_accuracy": 0.0,
+          "examples": 41,
+          "failed_prediction_rate": 0.0,
+          "failed_predictions": 0,
+          "invalid_transactions": 0,
+          "macro_f1_supported_types": 0.14593686123097888,
+          "micro": {
+            "f1": 0.16194331983805668,
+            "fn": 107,
+            "fp": 100,
+            "precision": 0.16666666666666666,
+            "recall": 0.15748031496062992,
+            "support": 127,
+            "tp": 20
+          },
+          "per_type": {
+            "add_edge": {
+              "f1": 0.0784313725490196,
+              "fn": 27,
+              "fp": 20,
+              "precision": 0.09090909090909091,
+              "recall": 0.06896551724137931,
+              "support": 29,
+              "tp": 2
+            },
+            "add_node": {
+              "f1": 0.05405405405405406,
+              "fn": 19,
+              "fp": 16,
+              "precision": 0.058823529411764705,
+              "recall": 0.05,
+              "support": 20,
+              "tp": 1
+            },
+            "delete_edge": {
+              "f1": 0.31746031746031744,
+              "fn": 20,
+              "fp": 23,
+              "precision": 0.30303030303030304,
+              "recall": 0.3333333333333333,
+              "support": 30,
+              "tp": 10
+            },
+            "delete_node": {
+              "f1": 0.23529411764705882,
+              "fn": 22,
+              "fp": 17,
+              "precision": 0.2608695652173913,
+              "recall": 0.21428571428571427,
+              "support": 28,
+              "tp": 6
+            },
+            "replace_edge": {
+              "f1": null,
+              "fn": 0,
+              "fp": 0,
+              "precision": null,
+              "recall": null,
+              "support": 0,
+              "tp": 0
+            },
+            "replace_node": {
+              "f1": 0.044444444444444446,
+              "fn": 19,
+              "fp": 24,
+              "precision": 0.04,
+              "recall": 0.05,
+              "support": 20,
+              "tp": 1
+            }
+          },
+          "protocol": "source_ids_and_independent_new_identity_canonicalization_utf8_actions_v1",
+          "simple_exact_operation_set_accuracy": 0.0,
+          "simple_examples": 12,
+          "unsupported_predicted_identities": 0,
+          "valid_transaction_rate": 1.0,
+          "zero_support_types": [
+            "replace_edge"
+          ]
+        }
+      },
+      "illustration_selection": "Examples whose instruction contains laptop/gorilla/child/lion; illustrative, not random sample",
+      "illustrations": [
+        {
+          "expected_added_names": {
+            "gorilla": 1
+          },
+          "id": "magicbrush:338078:1",
+          "instruction": "Have there be a gorilla crossing the road",
+          "predicted_added_names": {
+            "dog": 1
+          }
+        },
+        {
+          "expected_added_names": {
+            "guitar": 1
+          },
+          "id": "magicbrush:338078:3",
+          "instruction": "Have the gorilla be playing a guitar",
+          "predicted_added_names": {}
+        },
+        {
+          "expected_added_names": {
+            "lion": 1
+          },
+          "id": "magicbrush:456569:2",
+          "instruction": "let a lion sleep near the giraffes",
+          "predicted_added_names": {
+            "lion": 1
+          }
+        },
+        {
+          "expected_added_names": {
+            "laptop": 1
+          },
+          "id": "magicbrush:484847:1",
+          "instruction": "put a laptop on the table",
+          "predicted_added_names": {
+            "chair": 1
+          }
+        }
+      ],
+      "loss_checkpoints": [
+        {
+          "epoch": 1,
+          "train_structured_loss": 2.1713018983701535,
+          "validation_structured_loss": 1.79514878988266
+        },
+        {
+          "epoch": 18,
+          "train_structured_loss": 0.8221419513027534,
+          "validation_structured_loss": 1.8209583759307861
+        },
+        {
+          "epoch": 48,
+          "train_structured_loss": 0.33688563454982845,
+          "validation_structured_loss": 2.1515390872955322
+        }
+      ],
+      "quality_gate": {
+        "passed": true,
+        "scope": "validation only; operational sanity check, not proof of useful generalization",
+        "thresholds": {
+          "minimum_micro_f1": 0.05,
+          "minimum_valid_transaction_rate": 0.5
+        },
+        "validation_micro_f1": 0.11140583554376658,
+        "validation_valid_transaction_rate": 1.0
+      },
+      "selected_epoch": 18,
+      "status": "VALIDATION_GATE_PASSED"
+    }
+  },
+  "next_step_vi": "Giữ nguyên nhãn compact và pilot làm baseline. Chưa mở rộng ba seed hoặc test. Ưu tiên thử một thay đổi hẹp về liên kết câu yêu cầu với tên đối tượng mới/ID nguồn: cơ chế chọn hoặc sao chép tên được nhắc trong đầu vào, ứng viên chỉ từ đầu vào và train. Kiểm tra ứng viên/định vị trên train trước khi cài pilot so sánh; không đọc target để tạo ứng viên dự đoán. Không mặc định tăng epoch hoặc tiếp tục bỏ chi tiết nhãn để nâng điểm.",
+  "scope": "Stored validation prediction audit; no new model training/inference; no heldout label access",
+  "sources_sha256": {
+    "configs/level2/magicbrush-compact-pilot-v1.lock.json": "a41b699d4538e25021e7967f5ec86969474013b70e34966ce1d4e73eccf1b96b",
+    "runs/level2/magicbrush-compact-pilot-v1/feature-receipt.json": "c91705d38c5ae37f05a1283ca59afd6ddbb5f980cfa21b00cd8126b81e9e1825",
+    "runs/level2/magicbrush-compact-pilot-v1/summary.json": "911fd7f4248c1f9eb463a76e52df44471e3a0062d4886d170112e26d05394e83"
+  },
+  "test_labels_decoded": false,
+  "training_identity_sha256": "3f8ae1d0b9a8b45871ac407d5cc07a8b7cd1ef726d8dd92313bd5265b6e4a674"
+}
