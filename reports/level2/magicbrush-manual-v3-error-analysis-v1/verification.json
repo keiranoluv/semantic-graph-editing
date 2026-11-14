@@ -1,0 +1,24 @@
+{
+  "accounting_invariants_verified": true,
+  "artifacts": {
+    "CASES.md": "a46f4afd617ad940e68830742c6515f4573e937c92a723dbd874367abef14869",
+    "README.md": "3ece48d443ad155f9709c547544e01b60967195520005168a882b26f4f6bef0b",
+    "cases.json": "c08c33305cf212545a7c48846f45f1fa76fb3068747138b72b004b0fe71304ec",
+    "qualitative.json": "6541092c436917972b6da5111c6261f6ab25b15c0494da41081931dd3a4a3e4a",
+    "quantitative.json": "5895aae73534d878fc115f9c57a8e6d58f666683c6d647f3cc20ed89f5bea77b",
+    "same-image-granularity.json": "894e6a8047912015a15ba3a7bc7617e470bed652a9d3602a2d773b50850e9b52"
+  },
+  "code_sha256": "ea6a2c1ca6ea2ae3661cfc3e468d5be30a401f426f762c4af70e6ec03504ff73",
+  "dataset_labels_changed": false,
+  "gpu_jobs_started": false,
+  "new_diagnostics_tp_and_support_match_official_scorer": true,
+  "paired_image_files_hash_verified": 40,
+  "qualitative_pairs": 20,
+  "quantitative_report_reproduced_in_independent_process": true,
+  "scope": "CPU-only read-only dataset and stored-prediction audit",
+  "source_groups_in_sample": 18,
+  "test_labels_decoded_by_this_audit": false,
+  "v3_release_lock_unchanged": true,
+  "validation_pairs_per_run": 67,
+  "validation_runs_verified": 6
+}

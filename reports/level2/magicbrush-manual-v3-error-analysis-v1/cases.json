@@ -1,0 +1,8990 @@
+{
+  "cases": [
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "entity_not_edited": 2,
+        "exact": 1,
+        "exact_operation_tp": 1,
+        "existing_entity_touched": 1,
+        "existing_exact_payload_correct": 1,
+        "existing_kind_and_id_correct": 1,
+        "gt_added_nodes": 0,
+        "gt_existing_operations": 3,
+        "gt_operations": 4,
+        "predicted_added_nodes": 0,
+        "predicted_existing_ops_on_unrequested_entities": 1,
+        "predicted_operations": 2,
+        "predicted_self_loop_edges": 0
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n002",
+          "kind": "delete_node",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "e001",
+          "kind": "delete_edge",
+          "status": "exact",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "e002",
+          "kind": "delete_edge",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "foreground",
+              "two"
+            ],
+            "id": "n002",
+            "label": "foil pans"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "in",
+            "subject": "n001"
+          },
+          "kind": "delete_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          "kind": "delete_edge"
+        }
+      ],
+      "group": "coco:124157",
+      "id": "magicbrush:124157:1",
+      "instruction": "Remove the tin pans.",
+      "predicted_operations": [
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "many",
+              "yellow"
+            ],
+            "id": "n001",
+            "label": "bananas"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "in",
+            "subject": "n001"
+          },
+          "kind": "delete_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        104,
+        51,
+        51,
+        52,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "in",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e003",
+            "object": "n005",
+            "predicate": "below",
+            "subject": "n004"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "many",
+              "yellow"
+            ],
+            "id": "n001",
+            "label": "bananas"
+          },
+          {
+            "attributes": [
+              "foreground",
+              "two"
+            ],
+            "id": "n002",
+            "label": "foil pans"
+          },
+          {
+            "attributes": [
+              "red"
+            ],
+            "id": "n003",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "background",
+              "white"
+            ],
+            "id": "n004",
+            "label": "boxes"
+          },
+          {
+            "attributes": [
+              "red"
+            ],
+            "id": "n005",
+            "label": "shelf"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 381032,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/f8aaf8d1de8bf4de0c9619ddb505b0d92044da26b7188d6e6f635ef736cacfe1.png",
+        "pixel_sha256": "3eccd73397f77a538cfe96e06a07d37d26b2b98aacf3b3b1d9a6dfebeaabf489",
+        "sha256": "f8aaf8d1de8bf4de0c9619ddb505b0d92044da26b7188d6e6f635ef736cacfe1",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e003",
+            "object": "n005",
+            "predicate": "below",
+            "subject": "n004"
+          },
+          {
+            "id": "newe001",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "many",
+              "yellow"
+            ],
+            "id": "n001",
+            "label": "bananas"
+          },
+          {
+            "attributes": [
+              "red"
+            ],
+            "id": "n003",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "background",
+              "white"
+            ],
+            "id": "n004",
+            "label": "boxes"
+          },
+          {
+            "attributes": [
+              "red"
+            ],
+            "id": "n005",
+            "label": "shelf"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1077760,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/27ab4d0baddd3340dcb08955bc95214cacad8fb105a2aa5b0c0669a2d2de21c3.png",
+        "pixel_sha256": "53b379bcead56bcd67ebfc6e70af58b87d38a95210c1e9520767be4c40180900",
+        "sha256": "27ab4d0baddd3340dcb08955bc95214cacad8fb105a2aa5b0c0669a2d2de21c3",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "exact_operation_tp": 0,
+        "existing_entity_touched": 1,
+        "existing_exact_payload_correct": 0,
+        "existing_kind_and_id_correct": 1,
+        "gt_added_nodes": 0,
+        "gt_existing_operations": 1,
+        "gt_operations": 1,
+        "matched_replace_node_fields": 2,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 3,
+        "predicted_self_loop_edges": 0,
+        "replace_node_correct_attributes_given_id_kind": 0,
+        "replace_node_correct_id_and_kind": 1,
+        "replace_node_correct_label_given_id_kind": 1,
+        "wrong_payload": 1,
+        "wrong_replace_node_attributes": 1
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n001",
+          "kind": "replace_node",
+          "status": "wrong_payload",
+          "wrong_fields": [
+            "attributes"
+          ]
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "hanging chains",
+              "narrow",
+              "red",
+              "rounded cap"
+            ],
+            "id": "n001",
+            "label": "hydrant"
+          },
+          "before": {
+            "attributes": [
+              "dark body",
+              "white domed cap",
+              "wide"
+            ],
+            "id": "n001",
+            "label": "hydrant"
+          },
+          "kind": "replace_node"
+        }
+      ],
+      "group": "coco:171050",
+      "id": "magicbrush:171050:1",
+      "instruction": "Make the hydrant red.",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "brown",
+              "dark"
+            ],
+            "id": "newn001",
+            "label": "car"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "brown",
+              "white red",
+              "wide"
+            ],
+            "id": "n001",
+            "label": "hydrant"
+          },
+          "before": {
+            "attributes": [
+              "dark body",
+              "white domed cap",
+              "wide"
+            ],
+            "id": "n001",
+            "label": "hydrant"
+          },
+          "kind": "replace_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        117,
+        104,
+        115,
+        111,
+        100,
+        102,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        107,
+        124,
+        103,
+        117,
+        100,
+        113,
+        119,
+        37,
+        47,
+        94,
+        37,
+        101,
+        117,
+        114,
+        122,
+        113,
+        37,
+        47,
+        37,
+        122,
+        107,
+        108,
+        119,
+        104,
+        35,
+        117,
+        104,
+        103,
+        37,
+        47,
+        37,
+        122,
+        108,
+        103,
+        104,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        102,
+        100,
+        117,
+        37,
+        47,
+        94,
+        37,
+        101,
+        117,
+        114,
+        122,
+        113,
+        37,
+        47,
+        37,
+        103,
+        100,
+        117,
+        110,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        53,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "in front of",
+            "subject": "n001"
+          },
+          {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "beside",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n003",
+            "predicate": "beside",
+            "subject": "n005"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "dark body",
+              "white domed cap",
+              "wide"
+            ],
+            "id": "n001",
+            "label": "hydrant"
+          },
+          {
+            "attributes": [
+              "gray"
+            ],
+            "id": "n002",
+            "label": "sidewalk"
+          },
+          {
+            "attributes": [
+              "dark green"
+            ],
+            "id": "n003",
+            "label": "door"
+          },
+          {
+            "attributes": [
+              "left",
+              "red brick"
+            ],
+            "id": "n004",
+            "label": "wall"
+          },
+          {
+            "attributes": [
+              "gray",
+              "right"
+            ],
+            "id": "n005",
+            "label": "wall"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 406035,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/6e578a1a2cf28837b002b416144657a8e30484747b92c013b20512c032186acd.png",
+        "pixel_sha256": "567c5874b9ee5607fcc3a7872d34d93c91daddfc8791ea0cb4d31e4afafad0d6",
+        "sha256": "6e578a1a2cf28837b002b416144657a8e30484747b92c013b20512c032186acd",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "in front of",
+            "subject": "n001"
+          },
+          {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "beside",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n003",
+            "predicate": "beside",
+            "subject": "n005"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "hanging chains",
+              "narrow",
+              "red",
+              "rounded cap"
+            ],
+            "id": "n001",
+            "label": "hydrant"
+          },
+          {
+            "attributes": [
+              "gray"
+            ],
+            "id": "n002",
+            "label": "sidewalk"
+          },
+          {
+            "attributes": [
+              "dark green"
+            ],
+            "id": "n003",
+            "label": "door"
+          },
+          {
+            "attributes": [
+              "left",
+              "red brick"
+            ],
+            "id": "n004",
+            "label": "wall"
+          },
+          {
+            "attributes": [
+              "gray",
+              "right"
+            ],
+            "id": "n005",
+            "label": "wall"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1079151,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/1aac2a47f8c4cdd87028c0f9b4abe105fdfd6419210d16768766ee57f80917cb.png",
+        "pixel_sha256": "d34dae86328a36bef044a74db31f93348b42fb93923d96be0b78ec7902f62e94",
+        "sha256": "1aac2a47f8c4cdd87028c0f9b4abe105fdfd6419210d16768766ee57f80917cb",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "entity_not_edited": 1,
+        "exact_operation_tp": 0,
+        "existing_entity_touched": 0,
+        "existing_exact_payload_correct": 0,
+        "existing_kind_and_id_correct": 0,
+        "gt_added_nodes": 1,
+        "gt_existing_operations": 1,
+        "gt_operations": 3,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 2,
+        "predicted_self_loop_edges": 0
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n004",
+          "kind": "replace_node",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "dark",
+              "partly visible"
+            ],
+            "id": "newn001",
+            "label": "window"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "gray concrete"
+            ],
+            "id": "n004",
+            "label": "wall"
+          },
+          "before": {
+            "attributes": [
+              "left",
+              "red brick"
+            ],
+            "id": "n004",
+            "label": "wall"
+          },
+          "kind": "replace_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n004",
+            "predicate": "in",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "group": "coco:171050",
+      "id": "magicbrush:171050:2",
+      "instruction": "Make all the bricks concrete.",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "brown",
+              "dark"
+            ],
+            "id": "newn001",
+            "label": "dog"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        103,
+        114,
+        106,
+        37,
+        47,
+        94,
+        37,
+        101,
+        117,
+        114,
+        122,
+        113,
+        37,
+        47,
+        37,
+        103,
+        100,
+        117,
+        110,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        53,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "in front of",
+            "subject": "n001"
+          },
+          {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "beside",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n003",
+            "predicate": "beside",
+            "subject": "n005"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "red"
+            ],
+            "id": "n001",
+            "label": "hydrant"
+          },
+          {
+            "attributes": [
+              "gray"
+            ],
+            "id": "n002",
+            "label": "sidewalk"
+          },
+          {
+            "attributes": [
+              "dark green"
+            ],
+            "id": "n003",
+            "label": "door"
+          },
+          {
+            "attributes": [
+              "left",
+              "red brick"
+            ],
+            "id": "n004",
+            "label": "wall"
+          },
+          {
+            "attributes": [
+              "gray",
+              "right"
+            ],
+            "id": "n005",
+            "label": "wall"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 1079151,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/1aac2a47f8c4cdd87028c0f9b4abe105fdfd6419210d16768766ee57f80917cb.png",
+        "pixel_sha256": "d34dae86328a36bef044a74db31f93348b42fb93923d96be0b78ec7902f62e94",
+        "sha256": "1aac2a47f8c4cdd87028c0f9b4abe105fdfd6419210d16768766ee57f80917cb",
+        "width": 1024
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "in front of",
+            "subject": "n001"
+          },
+          {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "beside",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n003",
+            "predicate": "beside",
+            "subject": "n005"
+          },
+          {
+            "id": "newe001",
+            "object": "n004",
+            "predicate": "in",
+            "subject": "newn001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "red"
+            ],
+            "id": "n001",
+            "label": "hydrant"
+          },
+          {
+            "attributes": [
+              "gray"
+            ],
+            "id": "n002",
+            "label": "sidewalk"
+          },
+          {
+            "attributes": [
+              "dark green"
+            ],
+            "id": "n003",
+            "label": "door"
+          },
+          {
+            "attributes": [
+              "gray concrete"
+            ],
+            "id": "n004",
+            "label": "wall"
+          },
+          {
+            "attributes": [
+              "gray",
+              "right"
+            ],
+            "id": "n005",
+            "label": "wall"
+          },
+          {
+            "attributes": [
+              "dark",
+              "partly visible"
+            ],
+            "id": "newn001",
+            "label": "window"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1022945,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/cecc2ed842d6c1d0bb00ed527905a1d9b1749c913468a94a539157b64da34578.png",
+        "pixel_sha256": "907a1fd7625c9bcb4766c07219f9d5b380c8bc843bc360d4c407e29893c4bb6a",
+        "sha256": "cecc2ed842d6c1d0bb00ed527905a1d9b1749c913468a94a539157b64da34578",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "entity_not_edited": 1,
+        "exact_operation_tp": 0,
+        "existing_entity_touched": 0,
+        "existing_exact_payload_correct": 0,
+        "existing_kind_and_id_correct": 0,
+        "gt_added_nodes": 0,
+        "gt_existing_operations": 1,
+        "gt_operations": 1,
+        "predicted_added_nodes": 0,
+        "predicted_existing_ops_on_unrequested_entities": 1,
+        "predicted_operations": 1,
+        "predicted_self_loop_edges": 0
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n008",
+          "kind": "replace_node",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "partly cropped",
+              "yellow"
+            ],
+            "id": "n008",
+            "label": "corn cob"
+          },
+          "before": {
+            "attributes": [
+              "red yellow",
+              "right"
+            ],
+            "id": "n008",
+            "label": "apple"
+          },
+          "kind": "replace_node"
+        }
+      ],
+      "group": "coco:21217",
+      "id": "magicbrush:21217:2",
+      "instruction": "change one of the apples for an corn cob",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "red",
+              "red octagon"
+            ],
+            "id": "n002",
+            "label": "cereal"
+          },
+          "before": {
+            "attributes": [
+              "yellow flakes"
+            ],
+            "id": "n002",
+            "label": "cereal"
+          },
+          "kind": "replace_node"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        117,
+        104,
+        115,
+        111,
+        100,
+        102,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        53,
+        37,
+        47,
+        37,
+        102,
+        104,
+        117,
+        104,
+        100,
+        111,
+        37,
+        47,
+        94,
+        37,
+        117,
+        104,
+        103,
+        37,
+        47,
+        37,
+        117,
+        104,
+        103,
+        35,
+        114,
+        102,
+        119,
+        100,
+        106,
+        114,
+        113,
+        37,
+        96,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n002"
+          },
+          {
+            "id": "e002",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n004",
+            "predicate": "in",
+            "subject": "n005"
+          },
+          {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "in",
+            "subject": "n006"
+          },
+          {
+            "id": "e005",
+            "object": "n009",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e006",
+            "object": "n009",
+            "predicate": "on",
+            "subject": "n004"
+          },
+          {
+            "id": "e007",
+            "object": "n009",
+            "predicate": "on",
+            "subject": "n007"
+          },
+          {
+            "id": "e008",
+            "object": "n009",
+            "predicate": "on",
+            "subject": "n008"
+          },
+          {
+            "id": "e009",
+            "object": "n010",
+            "predicate": "on",
+            "subject": "n009"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "white"
+            ],
+            "id": "n001",
+            "label": "bowl"
+          },
+          {
+            "attributes": [
+              "yellow flakes"
+            ],
+            "id": "n002",
+            "label": "cereal"
+          },
+          {
+            "attributes": [
+              "bowl",
+              "metal"
+            ],
+            "id": "n003",
+            "label": "spoon"
+          },
+          {
+            "attributes": [
+              "glass"
+            ],
+            "id": "n004",
+            "label": "jar"
+          },
+          {
+            "attributes": [
+              "brown"
+            ],
+            "id": "n005",
+            "label": "applesauce"
+          },
+          {
+            "attributes": [
+              "jar",
+              "metal"
+            ],
+            "id": "n006",
+            "label": "spoon"
+          },
+          {
+            "attributes": [
+              "left",
+              "red"
+            ],
+            "id": "n007",
+            "label": "apple"
+          },
+          {
+            "attributes": [
+              "red yellow",
+              "right"
+            ],
+            "id": "n008",
+            "label": "apple"
+          },
+          {
+            "attributes": [
+              "lace",
+              "white"
+            ],
+            "id": "n009",
+            "label": "cloth"
+          },
+          {
+            "attributes": [
+              "orange",
+              "striped"
+            ],
+            "id": "n010",
+            "label": "placemat"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 1275458,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/5f657db704f17e292539ad868c3107ef0fd187d31243a849e00915e8bf61b86a.png",
+        "pixel_sha256": "18786e5c3dcc34403f6491543e8af7961e36145787e66654a1384563ea7c0f66",
+        "sha256": "5f657db704f17e292539ad868c3107ef0fd187d31243a849e00915e8bf61b86a",
+        "width": 1024
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n002"
+          },
+          {
+            "id": "e002",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n004",
+            "predicate": "in",
+            "subject": "n005"
+          },
+          {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "in",
+            "subject": "n006"
+          },
+          {
+            "id": "e005",
+            "object": "n009",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e006",
+            "object": "n009",
+            "predicate": "on",
+            "subject": "n004"
+          },
+          {
+            "id": "e007",
+            "object": "n009",
+            "predicate": "on",
+            "subject": "n007"
+          },
+          {
+            "id": "e008",
+            "object": "n009",
+            "predicate": "on",
+            "subject": "n008"
+          },
+          {
+            "id": "e009",
+            "object": "n010",
+            "predicate": "on",
+            "subject": "n009"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "white"
+            ],
+            "id": "n001",
+            "label": "bowl"
+          },
+          {
+            "attributes": [
+              "yellow flakes"
+            ],
+            "id": "n002",
+            "label": "cereal"
+          },
+          {
+            "attributes": [
+              "bowl",
+              "metal"
+            ],
+            "id": "n003",
+            "label": "spoon"
+          },
+          {
+            "attributes": [
+              "glass"
+            ],
+            "id": "n004",
+            "label": "jar"
+          },
+          {
+            "attributes": [
+              "brown"
+            ],
+            "id": "n005",
+            "label": "applesauce"
+          },
+          {
+            "attributes": [
+              "jar",
+              "metal"
+            ],
+            "id": "n006",
+            "label": "spoon"
+          },
+          {
+            "attributes": [
+              "left",
+              "red"
+            ],
+            "id": "n007",
+            "label": "apple"
+          },
+          {
+            "attributes": [
+              "partly cropped",
+              "yellow"
+            ],
+            "id": "n008",
+            "label": "corn cob"
+          },
+          {
+            "attributes": [
+              "lace",
+              "white"
+            ],
+            "id": "n009",
+            "label": "cloth"
+          },
+          {
+            "attributes": [
+              "orange",
+              "striped"
+            ],
+            "id": "n010",
+            "label": "placemat"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1302847,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/379c86a47534950a19b5b46abee2e925760ced41570a8f25f81be09ff8a40891.png",
+        "pixel_sha256": "6fb008c5ee299ae2d82fb7eb2c3d08eab485004250fff436d68b6bf04632d02e",
+        "sha256": "379c86a47534950a19b5b46abee2e925760ced41570a8f25f81be09ff8a40891",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {
+        "duplicate_edges_removed": 1
+      },
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "exact_operation_tp": 0,
+        "gt_added_nodes": 1,
+        "gt_operations": 3,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 2,
+        "predicted_self_loop_edges": 0
+      },
+      "existing_operation_diagnosis": [],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "back turned",
+              "blond",
+              "brown jacket"
+            ],
+            "id": "newn001",
+            "label": "child"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "facing",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": {
+            "id": "newe002",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "group": "coco:21972",
+      "id": "magicbrush:21972:2",
+      "instruction": "add a kid looking at the plane",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "brown"
+            ],
+            "id": "newn001",
+            "label": "duck"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        103,
+        120,
+        102,
+        110,
+        37,
+        47,
+        94,
+        37,
+        101,
+        117,
+        114,
+        122,
+        113,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        53,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "above",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "beside",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n002",
+            "predicate": "behind",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "above",
+            "subject": "n005"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "low above runway",
+              "white"
+            ],
+            "id": "n001",
+            "label": "airplane"
+          },
+          {
+            "attributes": [
+              "gray"
+            ],
+            "id": "n002",
+            "label": "runway"
+          },
+          {
+            "attributes": [
+              "green"
+            ],
+            "id": "n003",
+            "label": "grass"
+          },
+          {
+            "attributes": [
+              "distant"
+            ],
+            "id": "n004",
+            "label": "trees"
+          },
+          {
+            "attributes": [
+              "cloudy"
+            ],
+            "id": "n005",
+            "label": "sky"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 865287,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/eda9220eb431d465216e546a3a76fc5c97fdba361e6963f9455f17806bb9f3a4.png",
+        "pixel_sha256": "55aa0734e683ed95c9e2e7414be2fe740c9d050f8aab4968229f26c38a7a959a",
+        "sha256": "eda9220eb431d465216e546a3a76fc5c97fdba361e6963f9455f17806bb9f3a4",
+        "width": 1024
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "above",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "beside",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n002",
+            "predicate": "behind",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "above",
+            "subject": "n005"
+          },
+          {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "facing",
+            "subject": "newn001"
+          },
+          {
+            "id": "newe002",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "newn001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "low above runway",
+              "white"
+            ],
+            "id": "n001",
+            "label": "airplane"
+          },
+          {
+            "attributes": [
+              "gray"
+            ],
+            "id": "n002",
+            "label": "runway"
+          },
+          {
+            "attributes": [
+              "green"
+            ],
+            "id": "n003",
+            "label": "grass"
+          },
+          {
+            "attributes": [
+              "distant"
+            ],
+            "id": "n004",
+            "label": "trees"
+          },
+          {
+            "attributes": [
+              "cloudy"
+            ],
+            "id": "n005",
+            "label": "sky"
+          },
+          {
+            "attributes": [
+              "back turned",
+              "blond",
+              "brown jacket"
+            ],
+            "id": "newn001",
+            "label": "child"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 874864,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/b2db9dd4246c3172a0c1736d66790ae1246f2b3e24cda7fa0c2250cdd4b2cf06.png",
+        "pixel_sha256": "0eab74d9355ca18ea407613dd8565d5fcd28691a6e6efa7f96ecab8d0ddee7b2",
+        "sha256": "b2db9dd4246c3172a0c1736d66790ae1246f2b3e24cda7fa0c2250cdd4b2cf06",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "exact_operation_tp": 0,
+        "gt_added_nodes": 1,
+        "gt_operations": 2,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 1,
+        "predicted_operations": 3,
+        "predicted_self_loop_edges": 1
+      },
+      "existing_operation_diagnosis": [],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "barefoot",
+              "blond",
+              "gray shorts",
+              "pink shirt"
+            ],
+            "id": "newn001",
+            "label": "child"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "sitting on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "group": "coco:270722",
+      "id": "magicbrush:270722:2",
+      "instruction": "make a boy sit on the bear",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "brown",
+              "dark"
+            ],
+            "id": "newn001",
+            "label": "monkey"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "black curled mustache",
+              "large",
+              "running",
+              "yellow nose"
+            ],
+            "id": "n001",
+            "label": "bear"
+          },
+          "before": {
+            "attributes": [
+              "brown",
+              "large",
+              "running"
+            ],
+            "id": "n001",
+            "label": "bear"
+          },
+          "kind": "replace_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "newn001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        117,
+        104,
+        115,
+        111,
+        100,
+        102,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        101,
+        104,
+        100,
+        117,
+        37,
+        47,
+        94,
+        37,
+        101,
+        111,
+        100,
+        102,
+        110,
+        35,
+        102,
+        120,
+        117,
+        111,
+        104,
+        103,
+        35,
+        112,
+        120,
+        118,
+        119,
+        100,
+        102,
+        107,
+        104,
+        37,
+        47,
+        37,
+        111,
+        100,
+        117,
+        106,
+        104,
+        37,
+        47,
+        37,
+        117,
+        120,
+        113,
+        113,
+        108,
+        113,
+        106,
+        37,
+        47,
+        37,
+        124,
+        104,
+        111,
+        111,
+        114,
+        122,
+        35,
+        113,
+        114,
+        118,
+        104,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        112,
+        114,
+        113,
+        110,
+        104,
+        124,
+        37,
+        47,
+        94,
+        37,
+        101,
+        117,
+        114,
+        122,
+        113,
+        37,
+        47,
+        37,
+        103,
+        100,
+        117,
+        110,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "above",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n002",
+            "predicate": "beside",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n001",
+            "predicate": "near",
+            "subject": "n004"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "brown",
+              "large",
+              "running"
+            ],
+            "id": "n001",
+            "label": "bear"
+          },
+          {
+            "attributes": [
+              "green vegetation"
+            ],
+            "id": "n002",
+            "label": "forest floor"
+          },
+          {
+            "attributes": [
+              "blurred"
+            ],
+            "id": "n003",
+            "label": "trees"
+          },
+          {
+            "attributes": [
+              "brown",
+              "running"
+            ],
+            "id": "n004",
+            "label": "bear cub"
+          },
+          {
+            "attributes": [
+              "gray",
+              "white edge line"
+            ],
+            "id": "n005",
+            "label": "road"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 1167186,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/8533590534412b098723ff23234b6f3f300c6a39136a58c095788b7939564b90.png",
+        "pixel_sha256": "0ce6aacf2617fb9e08d0d134bb47f8376dc3613db4538abdb4baec39e92ff445",
+        "sha256": "8533590534412b098723ff23234b6f3f300c6a39136a58c095788b7939564b90",
+        "width": 1024
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "above",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n002",
+            "predicate": "beside",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n001",
+            "predicate": "near",
+            "subject": "n004"
+          },
+          {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "sitting on",
+            "subject": "newn001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "brown",
+              "large",
+              "running"
+            ],
+            "id": "n001",
+            "label": "bear"
+          },
+          {
+            "attributes": [
+              "green vegetation"
+            ],
+            "id": "n002",
+            "label": "forest floor"
+          },
+          {
+            "attributes": [
+              "blurred"
+            ],
+            "id": "n003",
+            "label": "trees"
+          },
+          {
+            "attributes": [
+              "brown",
+              "running"
+            ],
+            "id": "n004",
+            "label": "bear cub"
+          },
+          {
+            "attributes": [
+              "gray",
+              "white edge line"
+            ],
+            "id": "n005",
+            "label": "road"
+          },
+          {
+            "attributes": [
+              "barefoot",
+              "blond",
+              "gray shorts",
+              "pink shirt"
+            ],
+            "id": "newn001",
+            "label": "child"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1178447,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/22587bcd886bbf886745ca496d0a5fe912c653671800ad1e20162668a0290abf.png",
+        "pixel_sha256": "0ff2d030e177cc4e5a128fe992b8a21ad5dee165bbca019ef6bd6bcd39ceb1bd",
+        "sha256": "22587bcd886bbf886745ca496d0a5fe912c653671800ad1e20162668a0290abf",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "exact_operation_tp": 0,
+        "existing_entity_touched": 1,
+        "existing_exact_payload_correct": 0,
+        "existing_kind_and_id_correct": 1,
+        "gt_added_nodes": 1,
+        "gt_existing_operations": 1,
+        "gt_operations": 3,
+        "matched_replace_node_fields": 2,
+        "predicted_added_nodes": 0,
+        "predicted_existing_ops_on_unrequested_entities": 1,
+        "predicted_operations": 2,
+        "predicted_self_loop_edges": 0,
+        "replace_node_correct_attributes_given_id_kind": 0,
+        "replace_node_correct_id_and_kind": 1,
+        "replace_node_correct_label_given_id_kind": 0,
+        "wrong_payload": 1,
+        "wrong_replace_node_attributes": 1,
+        "wrong_replace_node_label": 1
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n003",
+          "kind": "replace_node",
+          "status": "wrong_payload",
+          "wrong_fields": [
+            "label",
+            "attributes"
+          ]
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "magenta",
+              "visible at waist"
+            ],
+            "id": "newn001",
+            "label": "undershirt"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "black"
+            ],
+            "id": "n003",
+            "label": "pants"
+          },
+          "before": {
+            "attributes": [
+              "magenta",
+              "purple panel"
+            ],
+            "id": "n003",
+            "label": "shorts"
+          },
+          "kind": "replace_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "newn001",
+            "predicate": "wearing",
+            "subject": "n001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "group": "coco:286723",
+      "id": "magicbrush:286723:1",
+      "instruction": "Give the woman black pants.",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "white face"
+            ],
+            "id": "n002",
+            "label": "shirt"
+          },
+          "before": {
+            "attributes": [
+              "blue"
+            ],
+            "id": "n002",
+            "label": "shirt"
+          },
+          "kind": "replace_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "white icing"
+            ],
+            "id": "n003",
+            "label": "shorts"
+          },
+          "before": {
+            "attributes": [
+              "magenta",
+              "purple panel"
+            ],
+            "id": "n003",
+            "label": "shorts"
+          },
+          "kind": "replace_node"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        117,
+        104,
+        115,
+        111,
+        100,
+        102,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        53,
+        37,
+        47,
+        37,
+        118,
+        107,
+        108,
+        117,
+        119,
+        37,
+        47,
+        94,
+        37,
+        122,
+        107,
+        108,
+        119,
+        104,
+        35,
+        105,
+        100,
+        102,
+        104,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        117,
+        104,
+        115,
+        111,
+        100,
+        102,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        54,
+        37,
+        47,
+        37,
+        118,
+        107,
+        114,
+        117,
+        119,
+        118,
+        37,
+        47,
+        94,
+        37,
+        122,
+        107,
+        108,
+        119,
+        104,
+        35,
+        108,
+        102,
+        108,
+        113,
+        106,
+        37,
+        96,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "wearing",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "wearing",
+            "subject": "n001"
+          },
+          {
+            "id": "e003",
+            "object": "n004",
+            "predicate": "holding",
+            "subject": "n001"
+          },
+          {
+            "id": "e004",
+            "object": "n005",
+            "predicate": "in front of",
+            "subject": "n001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "tennis player"
+            ],
+            "id": "n001",
+            "label": "woman"
+          },
+          {
+            "attributes": [
+              "blue"
+            ],
+            "id": "n002",
+            "label": "shirt"
+          },
+          {
+            "attributes": [
+              "magenta",
+              "purple panel"
+            ],
+            "id": "n003",
+            "label": "shorts"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n004",
+            "label": "racket"
+          },
+          {
+            "attributes": [
+              "blue"
+            ],
+            "id": "n005",
+            "label": "curtain"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 332222,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/4fb812a073dacf894640d9a662c67ba016e5e49769f6d4b75d608fcabd0acd8a.png",
+        "pixel_sha256": "1a220c6502c0e82b1a6d28084e461f3081e7ed9e226d228009f2c736a121456e",
+        "sha256": "4fb812a073dacf894640d9a662c67ba016e5e49769f6d4b75d608fcabd0acd8a",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "wearing",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "wearing",
+            "subject": "n001"
+          },
+          {
+            "id": "e003",
+            "object": "n004",
+            "predicate": "holding",
+            "subject": "n001"
+          },
+          {
+            "id": "e004",
+            "object": "n005",
+            "predicate": "in front of",
+            "subject": "n001"
+          },
+          {
+            "id": "newe001",
+            "object": "newn001",
+            "predicate": "wearing",
+            "subject": "n001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "tennis player"
+            ],
+            "id": "n001",
+            "label": "woman"
+          },
+          {
+            "attributes": [
+              "blue"
+            ],
+            "id": "n002",
+            "label": "shirt"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n003",
+            "label": "pants"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n004",
+            "label": "racket"
+          },
+          {
+            "attributes": [
+              "blue"
+            ],
+            "id": "n005",
+            "label": "curtain"
+          },
+          {
+            "attributes": [
+              "magenta",
+              "visible at waist"
+            ],
+            "id": "newn001",
+            "label": "undershirt"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 956622,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/80b6f6a1adfd9f45dd90c637b815f267a0123640238a6c0c709a83126d64e4f9.png",
+        "pixel_sha256": "caba865c7337cebc22c4a85f0b9ecff7855d9abdf42c2b6065910962aade50fc",
+        "sha256": "80b6f6a1adfd9f45dd90c637b815f267a0123640238a6c0c709a83126d64e4f9",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "exact_operation_tp": 0,
+        "existing_entity_touched": 1,
+        "existing_exact_payload_correct": 0,
+        "existing_kind_and_id_correct": 1,
+        "gt_added_nodes": 0,
+        "gt_existing_operations": 1,
+        "gt_operations": 1,
+        "matched_replace_node_fields": 2,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 1,
+        "predicted_operations": 4,
+        "predicted_self_loop_edges": 0,
+        "replace_node_correct_attributes_given_id_kind": 0,
+        "replace_node_correct_id_and_kind": 1,
+        "replace_node_correct_label_given_id_kind": 1,
+        "wrong_payload": 1,
+        "wrong_replace_node_attributes": 1
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n002",
+          "kind": "replace_node",
+          "status": "wrong_payload",
+          "wrong_fields": [
+            "attributes"
+          ]
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "black",
+              "plain"
+            ],
+            "id": "n002",
+            "label": "backpack"
+          },
+          "before": {
+            "attributes": [
+              "black",
+              "printed Jonas design"
+            ],
+            "id": "n002",
+            "label": "backpack"
+          },
+          "kind": "replace_node"
+        }
+      ],
+      "group": "coco:298692",
+      "id": "magicbrush:298692:1",
+      "instruction": "make that backpack all black",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "white black"
+            ],
+            "id": "newn001",
+            "label": "baseball cap"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "pink shirt",
+              "yellow nose"
+            ],
+            "id": "n001",
+            "label": "girl"
+          },
+          "before": {
+            "attributes": [
+              "gray pants",
+              "pink shirt"
+            ],
+            "id": "n001",
+            "label": "girl"
+          },
+          "kind": "replace_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "black red"
+            ],
+            "id": "n002",
+            "label": "backpack"
+          },
+          "before": {
+            "attributes": [
+              "black",
+              "printed Jonas design"
+            ],
+            "id": "n002",
+            "label": "backpack"
+          },
+          "kind": "replace_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "newn001",
+            "predicate": "wearing",
+            "subject": "n001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        117,
+        104,
+        115,
+        111,
+        100,
+        102,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        106,
+        108,
+        117,
+        111,
+        37,
+        47,
+        94,
+        37,
+        115,
+        108,
+        113,
+        110,
+        35,
+        118,
+        107,
+        108,
+        117,
+        119,
+        37,
+        47,
+        37,
+        124,
+        104,
+        111,
+        111,
+        114,
+        122,
+        35,
+        113,
+        114,
+        118,
+        104,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        117,
+        104,
+        115,
+        111,
+        100,
+        102,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        53,
+        37,
+        47,
+        37,
+        101,
+        100,
+        102,
+        110,
+        115,
+        100,
+        102,
+        110,
+        37,
+        47,
+        94,
+        37,
+        101,
+        111,
+        100,
+        102,
+        110,
+        35,
+        117,
+        104,
+        103,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        101,
+        100,
+        118,
+        104,
+        101,
+        100,
+        111,
+        111,
+        35,
+        102,
+        100,
+        115,
+        37,
+        47,
+        94,
+        37,
+        122,
+        107,
+        108,
+        119,
+        104,
+        35,
+        101,
+        111,
+        100,
+        102,
+        110,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        122,
+        104,
+        100,
+        117,
+        108,
+        113,
+        106,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "wearing",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n004",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e003",
+            "object": "n005",
+            "predicate": "holding",
+            "subject": "n001"
+          },
+          {
+            "id": "e004",
+            "object": "n003",
+            "predicate": "part of",
+            "subject": "n004"
+          },
+          {
+            "id": "e005",
+            "object": "n003",
+            "predicate": "part of",
+            "subject": "n005"
+          },
+          {
+            "id": "e006",
+            "object": "n006",
+            "predicate": "on",
+            "subject": "n003"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "gray pants",
+              "pink shirt"
+            ],
+            "id": "n001",
+            "label": "girl"
+          },
+          {
+            "attributes": [
+              "black",
+              "printed Jonas design"
+            ],
+            "id": "n002",
+            "label": "backpack"
+          },
+          {
+            "attributes": [
+              "yellow"
+            ],
+            "id": "n003",
+            "label": "school bus"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n004",
+            "label": "steps"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n005",
+            "label": "handrail"
+          },
+          {
+            "attributes": [
+              "cracked pavement"
+            ],
+            "id": "n006",
+            "label": "ground"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 490243,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/203ff8c678db6d935ae6c115e1f5b79534a0d9f744e51d0abbe3a8a6d7c2d658.png",
+        "pixel_sha256": "2925388aa58e31745026fade7bc1fe06529a45ca5eb5ccbcea48763cf9495050",
+        "sha256": "203ff8c678db6d935ae6c115e1f5b79534a0d9f744e51d0abbe3a8a6d7c2d658",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "wearing",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n004",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e003",
+            "object": "n005",
+            "predicate": "holding",
+            "subject": "n001"
+          },
+          {
+            "id": "e004",
+            "object": "n003",
+            "predicate": "part of",
+            "subject": "n004"
+          },
+          {
+            "id": "e005",
+            "object": "n003",
+            "predicate": "part of",
+            "subject": "n005"
+          },
+          {
+            "id": "e006",
+            "object": "n006",
+            "predicate": "on",
+            "subject": "n003"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "gray pants",
+              "pink shirt"
+            ],
+            "id": "n001",
+            "label": "girl"
+          },
+          {
+            "attributes": [
+              "black",
+              "plain"
+            ],
+            "id": "n002",
+            "label": "backpack"
+          },
+          {
+            "attributes": [
+              "yellow"
+            ],
+            "id": "n003",
+            "label": "school bus"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n004",
+            "label": "steps"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n005",
+            "label": "handrail"
+          },
+          {
+            "attributes": [
+              "cracked pavement"
+            ],
+            "id": "n006",
+            "label": "ground"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1330324,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/ea4b71bc72059bcdf968634460a897d4e1956c2d1b2c6efd1531685f1e6c328a.png",
+        "pixel_sha256": "8c4e9fd3616141b9509e52b4468967e6f525013dde03ef2926b2b6427e509454",
+        "sha256": "ea4b71bc72059bcdf968634460a897d4e1956c2d1b2c6efd1531685f1e6c328a",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "exact_operation_tp": 0,
+        "existing_entity_touched": 1,
+        "existing_exact_payload_correct": 0,
+        "existing_kind_and_id_correct": 1,
+        "gt_added_nodes": 1,
+        "gt_existing_operations": 1,
+        "gt_operations": 4,
+        "matched_replace_node_fields": 2,
+        "predicted_added_nodes": 0,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 1,
+        "predicted_self_loop_edges": 0,
+        "replace_node_correct_attributes_given_id_kind": 0,
+        "replace_node_correct_id_and_kind": 1,
+        "replace_node_correct_label_given_id_kind": 1,
+        "wrong_payload": 1,
+        "wrong_replace_node_attributes": 1
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n001",
+          "kind": "replace_node",
+          "status": "wrong_payload",
+          "wrong_fields": [
+            "attributes"
+          ]
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "blue pants",
+              "partly visible"
+            ],
+            "id": "newn001",
+            "label": "person"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "ginger bob",
+              "gray pants",
+              "pink shirt"
+            ],
+            "id": "n001",
+            "label": "girl"
+          },
+          "before": {
+            "attributes": [
+              "blond ponytail",
+              "gray pants",
+              "pink shirt"
+            ],
+            "id": "n001",
+            "label": "girl"
+          },
+          "kind": "replace_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "behind",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": {
+            "id": "newe002",
+            "object": "n004",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "group": "coco:298692",
+      "id": "magicbrush:298692:2",
+      "instruction": "make the girl ginger",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "gray pants",
+              "pink shirt",
+              "teeth visible",
+              "white face"
+            ],
+            "id": "n001",
+            "label": "girl"
+          },
+          "before": {
+            "attributes": [
+              "blond ponytail",
+              "gray pants",
+              "pink shirt"
+            ],
+            "id": "n001",
+            "label": "girl"
+          },
+          "kind": "replace_node"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        117,
+        104,
+        115,
+        111,
+        100,
+        102,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        106,
+        108,
+        117,
+        111,
+        37,
+        47,
+        94,
+        37,
+        106,
+        117,
+        100,
+        124,
+        35,
+        115,
+        100,
+        113,
+        119,
+        118,
+        37,
+        47,
+        37,
+        115,
+        108,
+        113,
+        110,
+        35,
+        118,
+        107,
+        108,
+        117,
+        119,
+        37,
+        47,
+        37,
+        119,
+        104,
+        104,
+        119,
+        107,
+        35,
+        121,
+        108,
+        118,
+        108,
+        101,
+        111,
+        104,
+        37,
+        47,
+        37,
+        122,
+        107,
+        108,
+        119,
+        104,
+        35,
+        105,
+        100,
+        102,
+        104,
+        37,
+        96,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e002",
+            "object": "n004",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "part of",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n005",
+            "predicate": "holding",
+            "subject": "n001"
+          },
+          {
+            "id": "e005",
+            "object": "n004",
+            "predicate": "on",
+            "subject": "n006"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "blond ponytail",
+              "gray pants",
+              "pink shirt"
+            ],
+            "id": "n001",
+            "label": "girl"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n002",
+            "label": "backpack"
+          },
+          {
+            "attributes": [
+              "yellow"
+            ],
+            "id": "n003",
+            "label": "bus"
+          },
+          {
+            "attributes": [
+              "gray"
+            ],
+            "id": "n004",
+            "label": "steps"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n005",
+            "label": "handrail"
+          },
+          {
+            "attributes": [
+              "black jacket",
+              "gray pants",
+              "partly visible"
+            ],
+            "id": "n006",
+            "label": "person"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 1330324,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/ea4b71bc72059bcdf968634460a897d4e1956c2d1b2c6efd1531685f1e6c328a.png",
+        "pixel_sha256": "8c4e9fd3616141b9509e52b4468967e6f525013dde03ef2926b2b6427e509454",
+        "sha256": "ea4b71bc72059bcdf968634460a897d4e1956c2d1b2c6efd1531685f1e6c328a",
+        "width": 1024
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e002",
+            "object": "n004",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "part of",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n005",
+            "predicate": "holding",
+            "subject": "n001"
+          },
+          {
+            "id": "e005",
+            "object": "n004",
+            "predicate": "on",
+            "subject": "n006"
+          },
+          {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "behind",
+            "subject": "newn001"
+          },
+          {
+            "id": "newe002",
+            "object": "n004",
+            "predicate": "on",
+            "subject": "newn001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "ginger bob",
+              "gray pants",
+              "pink shirt"
+            ],
+            "id": "n001",
+            "label": "girl"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n002",
+            "label": "backpack"
+          },
+          {
+            "attributes": [
+              "yellow"
+            ],
+            "id": "n003",
+            "label": "bus"
+          },
+          {
+            "attributes": [
+              "gray"
+            ],
+            "id": "n004",
+            "label": "steps"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n005",
+            "label": "handrail"
+          },
+          {
+            "attributes": [
+              "black jacket",
+              "gray pants",
+              "partly visible"
+            ],
+            "id": "n006",
+            "label": "person"
+          },
+          {
+            "attributes": [
+              "blue pants",
+              "partly visible"
+            ],
+            "id": "newn001",
+            "label": "person"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1331799,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/ba3391e63b1c66d69c69f5216b99dcd36b2e39ad09e3892155e10f6fb0ea22ec.png",
+        "pixel_sha256": "92c6e11b9e826bdd0471ee2e280339aff3a4ab5be5d8d2ba676502585e065842",
+        "sha256": "ba3391e63b1c66d69c69f5216b99dcd36b2e39ad09e3892155e10f6fb0ea22ec",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {
+        "masked_dead_endpoint_selections": 1
+      },
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "entity_not_edited": 2,
+        "exact_operation_tp": 0,
+        "existing_entity_touched": 0,
+        "existing_exact_payload_correct": 0,
+        "existing_kind_and_id_correct": 0,
+        "gt_added_nodes": 1,
+        "gt_existing_operations": 2,
+        "gt_operations": 5,
+        "predicted_added_nodes": 0,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 1,
+        "predicted_self_loop_edges": 1
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n003",
+          "kind": "delete_node",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "e002",
+          "kind": "delete_edge",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "blue uniform",
+              "helmet",
+              "raised hand",
+              "reflective vest"
+            ],
+            "id": "newn001",
+            "label": "person"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "left foreground"
+            ],
+            "id": "n003",
+            "label": "cyclist"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n008",
+            "predicate": "facing",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": {
+            "id": "newe002",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e002",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n003"
+          },
+          "kind": "delete_edge"
+        }
+      ],
+      "group": "coco:321886",
+      "id": "magicbrush:321886:2",
+      "instruction": "let a cop point at the SUV",
+      "predicted_operations": [
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e002",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n001",
+            "predicate": "beside",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n001",
+            "predicate": "above",
+            "subject": "n007"
+          },
+          {
+            "id": "e007",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n008"
+          },
+          {
+            "id": "e008",
+            "object": "n005",
+            "predicate": "beside",
+            "subject": "n008"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "busy"
+            ],
+            "id": "n001",
+            "label": "intersection"
+          },
+          {
+            "attributes": [
+              "multiple"
+            ],
+            "id": "n002",
+            "label": "motorcyclists"
+          },
+          {
+            "attributes": [
+              "left foreground"
+            ],
+            "id": "n003",
+            "label": "cyclist"
+          },
+          {
+            "attributes": [
+              "green"
+            ],
+            "id": "n004",
+            "label": "traffic light"
+          },
+          {
+            "attributes": [
+              "red curb",
+              "small"
+            ],
+            "id": "n005",
+            "label": "traffic island"
+          },
+          {
+            "attributes": [
+              "billboards",
+              "urban"
+            ],
+            "id": "n006",
+            "label": "buildings"
+          },
+          {
+            "attributes": [
+              "overhead"
+            ],
+            "id": "n007",
+            "label": "wires"
+          },
+          {
+            "attributes": [
+              "foreground",
+              "white"
+            ],
+            "id": "n008",
+            "label": "SUV"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 1079757,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/08f93fd3409414c4adfb964eb1ea1cb25e36a8ea4b899eb5304fe1d4d6e2aee8.png",
+        "pixel_sha256": "7f439756822c2070216bd435005487a441346195d645fbcba0f5e16dbcc7f9c7",
+        "sha256": "08f93fd3409414c4adfb964eb1ea1cb25e36a8ea4b899eb5304fe1d4d6e2aee8",
+        "width": 1024
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e003",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n001",
+            "predicate": "beside",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n001",
+            "predicate": "above",
+            "subject": "n007"
+          },
+          {
+            "id": "e007",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n008"
+          },
+          {
+            "id": "e008",
+            "object": "n005",
+            "predicate": "beside",
+            "subject": "n008"
+          },
+          {
+            "id": "newe001",
+            "object": "n008",
+            "predicate": "facing",
+            "subject": "newn001"
+          },
+          {
+            "id": "newe002",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "busy"
+            ],
+            "id": "n001",
+            "label": "intersection"
+          },
+          {
+            "attributes": [
+              "multiple"
+            ],
+            "id": "n002",
+            "label": "motorcyclists"
+          },
+          {
+            "attributes": [
+              "green"
+            ],
+            "id": "n004",
+            "label": "traffic light"
+          },
+          {
+            "attributes": [
+              "red curb",
+              "small"
+            ],
+            "id": "n005",
+            "label": "traffic island"
+          },
+          {
+            "attributes": [
+              "billboards",
+              "urban"
+            ],
+            "id": "n006",
+            "label": "buildings"
+          },
+          {
+            "attributes": [
+              "overhead"
+            ],
+            "id": "n007",
+            "label": "wires"
+          },
+          {
+            "attributes": [
+              "foreground",
+              "white"
+            ],
+            "id": "n008",
+            "label": "SUV"
+          },
+          {
+            "attributes": [
+              "blue uniform",
+              "helmet",
+              "raised hand",
+              "reflective vest"
+            ],
+            "id": "newn001",
+            "label": "person"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1096740,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/5e1697872ed1a860542d93e8681672618a25a426210f5cdc6d6692683a4d9067.png",
+        "pixel_sha256": "8ee51135356d8f088f2f0848fa60a15661c3370831eb4bea6cc17205a5a1ff09",
+        "sha256": "5e1697872ed1a860542d93e8681672618a25a426210f5cdc6d6692683a4d9067",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {
+        "duplicate_edges_removed": 1,
+        "masked_dead_endpoint_selections": 1
+      },
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "exact_operation_tp": 1,
+        "gt_added_nodes": 1,
+        "gt_operations": 2,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 2,
+        "predicted_self_loop_edges": 0
+      },
+      "existing_operation_diagnosis": [],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "dark",
+              "facing camera"
+            ],
+            "id": "newn001",
+            "label": "gorilla"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "group": "coco:338078",
+      "id": "magicbrush:338078:1",
+      "instruction": "Have there be a gorilla crossing the road",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "black",
+              "brown",
+              "dark"
+            ],
+            "id": "newn001",
+            "label": "duck"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        103,
+        120,
+        102,
+        110,
+        37,
+        47,
+        94,
+        37,
+        101,
+        111,
+        100,
+        102,
+        110,
+        37,
+        47,
+        37,
+        101,
+        117,
+        114,
+        122,
+        113,
+        37,
+        47,
+        37,
+        103,
+        100,
+        117,
+        110,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        53,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        53,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "beside",
+            "subject": "n002"
+          },
+          {
+            "id": "e002",
+            "object": "n001",
+            "predicate": "beside",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n001",
+            "predicate": "beside",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n002",
+            "predicate": "above",
+            "subject": "n007"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "curving",
+              "paved"
+            ],
+            "id": "n001",
+            "label": "road"
+          },
+          {
+            "attributes": [
+              "dense",
+              "green"
+            ],
+            "id": "n002",
+            "label": "trees"
+          },
+          {
+            "attributes": [
+              "green"
+            ],
+            "id": "n003",
+            "label": "grass"
+          },
+          {
+            "attributes": [
+              "distant",
+              "yellow"
+            ],
+            "id": "n004",
+            "label": "truck"
+          },
+          {
+            "attributes": [
+              "wood"
+            ],
+            "id": "n005",
+            "label": "utility pole"
+          },
+          {
+            "attributes": [],
+            "id": "n006",
+            "label": "wires"
+          },
+          {
+            "attributes": [
+              "bright"
+            ],
+            "id": "n007",
+            "label": "sky"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 472773,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/ab66c6e4e4272da48e00c5413cf5d02dd4f2e3eaa771ea108eab64e1139640ac.png",
+        "pixel_sha256": "8bc8646a45648b6acd2d9585fe8014fac42ff5bca29e80646abd8ff4a4733fd2",
+        "sha256": "ab66c6e4e4272da48e00c5413cf5d02dd4f2e3eaa771ea108eab64e1139640ac",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "beside",
+            "subject": "n002"
+          },
+          {
+            "id": "e002",
+            "object": "n001",
+            "predicate": "beside",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n001",
+            "predicate": "beside",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n002",
+            "predicate": "above",
+            "subject": "n007"
+          },
+          {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "curving",
+              "paved"
+            ],
+            "id": "n001",
+            "label": "road"
+          },
+          {
+            "attributes": [
+              "dense",
+              "green"
+            ],
+            "id": "n002",
+            "label": "trees"
+          },
+          {
+            "attributes": [
+              "green"
+            ],
+            "id": "n003",
+            "label": "grass"
+          },
+          {
+            "attributes": [
+              "distant",
+              "yellow"
+            ],
+            "id": "n004",
+            "label": "truck"
+          },
+          {
+            "attributes": [
+              "wood"
+            ],
+            "id": "n005",
+            "label": "utility pole"
+          },
+          {
+            "attributes": [],
+            "id": "n006",
+            "label": "wires"
+          },
+          {
+            "attributes": [
+              "bright"
+            ],
+            "id": "n007",
+            "label": "sky"
+          },
+          {
+            "attributes": [
+              "dark",
+              "facing camera"
+            ],
+            "id": "newn001",
+            "label": "gorilla"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1339058,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/50c63bbf505c46c6f4433200875f16f9b562c7f7241d543fd5a19760469d7345.png",
+        "pixel_sha256": "756373974be4a55df7e577b4f7a67745fc7ec6cb6bbb641d4b34a2a0f1653c7e",
+        "sha256": "50c63bbf505c46c6f4433200875f16f9b562c7f7241d543fd5a19760469d7345",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {
+        "duplicate_edges_removed": 1
+      },
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "exact_operation_tp": 0,
+        "gt_added_nodes": 1,
+        "gt_operations": 3,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 2,
+        "predicted_self_loop_edges": 0
+      },
+      "existing_operation_diagnosis": [],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "orange",
+              "pile"
+            ],
+            "id": "newn001",
+            "label": "carrots"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "newn001",
+            "predicate": "near",
+            "subject": "n001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": {
+            "id": "newe002",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "group": "coco:352276",
+      "id": "magicbrush:352276:1",
+      "instruction": "have the cow eat from a pile of carrots.",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "brown",
+              "dark"
+            ],
+            "id": "newn001",
+            "label": "lion"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        111,
+        108,
+        114,
+        113,
+        37,
+        47,
+        94,
+        37,
+        101,
+        117,
+        114,
+        122,
+        113,
+        37,
+        47,
+        37,
+        103,
+        100,
+        117,
+        110,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        54,
+        37,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        53,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        54,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n001",
+            "predicate": "behind",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n005",
+            "predicate": "behind",
+            "subject": "n006"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "brown and white",
+              "head lowered"
+            ],
+            "id": "n001",
+            "label": "cow"
+          },
+          {
+            "attributes": [
+              "pale"
+            ],
+            "id": "n002",
+            "label": "hay"
+          },
+          {
+            "attributes": [
+              "gray"
+            ],
+            "id": "n003",
+            "label": "ground"
+          },
+          {
+            "attributes": [
+              "water filled"
+            ],
+            "id": "n004",
+            "label": "trough"
+          },
+          {
+            "attributes": [
+              "wood and wire"
+            ],
+            "id": "n005",
+            "label": "fence"
+          },
+          {
+            "attributes": [
+              "green"
+            ],
+            "id": "n006",
+            "label": "trees"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 488384,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/865a5bd7e2534cc2d3be5136520c04157691cbf59d1badf5eb4fdccb4e9c13af.png",
+        "pixel_sha256": "41fa2b4f996c7ea2f8d18e49dc9c896747042091cefe77f8764ad72380656ad1",
+        "sha256": "865a5bd7e2534cc2d3be5136520c04157691cbf59d1badf5eb4fdccb4e9c13af",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n001",
+            "predicate": "behind",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n005",
+            "predicate": "behind",
+            "subject": "n006"
+          },
+          {
+            "id": "newe001",
+            "object": "newn001",
+            "predicate": "near",
+            "subject": "n001"
+          },
+          {
+            "id": "newe002",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "newn001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "brown and white",
+              "head lowered"
+            ],
+            "id": "n001",
+            "label": "cow"
+          },
+          {
+            "attributes": [
+              "pale"
+            ],
+            "id": "n002",
+            "label": "hay"
+          },
+          {
+            "attributes": [
+              "gray"
+            ],
+            "id": "n003",
+            "label": "ground"
+          },
+          {
+            "attributes": [
+              "water filled"
+            ],
+            "id": "n004",
+            "label": "trough"
+          },
+          {
+            "attributes": [
+              "wood and wire"
+            ],
+            "id": "n005",
+            "label": "fence"
+          },
+          {
+            "attributes": [
+              "green"
+            ],
+            "id": "n006",
+            "label": "trees"
+          },
+          {
+            "attributes": [
+              "orange",
+              "pile"
+            ],
+            "id": "newn001",
+            "label": "carrots"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1361682,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/841eefc85c38859551949be8be3f320ddce8ed7606a92a9112ed03499d1932bd.png",
+        "pixel_sha256": "c667a79012ea5ca0dd5e1412e5c9ff1f3e3bcdd3dddd2398c94ec57facca967e",
+        "sha256": "841eefc85c38859551949be8be3f320ddce8ed7606a92a9112ed03499d1932bd",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "entity_not_edited": 3,
+        "exact_operation_tp": 1,
+        "existing_entity_touched": 1,
+        "existing_exact_payload_correct": 0,
+        "existing_kind_and_id_correct": 1,
+        "gt_added_nodes": 2,
+        "gt_existing_operations": 4,
+        "gt_operations": 8,
+        "matched_replace_node_fields": 2,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 3,
+        "predicted_self_loop_edges": 0,
+        "replace_node_correct_attributes_given_id_kind": 0,
+        "replace_node_correct_id_and_kind": 1,
+        "replace_node_correct_label_given_id_kind": 1,
+        "wrong_payload": 1,
+        "wrong_replace_node_attributes": 1
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n002",
+          "kind": "delete_node",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "n014",
+          "kind": "delete_node",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "n001",
+          "kind": "replace_node",
+          "status": "wrong_payload",
+          "wrong_fields": [
+            "attributes"
+          ]
+        },
+        {
+          "entity_id": "e001",
+          "kind": "delete_edge",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "black"
+            ],
+            "id": "newn001",
+            "label": "bag"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "brown"
+            ],
+            "id": "newn002",
+            "label": "container"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "white"
+            ],
+            "id": "n002",
+            "label": "radio"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "foreground",
+              "red"
+            ],
+            "id": "n014",
+            "label": "garment"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "pink note",
+              "three sections",
+              "white"
+            ],
+            "id": "n001",
+            "label": "refrigerator"
+          },
+          "before": {
+            "attributes": [
+              "colorful magnets",
+              "silver",
+              "two doors"
+            ],
+            "id": "n001",
+            "label": "refrigerator"
+          },
+          "kind": "replace_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": {
+            "id": "newe002",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn002"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          "kind": "delete_edge"
+        }
+      ],
+      "group": "coco:376047",
+      "id": "magicbrush:376047:1",
+      "instruction": "the refrigerator should be white.",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "dark",
+              "white"
+            ],
+            "id": "newn001",
+            "label": "cream"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "two doors",
+              "white red"
+            ],
+            "id": "n001",
+            "label": "refrigerator"
+          },
+          "before": {
+            "attributes": [
+              "colorful magnets",
+              "silver",
+              "two doors"
+            ],
+            "id": "n001",
+            "label": "refrigerator"
+          },
+          "kind": "replace_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        117,
+        104,
+        115,
+        111,
+        100,
+        102,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        117,
+        104,
+        105,
+        117,
+        108,
+        106,
+        104,
+        117,
+        100,
+        119,
+        114,
+        117,
+        37,
+        47,
+        94,
+        37,
+        119,
+        122,
+        114,
+        35,
+        103,
+        114,
+        114,
+        117,
+        118,
+        37,
+        47,
+        37,
+        122,
+        107,
+        108,
+        119,
+        104,
+        35,
+        117,
+        104,
+        103,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        102,
+        117,
+        104,
+        100,
+        112,
+        37,
+        47,
+        94,
+        37,
+        103,
+        100,
+        117,
+        110,
+        37,
+        47,
+        37,
+        122,
+        107,
+        108,
+        119,
+        104,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e002",
+            "object": "n010",
+            "predicate": "on",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n010",
+            "predicate": "below",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n007",
+            "predicate": "below",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n007",
+            "predicate": "above",
+            "subject": "n008"
+          },
+          {
+            "id": "e007",
+            "object": "n010",
+            "predicate": "in",
+            "subject": "n011"
+          },
+          {
+            "id": "e008",
+            "object": "n010",
+            "predicate": "on",
+            "subject": "n012"
+          },
+          {
+            "id": "e009",
+            "object": "n015",
+            "predicate": "on",
+            "subject": "n013"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "colorful magnets",
+              "silver",
+              "two doors"
+            ],
+            "id": "n001",
+            "label": "refrigerator"
+          },
+          {
+            "attributes": [
+              "white"
+            ],
+            "id": "n002",
+            "label": "radio"
+          },
+          {
+            "attributes": [
+              "silver"
+            ],
+            "id": "n003",
+            "label": "microwave"
+          },
+          {
+            "attributes": [
+              "silver"
+            ],
+            "id": "n004",
+            "label": "dishwasher"
+          },
+          {
+            "attributes": [
+              "silver"
+            ],
+            "id": "n005",
+            "label": "oven"
+          },
+          {
+            "attributes": [
+              "striped"
+            ],
+            "id": "n006",
+            "label": "towel"
+          },
+          {
+            "attributes": [
+              "gas"
+            ],
+            "id": "n007",
+            "label": "stove"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n008",
+            "label": "hood"
+          },
+          {
+            "attributes": [
+              "cream"
+            ],
+            "id": "n009",
+            "label": "cabinets"
+          },
+          {
+            "attributes": [
+              "dark"
+            ],
+            "id": "n010",
+            "label": "counter"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n011",
+            "label": "sink"
+          },
+          {
+            "attributes": [
+              "green"
+            ],
+            "id": "n012",
+            "label": "kettle"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n013",
+            "label": "bin"
+          },
+          {
+            "attributes": [
+              "foreground",
+              "red"
+            ],
+            "id": "n014",
+            "label": "garment"
+          },
+          {
+            "attributes": [
+              "beige tiles"
+            ],
+            "id": "n015",
+            "label": "floor"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 302441,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/843ab0d0a76f1245c91f0b9c0d277f200fa5766eb2a063e7fae80e808c5fddf8.png",
+        "pixel_sha256": "cd7eb28f2ad65b7aa80be151969dbe339e3e9bbed41449ebf343c82515fdc4be",
+        "sha256": "843ab0d0a76f1245c91f0b9c0d277f200fa5766eb2a063e7fae80e808c5fddf8",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e002",
+            "object": "n010",
+            "predicate": "on",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n010",
+            "predicate": "below",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n007",
+            "predicate": "below",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n007",
+            "predicate": "above",
+            "subject": "n008"
+          },
+          {
+            "id": "e007",
+            "object": "n010",
+            "predicate": "in",
+            "subject": "n011"
+          },
+          {
+            "id": "e008",
+            "object": "n010",
+            "predicate": "on",
+            "subject": "n012"
+          },
+          {
+            "id": "e009",
+            "object": "n015",
+            "predicate": "on",
+            "subject": "n013"
+          },
+          {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          {
+            "id": "newe002",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn002"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "pink note",
+              "three sections",
+              "white"
+            ],
+            "id": "n001",
+            "label": "refrigerator"
+          },
+          {
+            "attributes": [
+              "silver"
+            ],
+            "id": "n003",
+            "label": "microwave"
+          },
+          {
+            "attributes": [
+              "silver"
+            ],
+            "id": "n004",
+            "label": "dishwasher"
+          },
+          {
+            "attributes": [
+              "silver"
+            ],
+            "id": "n005",
+            "label": "oven"
+          },
+          {
+            "attributes": [
+              "striped"
+            ],
+            "id": "n006",
+            "label": "towel"
+          },
+          {
+            "attributes": [
+              "gas"
+            ],
+            "id": "n007",
+            "label": "stove"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n008",
+            "label": "hood"
+          },
+          {
+            "attributes": [
+              "cream"
+            ],
+            "id": "n009",
+            "label": "cabinets"
+          },
+          {
+            "attributes": [
+              "dark"
+            ],
+            "id": "n010",
+            "label": "counter"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n011",
+            "label": "sink"
+          },
+          {
+            "attributes": [
+              "green"
+            ],
+            "id": "n012",
+            "label": "kettle"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n013",
+            "label": "bin"
+          },
+          {
+            "attributes": [
+              "beige tiles"
+            ],
+            "id": "n015",
+            "label": "floor"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "newn001",
+            "label": "bag"
+          },
+          {
+            "attributes": [
+              "brown"
+            ],
+            "id": "newn002",
+            "label": "container"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 869490,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/e1a2b65d6023f85e3cc0e282e5d57b2270547e9e4c1cc1a33d19f9589f65d45c.png",
+        "pixel_sha256": "4e3165955717bc4e9a096f987efa4da71d78bd0aa3aa8f21c51a86c3c23b4f05",
+        "sha256": "e1a2b65d6023f85e3cc0e282e5d57b2270547e9e4c1cc1a33d19f9589f65d45c",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "exact_operation_tp": 0,
+        "existing_entity_touched": 1,
+        "existing_exact_payload_correct": 0,
+        "existing_kind_and_id_correct": 1,
+        "gt_added_nodes": 0,
+        "gt_existing_operations": 1,
+        "gt_operations": 1,
+        "matched_replace_node_fields": 2,
+        "predicted_added_nodes": 0,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 1,
+        "predicted_self_loop_edges": 0,
+        "replace_node_correct_attributes_given_id_kind": 0,
+        "replace_node_correct_id_and_kind": 1,
+        "replace_node_correct_label_given_id_kind": 1,
+        "wrong_payload": 1,
+        "wrong_replace_node_attributes": 1
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n001",
+          "kind": "replace_node",
+          "status": "wrong_payload",
+          "wrong_fields": [
+            "attributes"
+          ]
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "compact",
+              "dark window",
+              "white"
+            ],
+            "id": "n001",
+            "label": "microwave"
+          },
+          "before": {
+            "attributes": [
+              "silver and black",
+              "wide"
+            ],
+            "id": "n001",
+            "label": "microwave"
+          },
+          "kind": "replace_node"
+        }
+      ],
+      "group": "coco:378186",
+      "id": "magicbrush:378186:1",
+      "instruction": "The microwave should be white.",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "white icing",
+              "wide"
+            ],
+            "id": "n001",
+            "label": "microwave"
+          },
+          "before": {
+            "attributes": [
+              "silver and black",
+              "wide"
+            ],
+            "id": "n001",
+            "label": "microwave"
+          },
+          "kind": "replace_node"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        117,
+        104,
+        115,
+        111,
+        100,
+        102,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        112,
+        108,
+        102,
+        117,
+        114,
+        122,
+        100,
+        121,
+        104,
+        37,
+        47,
+        94,
+        37,
+        122,
+        107,
+        108,
+        119,
+        104,
+        35,
+        108,
+        102,
+        108,
+        113,
+        106,
+        37,
+        47,
+        37,
+        122,
+        108,
+        103,
+        104,
+        37,
+        96,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "under",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n003",
+            "predicate": "beside",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n003",
+            "predicate": "under",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n007",
+            "predicate": "on",
+            "subject": "n008"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "silver and black",
+              "wide"
+            ],
+            "id": "n001",
+            "label": "microwave"
+          },
+          {
+            "attributes": [
+              "black screen",
+              "white frame"
+            ],
+            "id": "n002",
+            "label": "monitor"
+          },
+          {
+            "attributes": [
+              "white"
+            ],
+            "id": "n003",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "blue"
+            ],
+            "id": "n004",
+            "label": "exercise ball"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n005",
+            "label": "bin"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n006",
+            "label": "computer tower"
+          },
+          {
+            "attributes": [
+              "lime green"
+            ],
+            "id": "n007",
+            "label": "wall"
+          },
+          {
+            "attributes": [
+              "white"
+            ],
+            "id": "n008",
+            "label": "cables"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 320940,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/9bf001b640cecc0a7b16a6ddcbcea15b780d975dfa2574d862b7a87944aeab03.png",
+        "pixel_sha256": "fbf1176c26b3a3b82853f4513998620dea4391ed6655cd2e7affd153e0d8db96",
+        "sha256": "9bf001b640cecc0a7b16a6ddcbcea15b780d975dfa2574d862b7a87944aeab03",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "under",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n003",
+            "predicate": "beside",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n003",
+            "predicate": "under",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n007",
+            "predicate": "on",
+            "subject": "n008"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "compact",
+              "dark window",
+              "white"
+            ],
+            "id": "n001",
+            "label": "microwave"
+          },
+          {
+            "attributes": [
+              "black screen",
+              "white frame"
+            ],
+            "id": "n002",
+            "label": "monitor"
+          },
+          {
+            "attributes": [
+              "white"
+            ],
+            "id": "n003",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "blue"
+            ],
+            "id": "n004",
+            "label": "exercise ball"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n005",
+            "label": "bin"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n006",
+            "label": "computer tower"
+          },
+          {
+            "attributes": [
+              "lime green"
+            ],
+            "id": "n007",
+            "label": "wall"
+          },
+          {
+            "attributes": [
+              "white"
+            ],
+            "id": "n008",
+            "label": "cables"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 901111,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/9fc999657b692694d51a978cfff1c91be3b94888c2efde8eab98f6bf9aa122b7.png",
+        "pixel_sha256": "234274fb6a364b156bdb9f77d5f4d7acca52e7b16e09b37b9a8b322ba3112c53",
+        "sha256": "9fc999657b692694d51a978cfff1c91be3b94888c2efde8eab98f6bf9aa122b7",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 1,
+        "exact_operation_tp": 1,
+        "gt_added_nodes": 1,
+        "gt_operations": 3,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 3,
+        "predicted_self_loop_edges": 0
+      },
+      "existing_operation_diagnosis": [],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "lying",
+              "right"
+            ],
+            "id": "newn001",
+            "label": "lion"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n003",
+            "predicate": "behind",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": {
+            "id": "newe002",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "group": "coco:456569",
+      "id": "magicbrush:456569:2",
+      "instruction": "let a lion sleep near the giraffes",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "brown",
+              "dark"
+            ],
+            "id": "newn001",
+            "label": "lion"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": {
+            "id": "newe002",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        111,
+        108,
+        114,
+        113,
+        37,
+        47,
+        94,
+        37,
+        101,
+        117,
+        114,
+        122,
+        113,
+        37,
+        47,
+        37,
+        103,
+        100,
+        117,
+        110,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        53,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        56,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e003",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n003"
+          },
+          {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "near",
+            "subject": "n001"
+          },
+          {
+            "id": "e005",
+            "object": "n004",
+            "predicate": "near",
+            "subject": "n002"
+          },
+          {
+            "id": "e006",
+            "object": "n004",
+            "predicate": "near",
+            "subject": "n003"
+          },
+          {
+            "id": "e007",
+            "object": "n001",
+            "predicate": "behind",
+            "subject": "n006"
+          },
+          {
+            "id": "e008",
+            "object": "n006",
+            "predicate": "behind",
+            "subject": "n007"
+          },
+          {
+            "id": "e009",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n008"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "left"
+            ],
+            "id": "n001",
+            "label": "giraffe"
+          },
+          {
+            "attributes": [
+              "middle"
+            ],
+            "id": "n002",
+            "label": "giraffe"
+          },
+          {
+            "attributes": [
+              "right"
+            ],
+            "id": "n003",
+            "label": "giraffe"
+          },
+          {
+            "attributes": [
+              "bare",
+              "foreground"
+            ],
+            "id": "n004",
+            "label": "tree trunks"
+          },
+          {
+            "attributes": [
+              "grass and dirt"
+            ],
+            "id": "n005",
+            "label": "ground"
+          },
+          {
+            "attributes": [
+              "rear"
+            ],
+            "id": "n006",
+            "label": "fence"
+          },
+          {
+            "attributes": [
+              "background",
+              "sparse"
+            ],
+            "id": "n007",
+            "label": "trees"
+          },
+          {
+            "attributes": [],
+            "id": "n008",
+            "label": "log"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 1329621,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/1e9fc5a073866dbb01277eb2f82ac58f9095f7e84703b5526a59c9e95ba18501.png",
+        "pixel_sha256": "231a5a97578b9245076019ff0e18595793bbffbd1f0857515b39f3dbead90acc",
+        "sha256": "1e9fc5a073866dbb01277eb2f82ac58f9095f7e84703b5526a59c9e95ba18501",
+        "width": 1024
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e003",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n003"
+          },
+          {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "near",
+            "subject": "n001"
+          },
+          {
+            "id": "e005",
+            "object": "n004",
+            "predicate": "near",
+            "subject": "n002"
+          },
+          {
+            "id": "e006",
+            "object": "n004",
+            "predicate": "near",
+            "subject": "n003"
+          },
+          {
+            "id": "e007",
+            "object": "n001",
+            "predicate": "behind",
+            "subject": "n006"
+          },
+          {
+            "id": "e008",
+            "object": "n006",
+            "predicate": "behind",
+            "subject": "n007"
+          },
+          {
+            "id": "e009",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "n008"
+          },
+          {
+            "id": "newe001",
+            "object": "n003",
+            "predicate": "behind",
+            "subject": "newn001"
+          },
+          {
+            "id": "newe002",
+            "object": "n005",
+            "predicate": "on",
+            "subject": "newn001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "left"
+            ],
+            "id": "n001",
+            "label": "giraffe"
+          },
+          {
+            "attributes": [
+              "middle"
+            ],
+            "id": "n002",
+            "label": "giraffe"
+          },
+          {
+            "attributes": [
+              "right"
+            ],
+            "id": "n003",
+            "label": "giraffe"
+          },
+          {
+            "attributes": [
+              "bare",
+              "foreground"
+            ],
+            "id": "n004",
+            "label": "tree trunks"
+          },
+          {
+            "attributes": [
+              "grass and dirt"
+            ],
+            "id": "n005",
+            "label": "ground"
+          },
+          {
+            "attributes": [
+              "rear"
+            ],
+            "id": "n006",
+            "label": "fence"
+          },
+          {
+            "attributes": [
+              "background",
+              "sparse"
+            ],
+            "id": "n007",
+            "label": "trees"
+          },
+          {
+            "attributes": [],
+            "id": "n008",
+            "label": "log"
+          },
+          {
+            "attributes": [
+              "lying",
+              "right"
+            ],
+            "id": "newn001",
+            "label": "lion"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1333017,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/78ec8876ea9d6226026edeb94b709207f364d1f01eebbdc2fbde39ed04a4ff8c.png",
+        "pixel_sha256": "5689f9464fb8bf1ff9225d313e21da50df4d9d7f118b52a726b182a399cb77c7",
+        "sha256": "78ec8876ea9d6226026edeb94b709207f364d1f01eebbdc2fbde39ed04a4ff8c",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {
+        "incident_edges_explicitly_deleted": 1
+      },
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "entity_not_edited": 2,
+        "exact": 2,
+        "exact_operation_tp": 2,
+        "existing_entity_touched": 2,
+        "existing_exact_payload_correct": 2,
+        "existing_kind_and_id_correct": 2,
+        "gt_added_nodes": 0,
+        "gt_existing_operations": 4,
+        "gt_operations": 4,
+        "predicted_added_nodes": 0,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 2,
+        "predicted_self_loop_edges": 0
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n004",
+          "kind": "delete_node",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "n005",
+          "kind": "delete_node",
+          "status": "exact",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "e003",
+          "kind": "delete_edge",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "e004",
+          "kind": "delete_edge",
+          "status": "exact",
+          "wrong_fields": []
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "green"
+            ],
+            "id": "n004",
+            "label": "cup"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "brown"
+            ],
+            "id": "n005",
+            "label": "almonds"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e003",
+            "object": "n002",
+            "predicate": "in",
+            "subject": "n004"
+          },
+          "kind": "delete_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "in",
+            "subject": "n005"
+          },
+          "kind": "delete_edge"
+        }
+      ],
+      "group": "coco:477497",
+      "id": "magicbrush:477497:1",
+      "instruction": "take the almonds out of the box",
+      "predicted_operations": [
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "brown"
+            ],
+            "id": "n005",
+            "label": "almonds"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "in",
+            "subject": "n005"
+          },
+          "kind": "delete_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        56,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n002"
+          },
+          {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "in",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n002",
+            "predicate": "in",
+            "subject": "n004"
+          },
+          {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "in",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n006",
+            "predicate": "in",
+            "subject": "n007"
+          },
+          {
+            "id": "e007",
+            "object": "n006",
+            "predicate": "in",
+            "subject": "n008"
+          },
+          {
+            "id": "e008",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n009"
+          },
+          {
+            "id": "e009",
+            "object": "n009",
+            "predicate": "in",
+            "subject": "n010"
+          },
+          {
+            "id": "e010",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n011"
+          },
+          {
+            "id": "e011",
+            "object": "n011",
+            "predicate": "in",
+            "subject": "n012"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "blue"
+            ],
+            "id": "n001",
+            "label": "lunchbox"
+          },
+          {
+            "attributes": [
+              "yellow"
+            ],
+            "id": "n002",
+            "label": "compartment"
+          },
+          {
+            "attributes": [
+              "pink",
+              "sliced"
+            ],
+            "id": "n003",
+            "label": "beef"
+          },
+          {
+            "attributes": [
+              "green"
+            ],
+            "id": "n004",
+            "label": "cup"
+          },
+          {
+            "attributes": [
+              "brown"
+            ],
+            "id": "n005",
+            "label": "almonds"
+          },
+          {
+            "attributes": [
+              "purple"
+            ],
+            "id": "n006",
+            "label": "compartment"
+          },
+          {
+            "attributes": [
+              "sliced"
+            ],
+            "id": "n007",
+            "label": "cucumber"
+          },
+          {
+            "attributes": [
+              "small"
+            ],
+            "id": "n008",
+            "label": "carrots"
+          },
+          {
+            "attributes": [
+              "blue"
+            ],
+            "id": "n009",
+            "label": "compartment"
+          },
+          {
+            "attributes": [
+              "red"
+            ],
+            "id": "n010",
+            "label": "tomatoes"
+          },
+          {
+            "attributes": [
+              "red"
+            ],
+            "id": "n011",
+            "label": "compartment"
+          },
+          {
+            "attributes": [
+              "golden"
+            ],
+            "id": "n012",
+            "label": "muffin"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 381224,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/d9e738f6fd8135394f72104bd5f0f260c7c22fc6bdf78335da5310843c418429.png",
+        "pixel_sha256": "c5db15060776b352e699b2b37c1c7f2f1e96f3f7e5a9e17b7948f021516c8253",
+        "sha256": "d9e738f6fd8135394f72104bd5f0f260c7c22fc6bdf78335da5310843c418429",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n002"
+          },
+          {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "in",
+            "subject": "n003"
+          },
+          {
+            "id": "e005",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n006",
+            "predicate": "in",
+            "subject": "n007"
+          },
+          {
+            "id": "e007",
+            "object": "n006",
+            "predicate": "in",
+            "subject": "n008"
+          },
+          {
+            "id": "e008",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n009"
+          },
+          {
+            "id": "e009",
+            "object": "n009",
+            "predicate": "in",
+            "subject": "n010"
+          },
+          {
+            "id": "e010",
+            "object": "n001",
+            "predicate": "in",
+            "subject": "n011"
+          },
+          {
+            "id": "e011",
+            "object": "n011",
+            "predicate": "in",
+            "subject": "n012"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "blue"
+            ],
+            "id": "n001",
+            "label": "lunchbox"
+          },
+          {
+            "attributes": [
+              "yellow"
+            ],
+            "id": "n002",
+            "label": "compartment"
+          },
+          {
+            "attributes": [
+              "pink",
+              "sliced"
+            ],
+            "id": "n003",
+            "label": "beef"
+          },
+          {
+            "attributes": [
+              "purple"
+            ],
+            "id": "n006",
+            "label": "compartment"
+          },
+          {
+            "attributes": [
+              "sliced"
+            ],
+            "id": "n007",
+            "label": "cucumber"
+          },
+          {
+            "attributes": [
+              "small"
+            ],
+            "id": "n008",
+            "label": "carrots"
+          },
+          {
+            "attributes": [
+              "blue"
+            ],
+            "id": "n009",
+            "label": "compartment"
+          },
+          {
+            "attributes": [
+              "red"
+            ],
+            "id": "n010",
+            "label": "tomatoes"
+          },
+          {
+            "attributes": [
+              "red"
+            ],
+            "id": "n011",
+            "label": "compartment"
+          },
+          {
+            "attributes": [
+              "golden"
+            ],
+            "id": "n012",
+            "label": "muffin"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1079968,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/327c6a1b3c5509f1ecfbdb51d5b7bf903b6b1aaec81a5e516c1b2e6f738f3f25.png",
+        "pixel_sha256": "dc2e7b90c12bbf33f72303b74d6c9517efbb72744b880a01f6c3e6181089150e",
+        "sha256": "327c6a1b3c5509f1ecfbdb51d5b7bf903b6b1aaec81a5e516c1b2e6f738f3f25",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {
+        "duplicate_edges_removed": 1,
+        "masked_dead_endpoint_selections": 1
+      },
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "entity_not_edited": 4,
+        "exact_operation_tp": 1,
+        "existing_entity_touched": 0,
+        "existing_exact_payload_correct": 0,
+        "existing_kind_and_id_correct": 0,
+        "gt_added_nodes": 1,
+        "gt_existing_operations": 4,
+        "gt_operations": 6,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 2,
+        "predicted_self_loop_edges": 0
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n002",
+          "kind": "delete_node",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "n003",
+          "kind": "delete_node",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "e001",
+          "kind": "delete_edge",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "e002",
+          "kind": "delete_edge",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "black",
+              "blue screen",
+              "open"
+            ],
+            "id": "newn001",
+            "label": "laptop"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "stacked"
+            ],
+            "id": "n002",
+            "label": "books"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "dark"
+            ],
+            "id": "n003",
+            "label": "remote"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          "kind": "delete_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e002",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n003"
+          },
+          "kind": "delete_edge"
+        }
+      ],
+      "group": "coco:484847",
+      "id": "magicbrush:484847:1",
+      "instruction": "put a laptop on the table",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "dark"
+            ],
+            "id": "newn001",
+            "label": "dog"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        103,
+        114,
+        106,
+        37,
+        47,
+        94,
+        37,
+        103,
+        100,
+        117,
+        110,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        53,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        53,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          {
+            "id": "e002",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n006",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "on",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n009",
+            "predicate": "on",
+            "subject": "n008"
+          },
+          {
+            "id": "e006",
+            "object": "n007",
+            "predicate": "beside",
+            "subject": "n010"
+          },
+          {
+            "id": "e007",
+            "object": "n007",
+            "predicate": "beside",
+            "subject": "n011"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "wood"
+            ],
+            "id": "n001",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "stacked"
+            ],
+            "id": "n002",
+            "label": "books"
+          },
+          {
+            "attributes": [
+              "dark"
+            ],
+            "id": "n003",
+            "label": "remote"
+          },
+          {
+            "attributes": [
+              "brown leather"
+            ],
+            "id": "n004",
+            "label": "sofa"
+          },
+          {
+            "attributes": [
+              "plaid"
+            ],
+            "id": "n005",
+            "label": "cushion"
+          },
+          {
+            "attributes": [
+              "patterned",
+              "red"
+            ],
+            "id": "n006",
+            "label": "rug"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n007",
+            "label": "fireplace"
+          },
+          {
+            "attributes": [
+              "CRT"
+            ],
+            "id": "n008",
+            "label": "television"
+          },
+          {
+            "attributes": [
+              "wood"
+            ],
+            "id": "n009",
+            "label": "cabinet"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n010",
+            "label": "fireplace tools"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n011",
+            "label": "bin"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 313173,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/41e956f773071f23883a03d9aaf3fba40301a1eb243f19482bcd020afaff2334.png",
+        "pixel_sha256": "a4e85c4e06d54c4def8e4376dcdb7d2b0950109efab4358f79a9b71976c8276a",
+        "sha256": "41e956f773071f23883a03d9aaf3fba40301a1eb243f19482bcd020afaff2334",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e003",
+            "object": "n006",
+            "predicate": "on",
+            "subject": "n001"
+          },
+          {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "on",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n009",
+            "predicate": "on",
+            "subject": "n008"
+          },
+          {
+            "id": "e006",
+            "object": "n007",
+            "predicate": "beside",
+            "subject": "n010"
+          },
+          {
+            "id": "e007",
+            "object": "n007",
+            "predicate": "beside",
+            "subject": "n011"
+          },
+          {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "wood"
+            ],
+            "id": "n001",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "brown leather"
+            ],
+            "id": "n004",
+            "label": "sofa"
+          },
+          {
+            "attributes": [
+              "plaid"
+            ],
+            "id": "n005",
+            "label": "cushion"
+          },
+          {
+            "attributes": [
+              "patterned",
+              "red"
+            ],
+            "id": "n006",
+            "label": "rug"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n007",
+            "label": "fireplace"
+          },
+          {
+            "attributes": [
+              "CRT"
+            ],
+            "id": "n008",
+            "label": "television"
+          },
+          {
+            "attributes": [
+              "wood"
+            ],
+            "id": "n009",
+            "label": "cabinet"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n010",
+            "label": "fireplace tools"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n011",
+            "label": "bin"
+          },
+          {
+            "attributes": [
+              "black",
+              "blue screen",
+              "open"
+            ],
+            "id": "newn001",
+            "label": "laptop"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 884848,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/872aa3f4eaffdad1ffec0ab74df86cacd585e286da413de755482aeaac6a9952.png",
+        "pixel_sha256": "79f81c37fdaf33fb427b70449678d18daf7dab31b4095e838d261bca2fcf2ee0",
+        "sha256": "872aa3f4eaffdad1ffec0ab74df86cacd585e286da413de755482aeaac6a9952",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "entity_not_edited": 2,
+        "exact": 4,
+        "exact_operation_tp": 4,
+        "existing_entity_touched": 4,
+        "existing_exact_payload_correct": 4,
+        "existing_kind_and_id_correct": 4,
+        "gt_added_nodes": 0,
+        "gt_existing_operations": 6,
+        "gt_operations": 6,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 4,
+        "predicted_operations": 10,
+        "predicted_self_loop_edges": 1
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n005",
+          "kind": "delete_node",
+          "status": "exact",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "n006",
+          "kind": "delete_node",
+          "status": "exact",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "n007",
+          "kind": "delete_node",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "e002",
+          "kind": "delete_edge",
+          "status": "exact",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "e003",
+          "kind": "delete_edge",
+          "status": "exact",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "e004",
+          "kind": "delete_edge",
+          "status": "entity_not_edited",
+          "wrong_fields": []
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "center"
+            ],
+            "id": "n005",
+            "label": "condiment set"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "rear"
+            ],
+            "id": "n006",
+            "label": "condiment set"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "rear table"
+            ],
+            "id": "n007",
+            "label": "papers"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "n005"
+          },
+          "kind": "delete_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n006"
+          },
+          "kind": "delete_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e004",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n007"
+          },
+          "kind": "delete_edge"
+        }
+      ],
+      "group": "coco:540097",
+      "id": "magicbrush:540097:1",
+      "instruction": "remove things on the table",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "white"
+            ],
+            "id": "newn001",
+            "label": "chair"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "black"
+            ],
+            "id": "n001",
+            "label": "chairs"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "center"
+            ],
+            "id": "n005",
+            "label": "condiment set"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "rear"
+            ],
+            "id": "n006",
+            "label": "condiment set"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n009",
+            "label": "urn"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "newn001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "beside",
+            "subject": "n001"
+          },
+          "kind": "delete_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "n005"
+          },
+          "kind": "delete_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n006"
+          },
+          "kind": "delete_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e005",
+            "object": "n008",
+            "predicate": "on",
+            "subject": "n009"
+          },
+          "kind": "delete_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        56,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        57,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        60,
+        37,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        102,
+        107,
+        100,
+        108,
+        117,
+        37,
+        47,
+        94,
+        37,
+        122,
+        107,
+        108,
+        119,
+        104,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        104,
+        51,
+        51,
+        52,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        104,
+        51,
+        51,
+        53,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        104,
+        51,
+        51,
+        54,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        104,
+        51,
+        51,
+        56,
+        37,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        104,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        114,
+        113,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "beside",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "on",
+            "subject": "n005"
+          },
+          {
+            "id": "e003",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n006"
+          },
+          {
+            "id": "e004",
+            "object": "n003",
+            "predicate": "on",
+            "subject": "n007"
+          },
+          {
+            "id": "e005",
+            "object": "n008",
+            "predicate": "on",
+            "subject": "n009"
+          },
+          {
+            "id": "e006",
+            "object": "n008",
+            "predicate": "on",
+            "subject": "n010"
+          },
+          {
+            "id": "e007",
+            "object": "n008",
+            "predicate": "above",
+            "subject": "n011"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n001",
+            "label": "chairs"
+          },
+          {
+            "attributes": [
+              "center",
+              "wood"
+            ],
+            "id": "n002",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "rear",
+              "wood"
+            ],
+            "id": "n003",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "front",
+              "wood"
+            ],
+            "id": "n004",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "center"
+            ],
+            "id": "n005",
+            "label": "condiment set"
+          },
+          {
+            "attributes": [
+              "rear"
+            ],
+            "id": "n006",
+            "label": "condiment set"
+          },
+          {
+            "attributes": [
+              "rear table"
+            ],
+            "id": "n007",
+            "label": "papers"
+          },
+          {
+            "attributes": [
+              "dark wood"
+            ],
+            "id": "n008",
+            "label": "counter"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n009",
+            "label": "urn"
+          },
+          {
+            "attributes": [
+              "flowers"
+            ],
+            "id": "n010",
+            "label": "vase"
+          },
+          {
+            "attributes": [
+              "white"
+            ],
+            "id": "n011",
+            "label": "pendant lights"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 388072,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/0edbe943fdf9b997905815f1265e542d2e2d179b42812b0086ce4c74363f47a8.png",
+        "pixel_sha256": "d5d90da04d4b06cdb0055892e52ae7b0e9797cd36a1f24cb8ffb5e9328ffac7c",
+        "sha256": "0edbe943fdf9b997905815f1265e542d2e2d179b42812b0086ce4c74363f47a8",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n002",
+            "predicate": "beside",
+            "subject": "n001"
+          },
+          {
+            "id": "e005",
+            "object": "n008",
+            "predicate": "on",
+            "subject": "n009"
+          },
+          {
+            "id": "e006",
+            "object": "n008",
+            "predicate": "on",
+            "subject": "n010"
+          },
+          {
+            "id": "e007",
+            "object": "n008",
+            "predicate": "above",
+            "subject": "n011"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n001",
+            "label": "chairs"
+          },
+          {
+            "attributes": [
+              "center",
+              "wood"
+            ],
+            "id": "n002",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "rear",
+              "wood"
+            ],
+            "id": "n003",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "front",
+              "wood"
+            ],
+            "id": "n004",
+            "label": "table"
+          },
+          {
+            "attributes": [
+              "dark wood"
+            ],
+            "id": "n008",
+            "label": "counter"
+          },
+          {
+            "attributes": [
+              "metal"
+            ],
+            "id": "n009",
+            "label": "urn"
+          },
+          {
+            "attributes": [
+              "flowers"
+            ],
+            "id": "n010",
+            "label": "vase"
+          },
+          {
+            "attributes": [
+              "white"
+            ],
+            "id": "n011",
+            "label": "pendant lights"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1053796,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/c88bf34bb86975fb8171afa6becbbf28e88ffaffd9fac695d6faffaaeed7fdf7.png",
+        "pixel_sha256": "7d9e747ec21322a4927a73c957d621f1fcdf3bb2bdce2663794129f3c4c1fcd3",
+        "sha256": "c88bf34bb86975fb8171afa6becbbf28e88ffaffd9fac695d6faffaaeed7fdf7",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "exact_operation_tp": 0,
+        "existing_entity_touched": 1,
+        "existing_exact_payload_correct": 0,
+        "existing_kind_and_id_correct": 1,
+        "gt_added_nodes": 0,
+        "gt_existing_operations": 1,
+        "gt_operations": 1,
+        "matched_replace_node_fields": 2,
+        "predicted_added_nodes": 1,
+        "predicted_existing_ops_on_unrequested_entities": 0,
+        "predicted_operations": 2,
+        "predicted_self_loop_edges": 0,
+        "replace_node_correct_attributes_given_id_kind": 0,
+        "replace_node_correct_id_and_kind": 1,
+        "replace_node_correct_label_given_id_kind": 1,
+        "wrong_payload": 1,
+        "wrong_replace_node_attributes": 1
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n001",
+          "kind": "replace_node",
+          "status": "wrong_payload",
+          "wrong_fields": [
+            "attributes"
+          ]
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": {
+            "attributes": [
+              "closed mouth",
+              "dark fur",
+              "pale muzzle"
+            ],
+            "id": "n001",
+            "label": "bear"
+          },
+          "before": {
+            "attributes": [
+              "dark fur",
+              "open mouth",
+              "visible teeth"
+            ],
+            "id": "n001",
+            "label": "bear"
+          },
+          "kind": "replace_node"
+        }
+      ],
+      "group": "coco:71476",
+      "id": "magicbrush:71476:1",
+      "instruction": "Let the bear be calm.",
+      "predicted_operations": [
+        {
+          "after": {
+            "attributes": [
+              "brown",
+              "dark"
+            ],
+            "id": "newn001",
+            "label": "elephant"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "attributes": [
+              "dark fur",
+              "mouth open",
+              "teeth visible",
+              "visible teeth"
+            ],
+            "id": "n001",
+            "label": "bear"
+          },
+          "before": {
+            "attributes": [
+              "dark fur",
+              "open mouth",
+              "visible teeth"
+            ],
+            "id": "n001",
+            "label": "bear"
+          },
+          "kind": "replace_node"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        117,
+        104,
+        115,
+        111,
+        100,
+        102,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        101,
+        104,
+        100,
+        117,
+        37,
+        47,
+        94,
+        37,
+        103,
+        100,
+        117,
+        110,
+        35,
+        105,
+        120,
+        117,
+        37,
+        47,
+        37,
+        112,
+        114,
+        120,
+        119,
+        107,
+        35,
+        114,
+        115,
+        104,
+        113,
+        37,
+        47,
+        37,
+        119,
+        104,
+        104,
+        119,
+        107,
+        35,
+        121,
+        108,
+        118,
+        108,
+        101,
+        111,
+        104,
+        37,
+        47,
+        37,
+        121,
+        108,
+        118,
+        108,
+        101,
+        111,
+        104,
+        35,
+        119,
+        104,
+        104,
+        119,
+        107,
+        37,
+        96,
+        96,
+        47,
+        94,
+        37,
+        100,
+        103,
+        103,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        104,
+        122,
+        113,
+        51,
+        51,
+        52,
+        37,
+        47,
+        37,
+        104,
+        111,
+        104,
+        115,
+        107,
+        100,
+        113,
+        119,
+        37,
+        47,
+        94,
+        37,
+        101,
+        117,
+        114,
+        122,
+        113,
+        37,
+        47,
+        37,
+        103,
+        100,
+        117,
+        110,
+        37,
+        96,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [],
+        "nodes": [
+          {
+            "attributes": [
+              "dark fur",
+              "open mouth",
+              "visible teeth"
+            ],
+            "id": "n001",
+            "label": "bear"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 151334,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/ae787004d08b07b808e6311745fa3e73e73e01ca94ae1b0bfeb94e1a6716771b.png",
+        "pixel_sha256": "f6c72b8dbd04c776310b8d745b5dc58cee633c5758490347680360830c5b6c7a",
+        "sha256": "ae787004d08b07b808e6311745fa3e73e73e01ca94ae1b0bfeb94e1a6716771b",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [],
+        "nodes": [
+          {
+            "attributes": [
+              "closed mouth",
+              "dark fur",
+              "pale muzzle"
+            ],
+            "id": "n001",
+            "label": "bear"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 608478,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/8c41f54420b3b2b3cefed10bdf75be754064a618cce48d446f173e50cec41dfc.png",
+        "pixel_sha256": "5fd47ec4410f3ffbbc632664bd6575e7522fd387156f240d1de8ec1f14c4df0d",
+        "sha256": "8c41f54420b3b2b3cefed10bdf75be754064a618cce48d446f173e50cec41dfc",
+        "width": 1024
+      }
+    },
+    {
+      "constraints": {},
+      "counts": {
+        "added_node_label_overlap_ignoring_ids_and_attributes": 0,
+        "exact": 2,
+        "exact_operation_tp": 2,
+        "existing_entity_touched": 2,
+        "existing_exact_payload_correct": 2,
+        "existing_kind_and_id_correct": 2,
+        "gt_added_nodes": 0,
+        "gt_existing_operations": 2,
+        "gt_operations": 2,
+        "predicted_added_nodes": 0,
+        "predicted_existing_ops_on_unrequested_entities": 4,
+        "predicted_operations": 6,
+        "predicted_self_loop_edges": 0
+      },
+      "existing_operation_diagnosis": [
+        {
+          "entity_id": "n001",
+          "kind": "delete_node",
+          "status": "exact",
+          "wrong_fields": []
+        },
+        {
+          "entity_id": "e001",
+          "kind": "delete_edge",
+          "status": "exact",
+          "wrong_fields": []
+        }
+      ],
+      "expected_operations": [
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "upper right",
+              "wall mounted"
+            ],
+            "id": "n001",
+            "label": "television"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e001",
+            "object": "n004",
+            "predicate": "above",
+            "subject": "n001"
+          },
+          "kind": "delete_edge"
+        }
+      ],
+      "group": "coco:9772",
+      "id": "magicbrush:9772:1",
+      "instruction": "Remove the TV screen.",
+      "predicted_operations": [
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "upper right",
+              "wall mounted"
+            ],
+            "id": "n001",
+            "label": "television"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "holding camera"
+            ],
+            "id": "n003",
+            "label": "person reflection"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e001",
+            "object": "n004",
+            "predicate": "above",
+            "subject": "n001"
+          },
+          "kind": "delete_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "in",
+            "subject": "n003"
+          },
+          "kind": "delete_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e005",
+            "object": "n004",
+            "predicate": "below",
+            "subject": "n006"
+          },
+          "kind": "delete_edge"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e007",
+            "object": "n011",
+            "predicate": "on",
+            "subject": "n009"
+          },
+          "kind": "delete_edge"
+        }
+      ],
+      "raw_tokens": [
+        94,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        52,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        113,
+        114,
+        103,
+        104,
+        37,
+        47,
+        37,
+        113,
+        51,
+        51,
+        54,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        104,
+        51,
+        51,
+        52,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        104,
+        51,
+        51,
+        53,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        104,
+        51,
+        51,
+        56,
+        37,
+        96,
+        47,
+        94,
+        37,
+        103,
+        104,
+        111,
+        104,
+        119,
+        104,
+        98,
+        104,
+        103,
+        106,
+        104,
+        37,
+        47,
+        37,
+        104,
+        51,
+        51,
+        58,
+        37,
+        96,
+        96,
+        2
+      ],
+      "source_graph": {
+        "edges": [
+          {
+            "id": "e001",
+            "object": "n004",
+            "predicate": "above",
+            "subject": "n001"
+          },
+          {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "in",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n004",
+            "predicate": "above",
+            "subject": "n002"
+          },
+          {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "in",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n004",
+            "predicate": "below",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n002",
+            "predicate": "beside",
+            "subject": "n007"
+          },
+          {
+            "id": "e007",
+            "object": "n011",
+            "predicate": "on",
+            "subject": "n009"
+          },
+          {
+            "id": "e008",
+            "object": "n011",
+            "predicate": "on",
+            "subject": "n010"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "upper right",
+              "wall mounted"
+            ],
+            "id": "n001",
+            "label": "television"
+          },
+          {
+            "attributes": [
+              "large"
+            ],
+            "id": "n002",
+            "label": "mirror"
+          },
+          {
+            "attributes": [
+              "holding camera"
+            ],
+            "id": "n003",
+            "label": "person reflection"
+          },
+          {
+            "attributes": [
+              "dark marble"
+            ],
+            "id": "n004",
+            "label": "counter"
+          },
+          {
+            "attributes": [
+              "two",
+              "white"
+            ],
+            "id": "n005",
+            "label": "sinks"
+          },
+          {
+            "attributes": [
+              "hanging",
+              "two",
+              "white"
+            ],
+            "id": "n006",
+            "label": "towels"
+          },
+          {
+            "attributes": [
+              "lit"
+            ],
+            "id": "n007",
+            "label": "wall lights"
+          },
+          {
+            "attributes": [
+              "cropped",
+              "left"
+            ],
+            "id": "n008",
+            "label": "bathtub"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n009",
+            "label": "bin"
+          },
+          {
+            "attributes": [
+              "white"
+            ],
+            "id": "n010",
+            "label": "rug"
+          },
+          {
+            "attributes": [
+              "beige"
+            ],
+            "id": "n011",
+            "label": "floor"
+          }
+        ]
+      },
+      "source_image": {
+        "bytes": 366344,
+        "height": 500,
+        "path": "data/processed/level2/magicbrush-v1/images/a5b609161adc18ad24f4edadaa3ec4daf4ab7dc57f3bef297389d6ab35be42a6.png",
+        "pixel_sha256": "2928b6e82c9786e4129355f756a0afdb89bc58da5b5bb05fc24a76fd1c1bdc8f",
+        "sha256": "a5b609161adc18ad24f4edadaa3ec4daf4ab7dc57f3bef297389d6ab35be42a6",
+        "width": 500
+      },
+      "target_graph": {
+        "edges": [
+          {
+            "id": "e002",
+            "object": "n002",
+            "predicate": "in",
+            "subject": "n003"
+          },
+          {
+            "id": "e003",
+            "object": "n004",
+            "predicate": "above",
+            "subject": "n002"
+          },
+          {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "in",
+            "subject": "n005"
+          },
+          {
+            "id": "e005",
+            "object": "n004",
+            "predicate": "below",
+            "subject": "n006"
+          },
+          {
+            "id": "e006",
+            "object": "n002",
+            "predicate": "beside",
+            "subject": "n007"
+          },
+          {
+            "id": "e007",
+            "object": "n011",
+            "predicate": "on",
+            "subject": "n009"
+          },
+          {
+            "id": "e008",
+            "object": "n011",
+            "predicate": "on",
+            "subject": "n010"
+          }
+        ],
+        "nodes": [
+          {
+            "attributes": [
+              "large"
+            ],
+            "id": "n002",
+            "label": "mirror"
+          },
+          {
+            "attributes": [
+              "holding camera"
+            ],
+            "id": "n003",
+            "label": "person reflection"
+          },
+          {
+            "attributes": [
+              "dark marble"
+            ],
+            "id": "n004",
+            "label": "counter"
+          },
+          {
+            "attributes": [
+              "two",
+              "white"
+            ],
+            "id": "n005",
+            "label": "sinks"
+          },
+          {
+            "attributes": [
+              "hanging",
+              "two",
+              "white"
+            ],
+            "id": "n006",
+            "label": "towels"
+          },
+          {
+            "attributes": [
+              "lit"
+            ],
+            "id": "n007",
+            "label": "wall lights"
+          },
+          {
+            "attributes": [
+              "cropped",
+              "left"
+            ],
+            "id": "n008",
+            "label": "bathtub"
+          },
+          {
+            "attributes": [
+              "black"
+            ],
+            "id": "n009",
+            "label": "bin"
+          },
+          {
+            "attributes": [
+              "white"
+            ],
+            "id": "n010",
+            "label": "rug"
+          },
+          {
+            "attributes": [
+              "beige"
+            ],
+            "id": "n011",
+            "label": "floor"
+          }
+        ]
+      },
+      "target_image": {
+        "bytes": 1037137,
+        "height": 1024,
+        "path": "data/processed/level2/magicbrush-v1/images/ea88c48105246d13a7e939126a67bbd8835e3864133b3481725a38e47cf03578.png",
+        "pixel_sha256": "dedd71fe91b71f6ec9a3dc63e1f7ff05302141bab2579af70d2e5fd75d77a769",
+        "sha256": "ea88c48105246d13a7e939126a67bbd8835e3864133b3481725a38e47cf03578",
+        "width": 1024
+      }
+    }
+  ],
+  "model": "gnn",
+  "sample_seed": 20261114,
+  "seed": 42
+}
