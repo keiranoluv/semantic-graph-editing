@@ -1,0 +1,736 @@
+{
+  "schema": "assistant-visual-review-easy-copy-v1",
+  "reviewer": "Codex assistant with local image vision",
+  "human_confirmation": false,
+  "selection": {
+    "random_train_seed": 20261115,
+    "random_train_pairs": 20,
+    "targeted_validation_pairs": 7,
+    "test_pairs": 0,
+    "additional_proposed_simplification_pairs": 45,
+    "unique_pairs": 72
+  },
+  "scope": "Actual source/target images visually inspected alongside operation payloads: random 20 train, 7 known validation cases, all 45 additional cases touched by initial simplification. Focused edit review, not full background reannotation; no new human confirmation.",
+  "cases": [
+    {
+      "id": "magicbrush:123035:3",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "Add a pizza cutter.",
+      "source_image_sha256": "5615930b9d866ed1dd605c5b9189ede3151f10b515de3d1592ed67085a3f795d",
+      "target_image_sha256": "a66a6ee51eca9c2004564d2544b4e949a52b49d608cc95973282fe4bf445e241",
+      "decision": "retain",
+      "observation": "Visible cutter added at left edge, on wooden support. Cropping/metal/handle are optional for the plain addition."
+    },
+    {
+      "id": "magicbrush:166565:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "let the monitor show a star field wallpaper",
+      "source_image_sha256": "ac806db34708261ad3ca308cd2256f4e1ef7fd00c270a7c3ccd32d0c128e8c45",
+      "target_image_sha256": "5c35a744553ff36c75a49879685f9f68f626060791a1986ec90650f4e0717341",
+      "decision": "retain",
+      "observation": "Dark foreground monitor becomes blue star graphic. Preserve content change, not merely generic blue."
+    },
+    {
+      "id": "magicbrush:208423:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "Add a bright sun",
+      "source_image_sha256": "61e20f5491830af7074c1b4f6ae7257617459af4dbaa337a07aa3f84998c39a1",
+      "target_image_sha256": "df5d3596913b200a36eb76531392f5debbfd72d49a8cd0c8dd4f1a4cc45dea02",
+      "decision": "retain",
+      "observation": "Bright sun and extra blue/yellow kite both appear; keep incidental kite structural operations and requested brightness."
+    },
+    {
+      "id": "magicbrush:214471:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "Replace the chips with fries.",
+      "source_image_sha256": "2ec56c11bc0e014c1b04214c2c1b13c6688d7366090591a38f7d981fdc5146f6",
+      "target_image_sha256": "81a48f755fb39748b23f462c6b5de20d64452cc95f197bb726c45cd91bfa885f",
+      "decision": "retain",
+      "observation": "Chips become fries; identity replacement is visible. Keep original observed appearance for this non-addition request."
+    },
+    {
+      "id": "magicbrush:273420:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "Remove the person.",
+      "source_image_sha256": "7fc14b9373d16542b89bb5f7cbb21f6d7f30e9ccaaa8b43cf48ddd7782746877",
+      "target_image_sha256": "c95aa040bb4b4f6f412cdecc892c2247c136c8cc371a18ad434d962cda8d222c",
+      "decision": "retain",
+      "observation": "Person and held phone disappear. Both node deletions and incident edge deletions supported."
+    },
+    {
+      "id": "magicbrush:279710:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "change the skateboard into a stilt",
+      "source_image_sha256": "33c11e48652eeff7016bafdcfac0f860ef391fec9e070a6bbc890e88d94d4116",
+      "target_image_sha256": "9d76e0b6143baec2f607383555d30e3757240b8cffe5f3b6be6c55f6f6eeee8c",
+      "decision": "quarantine_train",
+      "observation": "No recognizable stilt appears. Only cropped footwear changes; requested transformation is not represented by observed label. Quarantine train, do not invent stilt."
+    },
+    {
+      "id": "magicbrush:279710:2",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "let the man be bald",
+      "source_image_sha256": "9d76e0b6143baec2f607383555d30e3757240b8cffe5f3b6be6c55f6f6eeee8c",
+      "target_image_sha256": "77f3225e135b04b1b6464a5df605a2efd2c3d8b4a08628036d253a08c20eb8b9",
+      "decision": "retain",
+      "observation": "Hair becomes bald; preserve explicit property edit."
+    },
+    {
+      "id": "magicbrush:299553:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "Add a third kite.",
+      "source_image_sha256": "458b852b5f35d418ab3ca4e2499fc5c299f21d68c53f257c48d70e05c0fc3dec",
+      "target_image_sha256": "c6427c5b290feea923c0848e137f27fef4d6d6d34085e8310472ff52c1067843",
+      "decision": "retain",
+      "observation": "Additional kite visible upper right. Count wording is relative and source has other distant kites; keep original graph multiplicity and appearance."
+    },
+    {
+      "id": "magicbrush:305351:2",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "Have there be a clock on the wall",
+      "source_image_sha256": "f3a42cbfd57f2695bdd14fc16a6a17c2557aa389d07eb18b6c258e0272908cd6",
+      "target_image_sha256": "18c1c06778d44df0ca03e13c0ca30e7756c7710d552e67b96f9c536c4a263500",
+      "decision": "retain",
+      "observation": "Clock appears over lower beam region. Keep original observed beam deletion/occlusion; extra appearance is optional for clock."
+    },
+    {
+      "id": "magicbrush:31673:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "Let the grass be taller.",
+      "source_image_sha256": "8d1acec9d012c8a7c8e99bd1066c118388901541d2f8cc0388ddecb87782b70b",
+      "target_image_sha256": "3b175391c422b44b65cd3759dfd57a84339201c12278a0e9ffbc3729bceb6e33",
+      "decision": "retain",
+      "observation": "Foreground grass becomes taller/denser; preserve height and density."
+    },
+    {
+      "id": "magicbrush:357424:3",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "let the bears sit on a leather couch",
+      "source_image_sha256": "54e37f3d96e3d3925eb934f76c2b966eb5ed876149acc7fc3b4ba8c3c9199465",
+      "target_image_sha256": "42516378c4ce2dde27156c82b6a8bc3f4a5e9bc3174ccb7072390907c3da5f88",
+      "decision": "retain",
+      "observation": "Fabric sofa becomes leather-looking upholstery. Preserve material and observed color change."
+    },
+    {
+      "id": "magicbrush:423742:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "turn the cat into a hedgehog",
+      "source_image_sha256": "3800a93f102d7172650d326017ad88e8f7aaa947efbd85bf4976c379c27f4645",
+      "target_image_sha256": "09ea7b28c1f6a9600643af11ac11890b241a8d1061e5a9f819056a618bc34cb2",
+      "decision": "retain",
+      "observation": "Cat becomes a hedgehog-like rendered animal; artificial shape, label plausible but not a strong natural-photo category example."
+    },
+    {
+      "id": "magicbrush:442416:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "add a phone",
+      "source_image_sha256": "143b35accdc0e222eb9ffbf498ae6ae9b301e73d8a1c7e4c915f9c5a88e23fcd",
+      "target_image_sha256": "5fc9ebee34f8ac0c234cc8be41248b7bf82671f69c8230fff13ffc8e11ed181f",
+      "decision": "retain",
+      "observation": "Phone clearly added beside pizza on counter; screen color is unspecified."
+    },
+    {
+      "id": "magicbrush:450075:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "Make the hair of the person getting a tie put on blonde.",
+      "source_image_sha256": "33853cd976c0c488030f3f4c8cbf13b667881779a7e2c574eb69cfbc0066c59b",
+      "target_image_sha256": "82ea23079ed42f9e3a853dd5342e1f3143312680a26359c05ebba0862e22be6d",
+      "decision": "retain",
+      "observation": "Hair becomes brown with blond highlights, not fully blonde. Existing label reflects partial realization; do not relabel full blonde."
+    },
+    {
+      "id": "magicbrush:514607:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "Add a lizard.",
+      "source_image_sha256": "870f70f9599e955a39a5e13cf0c283b2476c92f35bae5c01aafbc7da4a76d650",
+      "target_image_sha256": "502fbb27282ce24a52280f2393d140f64b7336519047b82e7e9e416ee30dffd2",
+      "decision": "retain",
+      "observation": "Lizard visibly added cropped in foreground; incidental brown/cropping optional."
+    },
+    {
+      "id": "magicbrush:524352:2",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "Add some ketchup to the plate.",
+      "source_image_sha256": "a357106f8c542f77602e2bd419c97bbf74712eadf06626b5d88348d084c69e13",
+      "target_image_sha256": "39a8152812015359bead51b76c6aec6a3d59f32278aca3a113f24864332c2122",
+      "decision": "retain",
+      "observation": "Red ketchup dollop added at plate front; shape/color unspecified."
+    },
+    {
+      "id": "magicbrush:535313:2",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "change the cup of coffee to a cup of tea",
+      "source_image_sha256": "1bcc2c157ff6f7c7b594a65dada3f7aa1c626159ddae4f8496ba9b285a6349e1",
+      "target_image_sha256": "1d4c2e8a608a41fabc1b72990a8df40e5dff927e96a38ef4c00cdf690effe4d5",
+      "decision": "retain",
+      "observation": "Foamy coffee becomes dark unfoamed drink. Photo alone cannot distinguish tea from black coffee; preserve observed dark/no-foam label, not inferred tea."
+    },
+    {
+      "id": "magicbrush:555684:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "remove the advertisement",
+      "source_image_sha256": "3fb6f50d18f181a92ede6d07a082a78a3bcdde27357762c1ce5cfcff2987e436",
+      "target_image_sha256": "a189560bf28e60f75e54d097cc2dfa8c09a399873329c96f595fdfa5a631b67b",
+      "decision": "retain",
+      "observation": "Text overlay removed. Label says text overlay; request calls it advertisement. Preserve observed deletion."
+    },
+    {
+      "id": "magicbrush:555684:3",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "add rubber duckies",
+      "source_image_sha256": "825043d582a6d63acc4e94430b99f8640d6cae38d0cae083f3726cafb22b9e46",
+      "target_image_sha256": "0e0adb50997124e36bfdbde45296b118f4977905a24566a0c2c6fa8b75f96400",
+      "decision": "retain",
+      "observation": "Two toy ducks on added float visible. Preserve duplicate-instance appearance to avoid ambiguous new IDs; rubber is explicit."
+    },
+    {
+      "id": "magicbrush:63399:1",
+      "split": "train",
+      "selection": "random_train",
+      "instruction": "let the frisbee have a face of a woman",
+      "source_image_sha256": "72a7c53ec4b0c1ccb259a1dd2d6ce281553773d79c95abb0fc2adbce43c642c2",
+      "target_image_sha256": "f9c823bc78f9164cc31fe63e01debfbf2d63119295c48fd04f1a22695d2d209a",
+      "decision": "retain",
+      "observation": "Frisbee logo replaced by woman-face print. Preserve printed content."
+    },
+    {
+      "id": "magicbrush:357633:1",
+      "split": "val",
+      "selection": "targeted_val",
+      "instruction": "put a car on the screen of the laptop.",
+      "source_image_sha256": "a68c28a6b542fcdac69f8f5ad0ace07e890bc02c28157f72a87b0f7bb23a5b41",
+      "target_image_sha256": "93e5f73771d2c379ba76a5926a0585487c56318a1521720b6357812ee9b37467",
+      "decision": "retain",
+      "observation": "Car image visible on screen; retain application windows -> car image. No physical car node should be added."
+    },
+    {
+      "id": "magicbrush:453731:1",
+      "split": "val",
+      "selection": "targeted_val",
+      "instruction": "the dog is looking forward",
+      "source_image_sha256": "7cf7a8f1d6a1bb941ae8fcbef72dec278fd97279f4cef0701d7d3d59b665f706",
+      "target_image_sha256": "ad0e4f295eff8fb7c883c275e6bbbfec4570a9a7af014dde7bb8ce616bac842f",
+      "decision": "retain",
+      "observation": "Dog turns head toward camera and raises head; preserve both properties."
+    },
+    {
+      "id": "magicbrush:456569:3",
+      "split": "val",
+      "selection": "targeted_val",
+      "instruction": "let trees border the zoo",
+      "source_image_sha256": "78ec8876ea9d6226026edeb94b709207f364d1f01eebbdc2fbde39ed04a4ff8c",
+      "target_image_sha256": "06d964126ff42f736a96033a94d3bff37daea751ab1028de7ef755d6bab7ffee",
+      "decision": "retain",
+      "observation": "Background tree row becomes denser; preserve density rather than no-op."
+    },
+    {
+      "id": "magicbrush:503943:1",
+      "split": "val",
+      "selection": "targeted_val",
+      "instruction": "let the laptop have a red web page",
+      "source_image_sha256": "87d0267f75bf6e53b35e91bdc969031e9b2ec72fc2eeee28e391f4e4cd71b15e",
+      "target_image_sha256": "6ee61dfb87f67f9bb98da845a89fefdaee0f87540adb29b57e64c48863df7f74",
+      "decision": "retain",
+      "observation": "Gray desktop becomes page with red header; preserve webpage and header detail."
+    },
+    {
+      "id": "magicbrush:484847:1",
+      "split": "val",
+      "selection": "targeted_val",
+      "instruction": "put a laptop on the table",
+      "source_image_sha256": "41e956f773071f23883a03d9aaf3fba40301a1eb243f19482bcd020afaff2334",
+      "target_image_sha256": "872aa3f4eaffdad1ffec0ab74df86cacd585e286da413de755482aeaac6a9952",
+      "decision": "retain",
+      "observation": "Laptop appears; books/remote disappear. Omit unspecified laptop appearance only; retain all observed structural changes."
+    },
+    {
+      "id": "magicbrush:338078:1",
+      "split": "val",
+      "selection": "targeted_val",
+      "instruction": "Have there be a gorilla crossing the road",
+      "source_image_sha256": "ab66c6e4e4272da48e00c5413cf5d02dd4f2e3eaa771ea108eab64e1139640ac",
+      "target_image_sha256": "50c63bbf505c46c6f4433200875f16f9b562c7f7241d543fd5a19760469d7345",
+      "decision": "retain",
+      "observation": "Gorilla appears on road; retain on relation, allow literal gorilla copy."
+    },
+    {
+      "id": "magicbrush:338078:3",
+      "split": "val",
+      "selection": "targeted_val",
+      "instruction": "Have the gorilla be playing a guitar",
+      "source_image_sha256": "45251532ed17c85db7acdda6897a0f1fc6db77be6cf6537ec45d73ca75da5621",
+      "target_image_sha256": "9d716e0d04ec5d1d8f7ceb041256a8da8085f5f3a9f31de5c8600d0545e343a4",
+      "decision": "retain",
+      "observation": "Gorilla holds guitar and becomes upright; preserve posture and relation as well as new instrument name."
+    },
+    {
+      "id": "magicbrush:12647:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "add a duck",
+      "source_image_sha256": "bf3fd6091bfda765e9dd9c5d53c6d432e0742373c6faeb4439e5179a6370db1d",
+      "target_image_sha256": "2ef5427dc0e99241e6bc9f0a37f4656b6d8f8f7322b709456b631dc8878fe09c",
+      "decision": "retain",
+      "observation": "Duck with raised wings added on water; wing posture and colors not requested."
+    },
+    {
+      "id": "magicbrush:128989:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Have there be a bug on the donut",
+      "source_image_sha256": "baaffb139ba2701182eddc1e783d243c44958e6d75732b876c5b7aa915fe91b5",
+      "target_image_sha256": "298290529b8594ceae7ab82a68d9f893992ab1aeb432edbe607bdfcc8ae0c75a",
+      "decision": "retain",
+      "observation": "Insect added on donut; bug/insect synonym mismatch remains, no label rename from prompt."
+    },
+    {
+      "id": "magicbrush:189197:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "add the moon",
+      "source_image_sha256": "3bce12d4d8825923c966ffb0a9880f9fd1a6b391a8fe95957a3d08e6a4270007",
+      "target_image_sha256": "7cb6706338b862f6b2a5097439be230d51b81fbc0c64cfa7e8f9d339ffd35d1b",
+      "decision": "retain",
+      "observation": "Moon graphic with halo added to sky; texture and halo unspecified."
+    },
+    {
+      "id": "magicbrush:192047:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a towel on the hanger.",
+      "source_image_sha256": "dbbdc1ccf14af2554dca504f4a3fbc4edc28bb12851b5fe204c59580e15d67b0",
+      "target_image_sha256": "fb3a135d3cc290b70d63434e8dce9adde9f961e3a4220c49fda1a3d8fcd4fb9c",
+      "decision": "retain",
+      "observation": "Towel added under hanger; hanger shape also changes. Beige unspecified."
+    },
+    {
+      "id": "magicbrush:227523:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "add a bird in the sky",
+      "source_image_sha256": "d6cb5202eeee5a32d23727ccc20da4f74c3089e63b4ac763e9f508c020607bb6",
+      "target_image_sha256": "9ff0946c9ca2a6ee2136d397e747358984d64befd8ea4ecfb2c5811bd66cbf2a",
+      "decision": "retain",
+      "observation": "Bird silhouette added to sky; color unspecified."
+    },
+    {
+      "id": "magicbrush:229407:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "put strawberries on the dessert",
+      "source_image_sha256": "0f176d239b46c40dc4ebae8b25516b2a6b72b96cfd2f121e27fe7aaf75be45f5",
+      "target_image_sha256": "982622ed32b1462d47bc70e1b1bb08121499e39be9007a946338af18393c674d",
+      "decision": "retain",
+      "observation": "Strawberry and cream added to dessert; keep cream as incidental structural addition."
+    },
+    {
+      "id": "magicbrush:231874:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a rat on the floor.",
+      "source_image_sha256": "debc9e7ab2e0e99ab63e793a0cba0eea6c9129b496dc687a9de32376b2392463",
+      "target_image_sha256": "135d9670129eada78504eba26d6729f91a6f4bd1284989e3307b9390a2e006bf",
+      "decision": "retain",
+      "observation": "White rat added on floor; color unspecified."
+    },
+    {
+      "id": "magicbrush:290080:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a lake next no the mountains.",
+      "source_image_sha256": "ae3af9d4cef64447fd79baa16327acafba364e440b28f4c5f0204b5d69a9f7fd",
+      "target_image_sha256": "18b8b55ea4d78ab6cccb5ff07614974a629e275b64a630f712a31fae1c1b264f",
+      "decision": "retain",
+      "observation": "Lake and distant tree line appear under mountains. Preserve both added entities."
+    },
+    {
+      "id": "magicbrush:299553:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Add an airplane.",
+      "source_image_sha256": "c6427c5b290feea923c0848e137f27fef4d6d6d34085e8310472ff52c1067843",
+      "target_image_sha256": "cf1639a19fbff4f3afb39e28727ed14054e954f404f7b0150e148177d3b56054",
+      "decision": "retain",
+      "observation": "Airplane added at upper edge; crop and dark silhouette optional."
+    },
+    {
+      "id": "magicbrush:335909:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a ski mask on the woman.",
+      "source_image_sha256": "d1f35369ef2d47cd81ca758bef79409a443fe76dbe46b3f75a1d3e8f99df318d",
+      "target_image_sha256": "9a8f1a72b1d175de470ff2db47c3438290881e38cbbbdd9d06aae51104e39dc4",
+      "decision": "retain",
+      "observation": "Face covering and goggles added; mask type differs from phrase ski mask. Keep observed entity names."
+    },
+    {
+      "id": "magicbrush:335909:3",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put in a wolf chasing the woman.",
+      "source_image_sha256": "43b662bf85508580eb547397d11939df7177bb4226b47f21397dc46382595eb7",
+      "target_image_sha256": "dc4b7faf6783ba92050d676b1553c3761cbb57ac26ef7d0122bdb12f5cb67462",
+      "decision": "retain",
+      "observation": "Wolf appears at right in running pose; preserve running/chasing state via protected action cue."
+    },
+    {
+      "id": "magicbrush:344138:3",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Add some sauce to the plate.",
+      "source_image_sha256": "67772c04b9b5383b537e3d4be3c685a45cb7a8485843ef46e3055bbb92b40ba8",
+      "target_image_sha256": "71670731d4f8c06564e5cc2b24ddf7caab3d91f383db1575b816c6888f85dc88",
+      "decision": "retain",
+      "observation": "Sauce bowl and napkin appear at plate edge; keep extra objects and edges."
+    },
+    {
+      "id": "magicbrush:372260:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Add a squirrel on the clock.",
+      "source_image_sha256": "c7d452a98085bf21c30f573a1e9e82066f8e40b0b4f88f3e3eaff99166bb7bbb",
+      "target_image_sha256": "bc18076a30830b16cfcd024ba0c52548cfec377f13282af4e4b42057c2453e10",
+      "decision": "retain",
+      "observation": "Squirrel appears on clock support; tail/color optional, anchor relation remains."
+    },
+    {
+      "id": "magicbrush:379441:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Add a sleeping person to the couch.",
+      "source_image_sha256": "bfdad1e2000174089afad13a2e34e59e200dcc37f4aab9a2f352e1ad627d7890",
+      "target_image_sha256": "4841e1f9a854320843b2536e824f9fe22c5775b93245a554e12f009015b0b6a1",
+      "decision": "retain",
+      "observation": "Sleeping person appears on couch. Initial generic addition projection would lose eyes closed/lying state; final policy protects sleeping requests."
+    },
+    {
+      "id": "magicbrush:399532:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "put the ball on a tee",
+      "source_image_sha256": "e7027b6fe4788bc1573389d92124f3f742d17661fc19199dbee7129817644f8c",
+      "target_image_sha256": "5466359024cede803ee8e1f4c2df5810909ef094caea236d508839e5d03fbc4d",
+      "decision": "retain",
+      "observation": "Ball moved onto tee and becomes white/larger. Existing ball changes remain supervised; final conservative ball guard retains tee details too."
+    },
+    {
+      "id": "magicbrush:409438:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "add a cat in the sink",
+      "source_image_sha256": "d7e996b82afcce9f4363dd505f825d97db06cc203f5c8bd7bf032d5135ab5bf8",
+      "target_image_sha256": "0b3843dd296b7201abb85be8db0621e2f34a04a7582b88d031f54e6bd89f7272",
+      "decision": "retain",
+      "observation": "Cat added inside sink; coat/posture incidental."
+    },
+    {
+      "id": "magicbrush:409438:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "place a lizard on the cabinet",
+      "source_image_sha256": "0b3843dd296b7201abb85be8db0621e2f34a04a7582b88d031f54e6bd89f7272",
+      "target_image_sha256": "d97b52aef32371728d216cc844bd8d28d6e7f70bdcdab7576c2b55846bcb4b10",
+      "decision": "retain",
+      "observation": "Lizard added at right cabinet edge; green/gray optional."
+    },
+    {
+      "id": "magicbrush:426038:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "add an apple",
+      "source_image_sha256": "e70f113bc6e765d7aa7e7cc32cd8124869529fd5c0a60769484f835fe4b2332d",
+      "target_image_sha256": "8f406a294cf7add14b3eceb77fe803b41cf2e17d512a2c23196ca55b80e710d4",
+      "decision": "retain",
+      "observation": "Apple added on foreground table; red optional."
+    },
+    {
+      "id": "magicbrush:441199:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a ball of icecream on top of the pancake.",
+      "source_image_sha256": "7fc84debb98b2efde8cf29d2b3508048c73f898d66dfebb1c1d05b7c2d01297a",
+      "target_image_sha256": "819401b57c988a10b2c4ba81e1da654e3fed2762cc27165a6852ad582ded0e2a",
+      "decision": "retain",
+      "observation": "Ice cream scoop added on pancake; final ball/scoop guard preserves requested rounded form."
+    },
+    {
+      "id": "magicbrush:442009:3",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "add a duck",
+      "source_image_sha256": "6f2642956616d76dd15436b09e767c9a659765cb8a35c8ce6df5f999a3ae3893",
+      "target_image_sha256": "740297a23ad25ead20722e01f16de2e82061cfdb8bf02d27bf8bae727dbbe539",
+      "decision": "retain",
+      "observation": "Toy duck added on floor near bathtub, not live duck. Keep toy duck label; appearance optional."
+    },
+    {
+      "id": "magicbrush:44590:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Add a helicopter in the sky",
+      "source_image_sha256": "eb5f65243c593f6814c3cb5217df8f4ed83dc6280236f603dbf0f696c24af7ca",
+      "target_image_sha256": "ae1ed17b7eabc9edc2bb6fba3ce09565a48e12bf5d554604e6f32ed678055b78",
+      "decision": "retain",
+      "observation": "Helicopter added in sky; exact color optional."
+    },
+    {
+      "id": "magicbrush:455381:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put butter on top of the pancake.",
+      "source_image_sha256": "4c6ac86fb8a3f7bf66169509feb6efc6bf0b54501ee9b7bc9a95642c2f0f41ea",
+      "target_image_sha256": "b48050c609fb0e4fbfde76c5a85391966a26cd264d0da8ab5c372ddc3a676188",
+      "decision": "retain",
+      "observation": "Butter pat added on pancake; hue optional."
+    },
+    {
+      "id": "magicbrush:45942:3",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a house on the hill.",
+      "source_image_sha256": "6c2973d10abe26a1c02966cd81469fdb2bdd241537567c0e3471789bee680241",
+      "target_image_sha256": "9dc608d0551b0e796181151b63f674807e93e03b157f46c37ffe95ff3b63de67",
+      "decision": "retain",
+      "observation": "House appears above snow hill; roof/color unspecified."
+    },
+    {
+      "id": "magicbrush:465327:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Place a plate with a burger on the counter.",
+      "source_image_sha256": "0084af6368c09ac9d5737850410204f9136955dc2710f1a68411be7f5a81ebfc",
+      "target_image_sha256": "8bcd40d8d60a78d05c6b9881c40ceeb4b7655acd1ac88bc96bd3c90b18a36d5f",
+      "decision": "retain",
+      "observation": "Burger and plate added on counter; both labels and on relations retained."
+    },
+    {
+      "id": "magicbrush:468087:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a unicorn horn in the middle of the elephant's forehead",
+      "source_image_sha256": "956b0976464d3fc17b34c472615dc3b62d5899bc079f499706e447db8881f16b",
+      "target_image_sha256": "01c70df59854076172f3754d22716daa2e1eec8599794fa1ee622a82a5866952",
+      "decision": "retain",
+      "observation": "Horn added at elephant forehead; attachment relation must remain, gold unspecified."
+    },
+    {
+      "id": "magicbrush:470931:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a butterfly near the bananas.",
+      "source_image_sha256": "44a72bcfb8c3d4f3f7f71f1e725f8f87d36d25444c0a543ce6825d9fd4392f5c",
+      "target_image_sha256": "d2ea664276fa7a14c68aa374a185f0b4b1c3636c0cf2b197b52eb249872cd02c",
+      "decision": "retain",
+      "observation": "Butterfly added beside bananas; wing markings optional."
+    },
+    {
+      "id": "magicbrush:473215:3",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "add a spider next to the fudge",
+      "source_image_sha256": "b740d227da236a7d6953c5745e64473dd1fc30b2a636454bb32599b70f507157",
+      "target_image_sha256": "2eedb0e39f413b5f897930564e6c7f85dae46340ca0f5eeafd95feda08851062",
+      "decision": "retain",
+      "observation": "Spider added at lower-left plate edge; color/position attributes optional while relation remains."
+    },
+    {
+      "id": "magicbrush:491597:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "put a campfire on the boat",
+      "source_image_sha256": "0151742dc418baa2f051833dc0e6a52f629aae5700e31ba140d0a0e141ec2139",
+      "target_image_sha256": "aa9997b9ac69bfd795f38ce55cc168b328efe790c290345590a5315a96e7cbe9",
+      "decision": "retain",
+      "observation": "Fire and container added on boat; both entities retained, exact flame color optional."
+    },
+    {
+      "id": "magicbrush:495122:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "place a panda in the kitchen",
+      "source_image_sha256": "0b792984793885e395f53474c9f783ffea07a79969b1a8f8b3e346b073579395",
+      "target_image_sha256": "79cf607328a025a050a7f050377e8af4ce74295b322cde1d714c53ebad8d8d21",
+      "decision": "retain",
+      "observation": "Panda added inside kitchen; orientation optional."
+    },
+    {
+      "id": "magicbrush:499738:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Add a water puddle.",
+      "source_image_sha256": "0324912b8209af7a5527cae8f865d5f5e4af25081db23fdcdc7ad71240ffe2bd",
+      "target_image_sha256": "44331d017c9407ec576574fec2790ce1e3428481c3250fe182aee071f464f338",
+      "decision": "retain",
+      "observation": "Puddle added with changed ground and elephant trunk; keep existing-node edits, omit only new puddle appearance."
+    },
+    {
+      "id": "magicbrush:499738:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Add a person riding the elephant.",
+      "source_image_sha256": "44331d017c9407ec576574fec2790ce1e3428481c3250fe182aee071f464f338",
+      "target_image_sha256": "8a99a48f0a6b5208fb4bf11131ed177686482613ca96f9b4856e951d4040fe8b",
+      "decision": "retain",
+      "observation": "Person visibly on elephant; keep riding/on edge, clothing optional."
+    },
+    {
+      "id": "magicbrush:507939:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Have there be water coming out of the faucet",
+      "source_image_sha256": "7e18583f7f41e2b2a77cc88eb992cfe62ab111ab9733275a9902656d0120f020",
+      "target_image_sha256": "3e6c2808f69f678437443fa6451da36fde7f67912787c34c1285a7ef4c926b2f",
+      "decision": "retain",
+      "observation": "Water stream from faucet plus changed dishes/spoon visible. Preserve water flow relation and incidental structures."
+    },
+    {
+      "id": "magicbrush:519112:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "add a flower pot",
+      "source_image_sha256": "ef45c566f5ab637c8a666a0e8f739470813c4fcd20c2965a565bf3b168e50cac",
+      "target_image_sha256": "654bb3303726b2b535a9ad34556e5e079de0b1205284cf4352b4747a8567c489",
+      "decision": "retain",
+      "observation": "Plant in pot added cropped lower left; both entities retained."
+    },
+    {
+      "id": "magicbrush:566724:2",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Have there be a vase on the windowsill",
+      "source_image_sha256": "af2517fba61edcc8f64e55924bb502bfe3ac46473cf1ce3b9aa9ea4abbb9c671",
+      "target_image_sha256": "15623e6936cc9b4ee28c8bf6e3f8d833d162b9f6919015a78ffe440fcaf58a67",
+      "decision": "retain",
+      "observation": "Vase added on windowsill; decoration/colors optional."
+    },
+    {
+      "id": "magicbrush:566724:3",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Have there be a rose in the vase",
+      "source_image_sha256": "15623e6936cc9b4ee28c8bf6e3f8d833d162b9f6919015a78ffe440fcaf58a67",
+      "target_image_sha256": "0b5922eb69ef711b9ea6309292d5b0330b419347b38b19d4c5bc545697702b79",
+      "decision": "retain",
+      "observation": "Stylized rose added in vase; name and in relation retained, red unspecified."
+    },
+    {
+      "id": "magicbrush:7107:1",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a cockroach near the plate of donuts.",
+      "source_image_sha256": "e1af68481d7cecdfc95b873f7f40f655619782151fb355e3e5597078f4282eed",
+      "target_image_sha256": "a36a0ba05ae7d637dd2d0899d35a31dc72a9d76fdd194751859ba9d51824d9f8",
+      "decision": "retain",
+      "observation": "Cockroach added beside donut platter on red placemat; hue optional."
+    },
+    {
+      "id": "magicbrush:88084:3",
+      "split": "train",
+      "selection": "proposed_simplification_audit",
+      "instruction": "add a truck on the road",
+      "source_image_sha256": "a8edeba7761b238c2906ef399a810199bdc95505f9d4b347dd172a38b4f7b208",
+      "target_image_sha256": "65bebbfc3a63800493bd96c42203085ae1a23c5a6433ba5a0669edbe906adf5c",
+      "decision": "retain",
+      "observation": "Truck plus extra dog appear on road; keep both, not just requested truck."
+    },
+    {
+      "id": "magicbrush:144298:1",
+      "split": "val",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a bicycle next to the bus.",
+      "source_image_sha256": "2370a0193431f0aca1283a52c124b5823ed24d5d84561b65fcaac13ebdf912f0",
+      "target_image_sha256": "cf7dbd1350e3e855433e3d6f9239b44b98b98bc31ed31c11b5b8ea2a92ba0183",
+      "decision": "retain",
+      "observation": "Bicycle appears beside bus; road markings also change. Keep incidental added marking entity."
+    },
+    {
+      "id": "magicbrush:152176:1",
+      "split": "val",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a forest on the other side of the lake.",
+      "source_image_sha256": "7f516a9df38d64b55080efcf430a31e6e328fa8d577a1f0f508f17335aae5af7",
+      "target_image_sha256": "9e9949209f94568120dcc2dcdc34ec8a843513a81d05e4899a1f8d1132160caa",
+      "decision": "retain",
+      "observation": "Forest replaces background bridge/building; handlebar mirror changes too. Preserve all original structural operations; omit only incidental new mirror appearance."
+    },
+    {
+      "id": "magicbrush:152176:3",
+      "split": "val",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a tree next to the car.",
+      "source_image_sha256": "b21d7c07495d49fef89d8e3ef4cb71286f1ebd74cb95bdbe4af145a2977b4fd2",
+      "target_image_sha256": "ebeb9d7103a970d1f6d4b9dec71905736ccb625828d9624f4984ad4460208b03",
+      "decision": "retain",
+      "observation": "Tree canopy added at upper-left near car; keep structural addition and spatial edge."
+    },
+    {
+      "id": "magicbrush:484847:2",
+      "split": "val",
+      "selection": "proposed_simplification_audit",
+      "instruction": "put throw pillows on the couch",
+      "source_image_sha256": "872aa3f4eaffdad1ffec0ab74df86cacd585e286da413de755482aeaac6a9952",
+      "target_image_sha256": "ba802cfd74805d97d2246fbf1a9b9c006c057063e6f97e55032a983c909e2815",
+      "decision": "retain",
+      "observation": "Cushions appear on seats: one new front cushion and one existing rear cushion changes appearance. Preserve both operations and sofa appearance edit; omit only new cushion unrequested color."
+    },
+    {
+      "id": "magicbrush:503943:3",
+      "split": "val",
+      "selection": "proposed_simplification_audit",
+      "instruction": "add a slice of bread on the tray",
+      "source_image_sha256": "4915e694ab74092b52ac64fc155bb944adc343e624f81c622889b83d9c24abeb",
+      "target_image_sha256": "532c9ca833a882ea23e0313a04dd1526665572d71a8cb917e8dd45ed54e7e2a6",
+      "decision": "retain",
+      "observation": "Bread slice added to tray; crust/color optional."
+    },
+    {
+      "id": "magicbrush:545734:1",
+      "split": "val",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Have there be a painting of a flower on the wall",
+      "source_image_sha256": "0f360897dfaf71e6999d5ff698c0d65b077ff72305399923782bd735000f11f4",
+      "target_image_sha256": "d7d260fc08888421cdf9523a2f487591666fb30445222162bf3eee104bb2e295",
+      "decision": "retain",
+      "observation": "Flower painting added to wall. Final painting guard retains flower content, not merely a generic painting node."
+    },
+    {
+      "id": "magicbrush:545734:2",
+      "split": "val",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Have there be a bee in the flower painting",
+      "source_image_sha256": "d7d260fc08888421cdf9523a2f487591666fb30445222162bf3eee104bb2e295",
+      "target_image_sha256": "81af5dfc02a44a1cd58fa73c4ecd550e58c54041763c29a718137c0815baf3dd",
+      "decision": "retain",
+      "observation": "Bee added inside flower painting. Final painting guard preserves depiction attributes; do not reinterpret as live bee."
+    },
+    {
+      "id": "magicbrush:580149:1",
+      "split": "val",
+      "selection": "proposed_simplification_audit",
+      "instruction": "Put a snake in the toilet.",
+      "source_image_sha256": "5417496db386b04e138ce5656d1ab3aeb41bb9fe16681814d285cd15c6f96683",
+      "target_image_sha256": "84b94ac5200f80563fb022a38b7195b51ba2009c7b3ef4cdfdab0a4b26f50288",
+      "decision": "retain",
+      "observation": "Small snake visible on toilet rim at right; original on relation matches rim placement, despite instruction wording in. Preserve original relation and toilet-paper change."
+    }
+  ]
+}

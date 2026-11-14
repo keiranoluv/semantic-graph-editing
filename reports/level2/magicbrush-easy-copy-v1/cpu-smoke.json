@@ -1,0 +1,65 @@
+{
+  "all_trainval_targets_encoded": 367,
+  "checks": [
+    {
+      "copy": false,
+      "copy_bias_gradient": null,
+      "decoded_rows": 16,
+      "finite_train_loss": 2.788074254989624,
+      "model": "mlp"
+    },
+    {
+      "copy": false,
+      "copy_bias_gradient": null,
+      "decoded_rows": 16,
+      "finite_train_loss": 2.7099404335021973,
+      "model": "gnn"
+    },
+    {
+      "copy": true,
+      "copy_bias_gradient": [
+        -0.003117986489087343,
+        0.014457464218139648
+      ],
+      "decoded_rows": 16,
+      "finite_train_loss": 2.8059141635894775,
+      "model": "mlp"
+    },
+    {
+      "copy": true,
+      "copy_bias_gradient": [
+        -0.0033784869592636824,
+        0.015403660014271736
+      ],
+      "decoded_rows": 16,
+      "finite_train_loss": 2.7273318767547607,
+      "model": "gnn"
+    }
+  ],
+  "clip_texts": 1338,
+  "device": "cpu",
+  "encoder_frozen": true,
+  "experiment_sha256": "2436f4a513003f8b3214dfa117cef6342ef68cc43810ca39d01c1d60f6499d39",
+  "gpu_jobs_started": false,
+  "release_lock_sha256": "485fd38ec7d2f235736ef282ce95075825d5346b9950b0e126ad8e0a48cdf3df",
+  "sample_ids": [
+    "magicbrush:101084:1",
+    "magicbrush:101420:1",
+    "magicbrush:102632:1",
+    "magicbrush:108514:1",
+    "magicbrush:108514:2",
+    "magicbrush:10909:1",
+    "magicbrush:109190:1",
+    "magicbrush:109190:2",
+    "magicbrush:109190:3",
+    "magicbrush:121087:3",
+    "magicbrush:123035:1",
+    "magicbrush:123035:2",
+    "magicbrush:123035:3",
+    "magicbrush:12647:1",
+    "magicbrush:12647:2",
+    "magicbrush:128170:1"
+  ],
+  "scope": "16 real training pairs, actual frozen CLIP on CPU, one update per arm; NOT a performance experiment",
+  "test_used": false
+}

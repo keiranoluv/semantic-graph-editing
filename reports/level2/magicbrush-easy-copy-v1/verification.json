@@ -1,0 +1,16 @@
+{
+  "actual_clip_cpu_smoke_sha256": "575e363efa47ba10cecba410be13b25a477bef6a4bfbfde0332570281e5a9772",
+  "all_367_targets_encoded_on_cpu": true,
+  "all_46_simplified_pairs_visually_reviewed": true,
+  "cpu_tests": {
+    "command": "myenv/bin/python -m pytest tests/editing/test_magicbrush_easy_copy_v1.py tests/editing/test_magicbrush_lexical_pilot_v1.py tests/editing/test_magicbrush_compact_v1.py -q",
+    "new_tests": 19,
+    "passed": 47
+  },
+  "experiment_sha256": "2436f4a513003f8b3214dfa117cef6342ef68cc43810ca39d01c1d60f6499d39",
+  "frozen_previous_lexical_preflight_passed": true,
+  "gpu_jobs_started": false,
+  "main_experiment_launched": false,
+  "reviewed_image_pairs": 72,
+  "test_used": false
+}

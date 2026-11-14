@@ -1,0 +1,70 @@
+{
+  "model": {
+    "add_slots": 12,
+    "dropout": 0.1,
+    "hidden": 192,
+    "layers": 2,
+    "max_attributes": 32,
+    "max_edges": 60,
+    "max_nodes": 20
+  },
+  "batch_size": 16,
+  "val_batch_size": 32,
+  "epochs": 200,
+  "minimum_epochs": 30,
+  "patience": 30,
+  "validation_interval": 2,
+  "lr": 0.0003,
+  "weight_decay": 0.01,
+  "gradient_clip": 5.0,
+  "loss_action_weight": 2.0,
+  "action_class_weights": [
+    1.0,
+    3.0,
+    3.0
+  ],
+  "presence_class_weights": [
+    1.0,
+    3.0
+  ],
+  "weights": "data/cache/vg150-clip-vit-b32-v1/weights/ViT-B-32.pt",
+  "weights_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "text_batch_size": 128,
+  "quality_gate": {
+    "minimum_micro_f1": 0.05,
+    "minimum_valid_transaction_rate": 0.5
+  },
+  "seed": 42,
+  "schema": "magicbrush-easy-copy-v1",
+  "parent_config": "configs/level2/magicbrush-manual-experiment-v3.json",
+  "output": "runs/level2/magicbrush-easy-copy-v1",
+  "dataset_output": "data/processed/level2/magicbrush-easy-copy-v1",
+  "reports": "reports/level2/magicbrush-easy-copy-v1",
+  "text_cache": "data/processed/level2/magicbrush-easy-copy-v1/clip-trainval",
+  "review": {
+    "path": "reports/level2/magicbrush-easy-copy-v1/visual-review.json",
+    "sha256": "ea45cbe457b56727ab1984e162ce79e4502105ed512ca36de17769bb5933f098"
+  },
+  "excluded_train_ids": [
+    "magicbrush:279710:1"
+  ],
+  "queue": [
+    {
+      "variant": "no_copy",
+      "model": "mlp"
+    },
+    {
+      "variant": "no_copy",
+      "model": "gnn"
+    },
+    {
+      "variant": "copy",
+      "model": "mlp"
+    },
+    {
+      "variant": "copy",
+      "model": "gnn"
+    }
+  ],
+  "test_used": false
+}
