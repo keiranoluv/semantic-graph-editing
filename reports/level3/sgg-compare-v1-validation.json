@@ -1,0 +1,156 @@
+{
+  "schema": "level3-sgg-cpu-validation-v1",
+  "date_utc": "2026-11-15",
+  "gpu_executed": false,
+  "trained_vision_model": false,
+  "checkpoint_assets_verified": true,
+  "preflight": {
+    "passed": true,
+    "candidate_ids": [
+      "sidewalk-b1bb633496439f",
+      "sidewalk-32a2f39d76e383",
+      "sidewalk-fce6aef5958616",
+      "travel-c779ea8e2f5b35",
+      "travel-685ed0a42dc65a"
+    ],
+    "cohort": {
+      "manifest_sha256": "25d2a89119c97c7c850a456c4b5702f7b45d9860c4f4de1d45120a55219595be",
+      "tasks_sha256": "8a4560961499080b0444bac1e8ce05a28e949edf946e9e72e2c2a68d0c234da8",
+      "image_count": 30,
+      "counts": {
+        "sidewalk": 15,
+        "travel": 15
+      }
+    },
+    "assets_lock_sha256": "b953a668f9fc5e5d6b2b6c19f7d74c276343435d390316abf80b49ff8edf3e39",
+    "runtime": {
+      "torch": "2.5.1",
+      "torchvision": "0.20.1",
+      "transformers": "4.43.3",
+      "open_clip_torch": "2.24.0",
+      "timm": "0.9.16",
+      "accelerate": "0.33.0",
+      "pycocotools": "2.0.10",
+      "Pillow": "11.2.1",
+      "segment-anything": "1.0",
+      "sam_code_sha256": "7d034980ecf52296ac582a0cb2350e074dbb90c761e37517e1a25ef4d2f8aa09"
+    },
+    "config_sha256": "d1242e6b7bd7d0fb3f5b9cd0c9cbc67043cbbff1620dd606ca7f870297a6f797",
+    "gpu_used": false
+  },
+  "smoke": {
+    "path": "runs/level3/sgg-compare-v1/cpu-smoke-v4/smoke.json",
+    "sha256": "aa8c486bca384a88c95441cda0ce0f13e7c89b127267de07bc443be286a7ef26",
+    "device": "cpu",
+    "candidate_id": "sidewalk-b1bb633496439f",
+    "source_sha256": "7b73e3f14add9149d4d241a9f33a4e9548d1679518ff9d0939ce5db644712e03",
+    "generated_tokens": 8,
+    "native_text": "Objects:\nregion1: pavement with red",
+    "whole_image_mask_fixture": true,
+    "sam_forward_executed": false,
+    "sam_weights_strictly_loaded_and_frozen": true,
+    "robin_parameters_frozen": true,
+    "restored_convnext_gamma_count": 36,
+    "unresolved_loading_keys": [],
+    "torch_cuda_initialized": false,
+    "graph_quality_measured": false,
+    "code_files_sha256": {
+      "src/editing/operations.py": "a4fb5a647eb0ff718015e77e1b56e9a3a925a316775f49888907faf95fa6fa44",
+      "tools/level3_image_graph_v1/core.py": "4e4219b998029017bdaa9477c5090e9ffb10c78c42efc20abd9b7c644b3484dc",
+      "tools/level3_image_graph_v1/runner.py": "5cbf037acbdd657c1af26085d850a9d532a9c6c532d02f4cf847c5f828bfae09",
+      "tools/level3_sgg_compare_v1/__init__.py": "8e85bce4902fc020090ef28b9190ad5d21aa24867c90217fff4a7426813f0d1e",
+      "tools/level3_sgg_compare_v1/__main__.py": "74fff10eb2bd330c92909b27a5a9ae84f41b3f268a5c04f51f849276919f19c6",
+      "tools/level3_sgg_compare_v1/adapter.py": "3cce74e6aedcc77c4c5061f3e01317e7326758d2125660652f81e69757afc47a",
+      "tools/level3_sgg_compare_v1/assets.py": "9b9c3e347cdad131eb373c7c195811dbe725d82bc9b6638c5644b2071859d3aa",
+      "tools/level3_sgg_compare_v1/backend.py": "27fe57d230969c112b1be6ba57da3632dd36285208bab2b72510eaf94fd8588d",
+      "tools/level3_sgg_compare_v1/comparison.py": "64a9b075a80d7a88c52efcf9b18e361750dfb8634cc82c783602f320b813c561",
+      "tools/level3_sgg_compare_v1/runner.py": "5985e8ebdd038a91c4340cb8059c65fb435c739f89a0b4471390bb0f86cd14bf"
+    }
+  },
+  "tests": {
+    "new_suite": {
+      "passed": 30,
+      "environment": "data/cache/level3-sgg-v1/venv"
+    },
+    "legacy_level3_suites": {
+      "passed": 57,
+      "environment": "myenv"
+    },
+    "browser": {
+      "engine": "chromium",
+      "gpu_disabled": true,
+      "cases": 5,
+      "model_panels": 10,
+      "box_modes": [
+        "none",
+        "all",
+        "single"
+      ],
+      "mobile_width": 390,
+      "javascript_errors": 0
+    },
+    "ruff": "passed",
+    "bash_syntax": "passed"
+  },
+  "protected_files_unchanged": 1381,
+  "baseline": [
+    {
+      "candidate_id": "sidewalk-b1bb633496439f",
+      "attributes": 7,
+      "edges": 1,
+      "grounded_nodes": 24,
+      "human_quality": null,
+      "isolated_nodes": 22,
+      "nodes": 24,
+      "self_relations": 0,
+      "status": "ok"
+    },
+    {
+      "candidate_id": "sidewalk-32a2f39d76e383",
+      "attributes": 0,
+      "edges": 4,
+      "grounded_nodes": 31,
+      "human_quality": null,
+      "isolated_nodes": 23,
+      "nodes": 31,
+      "self_relations": 0,
+      "status": "ok"
+    },
+    {
+      "candidate_id": "sidewalk-fce6aef5958616",
+      "attributes": 15,
+      "edges": 11,
+      "grounded_nodes": 40,
+      "human_quality": null,
+      "isolated_nodes": 26,
+      "nodes": 40,
+      "self_relations": 0,
+      "status": "ok"
+    },
+    {
+      "candidate_id": "travel-c779ea8e2f5b35",
+      "attributes": 2,
+      "edges": 9,
+      "grounded_nodes": 17,
+      "human_quality": null,
+      "isolated_nodes": 8,
+      "nodes": 17,
+      "self_relations": 0,
+      "status": "ok"
+    },
+    {
+      "candidate_id": "travel-685ed0a42dc65a",
+      "attributes": 3,
+      "edges": 11,
+      "grounded_nodes": 25,
+      "human_quality": null,
+      "isolated_nodes": 14,
+      "nodes": 25,
+      "self_relations": 0,
+      "status": "ok"
+    }
+  ],
+  "robin_five_image_inference": "not_run_user_runs_gpu",
+  "pgsg": "research_only_not_implemented",
+  "human_quality_comparison": "not_measured"
+}

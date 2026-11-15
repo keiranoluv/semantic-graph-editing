@@ -1,0 +1,111 @@
+{
+  "schema": "level3-sgg-assets-v1",
+  "syntheticvg": {
+    "url": "https://github.com/jamespark3922/SyntheticVG.git",
+    "commit": "29146b9d81333e0af039c617b22ccf618031c07c"
+  },
+  "robin": {
+    "repo_id": "jamepark3922/robin-qwen2.5-3b",
+    "revision": "cfa715637539dcda3464c69f13cbb00718fbeba8",
+    "files": [
+      {
+        "path": "added_tokens.json",
+        "size": 644,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/added_tokens.json",
+        "sha256": "b21b21931e828424c7d25581b9e35a0f123ada7103c76ab1d05d69a9104ace8a"
+      },
+      {
+        "path": "config.json",
+        "size": 1478,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/config.json",
+        "sha256": "9a7f1ad94950a23cffafa77dedfa365d7bc722edf8c0d5cfa234a00f6a2188d5"
+      },
+      {
+        "path": "generation_config.json",
+        "size": 289,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/generation_config.json",
+        "sha256": "397e5d95ad2af1ce5584602dd038fc9b1a2fc230ad79a46fb346fb058fb82e9a"
+      },
+      {
+        "path": "merges.txt",
+        "size": 1671853,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/merges.txt",
+        "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+      },
+      {
+        "path": "model-00001-of-00002.safetensors",
+        "size": 4957560304,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/model-00001-of-00002.safetensors",
+        "sha256": "27069749aeda9a7f846e98f433106f3319dffb91fafe71cf4dcce29d7c664f3a"
+      },
+      {
+        "path": "model-00002-of-00002.safetensors",
+        "size": 2289929128,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/model-00002-of-00002.safetensors",
+        "sha256": "bcc4cc288e73e6c10fff38e65ac3a90865f4246bf0114dde5382b94c7def1712"
+      },
+      {
+        "path": "model.safetensors.index.json",
+        "size": 77970,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/model.safetensors.index.json",
+        "sha256": "1634d25514dee62e77cfac72d582ae1e4b7b5a6dcee6137bf63de8c5f05c9305"
+      },
+      {
+        "path": "open_clip_pytorch_model.bin",
+        "size": 1407305235,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/open_clip_pytorch_model.bin",
+        "sha256": "4572137af44b2e26f01f638337a59688ec289e9363e15c08dde16640afb86988"
+      },
+      {
+        "path": "special_tokens_map.json",
+        "size": 499,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/special_tokens_map.json",
+        "sha256": "b82ed33617eedfa71a8e8dda13de1bb8a5443fdf9910cc23e47a6a1585b8a951"
+      },
+      {
+        "path": "tokenizer.json",
+        "size": 7032038,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/tokenizer.json",
+        "sha256": "fdc95300a49f0be5c3f296cc9f03ce29140dceab7c51b199a2a33fcdeb29cb74"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "size": 7676,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/tokenizer_config.json",
+        "sha256": "a44706dc7ae8d7df7325b620d78c9e5d4fbbfa127dd855924b030db18818141e"
+      },
+      {
+        "path": "vocab.json",
+        "size": 2776833,
+        "url": "https://huggingface.co/jamepark3922/robin-qwen2.5-3b/resolve/cfa715637539dcda3464c69f13cbb00718fbeba8/vocab.json",
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+      }
+    ]
+  },
+  "sam": {
+    "url": "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth",
+    "sha256": "a7bf3b02f3ebf1267aba913ff637d9a2d5c33d3173bb679e46d9f338c26f262e",
+    "size": 2564550879,
+    "code_url": "https://github.com/facebookresearch/segment-anything",
+    "code_commit": "dca509fe793f601edb92606367a655c15ac00fdf"
+  },
+  "pgsg": {
+    "url": "https://github.com/SHTUPLUS/Pix2Grp_CVPR2024",
+    "commit": "cff742070366a6e702a08b71130eb75fcc4d5f7a",
+    "model_repo": "rj979797/PGSG-CVPR2024",
+    "revision": "2ea7c8c33dee45b09c7cd4e83ed8c8f68f6cac10",
+    "status": "considered_not_implemented",
+    "files": [
+      {
+        "path": "vg_ov_sgg.pth",
+        "size": 967644081,
+        "sha256": "3c787065b1fb7035d11a349e99b6bb2836dc0c460db40093bd7868bbd5378813"
+      },
+      {
+        "path": "psg_ov_sgg.pth",
+        "size": 967643697,
+        "sha256": "cadc326d15dbf392617884e905aec19590e10806b977996b61d94dbd668b39bd"
+      }
+    ]
+  }
+}
