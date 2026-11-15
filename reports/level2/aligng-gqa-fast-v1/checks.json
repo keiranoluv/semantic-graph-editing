@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "code_commit": "734ef130a8c409c323a93b50b22c4fd8cf7f80a7",
+  "experiment_sha256": "ea05085cd3eea85f951deb42e51e71eda2a9322516b8f5bb57042c9a8427deda",
+  "cpu_tests_passed": 135,
+  "cpu_command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 myenv/bin/python -m pytest -q tests/aligng_fast_v1 tests/aligng_adapted_v1 tests/aligng_gqa_v1 tests/aligng_gqa_bs512_v1",
+  "gpu_command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 myenv/bin/python -u -m experiments.aligng_fast_v1.probe",
+  "capacity_sha256": "903a6ae70b4e41811c65b9ec49280d9696bfb6b0346417706d37b543ca6c6e64",
+  "old_queue_interrupted_safely": true,
+  "old_resume_epoch": 2,
+  "old_resume_next_index": 39936,
+  "main_training_launched": false,
+  "historical_source_identity_unchanged": true
+}

@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "recorded_at": "2026-11-15T03:07:11.226515+07:00",
+  "code_commit": "886af54d4aa0c6653d3b86982a06bd94a735c8ac",
+  "config_commit": "0cd6d5b9004472c887545276b3a27cba81eb901b",
+  "cpu_tests": {
+    "command": "CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 myenv/bin/python -m pytest -q tests/aligng_gqa_v1 tests/aligng_adapted_v1 tests/training/test_gqa_full.py tests/training/test_gqa_tracking.py tests/training/test_penet.py -k 'not cuda'",
+    "passed": 112,
+    "failed": 0,
+    "deselected": 7,
+    "additional_config_tests_passed": 11
+  },
+  "gpu_commands_executed_in_order": [
+    "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 myenv/bin/python -u -m experiments.aligng_gqa_v1.probe --device cuda --output runs/level2/aligng-gqa-v1/gpu-probe",
+    "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 myenv/bin/python -u -m experiments.aligng_gqa_v1.runner --config configs/level2/aligng-gqa-pilot-v1.json --stage pilot --model pe-plpr-aligng --seed 42",
+    "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 myenv/bin/python -u -m experiments.aligng_gqa_v1.runner --config configs/level2/aligng-gqa-pilot-v1.json --stage pilot --model pe-plpr --seed 42",
+    "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 myenv/bin/python -u -m experiments.aligng_gqa_v1.runner --config configs/level2/aligng-gqa-pilot-v1-bs16.json --stage pilot --model pe-plpr-aligng --seed 42",
+    "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 myenv/bin/python -u -m experiments.aligng_gqa_v1.runner --config configs/level2/aligng-gqa-pilot-v1-bs16.json --stage pilot --model pe-plpr --seed 42"
+  ],
+  "gpu_runs_sequential": true,
+  "wandb_runs_started": false,
+  "full_training_started": false,
+  "VG150_started": false,
+  "test_annotations_opened": false,
+  "protected_tracked_files_count": 1166,
+  "protected_files_changed": [],
+  "historical_source_hashes_verified": 73,
+  "pilot_artifact_hashes": {
+    "runs/level2/aligng-gqa-v1/pilot-bs1/pe-plpr-aligng/42/result.json": "20270b49dd557d1c2c9ea6b9eb2e6a6d961ffe0767f99c80feae3c344fcf457e",
+    "runs/level2/aligng-gqa-v1/pilot-bs1/pe-plpr-aligng/42/last.pt": "fd3bbbff0badc577b8c515e54599326a7a2636cb2ff250019227ce3720f5b615",
+    "runs/level2/aligng-gqa-v1/pilot-bs1/pe-plpr-aligng/42/best.pt": "662693d82d9d372a0d7097314de4d9447114c5b3ac751ad751f148e8983ad95d",
+    "runs/level2/aligng-gqa-v1/pilot-bs1/pe-plpr-aligng/42/history.json": "d5d8b4e622d80bd9363fd28d2ca97e91e44d5adf70a39acaff17a71acc28f6eb",
+    "runs/level2/aligng-gqa-v1/pilot-bs1/pe-plpr/42/result.json": "142611958720aceb3447779e2ace6e987d277350197635aaf53e8d8d827f0593",
+    "runs/level2/aligng-gqa-v1/pilot-bs1/pe-plpr/42/last.pt": "0cad638a092b1b343e8687d2869356cadff9073aea70d4cc1163d37f29528693",
+    "runs/level2/aligng-gqa-v1/pilot-bs1/pe-plpr/42/best.pt": "4d86daba8695f0248821d100403230931d169810f5cb05c28ba251bb59625e18",
+    "runs/level2/aligng-gqa-v1/pilot-bs1/pe-plpr/42/history.json": "252b944ca59d2bff71834875f54fada63f4602ffe90b64e2f477d812088ea54a",
+    "runs/level2/aligng-gqa-v1/pilot-bs16/pe-plpr-aligng/42/result.json": "49dfec1c33b7a38c6077776321b2e64f3916cbddb6de175beba787cda22a9434",
+    "runs/level2/aligng-gqa-v1/pilot-bs16/pe-plpr-aligng/42/last.pt": "e4356a21d3964315f7a08065ffeac2ff804e8c71bf0194efb613c4288953de30",
+    "runs/level2/aligng-gqa-v1/pilot-bs16/pe-plpr-aligng/42/best.pt": "b4bf931c7a322b5d3684256968e9a53d1c9973144fa987d69661b19b88b9507e",
+    "runs/level2/aligng-gqa-v1/pilot-bs16/pe-plpr-aligng/42/history.json": "d54448eb1c81ea63db5f5ef631f01693cfafaaa6c06c8236b4521d169a4e6aa0",
+    "runs/level2/aligng-gqa-v1/pilot-bs16/pe-plpr/42/result.json": "61c0d85e7b0c963c75f0060f993bc9492bcd83f294ebd5ccfe58bd62acf9242f",
+    "runs/level2/aligng-gqa-v1/pilot-bs16/pe-plpr/42/last.pt": "8a085b295d0f7a804b1f442478e9f1d8f8c88e2f0f51e8d88889e7e3535edc31",
+    "runs/level2/aligng-gqa-v1/pilot-bs16/pe-plpr/42/best.pt": "22910af8388a4550f3ccbb4c6b922868be0df116f6a02d327e3377d7e30250ef",
+    "runs/level2/aligng-gqa-v1/pilot-bs16/pe-plpr/42/history.json": "ba7c26a5eaff418b04a323d91d98ca2478dc08a0c0f62028b51bf1dd68d5c379"
+  },
+  "full_config_sha256": "99265e287a2860c3c131c832019be17d22f5f17a872347798f590e1f0d81ef39",
+  "report_sha256": {
+    "reports/level2/aligng-gqa-p1-v1/README.md": "bb2b5868afcf141266ba00cb91de0c24ef70da1a1cb5ce3f8f5de387f871ed90",
+    "reports/level2/aligng-gqa-p1-v1/cache-equivalence.json": "91d608217b77c99e8433dd51841ec9113aabbca3a6a72c557b0675fe9c87e922",
+    "reports/level2/aligng-gqa-p1-v1/full-plan.json": "d155165cca984f379b339078c3449313195ef7afcea329cff8836d13e12231aa",
+    "reports/level2/aligng-gqa-p1-v1/gpu-probe.json": "d03155d7d10aadc68480b40df3237dfee147455fb6547a4856a50aaae8de6c7e",
+    "reports/level2/aligng-gqa-p1-v1/pilot-bs1-summary.json": "be209f37e23faaae13150c8d5a64d64801a56a718237d6f666a1fea5e104ed9d",
+    "reports/level2/aligng-gqa-p1-v1/pilot-bs16-summary.json": "70eec09bfb6b2bcd0963f06084db522e973172503f99bfdf53dc2dea4fbe6d75"
+  }
+}
