@@ -51,7 +51,7 @@ CPU, không có model/batch GPU; duyệt tuần tự 100 cặp, seed protocol 42
 
 ## Review của assistant
 
-20 task được chọn và pin trước khi tính điểm: tất cả 6 replace, cùng add/remove và các source-extractor gaps. Đây là lựa chọn chẩn đoán có chủ đích, không phải mẫu ngẫu nhiên hoặc ước lượng chất lượng toàn bộ. Assistant sẽ xem cặp ảnh thật và graph đóng băng, ghi nhận xét cụ thể cho hai trục, với giá trị `appears_satisfied`, `appears_not_satisfied` hoặc `uncertain`. File có `author=assistant`, `human_ground_truth=false`, gắn score-run receipt. Không chép vào nhãn tay hoặc dùng để báo Spearman như ground truth.
+20 task được chọn và pin trước khi tính điểm: tất cả 6 replace, cùng add/remove và các source-extractor gaps. Đây là lựa chọn chẩn đoán có chủ đích, không phải mẫu ngẫu nhiên hoặc ước lượng chất lượng toàn bộ. Assistant đã xem cặp ảnh thật và graph đóng băng, ghi nhận xét cụ thể cho hai trục, với giá trị `appears_satisfied`, `appears_not_satisfied` hoặc `uncertain`. File có `author=assistant`, `human_ground_truth=false`, gắn score-run receipt. Không chép vào nhãn tay hoặc dùng để báo Spearman như ground truth.
 
 Review và dashboard bổ sung được ghi thành output mới, không sửa score run. Trang người dùng chấm hai trường Qwen vẫn độc lập; không tự điền các lựa chọn của bạn.
 
@@ -64,3 +64,37 @@ CUDA_VISIBLE_DEVICES='' data/cache/level3-sgg-pretrained-v2/venv/bin/python \
 ```
 
 CLIPScore/LPIPS và tương quan với nhãn tay chưa được tính trong lượt này. Những bước đó cần triển khai/kiểm tra trên cùng cohort và xử lý coverage rõ ràng; không dùng review assistant thay nhãn nhóm.
+
+## Kết quả thực chạy
+
+Code commit **`255b78200a2aaeb5d684e0da2ad26128ca76a35b`** trước khi chấm toàn bộ. Run `score-v1` hoàn tất 100/100 cặp trên CPU, không GPU inference, không OOM. Thời gian được runner ghi là 1,820 giây cho khởi tạo tracking và vòng chấm; không bao gồm đọc/kiểm tra hash đầu vào, render HTML và kết thúc upload W&B. [W&B run amu21v09](https://wandb.ai/keiranoluv-hcmus/level3-qwen-graph-score-v1/runs/amu21v09).
+
+| Đại lượng | Số mẫu có giá trị | Giá trị |
+|---|---:|---:|
+| Coverage điểm tổng G | 45/100 | 0,450 |
+| Trung bình G trên phần có điểm | 45 | 0,7303 |
+| Trung bình E chẩn đoán | 87 | 0,9195 |
+| Trung bình P chẩn đoán | 100 | 0,7070 |
+
+**Đây không phải accuracy hoặc tỷ lệ edit đúng.** 55 mẫu abstain không có nghĩa Qwen làm sai 55 mẫu. Các trung bình có mẫu số khác nhau; đặc biệt G chỉ phản ánh 45 trường hợp chấm được, không đại diện mặc nhiên cho toàn bộ 100 ảnh. P vẫn hiện để chẩn đoán khi alignment chưa chắc, không có nghĩa P đã được xác nhận đáng tin.
+
+Lý do abstain có thể trùng trên một mẫu: alignment bảo toàn mơ hồ 50; count/movement instability 4; thiếu đối tượng yêu cầu trong graph nguồn 4; đối tượng mới confidence thấp 3; instruction nguồn mơ hồ 1; alignment đối tượng mới mơ hồ 1. Giữ nguyên ngưỡng và 100 mẫu sau khi xem kết quả. GT F1, Spearman với nhãn người dùng, CLIPScore và LPIPS đều `null`; số nhãn người dùng đọc là 0.
+
+Artifacts:
+
+- `runs/level3/qwen-graph-score-v1/score-v1/`: điểm, evidence, config/code hashes, môi trường, W&B và receipt.
+- `runs/level3/qwen-graph-score-v1/assistant-image-evidence-v1/`: 5 contact sheets chứa 20 cặp ảnh thật, không hiển thị điểm.
+- `reports/level3/qwen-graph-score-v1/assistant-review.json`: 20 nhận xét assistant, từng nhận xét pin ảnh/graph/score hash.
+- `runs/level3/qwen-graph-score-v1/review-v1/comparison.html`: 100 cặp, 3 điểm, nguyên nhân abstain, ghép node, graph/box/confidence và 20 review.
+- `runs/level3/qwen-graph-score-v1/validation-v1/`: kiểm tra artifacts, trình duyệt và ảnh chụp dashboard.
+
+Mở dashboard bằng:
+
+```bash
+python -m http.server 8007 --bind 127.0.0.1 \
+  --directory runs/level3/qwen-graph-score-v1/review-v1
+```
+
+Truy cập <http://localhost:8007/comparison.html>. Nếu server đã chạy thì mở URL trực tiếp; môi trường remote cần forward cổng 8007. Dashboard này tách riêng giao diện Qwen hai trường của người dùng ở cổng 8004, không ghi localStorage hay nhãn tay.
+
+Xem [nhận xét và giới hạn thực tế](LEVEL3_QWEN_SCORING_REVIEW_V1.md). Chưa nên dùng một ngưỡng G duy nhất để tự động kết luận edit đúng/sai. Bước tiếp theo là đánh giá ghép instance và false detections trên các ca đã phát hiện, sau đó so tương quan với nhãn tay độc lập; mọi sửa thuật toán cần phiên bản mới, giữ nguyên lượt này.

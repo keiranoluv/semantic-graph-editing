@@ -1,0 +1,92 @@
+{
+  "CPU_tests": {
+    "failed": 0,
+    "log_sha256": "5d20d5b8f04283d74e434ab6a6b67f5c6af2bae7efed70941d954e6ed10be724",
+    "passed": 56,
+    "seconds": 0.48
+  },
+  "GPU_inference": false,
+  "assistant_reviews": 20,
+  "browser_validation": {
+    "abstained_filter_cases": 55,
+    "all_score_cards_match_frozen_results": true,
+    "assistant_review_filter_cases": 20,
+    "cases_checked": 100,
+    "device": "CPU Chromium --disable-gpu",
+    "images_decoded": 200,
+    "javascript_errors": [],
+    "null_and_zero_scores_displayed_correctly": true,
+    "review_forms_or_human_labels_modified": false,
+    "screenshots": [
+      "case-1.png",
+      "case-9.png",
+      "case-71.png"
+    ],
+    "status": "ok"
+  },
+  "code_commit_before_scoring": "255b78200a2aaeb5d684e0da2ad26128ca76a35b",
+  "fitted_or_changed_thresholds_after_scoring": false,
+  "human_labels_used": 0,
+  "review_run": "runs/level3/qwen-graph-score-v1/review-v1",
+  "review_run_receipt_sha256": "c7a411fc57a1433cd409e78f8d41bb95438d95fc02a7f6da496432d27bfff131",
+  "runtime_validation": {
+    "assistant_reviews": 20,
+    "device": "cpu",
+    "human_ground_truth": false,
+    "human_labels_used": 0,
+    "original_Qwen_and_REACT_bundle_hashes_verified": true,
+    "pairs_recomputed_exactly": 100,
+    "score_file_sha256": "6a3d018765c4ca1f88ab9ceec02815628543c0c5351cd96eb5212cc6727c04a0",
+    "served_HTML_matches_file": true,
+    "status": "ok",
+    "verified_review_receipt": "c7a411fc57a1433cd409e78f8d41bb95438d95fc02a7f6da496432d27bfff131",
+    "verified_score_receipt": "4b8a39747a2f9232b183f982792826ce73fcb2ae7d03e5521bbb51c7af5f81a0"
+  },
+  "schema": "qwen-graph-score-validation-summary-v1",
+  "score_run": "runs/level3/qwen-graph-score-v1/score-v1",
+  "score_run_receipt_sha256": "4b8a39747a2f9232b183f982792826ce73fcb2ae7d03e5521bbb51c7af5f81a0",
+  "score_summary": {
+    "CLIPScore": null,
+    "LPIPS": null,
+    "abstention_reasons": {
+      "ambiguous_new_instance_alignment": 1,
+      "ambiguous_preservation_alignment": 50,
+      "ambiguous_source_instruction": 1,
+      "new_instance_low_confidence": 3,
+      "possible_movement_or_count_instability": 4,
+      "requested_source_object_not_in_graph": 4
+    },
+    "graph_evidence_means_not_image_accuracy": {
+      "edit_score": {
+        "available_n": 87,
+        "mean": 0.9195402298850575
+      },
+      "graph_consistency": {
+        "available_n": 45,
+        "mean": 0.7303257558214795
+      },
+      "preservation_score": {
+        "available_n": 100,
+        "mean": 0.7069989382181285
+      }
+    },
+    "graph_score_coverage": 0.45,
+    "human_labels_used": 0,
+    "human_spearman": null,
+    "interpretation": "development_graph_heuristic; not pass_rate, human_labels, or model_accuracy",
+    "object_or_relation_GT_F1": null,
+    "pairs": 100,
+    "seconds_including_tracking_start": 1.8199140260112472,
+    "status_counts": {
+      "abstained": 55,
+      "scored": 45
+    }
+  },
+  "training": false,
+  "validation_receipt_sha256": "dde9a52fbc3f68f4a8b69285eda63868ddd764328847aef7b60960c0fdfc610f",
+  "validation_run": "runs/level3/qwen-graph-score-v1/validation-v1",
+  "wandb": {
+    "id": "amu21v09",
+    "url": "https://wandb.ai/keiranoluv-hcmus/level3-qwen-graph-score-v1/runs/amu21v09"
+  }
+}
