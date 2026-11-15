@@ -79,6 +79,7 @@ def evaluate(comparison, review=None):
         }
         for m in MODELS
     }
+    inventories = {}
     for row in review["reviews"]:
         key = (row["candidate_id"], row["model"])
         exp = index[key]
@@ -126,7 +127,7 @@ def evaluate(comparison, review=None):
                 raise ValueError("duplicate_or_already_matched_missing_reference")
             if complete and any(x is None for x in decisions):
                 raise ValueError("complete_inventory_requires_decisions")
-            refs_by_kind[kind] = refs
+            refs_by_kind[kind] = refs | set(missing)
             if complete:
                 t[kind].update(
                     tp=sum(x is True for x in decisions), fp=sum(x is False for x in decisions), fn=len(missing)
@@ -137,6 +138,10 @@ def evaluate(comparison, review=None):
             ):
                 raise ValueError("correct_relation_requires_correct_grounded_endpoints")
         if complete:
+            cid = row["candidate_id"]
+            if cid in inventories and inventories[cid] != refs_by_kind:
+                raise ValueError("models_must_share_one_human_reference_inventory")
+            inventories[cid] = refs_by_kind
             t["complete_inventory_images"] += 1
     result = {}
     for m in MODELS:

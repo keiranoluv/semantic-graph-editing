@@ -216,3 +216,24 @@ def test_self_contained_three_model_viewer(tmp_path):
     assert "repeat(3,minmax(0,1fr))" in text and "data:image/jpeg;base64," in text
     assert "Directed graph" in text and "relate-anything" in text and "not_run" in text
     assert json.loads((output / "metrics.json").read_text())["models"]["react++"]["objects"] is None
+
+
+def test_same_image_requires_shared_human_reference_inventory():
+    from copy import deepcopy
+
+    c = comparison()
+    for case in c["cases"]:
+        case["models"]["relate-anything"] = deepcopy(case["models"]["react++"])
+        case["models"]["relate-anything"]["record"]["model"] = "relate-anything"
+    review = template(c)
+    for row in review["reviews"]:
+        if row["candidate_id"] != "image-0" or row["model"] == "robin-sam":
+            continue
+        row.update(status="reviewed", reviewer="tester", notes="CPU fixture", inventory_complete=True)
+        row["missing_objects"] = ["extra"] if row["model"] == "react++" else []
+        for i, obj in enumerate(row["objects"].values()):
+            obj.update(correct=True, grounded=True, hallucinated=False, reference_instance=f"gt-{i}")
+        for rel in row["relations"].values():
+            rel.update(correct=True, hallucinated=False, reference_relation="gt-edge")
+    with pytest.raises(ValueError, match="share_one_human_reference_inventory"):
+        evaluate(c, review)

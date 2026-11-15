@@ -207,3 +207,69 @@ bằng graph này; cần module attribute pretrained riêng và audit độc l�
 - Chạy cả regression cũ trong venv mới ban đầu có 2 lỗi do thiếu CLIP/scipy;
   kiểm tra lại trong đúng môi trường cũ đạt, không sửa pipeline cũ.
 - GPU smoke và kết luận thực tế sẽ được ghi bổ sung sau commit code/CPU checks.
+
+## Kết quả thực tế sau commit 9a0cd80
+
+Đã chạy tuần tự GPU smoke thật **một ảnh** cho mỗi pipeline trên RTX 5090,
+không chạy đủ 5 ảnh. Evidence:
+
+- `runs/level3/sgg-pretrained-v2/react-gpu-smoke-v1/`: parse đạt;
+  profile 1.162 CUDA kernel events và 354 CPU events.
+- `runs/level3/sgg-pretrained-v2/relate-gpu-smoke-v1/`: detector CUDA + relation
+  inference đạt; relation profile 2.105 CUDA events và 798 CPU events.
+  Released ONNX bank có **243 predicates**, không phải toàn bộ 19.103 chuỗi
+  mà API PyTorch full-vocabulary của tác giả có thể dùng.
+- Graph semantic (ID/label/attribute/directed triple) CPU/GPU giống nhau cho
+  từng phương pháp ở ảnh này. Không suy ra độ ổn định source/target hoặc mọi ảnh.
+- REACT smoke 9 node/25 cạnh; RelateAnything 32 node/16 cạnh. Chỉ thống kê cấu trúc,
+  **không dùng các số này xếp hạng chất lượng**. Chưa có human ground truth nên
+  object/relation P/R/F1, grounding accuracy, hallucination rate vẫn null.
+- Parse success: ROBIN cũ 4/5; REACT mới 1/1; RelateAnything mới 1/1. Mẫu số khác
+  nhau nên không kết luận hai model mới ổn định hơn ROBIN trên cả pilot.
+  Lỗi ROBIN ở `sidewalk-32a2f39d76e383` là `generation_hit_token_limit`.
+- First-call timing trong receipt: REACT khoảng 30 giây, relation head khoảng
+  4,2 giây (không gồm OWLv2). Có chi phí khởi tạo kernel, **không phải throughput**,
+  không so với latency paper. Chưa chạy benchmark tốc độ hoặc đo peak VRAM.
+- ORT cảnh báo ScatterND (REACT, chỉ bảo đảm đúng nếu index không lặp) và các
+  Memcpy nodes (RelateAnything). Không bỏ qua warning trong báo cáo; graph
+  CPU/GPU ở smoke giống nhau nhưng chưa chứng minh mọi input đều không có vấn đề.
+- Transformers cảnh báo API postprocess OWLv2 sẽ đổi ở v5; đã pin 4.57.1 và
+  slow processor để không đổi preprocessing theo version. Không đổi checkpoint.
+- 25 tests mới đạt sau bổ sung kiểm tra cùng inventory GT giữa mô hình; cộng
+  regression 37 + 57 = **119 tests CPU đạt** trong các môi trường phù hợp.
+
+Viewer thực tế: `runs/level3/sgg-pretrained-v2/comparison-smoke-v1/comparison.html`.
+Ảnh đầu có cả ba phương pháp; bốn ảnh còn lại chỉ có baseline và `not_run` cho
+hai phương pháp mới. Hash/evidence tổng hợp trong
+[validation JSON](LEVEL3_SGG_PRETRAINED_V2_VALIDATION.json); log chẩn đoán tại
+`runs/level3/sgg-pretrained-v2/validation-v1/`. Receipt không hash các file W&B
+có thể tiếp tục thay đổi, nhưng hash `wandb-run.json`, config và toàn bộ output mô hình.
+
+### Quan sát định tính, chưa phải nhãn GT
+
+Đối chiếu ảnh nguồn đầu tiên với graph/box (assistant quan sát, **không điền thay
+human review**):
+
+- REACT phát hiện người và các ghế rõ ràng, nhưng `person n003 sitting on n000`
+  trỏ ghế vàng ở xa người; `sitting on n001` trỏ ghế xanh ở bên trái. Quan hệ
+  này không mô tả đúng instance. Box `truck n007` bao xe bán đồ uống bên phải,
+  cho thấy lỗi phân loại từ vocabulary đóng.
+- OWLv2 + RelateAnything liên kết người với ghế sát người (`n008 → sitting in → n003`),
+  nhưng có `n008 → wearing → n028 (hat)`, box mũ nằm trên tóc; ảnh không cho thấy
+  mũ rõ ràng. Một số cạnh `chair supporting chair`, `stall hanging from stall`
+  cần duyệt vì detector có nhiều vùng chồng lấn/khái niệm rộng. Vocabulary đã
+  khóa thiếu `bucket`, dù thùng đỏ là vật nổi bật; **không sửa vocabulary sau khi
+  xem ảnh để làm đẹp kết quả**.
+- ROBIN mô tả được thùng đỏ và túi trắng, nhưng nhiều SAM regions được diễn giải
+  thành cùng một đối tượng/mặt đường; ở ảnh này graph không có người. Đây là vấn
+  đề vùng đầu vào và instance identity, không giải quyết bằng việc đếm thêm cạnh.
+
+**Nhận xét cho Task 3:** RelateAnything phù hợp hơn về khả năng mở rộng vocabulary
+và tách detector/relation để kiểm soát grounding; kết quả smoke hiện tại vẫn
+phụ thuộc mạnh vào detector và chưa đủ để chọn làm extractor chính. REACT++ là
+đối chứng triển khai gọn, nhãn hữu hạn dễ giữ thống nhất, nhưng đóng vocabulary
+và các cạnh sai endpoint hiện tại có thể tạo consistency score sai. Giữ cả hai
+cho lượt 5 ảnh và human review; **chưa chọn model nào là đủ tin cậy cho GCS**.
+Ưu tiên kiểm tra semantic precision, recall đối tượng liên quan edit, hallucination
+và false changes trên cặp source/target; không chọn bằng độ dày graph hoặc parse
+success đơn thuần. Hai phương pháp đều chưa đủ cho yêu cầu edit attribute.

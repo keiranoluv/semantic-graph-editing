@@ -1,6 +1,7 @@
 """Local comparison with images, boxes, directed graphs and manual review packet."""
 
 import html
+import json
 import math
 
 from tools.level3_image_graph_v1.core import write
@@ -100,7 +101,14 @@ def export(rows, models, locked, output):
     for case in comparison["cases"]:
         for item in case["models"].values():
             graph = item["record"].get("source_graph") or {"nodes": [], "edges": []}
-            rebuilt += graph_svg(graph, f"arrow{i}") + marker + pieces[i + 1]
+            evidence = {
+                "status": item["record"].get("status"),
+                "error": item["record"].get("error"),
+                "grounding_and_confidence": item["record"].get("grounding"),
+            }
+            panel = "<details><summary>Confidence / grounding / lỗi</summary><pre>"
+            panel += html.escape(json.dumps(evidence, ensure_ascii=False, indent=2)) + "</pre></details>"
+            rebuilt += graph_svg(graph, f"arrow{i}") + panel + marker + pieces[i + 1]
             i += 1
     path.write_text(rebuilt)
     return comparison
