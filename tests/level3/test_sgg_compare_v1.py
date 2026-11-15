@@ -399,3 +399,52 @@ def test_html_escapes_model_text(cohort):
     comparison.render_comparison(result, cohort.locked, destination)
     text = destination.read_text()
     assert "<script>alert(" not in text and "&lt;script&gt;" in text
+
+
+@pytest.mark.parametrize(
+    "capability,arches",
+    [
+        ((12, 0), ["sm_75", "sm_80", "sm_90"]),
+        ((12, 0), ["compute_120"]),
+        ((9, 0), ["sm_90a"]),
+    ],
+)
+def test_cuda_arch_rejected_without_kernels(capability, arches):
+    from tools.level3_sgg_compare_v1.cuda_check import validate_cuda_arch
+
+    with pytest.raises(RuntimeError, match="cuda_arch_not_supported"):
+        validate_cuda_arch(capability, arches)
+
+
+@pytest.mark.parametrize("capability,arches", [((12, 0), ["sm_90", "sm_120"]), ((8, 6), ["sm_80"])])
+def test_cuda_arch_native_binary_support(capability, arches):
+    from tools.level3_sgg_compare_v1.cuda_check import validate_cuda_arch
+
+    validate_cuda_arch(capability, arches)
+
+
+def test_runtime_profiles_require_matching_cuda128_pair():
+    from tools.level3_sgg_compare_v1.assets import torch_runtime_profile
+
+    assert torch_runtime_profile("2.7.1+cu128", "0.22.1+cu128") == "robin-cu128-v2"
+    assert torch_runtime_profile("2.5.1+cu124", "0.20.1+cu124") == "robin-legacy-v1"
+    for pair in (("2.7.1+cu126", "0.22.1+cu126"), ("2.7.1+cu128", "0.20.1+cu124")):
+        with pytest.raises(ValueError, match="unsupported_torch_torchvision_pair"):
+            torch_runtime_profile(*pair)
+
+
+def test_unsupported_gpu_fails_before_output_or_checkpoint_load(cohort, monkeypatch):
+    cohort.device = "cuda"
+
+    def rejected():
+        raise RuntimeError("cuda_arch_not_supported")
+
+    def unexpected(*args):
+        pytest.fail("checkpoint work started on an unsupported GPU")
+
+    monkeypatch.setattr(runner, "cuda_device_evidence", rejected)
+    monkeypatch.setattr(runner, "verify_assets", unexpected)
+    monkeypatch.setattr(runner, "load_sam", unexpected)
+    with pytest.raises(RuntimeError, match="cuda_arch_not_supported"):
+        runner.infer(cohort)
+    assert not cohort.output.exists()

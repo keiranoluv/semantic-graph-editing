@@ -32,6 +32,7 @@ from .adapter import ParseError, robin_record
 from .assets import CACHE, prepare_assets, runtime_versions, verify_assets
 from .backend import RobinBackend, load_sam, propose_regions
 from .comparison import export_comparison, validate_quality
+from .cuda_check import cuda_device_evidence, kernel_probe
 
 CONFIG = ROOT / "configs/level3/sgg-compare-v1.json"
 BASELINE = ROOT / "runs/level3/image-graph-v1/pilot30"
@@ -177,6 +178,7 @@ def release_cuda(device):
 
 def infer(args):
     output = protected_output(args.output, args)
+    device_evidence = cuda_device_evidence() if args.device == "cuda" else {"device": "cpu"}
     cfg, rows, baseline, cohort = inputs(args)
     assets = verify_assets(args.cache)
     versions = runtime_versions()
@@ -186,6 +188,7 @@ def infer(args):
         "schema": VERSION,
         "mode": "infer",
         "device": args.device,
+        "device_evidence": device_evidence,
         "config": cfg,
         "config_sha256": sha256(args.config),
         "assets": assets,
@@ -269,22 +272,30 @@ def infer(args):
 
 
 def smoke(args):
-    """Real pretrained weights on CPU, eight-token wiring check, NOT graph evaluation."""
+    """Explicit bounded runtime check, NOT five-image inference or graph evaluation."""
     import torch
     from pycocotools import mask as mask_utils
 
     output = protected_output(args.output, args)
+    device = "cuda" if args.command == "gpu-smoke" else "cpu"
+    device_evidence = cuda_device_evidence() if device == "cuda" else {"device": "cpu"}
     cfg, rows, _, _ = inputs(args)
     assets = verify_assets(args.cache)
     runtime = runtime_versions()
-    set_seed(cfg, "cpu")
+    set_seed(cfg, device)
     output.mkdir(parents=True)
-    sam = load_sam(args.cache / "sam_vit_h_4b8939.pth", cfg["sam"], "cpu")
-    sam_frozen = all(not p.requires_grad for p in sam.predictor.model.parameters())
-    del sam
-    gc.collect()
-    robin = RobinBackend(args.cache / "SyntheticVG", args.cache / "robin", "cpu")
+    probe = kernel_probe() if device == "cuda" else None
     row = rows[0]
+    sam_config = {**cfg["sam"], "points_per_side": 1, "points_per_batch": 1, "crop_n_layers": 0}
+    sam = load_sam(args.cache / "sam_vit_h_4b8939.pth", sam_config, device)
+    sam_frozen = all(not p.requires_grad for p in sam.predictor.model.parameters())
+    if device == "cuda":
+        with Image.open(args.locked / row["image_path"]) as image:
+            proposal = propose_regions(sam, image.convert("RGB"), sam_config)
+        write(output / "sam-probe.json", proposal)
+    del sam
+    release_cuda(device)
+    robin = RobinBackend(args.cache / "SyntheticVG", args.cache / "robin", device)
     w, h = row["width"], row["height"]
     rle = mask_utils.encode(np.asfortranarray(np.ones((h, w), dtype=np.uint8)))
     rle["counts"] = rle["counts"].decode("ascii")
@@ -294,8 +305,12 @@ def smoke(args):
     write(
         output / "smoke.json",
         {
-            "mode": "cpu_runtime_smoke_not_quality_evaluation",
-            "device": "cpu",
+            "mode": f"{device}_runtime_smoke_not_quality_evaluation",
+            "device": device,
+            "device_evidence": device_evidence,
+            "kernel_probe": probe,
+            "sam_forward_executed": device == "cuda",
+            "sam_smoke_config": sam_config,
             "candidate_id": row["image_id"],
             "source_sha256": row["sha256"],
             "assets": assets,
@@ -312,12 +327,12 @@ def smoke(args):
             "graph_quality_measured": False,
         },
     )
-    finish(output, "cpu_runtime_smoke_not_quality_evaluation", {})
+    finish(output, f"{device}_runtime_smoke_not_quality_evaluation", {})
     print(
         json.dumps(
             {
                 "output": str(output),
-                "device": "cpu",
+                "device": device,
                 "new_tokens": evidence["generated_tokens"],
                 "quality_measured": False,
             }
@@ -339,13 +354,13 @@ def verify_receipt(path):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ("prepare", "preflight", "baseline", "infer", "smoke", "quality"):
+    for name in ("prepare", "preflight", "baseline", "infer", "smoke", "gpu-smoke", "quality"):
         p = sub.add_parser(name)
         p.add_argument("--config", type=Path, default=CONFIG)
         p.add_argument("--locked", type=Path, default=DEFAULT_LOCKED)
         p.add_argument("--baseline", type=Path, default=BASELINE)
         p.add_argument("--cache", type=Path, default=CACHE)
-        if name in {"baseline", "infer", "smoke", "quality"}:
+        if name in {"baseline", "infer", "smoke", "gpu-smoke", "quality"}:
             p.add_argument("--output", type=Path, required=True)
         if name == "infer":
             p.add_argument("--device", choices=("cpu", "cuda"), required=True)
@@ -377,7 +392,7 @@ def main(argv=None):
         baseline_only(args)
     elif args.command == "infer":
         return infer(args)
-    elif args.command == "smoke":
+    elif args.command in {"smoke", "gpu-smoke"}:
         smoke(args)
     else:
         output = protected_output(args.output, args)

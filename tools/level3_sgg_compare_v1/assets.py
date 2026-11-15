@@ -83,8 +83,6 @@ def verify_assets(cache=CACHE):
 
 def runtime_versions():
     expected = {
-        "torch": "2.5.1",
-        "torchvision": "0.20.1",
         "transformers": "4.43.3",
         "open_clip_torch": "2.24.0",
         "timm": "0.9.16",
@@ -96,6 +94,13 @@ def runtime_versions():
     actual = {k: importlib.metadata.version(k) for k in expected}
     if any(actual[k].split("+")[0] != v for k, v in expected.items()):
         raise ValueError("use_isolated_pinned_robin_environment:" + json.dumps(actual))
+    actual.update({k: importlib.metadata.version(k) for k in ("torch", "torchvision")})
+    actual["profile"] = torch_runtime_profile(actual["torch"], actual["torchvision"])
+    import torch
+
+    actual["cuda_build"] = torch.version.cuda
+    # Read build metadata without initializing CUDA or running a kernel.
+    actual["compiled_cuda_arches"] = (torch._C._cuda_getArchFlags() or "").split()
     dist = importlib.metadata.distribution("segment-anything")
     direct = json.loads(dist.read_text("direct_url.json") or "{}")
     if direct.get("vcs_info", {}).get("commit_id") != read(LOCK)["sam"]["code_commit"]:
@@ -104,3 +109,11 @@ def runtime_versions():
         {str(p): sha256(dist.locate_file(p)) for p in dist.files if str(p).endswith(".py")}
     )
     return actual
+
+
+def torch_runtime_profile(torch_version, torchvision_version):
+    if (torch_version, torchvision_version) == ("2.7.1+cu128", "0.22.1+cu128"):
+        return "robin-cu128-v2"
+    if (torch_version.split("+")[0], torchvision_version.split("+")[0]) == ("2.5.1", "0.20.1"):
+        return "robin-legacy-v1"
+    raise ValueError("unsupported_torch_torchvision_pair; use requirements-level3-sgg-robin-cu128-v2.txt")
