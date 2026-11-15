@@ -68,3 +68,35 @@ python3 -m http.server 8003 --bind 127.0.0.1 \
 Mở http://localhost:8003/comparison.html. HTML nhúng ảnh preview, PNG đầy đủ vẫn nằm trong các run nguồn. Khi dùng máy từ xa cần forward port. Không upload ảnh dataset vào dịch vụ bên ngoài.
 
 Quan sát ảnh thực tế của assistant sẽ được báo riêng, không ghi thành nhãn người dùng hay kết quả PASS. Pilot editor này chưa tự chạy thêm REACT++/CLIP/LPIPS, chưa tạo F1 hoặc Spearman, chưa thay kết quả scoring cũ. Chỉ nối Qwen vào lượt đánh giá Task 3 tiếp theo sau khi xác định chất lượng chỉnh sửa đủ hữu ích.
+
+## Kết quả thực tế ngày 15/11/2026 (Asia/Bangkok)
+
+Code inference được commit `5b6b820` trước GPU. Preflight xác minh official weights/API/env, 10 tests CPU và hooks đạt trước inference. Sau khi phát hiện output RGBA có alpha không hoàn toàn 255, commit `f5dd55c` sửa **preview** ghép nền trắng, giữ nguyên PNG và mọi run; 11 tests CPU đạt. Không chạy lại GPU vì thay đổi này chỉ thuộc viewer. Chromium kiểm tra HTML tổng hợp: 6 case, 18 ảnh giải mã được, 24 ô chấm đều trống, không JS error. Test xuất JSON dùng fixture tổng hợp riêng trong `/tmp`, không tạo nhãn tay thật.
+
+RTX 5090, Torch CUDA 12.8, BF16, model CPU offload, seed thực tế 42, đủ 40 bước mỗi ảnh. **6/6 inference hoàn tất kỹ thuật, 0 OOM**. Không thử chế độ tải toàn bộ model lên GPU. Smoke `smoke-v1` và lượt thêm 5 `pilot-v1` đều có receipt đã xác minh.
+
+| Task | Thời gian inference (giây) | Output PNG | Đỉnh GPU đo bởi nvidia-smi (MiB) |
+|---|---:|---|---:|
+| Xóa ghế vàng — smoke | 47.97 | 1376×768 RGBA | 19268 |
+| Thay ghế xanh bằng chậu cây | 45.55 | 1376×768 RGBA | 19268 |
+| Xóa xe máy bên trái | 50.62 | 1376×768 RGBA | 19220 |
+| Xóa dù đỏ | 26.32 | 1376×768 RGBA | 19220 |
+| Thêm chim trên mái | 26.63 | 1184×896 RGBA | 19448 |
+| Thêm người trước bảo tàng | 26.35 | 1184×896 RGBA | 19434 |
+
+Tổng thời gian trong runner: smoke 48.76 s, lượt 5 mẫu 176.30 s; không gồm hash preflight và startup trước khi bắt đầu đo. Đỉnh toàn GPU cao nhất 19448 MiB ≈ 18.99 GiB. Có khởi động/cache khác nhau giữa các mẫu; không suy diễn tốc độ trên tập lớn từ số đo này. `torch_dtype` báo deprecated nhưng vẫn hoạt động với API đã pin. Không có lỗi OOM hoặc giảm dtype/steps để chạy qua.
+
+Quan sát dưới đây do **assistant xem ảnh thật**, không phải nhãn PASS/FAIL của người dùng:
+
+| Mẫu | Edit Fulfillment quan sát được | Preservation / lỗi cần lưu ý |
+|---|---|---|
+| Xóa ghế vàng | Ghế vàng biến mất | **Ghế xanh bên trái cũng bị xóa**, ngoài yêu cầu. IP2P cũ giữ nguyên ghế vàng. |
+| Thay ghế xanh | Có chậu cây ở vị trí ghế xanh | Giữ ghế vàng, người ngồi và cửa hàng ở mức bố cục. IP2P cũ biến cả cảnh thành sân vườn. |
+| Xóa xe máy trái | Xe bên trái biến mất | Còn cụm ba xe bên phải/cây/mặt tiền; chữ và texture có tái tạo. IP2P cũ sinh cảnh phố khác. |
+| Xóa dù đỏ | Không còn dù đỏ | Người, xe máy, xe dừa, ghế tím còn hiện diện; chi tiết dừa/chữ/texture thay đổi. IP2P cũ vẫn có dù và biến đổi nhiều object. |
+| Thêm chim | Một chim lớn trên trời | Bố cục mái/tường/cây còn; thấy đốm màu nhỏ trên trời và thay đổi texture mái. Kích thước chim cần người duyệt. IP2P cũ sinh nhiều chim nhỏ. |
+| Thêm người | Người đứng giữa lối đi | Bố cục tòa nhà/cây/cỏ còn, nhưng chữ trên biển có biến dạng. IP2P cũ không thấy người được thêm. |
+
+Kết quả quan sát cho thấy Qwen đáng tiếp tục đánh giá hơn IP2P trên những mẫu này, đặc biệt thay ghế, xóa xe và xóa dù. Tuy nhiên, lỗi xóa nhầm ghế xanh cho thấy **chưa thể coi preservation đáng tin cậy**. Không gán PASS tổng hợp, không báo tỉ lệ thành công chất lượng hoặc F1. Các lựa chọn trong HTML và `review-template.json` đều `pending/null` để người dùng chấm.
+
+HTML tổng hợp: `runs/level3/qwen21-v1/comparison-v1/comparison.html`. [Validation JSON](LEVEL3_QWEN21_VALIDATION_V1.json) ghi hashes, telemetry từng mẫu và quan sát chi tiết. Logs/screenshot: `runs/level3/qwen21-v1/validation-v1/`. Cả hai bộ ảnh cũ/mới đều giữ nguyên; không mở rộng quá 5 instruction bổ sung, không chạy scoring SGG mới trong lượt này.
