@@ -1,0 +1,183 @@
+{
+  "schema": "level3-task3-assets-v1",
+  "models": {
+    "editor": {
+      "repo_id": "timbrooks/instruct-pix2pix",
+      "revision": "31519b5cb02a7fd89b906d88731cd4d6a7bbf88d"
+    },
+    "clip": {
+      "repo_id": "openai/clip-vit-base-patch32",
+      "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268"
+    },
+    "lpips": {
+      "repo": "https://github.com/richzhang/PerceptualSimilarity",
+      "revision": "082bb24f84c091ea94de2867d34c4544f68e0963",
+      "version": "0.1",
+      "net": "alex"
+    }
+  },
+  "files": [
+    {
+      "path": "editor/README.md",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/README.md",
+      "sha256": "b15000ea0ff9b7a6beca6a5ad2348b889611683de6a89e21242f5933b91b5815",
+      "size": 1291
+    },
+    {
+      "path": "editor/feature_extractor/preprocessor_config.json",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/feature_extractor/preprocessor_config.json",
+      "sha256": "4db495644e3e5bd8fcac52f70e7fc0b413c911086021acf73ac30e5911166e95",
+      "size": 518
+    },
+    {
+      "path": "editor/model_index.json",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/model_index.json",
+      "sha256": "4ccaf9b31f00937caf1c61578c497b53d63131a830fc08f812b2b55d86c9855e",
+      "size": 616
+    },
+    {
+      "path": "editor/safety_checker/config.json",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/safety_checker/config.json",
+      "sha256": "ac5df0deccb5e8e47e4327d8c5ed1d55dfa4afbc3dafb1fa2ab5969addf1702f",
+      "size": 4905
+    },
+    {
+      "path": "editor/safety_checker/model.fp16.safetensors",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/safety_checker/model.fp16.safetensors",
+      "sha256": "08902f19b1cfebd7c989f152fc0507bef6898c706a91d666509383122324b511",
+      "size": 608018440
+    },
+    {
+      "path": "editor/scheduler/scheduler_config.json",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/scheduler/scheduler_config.json",
+      "sha256": "81fe3f35ef35556fed140f94a61fbefcb3982cbd771686014c9be00435c3bbcc",
+      "size": 569
+    },
+    {
+      "path": "editor/text_encoder/config.json",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/text_encoder/config.json",
+      "sha256": "c90121fab17b226c98ae813c1778add7edbdcbdcf7ceaff7aa197fdf8c8a6b3a",
+      "size": 617
+    },
+    {
+      "path": "editor/text_encoder/model.fp16.safetensors",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/text_encoder/model.fp16.safetensors",
+      "sha256": "77795e2023adcf39bc29a884661950380bd093cf0750a966d473d1718dc9ef4e",
+      "size": 246144864
+    },
+    {
+      "path": "editor/tokenizer/merges.txt",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/tokenizer/merges.txt",
+      "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+      "size": 524619
+    },
+    {
+      "path": "editor/tokenizer/special_tokens_map.json",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/tokenizer/special_tokens_map.json",
+      "sha256": "c4864a9376a8401918425bed71fc14fc0e81f9b59ec45c1cf96cccb2df508eac",
+      "size": 472
+    },
+    {
+      "path": "editor/tokenizer/tokenizer_config.json",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/tokenizer/tokenizer_config.json",
+      "sha256": "00439066fcba73de57644cf41e4e3b9f2dbb09d7f3fc2005898ba52399045882",
+      "size": 806
+    },
+    {
+      "path": "editor/tokenizer/vocab.json",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/tokenizer/vocab.json",
+      "sha256": "e089ad92ba36837a0d31433e555c8f45fe601ab5c221d4f607ded32d9f7a4349",
+      "size": 1059962
+    },
+    {
+      "path": "editor/unet/config.json",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/unet/config.json",
+      "sha256": "f6c4ea486da4d813c389de1fc405fcb64139ca18f0729733dc177dad17854347",
+      "size": 1021
+    },
+    {
+      "path": "editor/unet/diffusion_pytorch_model.fp16.safetensors",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/unet/diffusion_pytorch_model.fp16.safetensors",
+      "sha256": "0d6bbc0a95dd125196d327a660b43d24c56f433eb30d2776f1327fb86bd38f78",
+      "size": 1719148344
+    },
+    {
+      "path": "editor/vae/config.json",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/vae/config.json",
+      "sha256": "46621c584ebe6666853057a58a4a60047f18f8b83a16cf4603e8359a91e485f6",
+      "size": 553
+    },
+    {
+      "path": "editor/vae/diffusion_pytorch_model.fp16.safetensors",
+      "url": "https://huggingface.co/timbrooks/instruct-pix2pix/resolve/31519b5cb02a7fd89b906d88731cd4d6a7bbf88d/vae/diffusion_pytorch_model.fp16.safetensors",
+      "sha256": "4fbcf0ebe55a0984f5a5e00d8c4521d52359af7229bb4d81890039d2aa16dd7c",
+      "size": 167335342
+    },
+    {
+      "path": "clip/README.md",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch32/resolve/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268/README.md",
+      "sha256": "8f0e8c678e0afe5f384f3bf8a6694c1cb53c41e52f86277967b6c5354cb0f9f4",
+      "size": 7942
+    },
+    {
+      "path": "clip/config.json",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch32/resolve/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268/config.json",
+      "sha256": "b575ef3c36f2a057fa19e221650105052d61cc9c1a972ec15019c6261ec98770",
+      "size": 4186
+    },
+    {
+      "path": "clip/merges.txt",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch32/resolve/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268/merges.txt",
+      "sha256": "f526393189112391ce6f9795d4695f704121ce452c3aad1f5335cc41337eba85",
+      "size": 524657
+    },
+    {
+      "path": "clip/preprocessor_config.json",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch32/resolve/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268/preprocessor_config.json",
+      "sha256": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+      "size": 316
+    },
+    {
+      "path": "clip/pytorch_model.bin",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch32/resolve/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268/pytorch_model.bin",
+      "sha256": "a63082132ba4f97a80bea76823f544493bffa8082296d62d71581a4feff1576f",
+      "size": 605247071
+    },
+    {
+      "path": "clip/special_tokens_map.json",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch32/resolve/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268/special_tokens_map.json",
+      "sha256": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf",
+      "size": 389
+    },
+    {
+      "path": "clip/tokenizer.json",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch32/resolve/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268/tokenizer.json",
+      "sha256": "b556ac8c99757ffb677208af34bc8c6721572114111a6e0aaf5fa69ff0b8d842",
+      "size": 2224041
+    },
+    {
+      "path": "clip/tokenizer_config.json",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch32/resolve/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268/tokenizer_config.json",
+      "sha256": "34b7336e4bee12e0a9730eaf5189f582ef3c3eea5027f65730e5717256755aad",
+      "size": 592
+    },
+    {
+      "path": "clip/vocab.json",
+      "url": "https://huggingface.co/openai/clip-vit-base-patch32/resolve/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268/vocab.json",
+      "sha256": "5047b556ce86ccaf6aa22b3ffccfc52d391ea4accdab9c2f2407da5b742d4363",
+      "size": 862328
+    },
+    {
+      "path": "lpips/alex.pth",
+      "url": "https://raw.githubusercontent.com/richzhang/PerceptualSimilarity/082bb24f84c091ea94de2867d34c4544f68e0963/lpips/weights/v0.1/alex.pth",
+      "sha256": "df73285e35b22355a2df87cdb6b70b343713b667eddbda73e1977e0c860835c0",
+      "size": 6009
+    },
+    {
+      "path": "torch/checkpoints/alexnet-owt-7be5be79.pth",
+      "url": "https://download.pytorch.org/models/alexnet-owt-7be5be79.pth",
+      "sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+      "size": 244408911
+    }
+  ]
+}
