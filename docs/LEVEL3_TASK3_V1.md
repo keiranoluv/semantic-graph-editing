@@ -138,3 +138,13 @@ Danh sách tối đa 10 bất đồng là gợi ý theo chênh lệch rank, trư
 REACT++ được chọn theo duyệt trực quan; graph ít object chỉ giúp đọc dễ, không chứng minh chính xác hơn. Closed vocabulary, bỏ sót object, nhãn sai và quan hệ không ổn định có thể làm sai điểm. Ghép nhãn/IoU yếu khi ảnh thay đổi bố cục mạnh hoặc nhiều instance giống nhau; cờ ambiguity không khắc phục hoàn toàn identity. Sự biến mất của detection không là bằng chứng pixel đã xóa. Category-count guard bảo thủ, có thể từ chối chỉnh sửa đúng nếu detector bỏ sót object khác.
 
 ROI chỉ kiểm tra vị trí thêm/thay, không xác minh đầy đủ mọi chi tiết ngôn ngữ (kích thước/màu/quan hệ mong muốn). Pilot này chưa kiểm định độ tin cậy extractor bằng graph GT, chưa nối predictor Task B và chưa đủ nhãn để chọn trọng số dựa trên thống kê. Giữ ngưỡng/trọng số cố định cho pilot; thay đổi sau khi xem nhãn phải version riêng và báo rõ dùng development data.
+
+## Validation thực tế — 2026-11-15
+
+Implementation commit `1c41aa4`; 53 CPU tests đạt, preflight hash, Bash syntax và toàn bộ pre-commit hooks đạt. Chromium đã kiểm tra 10 ROI, xuất authoring JSON và nhãn pass/fail bằng fixture tổng hợp trong `/tmp`; không tạo approved pack hay nhãn tay thật. Lỗi HTML option “Đạt” tìm thấy qua browser test đã được sửa trước commit.
+
+Inference thật hoàn tất trên CPU (`cpu-smoke-v2`) và RTX 5090 (`gpu-smoke-v1`), mỗi lượt một ảnh/2 bước/256, batch 1, seed gốc 42, seed ảnh 1006579066. Tổng thời gian stage lần lượt khoảng 5.91 s và 3.44 s (không gồm preflight). ONNX profile GPU ghi 2,324 CUDA kernel events và 708 CPU events; có CPU fallback cho một số ops. Safety checker không gắn cờ ở hai lượt. Receipt của cả hai lượt đã xác minh. Trang GPU scores hiển thị hai ảnh và hai directed graphs; trang review ẩn điểm tự động.
+
+Nguồn full resolution có 9 node; nguồn resize 256 có 12 node/27 cạnh, cả 9 anchor gốc còn match. Graph đích smoke CPU có 8 node/16 cạnh; GPU có 4 node/4 cạnh. Đây là evidence về độ nhạy theo preprocessing/sampling, **không phải phép đo độ chính xác**. CPU float32 và CUDA float16 dùng RNG theo device, không đảm bảo ảnh sinh giống nhau dù cùng seed. Điểm số kỹ thuật chi tiết trong [validation JSON](LEVEL3_TASK3_VALIDATION_V1.json) không được dùng làm kết quả benchmark.
+
+Warnings thực tế: `torch_dtype` deprecated, LPIPS upstream gọi torchvision `pretrained` deprecated, ONNX ScatterND cảnh báo giả định indices không trùng. Không sửa upstream đã khóa để che warnings. Logs/screenshots nằm ở `runs/level3/task3-v1/validation-v1/`; các lượt cũ được giữ nguyên. Chưa chạy chính 10 chỉnh sửa, chưa kiểm chứng W&B online của lượt chính, chưa có nhãn tay/Spearman hợp lệ. Bước tiếp theo là người dùng duyệt 10 yêu cầu rồi chạy launcher seed 42.
