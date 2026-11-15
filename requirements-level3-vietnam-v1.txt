@@ -1,0 +1,6 @@
+# The project's Pillow dependency is already sufficient for offline scan/finalize.
+Pillow>=11.2.1,<13
+# Only required for `fetch`: metadata-only listing + selective HF downloads.
+huggingface_hub>=0.29,<2
+# Only required for tests.
+pytest>=8,<10
