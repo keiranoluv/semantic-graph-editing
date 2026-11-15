@@ -1,5 +1,26 @@
 # Pilot pretrained SGG v2: REACT++ → RelateAnything
 
+## Quyết định sau pilot 5 ảnh — 15/11/2026
+
+Người dùng đã chốt **REACT++ PSG YOLO12m ONNX làm extractor chính cho Task 3**
+sau khi xem so sánh pilot. Lý do lựa chọn thực hành: graph ít đối tượng hơn,
+dễ theo dõi và kiểm tra hơn. Đây là quyết định chọn pipeline để tiếp tục;
+không suy ra precision/recall tốt hơn chỉ từ số node/cạnh.
+
+Kết quả đủ 5 ảnh tại `runs/level3/sgg-pretrained-v2/comparison-five-v1/`:
+REACT++ và OWLv2 + RelateAnything đều parse thành công 5/5, ROBIN-SAM 4/5.
+Chưa có inventory được duyệt đầy đủ; P/R/F1, grounding, hallucination và
+source/target stability chưa được chấm. Giữ nguyên checkpoint, vocabulary,
+threshold và provenance của lượt `react-five-v1`; không sửa config đã chạy.
+
+Các bước triển khai Task 3 tiếp theo lấy REACT++ làm phương pháp chính.
+Giữ ROBIN-SAM và RelateAnything làm đối chứng cùng toàn bộ artifacts cũ.
+Trước khi kết luận chất lượng GCS, cần kiểm tra đúng instance/chiều quan hệ,
+đối tượng liên quan chỉnh sửa bị bỏ sót và độ ổn định trên cặp nguồn/đích.
+REACT++ hiện không có attribute head; lựa chọn này chưa giải quyết đánh giá
+chỉnh sửa màu/chất liệu. Các nhận xét smoke bên dưới ghi nhận bằng chứng
+tại thời điểm thử nghiệm, trước quyết định lựa chọn này.
+
 Phạm vi: chọn extractor cho Task 3; chỉ inference mô hình thị giác pretrained.
 Không thay Level 1/2, Task B, `src/`, dataset/config đã khóa hoặc baseline ROBIN-SAM.
 Branch `feat/level3-vietnam-benchmark-v2`, không push. Mã mới nằm ở
@@ -264,7 +285,7 @@ human review**):
   thành cùng một đối tượng/mặt đường; ở ảnh này graph không có người. Đây là vấn
   đề vùng đầu vào và instance identity, không giải quyết bằng việc đếm thêm cạnh.
 
-**Nhận xét cho Task 3:** RelateAnything phù hợp hơn về khả năng mở rộng vocabulary
+**Nhận xét tại thời điểm smoke, trước quyết định chọn REACT++:** RelateAnything phù hợp hơn về khả năng mở rộng vocabulary
 và tách detector/relation để kiểm soát grounding; kết quả smoke hiện tại vẫn
 phụ thuộc mạnh vào detector và chưa đủ để chọn làm extractor chính. REACT++ là
 đối chứng triển khai gọn, nhãn hữu hạn dễ giữ thống nhất, nhưng đóng vocabulary
