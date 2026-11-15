@@ -14,7 +14,7 @@ from .core import review_template
 
 def picture(path):
     with Image.open(path) as im:
-        im = im.convert("RGB")
+        im = Image.alpha_composite(Image.new("RGBA", im.size, (255, 255, 255, 255)), im.convert("RGBA")).convert("RGB")
         im.thumbnail((1000, 1000))
         buf = io.BytesIO()
         im.save(buf, format="JPEG", quality=93)
@@ -28,7 +28,7 @@ def render(rows, out):
         """<!doctype html><html lang="vi"><meta charset="utf-8"><title>Qwen 2.1 · InstructPix2Pix</title>
 <style>body{font:16px system-ui;background:#eef2f6;color:#193244;margin:24px}article{background:white;border-radius:12px;padding:18px;margin:20px 0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}img{width:100%}pre{white-space:pre-wrap;overflow-wrap:anywhere}textarea{width:95%;min-height:70px}select,input,button{padding:8px;margin:6px}@media(max-width:850px){.grid{display:block}}</style>
 <h1>Qwen-Image-2.1 · InstructPix2Pix</h1><p>Cùng ảnh nguồn và câu yêu cầu đã duyệt. Qwen: BF16, seed thực tế 42, 40 bước, CPU offload, output_resolution 1024. IP2P: kết quả cũ, FP16, 30 bước, max side 512, seed thực tế ghi bên dưới. Đây là so sánh chất lượng quan sát, không phải benchmark cùng compute/độ phân giải/seed ảnh.</p>
-<p>Chưa có nhãn PASS/FAIL. Tự chấm Edit Fulfillment (đúng yêu cầu) và Preservation (giữ phần không liên quan) cho từng model. Mở PNG gốc trong thư mục images nếu cần xem chi tiết.</p>
+<p>Chưa có nhãn PASS/FAIL. Tự chấm Edit Fulfillment (đúng yêu cầu) và Preservation (giữ phần không liên quan) cho từng model. Preview ảnh RGBA ghép nền trắng; PNG gốc giữ nguyên alpha. Mở PNG gốc trong thư mục images của các run nếu cần xem chi tiết.</p>
 <label>Người duyệt <input id="reviewer"></label><button id="export">Xuất qwen21-reviewed.json</button>"""
     ]
     for i, r in enumerate(rows):

@@ -155,3 +155,19 @@ def test_comparison_escapes_prompt_and_keeps_failure_visible(tmp_path):
     assert text.count('<option value="true">PASS</option>') == 4
     template = json.loads((tmp_path / "review-template.json").read_text())
     assert all(r["status"] == "pending" for r in template["reviews"])
+
+
+def test_preview_composites_alpha_on_white_without_changing_native(tmp_path):
+    import base64
+    import io
+
+    from tools.level3_qwen21_v1.viewer import picture
+
+    native = tmp_path / "transparent.png"
+    Image.new("RGBA", (64, 64), (0, 0, 0, 0)).save(native)
+    before = sha256(native)
+    preview = picture(native)
+    payload = preview.split("base64,")[1].split('"')[0]
+    with Image.open(io.BytesIO(base64.b64decode(payload))) as im:
+        assert im.getpixel((32, 32)) == (255, 255, 255)
+    assert sha256(native) == before
