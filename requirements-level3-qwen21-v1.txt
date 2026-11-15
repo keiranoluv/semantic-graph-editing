@@ -1,0 +1,10 @@
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+transformers==5.23.0
+accelerate==1.15.0
+diffusers @ git+https://github.com/huggingface/diffusers.git@43e30028af5120d8b0868cb6975b9fad39cc4fab
+Pillow==11.3.0
+numpy==2.2.6
+requests==2.32.5
+pytest==8.4.2
