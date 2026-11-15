@@ -63,3 +63,35 @@ python3 -m http.server 8004 --bind 127.0.0.1 \
 Mở http://localhost:8004/comparison.html. Trang chia 10 case/trang, xem nguồn/đích và câu lệnh, chấm Edit Fulfillment/Preservation độc lập, xuất `qwen100-reviewed.json`. Nhãn chưa chấm giữ null/pending. Preview RGBA ghép nền trắng, native PNG giữ nguyên alpha. Không tự tạo PASS, không tính F1/Spearman khi chưa có nhãn. `status=ok` chỉ xác nhận inference/PNG/40 bước hoàn tất.
 
 Bước sau lượt này là REACT++ trên nguồn/đích và kiểm tra alignment/Graph Consistency. Không chạy thêm SGG, CLIP hoặc LPIPS trong launcher sinh 100 ảnh này.
+
+## Kết quả thực tế ngày 2026-11-15
+
+Code, tests, manifest và cấu hình được commit tại `27a2fa1225c2e6c63c069ec8c2e0d57fb9849bc3` trước khi khởi chạy GPU. Đã chạy 21 tests CPU thành công, preflight với CUDA ẩn, kiểm tra Bash và `pip check`. Lượt chính được người dùng cho phép trực tiếp, chạy một lần trên RTX 5090 và kết thúc exit code 0; không có lượt GPU tiếp theo trong hàng đợi.
+
+| Kết quả | Giá trị đo được |
+| --- | --- |
+| Nguồn / đích | 100 / 100; Sidewalk 50, Travel 50 |
+| Loại yêu cầu | Thêm 66, xóa 28, thay thế 6 |
+| Cấu hình từng mẫu | BF16, batch 1, seed 42, đủ 40/40 bước |
+| Thời gian toàn vòng sinh | 2.703,99 s ≈ 45 phút 04 giây |
+| Thời gian từng mẫu | Trung vị 25,91 s; min 25,47 s; max 42,39 s |
+| VRAM toàn GPU, đỉnh lấy mẫu | 19.824 MiB ≈ 19,36 GiB |
+| PyTorch đỉnh allocated / reserved | 17.655,12 / 19.102 MiB |
+| Lỗi inference / OOM / sinh lại | 0 / 0 / 0 |
+| Nhãn chất lượng người duyệt | 0; toàn bộ pending |
+
+Thời gian toàn vòng sinh bao gồm khởi tạo theo dõi, load pipeline và xử lý 100 case; không bao gồm dựng HTML, đồng bộ W&B cuối lượt hoặc kiểm tra sau chạy. VRAM nvidia-smi là tổng GPU 0, có thể bao gồm tiến trình khác và chỉ lấy mẫu mỗi khoảng 0,25 s; số PyTorch là bộ đếm allocator của tiến trình. Không dùng các số này để khẳng định chất lượng chỉnh sửa.
+
+Output: `runs/level3/qwen100-v1/seed42-v1/`. W&B: [seed42-v1 / a7n7r5gc](https://wandb.ai/keiranoluv-hcmus/level3-qwen100-v1/runs/a7n7r5gc). Đã đồng bộ metadata/metrics, không upload ảnh. Lưu đủ prompt, intent, PNG nguồn/đích, cấu hình, thời gian, VRAM, checkpoint/code/source hashes và receipts.
+
+Kiểm tra CPU sau chạy xác nhận toàn bộ run receipt và 100 case receipts, 100 nguồn trùng manifest, ảnh nguồn PNG khớp từng pixel với bản gốc sau EXIF transpose/RGB, đủ 200 PNG giải mã được và đúng seed/steps. Chromium đã duyệt cả 10 trang, tải đủ 200 preview, không lỗi JavaScript và mọi ô chấm chất lượng còn trống. Lần đầu công cụ `Page.captureScreenshot` báo không chụp được; log được giữ ở `validation-v1`. Chạy lại kiểm tra trình duyệt với `--disable-gpu` thành công, gồm screenshot, ở `validation-v2`; không chạy lại inference.
+
+Native output của cả 100 mẫu là RGBA, có pixel alpha nhỏ hơn 255. Viewer ghép nền trắng; PNG gốc và hash giữ nguyên. Khi nối REACT++/metric sau này cần pin cách ghép RGBA → RGB cùng nền trắng như viewer để mô hình và người duyệt thấy cùng ảnh; không chỉ bỏ kênh alpha rồi coi đó là input tương đương.
+
+Chi tiết máy đọc được ở [LEVEL3_QWEN100_VALIDATION_V1.json](LEVEL3_QWEN100_VALIDATION_V1.json). Bằng chứng local:
+
+- `runs/level3/qwen100-v1/selection-evidence-v1/`: 12 contact sheets của 130 ứng viên đã xem trước inference, danh sách chọn/loại và receipt. Bản sao bằng chứng được xuất trong lúc inference; không phải chọn ảnh dựa trên kết quả Qwen.
+- `runs/level3/qwen100-v1/validation-v2/`: script kiểm tra CPU, log, báo cáo trình duyệt, screenshot trang đầu, `pairs.csv` cho 100 cặp và receipt.
+- `runs/level3/qwen100-v1/seed42-v1/comparison.html`: xem ảnh và xuất nhãn tay; `status=ok` chỉ là thành công kỹ thuật.
+
+Đã giữ toàn bộ 100 kết quả, không lọc ảnh xấu, không tự chấm Edit Fulfillment/Preservation, không tính F1 hay Graph Consistency. Bộ 100 thiên về thao tác thêm và chưa phải test set độc lập. Bước kế tiếp nên trích REACT++ cho cả nguồn/đích với cùng cấu hình, kiểm tra correspondence và lỗi extractor trước khi diễn giải điểm graph; không đánh giá chỉ từ số node/edge. Để hoàn tất đề bài, bổ sung yêu cầu tới 150–200 ở lượt riêng sau khi kiểm tra luồng này.
