@@ -49,10 +49,24 @@ Mặc định mỗi lần tạo `runs/level3/qwen-react100-v1/run-<UTC timestamp
 ## Xem và diễn giải
 
 ```bash
-python3 -m http.server 8005 --bind 127.0.0.1 \
+python3 -m http.server 8006 --bind 127.0.0.1 \
   --directory runs/level3/qwen-react100-v1/seed42-v1
 ```
 
-Mở http://localhost:8005/comparison.html. Chọn từng cặp để xem hai ảnh với bbox, graph có hướng, danh sách node và quan hệ kèm confidence. Trang chấm hai nhãn Qwen trên cổng 8004 vẫn độc lập.
+Mở http://localhost:8006/comparison.html. Chọn từng cặp để xem hai ảnh với bbox, graph có hướng, danh sách node và quan hệ kèm confidence. Trang chấm hai nhãn Qwen trên cổng 8004 vẫn độc lập.
 
 `execution.json` ghi parse success trên tổng 200 ảnh, lỗi, thời gian và VRAM toàn GPU lấy mẫu; ONNX profile chứng minh kernel chạy CUDA, vẫn có các shape/helper ops CPU hợp lệ. Parse success, số node/cạnh và confidence không phải độ chính xác. Precision/recall/F1, grounding accuracy, hallucination và Graph Consistency để null khi chưa có GT/kiểm tra tương ứng. Bước kế tiếp là correspondence, kiểm tra tay độ tin cậy extractor và xây điểm thực hiện thay đổi/bảo toàn; chỉ sau khi có nhãn tay mới đo tương quan.
+
+## Kết quả GPU thực tế ngày 2026-11-15
+
+Commit trước GPU: `4dc149af0d6388a9b5228a3f4249e4a9434636dd`. Lượt `seed42-v1` hoàn tất exit code 0, đủ **200/200 graph** cho 100 cặp, parse success 1,0; không lỗi runtime/OOM. Cấu hình và toàn bộ code hashes khớp bản đã commit. Không train, không sinh lại Qwen, không gán nhãn chất lượng.
+
+- Tổng thời gian load/xử lý ảnh/inference/ghi profile: **126,82 s**. Bộ đếm predict + ghi native arrays + decode/adapter có trung vị **0,045 s/ảnh**, tổng **13,68 s**; không coi đây là toàn bộ thời gian xử lý dữ liệu.
+- ONNX input thực tế `tensor(float)`, `[batch_size, 3, 640, 640]`. Profile có đúng **200 model_run**, **232.400 CUDA kernel events** và **70.800 CPU helper kernel events**.
+- VRAM đỉnh lấy mẫu toàn GPU: **9.322 MiB**. Đã quan sát hoạt động GPU khác trước khi chạy, nên không quy toàn bộ số này cho bộ nhớ riêng của REACT++.
+- Đủ 100 case receipts và run receipt; CPU replay raw arrays cho cả 200 ảnh tái tạo đúng graph/grounding/confidence. Kiểm tra pixel xác nhận cả 200 input RGB đúng phép ghép nền trắng, ảnh native không bị sửa.
+- Chromium đã mở đủ 100 cặp, giải mã 200 preview, kiểm tra số box/mũi tên khớp dữ liệu, đổi ảnh và bật/tắt box; không lỗi JavaScript.
+
+Chỉ để mô tả kích thước output: nguồn có trung vị 8 node/14 cạnh; đích 9 node/15 cạnh. Một ảnh nguồn có node nhưng không có relation; giữ nguyên dự đoán đó. Các số này không đánh giá chất lượng. Khi xem mẫu đầu `sidewalk-76268403d14e5f`, có nhãn `boat` ở vùng mép phải của cảnh vỉa hè cần kiểm tra lại; đây là quan sát định tính, chưa phải GT hoặc thống kê hallucination. Không tự đổi threshold dựa trên mẫu này.
+
+W&B: [seed42-v1 / q2ah2u8o](https://wandb.ai/keiranoluv-hcmus/level3-qwen-react100-v1/runs/q2ah2u8o). Báo cáo máy đọc: [LEVEL3_QWEN_GRAPHS_VALIDATION_V1.json](LEVEL3_QWEN_GRAPHS_VALIDATION_V1.json). Bằng chứng local: `runs/level3/qwen-react100-v1/validation-v1/` có script replay CPU, logs, screenshot và receipt. Kết quả chính nằm tại `runs/level3/qwen-react100-v1/seed42-v1/`; không cần nhãn chỉnh sửa ảnh để mở xem.
