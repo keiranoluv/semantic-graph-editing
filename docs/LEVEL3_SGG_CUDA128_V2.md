@@ -44,3 +44,5 @@ CUDA_VISIBLE_DEVICES='' data/cache/level3-sgg-v1/venv-cu128-v2/bin/python \
 ```
 
 37 tests gồm 30 kiểm tra SGG có trước và 7 trường hợp về pair runtime, kiến trúc CUDA, dừng sớm trước checkpoint/output. Không cần GPU cho suite này. Hướng dẫn chuẩn hóa EditGraph, kiểm duyệt, giới hạn Task B và khảo sát PGSG vẫn ở [tài liệu protocol](LEVEL3_SGG_ROBIN_V1.md).
+
+Kết quả thực tế: commit code `6fa602b` đã qua 37 tests ở cả runtime cũ và mới, CPU smoke checkpoint thật đạt, sau đó GPU smoke trên RTX 5090 đạt. CUDA permute/contiguous, BF16 matmul, torchvision NMS đều pass; SAM forward một điểm trả một vùng, ROBIN sinh đủ 8 token kiểm tra. Không còn missing weight chưa xử lý. Evidence nằm tại `runs/level3/sgg-compare-v1/gpu-smoke-cu128-v1/` và [báo cáo hash/runtime](../reports/level3/sgg-cu128-v2-validation.json). Chưa chạy lượt 5 ảnh, chưa đo VRAM cho batch điểm SAM 32 và chưa chấm chất lượng graph.
