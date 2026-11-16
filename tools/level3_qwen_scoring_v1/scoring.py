@@ -4,7 +4,7 @@ import numpy as np
 from scipy.optimize import linear_sum_assignment
 
 from tools.level3_image_graph_v1.core import validate_record
-from tools.level3_task3_v1.scoring import inside, iou, label
+from tools.level3_shared.geometry import inside, iou, label
 
 
 def boxes(record):

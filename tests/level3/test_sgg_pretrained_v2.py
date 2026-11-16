@@ -1,15 +1,14 @@
 import json
-from pathlib import Path
 
 import numpy as np
 import pytest
 from PIL import Image
 
 from tools.level3_image_graph_v1.core import sha256, write
+from tools.level3_qwen21_v1.core import bundle as verified_bundle
 from tools.level3_sgg_pretrained_v2.adapter import adapt, react_decode
 from tools.level3_sgg_pretrained_v2.comparison import export, make_comparison
 from tools.level3_sgg_pretrained_v2.evaluation import evaluate, template
-from tools.level3_sgg_pretrained_v2.runner import CONFIG, new_output, verified_bundle
 
 
 def row(i=0):
@@ -190,14 +189,6 @@ def test_receipt_detects_tampering(tmp_path):
     (tmp_path / "records.json").write_text("[1]")
     with pytest.raises(ValueError):
         verified_bundle(tmp_path, "records.json")
-
-
-def test_immutable_output(tmp_path):
-    cfg = json.loads(CONFIG.read_text())
-    with pytest.raises(FileExistsError):
-        new_output(tmp_path, cfg)
-    with pytest.raises(ValueError):
-        new_output(Path("data/processed/forbidden"), cfg)
 
 
 def test_self_contained_three_model_viewer(tmp_path):

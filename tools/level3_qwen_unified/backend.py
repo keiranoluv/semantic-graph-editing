@@ -8,7 +8,7 @@ from PIL import Image
 
 from tools.level3_image_graph_v1.core import sha256, write
 from tools.level3_qwen21_v1.core import CACHE, assets
-from tools.level3_qwen21_v1.runner import MemoryMonitor, call_args, check_image, runtime
+from tools.level3_shared.qwen_runtime import MemoryMonitor, call_args, check_image, runtime
 
 
 class Editor:

@@ -91,8 +91,10 @@ def identity():
         ROOT / "tools/level3_qwen_unified/core.py",
         ROOT / "tools/level3_qwen_unified/runner.py",
         ROOT / "tools/level3_qwen21_v1/core.py",
-        ROOT / "tools/level3_qwen21_v1/runner.py",
+        ROOT / "tools/level3_shared/qwen_runtime.py",
+        ROOT / "tools/level3_shared/__init__.py",
         ROOT / "tools/level3_sgg_pretrained_v2/assets.py",
+        ROOT / "configs/level3/qwen21-pilot-v1.json",
     ]
     files += [ROOT / p for p in read(CONFIG)["pipeline_files_sha256"]]
     files = sorted(set(files))

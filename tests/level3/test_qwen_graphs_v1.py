@@ -1,11 +1,8 @@
-import json
-
 import pytest
 from PIL import Image
 
-from tools.level3_image_graph_v1.core import sha256, write
+from tools.level3_image_graph_v1.core import sha256
 from tools.level3_qwen_graphs_v1 import core
-from tools.level3_qwen_graphs_v1.viewer import render
 from tools.level3_sgg_pretrained_v2.adapter import adapt
 
 
@@ -96,30 +93,3 @@ def test_directed_relations_local_ids_and_missing_attribute_head():
     assert rec["attribute_coverage"] == "unsupported_no_attribute_head"
     assert rec["human_reviewed"] is False
     assert rec["identity_scope"] == "per_image_only_not_cross_image_correspondence"
-
-
-def test_viewer_preserves_empty_prediction_vs_parse_error_and_escapes(tmp_path):
-    image = tmp_path / "i.png"
-    Image.new("RGB", (100, 80), "red").save(image)
-    row = {"image_id": "s", "sha256": sha256(image), "width": 100, "height": 80}
-    rec = adapt(row, "react++", [], [], {}, {})
-    write(tmp_path / "source.json", rec)
-    write(tmp_path / "target.json", {"status": "parse_error", "image": row, "error": "bad output"})
-    roles = {
-        role: {
-            "native_image_path": str(image),
-            "graph_path": str(tmp_path / (role + ".json")),
-            "status": "ok" if role == "source" else "parse_error",
-        }
-        for role in ("source", "target")
-    }
-    render(
-        [{"task_id": "t", "image_id": "i", "dataset": "x", "prompt": "<script>bad()</script>", "roles": roles}],
-        tmp_path,
-    )
-    text = (tmp_path / "comparison.html").read_text()
-    assert "<script>bad()</script>" not in text
-    data = json.loads(text.split('<script id="data" type="application/json">')[1].split("</script>")[0])
-    assert data[0]["roles"]["source"]["graph"] == {"nodes": [], "edges": []}
-    assert data[0]["roles"]["target"]["graph"] is None
-    assert data[0]["roles"]["target"]["status"] == "parse_error"

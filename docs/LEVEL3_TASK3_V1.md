@@ -1,5 +1,7 @@
 # Task 3 v1 — pilot 5 ảnh với REACT++
 
+> Tài liệu thực nghiệm lịch sử. Launcher/giao diện pilot tương ứng đã nghỉ dùng; các kết quả ảnh/graph được giữ. Dùng [luồng hiện tại](LEVEL3_CLEANUP.md); code cũ có thể đọc lại tại commit `1d2d876`.
+
 Pipeline thử nghiệm: ảnh nguồn + yêu cầu đã duyệt → InstructPix2Pix pretrained → ảnh chỉnh sửa → REACT++ cho cả nguồn/đích → Graph Consistency, CLIPScore và LPIPS → nhãn tay → Spearman. Không huấn luyện mô hình thị giác. Đây là pilot phát triển, chưa phải kết quả hoàn thành Level 3.
 
 ## Phạm vi và dữ liệu

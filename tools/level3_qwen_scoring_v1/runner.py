@@ -10,7 +10,7 @@ from pathlib import Path
 
 from tools.level3_image_graph_v1.core import read, sha256, write
 from tools.level3_qwen21_v1.core import bundle, finish
-from tools.level3_qwen100_v1.receipt import finish_run
+from tools.level3_shared.receipts import finish_run
 
 from .core import CONFIG, identity, inputs, new_output, validate_assistant_review
 from .scoring import score

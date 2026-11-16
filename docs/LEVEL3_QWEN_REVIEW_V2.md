@@ -1,5 +1,7 @@
 # Duyệt Qwen với hai trường
 
+> Tài liệu thực nghiệm lịch sử. Launcher/giao diện pilot tương ứng đã nghỉ dùng; các kết quả ảnh/graph được giữ. Dùng [luồng hiện tại](LEVEL3_CLEANUP.md); code cũ có thể đọc lại tại commit `1d2d876`.
+
 Giao diện chỉ hiển thị ảnh nguồn, ảnh Qwen, câu lệnh và hai lựa chọn **Đúng yêu cầu** / **Bảo toàn**. Không có cột Pix2Pix, ô ghi chú hoặc tên người duyệt. Chọn Đạt, Không đạt hoặc để Chưa chấm; xuất JSON không yêu cầu ghi chú. Hai trường đều có giá trị boolean thì trạng thái là `reviewed`, kể cả khi chọn Không đạt; còn thiếu trường thì `pending`.
 
 Trang mới đọc outputs cũ trên CPU, không inference lại, không sửa/xóa ảnh hoặc receipt đã khóa. Mỗi bản giao diện được ghi vào thư mục phiên bản mới. Cả 100 cặp và pilot 6 cặp dùng chung renderer. Preview RGBA ghép nền trắng như trước.

@@ -1,12 +1,9 @@
-import json
-
 import pytest
 from PIL import Image
 
 from tools.level3_image_graph_v1.core import digest, sha256, write
 from tools.level3_qwen21_v1 import core
-from tools.level3_qwen21_v1.runner import call_args, check_image, paired_row
-from tools.level3_qwen21_v1.viewer import render
+from tools.level3_shared.qwen_runtime import call_args, check_image
 
 
 def test_output_immutable_and_cannot_touch_dataset(tmp_path, monkeypatch):
@@ -82,28 +79,6 @@ def test_smoke_cannot_be_cpu_or_wrong_task(tmp_path, monkeypatch):
         core.select(cfg, {}, "pilot", run)
 
 
-def test_paired_source_bytes_prompt_and_baseline_unchanged(tmp_path):
-    source = tmp_path / "original.png"
-    dest = tmp_path / "ip2p.png"
-    Image.new("RGB", (96, 64), "red").save(source)
-    Image.new("RGB", (96, 64), "blue").save(dest)
-    out = tmp_path / "new"
-    out.mkdir()
-    base = {
-        "task_id": "chair",
-        "image_id": "same",
-        "instruction_en": "Remove yellow chair.",
-        "source_path": str(source),
-        "target_path": str(dest),
-        "editor": {"actual_seed": 1006579066},
-    }
-    before = (sha256(source), sha256(dest))
-    r = paired_row(base, out)
-    assert (r["source_sha256"], r["ip2p_sha256"]) == before
-    assert (sha256(source), sha256(dest)) == before
-    assert r["prompt"] == base["instruction_en"] and r["human_review_status"] == "pending"
-
-
 def test_edit_call_keeps_input_image_and_forty_steps():
     im = Image.new("RGB", (512, 288))
     generator = object()
@@ -135,39 +110,3 @@ def test_manual_labels_start_unrated_and_bound_to_results():
     assert len(template["reviews"]) == 2
     for row in template["reviews"]:
         assert row["status"] == "pending" and row["edit_fulfillment"] is None and row["preservation"] is None
-
-
-def test_comparison_escapes_prompt_and_keeps_failure_visible(tmp_path):
-    im = tmp_path / "im.png"
-    Image.new("RGB", (64, 64), "red").save(im)
-    r = {
-        "task_id": "chair",
-        "prompt": "<script>alert(1)</script>",
-        "source_path": str(im),
-        "ip2p_path": str(im),
-        "qwen21_path": None,
-        "status": "oom",
-        "error": "CUDA out of memory",
-    }
-    render([r], tmp_path)
-    text = (tmp_path / "comparison.html").read_text()
-    assert "<script>alert(1)</script>" not in text and "CUDA out of memory" in text
-    assert text.count('<option value="true">PASS</option>') == 4
-    template = json.loads((tmp_path / "review-template.json").read_text())
-    assert all(r["status"] == "pending" for r in template["reviews"])
-
-
-def test_preview_composites_alpha_on_white_without_changing_native(tmp_path):
-    import base64
-    import io
-
-    from tools.level3_qwen21_v1.viewer import picture
-
-    native = tmp_path / "transparent.png"
-    Image.new("RGBA", (64, 64), (0, 0, 0, 0)).save(native)
-    before = sha256(native)
-    preview = picture(native)
-    payload = preview.split("base64,")[1].split('"')[0]
-    with Image.open(io.BytesIO(base64.b64decode(payload))) as im:
-        assert im.getpixel((32, 32)) == (255, 255, 255)
-    assert sha256(native) == before

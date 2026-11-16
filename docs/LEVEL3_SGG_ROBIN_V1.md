@@ -1,5 +1,7 @@
 # Thử nghiệm SGG pretrained: ROBIN + SAM, cùng 5 ảnh Level 3
 
+> Tài liệu thực nghiệm lịch sử. Launcher/giao diện pilot tương ứng đã nghỉ dùng; các kết quả ảnh/graph được giữ. Dùng [luồng hiện tại](LEVEL3_CLEANUP.md); code cũ có thể đọc lại tại commit `1d2d876`.
+
 **Cập nhật cho RTX 5090:** môi trường Torch 2.5.1/CUDA 12.4 bên dưới không hỗ trợ `sm_120`. Dùng [runtime CUDA 12.8 v2 và launcher mới](LEVEL3_SGG_CUDA128_V2.md) trên máy hiện tại. Protocol/checkpoint/5 ảnh giữ nguyên; các kết quả CPU trong tài liệu này là bằng chứng của lần triển khai ban đầu.
 
 Mục đích là kiểm tra một phương án thay thế bộ trích graph RelTR + CLIP hiện tại, trước khi dùng graph để chấm ảnh chỉnh sửa. Chưa có kết quả chất lượng ROBIN trên cả 5 ảnh: assistant chỉ chạy kiểm thử và smoke CPU; người dùng chạy inference GPU bằng lệnh bên dưới. Không huấn luyện mô hình thị giác, không chạy Task B, không thay dữ liệu hoặc pipeline cũ.

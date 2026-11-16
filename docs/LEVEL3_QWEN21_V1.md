@@ -1,5 +1,7 @@
 # Level 3 — Qwen-Image-2.1 pilot v1
 
+> Tài liệu thực nghiệm lịch sử. Launcher/giao diện pilot tương ứng đã nghỉ dùng; các kết quả ảnh/graph được giữ. Dùng [luồng hiện tại](LEVEL3_CLEANUP.md); code cũ có thể đọc lại tại commit `1d2d876`.
+
 Thay editor ở lượt thử mới, giữ nguyên InstructPix2Pix và REACT++ cùng mọi kết quả cũ. Không đổi `src/`, dataset, source/config khóa, Level 1/2 hay Task B. Không train/fine-tune. Người dùng cho phép chạy một smoke GPU thật và, nếu smoke hoàn tất kỹ thuật, thêm tối đa 5 instruction. Không tự mở rộng benchmark.
 
 ## Nguồn chính thức và môi trường

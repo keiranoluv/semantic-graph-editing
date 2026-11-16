@@ -7,10 +7,10 @@ import time
 import numpy as np
 
 from tools.level3_image_graph_v1.core import write
-from tools.level3_qwen21_v1.runner import MemoryMonitor
 from tools.level3_qwen_graphs_v1.core import verify_react
 from tools.level3_sgg_pretrained_v2.assets import CACHE
 from tools.level3_sgg_pretrained_v2.backends import React
+from tools.level3_shared.qwen_runtime import MemoryMonitor
 
 
 def preflight():

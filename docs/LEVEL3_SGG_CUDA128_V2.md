@@ -1,5 +1,7 @@
 # Sửa runtime ROBIN + SAM cho RTX 5090
 
+> Tài liệu thực nghiệm lịch sử. Launcher/giao diện pilot tương ứng đã nghỉ dùng; các kết quả ảnh/graph được giữ. Dùng [luồng hiện tại](LEVEL3_CLEANUP.md); code cũ có thể đọc lại tại commit `1d2d876`.
+
 Lượt `robin-five-v1` dừng ở SAM với `no kernel image is available for execution on the device`. Kiểm tra máy cho thấy RTX 5090, compute capability 12.0 (`sm_120`), driver 590.48.01. Môi trường v1 dùng Torch 2.5.1+cu124, chỉ có native kernels `sm_50 sm_60 sm_70 sm_75 sm_80 sm_86 sm_90`. Đây là lỗi tương thích wheel/GPU; CPU smoke trước đó không phát hiện được. Chưa có kết quả ROBIN cho lượt bị lỗi.
 
 [PyTorch 2.7](https://pytorch.org/blog/pytorch-2-7/) bổ sung hỗ trợ Blackwell và wheel CUDA 12.8. Runtime v2 pin cặp chính thức **torch 2.7.1+cu128 / torchvision 0.22.1+cu128** theo [trang các phiên bản PyTorch](https://pytorch.org/get-started/previous-versions/). Giữ Transformers 4.43.3 và các dependency ROBIN đã kiểm tra. Không sửa môi trường v1 hoặc `myenv`, checkpoint, cohort 5 ảnh, seed, decoding và dữ liệu cũ.

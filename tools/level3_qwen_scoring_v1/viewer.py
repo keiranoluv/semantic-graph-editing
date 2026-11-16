@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 from tools.level3_image_graph_v1.core import read
-from tools.level3_qwen100_v1.viewer import thumb
+from tools.level3_shared.preview import thumb
 
 
 def render(results, out, review=None):

@@ -107,10 +107,12 @@ def identity():
         ROOT / "scripts/run_level3_qwen.sh",
         ROOT / "tools/level3_image_graph_v1/core.py",
         ROOT / "src/editing/operations.py",
+        ROOT / "tools/level3_shared/__init__.py",
         ROOT / "configs/level3/qwen21-pilot-v1.json",
         ROOT / "requirements-level3-qwen21-v1.txt",
     ]
     files += list((ROOT / "tools/level3_qwen21_v1").glob("*.py"))
+    files += [ROOT / "tools/level3_shared/qwen_runtime.py"]
     if subprocess.check_output(["git", "status", "--porcelain", "--", *map(str, files)], cwd=ROOT, text=True):
         raise ValueError("commit_related_code_before_running")
     return {

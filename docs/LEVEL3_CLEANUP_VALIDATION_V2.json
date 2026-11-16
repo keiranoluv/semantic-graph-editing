@@ -1,0 +1,97 @@
+{
+  "schema": "level3-storage-cleanup-v2",
+  "created_unix": 1794807820.581132,
+  "paths": [
+    {
+      "path": "data/cache/level3-sgg-v1/venv",
+      "files": 30312,
+      "logical_bytes": 7946962398,
+      "reason": "unused model/environment cache"
+    },
+    {
+      "path": "data/cache/level3-sgg-v1/venv-cu128-v2",
+      "files": 27850,
+      "logical_bytes": 6999699661,
+      "reason": "unused model/environment cache"
+    },
+    {
+      "path": "data/cache/level3-sgg-v1/robin",
+      "files": 12,
+      "logical_bytes": 8666363947,
+      "reason": "unused model/environment cache"
+    },
+    {
+      "path": "data/cache/level3-sgg-v1/sam_vit_h_4b8939.pth",
+      "files": 1,
+      "logical_bytes": 2564550879,
+      "reason": "unused model/environment cache"
+    },
+    {
+      "path": "data/cache/level3-task3-v1/venv",
+      "files": 36194,
+      "logical_bytes": 7911971099,
+      "reason": "unused model/environment cache"
+    },
+    {
+      "path": "data/cache/level3-task3-v1/editor",
+      "files": 16,
+      "logical_bytes": 2742242939,
+      "reason": "unused model/environment cache"
+    },
+    {
+      "path": "data/cache/level3-image-graph-v1/checkpoint0149.pth",
+      "files": 1,
+      "logical_bytes": 766101625,
+      "reason": "unused model/environment cache"
+    },
+    {
+      "path": "data/cache/level3-sgg-pretrained-v2/owl",
+      "files": 9,
+      "logical_bytes": 621510370,
+      "reason": "unused model/environment cache"
+    },
+    {
+      "path": "data/cache/level3-sgg-pretrained-v2/relate",
+      "files": 5,
+      "logical_bytes": 208359626,
+      "reason": "unused model/environment cache"
+    },
+    {
+      "path": "runs/level3/qwen-review-v2/qwen100-v1",
+      "files": 4,
+      "logical_bytes": 16592685,
+      "reason": "verified duplicate presentation or unsealed duplicate score attempt"
+    },
+    {
+      "path": "runs/level3/qwen-graph-score-v1/run-20261116T021114Z",
+      "files": 117,
+      "logical_bytes": 1508458,
+      "reason": "verified duplicate presentation or unsealed duplicate score attempt"
+    }
+  ],
+  "expected_reclaimed_file_blocks_bytes": 38671474688,
+  "preserves_all_native_images_and_graphs": true,
+  "applied": true,
+  "free_before_bytes": 420968390656,
+  "free_after_bytes": 459679559680,
+  "observed_free_delta_bytes": 38711169024,
+  "functional_integrity": {
+    "extracted_ASTs_identical": 9,
+    "unchanged_real_score_results": 100,
+    "qwen_requests": 200,
+    "sgg_pairs": 200,
+    "sgg_predictions": 300,
+    "protected_files_unchanged": 6217,
+    "allowlisted_duplicate_output_files_removed": 109,
+    "unexpected_missing": [],
+    "unexpected_changed": [],
+    "GPU_inference": false
+  },
+  "tests": {
+    "CPU_pytest_passed": 139,
+    "Chromium_pytest_passed": 2,
+    "CUDA_VISIBLE_DEVICES": ""
+  },
+  "retired_code_manifest": "docs/LEVEL3_CLEANUP_CODE_V2.json",
+  "scope": "Level 3 only; no dataset mutation, no image/SGG inference, no push"
+}

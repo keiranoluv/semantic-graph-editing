@@ -82,11 +82,11 @@ def identity():
         ROOT / "scripts/run_level3_qwen_scoring_v1.sh",
         ROOT / "tools/level3_image_graph_v1/core.py",
         ROOT / "tools/level3_qwen21_v1/core.py",
-        ROOT / "tools/level3_qwen100_v1/viewer.py",
-        ROOT / "tools/level3_qwen100_v1/receipt.py",
-        ROOT / "tools/level3_task3_v1/scoring.py",
-        ROOT / "tools/level3_task3_v1/core.py",
+        ROOT / "tools/level3_shared/preview.py",
+        ROOT / "tools/level3_shared/receipts.py",
+        ROOT / "tools/level3_shared/geometry.py",
         ROOT / "src/editing/operations.py",
+        ROOT / "tools/level3_shared/__init__.py",
         ROOT / "requirements-level3-sgg-pretrained-v2.txt",
     ]
     if subprocess.check_output(["git", "status", "--porcelain", "--", *map(str, files)], text=True, cwd=ROOT):

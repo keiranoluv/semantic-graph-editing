@@ -1,5 +1,7 @@
 # Pilot pretrained SGG v2: REACT++ → RelateAnything
 
+> Tài liệu thực nghiệm lịch sử. Launcher/giao diện pilot tương ứng đã nghỉ dùng; các kết quả ảnh/graph được giữ. Dùng [luồng hiện tại](LEVEL3_CLEANUP.md); code cũ có thể đọc lại tại commit `1d2d876`.
+
 ## Quyết định sau pilot 5 ảnh — 15/11/2026
 
 Người dùng đã chốt **REACT++ PSG YOLO12m ONNX làm extractor chính cho Task 3**

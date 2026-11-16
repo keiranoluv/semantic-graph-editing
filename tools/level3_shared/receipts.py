@@ -1,4 +1,4 @@
-"""Exclude mutable W&B transport files from immutable local evidence receipts."""
+"""Immutable run evidence excludes mutable W&B transport files."""
 from tools.level3_image_graph_v1.core import sha256, write
 
 

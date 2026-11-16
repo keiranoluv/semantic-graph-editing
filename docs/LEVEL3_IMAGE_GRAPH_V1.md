@@ -1,5 +1,7 @@
 # Level 3 — Image → Scene Graph cho pilot Việt Nam v2
 
+> Tài liệu thực nghiệm lịch sử. Launcher/giao diện pilot tương ứng đã nghỉ dùng; các kết quả ảnh/graph được giữ. Dùng [luồng hiện tại](LEVEL3_CLEANUP.md); code cũ có thể đọc lại tại commit `1d2d876`.
+
 Triển khai riêng tại `tools/level3_image_graph_v1/`, không đổi `src/`, Level 1/2,
 manifest/config cũ hoặc 30 ảnh đã khóa. Đây là tầng sinh **graph ứng viên** và
 kiểm duyệt; chưa phải nhãn chuẩn, chưa sinh ảnh chỉnh sửa hay chấm consistency.
