@@ -1,0 +1,609 @@
+{
+  "schema": "level3-results-summary-v1",
+  "date_utc": "2026-11-16",
+  "report": "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a",
+  "html": "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a/analysis-final-v1/index.html",
+  "method": {
+    "editor": "Qwen/Qwen-Image-2.1",
+    "editor_seed": 42,
+    "editor_steps": 40,
+    "sgg": "REACT++",
+    "graph_formula": "G = E * P; abstentions stay null",
+    "clip": "openai/clip-vit-base-patch32; 2.5 * max(cosine, 0)",
+    "lpips": "AlexNet v0.1; negate for higher-is-better comparison",
+    "no_label_tuning": true,
+    "held_out_generalization_claim": false
+  },
+  "input_hashes": {
+    "configs/level3/qwen200-cohort-v1.json": "3abb396609aea1b981ee99f3cbb0c2237bd13a6882ec5e4f80351ecf76c29109",
+    "runs/level3/qwen200/seed42/index.json": "ba723eaf6536004b0ad020bfbfc220d42a0453dbd69af05bac697be0316ffbda",
+    "runs/level3/qwen-sgg/seed42/results.json": "3f63a76c55c1a94437343aec1f8e37dd7ab0c16341e18b9ab23dd06d6b94bdaa",
+    "configs/level3/evaluation200-authoring-v1.json": "f51172d9fbce149673922e12ef114f5020053b459ed01ae43e203f4bd798264d",
+    "runs/level3/evaluation-v1/seed42/graph/results.json": "6b6cff41f337df0b0acaa4426d25ca977cac75c88db8da16696a45db521ff00e",
+    "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a/summary.json": "1f29361868e7b19e9a9a041b07de560696d852eb7c3b7d6901a1964b2c5b1dcf",
+    "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a/results.json": "76b76a9418cd1578ef0cf37710c07cafe421cea66bdb16981517be5c70ef492d",
+    "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a/labels.json": "fc13b41bcfb8052d04cac71cb968e53251c2cf29402cafbb91697576636a9d79",
+    "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a/disagreement-candidates.json": "8272965d7b5c4bb88f5d75aeb5e64d4f4a5911701c615b7a2fccec1f33d4ca05",
+    "runs/level3/evaluation-v1/seed42/metrics/results.json": "a910e616933aa95d9ff715bdc196f9f8531f1fc1dd888841727565719b844929",
+    "configs/level3/evaluation200-v1.json": "19afdd88eda1ca1592b646d163d1a05b5f4260c8d0a163fcf42be637037d858a",
+    "data/cache/level3-task3-v1/clip/preprocessor_config.json": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+    "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a/results.csv": "5ebac3ac90d58d18992c9ccdf43426bc26ef339d9a13272b8128ea6652894091"
+  },
+  "analysis_receipt_sha256": "07f25ee371d0d132e6150de6cb469d635d1806ddd909e15420840b0df608beaf",
+  "analysis_provenance": {
+    "notes_sha256": "12f5980727fe80331ad6e722b221cd6a5d46bc058b2504e9c3b531187b02460c",
+    "code_sha256": {
+      "__init__.py": "942064e192c99dc516fcf79ed335853cc76ea534888e05fa401f15a85bf4cb3d",
+      "__main__.py": "bb2a7c050a6cc20242b12cdd4d46f3a02d8b4900625bd7da7d64bdd6d8a9732e",
+      "core.py": "871f19224b2085e51f0443a7b273064a1a50bd3b573fb9ef3b041b6bfcc11890",
+      "viewer.html": "ce8d493ec7546294a420429ce2e446dc4e5a8b27d1c5352eb6ff58e8eeb6c643"
+    },
+    "packages": {
+      "numpy": "2.2.6",
+      "scipy": "1.16.3",
+      "Pillow": "11.3.0",
+      "transformers": "4.57.1"
+    }
+  },
+  "summary": {
+    "all": {
+      "all_available_secondary_correlations": {
+        "clipscore": {
+          "n": 200,
+          "spearman": 0.03286402507242139,
+          "reason": null
+        },
+        "graph_consistency": {
+          "n": 91,
+          "spearman": 0.17672593931863317,
+          "reason": null
+        },
+        "negative_lpips": {
+          "n": 200,
+          "spearman": 0.22847698705727224,
+          "reason": null
+        }
+      },
+      "common_case_correlations": {
+        "clipscore": {
+          "n": 91,
+          "spearman": 0.05605408465144451,
+          "reason": null
+        },
+        "graph_consistency": {
+          "n": 91,
+          "spearman": 0.17672593931863317,
+          "reason": null
+        },
+        "negative_lpips": {
+          "n": 91,
+          "spearman": 0.19618929628005582,
+          "reason": null
+        }
+      },
+      "common_n": 91,
+      "components": {
+        "edit_vs_fulfillment": {
+          "n": 162,
+          "spearman": 0.20084185717887118,
+          "reason": null
+        },
+        "preservation_vs_human": {
+          "n": 109,
+          "spearman": 0.030202709665897595,
+          "reason": null
+        }
+      },
+      "graph_available": 91,
+      "human_labeled": 200,
+      "total_pairs": 200
+    },
+    "by_dataset": {
+      "sidewalk": {
+        "all_available_secondary_correlations": {
+          "clipscore": {
+            "n": 100,
+            "spearman": -0.01810284737822087,
+            "reason": null
+          },
+          "graph_consistency": {
+            "n": 38,
+            "spearman": 0.1597429738808307,
+            "reason": null
+          },
+          "negative_lpips": {
+            "n": 100,
+            "spearman": 0.05960693648926383,
+            "reason": null
+          }
+        },
+        "common_case_correlations": {
+          "clipscore": {
+            "n": 38,
+            "spearman": 0.017748248223425175,
+            "reason": null
+          },
+          "graph_consistency": {
+            "n": 38,
+            "spearman": 0.1597429738808307,
+            "reason": null
+          },
+          "negative_lpips": {
+            "n": 38,
+            "spearman": 0.1526349347214565,
+            "reason": null
+          }
+        },
+        "common_n": 38,
+        "components": {
+          "edit_vs_fulfillment": {
+            "n": 82,
+            "spearman": 0.31980998003666944,
+            "reason": null
+          },
+          "preservation_vs_human": {
+            "n": 48,
+            "spearman": -0.03228361989890548,
+            "reason": null
+          }
+        },
+        "graph_available": 38,
+        "human_labeled": 100,
+        "total_pairs": 100
+      },
+      "travel": {
+        "all_available_secondary_correlations": {
+          "clipscore": {
+            "n": 100,
+            "spearman": 0.008752337117670527,
+            "reason": null
+          },
+          "graph_consistency": {
+            "n": 53,
+            "spearman": 0.13592963578438416,
+            "reason": null
+          },
+          "negative_lpips": {
+            "n": 100,
+            "spearman": 0.1735880195004654,
+            "reason": null
+          }
+        },
+        "common_case_correlations": {
+          "clipscore": {
+            "n": 53,
+            "spearman": 0.037355454312035054,
+            "reason": null
+          },
+          "graph_consistency": {
+            "n": 53,
+            "spearman": 0.13592963578438416,
+            "reason": null
+          },
+          "negative_lpips": {
+            "n": 53,
+            "spearman": 0.16343011261515336,
+            "reason": null
+          }
+        },
+        "common_n": 53,
+        "components": {
+          "edit_vs_fulfillment": {
+            "n": 80,
+            "spearman": 0.11224602755526586,
+            "reason": null
+          },
+          "preservation_vs_human": {
+            "n": 61,
+            "spearman": -0.19097734626454557,
+            "reason": null
+          }
+        },
+        "graph_available": 53,
+        "human_labeled": 100,
+        "total_pairs": 100
+      }
+    },
+    "by_operation": {
+      "add": {
+        "all_available_secondary_correlations": {
+          "clipscore": {
+            "n": 106,
+            "spearman": 0.050173857341793714,
+            "reason": null
+          },
+          "graph_consistency": {
+            "n": 60,
+            "spearman": 0.07529670097197205,
+            "reason": null
+          },
+          "negative_lpips": {
+            "n": 106,
+            "spearman": 0.2334175102422577,
+            "reason": null
+          }
+        },
+        "common_case_correlations": {
+          "clipscore": {
+            "n": 60,
+            "spearman": -0.006623581791134384,
+            "reason": null
+          },
+          "graph_consistency": {
+            "n": 60,
+            "spearman": 0.07529670097197205,
+            "reason": null
+          },
+          "negative_lpips": {
+            "n": 60,
+            "spearman": 0.17442098716653878,
+            "reason": null
+          }
+        },
+        "common_n": 60,
+        "components": {
+          "edit_vs_fulfillment": {
+            "n": 101,
+            "spearman": 0.09093257859606314,
+            "reason": null
+          },
+          "preservation_vs_human": {
+            "n": 60,
+            "spearman": -0.19205690866870292,
+            "reason": null
+          }
+        },
+        "graph_available": 60,
+        "human_labeled": 106,
+        "total_pairs": 106
+      },
+      "attribute": {
+        "all_available_secondary_correlations": {
+          "clipscore": {
+            "n": 10,
+            "spearman": -0.1740776559556978,
+            "reason": null
+          },
+          "graph_consistency": {
+            "n": 0,
+            "spearman": null,
+            "reason": "fewer_than_two_cases"
+          },
+          "negative_lpips": {
+            "n": 10,
+            "spearman": 0.058025885318565944,
+            "reason": null
+          }
+        },
+        "common_case_correlations": {
+          "clipscore": {
+            "n": 0,
+            "spearman": null,
+            "reason": "fewer_than_two_cases"
+          },
+          "graph_consistency": {
+            "n": 0,
+            "spearman": null,
+            "reason": "fewer_than_two_cases"
+          },
+          "negative_lpips": {
+            "n": 0,
+            "spearman": null,
+            "reason": "fewer_than_two_cases"
+          }
+        },
+        "common_n": 0,
+        "components": {
+          "edit_vs_fulfillment": {
+            "n": 0,
+            "spearman": null,
+            "reason": "fewer_than_two_cases"
+          },
+          "preservation_vs_human": {
+            "n": 7,
+            "spearman": 0.0,
+            "reason": null
+          }
+        },
+        "graph_available": 0,
+        "human_labeled": 10,
+        "total_pairs": 10
+      },
+      "remove": {
+        "all_available_secondary_correlations": {
+          "clipscore": {
+            "n": 66,
+            "spearman": -0.1262081704366057,
+            "reason": null
+          },
+          "graph_consistency": {
+            "n": 23,
+            "spearman": 0.12712834523274563,
+            "reason": null
+          },
+          "negative_lpips": {
+            "n": 66,
+            "spearman": 0.22110153166713634,
+            "reason": null
+          }
+        },
+        "common_case_correlations": {
+          "clipscore": {
+            "n": 23,
+            "spearman": -0.06356417261637282,
+            "reason": null
+          },
+          "graph_consistency": {
+            "n": 23,
+            "spearman": 0.12712834523274563,
+            "reason": null
+          },
+          "negative_lpips": {
+            "n": 23,
+            "spearman": 0.3813850356982369,
+            "reason": null
+          }
+        },
+        "common_n": 23,
+        "components": {
+          "edit_vs_fulfillment": {
+            "n": 47,
+            "spearman": 0.5646597025732798,
+            "reason": null
+          },
+          "preservation_vs_human": {
+            "n": 32,
+            "spearman": -0.0695909407642074,
+            "reason": null
+          }
+        },
+        "graph_available": 23,
+        "human_labeled": 66,
+        "total_pairs": 66
+      },
+      "replace": {
+        "all_available_secondary_correlations": {
+          "clipscore": {
+            "n": 18,
+            "spearman": -0.05151400834889318,
+            "reason": null
+          },
+          "graph_consistency": {
+            "n": 8,
+            "spearman": 0.24743582965269675,
+            "reason": null
+          },
+          "negative_lpips": {
+            "n": 18,
+            "spearman": -0.07727101252333976,
+            "reason": null
+          }
+        },
+        "common_case_correlations": {
+          "clipscore": {
+            "n": 8,
+            "spearman": -0.24743582965269675,
+            "reason": null
+          },
+          "graph_consistency": {
+            "n": 8,
+            "spearman": 0.24743582965269675,
+            "reason": null
+          },
+          "negative_lpips": {
+            "n": 8,
+            "spearman": -0.5773502691896257,
+            "reason": null
+          }
+        },
+        "common_n": 8,
+        "components": {
+          "edit_vs_fulfillment": {
+            "n": 14,
+            "spearman": 0.6793662204867574,
+            "reason": null
+          },
+          "preservation_vs_human": {
+            "n": 10,
+            "spearman": null,
+            "reason": "constant_scores_or_labels"
+          }
+        },
+        "graph_available": 8,
+        "human_labeled": 18,
+        "total_pairs": 18
+      }
+    },
+    "graph_sha256": "6b6cff41f337df0b0acaa4426d25ca977cac75c88db8da16696a45db521ff00e",
+    "human_labels_used_for_tuning": false,
+    "metrics_sha256": "a910e616933aa95d9ff715bdc196f9f8531f1fc1dd888841727565719b844929",
+    "preliminary": false,
+    "protocol": {
+      "color": "E and G null; structural P reported separately",
+      "component_comparison": "E against edit_fulfillment; evaluable P against preservation",
+      "constant_vectors": "undefined, never zero",
+      "disagreement_selection": "rank-percentile gap between G and each image metric; select top 10 common cases for qualitative inspection; not confirmed disagreement labels",
+      "human_labels_used_for_tuning": false,
+      "overall_pass": "edit_fulfillment AND preservation",
+      "primary_comparison": "Spearman G, CLIPScore, negative_LPIPS against overall_pass on the same common evaluable cases",
+      "split": "entire cohort is development evaluation; no held-out generalization claim"
+    },
+    "review_sha256": "0fc28934ad71812ad32c987c478d1e94e41a6953b889a1241ec3616e9dc5bc54",
+    "schema": "level3-evaluation-report-v1"
+  },
+  "labels": {
+    "all": {
+      "n": 200,
+      "overall_pass": 175,
+      "overall_fail": 25,
+      "edit_fail": 10,
+      "preservation_fail": 18
+    },
+    "common": {
+      "n": 91,
+      "overall_pass": 82,
+      "overall_fail": 9,
+      "edit_fail": 4,
+      "preservation_fail": 6
+    },
+    "abstained": {
+      "n": 109,
+      "overall_pass": 93,
+      "overall_fail": 16,
+      "edit_fail": 6,
+      "preservation_fail": 12
+    },
+    "user_defaulted_fields": 287,
+    "user_defaulted_cases": 144,
+    "confirmation": {
+      "changed_task_ids": [],
+      "confirmed_at_utc": "2026-11-16T13:30:09.489654+00:00",
+      "normalized_input_sha256": "9dadbd04eef703d9c692180ed54ed8c295cb3cd084115aff1c85b929399e5faf",
+      "schema": "qwen-label-recheck-confirmation-v1",
+      "user_confirmation": "Không sửa, dùng bộ nhãn hiện có"
+    }
+  },
+  "bootstrap": {
+    "method": "paired source-image cluster bootstrap; percentile 95% intervals; no independent-pair p-values",
+    "scope": "exploratory uncertainty conditional on the common evaluable development cohort",
+    "seed": 42,
+    "replicates": 2000,
+    "common_pairs": 91,
+    "source_clusters": 62,
+    "intervals": {
+      "graph_consistency": {
+        "valid_replicates": 2000,
+        "undefined_replicates": 0,
+        "ci95": [
+          -0.030359180289565916,
+          0.3570944606311019
+        ]
+      },
+      "clipscore": {
+        "valid_replicates": 2000,
+        "undefined_replicates": 0,
+        "ci95": [
+          -0.12448667492738724,
+          0.22326167955538231
+        ]
+      },
+      "negative_lpips": {
+        "valid_replicates": 2000,
+        "undefined_replicates": 0,
+        "ci95": [
+          -0.01781710105353373,
+          0.3908129871027733
+        ]
+      },
+      "G_minus_CLIPScore": {
+        "valid_replicates": 2000,
+        "undefined_replicates": 0,
+        "ci95": [
+          -0.17951036759063438,
+          0.3963559203595555
+        ]
+      },
+      "G_minus_negative_LPIPS": {
+        "valid_replicates": 2000,
+        "undefined_replicates": 0,
+        "ci95": [
+          -0.3179127044246425,
+          0.2659090487855347
+        ]
+      }
+    }
+  },
+  "visual_review": {
+    "file": "reports/level3/evaluation200-v1/visual-review.json",
+    "sha256": "12f5980727fe80331ad6e722b221cd6a5d46bc058b2504e9c3b531187b02460c",
+    "cases": [
+      {
+        "index": 58,
+        "task_id": "travel-7bb0c6b3635205-q100-1",
+        "status": "assistant_visually_inspected"
+      },
+      {
+        "index": 69,
+        "task_id": "travel-f50006ee6533fd-q100-1",
+        "status": "assistant_visually_inspected"
+      },
+      {
+        "index": 178,
+        "task_id": "travel-4b531787105fc7-q200-2",
+        "status": "assistant_visually_inspected"
+      },
+      {
+        "index": 168,
+        "task_id": "travel-5335a75704bb20-q200-2",
+        "status": "assistant_visually_inspected"
+      },
+      {
+        "index": 22,
+        "task_id": "sidewalk-33f7974a8750b3-q100-1",
+        "status": "assistant_visually_inspected"
+      },
+      {
+        "index": 188,
+        "task_id": "travel-024f0364d89cf8-q200-2",
+        "status": "assistant_visually_inspected"
+      },
+      {
+        "index": 160,
+        "task_id": "travel-04ea5302b09c26-q200-2",
+        "status": "assistant_visually_inspected"
+      },
+      {
+        "index": 187,
+        "task_id": "travel-9a88db6f11f97f-q200-2",
+        "status": "assistant_visually_inspected"
+      },
+      {
+        "index": 198,
+        "task_id": "travel-bc738e0b6f7cc0-q200-2",
+        "status": "assistant_visually_inspected"
+      },
+      {
+        "index": 48,
+        "task_id": "sidewalk-6ae28a57c0ade0-q100-1",
+        "status": "assistant_visually_inspected"
+      }
+    ],
+    "is_graph_ground_truth": false
+  },
+  "validation": {
+    "cpu_tests": 35,
+    "browser": {
+      "engine": "Chromium via Playwright",
+      "articles": 10,
+      "loaded_images": 23,
+      "bbox_toggle": "passed",
+      "csv_and_json_download": "passed",
+      "console_errors": 0,
+      "mobile_width": 390,
+      "mobile_scroll_width": 390
+    },
+    "frozen_check": {
+      "pairs": 200,
+      "metric_assets": 11,
+      "captions": 200,
+      "maximum_tokens": 34
+    },
+    "analysis_resume": "passed",
+    "gpu_started_by_assistant_this_turn": false
+  },
+  "wandb_metrics": {
+    "id": "73zepw44",
+    "url": "https://wandb.ai/keiranoluv-hcmus/level3-evaluation200-v1/runs/73zepw44"
+  },
+  "limitations": [
+    "91/200 common evaluable pairs; missingness is not random",
+    "175/200 overall pass; only 9 overall failures among 91 common cases",
+    "10 color edits unsupported by graph E/G",
+    "287 blank fields interpreted as pass under explicit user authorization",
+    "10 largest rank disagreements are not a random SGG accuracy sample",
+    "No ground-truth graphs or SGG object/relation F1",
+    "Only editor seed 42; bootstrap does not replace multi-seed experiments",
+    "Caption/grounding authoring is assistant-derived, with declared prior exposure",
+    "Per-image licensing evidence and final submission packaging remain to be completed"
+  ]
+}

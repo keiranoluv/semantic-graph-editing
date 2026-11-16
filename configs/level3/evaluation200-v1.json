@@ -1,0 +1,46 @@
+{
+  "schema": "level3-evaluation-v1",
+  "cohort": "configs/level3/qwen200-cohort-v1.json",
+  "authoring": "configs/level3/evaluation200-authoring-v1.json",
+  "qwen_run": "runs/level3/qwen200/seed42",
+  "sgg_run": "runs/level3/qwen-sgg/seed42",
+  "seed": 42,
+  "batch_size": 1,
+  "training": false,
+  "expected_pairs": 200,
+  "graph_config": {
+    "ambiguity_margin": 0.05,
+    "matching_iou": 0.3,
+    "min_edit_object_confidence": 0.4,
+    "relabel_iou": 0.5
+  },
+  "metric_protocol": {
+    "clip_model": "openai/clip-vit-base-patch32",
+    "clip_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "clip_prefix": "A photo depicts ",
+    "clip_formula": "2.5 * max(cosine,0)",
+    "dtype": "float32",
+    "lpips_net": "alex",
+    "lpips_version": "0.1",
+    "lpips_resize": "source resized to target native dimensions using PIL LANCZOS; RGB [-1,1]; no crop",
+    "caption_truncation": false
+  },
+  "evaluation_protocol": {
+    "overall_pass": "edit_fulfillment AND preservation",
+    "primary_comparison": "Spearman G, CLIPScore, negative_LPIPS against overall_pass on the same common evaluable cases",
+    "component_comparison": "E against edit_fulfillment; evaluable P against preservation",
+    "constant_vectors": "undefined, never zero",
+    "human_labels_used_for_tuning": false,
+    "split": "entire cohort is development evaluation; no held-out generalization claim",
+    "color": "E and G null; structural P reported separately",
+    "disagreement_selection": "rank-percentile gap between G and each image metric; select top 10 common cases for qualitative inspection; not confirmed disagreement labels"
+  },
+  "files_sha256": {
+    "configs/level3/qwen200-cohort-v1.json": "3abb396609aea1b981ee99f3cbb0c2237bd13a6882ec5e4f80351ecf76c29109",
+    "configs/level3/evaluation200-authoring-v1.json": "f51172d9fbce149673922e12ef114f5020053b459ed01ae43e203f4bd798264d",
+    "configs/level3/task3-assets-v1.json": "b0cf69716d90fc82398bc1094e707703e9c8a278524e04d997520c949ca237f5",
+    "runs/level3/qwen200/seed42/index.json": "ba723eaf6536004b0ad020bfbfc220d42a0453dbd69af05bac697be0316ffbda",
+    "runs/level3/qwen-sgg/seed42/index.json": "f4e6f7f56925d72ca5d87a8da08674b6bddf39a8c38386873ae8cf9342961637",
+    "runs/level3/qwen-sgg/seed42/results.json": "3f63a76c55c1a94437343aec1f8e37dd7ab0c16341e18b9ab23dd06d6b94bdaa"
+  }
+}

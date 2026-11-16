@@ -39,4 +39,6 @@ Có thể thêm cùng `RUN_ID=...` để xem lượt khác. Server chỉ dựng 
 
 Chi tiết thực nghiệm: [Qwen](LEVEL3_QWEN.md), [SGG](LEVEL3_SGG.md), [dọn dẹp và artifacts được giữ](LEVEL3_CLEANUP.md).
 
+Sau khi có ảnh/SG, dùng [bộ đánh giá 200 cặp](LEVEL3_EVALUATION.md) để chấm graph trên CPU, tính CLIPScore/LPIPS và đối chiếu nhãn tay. Đây là bước độc lập, không được hai launcher trên tự gọi.
+
 Kiểm tra CPU: 48 tests của Qwen/SGG và chuỗi hai bước đều qua; bao gồm 200 case tổng hợp, 300 prediction tổng hợp, ngắt/resume và từ chối input sai. Đã đọc kiểm tra 200 cặp/300 ảnh thật bằng tên lượt khác qua bản sao metadata tạm, xác nhận cùng model protocol và không đổi artifact cũ. Không chạy thêm inference ảnh hoặc SGG thật trong lần sửa này.
