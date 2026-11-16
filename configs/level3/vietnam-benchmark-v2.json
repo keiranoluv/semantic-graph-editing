@@ -1,0 +1,39 @@
+{
+  "protocol": "vietnam_scene_graph_editing_benchmark_v2_50_50",
+  "selection_seed": 42,
+  "candidate_multiplier": 2,
+  "pilots": {
+    "sidewalk": 15,
+    "travel": 15
+  },
+  "final": {
+    "sidewalk": 50,
+    "travel": 50
+  },
+  "image_quality": {
+    "min_short_side": 360,
+    "min_long_side": 640,
+    "max_megapixels": 30,
+    "max_image_bytes": 20000000
+  },
+  "target_instruction_count": 150,
+  "sources": {
+    "sidewalk": {
+      "repo_id": "manhdungcr7/dataset_viahe_vqa",
+      "repo_type": "dataset",
+      "source_page": "https://huggingface.co/datasets/manhdungcr7/dataset_viahe_vqa",
+      "dataset_license_claim": "CC BY-NC 4.0",
+      "notes": "Real street photos; may contain identifiable faces and vehicle plates. Manual privacy review required."
+    },
+    "travel": {
+      "repo_id": "phunguyendinhkh/VietTravelVQA-v2",
+      "repo_type": "dataset",
+      "source_page": "https://huggingface.co/datasets/phunguyendinhkh/VietTravelVQA-v2",
+      "canonical_release": "https://doi.org/10.17632/fvxtpnh8mh.2",
+      "dataset_license_claim": "CC BY 4.0",
+      "notes": "Images originate on Wikimedia Commons; verify ORIGINAL per-image Wikimedia license and creator."
+    }
+  },
+  "download_multiplier": 3,
+  "source_policy": "Photographs only; visible distinguishable entities and at least one meaningful relation; no unredacted faces or vehicle plates in distributed outputs."
+}

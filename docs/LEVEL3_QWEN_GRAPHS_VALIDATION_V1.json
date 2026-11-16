@@ -1,0 +1,137 @@
+{
+  "CPU_tests_passed_before_GPU": 32,
+  "GPU_memory_caveat": "Whole-device sampled usage; other GPU activity was observed before this run. Do not attribute all peak memory to REACT++.",
+  "ORT_kernel_events": {
+    "CPUExecutionProvider": 70800,
+    "CUDAExecutionProvider": 232400
+  },
+  "ORT_profile_model_calls": 200,
+  "browser": {
+    "boxes_match_graphs": true,
+    "cases_checked": 100,
+    "edge_arrows_match_graphs": true,
+    "image_previews_decoded": 200,
+    "javascript_errors": []
+  },
+  "case_receipts_verified": 100,
+  "code_commit_before_gpu": "4dc149af0d6388a9b5228a3f4249e4a9434636dd",
+  "cross_image_correspondence_computed": false,
+  "cuda_runtime": {
+    "cuda_build": "12.8",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "inputs": [
+      {
+        "name": "input",
+        "shape": [
+          "batch_size",
+          3,
+          640,
+          640
+        ],
+        "type": "tensor(float)"
+      }
+    ],
+    "preprocess": "official_640_letterbox_BGR_to_RGB_CHW_float32_div255",
+    "providers": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+    ]
+  },
+  "execution": {
+    "attributes": "unsupported_no_attribute_head",
+    "cross_image_alignment": "not_computed",
+    "error": null,
+    "gpu_memory": {
+      "peak_used_mib": 9322,
+      "sample_count": 475,
+      "sampling_interval_seconds": 0.25,
+      "scope": "total_GPU_0_usage_including_other_processes",
+      "total_mib": 32607
+    },
+    "parse_success": 1.0,
+    "profile": {
+      "kernel_events_by_provider": {
+        "CPUExecutionProvider": 70800,
+        "CUDAExecutionProvider": 232400
+      },
+      "profile": "react-profile_2026-11-15_15-54-56.json"
+    },
+    "quality_metrics": {
+      "graph_consistency": null,
+      "grounding_accuracy": null,
+      "hallucination_rate": null,
+      "object_precision_recall_f1": null,
+      "relation_precision_recall_f1": null
+    },
+    "quality_status": "requires_graph_ground_truth_or_manual_review",
+    "requested_images": 200,
+    "requested_pairs": 100,
+    "seconds_including_load_inference_and_profile": 126.82352115400136,
+    "status_counts": {
+      "ok": 200
+    }
+  },
+  "graph_and_grounding_replay_exact": true,
+  "graph_size_diagnostics_not_quality": {
+    "source": {
+      "edges": {
+        "max": 97,
+        "median": 14.0,
+        "min": 0,
+        "total": 1997,
+        "zero_images": 1
+      },
+      "nodes": {
+        "max": 33,
+        "median": 8.0,
+        "min": 1,
+        "total": 978,
+        "zero_images": 0
+      }
+    },
+    "target": {
+      "edges": {
+        "max": 97,
+        "median": 15.0,
+        "min": 2,
+        "total": 2144,
+        "zero_images": 0
+      },
+      "nodes": {
+        "max": 29,
+        "median": 9.0,
+        "min": 3,
+        "total": 1039,
+        "zero_images": 0
+      }
+    }
+  },
+  "graphs": 200,
+  "human_quality_labels_created": false,
+  "input_Qwen_receipt_sha256": "0ded41585cb33d7b9f386539d29a20109b2bcc784e0cd0be65d041b569088203",
+  "input_pixels_verified": 200,
+  "native_arrays_replayed_on_CPU": 200,
+  "pairs": 100,
+  "run": "runs/level3/qwen-react100-v1/seed42-v1",
+  "run_receipt_sha256": "5fc2ef998c3e1c44575dad5e2532b2798615cc9b8c7836ea5d017b3cbf374edd",
+  "schema": "qwen-react100-validation-v1",
+  "seconds_per_image_including_native_write_and_decode": {
+    "max": 0.5761921679950319,
+    "median": 0.04524652397958562,
+    "min": 0.018731331976596266,
+    "sum": 13.683120588655584
+  },
+  "validation_artifacts": "runs/level3/qwen-react100-v1/validation-v1",
+  "validation_receipt_sha256": "b33dc2ab49cd2b3edd14d68f07863d90fb692a8b9c0ba45633ae90d62c160620",
+  "wandb": {
+    "id": "q2ah2u8o",
+    "url": "https://wandb.ai/keiranoluv-hcmus/level3-qwen-react100-v1/runs/q2ah2u8o"
+  },
+  "zero_relation_cases": [
+    {
+      "nodes": 1,
+      "role": "source",
+      "task_id": "travel-9620d5a43793f0-q100-1"
+    }
+  ]
+}

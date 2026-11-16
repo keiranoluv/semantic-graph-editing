@@ -1,0 +1,48 @@
+{
+  "protocol": "vietnam_scene_graph_editing_benchmark_v1",
+  "selection_seed": 42,
+  "candidate_multiplier": 2,
+  "pilots": {
+    "sidewalk": 10,
+    "streetfood": 10,
+    "travel": 10
+  },
+  "final": {
+    "sidewalk": 40,
+    "streetfood": 30,
+    "travel": 30
+  },
+  "image_quality": {
+    "min_short_side": 360,
+    "min_long_side": 640,
+    "max_megapixels": 30,
+    "max_image_bytes": 20000000
+  },
+  "target_instruction_count": 150,
+  "sources": {
+    "sidewalk": {
+      "repo_id": "manhdungcr7/dataset_viahe_vqa",
+      "repo_type": "dataset",
+      "source_page": "https://huggingface.co/datasets/manhdungcr7/dataset_viahe_vqa",
+      "dataset_license_claim": "CC BY-NC 4.0",
+      "notes": "Real street photos; may contain identifiable faces and vehicle plates. Manual privacy review required."
+    },
+    "streetfood": {
+      "repo_id": "HoagMin/Vietnamese_StreetFood_Dataset",
+      "zip_file": "Vietnamese_StreetFood_14Class.zip",
+      "repo_type": "dataset",
+      "source_page": "https://huggingface.co/datasets/HoagMin/Vietnamese_StreetFood_Dataset",
+      "dataset_license_claim": "CC BY 4.0",
+      "notes": "Dataset card declares CC BY; original per-image ownership still requires review."
+    },
+    "travel": {
+      "repo_id": "phunguyendinhkh/VietTravelVQA-v2",
+      "repo_type": "dataset",
+      "source_page": "https://huggingface.co/datasets/phunguyendinhkh/VietTravelVQA-v2",
+      "canonical_release": "https://doi.org/10.17632/fvxtpnh8mh.2",
+      "dataset_license_claim": "CC BY 4.0",
+      "notes": "Images originate on Wikimedia Commons; verify ORIGINAL per-image Wikimedia license and creator."
+    }
+  },
+  "download_multiplier": 3
+}
