@@ -1,5 +1,7 @@
 # REACT++ cho 100 cặp nguồn/đích Qwen
 
+> Đây là run lịch sử 100 cặp. Luồng hiện tại cho đủ 200 yêu cầu, dùng chung 300 dự đoán ảnh và hỗ trợ resume, nằm ở [LEVEL3_SGG.md](LEVEL3_SGG.md), launcher `scripts/run_level3_sgg.sh`. Graph và provenance của run lịch sử được giữ nguyên và tái sử dụng sau khi xác minh.
+
 Chạy SGG độc lập với đánh giá chất lượng chỉnh sửa: không cần các nhãn Đúng yêu cầu / Bảo toàn để trích graph. Người dùng đã cho phép assistant chạy GPU lượt này, với điều kiện commit trước inference. Đây là lượt trích 200 graph, chưa phải đánh giá độ chính xác hoặc hoàn tất Graph Consistency Scoring.
 
 ## Dữ liệu và mô hình

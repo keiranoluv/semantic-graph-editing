@@ -4,7 +4,7 @@ VG150 scene graph learning, external knowledge exploration and planned controlla
 
 **Current scope:** VG150 PredCls MLP/GAT/GAT+KG with frozen CLIP region features; reviewed WordNet/ConceptNet mappings and TransE/RotatE/ComplEx exports. The 54 eligible frozen checkpoints have both graph-constrained and no-graph-constraint validation evaluations: [side-by-side results](reports/level1/reference-comparison/comparison.md). The main matrix also has historical legacy validation/test results; six relation-prior runs remain excluded pending L1/L2 resolution. See the [short Level 1 report](docs/LEVEL1_REPORT.md), [simple demo with both scoring modes](notebooks/level1_reference_demo.ipynb), [evaluation protocol](docs/evaluation/PredCls.md) and [audit](docs/experiments/level1_audit_2026-11-11.md). Human error analysis and the final submission remain unfinished.
 
-**Level 3:** Qwen-Image-2.1 has 200 completed edit requests from 100 source images. Use the [single inference/resume and review workflow](docs/LEVEL3_QWEN.md); the former two-stage launchers have been retired, with source history and experiment artifacts preserved.
+**Level 3:** Qwen-Image-2.1 has 200 completed edit requests from 100 source images. Use the [single inference/resume and review workflow](docs/LEVEL3_QWEN.md); the former two-stage launchers have been retired, with source history and experiment artifacts preserved. [REACT++ SGG](docs/LEVEL3_SGG.md) now covers all 200 edit pairs using 300 image predictions, with per-image reuse and resume.
 
 - [Level 1 progress and collaboration rules](docs/LEVEL1_PROGRESS.md)
 - [Model guide: inputs, outputs, scoring examples and purpose of every experiment](docs/LEVEL1_MODEL_GUIDE.md)

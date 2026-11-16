@@ -1,0 +1,96 @@
+{
+  "attributes": "unsupported_no_attribute_head",
+  "browser": {
+    "GPU_disabled": true,
+    "box_toggle_and_refresh_preserve_selection": true,
+    "browser_js_errors": [],
+    "decoded_previews": 400,
+    "image_box_and_directed_edge_counts_match_all_records": true,
+    "pairs_rendered": 200,
+    "review_data_sha256": "a690426002b967085dfc396479fb9a4fbc01b216eed6e17b9b6a55989d5f596a",
+    "separate_old_new_views": false,
+    "timestamp_utc": "2026-11-16T05:03:27.979560+00:00",
+    "unique_cached_images": 300
+  },
+  "config_sha256": "e3e06dd521660c944adde448a0840f617b01e4ebd92e83a486d373af5ed622c6",
+  "html": "runs/level3/qwen-sgg/seed42/comparison.html",
+  "implementation_commit_before_GPU": "34bd3432055bde424751833923bda76700e955e7",
+  "integrity": {
+    "GPU_execution": {
+      "attributes": "unsupported_no_attribute_head",
+      "automatic_next_run": false,
+      "error": null,
+      "gpu_memory": {
+        "peak_used_mib": 1149,
+        "sample_count": 100,
+        "sampling_interval_seconds": 0.25,
+        "scope": "total_GPU_0_usage_including_other_processes",
+        "total_mib": 32607
+      },
+      "new_images_attempted": 100,
+      "new_images_completed": 100,
+      "new_images_requested": 100,
+      "parse_success_on_attempted_images": 1.0,
+      "path": "/workspace/workspace/semantic-graph-editing/runs/level3/qwen-sgg/seed42/attempts/attempt-0001",
+      "profile": {
+        "kernel_events_by_provider": {
+          "CPUExecutionProvider": 35400,
+          "CUDAExecutionProvider": 116200
+        },
+        "profile": "react-profile_2026-11-16_04-59-36.json"
+      },
+      "quality_metrics": null,
+      "quality_status": "requires_graph_GT_or_manual_review",
+      "requested_pairs": 200,
+      "reused_images": 200,
+      "seconds_including_load_inference": 28.99900566699216,
+      "successful_images": 300,
+      "unique_images": 300
+    },
+    "bound_graph_records_validated": 400,
+    "cohort_pairs": 200,
+    "completed_resume_exit_code": 0,
+    "completed_resume_new_attempts": 0,
+    "completed_resume_stdout": "{\"pairs\": 200, \"unique_images\": 300, \"cached_images\": 300, \"pending_images\": 0, \"pending_roles\": {}}",
+    "native_arrays_verified": 300,
+    "new_source_predictions": 0,
+    "new_target_predictions": 100,
+    "node_edge_confidences_preserved": true,
+    "pair_receipts_verified": 200,
+    "prediction_origins": {
+      "legacy": 200,
+      "unified": 100
+    },
+    "protected_metadata_files_unchanged": 47,
+    "source_graph_content_shared_exactly": true,
+    "unique_source_images": 100,
+    "unique_target_images": 200,
+    "wandb": {
+      "id": "vpse4rgm",
+      "url": "https://wandb.ai/keiranoluv-hcmus/level3-qwen-sgg200/runs/vpse4rgm"
+    }
+  },
+  "output": "runs/level3/qwen-sgg/seed42",
+  "quality_metrics": null,
+  "quality_status": "parse success is technical only; graph GT/manual image review still required",
+  "resume_command": "bash scripts/run_level3_sgg.sh infer --max-new-images 100",
+  "runtime_warnings": [
+    {
+      "message": "ScatterND with reduction=='none' only guarantees to be correct if indices are not duplicated.",
+      "note": "Generic ONNX Runtime warning; duplicate-index condition was not independently verified. This run completed with real CUDA profile evidence.",
+      "observed_count": 3,
+      "scope": "official ONNX CUDA model initialization stderr"
+    }
+  ],
+  "schema": "qwen-sgg-unified-validation-v1",
+  "scoring_scope": "existing 100-pair graph-scoring artifacts retained; no new scoring run",
+  "server_command": "bash scripts/run_level3_sgg.sh serve",
+  "server_url": "http://localhost:8009/comparison.html",
+  "test_harness_notes": [
+    "Temporary Python HTTP server logged a ConnectionResetError during rapid browser automation; all 200 pair DOM checks and 400 image decodes passed, with no JavaScript errors."
+  ],
+  "tests": {
+    "CPU_passed": 40,
+    "Chromium_test_passed": 1
+  }
+}

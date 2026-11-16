@@ -62,3 +62,13 @@ CUDA_VISIBLE_DEVICES='' myenv/bin/python -m pytest -q tests/level3/test_qwen_sgg
 ```
 
 Tests dùng native arrays/graph tổng hợp trên CPU, không phải kết quả inference thật. Kiểm tra tái sử dụng graph nguồn, rebinding đúng ID, rejection khi hash/cấu hình thay đổi, bảo toàn relations/confidence, budget trước GPU, resume sau OOM giả lập và phân biệt graph rỗng với parse error.
+
+## Kết quả thực tế — 2026-11-16
+
+Đã commit implementation **`34bd343`** sau 40 test CPU và 1 test Chromium, rồi chạy GPU theo yêu cầu trực tiếp của người dùng. Chỉ chạy **100 target mới**, tái sử dụng 200 dự đoán lịch sử. **100/100** target mới parse thành công, đủ **300/300** dự đoán ảnh và **200/200** cặp graph, không lỗi/OOM. Thời gian ghi nhận gồm load/inference và ghi evidence: **28,999 giây** (không gồm bước dựng lại toàn bộ HTML sau inference). Peak tổng GPU 0 đo bằng nvidia-smi: **1.149 MiB / 32.607 MiB**, 100 mẫu đo. Profile ONNX có **116.200 CUDA kernel events** và 35.400 CPU kernel events; CPU events là các phần được ORT phân công, session CUDA được xác minh và không fallback toàn bộ sang CPU.
+
+W&B đã đồng bộ metadata/metrics, không upload ảnh: [seed42-attempt-0001](https://wandb.ai/keiranoluv-hcmus/level3-qwen-sgg200/runs/vpse4rgm). Native arrays của 300 dự đoán, 200 pair receipts và 400 graph records đã được đối chiếu; nội dung node/edge/confidence của phần tái sử dụng không đổi. 47 file metadata/source/nhãn hoặc thay đổi riêng được đối chiếu không đổi. Test resume với GPU ẩn nhận cache 300/300, không tạo attempt mới. Kiểm tra ảnh thật trên Chromium: đủ 200 cặp, 400 preview, số box/cạnh trong DOM khớp dữ liệu, không lỗi JavaScript.
+
+ORT in ba cảnh báo `ScatterND` về điều kiện chỉ số không trùng khi `reduction='none'`; điều kiện này chưa được kiểm chứng riêng, không được diễn giải thành chứng nhận độ chính xác/determinism. Trong automation, server HTTP tạm ghi một `ConnectionResetError` khi client chuyển/đóng request; các kiểm tra hiển thị đều qua. Các cảnh báo và phạm vi kiểm tra được ghi trong [LEVEL3_SGG_VALIDATION_V1.json](LEVEL3_SGG_VALIDATION_V1.json), bằng chứng local ở `runs/level3/qwen-sgg/validation-v1/`.
+
+Các con số trên là hoàn tất kỹ thuật, không phải precision/recall/F1 hay chứng nhận chất lượng graph. Bộ chấm Graph Consistency cũ vẫn ở phạm vi 100 cặp; chưa tự chạy bộ chấm cho 200 cặp.
