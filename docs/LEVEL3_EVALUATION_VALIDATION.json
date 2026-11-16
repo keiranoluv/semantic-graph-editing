@@ -1,0 +1,144 @@
+{
+  "schema": "level3-evaluation-validation-v1",
+  "code_commit": "bbffc057dc0d5d2b20569a5711bba837e04c5465",
+  "branch": "feat/level3-vietnam-benchmark-v2",
+  "tests": {
+    "cpu_passed": 48,
+    "browser_tests_passed": 2,
+    "actual_200_review_browser": {
+      "two_fields": true,
+      "no_notes": true,
+      "no_Pix2Pix": true,
+      "no_automatic_scores": true,
+      "first_and_last_images_loaded": true,
+      "reload_and_JSON_import_export": true,
+      "isolated_context_user_labels_untouched": true
+    }
+  },
+  "integrity": {
+    "original_sources_verified": 100,
+    "Qwen_pairs_verified": 200,
+    "SGG_predictions_native_and_receipts_verified": 300,
+    "old_100_score_records_exact_match": 100,
+    "old_scores_sha256": "6a3d018765c4ca1f88ab9ceec02815628543c0c5351cd96eb5212cc6727c04a0",
+    "frozen_inputs_sha256": {
+      "configs/level3/qwen200-cohort-v1.json": "3abb396609aea1b981ee99f3cbb0c2237bd13a6882ec5e4f80351ecf76c29109",
+      "configs/level3/evaluation200-authoring-v1.json": "f51172d9fbce149673922e12ef114f5020053b459ed01ae43e203f4bd798264d",
+      "configs/level3/task3-assets-v1.json": "b0cf69716d90fc82398bc1094e707703e9c8a278524e04d997520c949ca237f5",
+      "runs/level3/qwen200/seed42/index.json": "ba723eaf6536004b0ad020bfbfc220d42a0453dbd69af05bac697be0316ffbda",
+      "runs/level3/qwen-sgg/seed42/index.json": "f4e6f7f56925d72ca5d87a8da08674b6bddf39a8c38386873ae8cf9342961637",
+      "runs/level3/qwen-sgg/seed42/results.json": "3f63a76c55c1a94437343aec1f8e37dd7ab0c16341e18b9ab23dd06d6b94bdaa"
+    }
+  },
+  "graph_summary": {
+    "by_operation": {
+      "add": {
+        "edit_available": 101,
+        "pairs": 106,
+        "preservation_evaluable": 60,
+        "reasons": {
+          "ambiguous_new_instance_alignment": 1,
+          "ambiguous_preservation_alignment": 46,
+          "new_instance_low_confidence": 3,
+          "possible_movement_or_count_instability": 1
+        },
+        "scored": 60
+      },
+      "attribute": {
+        "edit_available": 0,
+        "pairs": 10,
+        "preservation_evaluable": 7,
+        "reasons": {
+          "ambiguous_preservation_alignment": 3,
+          "unsupported_color_attribute": 10
+        },
+        "scored": 0
+      },
+      "remove": {
+        "edit_available": 47,
+        "pairs": 66,
+        "preservation_evaluable": 32,
+        "reasons": {
+          "ambiguous_preservation_alignment": 34,
+          "ambiguous_source_instruction": 2,
+          "possible_movement_or_count_instability": 6,
+          "requested_source_object_not_in_graph": 9,
+          "source_anchor_low_confidence": 2
+        },
+        "scored": 23
+      },
+      "replace": {
+        "edit_available": 14,
+        "pairs": 18,
+        "preservation_evaluable": 10,
+        "reasons": {
+          "ambiguous_preservation_alignment": 8,
+          "possible_detector_relabel": 1,
+          "requested_source_object_not_in_graph": 3
+        },
+        "scored": 8
+      }
+    },
+    "coverage": 0.455,
+    "edit_available": 162,
+    "human_labels_used": 0,
+    "interpretation": "graph evidence coverage, not image pass rate",
+    "object_relation_GT_F1": null,
+    "pairs": 200,
+    "preservation_evaluable": 109,
+    "reasons": {
+      "ambiguous_new_instance_alignment": 1,
+      "ambiguous_preservation_alignment": 91,
+      "ambiguous_source_instruction": 2,
+      "new_instance_low_confidence": 3,
+      "possible_detector_relabel": 1,
+      "possible_movement_or_count_instability": 7,
+      "requested_source_object_not_in_graph": 12,
+      "source_anchor_low_confidence": 2,
+      "unsupported_color_attribute": 10
+    },
+    "scored": 91,
+    "seconds": 0.06964959698962048,
+    "spearman": null
+  },
+  "CPU_metric_smoke": {
+    "evaluation_eligible": false,
+    "rows": [
+      {
+        "binding": "6224f0dd716a740d222387696ccdc14649e37c836de775f027716a4740dc2f0a",
+        "clip_cosine": 0.33977845311164856,
+        "clip_text": "A photo depicts A Vietnamese streetscape with a bicycle parked on the sidewalk to the right of the vendor's table. The surrounding scene is preserved.",
+        "clipscore": 0.8494461327791214,
+        "dataset": "sidewalk",
+        "evaluation_size": [
+          1376,
+          768
+        ],
+        "image_id": "sidewalk-76268403d14e5f",
+        "lpips": 0.33454835414886475,
+        "negative_lpips": -0.33454835414886475,
+        "operation": "add",
+        "source_size": [
+          1920,
+          1080
+        ],
+        "task_id": "sidewalk-76268403d14e5f-q100-1"
+      }
+    ],
+    "stage_binding": "8ea3ca6c530226bde651fd93ab05473b04630de9f696c1e2f0ac5747a154c109"
+  },
+  "CPU_identical_LPIPS": {
+    "identical_image_lpips": 0.0
+  },
+  "GPU_executed": false,
+  "full_200_image_metrics_executed": false,
+  "human_labels_used": 0,
+  "Spearman_computed": false,
+  "actual_model_warnings": [
+    "LPIPS 0.1.4 uses deprecated torchvision pretrained argument; frozen weights load successfully."
+  ],
+  "output_files_sha256": {
+    "runs/level3/evaluation-v1/seed42/graph/results.json": "6b6cff41f337df0b0acaa4426d25ca977cac75c88db8da16696a45db521ff00e",
+    "runs/level3/evaluation-v1/seed42/smoke-cpu/results.json": "2b3a84a04d5104c887d5f8f2635accb25ffe29211e52381e54034ba8b0de2f17"
+  }
+}
