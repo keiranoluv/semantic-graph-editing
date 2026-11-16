@@ -1,0 +1,56 @@
+{
+  "asset_lock_sha256": "6f41e9c9c8abc4680c21dcb978d087d31cf9b513c8157b2d554f945b7e6f8c83",
+  "automatic_next_run": false,
+  "batch_size": 1,
+  "cohort_manifest": "configs/level3/qwen200-cohort-v1.json",
+  "cohort_manifest_sha256": "3abb396609aea1b981ee99f3cbb0c2237bd13a6882ec5e4f80351ecf76c29109",
+  "cohort_request_count": 200,
+  "color_probe_count": 10,
+  "expected_count": 100,
+  "expected_operation_counts": {
+    "add": 40,
+    "attribute": 10,
+    "remove": 38,
+    "replace": 12
+  },
+  "generation": {
+    "dtype": "bfloat16",
+    "memory_mode": "model_cpu_offload",
+    "model": "Qwen/Qwen-Image-2.1",
+    "num_inference_steps": 40,
+    "output_resolution": 1024,
+    "revision": "d26bb61231c349cf6b7896fa83353113880e1ba3",
+    "seed": 42,
+    "true_cfg_scale": 1.0,
+    "use_kv_cache": true
+  },
+  "input_policy": "original_resolution_EXIF_transposed_RGB_PNG; Qwen_internal_resize",
+  "local_only": true,
+  "manifest": "configs/level3/qwen200-extension-instructions-v1.json",
+  "manifest_sha256": "6248395e34888b56b4736a0b4802718283fe16de8627e4d81746e72e786e95bb",
+  "parent_completed_run": "runs/level3/qwen100-v1/seed42-v1",
+  "parent_completed_run_receipt_sha256": "0ded41585cb33d7b9f386539d29a20109b2bcc784e0cd0be65d041b569088203",
+  "parent_config": "configs/level3/qwen100-v1.json",
+  "parent_config_sha256": "ab10ecfcfd40f5c5943c17e22ef9f01c22ad11e97956d8507761a96129bc5317",
+  "parent_manifest": "configs/level3/qwen100-instructions-v1.json",
+  "parent_manifest_sha256": "5a25ec332d8f5702caee758ea891bea2d6804edeea62acd953b12715c0350303",
+  "quality_retries": false,
+  "qwen_parent_config_sha256": "ed04460c6db3ae437fe82f643e8e121d5be46436e6124e8a30515a5d2ebec1ea",
+  "schema": "qwen200-extension-v1",
+  "seed": 42,
+  "source_receipts": {
+    "sidewalk": {
+      "path": "data/raw/level3/qwen21-batch100-v1/sidewalk/source-receipt.json",
+      "sha256": "5f9de2611a8b90f4ec0063aab1a8e5e9c50263aab979414431b9a3e893b88395"
+    },
+    "travel": {
+      "path": "data/raw/level3/qwen21-batch100-v1/travel/source-receipt.json",
+      "sha256": "9a7387776c6fdabc146e3bef72c7550457291a1dfafc1368fe5ad2be893c3bce"
+    }
+  },
+  "training": false,
+  "training_or_graph_scoring": false,
+  "unique_source_count": 100,
+  "wandb_mode": "online",
+  "wandb_project": "level3-qwen200-extension-v1"
+}

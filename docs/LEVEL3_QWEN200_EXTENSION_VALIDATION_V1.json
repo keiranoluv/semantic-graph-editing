@@ -1,0 +1,57 @@
+{
+  "CPU_synthetic_OOM_resume_test": true,
+  "CPU_test_log_sha256": "d718962ebf2219b3b64999ba4c5228c7c98112d1b441f1e07b54833c3768e347",
+  "CPU_tests_failed": 0,
+  "CPU_tests_passed": 45,
+  "GPU_inference_performed": false,
+  "actual_OOM_observed": false,
+  "authoring_receipt_sha256": "ca1bc618eb06d6570869753a9fe414c2e4526be2ef80e62e4df17e955482bd0c",
+  "browser": {
+    "GPU_inference": false,
+    "authoring_cards_checked": 100,
+    "browser_storage_and_JSON_export_checked": true,
+    "javascript_errors": [],
+    "new_prompts_match_manifest": true,
+    "old_prompts_preserved": true,
+    "pending_targets_disabled": true,
+    "review_fields": [
+      "edit_fulfillment",
+      "preservation"
+    ],
+    "source_images_decoded": 100,
+    "status": "ok",
+    "synthetic_review_only": true
+  },
+  "code_files_sha256": {
+    "scripts/run_level3_qwen200_extension_v1.sh": "f1f8bd775e3ac467affe4115ca290c50927c986082691620f0f9d3ac65e6b388",
+    "tests/level3/test_qwen200_v1.py": "47cc4d6c27605937f9150cdd77abb64a096fa453fdd1c07f444d5e6ac37756df",
+    "tools/level3_qwen200_v1/__init__.py": "a4def94f184f44424dba5723223694d88b9d3c5cfbeef2bd0ae20dfd225b3bd2",
+    "tools/level3_qwen200_v1/__main__.py": "74fff10eb2bd330c92909b27a5a9ae84f41b3f268a5c04f51f849276919f19c6",
+    "tools/level3_qwen200_v1/core.py": "e13fe33f04623ee30b059e8a56979bdf1bfc2768a8fbb4eab1704aec5be15cc0",
+    "tools/level3_qwen200_v1/runner.py": "55c6a35f8dc1c060ffeafad98143071adc94c27dbf923783ea2d6f91190f57b5",
+    "tools/level3_qwen200_v1/viewer.py": "15e67fff116459fcbebe138a91f81f1c9bb2bda2f2367d004ce38fbe59dafeff"
+  },
+  "cohort_requests": 200,
+  "cohort_sha256": "3abb396609aea1b981ee99f3cbb0c2237bd13a6882ec5e4f80351ecf76c29109",
+  "color_requests": 10,
+  "color_share_of_200": 0.05,
+  "config_sha256": "6284f787a42afe9946726cf229ab5358253f962998a6b41c1e87ae994f664deb",
+  "full_preflight_includes_checkpoint_hashes_and_runtime_contract": true,
+  "full_preflight_log_sha256": "c2e848487578df00800fbe8ef5cae0dbb03e7c681e556a7925f15673940aefec",
+  "label_authorship": "assistant instructions only; no human outcomes created",
+  "manifest_sha256": "6248395e34888b56b4736a0b4802718283fe16de8627e4d81746e72e786e95bb",
+  "new_operation_counts": {
+    "add": 40,
+    "attribute": 10,
+    "remove": 38,
+    "replace": 12
+  },
+  "new_prompts_unique_and_disjoint_from_old": true,
+  "new_requests": 100,
+  "old_tasks_preserved_exactly": true,
+  "output_root": "runs/level3/qwen200-extension-v1",
+  "primary_inference_command": "bash scripts/run_level3_qwen200_extension_v1.sh",
+  "real_new_targets_created": 0,
+  "schema": "qwen200-extension-validation-v1",
+  "unique_sources": 100
+}
