@@ -32,6 +32,8 @@ sha256sum -c level3-seed42-<commit>.zip.sha256
 
 Archive và file `.sha256` nên được sao chép cùng nhau. Checksum xác nhận tính toàn vẹn, không phải chữ ký xác thực tác giả.
 
+Bản đã tạo: `runs/level3/submission-v1/level3-seed42-94f587c.zip`, 3.130.298.931 byte, code tại commit `94f587c`. Đã kiểm SHA256 của 5.405 file trong gói, giải nén vào thư mục mới và chạy toàn bộ notebook bằng môi trường Python 3.12 chỉ dùng CPU, không cài PyTorch. Tính lại 200 điểm graph và các hệ số tương quan khớp bản đã khóa. [Biên bản kiểm tra](../reports/level3/submission-v1/validation.json) được ghi sau khi tạo archive; biên bản này nằm trong Git, không nằm ngược lại trong ZIP đã chốt.
+
 ## Giải nén và xem demo ở thư mục bất kỳ
 
 Giải nén vào **thư mục mới, trống** để tránh ghi đè workspace đang dùng:
