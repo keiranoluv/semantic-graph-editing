@@ -1,5 +1,7 @@
 # Qwen Level 3 — một bộ 200 yêu cầu
 
+Hướng dẫn chính: [pipeline hai bước](LEVEL3_PIPELINE.md).
+
 Entry point hiện tại là `scripts/run_level3_qwen.sh`: dùng **một manifest 200 yêu cầu**, một output có resume, một giao diện review. Manifest `configs/level3/qwen200-cohort-v1.json` giữ nguyên 100 yêu cầu đầu và 100 yêu cầu bổ sung. Có 100 ảnh nguồn, mỗi ảnh có hai yêu cầu độc lập; cả hai đều chỉnh từ ảnh gốc. Không dùng target cũ làm source cho câu mới.
 
 ## Gom kết quả và mở review
@@ -27,23 +29,19 @@ Lệnh được giữ để tái lập hoặc resume khi cần:
 bash scripts/run_level3_qwen.sh
 ```
 
-Lệnh nhận kết quả hợp lệ từ `runs/level3/qwen100-v1/seed42-v1` và `runs/level3/qwen200-extension-v1/seed42-v1`, rồi chạy **chỉ yêu cầu còn thiếu** trong bộ 200. Nếu đủ 200 thì kết thúc trên CPU, không tải model hoặc mở W&B. Dùng lại cùng lệnh/cùng `OUTPUT` để resume; không cần tạo thư mục mới. Nếu đã resume launcher cũ sang output khác, thêm đường dẫn đó:
-
-```bash
-bash scripts/run_level3_qwen.sh infer --import-run runs/level3/qwen200-extension-v1/seed42-resume-01
-```
+Launcher chỉ resume kết quả đã có trong chính lượt đó và infer các yêu cầu thiếu. Không tự nhập kết quả từ lượt khác. Nếu đủ 200 thì kết thúc trên CPU, không tải model hoặc mở W&B. Output hiện tại vẫn có các tham chiếu hợp lệ đến artifact lịch sử; các tham chiếu và ảnh gốc đó được giữ nguyên.
 
 Cấu hình cố định: official **Qwen/Qwen-Image-2.1**, revision `d26bb61231c349cf6b7896fa83353113880e1ba3`, Diffusers và checkpoint đã pin, **BF16, batch size 1, seed 42, 40 steps**, output resolution 1024, CPU offload và VAE tiling. Dùng môi trường `data/cache/level3-qwen21-v1/venv`, CUDA 12.8/RTX 5090 như các lượt trước. W&B online project `level3-qwen200`, ghi metadata/timing/VRAM, không upload ảnh. GPU lock chung từ chối ngay nếu tiến trình khác đang dùng, không xếp hàng chờ. Chạy tuần tự các yêu cầu thiếu rồi dừng; không có lượt/seed khác tự chạy tiếp, không tự chạy REACT++ hoặc scoring.
 
-Output mặc định **`runs/level3/qwen200/seed42/`**. Mỗi lần chạy có `attempts/attempt-NNNN` chứa config, code hashes, môi trường, pipeline/scheduler, W&B và execution/failure. Mỗi case mới nằm trong `cases/<task_id>/attempt-NNNN`, lưu instruction, PNG nguồn/đích, thời gian, VRAM, số bước thực tế và receipt. Case hoàn tất bất biến; nếu bị ngắt, lần sau tạo attempt riêng, không ghi đè/xóa dấu vết lỗi. `index.json`, `results.json`, `review-data.json` và `snapshot.json` là các snapshot có thể cập nhật của toàn bộ 200 yêu cầu. Mỗi case nhập giữ `case_dir` và receipt/provenance ở nơi tạo ban đầu; không di chuyển hoặc xóa output gốc.
+Output là **`runs/level3/qwen200/<RUN_ID>/`**, mặc định `RUN_ID=seed42`. Mỗi lần chạy có `attempts/attempt-NNNN` chứa config, code hashes, môi trường, pipeline/scheduler, W&B và execution/failure. Mỗi case mới nằm trong `cases/<task_id>/attempt-NNNN`, lưu instruction, PNG nguồn/đích, thời gian, VRAM, số bước thực tế và receipt. Case hoàn tất bất biến; nếu bị ngắt, lần sau tạo attempt riêng, không ghi đè/xóa dấu vết lỗi. `index.json`, `results.json`, `review-data.json` và `snapshot.json` là các snapshot có thể cập nhật của toàn bộ 200 yêu cầu. Mỗi case nhập giữ `case_dir` và receipt/provenance ở nơi tạo ban đầu; không di chuyển hoặc xóa output gốc.
 
 Muốn chạy lại toàn bộ 200 từ đầu, chủ động chọn output riêng và bỏ nhập kết quả:
 
 ```bash
-OUTPUT=runs/level3/qwen200/full-rerun-01 bash scripts/run_level3_qwen.sh infer --no-import
+RUN_ID=reproduce01 bash scripts/run_level3_qwen.sh
 ```
 
-Đây là lệnh chạy lớn do người dùng tự thực hiện. `--no-import` không xóa thành công đã có trong chính output đó; khi chạy lại lệnh vẫn resume. Không huấn luyện/fine-tune. Thành công kỹ thuật không phải đánh giá chất lượng; không tự tạo nhãn hoặc điểm F1.
+Đây là lệnh chạy lớn do người dùng tự thực hiện. Chạy lại cùng `RUN_ID` sẽ resume. Bước SGG dùng cùng `RUN_ID` tự đọc đúng các ảnh của lượt này; không cần truyền đường dẫn riêng. Không huấn luyện/fine-tune. Thành công kỹ thuật không phải đánh giá chất lượng; không tự tạo nhãn hoặc điểm F1.
 
 ## Dọn dung lượng và giữ khả năng tái lập
 

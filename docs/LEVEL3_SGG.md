@@ -1,6 +1,8 @@
 # REACT++ — 200 yêu cầu, 300 ảnh riêng biệt
 
-Đầu vào là 200 kết quả Qwen đã hoàn tất: 100 ảnh nguồn, mỗi ảnh hai yêu cầu chỉnh sửa độc lập, và 200 ảnh đích. SGG chỉ cần **300 lần dự đoán ảnh** cho toàn bộ bộ dữ liệu. Run lịch sử đã có 100 graph nguồn + 100 graph đích. Luồng hiện tại xác minh hash ảnh, checkpoint, preprocessing, decoder và ngưỡng trước khi tái sử dụng 200 dự đoán này; chỉ còn **100 ảnh đích mới** cần GPU.
+Hướng dẫn chính: [pipeline hai bước](LEVEL3_PIPELINE.md).
+
+Đầu vào là kết quả Qwen của cùng `RUN_ID`: 100 ảnh nguồn và 200 ảnh edited. Bước SGG độc lập với bước tạo ảnh, chỉ bắt đầu khi đủ 200 kết quả Qwen. Hiện lượt `seed42` đã có đủ 300 prediction. Một lượt mới không tự nhập graph lịch sử; chạy lại cùng lượt sẽ resume phần còn thiếu.
 
 Một cache dự đoán theo hash ảnh/cấu hình được dùng cho tất cả yêu cầu. Mỗi yêu cầu có hai bản EditGraph được gắn đúng `pair_task_id`, `image_role` và image/candidate ID; source của hai yêu cầu cùng ảnh dùng chung nội dung dự đoán. Native NPZ, decoded output, confidence và graph gốc giữ nguyên, provenance chỉ rõ nguồn tái sử dụng. Không suy ra correspondence giữa node nguồn/đích từ việc có cùng ID.
 
@@ -12,24 +14,24 @@ Từ root repo, kiểm tra trên CPU trước:
 CUDA_VISIBLE_DEVICES='' bash scripts/run_level3_sgg.sh preflight
 ```
 
-Sau khi code đã commit, lệnh chạy 100 ảnh còn thiếu:
+Sau khi code đã commit, lệnh chạy SGG cho lượt hiện tại:
 
 ```bash
-bash scripts/run_level3_sgg.sh infer --max-new-images 100
+bash scripts/run_level3_sgg.sh
 ```
 
 Mô hình **official REACT++ PSG YOLO12m ONNX**, đúng checkpoint/official preprocessing/decoder đang dùng ở run lịch sử. Batch **1**, seed **42**, box threshold **0.4**, relation threshold **0.05** (lọc theo triplet score đúng decoder hiện tại). Môi trường `data/cache/level3-sgg-pretrained-v2/venv`, CUDA **12.8**, RTX 5090; không huấn luyện. W&B online project `level3-qwen-sgg200`, theo dõi metadata, số ảnh, parse success và timing, không upload ảnh. Dùng GPU lock chung và từ chối nếu GPU job khác đang giữ lock, không xếp hàng chờ.
 
-Output mặc định **`runs/level3/qwen-sgg/seed42/`**. Mỗi lần chỉ đi qua các ảnh thiếu rồi dừng, không tự chạy seed/model/graph scoring khác. Nếu cần hơn 100 ảnh, lệnh từ chối trước khi tạo model/W&B. Dùng lại cùng lệnh và output để **resume**; các dự đoán có receipt hợp lệ được bỏ qua. Đủ 300 dự đoán thì không tạo session model/W&B hoặc chạy GPU. Lỗi parse/OOM/ngắt tiến trình giữ attempt riêng để kiểm tra; không tự thử seed mới hoặc sửa graph để đủ số lượng.
+Output là **`runs/level3/qwen-sgg/<RUN_ID>/`**, mặc định `RUN_ID=seed42`. Launcher đọc ảnh từ `runs/level3/qwen200/<RUN_ID>/`; hai thư mục luôn cùng tên lượt. Mỗi lệnh xử lý tối đa 300 ảnh còn thiếu rồi dừng, không gọi Qwen hoặc tự chạy graph scoring. Có thể dùng `--max-new-images` để đặt giới hạn thấp hơn khi kiểm tra.
 
-Muốn tái lập **từ đầu toàn bộ 300 ảnh**, chủ động chọn output khác và tăng giới hạn:
+Để tái lập, chạy riêng hai bước với cùng một tên mới:
 
 ```bash
-OUTPUT=runs/level3/qwen-sgg/full-reproduction-01 \
-  bash scripts/run_level3_sgg.sh infer --no-import --max-new-images 300
+RUN_ID=reproduce01 bash scripts/run_level3_qwen.sh
+RUN_ID=reproduce01 bash scripts/run_level3_sgg.sh
 ```
 
-Đây là lệnh khác phạm vi chạy 100 ảnh mới, chỉ thực hiện khi muốn tái lập toàn bộ. Không ghi đè output cũ. `--no-import` bỏ nhập run lịch sử nhưng vẫn dùng các thành công đã có trong chính output để resume.
+Không ghi đè output cũ. Lặp lại lệnh tương ứng để resume. Bước SGG kiểm tra model/protocol Qwen, đủ 200 yêu cầu, hash và receipt từng ảnh. Hash index được lưu trong run SGG; nếu input bị thay đổi, resume bị từ chối để tránh trộn graph của hai bộ ảnh. Không cần tạo manifest hoặc config riêng cho từng lượt.
 
 ## Giao diện graph chung
 
@@ -51,7 +53,7 @@ Mở **http://localhost:8009/comparison.html**. Một danh sách 200 yêu cầu,
 
 REACT++ hiện không có attribute head; 10 yêu cầu đổi màu vẫn không thể đánh giá Edit Fulfillment từ attribute màu của graph này. Parse success chỉ là thành công kỹ thuật; không tự tạo precision/recall/F1, grounding/hallucination hoặc điểm consistency. Chất lượng cần graph GT hoặc review ảnh. Graph/scoring lịch sử cho 100 cặp được giữ nguyên; lượt này chỉ sinh SGG, chưa chạy chấm lại trên 200 cặp.
 
-Config mới `configs/level3/qwen-sgg-unified-v1.json` pin cohort 200, Qwen index hoàn tất, receipt SGG cũ và code backend. Khi input/config được chủ động thay đổi cho một thực nghiệm khác cần version mới, không sửa config đã khóa để tiếp tục vào cùng output.
+Config đã khóa `configs/level3/qwen-sgg-unified-v1.json` vẫn bảo vệ cohort/model/backend và lượt `seed42` cũ. Với tên lượt mới, runner dùng cùng cohort/model, tự lấy đường dẫn và hash index Qwen tương ứng, lưu cấu hình thực tế mang schema `qwen-sgg-unified-v2` vào run output. Không sửa config đã khóa, không thêm file manifest/config theo từng lượt.
 
 ## Kiểm tra CPU
 

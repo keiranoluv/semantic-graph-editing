@@ -14,7 +14,7 @@ bash scripts/run_level3_sgg.sh serve
 
 Hai lệnh trên chỉ dựng trang trên CPU và mở server; không chạy mô hình. Chạy từng lệnh trong terminal riêng, Ctrl+C để dừng. Bộ chấm/review đã có vẫn ở `runs/level3/qwen-graph-score-v1/score-v1` và `review-v1`; server review 8007 đang có được giữ nguyên.
 
-Lệnh tái lập inference/resume vẫn là `bash scripts/run_level3_qwen.sh infer` và `bash scripts/run_level3_sgg.sh infer --max-new-images 100`. Qwen dùng checkpoint chính thức, BF16, batch 1, seed 42, 40 steps và CPU offload; REACT++ dùng ONNX chính thức, batch 1, seed 42. Output lần lượt là `runs/level3/qwen200/seed42` và `runs/level3/qwen-sgg/seed42`. Khi output đã đủ, cả hai bỏ qua inference. Không có hàng đợi lượt tiếp theo. Xem [Qwen](LEVEL3_QWEN.md) và [SGG](LEVEL3_SGG.md) để chạy lại từ đầu trong output mới.
+Lệnh hiện hành và cách chọn lượt mới đã được rút gọn trong [pipeline hai bước](LEVEL3_PIPELINE.md). Dùng `bash scripts/run_level3_qwen.sh` và `bash scripts/run_level3_sgg.sh`; cùng `RUN_ID` liên kết hai bước mà không tự chạy nối tiếp. Qwen dùng checkpoint chính thức, BF16, batch 1, seed 42, 40 steps và CPU offload; REACT++ dùng ONNX chính thức, batch 1, seed 42. Output lần lượt là `runs/level3/qwen200/seed42` và `runs/level3/qwen-sgg/seed42`. Khi output đã đủ, cả hai bỏ qua inference. Không có hàng đợi lượt tiếp theo. Xem [Qwen](LEVEL3_QWEN.md) và [SGG](LEVEL3_SGG.md) để chạy lại từ đầu trong output mới.
 
 ## Đã dọn
 

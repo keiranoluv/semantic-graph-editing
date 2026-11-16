@@ -2,6 +2,7 @@
 
 import copy
 import json
+import re
 import subprocess
 from collections import Counter
 from pathlib import Path
@@ -11,6 +12,7 @@ from tools.level3_qwen21_v1.core import bundle, finish
 from tools.level3_qwen_unified.core import atomic
 from tools.level3_qwen_unified.core import inputs as qwen_inputs
 from tools.level3_qwen_unified.core import load_case
+from tools.level3_qwen_unified.core import protocol as qwen_protocol
 
 CONFIG = ROOT / "configs/level3/qwen-sgg-unified-v1.json"
 RUNS = ROOT / "runs/level3/qwen-sgg"
@@ -30,7 +32,7 @@ def protocol(cfg):
     return {k: cfg[k] for k in (*MODEL_FIELDS, "pipeline_files_sha256")}
 
 
-def inputs():
+def inputs(run_name=None):
     from tools.level3_sgg_pretrained_v2.assets import LOCK
 
     cfg = read(CONFIG)
@@ -39,14 +41,36 @@ def inputs():
         or sha256(ROOT / "configs/level3/sgg-pretrained-v2.json") != cfg["parent_sgg_config_sha256"]
     ):
         raise ValueError("frozen_model_assets_or_parent_config_changed")
-    _, tasks = qwen_inputs()
+    qwen_cfg, tasks = qwen_inputs()
     root = ROOT / cfg["qwen_run"]
+    if run_name is not None and run_name != root.name:
+        if not re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_-]*", run_name):
+            raise ValueError("invalid_run_name")
+        parent = (ROOT / "runs/level3/qwen200").resolve()
+        root = (parent / run_name).resolve()
+        if root.parent != parent:
+            raise ValueError("Qwen_input_outside_unified_run_root")
+        if not all((root / name).is_file() for name in ("run.json", "index.json")):
+            raise ValueError("Qwen_images_not_ready_run_step_1_first:" + str(root))
+        cfg.update(
+            schema="qwen-sgg-unified-v2",
+            qwen_run=str(root.relative_to(ROOT)),
+            qwen_index_sha256=sha256(root / "index.json"),
+        )
     if (
         sha256(root / "index.json") != cfg["qwen_index_sha256"]
         or sha256(ROOT / cfg["manifest"]) != cfg["manifest_sha256"]
     ):
         raise ValueError("frozen_200_image_pairs_changed")
     idx = read(root / "index.json")
+    header = read(root / "run.json")
+    if (
+        header.get("schema") != "qwen-unified-run-v1"
+        or idx.get("schema") != "qwen-unified-index-v1"
+        or header.get("protocol") != qwen_protocol(qwen_cfg)
+        or idx.get("protocol") != qwen_protocol(qwen_cfg)
+    ):
+        raise ValueError("Qwen_generation_protocol_mismatch")
     if not idx["execution_complete"] or idx["successful"] != 200 or len(idx["entries"]) != 200:
         raise ValueError("all_200_Qwen_results_required")
     if (
@@ -73,6 +97,8 @@ def inputs():
         raise ValueError("two_independent_requests_per_source_required")
     if len(inventory(rows, cfg)) != 300:
         raise ValueError("expected_300_distinct_native_images")
+    if sha256(root / "index.json") != cfg["qwen_index_sha256"]:
+        raise ValueError("Qwen_index_changed_during_validation")
     return cfg, rows
 
 
@@ -116,6 +142,8 @@ def workspace(out, cfg, code):
         "qwen_index_sha256": cfg["qwen_index_sha256"],
         "manifest_sha256": cfg["manifest_sha256"],
     }
+    if cfg["schema"] == "qwen-sgg-unified-v2":
+        binding["qwen_run"] = cfg["qwen_run"]
     if (out / "run.json").exists():
         if read(out / "run.json")["binding"] != binding:
             raise ValueError("SGG_resume_protocol_changed")

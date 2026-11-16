@@ -193,19 +193,20 @@ def main():
     p.add_argument("--port", type=int, default=8009)
     args = p.parse_args()
     code = identity()
-    cfg, rows = inputs()
+    cfg, rows = inputs(args.output.name)
     from .backend import preflight
 
     if args.command in ("preflight", "infer"):
         preflight()  # hashes + wheel/provider capabilities; no model session or GPU work
     out = workspace(args.output, cfg, code)
     with lock(out / ".state.lock"):
-        images = collect(out, cfg, rows, use_legacy=not args.no_import)
+        images = collect(out, cfg, rows, use_legacy=not args.no_import and cfg["schema"] != "qwen-sgg-unified-v2")
         refresh(out, cfg, rows, images)
         pending = [i for i in images.values() if i["status"] != "ok"]
         print(
             json.dumps(
                 {
+                    "qwen_run": cfg["qwen_run"],
                     "pairs": len(rows),
                     "unique_images": len(images),
                     "cached_images": len(images) - len(pending),
