@@ -93,5 +93,59 @@
     "CUDA_VISIBLE_DEVICES": ""
   },
   "retired_code_manifest": "docs/LEVEL3_CLEANUP_CODE_V2.json",
-  "scope": "Level 3 only; no dataset mutation, no image/SGG inference, no push"
+  "scope": "Level 3 only; no dataset mutation, no image/SGG inference, no push",
+  "cpu_launchers": {
+    "tested_code_commit": "c2815778c0c4dabc31d8265c7b85903804b4a832",
+    "CUDA_VISIBLE_DEVICES": "",
+    "commands": [
+      {
+        "command": [
+          "bash",
+          "scripts/run_level3_qwen.sh",
+          "infer"
+        ],
+        "returncode": 0,
+        "output": "{\"output\": \"/workspace/workspace/semantic-graph-editing/runs/level3/qwen200/seed42\", \"successful\": 200, \"requested\": 200, \"pending\": 0, \"new_GPU_inference\": false}\n"
+      },
+      {
+        "command": [
+          "bash",
+          "scripts/run_level3_sgg.sh",
+          "infer",
+          "--max-new-images",
+          "0"
+        ],
+        "returncode": 0,
+        "output": "{\"pairs\": 200, \"unique_images\": 300, \"cached_images\": 300, \"pending_images\": 0, \"pending_roles\": {}}\n"
+      },
+      {
+        "command": [
+          "data/cache/level3-sgg-pretrained-v2/venv/bin/python",
+          "-m",
+          "tools.level3_qwen_scoring_v1",
+          "preflight"
+        ],
+        "returncode": 0,
+        "output": "{\"status\": \"ok\", \"pairs\": 100, \"device\": \"cpu\", \"assistant_groundings\": 100, \"human_labels_read\": 0}\n"
+      }
+    ],
+    "attempt_counts_before": {
+      "/workspace/workspace/semantic-graph-editing/runs/level3/qwen200/seed42": 0,
+      "/workspace/workspace/semantic-graph-editing/runs/level3/qwen-sgg/seed42": 1
+    },
+    "attempt_counts_after": {
+      "/workspace/workspace/semantic-graph-editing/runs/level3/qwen200/seed42": 0,
+      "/workspace/workspace/semantic-graph-editing/runs/level3/qwen-sgg/seed42": 1
+    },
+    "new_GPU_inference": false
+  },
+  "qwen_runtime_contract": {
+    "pipeline": "QwenImage21Pipeline",
+    "official_pinned_API": "ok",
+    "CUDA_wheel": "12.8_sm120",
+    "GPU_inference": false
+  },
+  "scorer_identity_commit": "c2815778c0c4dabc31d8265c7b85903804b4a832",
+  "original_user_worktree_unchanged": true,
+  "evidence_receipt_sha256": "1047161191570278eab8313da06b8e4b68bd790af5dab1c24153ee4aa4085646"
 }

@@ -46,3 +46,5 @@ git show 1d2d876:tools/level3_qwen21_v1/runner.py
 [Kiểm chứng](LEVEL3_CLEANUP_VALIDATION_V2.json): 139 tests CPU, 2 tests Chromium; 9 helper có AST giữ nguyên; chấm lại trên CPU cho 100 cặp cho kết quả JSON giống hệt điểm đã lưu. Đối chiếu hash 6.217 file còn giữ gồm dataset, configs, ảnh, graph, labels, provenance và thay đổi riêng của người dùng; không có mất/thay đổi ngoài danh sách cho phép. 200 yêu cầu Qwen và 300 prediction SGG vẫn hợp lệ.
 
 Bằng chứng chi tiết ở `runs/level3/cleanup-v2/`: inventory trước/sau, kế hoạch xóa theo file/inode, journal xóa và báo cáo kiểm chứng. Các run cũ có tài liệu và bằng chứng được giữ làm lịch sử, dù launcher tương ứng đã được nghỉ dùng.
+
+Sau commit code `c281577`, đã chạy lại launcher với `CUDA_VISIBLE_DEVICES=''`: Qwen nhận 200/200 kết quả, SGG nhận 300/300 prediction với ngân sách ảnh mới bằng 0; không tăng số attempt. Preflight bộ chấm nhận đủ 100 cặp. Runtime Qwen vẫn nhận đúng API chính thức của bản Diffusers đã pin. Đối chiếu lại 6.217 file sau khi dựng lại giao diện không phát hiện thay đổi.
