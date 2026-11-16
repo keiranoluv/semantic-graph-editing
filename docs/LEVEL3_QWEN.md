@@ -64,3 +64,9 @@ CUDA_VISIBLE_DEVICES='' bash scripts/run_level3_qwen.sh preflight
 ```
 
 Browser test cần Playwright/Chromium, dùng `--disable-gpu`. Test editor là fixture CPU để kiểm tra import/resume/OOM giả lập, không phải smoke GPU hoặc bằng chứng chất lượng Qwen. Chưa chạy GPU bằng launcher thống nhất; các ảnh được nhập là kết quả inference thật từ launcher cũ. Graph/scoring cũ của 100 cặp vẫn được giữ nguyên; gom Qwen không tự mở rộng các kết quả graph này.
+
+## Kết quả kiểm tra ngày 2026-11-16
+
+Code `f2fed1a`: 63 test CPU và 1 test Chromium đều qua. Preflight xác minh đủ 200 yêu cầu. Snapshot thu thập khi người dùng vẫn chạy inference có 158/200 kết quả hoàn tất, 42 pending. Kiểm tra trình duyệt với ảnh thật giải mã đủ 358 lượt preview (200 source + 158 target), không lỗi JavaScript, đúng hai trường chấm và không tạo nhãn. PNG đích của giao diện là hard link tới output thật. Kết quả này là trạng thái tại thời điểm thu thập, không phải kết luận lượt GPU đã xong.
+
+Dọn 84 bản PNG trùng nội dung, thu hồi **485.400.576 byte (462,914 MiB)**. Không mất đường dẫn hoặc thay đổi byte ảnh, receipt của Qwen100 và REACT100 vẫn khớp và xác minh toàn bộ bundle thành công. Hash source code của tiến trình extension đang chạy không đổi. Không khởi chạy GPU mới. Chi tiết và đường dẫn bằng chứng: [LEVEL3_QWEN_UNIFIED_VALIDATION_V1.json](LEVEL3_QWEN_UNIFIED_VALIDATION_V1.json).
