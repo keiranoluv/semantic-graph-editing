@@ -1,5 +1,7 @@
 # Qwen 2.1 — 100 nguồn / 100 đích, lượt đầu
 
+> Tài liệu lịch sử. Launcher hai giai đoạn đã được dọn sau khi đủ 200/200 kết quả. Dùng [luồng Qwen 200 hiện tại](LEVEL3_QWEN.md) để infer/resume/review. Các lệnh cũ bên dưới thuộc source tại commit `6c52315`; xem [danh sách source lưu trong Git](LEVEL3_QWEN_RETIREMENT_V1.json). Ảnh, instruction, config và receipts của lượt này được giữ nguyên.
+
 Người dùng yêu cầu assistant xem ảnh, viết một yêu cầu chỉnh sửa đơn giản cho mỗi ảnh, commit code rồi trực tiếp chạy GPU cho 100 ảnh đích. Đây là quyền chạy riêng cho lượt này; không tự chạy seed khác hoặc mở rộng ngoài 100 task.
 
 ## Chọn ảnh và ý định trước inference

@@ -1,5 +1,7 @@
 # Thêm 100 yêu cầu: bộ 200 cặp ảnh/yêu cầu Level 3
 
+> Tài liệu lịch sử. Extension đã hoàn tất 100/100, bộ chung đủ 200/200 kết quả. Launcher riêng đã được dọn; dùng [luồng Qwen 200 hiện tại](LEVEL3_QWEN.md) để infer/resume/review. Source cho các lệnh cũ bên dưới còn nguyên trong Git tại commit `6c52315`, được liệt kê trong [hồ sơ dọn code](LEVEL3_QWEN_RETIREMENT_V1.json). Dữ liệu và outputs không bị xóa.
+
 Đã duyệt lại đủ 100 ảnh nguồn trên 13 contact sheets, viết thêm một câu cho mỗi ảnh và giữ nguyên 100 câu cũ. Mỗi yêu cầu mới chạy **độc lập từ ảnh nguồn gốc**, không dùng ảnh Qwen của lượt trước làm đầu vào. Tổng bộ đánh giá gồm 100 ảnh nguồn, mỗi ảnh hai yêu cầu, đúng quy mô 100 ảnh / 150–200 yêu cầu ở trang 3–4 của đề. Phần này chưa thay thế việc gán nhãn tay toàn bộ kết quả, tính tương quan và các baseline ảnh của Task 3.
 
 | Thao tác | 100 cũ | 100 mới | Tổng 200 |

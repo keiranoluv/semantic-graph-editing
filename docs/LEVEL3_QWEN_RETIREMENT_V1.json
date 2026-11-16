@@ -1,0 +1,161 @@
+{
+  "schema": "qwen-two-stage-retirement-v1",
+  "archive_commit": "6c52315debb8730ad1f997632e1a341baf80d605",
+  "retired_files": [
+    {
+      "path": "tools/level3_qwen100_v1/core.py",
+      "sha256": "fe58477d6de3114c7bde7312e8803b2c9252a05f16f0be6be41932bf94398251",
+      "bytes": 4380,
+      "git_blob": "601cba1c9767b5560f57d5608225be1921d05e4d"
+    },
+    {
+      "path": "tools/level3_qwen100_v1/runner.py",
+      "sha256": "f539c91d37ec57b087c230a4aeda57fdd98de34156adabe66c356411db48f569",
+      "bytes": 10771,
+      "git_blob": "7768f32efacbeb122cc75eb649ef75807869531f"
+    },
+    {
+      "path": "tools/level3_qwen100_v1/__main__.py",
+      "sha256": "74fff10eb2bd330c92909b27a5a9ae84f41b3f268a5c04f51f849276919f19c6",
+      "bytes": 51,
+      "git_blob": "a476f8eb6640a1aadffef7cc5d260ca45d611b6c"
+    },
+    {
+      "path": "scripts/run_level3_qwen100_v1.sh",
+      "sha256": "35b83a86af6d4fd72540179cd7c69365e9da6360bf3a421e3288330ccb0b1697",
+      "bytes": 560,
+      "git_blob": "f8da2ad0475ef43ddc234aa427f3c6071424b6f8"
+    },
+    {
+      "path": "scripts/run_level3_qwen200_extension_v1.sh",
+      "sha256": "f1f8bd775e3ac467affe4115ca290c50927c986082691620f0f9d3ac65e6b388",
+      "bytes": 651,
+      "git_blob": "0aaf4a9156cfbe5e840d6c9b924d297660d52613"
+    },
+    {
+      "path": "tests/level3/test_qwen100_v1.py",
+      "sha256": "fafa3d25680e3dbd0310aa1d6f737d472a668b2dd18b0c9f3853352af13f6623",
+      "bytes": 5006,
+      "git_blob": "7729eb71a3ca993314ed9607d9b027ce72d1e018"
+    },
+    {
+      "path": "tests/level3/test_qwen200_v1.py",
+      "sha256": "47cc4d6c27605937f9150cdd77abb64a096fa453fdd1c07f444d5e6ac37756df",
+      "bytes": 10080,
+      "git_blob": "63676942ceb4f08ded9ca9d423b633efeba1168d"
+    },
+    {
+      "path": "tools/level3_qwen200_v1/__init__.py",
+      "sha256": "a4def94f184f44424dba5723223694d88b9d3c5cfbeef2bd0ae20dfd225b3bd2",
+      "bytes": 82,
+      "git_blob": "c237489a66072e7581796c06f10d660487ae9040"
+    },
+    {
+      "path": "tools/level3_qwen200_v1/__main__.py",
+      "sha256": "74fff10eb2bd330c92909b27a5a9ae84f41b3f268a5c04f51f849276919f19c6",
+      "bytes": 51,
+      "git_blob": "a476f8eb6640a1aadffef7cc5d260ca45d611b6c"
+    },
+    {
+      "path": "tools/level3_qwen200_v1/core.py",
+      "sha256": "e13fe33f04623ee30b059e8a56979bdf1bfc2768a8fbb4eab1704aec5be15cc0",
+      "bytes": 9250,
+      "git_blob": "01623061040bbd45c28c60bfcdb36574c7704463"
+    },
+    {
+      "path": "tools/level3_qwen200_v1/runner.py",
+      "sha256": "55c6a35f8dc1c060ffeafad98143071adc94c27dbf923783ea2d6f91190f57b5",
+      "bytes": 10657,
+      "git_blob": "fb1fbee46eb5e23fd397f870cae29352f52a78e8"
+    },
+    {
+      "path": "tools/level3_qwen200_v1/viewer.py",
+      "sha256": "15e67fff116459fcbebe138a91f81f1c9bb2bda2f2367d004ce38fbe59dafeff",
+      "bytes": 3903,
+      "git_blob": "d00208b9f5ea2a50e7b45074bc54adc94b04c4a6"
+    }
+  ],
+  "retired_file_count": 12,
+  "retired_bytes": 55442,
+  "canonical_launcher": "scripts/run_level3_qwen.sh",
+  "kept_compatibility_files": [
+    "tools/level3_qwen100_v1/__init__.py",
+    "tools/level3_qwen100_v1/viewer.py",
+    "tools/level3_qwen100_v1/receipt.py"
+  ],
+  "preservation": "Original source bytes remain in Git at archive_commit; images, outputs, instructions, frozen configs, receipts and labels are retained at their original paths.",
+  "validation": {
+    "cpu_tests_passed": 67,
+    "chromium_tests_passed": 1,
+    "actual_browser": {
+      "timestamp_utc": "2026-11-16T04:22:55.819285+00:00",
+      "requested": 200,
+      "successful": 200,
+      "pending": 0,
+      "unique_sources": 100,
+      "completed_steps_all": 40,
+      "previews_decoded": 400,
+      "native_target_links_verified": 200,
+      "legacy_review_groups_bound": 2,
+      "two_manual_fields": true,
+      "labels_created": 0,
+      "browser_js_errors": [],
+      "GPU_inference": false,
+      "review_data_sha256": "5055fb4bb012fee300db070a575e366acdb8119f8b0f3f63172ae0d3b97498b6"
+    },
+    "integrity": {
+      "retired_files_recoverable_byte_for_byte": 12,
+      "runs": {
+        "qwen100-v1/seed42-v1": {
+          "rows": 100,
+          "receipt_sha256": "0ded41585cb33d7b9f386539d29a20109b2bcc784e0cd0be65d041b569088203",
+          "bundle_verified": true,
+          "source_code_current_or_in_Git_verified": true,
+          "archived_source_files": 4
+        },
+        "qwen200-extension-v1/seed42-v1": {
+          "rows": 100,
+          "receipt_sha256": "353a559fdb6c87729445eb486011175c6403b55eff5c664857cdb6f0bb1f1e73",
+          "bundle_verified": true,
+          "source_code_current_or_in_Git_verified": true,
+          "archived_source_files": 10
+        },
+        "qwen-react100-v1/seed42-v1": {
+          "rows": 100,
+          "receipt_sha256": "5fc2ef998c3e1c44575dad5e2532b2798615cc9b8c7836ea5d017b3cbf374edd",
+          "bundle_verified": true,
+          "source_code_current_or_in_Git_verified": true,
+          "archived_source_files": 0
+        },
+        "qwen-graph-score-v1/score-v1": {
+          "rows": 100,
+          "receipt_sha256": "4b8a39747a2f9232b183f982792826ce73fcb2ae7d03e5521bbb51c7af5f81a0",
+          "bundle_verified": true,
+          "source_code_current_or_in_Git_verified": true,
+          "archived_source_files": 0
+        }
+      },
+      "GPU_inference": false,
+      "protected_files_unchanged": 47,
+      "graph_code_identity_files": 19,
+      "score_code_identity_files": 19
+    },
+    "complete_resume": {
+      "command": "CUDA_VISIBLE_DEVICES='' bash scripts/run_level3_qwen.sh infer",
+      "exit_code": 0,
+      "result": {
+        "output": "/workspace/workspace/semantic-graph-editing/runs/level3/qwen200/seed42",
+        "successful": 200,
+        "requested": 200,
+        "pending": 0,
+        "new_GPU_inference": false
+      },
+      "new_attempts_created": 0,
+      "CUDA_visible_devices": ""
+    },
+    "retired_module_caches_removed": 10,
+    "artifact_directory": "runs/level3/qwen200/retirement-v1",
+    "GPU_inference_started_by_assistant": false,
+    "images_instructions_labels_configs_deleted": 0
+  }
+}
