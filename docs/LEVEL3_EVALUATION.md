@@ -93,10 +93,19 @@ CUDA_VISIBLE_DEVICES='' python -m pytest -q \
 
 Tests bao gồm edit không thực hiện, sai instance, cạnh đảo chiều, thuộc tính không hỗ trợ, alignment mơ hồ, review sai binding, nhãn thiếu/trùng, Spearman có ties/hằng, cùng tập so sánh, metric resume sau ngắt, chống sửa output và report từ chối smoke. Kết quả chạy thực tế được ghi riêng trong `LEVEL3_EVALUATION_VALIDATION.json` sau khi thực hiện.
 
-## Kết quả thực tế của lượt hiện tại
+## Kết quả CPU ban đầu (trước lượt metric và nhãn đầy đủ)
 
 Code đã commit tại `bbffc05` trước khi chạy bộ chấm đầy đủ. **48 tests CPU + 2 tests Chromium qua**; đã kiểm tra thêm giao diện 200 ảnh thật bằng browser context riêng: ảnh đầu/cuối tải được, hai trường lưu sau reload và round-trip JSON hoạt động. Không thay đổi nhãn trong trình duyệt người dùng.
 
 Bộ chấm CPU đã xử lý **200 cặp: 91 có G, 109 abstain, coverage 45,5%**. E có ở 162 cặp; P đủ điều kiện đối chiếu nhãn ở 109 cặp. 100 điểm cũ khớp toàn bộ trường cũ, 100 cặp mở rộng có 46 G xác định. Cả 10 yêu cầu màu có E/G=null. Nguyên nhân chính là 91 ca alignment phần cần bảo toàn bị mơ hồ; các reason codes có thể cùng xuất hiện trên một ca. Đây không phải tỷ lệ ảnh chỉnh sửa đúng. Chạy lại lệnh graph đã xác nhận resume kết quả hiện có.
 
-CPU smoke thật của CLIP/LPIPS trên `sidewalk-76268403d14e5f-q100-1` thành công; LPIPS của hai ảnh giống hệt nhau bằng 0. Thư viện LPIPS phát cảnh báo API `pretrained` cũ của torchvision, nhưng checkpoint khóa tải và inference thành công. **Chưa chạy GPU hoặc metric toàn bộ 200 cặp**, chưa dùng nhãn tay và chưa có Spearman. 100 nguồn, 200 cặp Qwen và 300 prediction SGG gồm native output/receipt đã được kiểm tra lại hash; ảnh/graph cũ được giữ nguyên.
+CPU smoke thật của CLIP/LPIPS trên `sidewalk-76268403d14e5f-q100-1` thành công; LPIPS của hai ảnh giống hệt nhau bằng 0. Thư viện LPIPS phát cảnh báo API `pretrained` cũ của torchvision, nhưng checkpoint khóa tải và inference thành công. Ở thời điểm kiểm tra CPU ban đầu chưa chạy metric toàn bộ 200 cặp và chưa có nhãn/Spearman. 100 nguồn, 200 cặp Qwen và 300 prediction SGG gồm native output/receipt đã được kiểm tra lại hash; ảnh/graph cũ được giữ nguyên.
+
+## Kết quả đã chốt nhãn (2026-11-16)
+
+Người dùng đã chạy metric GPU cho 200 cặp và xác nhận giữ nguyên nhãn sau khi xem lại 25 ca không đạt. Trên cùng 91 cặp: Spearman G **0,1767**, CLIPScore **0,0561**, −LPIPS **0,1962**. Đã xem ảnh thật và phân tích đủ 10 ca bất đồng, không sửa nhãn hoặc ngưỡng chấm. Chi tiết số liệu, độ phủ, bất định, giới hạn và lệnh mở HTML nằm trong [LEVEL3_RESULTS_V1.md](LEVEL3_RESULTS_V1.md).
+
+```bash
+# Chỉ CPU, đọc artifacts có sẵn; không inference hoặc thay đổi scorer đã khóa.
+bash scripts/analyze_level3_results.sh
+```

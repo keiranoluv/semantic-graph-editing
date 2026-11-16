@@ -1,0 +1,122 @@
+{
+  "schema": "level3-visual-review-v1",
+  "author": "assistant",
+  "human_ground_truth": false,
+  "review_date_utc": "2026-11-16",
+  "report": "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a",
+  "cohort": "configs/level3/qwen200-cohort-v1.json",
+  "qwen_index": "runs/level3/qwen200/seed42/index.json",
+  "sgg_results": "runs/level3/qwen-sgg/seed42/results.json",
+  "authoring": "configs/level3/evaluation200-authoring-v1.json",
+  "graph_results": "runs/level3/evaluation-v1/seed42/graph/results.json",
+  "selection": "Frozen top 10 largest rank-percentile gaps on the common 91 evaluable pairs; not a random SGG accuracy audit.",
+  "label_policy": "User confirmed no changes after rechecking failures. Every explicit null field means pass by user instruction; explicit booleans remain unchanged.",
+  "analysis_policy": "Post-evaluation visual observations, never used to change labels, scores, ROI, captions, or thresholds. Bootstrap is exploratory, grouped by source image, 2000 replicates, seed 42.",
+  "cases": [
+    {
+      "index": 58,
+      "task_id": "travel-7bb0c6b3635205-q100-1",
+      "visual_observation": "Ảnh đích có thuyền buồm ở phía trái vùng nước; bờ cây, bầu trời và bố cục hồ được giữ gần như nguyên vẹn.",
+      "graph_evidence": "REACT++ thêm boat n001, confidence 0,829; số boat tăng 1→2. Bốn node và bốn cạnh thuộc phần bảo toàn được ghép giữ lại, nên E=P=G=1.",
+      "interpretation": "G và −LPIPS cùng ở nhóm thứ hạng cao, phù hợp hai nhãn đạt. CLIPScore ở phân vị 3,3%. Kiểm tra đầu vào 224×224 xác nhận center crop của ảnh toàn cảnh 1920×544 loại bỏ hoàn toàn thuyền mới: điểm CLIP không được nhìn toàn bộ nội dung edit.",
+      "limitation": "Đây là bằng chứng mất thông tin do crop, chưa phải phép đo mức giảm CLIP do riêng crop; chưa chạy đối chứng preprocessing. Nhãn boat không chứng minh hệ thống hiểu thuộc tính sailboat.",
+      "inspect_clip_preprocessing": true
+    },
+    {
+      "index": 69,
+      "task_id": "travel-f50006ee6533fd-q100-1",
+      "visual_observation": "Một thuyền chèo gỗ được thêm ở vùng nước phía trước. Dãy núi, bầu trời và bố cục mặt nước vẫn tương tự ảnh nguồn; sóng có thay đổi nhẹ.",
+      "graph_evidence": "boat n002 là node mới, số boat tăng 0→1. Ba node nền và hai cạnh được giữ lại, E=P=1.",
+      "interpretation": "G và −LPIPS xếp cao, phù hợp hai nhãn đạt; CLIPScore chỉ ở phân vị 6,7%. Điểm tương đồng ảnh–caption toàn cục không nhất thiết xếp hạng cao cho một edit cục bộ đúng.",
+      "limitation": "Nguyên nhân embedding hoặc trọng số nội dung chỉ là giả thuyết; chưa có ablation để quy nguyên nhân duy nhất. Graph chỉ kiểm tra boat và vùng 2D, không kiểm tra vật liệu hay kiểu thuyền.",
+      "inspect_clip_preprocessing": false
+    },
+    {
+      "index": 178,
+      "task_id": "travel-4b531787105fc7-q200-2",
+      "visual_observation": "Chim nhỏ xuất hiện đúng trên tảng đá cao ở bên trái; hình dáng bờ đá, biển và núi vẫn tương tự ảnh nguồn.",
+      "graph_evidence": "Graph đích không có bird; node n004 được gán person với confidence 0,361, bbox chuẩn hóa x≈0,237–0,255, y≈0,437–0,463 nằm tại con chim nhìn thấy. E=0 do không có bird mới. P=0,844 và G=0.",
+      "interpretation": "Đây là lỗi nhận dạng của extractor khiến G thấp dù người duyệt cho đạt. −LPIPS xếp ở phân vị 90%, phù hợp cảnh ít đổi nhưng không tự xác nhận chim đã được thêm đúng.",
+      "limitation": "Quan sát bbox hỗ trợ nhận xét bird bị gán person; chưa có graph ground truth để suy ra precision/recall của toàn bộ extractor.",
+      "inspect_clip_preprocessing": false
+    },
+    {
+      "index": 168,
+      "task_id": "travel-5335a75704bb20-q200-2",
+      "visual_observation": "Mèo đã xuất hiện ở gốc cây. Đồng thời nhiều chi tiết cành, lá và nền đất bị vẽ lại; vật thể/cành gỗ nằm phía dưới ảnh nguồn không còn giống trước. Người duyệt cho đúng yêu cầu đạt, bảo toàn không đạt.",
+      "graph_evidence": "cat n001 là node mới, confidence 0,625. Bốn node nền tree/grass/sky/sky và năm cạnh vẫn ghép được nên P=1, G=1. Các chi tiết thay đổi không được biểu diễn trong graph này.",
+      "interpretation": "Graph đánh giá bảo toàn quá cao. LPIPS=0,297 thuộc nhóm thay đổi nhiều, phù hợp nhãn bảo toàn không đạt. CLIPScore thấp còn có hạn chế riêng: crop 224×224 đã cắt mất hoàn toàn mèo ở sát đáy ảnh.",
+      "limitation": "Graph không biểu diễn kết cấu hay mọi cành cây; điểm P chỉ mô tả tính nhất quán của phần graph được phát hiện. Chưa lượng hóa riêng tác động của crop tới CLIP.",
+      "inspect_clip_preprocessing": true
+    },
+    {
+      "index": 22,
+      "task_id": "sidewalk-33f7974a8750b3-q100-1",
+      "visual_observation": "Chậu cây mới nằm trước cửa cuốn xanh. Tủ/hộp tiện ích màu trắng bên trái và cửa cuốn vẫn nhìn thấy ở cả hai ảnh. Người duyệt chấp nhận cả hai tiêu chí.",
+      "graph_evidence": "E=1 nhưng P=0,2: nguồn có pavement, refrigerator, wall; đích có potted plant, pavement, wall-brick. Chỉ pavement ghép được. Node Dice=0,4, edge Dice=0. refrigerator vốn là nhãn đáng ngờ cho tủ ngoài đường, sau edit lại mất detection; wall đổi thành wall-brick.",
+      "interpretation": "CLIPScore xếp cao và ảnh thể hiện đối tượng được thêm. G thấp chủ yếu phản ánh detection/nhãn nền không ổn định; không thể suy rằng chiếc tủ thật đã bị xóa chỉ vì node refrigerator biến mất.",
+      "limitation": "Không tự đổi nhãn wall/wall-brick để nâng kết quả. Chưa có kiểm định ngữ nghĩa cho mọi cặp nhãn gần nhau; ghép quá rộng có thể tạo lỗi ngược.",
+      "inspect_clip_preprocessing": false
+    },
+    {
+      "index": 188,
+      "task_id": "travel-024f0364d89cf8-q200-2",
+      "visual_observation": "Ảnh đích có chim đậu trên phần mái chìa của chùa, thay vì trên lan can như câu lệnh. Bố cục nền nhìn chung vẫn giữ. Người duyệt cho đúng yêu cầu không đạt, bảo toàn đạt.",
+      "graph_evidence": "Graph đích không có bird; E=0, P≈0,767, G=0. Bộ chấm không có node chim để kiểm tra vị trí đậu.",
+      "interpretation": "CLIPScore và −LPIPS xếp khá cao dù yêu cầu vị trí bị sai. G=0 trùng với nhãn không đạt, nhưng lý do tính điểm là thiếu detection, không phải bằng chứng bộ chấm hiểu quan hệ chim–lan can.",
+      "limitation": "Cần phân biệt kết quả đúng với lập luận đúng. LPIPS vốn không đo độ đúng của câu lệnh; G=0 ở ca này không chứng minh khả năng kiểm tra quan hệ ngôn ngữ.",
+      "inspect_clip_preprocessing": false
+    },
+    {
+      "index": 160,
+      "task_id": "travel-04ea5302b09c26-q200-2",
+      "visual_observation": "Chim được thêm vào trời, phía trên lệch phải của tảng đá lớn. Các thành phần chính của cảnh được giữ. Người duyệt cho cả hai tiêu chí đạt.",
+      "graph_evidence": "REACT++ nhận được bird n004, confidence 0,509. Tâm bbox≈(0,6903; 0,1153) nằm ngoài ROI định trước [0,72; 0,03; 0,97; 0,27]. Quy tắc tâm bbox trong ROI làm E=0, mặc dù có bird. Bốn node nền đều ghép được, P≈0,819.",
+      "interpretation": "Đây là giới hạn của grounding theo hình chữ nhật cứng: diễn đạt tự nhiên được người duyệt chấp nhận nhưng vị trí chim lệch trái khoảng 0,030 chiều rộng so với biên ROI. CLIPScore xếp cao hơn G rõ rệt.",
+      "limitation": "Giữ nguyên ROI đã khóa. Sửa ROI sau khi thấy ảnh đích hoặc nhãn sẽ làm kết quả đánh giá mất độc lập; cải tiến cần protocol/phiên bản và tập validation riêng.",
+      "inspect_clip_preprocessing": false
+    },
+    {
+      "index": 187,
+      "task_id": "travel-9a88db6f11f97f-q200-2",
+      "visual_observation": "Chó xuất hiện trên đá ở tiền cảnh bên thác. Cây, thác và hai người phía xa vẫn có mặt; dòng nước và bề mặt đá bị vẽ lại một phần. Người duyệt cho cả hai tiêu chí đạt.",
+      "graph_evidence": "E=1 nhưng P=1/3. Nguồn chỉ có tree, rock, person; đích thêm river, person, rock ngoài dog. Ba node nguồn được ghép, nhưng nền bị tách thêm node; node Dice=2/3. Hai cạnh nguồn không còn khớp, edge Dice=0.",
+      "interpretation": "CLIPScore xếp cao nhờ phù hợp nội dung edit; G thấp do graph nền thay đổi cách phát hiện/phân đoạn và cạnh. LPIPS cũng cao, phản ánh biến đổi kết cấu nước/đá dù mức này vẫn được người duyệt chấp nhận.",
+      "limitation": "Không quy toàn bộ thay đổi graph cho lỗi extractor: ảnh thực có thay đổi chi tiết. Cần tách sự xuất hiện thêm detection khỏi sự xuất hiện vật thể mới ngoài đời.",
+      "inspect_clip_preprocessing": false
+    },
+    {
+      "index": 198,
+      "task_id": "travel-bc738e0b6f7cc0-q200-2",
+      "visual_observation": "Chim được thêm ở lan can đá phía trái. Ảnh đích cũng xuất hiện lan can lớn ở tiền cảnh chưa nhìn thấy trong ảnh nguồn. Nhãn người duyệt vẫn là đạt/đạt; nhận xét này giữ nguyên nhãn đó.",
+      "graph_evidence": "E=1; P≈0,441. Nguồn chứa bridge, river, train cùng sky/building/water/tree; không thấy tàu trong ảnh thật. Các node bridge/river/train không ghép; đích thêm ba wall và fence. Node Dice≈0,533; edge Dice≈0,348.",
+      "interpretation": "CLIPScore xếp rất cao, trong khi G bị giảm bởi cả detection/nhãn sai ở nguồn lẫn phần lan can thật sự được thêm ở đích. Ca này thể hiện cả giới hạn extractor và khác biệt về mức thay đổi mà người duyệt xem là được phép.",
+      "limitation": "Không kết luận G thấp hoàn toàn là lỗi SGG: một phần thay đổi cấu trúc có thật. Nhận xét của assistant không tự sửa nhãn bảo toàn; chưa có nhãn tay vùng cho phép thay đổi.",
+      "inspect_clip_preprocessing": false
+    },
+    {
+      "index": 48,
+      "task_id": "sidewalk-6ae28a57c0ade0-q100-1",
+      "visual_observation": "Ghế gỗ mới nằm trước hàng rào cây xanh và bên phải thân cây. Bố cục vỉa hè, cây và lề đường được giữ, nhưng bề mặt gạch có thay đổi cục bộ.",
+      "graph_evidence": "bench n000 mới làm E=1. Ba node pavement/tree/dirt đều ghép, hai cạnh bảo toàn giữ nguyên; hai wall mới làm node Dice=0,75. P=G=0,875.",
+      "interpretation": "Graph xếp cao hơn CLIPScore, phù hợp nhãn đạt/đạt. Kiểm tra crop CLIP vẫn thấy rõ ghế: khác mẫu 58, không thể dùng mất đối tượng do crop để giải thích. LPIPS=0,262 phản ánh thay đổi bề mặt gạch và vật thể mới.",
+      "limitation": "CLIPScore là tương đồng toàn cục với caption, không phải xác suất edit đạt. Nguyên nhân điểm CLIP thấp cụ thể vẫn chưa xác định; không quy hết cho preprocessing.",
+      "inspect_clip_preprocessing": true
+    }
+  ],
+  "inputs_sha256": {
+    "configs/level3/qwen200-cohort-v1.json": "3abb396609aea1b981ee99f3cbb0c2237bd13a6882ec5e4f80351ecf76c29109",
+    "runs/level3/qwen200/seed42/index.json": "ba723eaf6536004b0ad020bfbfc220d42a0453dbd69af05bac697be0316ffbda",
+    "runs/level3/qwen-sgg/seed42/results.json": "3f63a76c55c1a94437343aec1f8e37dd7ab0c16341e18b9ab23dd06d6b94bdaa",
+    "configs/level3/evaluation200-authoring-v1.json": "f51172d9fbce149673922e12ef114f5020053b459ed01ae43e203f4bd798264d",
+    "runs/level3/evaluation-v1/seed42/graph/results.json": "6b6cff41f337df0b0acaa4426d25ca977cac75c88db8da16696a45db521ff00e",
+    "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a/summary.json": "1f29361868e7b19e9a9a041b07de560696d852eb7c3b7d6901a1964b2c5b1dcf",
+    "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a/results.json": "76b76a9418cd1578ef0cf37710c07cafe421cea66bdb16981517be5c70ef492d",
+    "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a/labels.json": "fc13b41bcfb8052d04cac71cb968e53251c2cf29402cafbb91697576636a9d79",
+    "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a/disagreement-candidates.json": "8272965d7b5c4bb88f5d75aeb5e64d4f4a5911701c615b7a2fccec1f33d4ca05",
+    "runs/level3/evaluation-v1/seed42/metrics/results.json": "a910e616933aa95d9ff715bdc196f9f8531f1fc1dd888841727565719b844929",
+    "configs/level3/evaluation200-v1.json": "19afdd88eda1ca1592b646d163d1a05b5f4260c8d0a163fcf42be637037d858a",
+    "data/cache/level3-task3-v1/clip/preprocessor_config.json": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+    "runs/level3/evaluation-v1/seed42/reports/0fc28934ad71812a/results.csv": "5ebac3ac90d58d18992c9ccdf43426bc26ef339d9a13272b8128ea6652894091"
+  }
+}
