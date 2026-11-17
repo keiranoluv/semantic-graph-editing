@@ -1,0 +1,309 @@
+{
+  "split": "test",
+  "protocol": "PredCls_reference_v1_iou50_image_macro_per_predicate_50",
+  "images_evaluated": 26446,
+  "plan_sha256": "2220ff667068691a4cae6334a0bf3f529e75b3e9e652f4f46cbab58d986c8add",
+  "metrics_unit": "fraction_0_to_1",
+  "interpretation": "fixed_checkpoint_rescore_previously_viewed_test_no_reselection",
+  "reports": [
+    {
+      "path": "reports/level1/reference-test27-v1/mlp_semantic-seed42-test26446.json",
+      "sha256": "d14720352d8b0e3bf29444c06c0af1d2c10b5491520f18fca285057e079c68eb"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/mlp_semantic-seed123-test26446.json",
+      "sha256": "7866022cc1d053bb8e13ca0fe50ca43266735a9a9ae145a5a40088511c5cfe2d"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/mlp_semantic-seed3407-test26446.json",
+      "sha256": "03138eae1c087bf903b99fe341c15b9604f0d608500207f4a38e959a331285b2"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/gat-seed42-test26446.json",
+      "sha256": "72bb223609adefc509edcdf4092eb2731f0fde8e96021832448f44d144071e94"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/gat-seed123-test26446.json",
+      "sha256": "fd94627a87a120a884ab93f64713a6f67c001ae5f58d35ec095ac2b3de233da2"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/gat-seed3407-test26446.json",
+      "sha256": "f84e89c54ca84588f95a27f89d6a7ea133d3ccbf9c5c5bb3b84b63d9376dc19e"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/kg_off-seed42-test26446.json",
+      "sha256": "e4c92dcbf9356412ee93d2e9f29ad22e9f674b24e3e8a2fc01ce3545131aa481"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/kg_off-seed123-test26446.json",
+      "sha256": "ff68ce8d6256102cf5464e5fa1b474b163f9f9bc655f75aa35d145ff93bc49a2"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/kg_off-seed3407-test26446.json",
+      "sha256": "4871762381d42c7efe50afdc4897c910f209aea70ff28a5ba7b0f82103b4b60f"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/wordnet_kg_on-seed42-test26446.json",
+      "sha256": "91260932a85109742b064578f5d034efb3285514630089a7542b48af06cbe609"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/wordnet_kg_on-seed123-test26446.json",
+      "sha256": "eb829293a7afd27cf678e36ac487382392e596b24afd5813c7c859353af5244b"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/wordnet_kg_on-seed3407-test26446.json",
+      "sha256": "4d94035e043786c713f2a390033df012dc4cdccb082caa24082d38ebe9117f51"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/wordnet_edges_off-seed42-test26446.json",
+      "sha256": "2ba27bbbb0fd395c6ad11e83e44b46f0e2daddf08b8c24e5cbc1190f46462f68"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/wordnet_edges_off-seed123-test26446.json",
+      "sha256": "22165b040950ae3cb2ef41e8ba00685abf2bfedf4a05458231bca7b0d10437c1"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/wordnet_edges_off-seed3407-test26446.json",
+      "sha256": "8ee16240225179f53003ea6bfbd76d4f5c5404cb183b743626f36a3ffb3a73a1"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_transe_kg_on-seed42-test26446.json",
+      "sha256": "8083cd3372d2b5c7d56bdb0946d26c6ff1771fc60d65f9d158040867b3cc1d3f"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_transe_kg_on-seed123-test26446.json",
+      "sha256": "654c8463cf5a86316ac7fe3e19a4f638735540e49cfaede1a77ec1c5dbd32b81"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_transe_kg_on-seed3407-test26446.json",
+      "sha256": "798d4e32b83a6459a1d35c54e0ae806f0da80d5871ce8938fd7590cb25683993"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_transe_edges_off-seed42-test26446.json",
+      "sha256": "6ef913616a7faaf2bd136a90f6fc7f3b57c9589dd50ec601821e38edf955acbb"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_transe_edges_off-seed123-test26446.json",
+      "sha256": "d49c134971687c76c76a1dcb7eb3fc84e67c5433b1755dc528fbc742acd7ae92"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_transe_edges_off-seed3407-test26446.json",
+      "sha256": "078035d0dc27083b5da9aac7d784913c5eca98880cc3cbc362d440a965311a3e"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_rotate_kg_on-seed42-test26446.json",
+      "sha256": "d3a1c55b5ca86940dbe47dce95270fc5151a9244b0cd875559f33c1cd3807cb2"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_rotate_kg_on-seed123-test26446.json",
+      "sha256": "9e5981c0a14677230b8cc4d2aed43bf496da1a08e3fdae4930c30bfc2d922992"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_rotate_kg_on-seed3407-test26446.json",
+      "sha256": "a9930d6c53720a8d1a4e0d40e5f9d25ba9a5111754b3512ac16ddf634dd5b6b7"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_complex_kg_on-seed42-test26446.json",
+      "sha256": "01094bcd32a8fa3dbeac49763f268f55fcb3f6bacaa009c02119f175b627314e"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_complex_kg_on-seed123-test26446.json",
+      "sha256": "f56f2becbead5f3d6efc7d1362f24b56a683d1a0257ecdc8d249147aa2206d8b"
+    },
+    {
+      "path": "reports/level1/reference-test27-v1/conceptnet_complex_kg_on-seed3407-test26446.json",
+      "sha256": "865de92349c71934351481638983d702b1dfd6b40a20a4a5b54c666211eb33ac"
+    }
+  ],
+  "groups": [
+    {
+      "condition": "mlp_semantic",
+      "metrics": {
+        "R@50": {
+          "mean": 0.6356112959064645,
+          "sample_std": 0.007679957195104793
+        },
+        "R@100": {
+          "mean": 0.6640075665999603,
+          "sample_std": 0.002873866389218578
+        },
+        "mR@50": {
+          "mean": 0.16951068372011996,
+          "sample_std": 0.015173957554328158
+        },
+        "mR@100": {
+          "mean": 0.19522759253058844,
+          "sample_std": 0.014209514962639705
+        }
+      }
+    },
+    {
+      "condition": "gat",
+      "metrics": {
+        "R@50": {
+          "mean": 0.6387282057590666,
+          "sample_std": 0.007279376357010822
+        },
+        "R@100": {
+          "mean": 0.6620936057165432,
+          "sample_std": 0.006964614144598754
+        },
+        "mR@50": {
+          "mean": 0.18605011604100813,
+          "sample_std": 0.0024501633634719513
+        },
+        "mR@100": {
+          "mean": 0.20950139820864816,
+          "sample_std": 0.0020860136098077337
+        }
+      }
+    },
+    {
+      "condition": "kg_off",
+      "metrics": {
+        "R@50": {
+          "mean": 0.6388822845948264,
+          "sample_std": 0.0037563307502089184
+        },
+        "R@100": {
+          "mean": 0.6624001123971133,
+          "sample_std": 0.0030086491497316238
+        },
+        "mR@50": {
+          "mean": 0.18442391566101143,
+          "sample_std": 0.0028835836846621546
+        },
+        "mR@100": {
+          "mean": 0.20720579976145903,
+          "sample_std": 0.004275440994100507
+        }
+      }
+    },
+    {
+      "condition": "wordnet_kg_on",
+      "metrics": {
+        "R@50": {
+          "mean": 0.6414894482312536,
+          "sample_std": 0.0029391353791771223
+        },
+        "R@100": {
+          "mean": 0.666871215152394,
+          "sample_std": 0.003426594368952195
+        },
+        "mR@50": {
+          "mean": 0.17837935464890703,
+          "sample_std": 0.000889592108720919
+        },
+        "mR@100": {
+          "mean": 0.20337186945890054,
+          "sample_std": 0.0008368824621278241
+        }
+      }
+    },
+    {
+      "condition": "wordnet_edges_off",
+      "metrics": {
+        "R@50": {
+          "mean": 0.6410515923087995,
+          "sample_std": 0.011515127254322447
+        },
+        "R@100": {
+          "mean": 0.6645807881542111,
+          "sample_std": 0.011253746644992568
+        },
+        "mR@50": {
+          "mean": 0.18411224296428952,
+          "sample_std": 0.009016996158269501
+        },
+        "mR@100": {
+          "mean": 0.20720487543980112,
+          "sample_std": 0.007634875852335637
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_transe_kg_on",
+      "metrics": {
+        "R@50": {
+          "mean": 0.6409997933254469,
+          "sample_std": 0.0027334966323320797
+        },
+        "R@100": {
+          "mean": 0.664489257455715,
+          "sample_std": 0.0027920603751168823
+        },
+        "mR@50": {
+          "mean": 0.18388887784438318,
+          "sample_std": 0.0028648651591155418
+        },
+        "mR@100": {
+          "mean": 0.20714416818537404,
+          "sample_std": 0.002829449895631231
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_transe_edges_off",
+      "metrics": {
+        "R@50": {
+          "mean": 0.6459106647612106,
+          "sample_std": 0.0018717514125209224
+        },
+        "R@100": {
+          "mean": 0.6696888708018696,
+          "sample_std": 0.001599649283405797
+        },
+        "mR@50": {
+          "mean": 0.18149276486025834,
+          "sample_std": 0.0027764284710366112
+        },
+        "mR@100": {
+          "mean": 0.20468355729792764,
+          "sample_std": 0.0032459179313708594
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_rotate_kg_on",
+      "metrics": {
+        "R@50": {
+          "mean": 0.6421436634223279,
+          "sample_std": 0.00372254835385161
+        },
+        "R@100": {
+          "mean": 0.6660014521161297,
+          "sample_std": 0.004550070911814718
+        },
+        "mR@50": {
+          "mean": 0.18570020090261435,
+          "sample_std": 0.004158174193561193
+        },
+        "mR@100": {
+          "mean": 0.20929222886686388,
+          "sample_std": 0.0035391237830849375
+        }
+      }
+    },
+    {
+      "condition": "conceptnet_complex_kg_on",
+      "metrics": {
+        "R@50": {
+          "mean": 0.6437239042051346,
+          "sample_std": 0.0017959276668288715
+        },
+        "R@100": {
+          "mean": 0.6679227243851102,
+          "sample_std": 0.0025250211092033466
+        },
+        "mR@50": {
+          "mean": 0.18334027706440634,
+          "sample_std": 0.002398776769977952
+        },
+        "mR@100": {
+          "mean": 0.20754719674760805,
+          "sample_std": 0.0018146307438627024
+        }
+      }
+    }
+  ]
+}
