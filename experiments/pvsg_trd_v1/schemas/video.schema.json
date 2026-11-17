@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "video.schema.json",
+  "description": "M0 structure contract; cross-field frame/track/visibility checks belong to M1.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "video_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "num_frames": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "kind": {
+      "const": "gt_track_video"
+    },
+    "source": {
+      "enum": [
+        "vidor",
+        "epic_kitchen",
+        "ego4d"
+      ]
+    },
+    "fps": {
+      "const": 5
+    },
+    "width": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "track_id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "class_id": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 125
+          },
+          "is_thing": {
+            "type": "boolean"
+          },
+          "visible_intervals": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            }
+          }
+        },
+        "required": [
+          "track_id",
+          "class_id",
+          "is_thing",
+          "visible_intervals"
+        ]
+      },
+      "minItems": 1
+    },
+    "mask_reference": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "video_id",
+    "num_frames",
+    "kind",
+    "source",
+    "fps",
+    "width",
+    "height",
+    "tracks",
+    "mask_reference"
+  ]
+}

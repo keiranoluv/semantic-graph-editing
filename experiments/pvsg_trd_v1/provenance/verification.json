@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "milestone": "M0",
+  "checked_at_utc": "2026-11-17 18:13:02 UTC",
+  "device": "CPU",
+  "environment": {
+    "python": "3.12.3",
+    "jsonschema": "4.26.0",
+    "pytest": "8.3.5"
+  },
+  "checks": [
+    {
+      "command": "python -m pytest -q experiments/pvsg_trd_v1/tests",
+      "exit_code": 0,
+      "output": "..................                                                       [100%]\n18 passed in 0.75s"
+    },
+    {
+      "command": "python experiments/pvsg_trd_v1/validate_m0.py --require-selected",
+      "exit_code": 0,
+      "output": "{\n  \"validation\": \"passed\",\n  \"m0_state\": \"complete\",\n  \"m0_complete\": true,\n  \"selected_manifest\": \"pvsg_author_release_338_62.lock.json\",\n  \"annotation_identity\": null,\n  \"training_enabled\": false\n}"
+    },
+    {
+      "command": "python experiments/pvsg_trd_v1/validate_m0.py --require-selected --annotation data/external/pvsg_m0/pvsg.hf_7e5f1ec.json",
+      "exit_code": 0,
+      "output": "{\n  \"validation\": \"passed\",\n  \"m0_state\": \"complete\",\n  \"m0_complete\": true,\n  \"selected_manifest\": \"pvsg_author_release_338_62.lock.json\",\n  \"annotation_identity\": {\n    \"videos\": 400,\n    \"train\": 338,\n    \"heldout\": 62\n  },\n  \"training_enabled\": false\n}"
+    }
+  ],
+  "protected_tree": {
+    "comparison": "SHA256 snapshot captured before M0 against current working tree",
+    "files": 193,
+    "changed": [],
+    "added": [],
+    "removed": [],
+    "scope": [
+      "src/**/*.py",
+      "scripts/*.py",
+      "configs/**/*",
+      "AGENTS.md",
+      "notebooks/level1_scene_graph_demo.ipynb"
+    ]
+  },
+  "scope": {
+    "media_downloaded": false,
+    "checkpoints_downloaded": false,
+    "gpu_tasks": false,
+    "training": false,
+    "parser_evaluator_implemented": false
+  },
+  "limitations": [
+    "Checks cover M0 schemas, identity and split isolation; evaluator semantics are scheduled for M1.",
+    "Frame/mask availability and internal-validation groups are pending M2."
+  ],
+  "checks_repeated_after_formatting": true,
+  "pre_commit": {
+    "result": "passed",
+    "hooks": [
+      "trailing-whitespace",
+      "end-of-file-fixer",
+      "check-added-large-files",
+      "check-merge-conflict",
+      "debug-statements",
+      "black",
+      "autoflake",
+      "isort",
+      "ruff"
+    ]
+  }
+}

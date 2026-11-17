@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "targets.schema.json",
+  "description": "M0 structure contract; cross-field frame/track/visibility checks belong to M1.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "video_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "num_frames": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "kind": {
+      "const": "relation_targets"
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "subject_id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "object_id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "predicate_id": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 56
+          },
+          "intervals": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "subject_id",
+          "object_id",
+          "predicate_id",
+          "intervals"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "video_id",
+    "num_frames",
+    "kind",
+    "relations"
+  ]
+}
