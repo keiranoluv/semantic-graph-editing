@@ -1,0 +1,133 @@
+\clearpage
+\subsection{Task B -- Yêu cầu gốc và thí nghiệm MagicBrush}
+Yêu cầu gốc là xây ít nhất 300 cặp $(G_s,q,\Delta G)$ từ MagicBrush hoặc
+InstructPix2Pix, kiểm tay ít nhất 20 mẫu và dự đoán sáu thao tác:
+thêm/xóa/thay node, thêm/xóa/thay edge. Đầu ra không chỉ có loại thao tác;
+cần đúng entity, endpoint và payload để áp dụng lên graph nguồn.
+
+\begin{table}[H]\centering\small
+\caption{Thiết lập MagicBrush và kết quả test (\%, ba seed).}\label{tab:magic}
+\begin{tabularx}{\linewidth}{@{}Xrr@{}}\toprule
+Chỉ số & MLP & GNN\\\midrule
+Micro-F1 operation & $3,75\pm1,82$ & $7,34\pm1,50$\\
+Exact target graph & 0 & 0\\
+Số cặp train / val / test & 301 / 67 / 69 & 301 / 67 / 69\\
+\bottomrule\end{tabularx}\end{table}
+
+MagicBrush~\cite{zhang2023magicbrush} cung cấp ảnh nguồn, instruction và ảnh đích.
+Graph sinh từ ảnh rồi căn chỉnh instance để lấy operation đích.
+Bản v3 dùng các head dự đoán có cấu trúc: copy entity cũ, tối đa 12 slot node mới,
+attention chọn endpoint và ràng buộc transaction. Hidden 192, dropout 0,1,
+batch 16, AdamW $3\times10^{-4}$, weight decay $10^{-2}$, tối đa 200 epoch;
+seed 42/123/3407, chọn checkpoint bằng validation operation-F1.
+
+\begin{table}[H]\centering\small
+\caption{Chẩn đoán MagicBrush. Mỗi hàng ghi rõ mẫu số và phạm vi.}\label{tab:magicdiag}
+\begin{tabularx}{\linewidth}{@{}p{49mm}p{28mm}X@{}}\toprule
+Quan sát & Giá trị / phạm vi & Hàm ý\\\midrule
+Payload biểu diễn được & 154/219 operation val & Một phần target vượt vocabulary/representation.\\
+Mẫu biểu diễn đầy đủ & 15/67 mẫu val & Biểu diễn từng operation chưa bảo đảm cả chương trình khả thi.\\
+Đúng loại và entity & 37/118 dự đoán; GNN seed 42 val & Grounding còn sai trước khi xét payload.\\
+Node mới đúng tên object & 2/42; chẩn đoán val & Open vocabulary là nút thắt.\\
+Target không xác định duy nhất & 15/20 mẫu phân tích & Instruction không quyết định toàn bộ graph difference.\\
+\bottomrule\end{tabularx}\end{table}
+
+GNN tăng 3,59 pp micro-F1 so MLP nhưng cả hai không khớp chính xác graph đích.
+Điểm thấp không chỉ là thiếu năng lực message passing: target còn chứa sai số
+extractor/alignment và thay đổi không được instruction chỉ định.
+Phân tích 20 mẫu nêu trên chưa được coi là kiểm tay độc lập toàn bộ dữ liệu.
+
+\reporttodo{2B-1}{Hoàn thiện bảng P/R/F1 của MagicBrush cho cả sáu operation
+từ artifact v3, ghi support và tách loại không có GT khỏi F1 bằng 0.
+Kèm 20 mẫu kiểm tay có ID, tiêu chí, người duyệt và kết luận độ tin cậy.}
+\srcnote{Nguồn: \texttt{magicbrush-manual-experiment-v3/result-audit.json}
+(mean/std test đã đối chiếu); \texttt{magicbrush-manual-v3-error-analysis-v1/README.md}.
+Không ghép số chẩn đoán validation vào mẫu số test 69.}
+
+\clearpage
+\subsection{Task B -- Vì sao chuyển sang EMNLP 2020?}
+\begin{table}[H]\centering\small
+\caption{Phạm vi được cải thiện và phần chưa được giải quyết khi đổi dataset.}
+\begin{tabularx}{\linewidth}{@{}X X X@{}}\toprule
+Vấn đề MagicBrush & EMNLP giải quyết gì & EMNLP không giải quyết gì\\\midrule
+Graph phải sinh từ ảnh & Có graph nguồn/đích sẵn & Không kiểm chứng pipeline từ ảnh.\\
+Instance alignment nhiễu & Correspondence cấu trúc rõ hơn & Chưa chứng minh image-disjoint.\\
+Target không duy nhất & Graph target xác định hơn & Graph nhỏ và đơn giản.\\
+Open vocabulary lớn & Từ vựng khép kín hơn & Không đại diện đầy đủ scene graph ảnh thật.\\
+\bottomrule\end{tabularx}\end{table}
+
+EMNLP 2020~\cite{he2020sgmod} là \textbf{dataset thay thế cho Task 2B},
+dùng kiểm tra khả năng học operation với supervision có cấu trúc.
+Kết quả này không xóa bỏ hoặc thay thế khó khăn đã ghi nhận trên MagicBrush.
+
+\begin{table}[H]\centering\small
+\caption{Thiết lập EMNLP 2020, phiên bản W\&B v4.}
+\begin{tabularx}{\linewidth}{@{}p{38mm}X@{}}\toprule
+Thành phần & Thiết lập\\\midrule
+Dữ liệu & Train 29.868 / val 532 / test 530 mẫu.\\
+Test subset & Từ 1.000 mẫu official: loại 468 source overlap train/val và 2 correspondence mơ hồ.\\
+Representation & Graph gốc nhỏ (1--3 node), vô hướng, có attribute node; adapter tạo cạnh hai chiều.\\
+Mô hình / tối ưu & Hidden 96; GNN 2 lớp; batch 128; AdamW $10^{-3}$, weight decay $10^{-2}$.\\
+Chọn checkpoint & Validation token loss; tối đa 20 epoch, tối thiểu 6, patience 3; seed 42/43/44.\\
+Theo dõi & Sáu run có W\&B; tổng 61 epoch, từng run dừng ở epoch 9--11.\\
+\bottomrule\end{tabularx}\end{table}
+
+Chia theo source fingerprint giảm trùng graph nhưng chưa chứng minh tách theo
+ảnh gốc. Vocabulary chỉ xây từ train; 35/530 chương trình test có OOV vẫn được
+giữ trong mẫu số. Ngưỡng exact tối đa do vocabulary là 93,40\%, không phải điểm
+mô hình đạt được.
+
+\reporttodo{2B-2}{Bổ sung sơ đồ encoder/decoder và loss của EMNLP v4 từ code đã khóa,
+cách serialize operation và kiểm tra transaction. Không dùng mô tả các head
+MagicBrush v3 thay cho kiến trúc EMNLP.}
+\reporttodo{2B-3}{Hoàn thiện kiểm tay correspondence và instruction--target của EMNLP,
+ví dụ graph trước/sau; xác minh nguồn ảnh và image-disjoint nếu metadata cho phép.
+Ghi nhận việc trao đổi với giảng viên về thay đổi dataset.}
+
+\clearpage
+\subsection{Task B -- Kết quả EMNLP và phân tích theo operation}
+\begin{table}[H]\centering\small
+\caption{EMNLP test, 530 mẫu; mean $\pm$ sample std (\%), ba seed.}\label{tab:emnlp}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+Model & Micro-F1 & Macro-F1 & Exact target & Valid transaction\\\midrule
+MLP & $81,69\pm0,31$ & $54,25\pm0,51$ & $67,74\pm0,68$ & $95,60\pm0,29$\\
+GNN & $82,44\pm0,39$ & $55,03\pm0,28$ & $68,55\pm0,22$ & $95,79\pm0,39$\\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[H]\centering\small
+\caption{P/R/F1 theo operation trên EMNLP test; mean (\%). Support là số GT, không nhân ba seed.}\label{tab:operations}
+\begin{tabular}{@{}lrrrrr@{}}\toprule
+Operation & Support & MLP F1 & GNN P & GNN R & GNN F1\\\midrule
+add\_node & 105 & 59,72 & 62,50 & 65,40 & 63,86\\
+delete\_node & 363 & 97,10 & 97,53 & 97,98 & 97,76\\
+replace\_node & 121 & 27,71 & 30,59 & 24,79 & 27,38\\
+add\_edge & 210 & 43,86 & 42,64 & 44,60 & 43,56\\
+delete\_edge & 728 & 97,10 & 97,53 & 97,76 & 97,64\\
+replace\_edge & 6 & 0,00 & 0,00 & 0,00 & 0,00\\
+\bottomrule\end{tabular}\end{table}
+
+GNN hơn MLP 0,75 pp micro-F1 nhưng chỉ hơn 0,78 pp macro-F1.
+Deletion chiếm nhiều GT và đạt F1 gần 98\%, kéo micro-F1 lên;
+replace-node chỉ 27,38\%, replace-edge có GT nhưng không có true positive.
+Vì vậy micro-F1 82,44\% không có nghĩa cả sáu operation đều được học tốt.
+
+\begin{table}[H]\centering\small
+\caption{Đối chứng và lát cắt bổ sung trên cùng test.}
+\begin{tabularx}{\linewidth}{@{}p{49mm}p{35mm}X@{}}\toprule
+Đối chứng / lát cắt & Kết quả & Cách đọc\\\midrule
+No-op & F1 0; exact 0; valid 100 & Hợp lệ cú pháp không đồng nghĩa đúng yêu cầu.\\
+Nearest training program & F1 56,22; exact 33,77 & Baseline retrieval bằng CLIP instruction và pooled source.\\
+GNN, simple exact & $24,79\pm1,65$ & 121 mẫu có đúng một GT operation; thấp hơn exact toàn tập.\\
+MLP, simple exact & $25,34\pm1,91$ & GNN không thắng ở mọi lát cắt.\\
+\bottomrule\end{tabularx}\end{table}
+
+Validation micro-F1 của MLP là 80,39\%, GNN 80,25\%: thứ hạng không giống test.
+Bản v4 giữ kết quả test bằng v3 vì best-checkpoint tensor bằng nhau; đóng góp
+của v4 là tracking/resume/early stopping, không phải accuracy gain.
+
+\reporttodo{2B-4}{Chèn hình graph nguồn, instruction, operation GT/dự đoán và graph
+sau áp dụng cho các case đúng/sai đã lưu ID/hash. Tách lỗi identity, payload,
+loại thao tác và transaction; bổ sung xác nhận ngữ nghĩa bằng người.}
+\srcnote{Nguồn: \texttt{emnlp2020-task-b-wandb-v4-test-v1/README.md},
+\texttt{metrics.json}, \texttt{error-analysis.json}. Test này từng được xem ở v3;
+v4 không chọn lại cấu hình theo kết quả test.}

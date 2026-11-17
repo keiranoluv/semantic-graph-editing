@@ -1,0 +1,20 @@
+% !TEX program = xelatex
+\documentclass[11pt,a4paper]{article}
+\input{header}
+\begin{document}
+\setstretch{1.16}
+\hypersetup{pageanchor=false}
+\input{front-page}
+\hypersetup{pageanchor=true}
+\input{abstract}
+{\small\begin{spacing}{0.94}\tableofcontents\end{spacing}}
+\clearpage
+\input{Text/1}
+\input{Text/2}
+\input{Text/3}
+\input{Text/4}
+\input{Text/5}
+\input{Text/6}
+\clearpage
+\printbibliography[title={Tài liệu tham khảo}]
+\end{document}
