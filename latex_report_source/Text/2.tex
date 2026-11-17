@@ -150,48 +150,54 @@ ba seed và một permutation chưa đủ để khẳng định khác biệt nh�
 \srcnote{Nguồn: \texttt{reference-loss-fusion-test27-v1/analysis.json} và \texttt{tables.md}.}
 
 \clearpage
-\subsection{Long-tail và zero-shot: phân tích validation}
-Các bảng này dùng \textbf{5.000 ảnh validation}, không phải test.
-Head/body/tail được khóa theo tần suất train: 10/20/20 predicate,
-chiếm 88,40/10,14/1,46\% annotation train. Ranking lấy top-K toàn ảnh;
-không lấy top-K riêng sau khi lọc nhóm.
+\subsection{Long-tail và zero-shot: kết quả test}
+Long-tail dùng \textbf{26.446 ảnh test} của 54 checkpoint; tính trên CPU từ
+recall từng predicate đã lưu, không inference lại.
+Head/body/tail giữ nguyên theo tần suất train: 10/20/20 predicate,
+chiếm 88,40/10,14/1,46\% annotation train. Top-K vẫn lấy trên toàn ảnh.
 
 \begin{table}[H]\centering\small
-\caption{Long-tail validation: GC mR@50 (\%), ba seed.}\label{tab:tail}
+\caption{Long-tail test: GC mR@50 (\%), mean $\pm$ sample std ba seed.}\label{tab:tail}
 \begin{tabular}{@{}lrrr@{}}\toprule
 Cấu hình & Head (10 lớp) & Body (20 lớp) & Tail (20 lớp)\\\midrule
-MLP & $46,31\pm1,77$ & $17,41\pm1,87$ & $2,45\pm0,35$\\
-GAT & $47,96\pm0,64$ & $21,03\pm1,16$ & $3,87\pm0,52$\\
-CE, KG-off & $47,64\pm0,35$ & $20,47\pm0,99$ & $3,65\pm0,60$\\
-Adjusted, KG-off & $46,85\pm0,13$ & $31,28\pm1,58$ & $9,79\pm2,33$\\
-Adjusted, KG-on & $46,34\pm0,70$ & $33,24\pm1,27$ & $8,51\pm0,30$\\
+MLP & $49,93\pm1,58$ & $14,12\pm2,14$ & $3,29\pm0,87$\\
+GAT & $51,03\pm0,69$ & $16,88\pm0,99$ & $4,12\pm0,08$\\
+CE, KG-off & $51,10\pm0,15$ & $16,19\pm0,41$ & $3,54\pm0,20$\\
+Adjusted, KG-off & $50,72\pm0,10$ & $26,56\pm0,94$ & $9,55\pm1,42$\\
+Adjusted, KG-on & $50,60\pm0,30$ & $26,37\pm1,37$ & $10,01\pm1,34$\\
 \bottomrule\end{tabular}\end{table}
 
-Adjusted-off tăng body 10,81 pp, tail 6,14 pp nhưng giảm head 0,79 pp so CE-off.
-Điều này phù hợp với đánh đổi R/mR ở test nhưng không thay thế phép đo long-tail
-test. Tail validation chỉ có 497 annotation và 19/20 lớp có GT; lớp vắng
-vẫn đóng góp 0 vào mẫu số cố định.
+Adjusted-off tăng body \textbf{10,37 pp}, tail \textbf{6,01 pp} và giảm head
+0,37 pp so CE-off; cả ba seed cùng chiều trong từng nhóm.
+Test có 2.511 annotation tail. Ở cohort fusion, pair-real đạt tail mR@50
+10,74\%, so với baseline 9,30\% và shuffled 10,94\%:
+KG thật chưa vượt đối chứng xáo trộn ở nhóm hiếm.
 
-Zero-shot là bộ ba \emph{lớp} $(s,p,o)$ chưa xuất hiện trong annotation
-train, không phải object hay predicate mới. Có 1.130 annotation thuộc 851
-bộ ba, trên 722 ảnh validation; zR trung bình recall trên đúng 722 ảnh này.
+Zero-shot là bộ ba \emph{lớp} $(s,p,o)$ chưa xuất hiện trong annotation train.
+Test có \textbf{7.848 annotation thuộc 5.426 bộ ba}, trên \textbf{4.660 ảnh}.
+Chỉ inference thêm 4.660 ảnh này cho chín checkpoint fusion;
+ảnh không có GT zero-shot không thuộc mẫu số zR. Mọi object/predicate vẫn tham gia
+ranking toàn ảnh, không lọc prediction theo bộ ba chưa gặp.
 
 \begin{table}[H]\centering\small
-\caption{Zero-shot validation (\%); ba cấu hình fusion $\times$ ba seed.}\label{tab:zero}
+\caption{Zero-shot test (\%); ba cấu hình fusion $\times$ ba seed, không phải cả 54 checkpoint.}\label{tab:zero}
 \begin{tabular}{@{}lrrrr@{}}\toprule
 Cấu hình & GC zR@50 & GC zR@100 & NG zR@50 & NG zR@100\\\midrule
-Fusion baseline & $10,95\pm1,20$ & $13,99\pm0,94$ & $17,41\pm2,25$ & $28,06\pm1,58$\\
-Pair, KG thật & $11,04\pm1,28$ & $13,78\pm1,51$ & $16,98\pm1,64$ & $28,90\pm0,89$\\
-Pair, shuffled & $10,80\pm0,70$ & $13,30\pm0,48$ & $16,53\pm0,93$ & $27,36\pm1,11$\\
+Fusion baseline & $11,71\pm0,91$ & $15,25\pm0,58$ & $17,74\pm1,20$ & $28,54\pm1,40$\\
+Pair, KG thật & $11,43\pm0,17$ & $14,98\pm0,28$ & $17,14\pm0,42$ & $28,71\pm0,36$\\
+Pair, shuffled & $11,26\pm0,01$ & $14,63\pm0,16$ & $16,99\pm0,43$ & $28,46\pm0,35$\\
 \bottomrule\end{tabular}\end{table}
 
-KG thật tăng NG zR@100 so với baseline và shuffled ở cả ba seed, nhưng
-NG zR@50 thấp hơn baseline và GC không tăng nhất quán.
-Kết luận giới hạn ở \textbf{tín hiệu tích cực tại NG@100}.
-Tổ hợp chưa gặp chỉ xét train của dự án, không khẳng định CLIP tiền huấn luyện
-hay KG ngoài chưa từng chứa thông tin đó.
-\srcnote{Nguồn: \texttt{reports/level1/long-tail-reference-v1/analysis.md};
-\texttt{zero-shot-reference-v1/analysis.md}.}
+KG thật tăng mean NG zR@100 chỉ \textbf{0,17 pp} so baseline và
+\textbf{0,25 pp} so shuffled. Delta theo seed lần lượt là
+$+1,145/+0,301/-0,941$ và $-0,101/-0,043/+0,890$ pp.
+Ở GC và NG@50, KG thật thấp hơn baseline trung bình.
+Vì vậy, \textbf{chưa có bằng chứng cải thiện zero-shot ổn định trên test}.
+Tổ hợp chưa gặp chỉ xét train của dự án, không xét dữ liệu pretraining của CLIP/KG.
+\srcnote{Nguồn: \texttt{reports/level1/test-tail-zero-v1/long-tail.md},
+\texttt{zero-shot.md}, \texttt{analysis.json}. Audit NumPy khớp 36 metric;
+probe CPU/GPU khớp hits trên hai ảnh đầu của mỗi checkpoint.
+Artifact validation cũ được giữ nguyên để đối chiếu.}
 
 \subsection{Kết luận định lượng Nhiệm vụ 1}
 GAT hơn MLP về mR; adjusted loss cho mức tăng lớn và cùng dấu qua ba seed

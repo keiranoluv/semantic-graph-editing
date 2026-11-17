@@ -10,8 +10,8 @@ Các checkpoint/source/manifest thí nghiệm được giữ nguyên.
 | VG150 9 cấu hình gốc | reports/level1/reference-test27-v1/README.md, summary.json, audit.json, comparisons.json | Test 26.446 ảnh, 27 checkpoint; báo cáo commit 5afb96cf |
 | Loss/fusion 9 cấu hình | reports/level1/reference-loss-fusion-test27-v1/tables.md, analysis.json, summary.json | Test 26.446 ảnh, 27 checkpoint; báo cáo commit 4d036a10 |
 | Protocol PredCls | docs/evaluation/PredCls.md; docs/LEVEL1_REPORT.md | GC reference-v1; chọn checkpoint legacy cố định |
-| Long-tail | reports/level1/long-tail-reference-v1/analysis.md | Validation 5.000 ảnh; không gán thành test |
-| Zero-shot | reports/level1/zero-shot-reference-v1/analysis.md | Validation; 9 checkpoint fusion, 722 ảnh có GT zero-shot |
+| Long-tail | reports/level1/test-tail-zero-v1/long-tail.json, long-tail.md | Test 26.446 ảnh, 54 checkpoint; CPU từ per-predicate có sẵn |
+| Zero-shot | reports/level1/test-tail-zero-v1/zero-shot-summary.json, analysis.json | Test; 9 checkpoint fusion, 4.660 ảnh có 7.848 GT zero-shot; code trước GPU e28a95b1 |
 | 5 hit / 5 miss | reports/level1/submission/cases/{analysis.md,cases.json,human-review.csv} | GAT seed 42, validation; human review còn trống |
 | GQA 5 model | reports/level2/gqa-full-v3-results-v1/README.md | Custom GQA validation |
 | AlignG matched | reports/level2/aligng-gqa-fast-v1-results-v1/{summary.json,comparison.json} | Custom GQA validation |

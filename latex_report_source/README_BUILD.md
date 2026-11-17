@@ -12,7 +12,7 @@ theo template gốc, không dùng Noto Serif. PDF đầu ra: main.pdf.
 ## Tổ chức
 
 - Text/1.tex: scorecard duy nhất, quy ước đọc số.
-- Text/2.tex: Nhiệm vụ 1 VG150, 54 kết quả test, loss/fusion, long-tail/zero-shot validation, case.
+- Text/2.tex: Nhiệm vụ 1 VG150, 54 kết quả test, loss/fusion, long-tail/zero-shot test, case validation.
 - Text/3.tex: Nhiệm vụ 2A custom GQA, PE-Net/AlignG.
 - Text/4.tex: Nhiệm vụ 2B MagicBrush và EMNLP thay thế.
 - Text/5.tex: Nhiệm vụ 3, E/P/G, correlation/error bar, coverage, failure cases.

@@ -24,6 +24,7 @@ CUDA_VISIBLE_DEVICES='' myenv/bin/python -m tools.level1_test_tail_zero_v1 --sta
 CUDA_VISIBLE_DEVICES='' myenv/bin/python -m tools.level1_test_tail_zero_v1 --stage smoke
 CUDA_VISIBLE_DEVICES=0 myenv/bin/python -m tools.level1_test_tail_zero_v1 --stage evaluate --device cuda --batch-size 128
 CUDA_VISIBLE_DEVICES='' myenv/bin/python -m tools.level1_test_tail_zero_v1 --stage summarize
+CUDA_VISIBLE_DEVICES='' myenv/bin/python -m tools.analyze_test_tail_zero_v1
 ```
 
 `prepare` audit 54 checkpoint/report, tổng hợp long-tail CPU và khóa test cohort/source.
@@ -32,6 +33,8 @@ CUDA_VISIBLE_DEVICES='' myenv/bin/python -m tools.level1_test_tail_zero_v1 --sta
 FP32, TF32 off; không train, không W&B. Tự chuyển lượt kế tiếp rồi dừng khi đủ 9.
 Lượt đã có report hợp lệ được bỏ qua; sai hash/split/support bị từ chối.
 `summarize` chỉ kiểm và tổng hợp report, không bao giờ khởi chạy inference.
+Analyzer cuối kiểm độc lập bằng NumPy và chạy probe CPU hai ảnh cho từng
+checkpoint để đối chiếu hits với GPU đã lưu; xuất delta ghép cặp và analysis.json.
 
 Output: `reports/level1/test-tail-zero-v1/`.
 

@@ -9,5 +9,5 @@
 - [ ] Khai báo mã nguồn mở và công cụ AI đã dùng theo đề.
 - [ ] Kiểm tra liên kết artifact/checkpoint/W&B, chuẩn bị slide và video dự phòng.
 
-VG150 chính đã có test cho 54 checkpoint. GQA và các bảng long-tail/zero-shot
-vẫn là validation. Không dùng checklist hoặc TODO làm bằng chứng đã hoàn thành.
+VG150 chính và long-tail đã có test cho 54 checkpoint; zero-shot test có 9
+checkpoint fusion. GQA vẫn là validation. Không dùng TODO làm bằng chứng đã hoàn thành.
