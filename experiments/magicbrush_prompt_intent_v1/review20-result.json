@@ -1,0 +1,113 @@
+{
+  "dataset": "magicbrush-prompt-intent-v1",
+  "manifest_sha256": "9389822c3c6843067755b2dbde291153be73e85a9ad1311c0ab09ae98ee53e5a",
+  "seed": 20261119,
+  "review_date": "2026-11-19",
+  "reviewer": "Người dùng",
+  "provenance": "Người duyệt xác nhận trong cuộc trao đổi rằng cả 20 mẫu đều đạt và yêu cầu ghi nhận cho từng mẫu.",
+  "reviewed": 20,
+  "passed": 20,
+  "agreement": 1.0,
+  "records": [
+    {
+      "id": "magicbrush:491597:2",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:510636:3",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:61184:1",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:283038:2",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:121087:3",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:310342:1",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:540122:1",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:458510:2",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:409438:2",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:152176:3",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:338078:2",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:575500:3",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:148999:2",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:9772:1",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:247838:1",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:344138:3",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:12647:2",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:575500:2",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:495122:1",
+      "verdict": "Đạt",
+      "note": ""
+    },
+    {
+      "id": "magicbrush:504170:1",
+      "verdict": "Đạt",
+      "note": ""
+    }
+  ]
+}

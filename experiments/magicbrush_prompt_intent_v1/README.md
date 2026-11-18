@@ -27,6 +27,8 @@ myenv/bin/python -m experiments.magicbrush_prompt_intent_v1.review --html /tmp/m
 
 Phiếu dùng 20 ID lấy ngẫu nhiên không hoàn lại từ 345 cặp đã giữ, seed 20261119. Danh sách ở `review20.json`. Nút tải kết quả xuất lựa chọn, ghi chú, ID phiên bản dữ liệu và tỷ lệ số mẫu đạt trên 20 khi đã điền đủ. Tỷ lệ này đo mức người duyệt chấp nhận toàn bộ nhãn của một mẫu. Duyệt 20 mẫu hiệu chỉnh trước đây và kiểm tra hợp lệ bằng code là các nguồn bằng chứng riêng.
 
+Ngày 19/11/2026, người duyệt xác nhận cả 20 mẫu trong phiếu đều đạt. Tỷ lệ chấp nhận toàn bộ danh sách thao tác đích trên mẫu kiểm tra tay là **20/20 (100%)**. Kết quả của từng ID và nguồn xác nhận được lưu trong [phiếu kết quả](review20-result.json).
+
 ## Chạy so sánh hai cách gán nhãn
 
 ```bash
