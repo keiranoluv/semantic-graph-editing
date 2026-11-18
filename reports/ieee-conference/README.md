@@ -2,23 +2,34 @@
 
 Bản dàn trang ngày 18/11/2026 kế thừa nguồn ảnh tĩnh ở
 `latex_report_source/`, thêm bảng test Custom GQA và phần mở rộng PVSG đã
-nghiệm thu. Dùng lớp chuẩn `IEEEtran` 1.8b ở chế độ `conference,a4paper`.
-Chưa tìm thấy file mẫu Seminar riêng của lớp trong repository hay các ZIP báo cáo.
+nghiệm thu. Mẫu đối chiếu là báo cáo Seminar ở thư mục `25C15039-25C15062/`,
+commit `5bdd556`. Bản đồ án dùng cùng lớp `IEEEtran` 1.8b với tùy chọn
+`conference,a4paper`, pdfLaTeX, bảng mã T5, Babel tiếng Việt và số trang
+ở chân trang. Trang đầu ghi đủ năm tác giả cùng mã học viên, dùng chung
+một khối đơn vị công tác. Từ khóa được lưu trong metadata PDF.
 Mục 8 của `Project01_Graph_Editing.pdf` yêu cầu khoảng 12–18 trang; thông báo
 ngày 18/11 cho phép đặt phụ lục sau tài liệu tham khảo và loại phần đó khỏi giới hạn.
 
 ## Biên dịch
 
-Ở thư mục chứa `main.tex`, dùng TeX Live với IEEEtran (gói
-`texlive-publishers` trên Ubuntu), XeLaTeX, Biber, biblatex-ieee, PGFPlots,
-adjustbox, xurl và phông TeX Gyre Termes.
+Gói nguồn ZIP có sẵn `IEEEtran.cls` lấy từ thư mục Seminar. Trong repo,
+TeX Live cũng cung cấp cùng phiên bản lớp qua `texlive-publishers`.
+Cần pdfLaTeX, bộ phông và Babel tiếng Việt (`texlive-lang-other` trên
+Ubuntu), Biber, biblatex-ieee, PGFPlots, adjustbox và xurl.
+Chạy từ thư mục chứa `main.tex`:
 
 ```sh
-latexmk -xelatex -interaction=nonstopmode -halt-on-error main.tex
+latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+```
+
+Để ưu tiên đúng file lớp từ checkout Seminar khi build trong repo:
+
+```sh
+TEXINPUTS=.:../../25C15039-25C15062/: latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 ```
 
 Trên Overleaf, nhập ZIP nguồn, đặt tài liệu chính là `main.tex` và chọn
-XeLaTeX. Khi build trong repo, LaTeX tìm hai ảnh VG150 trong
+pdfLaTeX. Khi build trong repo, LaTeX tìm hai ảnh VG150 trong
 `latex_report_source/figures/` và timeline trong `reports/pvsg-trd-m5-v1/`.
 Trong ZIP, các ảnh được đóng gói cùng nguồn để có thể build độc lập.
 
