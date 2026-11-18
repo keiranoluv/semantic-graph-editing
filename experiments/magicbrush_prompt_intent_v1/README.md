@@ -32,11 +32,11 @@ Ngày 19/11/2026, người duyệt xác nhận cả 20 mẫu trong phiếu đề
 ## Chạy so sánh hai cách gán nhãn
 
 ```bash
-bash scripts/run_magicbrush_prompt_intent_v1.sh --cpu-check
-bash scripts/run_magicbrush_prompt_intent_v1.sh
+bash scripts/run_magicbrush_prompt_intent_v1_wandb.sh --cpu-check
+bash scripts/run_magicbrush_prompt_intent_v1_wandb.sh
 ```
 
-Lệnh đầu kiểm tra trên CPU. Lệnh sau do người dùng chạy trên một GPU với W&B đã đăng nhập, theo dõi online trong project semantic-graph-editing, group magicbrush-prompt-intent-v1. Mỗi seed chạy graph_diff rồi prompt, tuần tự qua 42, 123, 3407. Hai nhánh dùng cùng 240 ID train, 46 ID validation, từ vựng lấy từ hai bản nhãn của cùng tập train, cùng khởi tạo và thứ tự batch cho từng seed. Cả hai chọn checkpoint theo nhãn prompt trên validation. Mỗi lượt có run ID riêng và trường train_policy trong W&B.
+Launcher nạp protobuf 5.29.5 từ bộ nhớ đệm riêng cho W&B 0.18.7. Lệnh đầu kiểm tra trên CPU, gồm khởi tạo W&B offline và ghi một metric thử. Lệnh sau do người dùng chạy trên một GPU với W&B đã đăng nhập, theo dõi online trong project semantic-graph-editing, group magicbrush-prompt-intent-v1. Mỗi seed chạy graph_diff rồi prompt, tuần tự qua 42, 123, 3407. Hai nhánh dùng cùng 240 ID train, 46 ID validation, từ vựng lấy từ hai bản nhãn của cùng tập train, cùng khởi tạo và thứ tự batch cho từng seed. Cả hai chọn checkpoint theo nhãn prompt trên validation. Mỗi lượt có run ID riêng và trường train_policy trong W&B.
 
 Dùng GNN 2 lớp, hidden 192, CLIP text ViT-B/32 đóng băng, batch train 16, batch validation 32, AdamW với lr 0.0003. Tối đa 200 epoch, tối thiểu 30, patience 30 epoch. Kiểm tra validation ở epoch đầu và mỗi 2 epoch. Tái sử dụng cache CLIP đã khóa, các chuỗi bổ sung được mã hóa trên CPU bằng cùng bộ trọng số. Mỗi lượt ghi phiên bản thư viện hiện tại trong protocol riêng.
 
