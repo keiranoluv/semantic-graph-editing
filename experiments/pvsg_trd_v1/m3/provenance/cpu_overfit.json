@@ -1,0 +1,115 @@
+{
+  "scope": "synthetic fixture, CPU only, not PVSG accuracy",
+  "architecture_hidden_dim": 128,
+  "learning_rate": 0.001,
+  "models_in_order": [
+    "mlp",
+    "static_gat",
+    "st_gat"
+  ],
+  "runs": [
+    {
+      "passed": true,
+      "first": {
+        "loss": 0.6971732378005981,
+        "positive_bce": 0.6137029329935709,
+        "negative_bce": 0.6973567529475733,
+        "positive_labels": 3,
+        "frame_precision": 0.004457652303120356,
+        "frame_recall": 1.0,
+        "frame_f1": 0.008875739644970414,
+        "active_fraction": 0.4919590643274854
+      },
+      "last": {
+        "loss": 0.00011268824164289981,
+        "positive_bce": 0.017157436658938725,
+        "negative_bce": 7.522726233625587e-05,
+        "positive_labels": 3,
+        "frame_precision": 1.0,
+        "frame_recall": 1.0,
+        "frame_f1": 1.0,
+        "active_fraction": 0.0021929824561403508
+      },
+      "steps": 200,
+      "seconds": 0.2106689229985932,
+      "video_id": "synthetic_m1",
+      "start": 0,
+      "stop": 4,
+      "dropout": 0.0,
+      "weight_decay": 0.0,
+      "note": "Memorization smoke check on one fit window; not validation/generalization",
+      "checkpoint_roundtrip_sha256": "f5805793956167488748d7812ff3ca26b230a83cf9c29340c9eab3136d8bb292",
+      "test_checkpoint_deleted": true,
+      "case": "test_tiny_fit_learns_positive_0"
+    },
+    {
+      "passed": true,
+      "first": {
+        "loss": 0.7097926139831543,
+        "positive_bce": 0.5672528346379598,
+        "negative_bce": 0.7101059910141941,
+        "positive_labels": 3,
+        "frame_precision": 0.004120879120879121,
+        "frame_recall": 1.0,
+        "frame_f1": 0.008207934336525308,
+        "active_fraction": 0.5321637426900585
+      },
+      "last": {
+        "loss": 2.2305875972961076e-05,
+        "positive_bce": 0.004442916872600715,
+        "negative_bce": 1.2590247632819654e-05,
+        "positive_labels": 3,
+        "frame_precision": 1.0,
+        "frame_recall": 1.0,
+        "frame_f1": 1.0,
+        "active_fraction": 0.0021929824561403508
+      },
+      "steps": 200,
+      "seconds": 0.31383507599821314,
+      "video_id": "synthetic_m1",
+      "start": 0,
+      "stop": 4,
+      "dropout": 0.0,
+      "weight_decay": 0.0,
+      "note": "Memorization smoke check on one fit window; not validation/generalization",
+      "checkpoint_roundtrip_sha256": "ea120ad93b607cfae1afca5e934a52c4ba5dd1bb4355eb571a5ea242c3000137",
+      "test_checkpoint_deleted": true,
+      "case": "test_tiny_fit_learns_positive_1"
+    },
+    {
+      "passed": true,
+      "first": {
+        "loss": 0.6917430758476257,
+        "positive_bce": 0.6124038696289062,
+        "negative_bce": 0.6919173355940934,
+        "positive_labels": 3,
+        "frame_precision": 0.003189792663476874,
+        "frame_recall": 0.6666666666666666,
+        "frame_f1": 0.006349206349206349,
+        "active_fraction": 0.4583333333333333
+      },
+      "last": {
+        "loss": 3.06357214867603e-05,
+        "positive_bce": 0.0061494410037994385,
+        "negative_bce": 1.7187796232901213e-05,
+        "positive_labels": 3,
+        "frame_precision": 1.0,
+        "frame_recall": 1.0,
+        "frame_f1": 1.0,
+        "active_fraction": 0.0021929824561403508
+      },
+      "steps": 200,
+      "seconds": 0.45233895399724133,
+      "video_id": "synthetic_m1",
+      "start": 0,
+      "stop": 4,
+      "dropout": 0.0,
+      "weight_decay": 0.0,
+      "note": "Memorization smoke check on one fit window; not validation/generalization",
+      "checkpoint_roundtrip_sha256": "7420c6c322b2fe839c4f78c605045ea9d67164b9feef98e735747dc272099ca5",
+      "test_checkpoint_deleted": true,
+      "case": "test_tiny_fit_learns_positive_2"
+    }
+  ],
+  "test_checkpoints_remaining": 0
+}
