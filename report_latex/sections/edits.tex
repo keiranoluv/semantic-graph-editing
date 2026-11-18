@@ -150,11 +150,15 @@ có từ một đến ba đỉnh.
   \draw[link] (hat) -- (color);
   \draw[-{Stealth[length=6pt]},thick] (4.4,.23) -- (5.45,.23);
   \node[obj] at (6.3,.23) {man};
-  \node at (3.05,-.48) {Yêu cầu (dịch): \textit{Chỉ tìm ảnh có người đàn ông.}};
+  \node[align=center] at (3.05,-.63)
+    {\textit{Tìm ảnh có người đàn ông.}\\
+     \textit{Người đó không nhất thiết phải đội mũ đen.}};
 \end{tikzpicture}
 \caption{Ví dụ hướng dẫn người viết câu lệnh, vẽ lại từ Hình~2 của
-He và cộng sự~\cite{he2020sgmod}. Đồ thị nguồn mô tả người đội mũ đen.
-Yêu cầu bỏ điều kiện về chiếc mũ nên đồ thị đích chỉ giữ đỉnh \textit{man}.}
+He và cộng sự~\cite{he2020sgmod}. Hai đồ thị biểu diễn điều kiện tìm ảnh.
+Ban đầu, ảnh phải có người đàn ông đội mũ đen. Sau khi sửa yêu cầu,
+ảnh có người đàn ông đội mũ đen hay để đầu trần đều phù hợp, nên
+đồ thị đích chỉ giữ điều kiện \textit{man}.}
 \label{fig:he-crowd-example}
 \end{figure}
 
