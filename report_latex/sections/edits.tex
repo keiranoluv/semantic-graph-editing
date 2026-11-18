@@ -123,8 +123,19 @@ chính xác đồ thị đích theo câu lệnh chỉ đạt 0,00\% với nhãn 
 khớp toàn bộ tập thao tác ở từng seed. Hình~\ref{fig:mb-test-errors} minh họa hai lỗi khác nhau của cùng
 một checkpoint: bỏ sót thay đổi thuộc tính và chọn sai tên đối tượng khi thêm đỉnh.
 
-\subsubsection{Dữ liệu chỉnh sửa đồ thị của He và cộng sự (2020)}
-Nhóm dùng phần \textit{crowdsourced} của bộ dữ liệu phát hành kèm bài
+\subsubsection{Mở rộng sang chỉnh sửa đồ thị truy vấn tìm ảnh}
+Cả hai thực nghiệm đặt cùng một câu hỏi cho mô hình: từ đồ thị nguồn
+$G_s$ và câu lệnh $q$, cần thực hiện những thao tác $\Delta_q$ nào?
+Trên MagicBrush, đồ thị sau chỉnh sửa mô tả cảnh nguồn sau khi thực hiện
+yêu cầu. Trong bài toán tìm ảnh của He và cộng sự~\cite{he2020sgmod},
+đồ thị sau chỉnh sửa mô tả cảnh mà người dùng muốn tìm. Chẳng hạn, ở
+Hình~12(d) của bài gốc, người dùng muốn áo xanh thay cho áo vàng.
+Ở cấp đồ thị, thao tác là giữ đỉnh áo và đổi thuộc tính màu từ vàng sang
+xanh. Trong truy vấn tìm ảnh, màu xanh trở thành điều kiện tìm kiếm.
+Nếu cùng câu lệnh được dùng để chỉnh sửa ảnh, màu xanh là thay đổi cần
+thấy trên chiếc áo trong ảnh đích.
+
+Để khảo sát khả năng dự đoán thao tác khi hai đồ thị đã có sẵn, nhóm dùng phần \textit{crowdsourced} của bộ dữ liệu phát hành kèm bài
 \textit{Scene Graph Modification Based on Natural Language Commands} của
 He và cộng sự~\cite{he2020sgmod} (Findings of EMNLP, 2020).
 Trong \href{https://github.com/xlhex/SceneGraphModification}{kho dữ liệu của tác giả},
@@ -191,7 +202,9 @@ Trong Hình~\ref{fig:emnlp-gnn-operations}, GNN đạt F1 97,76\% cho xóa đỉ
 Hai loại này chiếm 1.091 trong 1.533 thao tác chuẩn, nên ảnh hưởng lớn đến
 micro-F1 ở Bảng~\ref{tab:emnlp}. Thay đỉnh chỉ đạt 27,38\% trên 121 thao
 tác. Cả sáu thao tác thay cạnh trong test đều bị dự đoán sai.
-Kết quả cho thấy mô hình học tốt phép xóa trong thiết lập có đồ thị cho sẵn.
+Micro-F1 82,44\% đo khả năng dự đoán thao tác trên đồ thị truy vấn,
+với kết quả cao nhất ở phép xóa. Việc xác định nhãn thao tác từ hai ảnh
+trước và sau chỉnh sửa được khảo sát riêng trong thực nghiệm MagicBrush.
 Quy mô train, kích thước đồ thị, phân bố thao tác và kiến trúc dự đoán
 đều khác giữa hai bộ. Vì vậy, khoảng cách điểm giữa hai bộ dữ liệu
 chưa cho phép định lượng riêng ảnh hưởng của nhiễu nhãn.
