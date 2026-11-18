@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+\begin{axis}[report plot,scale only axis,width=.66\linewidth,height=2.85cm,
+ xmin=0,xmax=118,ymin=.4,ymax=6.6,y dir=reverse,
+ ytick={1,...,6},yticklabels from table={figures/pgf/he-f1.tsv}{label},
+ xtick={0,25,50,75,100},xlabel={F1 trung bình (\%)},xmajorgrids]
+\addplot+[only marks,mark=*,color=inkblue,mark size=1.8pt,report values]
+ table[x=score,y=rank,meta=value]{figures/pgf/he-f1.tsv};
+\end{axis}
+\end{tikzpicture}

@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=11mm},
+ report plot,scale only axis,width=.32\textwidth,height=4.45cm,
+ xmin=-3,xmax=8,ymin=.45,ymax=10.55,y dir=reverse,
+ xtick={-2,0,2,4,6,8},ytick={1,...,10},xmajorgrids,
+ xlabel={Điểm phần trăm},title style={font=\small}]
+\nextgroupplot[title={R@50},yticklabels from table={figures/pgf/vg-deltas.tsv}{label}]
+\draw[dashed] (axis cs:0,.45)--(axis cs:0,10.55);
+\addplot+[only marks,mark=*,mark size=1.7pt,color=inkblue,report values]
+ table[x=r,y=rank,meta=rtext]{figures/pgf/vg-deltas.tsv};
+\nextgroupplot[title={mR@50},yticklabels=\empty]
+\draw[dashed] (axis cs:0,.45)--(axis cs:0,10.55);
+\addplot+[only marks,mark=square*,mark size=1.7pt,color=cgreen,report values]
+ table[x=mr,y=rank,meta=mrtext]{figures/pgf/vg-deltas.tsv};
+\end{groupplot}
+\end{tikzpicture}

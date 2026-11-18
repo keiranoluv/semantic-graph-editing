@@ -25,7 +25,7 @@ $G_s$ và $q$.
 \includegraphics[width=.455\linewidth]{magicbrush-laptop-target.jpg}\\
 (a) Ảnh nguồn & (b) Ảnh sau chỉnh sửa
 \end{tabular}\par\smallskip
-\includegraphics[width=.98\linewidth]{magicbrush-laptop-graph.pdf}
+\input{figures/pgf/laptop-graph}
 \caption{Mẫu validation \texttt{484847:1} của MagicBrush với yêu cầu
 \textit{put a laptop on the table}. Đồ thị của (a) có bàn, sách và điều khiển.
 Để tái tạo đồ thị của (b) cần sáu thao tác. Yêu cầu chỉ xác định hai thao tác:
@@ -54,7 +54,7 @@ Tổng & 437 & 345 & 92 & 296\\\bottomrule
 \end{tabular}\end{table}
 
 \begin{figure*}[!t]\centering
-\includegraphics[width=.93\textwidth]{magicbrush-test-errors.pdf}
+\input{figures/pgf/test-errors}
 \caption{Hai mẫu MagicBrush test, dự đoán của GNN học nhãn theo câu lệnh,
 seed 42. Ảnh đích dùng để đối chiếu nhãn. Ở (a), mẫu \texttt{181753:1},
 bàn giữ chất liệu gỗ sẫm và đổi từ chữ nhật sang tròn. Mô hình giữ nguyên đồ thị.
@@ -191,7 +191,7 @@ GNN & $82,44\pm0,39$ & $55,03\pm0,28$ & $68,55\pm0,22$\\\bottomrule
 \end{tabular}\end{table}
 
 \begin{figure}[!htbp]\centering
-\includegraphics[width=.98\linewidth]{emnlp-gnn-operations.pdf}
+\input{figures/pgf/he-f1}
 \caption{F1 của GNN trên phần crowdsourced của He và cộng sự (2020) theo từng thao tác, trung bình ba seed.
 Số trong ngoặc là số thao tác chuẩn trên tập test. Phép xóa có nhiều mẫu
 và đạt F1 cao ở cả đỉnh lẫn cạnh.}

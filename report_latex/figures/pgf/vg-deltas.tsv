@@ -1,0 +1,11 @@
+rank	label	r	mr	rtext	mrtext
+1	GAT so với MLP	0.3116910	1.6539432	+0,31	+1,65
+2	WordNet: bật KG	0.2607164	-0.6044561	+0,26	-0,60
+3	WordNet: bật cạnh	0.0437856	-0.5732888	+0,04	-0,57
+4	ConceptNet: bật cạnh	-0.4910871	0.2396113	-0,49	+0,24
+5	Đổi loss: KG-off	-2.2350199	6.4786708	-2,24	+6,48
+6	Đổi loss: KG-on	-1.6119728	5.3990318	-1,61	+5,40
+7	Adjusted: bật pair KG	-0.1685509	0.0863515	-0,17	+0,09
+8	Pair real so với baseline	0.3057806	0.9264815	+0,31	+0,93
+9	Pair real so với shuffled	0.0248651	0.2375894	+0,02	+0,24
+10	Visual real so với shuffled	0.1421001	-0.2996631	+0,14	-0,30

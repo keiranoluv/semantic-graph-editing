@@ -1,0 +1,15 @@
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize,
+ entity/.style={draw=inkblue,fill=mutedblue,rounded corners=2pt,
+ minimum width=1.35cm,minimum height=.38cm},
+ relation/.style={-{Stealth[length=3.5pt]},inkblue}]
+\foreach \name/\row in {books/1,remote/0} {
+  \node[left] at (0,.58*\row) {Giữ};
+  \node[entity] (\name) at (1,.58*\row) {\textit{\name}};
+}
+\node[left,cgreen] at (0,-.58) {+ Thêm};
+\node[entity,draw=cgreen,fill=cgreen!8] (laptop) at (1,-.58) {\textit{laptop}};
+\node[entity] (table) at (5,0) {\textit{table}};
+\foreach \name/\ang/\col in {books/165/inkblue,remote/180/inkblue,laptop/195/cgreen}
+  \draw[relation,\col]
+  (\name.east) -- node[pos=.44,fill=white,inner sep=1pt] {\textit{on}} (table.\ang);
+\end{tikzpicture}

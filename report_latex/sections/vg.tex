@@ -101,7 +101,7 @@ khi train. Bộ chấm vẫn giữ các chú thích này. Nhóm đánh giá 54 c
 \subsection{Phân bố predicate, adjusted loss và KG fusion}
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=.97\columnwidth]{vg-train-predicates.pdf}
+\input{figures/pgf/vg-frequency}
 \caption{Mười predicate phổ biến nhất trên VG150 train. Mỗi dòng cho biết tỷ lệ
 và số annotation trong tổng số 405.860 annotation của 50 predicate foreground.
 Thanh xám gộp 40 lớp còn lại. Mỗi nhãn trên một cặp đa nhãn và mỗi dòng lặp
@@ -189,10 +189,10 @@ với cùng nguồn KG.}
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=.86\textwidth]{vg-ablation-deltas.pdf}
+\input{figures/pgf/vg-deltas}
 \caption{Thay đổi R@50 và mR@50 trên VG150 test, tính bằng điểm phần trăm.
 Thứ tự hàng ứng với Bảng~\ref{tab:vgabsolute}. Mỗi giá trị là trung bình của
-ba hiệu số B trừ A ghép cùng seed. Thanh bên phải mốc 0 biểu thị điểm tăng.}
+ba hiệu số B trừ A ghép cùng seed. Điểm bên phải mốc 0 biểu thị mức tăng.}
 \label{fig:vgdelta}
 \end{figure*}
 
