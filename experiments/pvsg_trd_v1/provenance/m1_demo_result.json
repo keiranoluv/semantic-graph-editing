@@ -1,0 +1,94 @@
+{
+  "protocol_id": "pvsg-gt-trd-tiouv1",
+  "evaluator_id": "pvsg-gt-trd-tiouv1-cpu-m1",
+  "report_scale": "percent",
+  "videos": 1,
+  "gt_tuples": 2,
+  "predicted_tuples": 2,
+  "demo": {
+    "synthetic_only": true,
+    "model_run": false,
+    "nodes_in_two_windows": 33,
+    "query_edges": 60
+  },
+  "provenance": {
+    "protocol_sha256": "53fbb1782721716591531b007b62b0f861b20e8b9df629330fa5eb997ebd2547",
+    "vocabulary_sha256": "f087402abe59e9560b708bb8da2ecbae16cba59b6617feface63f0da1666f0c1",
+    "implementation_sha256": {
+      "cli.py": "c3ee8a2b1a7064c2edb5077c0f966c996fb75862031bfcb45f796905fa2a488c",
+      "contracts.py": "2db6560937edb040cc1bdf50d4089b95c58e2caef0a1e5e55a9445e5d940c7b7",
+      "data.py": "ccc8b86f1497cc6dbb870c007776d40d0e7b615b9676942fc22508b2b0f97eb0",
+      "decoding.py": "8c96fea0009f72984237b847374a281a282965d26d1e01344803f83b387af3de",
+      "evaluation.py": "0703a903fef363f474dc40fc3a8b24960608c47334ee2f4dd6c18519e4df7714",
+      "graphs.py": "16cd81f21a88e95db44f8a298eb6f2010b84122f983713b174043a358cd75f55",
+      "intervals.py": "844b71fb3725e1764c9d9b8ec91d8cd84ef604e92a0b91fbd5b653a5ab004499",
+      "synthetic.py": "07254bf6b764238b4d21db82d8f34a0abbc18870dc2c82fa651fb843b75f2659",
+      "validate_m0.py": "03ebe6c54b9149c0166a4f31cc41a2059ea620d77d6e8b03245fac01aacf475f"
+    },
+    "device": "CPU",
+    "training": false
+  },
+  "metrics": {
+    "0.3": {
+      "20": {
+        "R": 100.0,
+        "mR": 100.0,
+        "hits": 2,
+        "gt_tuples": 2
+      },
+      "50": {
+        "R": 100.0,
+        "mR": 100.0,
+        "hits": 2,
+        "gt_tuples": 2
+      },
+      "100": {
+        "R": 100.0,
+        "mR": 100.0,
+        "hits": 2,
+        "gt_tuples": 2
+      }
+    },
+    "0.5": {
+      "20": {
+        "R": 100.0,
+        "mR": 100.0,
+        "hits": 2,
+        "gt_tuples": 2
+      },
+      "50": {
+        "R": 100.0,
+        "mR": 100.0,
+        "hits": 2,
+        "gt_tuples": 2
+      },
+      "100": {
+        "R": 100.0,
+        "mR": 100.0,
+        "hits": 2,
+        "gt_tuples": 2
+      }
+    },
+    "0.7": {
+      "20": {
+        "R": 100.0,
+        "mR": 100.0,
+        "hits": 2,
+        "gt_tuples": 2
+      },
+      "50": {
+        "R": 100.0,
+        "mR": 100.0,
+        "hits": 2,
+        "gt_tuples": 2
+      },
+      "100": {
+        "R": 100.0,
+        "mR": 100.0,
+        "hits": 2,
+        "gt_tuples": 2
+      }
+    }
+  },
+  "mean_tiou_at_100": 100.0
+}

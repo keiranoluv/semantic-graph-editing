@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "milestone": "M1",
+  "date_local": "2026-11-18",
+  "timezone": "Asia/Bangkok",
+  "device": "CPU",
+  "environment": {
+    "python": "3.12.3",
+    "numpy": "2.1.0",
+    "pytest": "8.3.5",
+    "jsonschema": "4.26.0"
+  },
+  "checks": [
+    {
+      "command": "python -m pytest -q experiments/pvsg_trd_v1/tests",
+      "exit_code": 0,
+      "output": "........................................................................ [ 74%]\n.........................                                                [100%]\n97 passed in 3.33s"
+    },
+    {
+      "command": "python experiments/pvsg_trd_v1/validate_m0.py --require-selected --annotation data/external/pvsg_m0/pvsg.hf_7e5f1ec.json",
+      "exit_code": 0,
+      "output": "{\n  \"validation\": \"passed\",\n  \"m0_state\": \"complete\",\n  \"m0_complete\": true,\n  \"selected_manifest\": \"pvsg_author_release_338_62.lock.json\",\n  \"annotation_identity\": {\n    \"videos\": 400,\n    \"train\": 338,\n    \"heldout\": 62\n  },\n  \"training_enabled\": false\n}"
+    }
+  ],
+  "pre_commit": "passed",
+  "synthetic_demo": "passed; artificial perfect logits; not a model benchmark",
+  "train_annotation_audit": {
+    "exit_code": 2,
+    "status": "data_findings_require_M2",
+    "videos": 338,
+    "videos_with_first_error": 34,
+    "first_error_categories": {
+      "unknown_predicate": 17,
+      "interval_out_of_bounds": 16,
+      "track_reference": 1
+    }
+  },
+  "protected_files": {
+    "count": 211,
+    "changed": []
+  },
+  "gpu_tasks": false,
+  "downloads": false,
+  "training": false
+}

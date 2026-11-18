@@ -1,0 +1,164 @@
+{
+  "scope": "train_structure_only",
+  "videos": 338,
+  "errors": [
+    {
+      "video_id": "0026_2764832695",
+      "error": "Unknown predicate: getting down on"
+    },
+    {
+      "video_id": "0028_3085751774",
+      "error": "Unknown predicate: squatting on"
+    },
+    {
+      "video_id": "0029_5139813648",
+      "error": "Invalid inclusive interval [535, 615] for T=123"
+    },
+    {
+      "video_id": "0065_5552271623",
+      "error": "Invalid inclusive interval [790, 1130] for T=212"
+    },
+    {
+      "video_id": "0069_6490763929",
+      "error": "Unknown predicate: squatting on"
+    },
+    {
+      "video_id": "0072_2607471948",
+      "error": "Unknown predicate: enclosing"
+    },
+    {
+      "video_id": "0081_3180520174",
+      "error": "Invalid inclusive interval [150, 1080] for T=199"
+    },
+    {
+      "video_id": "1005_10756878424",
+      "error": "Invalid inclusive interval [42, 450] for T=234"
+    },
+    {
+      "video_id": "1008_4294147314",
+      "error": "Invalid inclusive interval [0, 330] for T=330"
+    },
+    {
+      "video_id": "1008_8843452460",
+      "error": "Invalid inclusive interval [175, 669] for T=188"
+    },
+    {
+      "video_id": "1009_12760412393",
+      "error": "Invalid inclusive interval [150, 315] for T=315"
+    },
+    {
+      "video_id": "1009_6564590949",
+      "error": "Unknown predicate: enclosing"
+    },
+    {
+      "video_id": "1011_8212773822",
+      "error": "Unknown predicate: climbing"
+    },
+    {
+      "video_id": "1014_5476140602",
+      "error": "Unknown predicate: climbing"
+    },
+    {
+      "video_id": "1014_7161607459",
+      "error": "Unknown predicate: enclosing"
+    },
+    {
+      "video_id": "1019_3004044251",
+      "error": "Invalid inclusive interval [0, 115] for T=112"
+    },
+    {
+      "video_id": "1023_5104630083",
+      "error": "Unknown predicate: climbing"
+    },
+    {
+      "video_id": "1024_9337790459",
+      "error": "Unknown predicate: squatting on"
+    },
+    {
+      "video_id": "1025_4197742496",
+      "error": "Invalid inclusive interval [102, 1112] for T=318"
+    },
+    {
+      "video_id": "1026_8802047883",
+      "error": "Unknown predicate: climbing"
+    },
+    {
+      "video_id": "1028_6016916022",
+      "error": "Invalid inclusive interval [80, 135] for T=135"
+    },
+    {
+      "video_id": "1161_4954150851",
+      "error": "Unknown predicate: enclosing"
+    },
+    {
+      "video_id": "1161_7986780713",
+      "error": "Raw relation refers to a self pair or unknown track"
+    },
+    {
+      "video_id": "1201_3165088958",
+      "error": "Unknown predicate: climbing"
+    },
+    {
+      "video_id": "181a2c5e-5b2c-4436-ba8d-26c7d7db4bb8",
+      "error": "Unknown predicate: pouring"
+    },
+    {
+      "video_id": "45e463b2-bdd5-407a-ab5c-8a5c5534e078",
+      "error": "Unknown predicate: squeezing"
+    },
+    {
+      "video_id": "5c676dd6-d0d7-479d-b107-abf5857be8e0",
+      "error": "Invalid inclusive interval [770, 896] for T=840"
+    },
+    {
+      "video_id": "6e0a6558-c212-4cab-b374-007671edb59c_1",
+      "error": "Unknown predicate: pouring"
+    },
+    {
+      "video_id": "725d6aca-b665-40cf-8b60-07d564c370aa",
+      "error": "Unknown predicate: pouring"
+    },
+    {
+      "video_id": "90621e59-7800-49ab-aeb8-c7725f87a7d8",
+      "error": "Invalid inclusive interval [0, 1540] for T=1540"
+    },
+    {
+      "video_id": "a383d099-5eef-48b5-9d1b-5e2d97632725",
+      "error": "Invalid inclusive interval [1230, 1580] for T=1580"
+    },
+    {
+      "video_id": "a906a4c6-a0ad-41a3-ba79-59f151d955e4",
+      "error": "Invalid inclusive interval [1150, 1580] for T=1580"
+    },
+    {
+      "video_id": "c2e6d807-d903-4b64-98e1-2c07ca700c78_3",
+      "error": "Invalid inclusive interval [540, 626] for T=283"
+    },
+    {
+      "video_id": "ec2e69c1-fd07-48ec-adff-0b2cf3ab25b6",
+      "error": "Invalid inclusive interval [47, 876] for T=415"
+    }
+  ],
+  "videos_with_errors": 34,
+  "first_error_per_video_only": true,
+  "annotation_sha256": "2cbc23b060386ccf090475f90cb0282a3e96cefb29c69772f9f8fd916995ba08",
+  "media_visibility_checked": false,
+  "heldout_targets_read_for_statistics": false,
+  "provenance": {
+    "protocol_sha256": "53fbb1782721716591531b007b62b0f861b20e8b9df629330fa5eb997ebd2547",
+    "vocabulary_sha256": "f087402abe59e9560b708bb8da2ecbae16cba59b6617feface63f0da1666f0c1",
+    "implementation_sha256": {
+      "cli.py": "c3ee8a2b1a7064c2edb5077c0f966c996fb75862031bfcb45f796905fa2a488c",
+      "contracts.py": "2db6560937edb040cc1bdf50d4089b95c58e2caef0a1e5e55a9445e5d940c7b7",
+      "data.py": "ccc8b86f1497cc6dbb870c007776d40d0e7b615b9676942fc22508b2b0f97eb0",
+      "decoding.py": "8c96fea0009f72984237b847374a281a282965d26d1e01344803f83b387af3de",
+      "evaluation.py": "0703a903fef363f474dc40fc3a8b24960608c47334ee2f4dd6c18519e4df7714",
+      "graphs.py": "16cd81f21a88e95db44f8a298eb6f2010b84122f983713b174043a358cd75f55",
+      "intervals.py": "844b71fb3725e1764c9d9b8ec91d8cd84ef604e92a0b91fbd5b653a5ab004499",
+      "synthetic.py": "07254bf6b764238b4d21db82d8f34a0abbc18870dc2c82fa651fb843b75f2659",
+      "validate_m0.py": "03ebe6c54b9149c0166a4f31cc41a2059ea620d77d6e8b03245fac01aacf475f"
+    },
+    "device": "CPU",
+    "training": false
+  }
+}

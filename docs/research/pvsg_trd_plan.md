@@ -1,6 +1,6 @@
 # Kế hoạch mở rộng Semantic Graph Editing sang PVSG Temporal Relation Detection
 
-Ngày khảo sát và cập nhật M0: **18/11/2026 (Asia/Bangkok)**. Repository được kiểm tra tại commit `c20812ad52ff3bc6823aae0dd3659eab90caa451`, kèm working tree hiện có. M0 đã tải **annotation JSON và tài liệu nghiên cứu** để xác minh nguồn/split; chưa tải video/masks/checkpoint, trích đặc trưng, chạy training hay sửa pipeline cũ. Các con số benchmark dưới đây là kết quả công bố, không phải kết quả tái lập của đồ án. Artifact M0 nằm riêng tại [experiments/pvsg_trd_v1](../../experiments/pvsg_trd_v1/README.md).
+Ngày khảo sát và cập nhật M0/M1: **18/11/2026 (Asia/Bangkok)**. Repository ban đầu được kiểm tra tại commit `c20812ad52ff3bc6823aae0dd3659eab90caa451`, M0 khóa ở `c576cfdcd4a51a7f3c76d6260d89c4695b0c0118`. M0 đã tải **annotation JSON và tài liệu nghiên cứu** để xác minh nguồn/split; M1 bổ sung parser, decoder, evaluator và graph batching trên CPU. Chưa tải video/masks/checkpoint, trích đặc trưng, chạy training hay sửa pipeline cũ. Các con số benchmark dưới đây là kết quả công bố, không phải kết quả tái lập của đồ án. Xem [snapshot M0](../../experiments/pvsg_trd_v1/README.md) và [bàn giao M1](../../experiments/pvsg_trd_v1/README_M1.md).
 
 ## 1. Kết luận và phạm vi
 
@@ -104,6 +104,8 @@ Artifact được chọn: revision `7e5f1ec9fd8f323182e84d990819854bb72da478`, 3
 [Manifest M0](../../experiments/pvsg_trd_v1/manifests/pvsg_author_release_338_62.lock.json) khóa đủ ID/source và SHA256 danh sách split `7437cadd922c9b81236700cad48b46e7bdf3e247d61fd6d0876ae77b04fdf65a`. Template 360/40 chỉ lưu dấu vết mục tiêu chưa xác minh, không được chọn để train. Không dựng lại 360/40 hoặc chuyển 22 video test sang train. Chưa tìm được manifest 360/40 trong nguồn đã kiểm tra không có nghĩa nó chưa từng tồn tại.
 
 M0 xác minh metadata tổng **149.488 frame**, 115 thing + 11 stuff classes và 57 predicates, tất cả video ở 5 FPS. M2 vẫn cần đối chiếu media thực, số visible tracks/triplets/intervals và phân bố lớp trên train. Các số “relation” trong paper có thể đếm bộ ba hợp nhất hoặc các đoạn; báo cáo cả hai, không dùng thay nhau. M0 chưa dùng phân bố relation của test để tạo prior hoặc quyết định model.
+
+**Phát hiện từ parser M1:** kiểm tra cấu trúc raw annotation trên 338 train video phát hiện 34 video có lỗi: 17 lỗi predicate ngoài vocabulary, 16 lỗi interval vượt `num_frames`, 1 lỗi self-pair/track reference; mỗi video chỉ báo lỗi đầu tiên. [Report audit train](../../experiments/pvsg_trd_v1/provenance/m1_train_annotation_audit.json). 304 video qua kiểm tra cấu trúc chưa đồng nghĩa media/visibility hợp lệ. M2 cần đối chiếu preprocessing upstream với media trước khi chốt cách xử lý có version; không tự sửa nhãn, clip thời gian hoặc bỏ video, không đổi outer split. Dataset chưa sẵn sàng train.
 
 ### Dùng GT để chỉ học relation prediction có khả thi không?
 
@@ -372,7 +374,7 @@ Không cần tải toàn bộ VidOR/Ego4D/EPIC-KITCHENS gốc cho MVP nếu bả
 
 ## 9. Tổ chức implementation dự kiến
 
-M0 đã tạo vùng riêng với `protocol.json`, schemas, manifest split, provenance, synthetic examples và validator CPU. Các module model/parser/evaluator dưới đây là cấu trúc dự kiến cho milestones tiếp theo:
+M0 đã tạo vùng riêng với `protocol.json`, schemas, manifest split, provenance, synthetic examples và validator CPU. M1 đã triển khai `data.py`, `contracts.py`, `intervals.py`, `graphs.py`, `decoding.py`, `evaluation.py`, `cli.py` và synthetic fixtures/tests. Features, model, loss và training runner dưới đây vẫn là kế hoạch cho M2/M3:
 
 ```text
 experiments/pvsg_trd_v1/
@@ -409,13 +411,13 @@ Thời lượng là ước lượng công việc triển khai, chưa gồm thờ
 | Milestone | Công việc | Điều kiện hoàn thành | Ước lượng |
 |---|---|---|---|
 | **M0 — Hoàn thành: khóa phạm vi và protocol** | Xác minh bản phát hành tác giả năm 2023; người dùng chọn 338/62; khóa ID/hash, GT-track inputs/metrics, schema và manifest | [Artifacts M0](../../experiments/pvsg_trd_v1/README.md); protocol riêng; ghi sai khác CVF 360/40; kiểm tra CPU; không tự dựng split | Đã thực hiện |
-| **M1 — Parser/evaluator trên CPU** | Viết adapter và fake videos; interval round-trip; ranking, multi-label, visibility, graph batching; reference comparison | Perfect prediction đạt 100%; wrong predicate/track/disjoint span đạt 0; overlong interval bị phạt; K monotonic; duplicate không tăng hit; không có edge xuyên video; không rò nhãn | 1–2 ngày |
-| **M2 — Audit dữ liệu và features** | Đối chiếu media với annotation/manifest 338/62 đã khóa; khóa internal-val trong train; kiểm tra overlay ≥10 video đủ ba nguồn; build cache | Có thống kê thực, 62 test IDs giữ nguyên, split group sạch, feature alignment đúng, cache resumable và storage/throughput report | 1–2 ngày + thời gian chạy |
+| **M1 — Hoàn thành: parser/evaluator CPU** | Adapter tách input/targets, multi-label timelines, decoder, evaluator, graph batching; đối chiếu Python-set reference | [97 tests CPU đạt và bàn giao M1](../../experiments/pvsg_trd_v1/README_M1.md); các ca perfect/wrong/overlong/K/duplicate/visibility/batching đều đạt; audit raw train ghi nhận 34 video có lỗi cần M2 | Đã thực hiện |
+| **M2 — Audit dữ liệu và features** | Điều tra 34 video train có lỗi cấu trúc, đối chiếu preprocessing/media với manifest 338/62; tạo repair provenance nếu cần; khóa internal-val; overlay ≥10 video đủ ba nguồn; build cache | Lỗi annotation được xử lý có bằng chứng/version; 62 test IDs giữ nguyên, split group sạch, feature alignment đúng, cache resumable và storage/throughput report | 1–2 ngày + thời gian audit/chạy |
 | **M3 — Baselines chính** | MLP → Static GAT → ST-GAT; pilot CPU, GPU probe được phép trước khi chốt batch; train chính ba seeds/model | Chín runs cùng protocol, WandB đầy đủ, checkpoint/decoder chọn bằng internal-val; không chạy song song models | 2–3 ngày + train |
 | **M4 — Ablation và đối chứng CVPR 2023** | Bỏ spatial/temporal edges; ưu tiên Conv CVPR 2023 chuyển thể trên GT tracks; thử tái lập benchmark gốc nếu đủ artifacts | Tách hiệu ứng graph/time; baseline dùng cùng protocol; phân biệt chuyển thể, tái đánh giá checkpoint và tái lập; không làm KG | 1–3 ngày + train cho ablation/mức A; mức B phụ thuộc artifacts |
 | **M5 — Đánh giá đóng băng và báo cáo** | Freeze config rồi evaluate held-out một lượt kế hoạch; per-class/domain/tail; 5 đúng + 5 sai và timeline visualization | Mean±std; bảng protocol; giới hạn GT oracle; artifact tái lập; liên hệ với mục tiêu môn học | 1–2 ngày |
 
-CPU fixtures M1 cần thêm: nhiều interval rời; nhiều predicates cùng pair; subject/object đảo chiều; `end` inclusive; clip boundary; mask rỗng; pair chưa từng có relation; lớp không có support; whole-video negative; ghép overlap không làm nhãn/score đổi do window order. Các test này kiểm tra semantics có thể làm sai kết luận thực nghiệm, không chỉ mirror forward pass.
+CPU fixtures M1 đã kiểm tra: nhiều interval rời; nhiều predicates cùng pair; subject/object đảo chiều; `end` inclusive; clip boundary; mask rỗng; pair chưa từng có relation; lớp không có support; whole-video negative; ghép overlap không làm nhãn/score đổi do window order. Có đối chiếu evaluator với Python sets độc lập trên 12 seeds dữ liệu giả, kiểm tra cohort đầy đủ và CLI. Đây là kiểm tra semantics, không phải kết quả inference trên PVSG thật.
 
 Trước tác vụ GPU ở giai đoạn triển khai: hoàn tất code/CPU checks, commit phần liên quan và bàn giao lệnh có phạm vi rõ. Train chính do người dùng chạy, WandB bắt buộc; launcher ghi **model, microbatch/effective batch, seed, output, resume, số run và có tự chạy tiếp queue hay không**. Mặc định một lệnh một run, không tự chuyển model; nếu bàn giao queue thì phải nêu đủ thứ tự, chạy tuần tự một model mỗi thời điểm. M0 không tải media/checkpoint, chạy GPU hoặc training.
 
@@ -432,7 +434,7 @@ Các repo được đọc qua GitHub tại snapshot sau; PDF chỉ dùng để n
 | UNO | `6c05c555c01cce3f6bb2d2da179e4bee7e7877b6` |
 | SegPVSG | `12e7d1f38c4fe30ae717a4173dfee121154411fc` |
 
-Đã xác minh ở M0: checksum/revision/split IDs của annotation, thứ tự vocabulary và FPS metadata. Chưa xác minh: media coverage và alignment; checkpoint upstream có tải được không; replication numbers; CUDA/PyG runtime; batch size tối đa; feature extraction/training time. Đây là các đầu việc của milestones tiếp theo, không phải kết quả đã có.
+Đã xác minh ở M0: checksum/revision/split IDs của annotation, thứ tự vocabulary và FPS metadata. M1 đã kiểm tra parser/evaluator bằng fixtures CPU và audit cấu trúc train, ghi nhận 34 video có lỗi đầu tiên cần điều tra. Chưa xác minh: media coverage/alignment và cách sửa annotation có bằng chứng; checkpoint upstream có tải được không; replication numbers; CUDA/PyG runtime; batch size tối đa; feature extraction/training time. Đây là các đầu việc của milestones tiếp theo, không phải kết quả đã có.
 
 [pvsg-page]: https://jingkangyang.com/PVSG/
 [pvsg-paper]: https://openaccess.thecvf.com/content/CVPR2023/papers/Yang_Panoptic_Video_Scene_Graph_Generation_CVPR_2023_paper.pdf
