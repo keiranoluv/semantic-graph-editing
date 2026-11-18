@@ -31,7 +31,9 @@ validation. Việc chia theo video giữ các cửa sổ chồng lấn của m�
 cùng một tập. Có bốn nhóm ID nguồn Ego4D xuất hiện ở cả hai phía của split phát
 hành. Vì vậy độ độc lập theo cảnh quay gốc còn là một giới hạn.
 
-Nhóm lấy giao giữa khoảng chú thích và các frame mà hai track cùng nhìn thấy.
+Nhóm loại chú thích có predicate ngoài 57 lớp hoặc cặp track không hợp lệ.
+Trong mỗi khoảng chú thích, nhóm chỉ giữ các frame có cả hai track.
+Sau lọc, tập test còn 931 bộ ba.
 CLIP ViT-B/32 đóng băng trích vector 512 chiều cho từng vùng~\cite{radford2021clip}.
 Ở bốn frame thiếu RGB, mô hình vẫn nhận thông tin hình học và cờ báo thiếu đặc trưng.
 
@@ -52,9 +54,10 @@ của ST-GAT lần lượt bỏ cạnh thời gian, cạnh không gian hoặc c�
 hình vẫn giữ cùng tập cặp ứng viên: hai track khác ID cùng xuất hiện ít nhất
 một frame. Các ablation giữ self-loop và kiến trúc ST-GAT.
 
-Temporal Conv xử lý chuỗi của từng cặp và tách chuỗi tại điểm mất đồng hiện.
-Ở cấu hình Conv kernel 5, ba lớp, nhóm điều chỉnh relation head của PVSG
-để dùng đặc trưng CLIP và dự đoán đa nhãn. Biến thể này có trường tiếp nhận 13 frame, còn Conv kernel
+Từ PVSG~\cite{yang2023pvsg}, nhóm dùng khối Conv1D ba lớp, kernel 5,
+trên chuỗi đặc trưng CLIP của từng cặp GT track. Chuỗi được tách khi hai track
+ngừng đồng hiện. Các mô hình dùng cùng cách dự đoán 57 predicate và giải mã khoảng thời gian.
+Khối Conv này có trường tiếp nhận 13 frame, còn Conv kernel
 3, hai lớp có trường tiếp nhận 5 frame. Bài PVSG gốc dùng track dự đoán nên
 kết quả end-to-end còn chịu sai số segmentation và tracking.
 

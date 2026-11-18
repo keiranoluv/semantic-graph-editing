@@ -169,13 +169,18 @@ Hai tiêu chí duyệt tay được xét riêng để xác định bất đồng
 việc thực hiện yêu cầu hay việc bảo toàn nội dung còn lại của ảnh.
 
 \begin{itemize}
-\item \textbf{Ca 58 -- thuyền nằm ngoài vùng crop.} Người duyệt thấy thuyền buồm mới ở mép trái và đánh giá đạt cả hai tiêu chí. REACT++ phát hiện thêm một \textit{boat}, $G=1$. CLIPScore ở phân vị 3,3. Vùng crop giữa ảnh loại thuyền mới khỏi đầu vào của CLIP. Chưa có đối chứng để định lượng riêng tác động của crop lên điểm.
+\item \textbf{Ca 58 -- thuyền nằm ngoài vùng crop.} Người duyệt thấy thuyền buồm mới ở mép trái và đánh giá đạt cả hai tiêu chí. REACT++ phát hiện thêm một \textit{boat}, $G=1$. CLIPScore ở phân vị 3,3. Vùng crop giữa ảnh loại thuyền mới khỏi đầu vào của CLIP. Khi giữ toàn khung và thêm viền (letterbox), CLIPScore của ca này giảm từ 0,589 xuống 0,565.
 \item \textbf{Ca 168 -- thêm đúng mèo, đổi cả nền.} REACT++ phát hiện \textit{cat} đúng vùng. Các đỉnh và cạnh dùng để chấm bảo toàn vẫn khớp nên $G=1$. Trên ảnh, chi tiết gốc cây và nền đất đã đổi. Người duyệt đánh trượt tiêu chí bảo toàn, còn $-\mathrm{LPIPS}$ ở phân vị 11,1, phù hợp với mức thay đổi nhìn thấy giữa hai ảnh.
 \item \textbf{Ca 178 -- chim bị nhận thành người.} Chim xuất hiện trên tảng đá theo yêu cầu, người duyệt cho đạt cả hai tiêu chí. REACT++ gán nhãn \textit{person} tại vùng chim nên $G=0$. Chỉ số $-\mathrm{LPIPS}$ ở phân vị 90,0, phản ánh phần lớn ảnh được giữ nguyên.
 \end{itemize}
 
 Bảng~\ref{tab:cases3} ở Phụ lục~\ref{app:nv3} ghi kết quả và chẩn đoán cho đủ mười ca theo yêu cầu của đề.
 Bảng~\ref{tab:nv3-tax} nhóm các cơ chế quan sát được. Cách chọn theo chênh lệch thứ hạng chỉ cho phép phân tích từng ca; ước lượng tần suất lỗi cần lấy mẫu trên toàn bộ 200 lần chỉnh sửa.
+
+\textbf{Đối chứng center crop.} Nhóm chấm lại cùng 200 ảnh và caption bằng CLIP ViT-B/32, so sánh center crop với letterbox ở cùng kích thước $224\times224$.
+Spearman với nhãn tay tổng hợp lần lượt là $0{,}033$ và $-0{,}053$. Chênh lệch của letterbox là $-0{,}086$ (khoảng bootstrap 95\% theo ảnh nguồn từ $-0{,}190$ đến $0{,}019$).
+Trên 71 cặp có ít nhất 25\% diện tích vùng yêu cầu nằm ngoài crop, chênh lệch là $+0{,}048$ (từ $-0{,}089$ đến $0{,}199$).
+Cả hai khoảng đều chứa 0. Giữ toàn khung cũng làm vật thể nhỏ hơn trong ảnh đầu vào.
 
 \textbf{Kết luận Nhiệm vụ 3.} Điểm đồ thị giúp truy nguyên lỗi khi đồ thị đáng tin,
 nhưng độ phủ 45,5\%, tương quan yếu và thiếu thuộc tính chưa cho phép thay thế
