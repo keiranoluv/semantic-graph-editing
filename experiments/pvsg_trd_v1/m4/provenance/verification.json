@@ -1,0 +1,32 @@
+{
+  "date_utc": "2026-11-18",
+  "state": "CPU_preparation_passed_GPU_and_main_training_pending",
+  "pytest": {
+    "command": "CUDA_VISIBLE_DEVICES='' data/external/pvsg_m3_env/bin/python -m pytest -q experiments/pvsg_trd_v1/tests experiments/pvsg_trd_v1/m2 experiments/pvsg_trd_v1/m3 experiments/pvsg_trd_v1/m4 --basetemp=data/external/pvsg_m4_cpu_final_tests",
+    "passed": 162,
+    "M4_tests": 30,
+    "seconds_reported": 18.77
+  },
+  "protected_files": {
+    "count": 322,
+    "changed": [],
+    "scope": "M0--M3, src, scripts, configs, AGENTS.md, user notebook; compared with turn-start SHA256 snapshot"
+  },
+  "real_fit_window": "provenance/cpu_real_window.json",
+  "positive_fixture_overfit": "provenance/cpu_overfit.json",
+  "test_checkpoint_files_remaining": 0,
+  "CPU_only": true,
+  "GPU_profile_executed": false,
+  "main_training_executed": false,
+  "online_WandB_auth_checked": false,
+  "notes": [
+    "Main runner reuses M3 mandatory online WandB boundary; CPU integration uses a fake tracker, no network training logs.",
+    "No claim about GPU throughput, chosen physical batch, PVSG validation convergence or test metrics."
+  ],
+  "CPU_preflight": {
+    "command": "CUDA_VISIBLE_DEVICES='' data/external/pvsg_m3_env/bin/python -m experiments.pvsg_trd_v1.m4.preflight --cpu-only",
+    "state": "passed",
+    "scope": "M0--M4 artifact locks and M3 runtime; full cache and GPU sizing not asserted"
+  },
+  "launcher_help_and_bash_syntax": "passed; no GPU work"
+}
