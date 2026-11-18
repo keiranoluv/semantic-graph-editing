@@ -1,6 +1,6 @@
 # M5 · Tổng hợp có tính hội tụ muộn
 
-GT tracks, 62 video test, K=50, tIoU=0,5. Đơn vị %, trung bình ± độ lệch chuẩn mẫu trên seeds 17, 42, 2026. Cột kết hợp thay đúng bảy cặp model/seed được chọn theo validation bằng kết quả min50.
+GT tracks, 62 video test, K=50, tIoU=0,5. Đơn vị %, trung bình ± độ lệch chuẩn mẫu trên seeds 17, 42, 2026. Cột kết hợp là kết quả chính. Cột này thay đúng bảy cặp model/seed được chọn theo validation bằng kết quả min50.
 
 | Model | Seed thay | R gốc | R kết hợp | mR gốc | mR kết hợp |
 |---|---|---:|---:|---:|---:|

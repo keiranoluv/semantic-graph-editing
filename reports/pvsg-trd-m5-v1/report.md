@@ -1,4 +1,4 @@
-# M5 · Dự đoán quan hệ trên 62 video test PVSG
+# Phụ lục M5 · Kết quả gốc và bảy cặp trước/sau
 
 GT tracks và CLIP đóng băng. Điểm theo phần trăm, K=50 và tIoU=0,5. Checkpoint được chọn bằng validation. Thực nghiệm đo dự đoán quan hệ và thời gian trong phần mở rộng GML; phạm vi đầu vào giả định đã biết mask, lớp và ID.
 
@@ -15,7 +15,7 @@ GT tracks và CLIP đóng băng. Điểm theo phần trăm, K=50 và tIoU=0,5. C
 
 ## Kiểm tra bổ sung về hội tụ muộn
 
-Bảy lượt được chọn sau khi xem validation vì từng dừng ở epoch 16. Bảng chính dùng protocol ban đầu. Bảng dưới so từng seed khi hoãn early stopping đến ít nhất epoch 50.
+Bảy lượt được chọn sau khi xem validation vì từng dừng ở epoch 16. Bảng phía trên ghi kết quả gốc để đối chiếu với [bảng chính tính cả hội tụ muộn](final.md). Bảng dưới so từng seed khi hoãn early stopping đến ít nhất epoch 50.
 
 | Model | Seed | mR gốc → min50 | R gốc → min50 |
 |---|---:|---:|---:|
