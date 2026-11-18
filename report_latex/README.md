@@ -49,6 +49,12 @@ Notebook đọc tần suất train từ `reports/level2/gqa-scale-audit-v1.json`
 
 Nguồn cho số cặp, danh sách thao tác và phiếu 20 mẫu nằm trong [bộ dữ liệu MagicBrush theo prompt](../experiments/magicbrush_prompt_intent_v1/README.md). Hai ảnh minh họa lấy từ mẫu validation `magicbrush:484847:1`. [Kết quả MagicBrush](../reports/level2/magicbrush-prompt-intent-test-v1/README.md) ghi cách tái lập bảng test 59 cặp. [Kết quả EMNLP](../reports/level2/emnlp2020-task-b-wandb-v4-test-v1/README.md) ghi các chỉ số của hai mô hình trên 530 mẫu test.
 
+Từ gốc repo, chạy lệnh sau để dựng lại sơ đồ các cạnh nối với bàn, hai ca sai trên MagicBrush và biểu đồ F1 theo thao tác của GNN trên EMNLP. Script dùng ảnh MagicBrush trong workspace, dự đoán test đã lưu của nhánh prompt ở seed 42 và bảng điểm EMNLP.
+
+```bash
+myenv/bin/python -m experiments.magicbrush_prompt_intent_v1.report_figures
+```
+
 ## Tái tạo ảnh minh họa VN100
 
 Chạy [notebook Nhiệm vụ 3](../notebooks/level3_report_figures.ipynb) trên CPU trong workspace có ảnh pilot và VN100. Notebook dùng pdfLaTeX với phông tiếng Việt của báo cáo để xuất `nv3-sgg-pair.pdf`, `nv3-evaluation-cases.pdf` ở thân bài và hai hình `nv3-editor-pilot.pdf`, `nv3-color-case.pdf` ở Phụ lục C.

@@ -24,12 +24,13 @@ $G_s$ và $q$.
 \includegraphics[width=.455\linewidth]{magicbrush-laptop-source.jpg} &
 \includegraphics[width=.455\linewidth]{magicbrush-laptop-target.jpg}\\
 (a) Ảnh nguồn & (b) Ảnh sau chỉnh sửa
-\end{tabular}
+\end{tabular}\par\smallskip
+\includegraphics[width=.98\linewidth]{magicbrush-laptop-graph.pdf}
 \caption{Mẫu validation \texttt{484847:1} của MagicBrush với yêu cầu
 \textit{put a laptop on the table}. Đồ thị của (a) có bàn, sách và điều khiển.
 Để tái tạo đồ thị của (b) cần sáu thao tác. Yêu cầu chỉ xác định hai thao tác:
 thêm đỉnh laptop và thêm cạnh $(\mathrm{laptop},\mathrm{on},\mathrm{table})$.
-Nhãn theo câu lệnh giữ sách, điều khiển và hai cạnh nối chúng với bàn.}
+Sơ đồ bên dưới chỉ vẽ phần đồ thị liên quan đến bàn. Hai cạnh có sẵn nối sách và điều khiển với bàn được giữ lại.}
 \label{fig:mb-intent-laptop}
 \end{figure}
 
@@ -51,6 +52,16 @@ Validation & 67 & 46 & 21 & 43\\
 Test & 69 & 59 & 10 & 48\\\midrule
 Tổng & 437 & 345 & 92 & 296\\\bottomrule
 \end{tabular}\end{table}
+
+\begin{figure*}[!t]\centering
+\includegraphics[width=.93\textwidth]{magicbrush-test-errors.pdf}
+\caption{Hai mẫu MagicBrush test, dự đoán của GNN học nhãn theo câu lệnh,
+seed 42. Ảnh đích dùng để đối chiếu nhãn. Ở (a), mẫu \texttt{181753:1},
+bàn giữ chất liệu gỗ sẫm và đổi từ chữ nhật sang tròn. Mô hình giữ nguyên đồ thị.
+Ở (b), mẫu \texttt{65564:2}, bóng bay xuất hiện phía trên hươu. Câu lệnh chỉ
+yêu cầu thêm bóng bay. Mô hình thêm vịt và nối nó với đỉnh hươu ở tiền cảnh.}
+\label{fig:mb-test-errors}
+\end{figure*}
 
 Nhóm lấy ngẫu nhiên 20 cặp từ 345 cặp, không hoàn lại (seed 20261119).
 Người duyệt xem hai ảnh, câu lệnh, đồ thị nguồn và toàn bộ thao tác đích.
@@ -109,14 +120,8 @@ Toàn bộ tập thao tác dự đoán đều áp dụng được về mặt c�
 chính xác đồ thị đích theo câu lệnh chỉ đạt 0,00\% với nhãn chênh lệch và
 0,56\% với nhãn theo câu lệnh, trung bình ba seed. Nếu quy ước yêu cầu
 đơn giản là cặp có đúng một thao tác đích, cả hai nhánh đạt 0/34 mẫu
-khớp toàn bộ tập thao tác ở từng seed. Chẳng hạn, với yêu cầu
-\textit{Let the table be round} (mẫu test \texttt{181753:1}), nhãn chuẩn đổi
-thuộc tính của bàn từ chữ nhật thành tròn và giữ chất liệu gỗ sẫm. GNN học
-theo câu lệnh ở seed 42 trả về tập thao tác rỗng. Với yêu cầu
-\textit{add a balloon} (\texttt{65564:2}), cùng mô hình dự đoán thao tác
-thêm đỉnh nhưng gán nhãn \textit{duck} và thêm một cạnh ngoài yêu cầu.
-Hai lỗi này cho thấy mô hình có thể bỏ sót cả yêu cầu hoặc chọn đúng loại
-thao tác nhưng sai đối tượng.
+khớp toàn bộ tập thao tác ở từng seed. Hình~\ref{fig:mb-test-errors} minh họa hai lỗi khác nhau của cùng
+một checkpoint: bỏ sót thay đổi thuộc tính và chọn sai tên đối tượng khi thêm đỉnh.
 
 \subsubsection{Hướng mở rộng trên EMNLP 2020}
 Để khảo sát khả năng học thao tác khi có sẵn đồ thị nguồn, câu lệnh và đồ
@@ -139,7 +144,15 @@ MLP & $81,69\pm0,31$ & $54,25\pm0,51$ & $67,74\pm0,68$\\
 GNN & $82,44\pm0,39$ & $55,03\pm0,28$ & $68,55\pm0,22$\\\bottomrule
 \end{tabular}\end{table}
 
-Trên EMNLP, GNN đạt F1 97,76\% cho xóa đỉnh và 97,64\% cho xóa cạnh.
+\begin{figure}[!htbp]\centering
+\includegraphics[width=.98\linewidth]{emnlp-gnn-operations.pdf}
+\caption{F1 của GNN trên EMNLP theo từng thao tác, trung bình ba seed.
+Số trong ngoặc là số thao tác chuẩn trên tập test. Phép xóa có nhiều mẫu
+và đạt F1 cao ở cả đỉnh lẫn cạnh.}
+\label{fig:emnlp-gnn-operations}
+\end{figure}
+
+Trong Hình~\ref{fig:emnlp-gnn-operations}, GNN đạt F1 97,76\% cho xóa đỉnh và 97,64\% cho xóa cạnh.
 Hai loại này chiếm 1.091 trong 1.533 thao tác chuẩn, nên ảnh hưởng lớn đến
 micro-F1 ở Bảng~\ref{tab:emnlp}. Thay đỉnh chỉ đạt 27,38\% trên 121 thao
 tác. Cả sáu thao tác thay cạnh trong test đều bị dự đoán sai.
