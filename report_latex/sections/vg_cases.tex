@@ -1,0 +1,34 @@
+\section{Đối chiếu mười dự đoán trên VG150 validation}\label{app:vgcases}
+Nhóm dùng GAT với đặc trưng CLIP, seed 42. Quy tắc chọn duyệt 100 ảnh validation
+đầu tiên theo thứ tự xáo bằng seed 2026, lấy chú thích đầu tiên của mỗi loại
+(trúng hoặc bỏ sót) trên mỗi ảnh cho đến khi đủ năm trường hợp mỗi loại.
+Bảng~\ref{tab:vgcases} đối chiếu trực tiếp với nhãn và thứ hạng trong ảnh.
+Nhóm còn cần xác nhận thủ công mức phù hợp ngữ nghĩa của từng dự đoán trên ảnh.
+
+\begin{table}[H]
+\centering\small
+\caption{Kết quả theo GC top-50. Hạng là vị trí dự đoán của mô hình cho cặp có hướng.
+Ở dòng M05, nhãn cần thu hồi là \textit{has}.}\label{tab:vgcases}
+\begin{tabularx}{\linewidth}{@{}lrl llr X@{}}\toprule
+Mã & Ảnh & Chủ thể $\to$ đích & Nhãn chuẩn & Dự đoán & Hạng & Diễn giải\\\midrule
+H01 & 40 & chair $\to$ table & near & near & 7 & Thu hồi quan hệ vị trí từ ghế đến bàn.\\
+H02 & 7 & book $\to$ desk & on & on & 4 & Thu hồi quan hệ của sách với mặt bàn.\\
+H03 & 89 & flower $\to$ vase & in & in & 1 & Quan hệ giữa hoa và bình đứng đầu ảnh.\\
+H04 & 81 & door $\to$ cabinet & on & on & 36 & Cặp cửa và tủ này vẫn nằm trong top-50.\\
+H05 & 3 & bag $\to$ table & on & on & 3 & Thu hồi quan hệ giữa túi và bàn.\\\midrule
+M01 & 40 & table $\to$ chair & near & with & 48 & Đảo hướng cặp H01, mô hình chọn nhãn khác chú thích.\\
+M02 & 7 & lady $\to$ hair & with & has & 12 & Cặp xếp đủ cao nhưng hai nhãn khác nhau theo từ vựng VG150.\\
+M03 & 89 & shelf $\to$ table & on & on & 64 & Đúng nhãn, được thu hồi ở top-100.\\
+M04 & 81 & door $\to$ cabinet & on & on & 61 & Cặp đối tượng này xếp ngoài top-50 dù cùng tên lớp với H04.\\
+M05 & 3 & girl $\to$ hair & has & with & 5 & Cùng cặp có cả hai nhãn chuẩn. GC giữ \textit{with} và bỏ sót \textit{has}.\\
+\bottomrule\end{tabularx}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.455\linewidth]{vg-hit-contact-sheet.png}\hfill
+\includegraphics[width=.455\linewidth]{vg-miss-contact-sheet.png}
+\caption{Các ví dụ của Bảng~\ref{tab:vgcases}. Cụm bên trái gồm H01--H05,
+cụm bên phải gồm M01--M05. Trong mỗi cụm, thứ tự ảnh từ trái sang phải rồi
+từ trên xuống dưới. Hai khung màu đánh dấu đúng cặp đối tượng đang chấm.}
+\end{figure}

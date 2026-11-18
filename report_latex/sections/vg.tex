@@ -1,253 +1,233 @@
+\section{Nhiệm vụ 1. Dự đoán quan hệ trong đồ thị cảnh}
 
-\section{Nhiệm vụ 1 -- VG150: dự đoán quan hệ và tri thức nền}
-\subsection{Thiết lập PredCls và mô hình}
-Đầu vào là ảnh, hộp và nhãn object GT; đầu ra là predicate cho cặp object có
-hướng. Không dự đoán lại object và không đưa cạnh quan hệ GT vào graph message
-passing. VG150 là tập con của Visual Genome~\cite{krishna2017visualgenome}.
+\subsection{Bài toán và đầu vào, đầu ra}
+Trong Hình~\ref{fig:motifs}, một phụ nữ và một chiếc xe máy đã được khoanh vùng.
+Biết hai đối tượng này có mặt trong ảnh vẫn chưa đủ để mô tả cảnh. Quan hệ
+\textit{riding} (đang cưỡi) cho biết người phụ nữ đang làm gì với chiếc xe.
+Trong đồ thị cảnh, hai đối tượng là hai đỉnh, còn quan hệ này là một cạnh có
+hướng từ người phụ nữ đến xe máy.
 
-\begin{table}[!ht]\centering\small
-\caption{Thiết lập thực nghiệm VG150.}\label{tab:vgsetup}
-\begin{tabularx}{\linewidth}{@{}p{23mm}X@{}}\toprule
-Thành phần & Cấu hình\\\midrule
-Split, vocabulary & Train 57.723 / val 5.000 / test 26.446 ảnh; 150 object, 50 predicate và background.\\
-Đặc trưng object & CLIP ViT-B/32 đóng băng, 512 chiều; hình học 5 chiều; label embedding học được 32 chiều.\\
-MLP / GAT & MLP phân lớp cặp, không message passing; GAT 2 lớp, 4 heads, hidden 256, dropout 0,1.\\
-Graph đầu vào & Cạnh có hướng giữa các object; edges-off bỏ cạnh giữa các object, vẫn giữ self-loop.\\
-KG & Embedding 64 chiều và bit liên kết hợp lệ; WordNet 150/150, ConceptNet 138/150 lớp object.\\
-Tối ưu & AdamW, learning rate $10^{-3}$, weight decay $10^{-2}$; effective batch 512, negative ratio 3.\\
-Dừng và seed & Tối đa 200 epoch, patience 15; seed 42, 123, 3407. Giữ checkpoint đã chọn từ validation.\\
-Đánh giá cuối & 18 cấu hình $\times$ 3 seed = 54 checkpoint; inference batch 128, cùng test và evaluator reference-v1.\\
-\bottomrule\end{tabularx}\end{table}
-
-Với object $i$, đặc trưng là $x_i=[v_i;b_i;e(c_i);k_i;m_i]$,
-trong đó $k_i$ và $m_i$ chỉ có ở nhánh KG. GAT~\cite{velickovic2018gat} tính
-\[
-h_i^{(\ell+1)}=\mathop{\Vert}_{a=1}^{H}
-\sigma\!\left(\sum_{j\in\mathcal N(i)}\alpha_{ij}^{(\ell,a)}
-W^{(\ell,a)}h_j^{(\ell)}\right).
-\]
-\[
-z_{ij}=f_\theta(h_i,h_j,\text{đặc trưng cặp}).
-\]
-MLP không tổng hợp hàng xóm. KG lấy từ
-WordNet/ConceptNet~\cite{miller1995wordnet,speer2017conceptnet}, nhúng bằng
-TransE, RotatE hoặc ComplEx~\cite{bordes2013transe,sun2019rotate,trouillon2016complex};
-không lấy quan hệ test để xây KG.
-
-\subsection{Protocol và kiểm soát so sánh}
-Reference-v1 khớp đúng predicate, lớp subject/object và IoU của cả hai hộp
-ít nhất 0,5. R@K là trung bình recall theo ảnh; mR@K tính recall theo ảnh
-cho từng predicate rồi trung bình trên 50 lớp. GT trùng được giữ khi chấm.
-Trong train, sampler bỏ cặp có nhiều predicate khác nhau; cần lưu ý khác biệt
-giữa supervision huấn luyện và GT đánh giá khi đọc lỗi đa nhãn.
-
-Hai đợt inference gồm 27 checkpoint gốc và 27 checkpoint loss/fusion.
-Checkpoint và source được khóa, không chọn lại theo test hay evaluator mới.
-Các thiết kế cải tiến dựa trên train/validation. Test đã từng được dùng ở các
-vòng trước nên không mô tả đây là holdout chưa từng xem; cũng không suy từ
-thứ tự thời gian rằng thiết kế loss đã được tinh chỉnh theo test.
-\srcnote{Nguồn: \path{docs/evaluation/PredCls.md};
-\path{reports/level1/reference-test27-v1/} và
-\path{reference-loss-fusion-test27-v1/}.}
-
-
-\subsection{MLP, GAT và KG: bảng test chính}
-\begin{table*}[!t]\centering\small
-\caption{VG150 test, GC reference-v1; mean $\pm$ sample std (\%), ba seed.}\label{tab:vgmain}
-\begin{tabular}{@{}lrrrr@{}}\toprule
-Cấu hình & R@50 & R@100 & mR@50 & mR@100\\\midrule
-MLP & $63,56\pm0,77$ & $66,40\pm0,29$ & $16,95\pm1,52$ & $19,52\pm1,42$\\
-GAT & $63,87\pm0,73$ & $66,21\pm0,70$ & $\mathbf{18,61\pm0,25}$ & $\mathbf{20,95\pm0,21}$\\
-KG-off & $63,89\pm0,38$ & $66,24\pm0,30$ & $18,44\pm0,29$ & $20,72\pm0,43$\\
-WordNet--TransE & $64,15\pm0,29$ & $66,69\pm0,34$ & $17,84\pm0,09$ & $20,34\pm0,08$\\
-WordNet edges-off & $64,11\pm1,15$ & $66,46\pm1,13$ & $18,41\pm0,90$ & $20,72\pm0,76$\\
-ConceptNet--TransE & $64,10\pm0,27$ & $66,45\pm0,28$ & $18,39\pm0,29$ & $20,71\pm0,28$\\
-ConceptNet edges-off & $\mathbf{64,59\pm0,19}$ & $\mathbf{66,97\pm0,16}$ & $18,15\pm0,28$ & $20,47\pm0,32$\\
-ConceptNet--RotatE & $64,21\pm0,37$ & $66,60\pm0,46$ & $18,57\pm0,42$ & $20,93\pm0,35$\\
-ConceptNet--ComplEx & $64,37\pm0,18$ & $66,79\pm0,25$ & $18,33\pm0,24$ & $20,75\pm0,18$\\
-\bottomrule\end{tabular}\end{table*}
-
-GAT tăng \textbf{1,65 pp mR@50} so với MLP, cùng dấu ở cả ba seed
-($+0,970/+3,131/+0,861$ pp). Tuy nhiên R@100 giảm 0,19 pp.
-Các nhánh ghép KG tại node chưa vượt GAT về mean mR@50.
-WordNet--TransE thấp hơn KG-off 0,60 pp; RotatE gần GAT ($-0,04$ pp),
-với một seed giảm.
-
-Edges-off ở WordNet và ConceptNet cho R cao hơn hoặc gần bản có cạnh:
-message passing không có lợi ở mọi nhánh. GAT và KG-off là các cấu hình/checkpoint
-riêng; không coi các hàng là một checkpoint bật/tắt lúc inference.
-
-\subsection{Adjusted loss: tác động lớn hơn KG}
-Dùng prior $p_c$ tính từ train với add-one smoothing:
-\[
-\mathcal L_{\mathrm{adj}}
-=\operatorname{CE}\!\left(z+\tau\log p_{\mathrm{train}},y\right),
-\qquad \tau=0,25.
-\]
-Phần cộng prior chỉ áp dụng khi train; inference dùng logits gốc $z$.
-Bốn cấu hình tạo đối chứng chéo giữa loss và KG.
-
-\begin{table*}[!t]\centering\small
-\caption{Loss ablation trên VG150 test. Baseline riêng, không trộn với bảng~\ref{tab:vgmain}.}\label{tab:loss}
-\begin{tabular}{@{}lrrrr@{}}\toprule
-Cấu hình & R@50 & R@100 & mR@50 & mR@100\\\midrule
-CE, KG-off & $64,42\pm0,10$ & $66,85\pm0,09$ & $18,11\pm0,16$ & $20,56\pm0,19$\\
-CE, KG-on & $63,63\pm0,14$ & $65,93\pm0,13$ & $19,27\pm0,75$ & $21,51\pm0,91$\\
-Adjusted, KG-off & $62,18\pm0,16$ & $64,81\pm0,13$ & $24,59\pm0,93$ & $27,89\pm1,02$\\
-Adjusted, KG-on & $62,01\pm0,31$ & $64,71\pm0,46$ & $24,67\pm1,07$ & $28,00\pm1,19$\\
-\bottomrule\end{tabular}\end{table*}
-
-Giữ KG-off, adjusted tăng \textbf{6,48 pp mR@50} nhưng giảm
-\textbf{2,24 pp R@50}. Với KG-on, mR tăng 5,40 pp.
-Thêm KG vào adjusted chỉ tăng 0,09 pp mR@50 và có seed giảm 2,09 pp:
-lợi ích chính đến từ loss, chưa có bằng chứng về lợi ích KG cộng thêm ổn định.
-
-
-\subsection{Fusion và shuffled-KG: kiểm tra nguồn lợi ích}
-Pair fusion đưa embedding tri thức của cặp object vào nhánh dự đoán quan hệ;
-visual fusion dùng nhánh hợp nhất có điều kiện theo thông tin thị giác.
-Shuffled-KG giữ cơ chế hợp nhất nhưng xáo trộn ánh xạ embedding--nhãn object,
-kiểm tra phần tăng điểm có gắn với nội dung tri thức hay không.
-Các nhánh dùng adjusted loss và baseline riêng của cohort fusion.
-
-\begin{table*}[!t]\centering\small
-\caption{Fusion trên VG150 test; shuffled là một permutation cố định.}\label{tab:fusion}
-\begin{tabular}{@{}lrrrr@{}}\toprule
-Cấu hình & R@50 & R@100 & mR@50 & mR@100\\\midrule
-Fusion baseline & $62,06\pm0,39$ & $64,83\pm0,21$ & $24,32\pm0,91$ & $27,72\pm1,08$\\
-Pair, KG thật & $62,37\pm0,19$ & $65,01\pm0,20$ & $\mathbf{25,24\pm0,39}$ & $\mathbf{28,65\pm0,27}$\\
-Pair, shuffled & $62,34\pm0,18$ & $65,06\pm0,24$ & $25,00\pm0,71$ & $28,33\pm0,74$\\
-Visual, KG thật & $62,34\pm0,21$ & $65,05\pm0,22$ & $24,52\pm0,64$ & $27,98\pm0,73$\\
-Visual, shuffled & $62,20\pm0,23$ & $64,96\pm0,22$ & $24,82\pm1,25$ & $27,94\pm1,10$\\
-\bottomrule\end{tabular}\end{table*}
-
-\begin{table}[!ht]\centering\small
-\caption{Delta mR@50 ghép cặp cùng seed trên test; pp, tính trước khi làm tròn.}
-\begin{adjustbox}{max width=\linewidth}\begin{tabular}{@{}lrrrr@{}}\toprule
-Treatment $-$ control & Mean & Seed 42 & Seed 123 & Seed 3407\\\midrule
-Adjusted-off $-$ CE-off & +6,479 & +6,081 & +7,710 & +5,645\\
-Adjusted-on $-$ Adjusted-off & +0,086 & +0,557 & $-2,090$ & +1,793\\
-Pair-real $-$ fusion baseline & +0,926 & +1,783 & $-0,560$ & +1,556\\
-Pair-real $-$ pair-shuffled & +0,238 & +0,400 & $-0,823$ & +1,135\\
-Visual-real $-$ visual-shuffled & $-0,300$ & $-0,917$ & +0,752 & $-0,735$\\
-\bottomrule\end{tabular}\end{adjustbox}\end{table}
-
-\begin{figure}[!ht]\centering
-\begin{tikzpicture}
-\begin{axis}[width=.81\linewidth,height=5.0cm,xbar,xmin=-1,xmax=7.5,
-ytick={1,2,3,4},yticklabels={Visual real--shuffled,Pair real--shuffled,GAT--MLP,Adjusted-off--CE-off},
-xlabel={$\Delta$ mR@50 trên test (pp)},tick label style={font=\small},
-axis x line*=bottom,axis y line*=left,xmajorgrids,bar width=12pt]
-\addplot[fill=inkblue,draw=inkblue] coordinates {(-.300,1) (.238,2) (1.654,3) (6.479,4)};
-\draw[dashed] (axis cs:0,.5)--(axis cs:0,4.5);
-\end{axis}\end{tikzpicture}
-\caption{Độ lớn tác động của các đối chứng. Mỗi thanh thuộc cohort riêng;
-delta trung bình là thống kê mô tả, không phải kiểm định ý nghĩa thống kê.}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=.83\columnwidth]{neural-motifs-fig1.pdf}
+\caption{Minh họa đầu vào và đích dự đoán. Phía trên là ảnh và các hộp đối tượng.
+Phía dưới là đồ thị chú thích, trong đó có bộ ba
+\textit{woman--riding--motorcycle}. Trích Hình~1, trang~1 của
+Zellers và cộng sự~\cite{zellers2018neuralmotifs}.}
+\label{fig:motifs}
 \end{figure}
 
-Pair-real có mean mR@50 cao nhất trong 18 cấu hình, nhưng hơn shuffled
-chỉ 0,24 pp và thua ở seed 123. Visual-real thấp hơn shuffled trung bình.
-\textbf{Chưa quy toàn bộ lợi ích fusion cho nội dung KG};
-ba seed và một permutation chưa đủ để khẳng định khác biệt nhỏ là ổn định.
-\srcnote{Nguồn: \path{reference-loss-fusion-test27-v1/analysis.json} và \path{tables.md}.}
+Nhóm xét bài toán phân lớp quan hệ (\textit{Predicate Classification}, PredCls).
+\textbf{Đầu vào} gồm ảnh RGB, hộp bao và nhãn lớp thật của từng đối tượng.
+\textbf{Đầu ra} là danh sách bộ ba (đối tượng chủ thể, quan hệ, đối tượng đích),
+kèm điểm tin cậy. Hai đối tượng được xác định theo từng hộp cụ thể. Một ảnh có
+$N$ đối tượng tạo ra $N(N-1)$ cặp có hướng cần xét. Mô hình tự xác định cặp
+nào có quan hệ và dự đoán nhãn cho cặp đó. Các cạnh có nhãn trong đồ thị
+chú thích chỉ được dùng để huấn luyện và chấm kết quả.
 
+\subsection{Dữ liệu và cách đánh giá}
+VG150 là tập con của Visual Genome~\cite{krishna2017visualgenome}, gồm
+150 lớp đối tượng và 50 lớp quan hệ. Nhóm chia dữ liệu theo ảnh. Sau khi
+đối chiếu metadata và giữ những ảnh có hộp cùng chú thích quan hệ, nhóm
+lấy 5.000 ảnh hợp lệ đầu tiên theo thứ tự lưu trong phần train làm
+validation, giữ 57.723 ảnh còn lại để huấn luyện và giữ 26.446 ảnh hợp lệ
+từ phần test để đánh giá. Các cặp đối tượng của một ảnh luôn thuộc cùng một tập.
 
-\subsection{Long-tail và zero-shot: kết quả test}
-Long-tail dùng \textbf{26.446 ảnh test} của 54 checkpoint; tính trên CPU từ
-recall từng predicate đã lưu, không inference lại.
-Head/body/tail giữ nguyên theo tần suất train: 10/20/20 predicate,
-chiếm 88,40/10,14/1,46\% annotation train. Top-K vẫn lấy trên toàn ảnh.
+Mỗi cặp có 51 điểm đầu ra, gồm 50 quan hệ và lớp nền. Khi đánh giá với
+\textit{graph constraint} (GC), nhóm giữ quan hệ có xác suất cao nhất trong
+50 quan hệ của mỗi cặp, sau đó xếp hạng tất cả các cặp trong cùng ảnh.
+Một dự đoán khớp chú thích khi đúng nhãn quan hệ, đúng hai lớp đối tượng theo
+thứ tự và độ giao trên hợp (IoU) của từng hộp với hộp chuẩn đạt ít nhất 0,5.
 
-\begin{table}[!ht]\centering\small
-\caption{Long-tail test: GC mR@50 (\%), mean $\pm$ sample std ba seed.}\label{tab:tail}
-\begin{adjustbox}{max width=\linewidth}\begin{tabular}{@{}lrrr@{}}\toprule
-Cấu hình & Head (10 lớp) & Body (20 lớp) & Tail (20 lớp)\\\midrule
-MLP & $49,93\pm1,58$ & $14,12\pm2,14$ & $3,29\pm0,87$\\
-GAT & $51,03\pm0,69$ & $16,88\pm0,99$ & $4,12\pm0,08$\\
-CE, KG-off & $51,10\pm0,15$ & $16,19\pm0,41$ & $3,54\pm0,20$\\
-Adjusted, KG-off & $50,72\pm0,10$ & $26,56\pm0,94$ & $9,55\pm1,42$\\
-Adjusted, KG-on & $50,60\pm0,30$ & $26,37\pm1,37$ & $10,01\pm1,34$\\
-\bottomrule\end{tabular}\end{adjustbox}\end{table}
+\textbf{R@50} đo tỷ lệ quan hệ chuẩn được tìm lại trong 50 dự đoán đứng đầu
+của mỗi ảnh, rồi lấy trung bình qua ảnh. \textbf{mR@50} tính recall theo ảnh
+cho từng loại quan hệ có mặt, rồi lấy trung bình trên 50 lớp. Vì vậy, một
+lượt tìm lại quan hệ hiếm có thể ít ảnh hưởng đến R@50 nhưng có ý nghĩa khi
+xét mR@50. Toàn bộ bảng định lượng dùng cùng bộ chấm \textit{reference-v1}
+trên test. Nhóm chấm lại các checkpoint đã chọn bằng validation. Tập test
+này đã từng được đánh giá bằng bộ chấm trước đó.
 
-Adjusted-off tăng body \textbf{10,37 pp}, tail \textbf{6,01 pp} và giảm head
-0,37 pp so CE-off; cả ba seed cùng chiều trong từng nhóm.
-Test có 2.511 annotation tail. Ở cohort fusion, pair-real đạt tail mR@50
-10,74\%, so với baseline 9,30\% và shuffled 10,94\%:
-KG thật chưa vượt đối chứng xáo trộn ở nhóm hiếm.
+\subsection{Hai mô hình cơ sở}
+Mỗi đỉnh có vector 549 chiều. Vector gồm 512 chiều thị giác trích từ vùng
+ảnh bằng CLIP ViT-B/32 đóng băng~\cite{radford2021clip}, năm số hình học
+(tọa độ tâm, chiều rộng, chiều cao, diện tích đã chuẩn hóa) và 32 chiều
+biểu diễn nhãn đối tượng học trong khi huấn luyện. Hai mô hình ở
+Hình~\ref{fig:vg-arch} dùng cùng đầu vào và chấm cùng tập cặp.
 
-Zero-shot là bộ ba \emph{lớp} $(s,p,o)$ chưa xuất hiện trong annotation train.
-Test có \textbf{7.848 annotation thuộc 5.426 bộ ba}, trên \textbf{4.660 ảnh}.
-Chỉ inference thêm 4.660 ảnh này cho chín checkpoint fusion;
-ảnh không có GT zero-shot không thuộc mẫu số zR. Mọi object/predicate vẫn tham gia
-ranking toàn ảnh, không lọc prediction theo bộ ba chưa gặp.
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[>=Latex,font=\footnotesize,align=center,
+ box/.style={draw=inkblue,rounded corners=2pt,inner sep=4pt},
+ model/.style={box,text width=.39\columnwidth,minimum height=12mm}]
+\node[box] (x) {Đặc trưng từng đối tượng (549 chiều)};
+\node[model,below left=5mm and 1mm of x.south] (m) {MLP\\Ghép chủ thể và đích};
+\node[model,below right=5mm and 1mm of x.south] (g) {GAT\\Truyền tin trên đồ thị,\\rồi ghép chủ thể và đích};
+\node[box,below=24mm of x.south] (y) {51 điểm cho mỗi cặp có hướng};
+\draw[->] (x.south) -- (m.north);
+\draw[->] (x.south) -- (g.north);
+\draw[->] (m.south) -- (y.north);
+\draw[->] (g.south) -- (y.north);
+\end{tikzpicture}
+\caption{Hai đường dự đoán quan hệ. Thứ tự chủ thể và đối tượng đích được
+giữ khi ghép vector. Với GAT, đặc trưng của mỗi đỉnh còn phụ thuộc các đỉnh
+khác trong cùng ảnh.}
+\label{fig:vg-arch}
+\end{figure}
 
-\begin{table*}[!t]\centering\small
-\caption{Zero-shot test (\%); ba cấu hình fusion $\times$ ba seed, không phải cả 54 checkpoint.}\label{tab:zero}
-\begin{tabular}{@{}lrrrr@{}}\toprule
-Cấu hình & GC zR@50 & GC zR@100 & NG zR@50 & NG zR@100\\\midrule
-Fusion baseline & $11,71\pm0,91$ & $15,25\pm0,58$ & $17,74\pm1,20$ & $28,54\pm1,40$\\
-Pair, KG thật & $11,43\pm0,17$ & $14,98\pm0,28$ & $17,14\pm0,42$ & $28,71\pm0,36$\\
-Pair, shuffled & $11,26\pm0,01$ & $14,63\pm0,16$ & $16,99\pm0,43$ & $28,46\pm0,35$\\
-\bottomrule\end{tabular}\end{table*}
+\textbf{MLP.} Ghép hai vector theo thứ tự chủ thể và đích thành vector 1.098
+chiều. Hai lớp tuyến tính có kích thước $1.098\to256\to51$, với ReLU ở giữa,
+tạo điểm quan hệ chỉ từ cặp đang xét.
 
-KG thật tăng mean NG zR@100 chỉ \textbf{0,17 pp} so baseline và
-\textbf{0,25 pp} so shuffled. Delta theo seed lần lượt là
-$+1,145/+0,301/-0,941$ và $-0,101/-0,043/+0,890$ pp.
-Ở GC và NG@50, KG thật thấp hơn baseline trung bình.
-Vì vậy, \textbf{chưa có bằng chứng cải thiện zero-shot ổn định trên test}.
-Tổ hợp chưa gặp chỉ xét train của dự án, không xét dữ liệu pretraining của CLIP/KG.
-\srcnote{Nguồn: \path{reports/level1/test-tail-zero-v1/long-tail.md},
-\path{zero-shot.md}, \path{analysis.json}. Audit NumPy khớp 36 metric;
-probe CPU/GPU khớp hits trên hai ảnh đầu của mỗi checkpoint.
-Artifact validation cũ được giữ nguyên để đối chiếu.}
+\textbf{GAT.} Mô hình chiếu mỗi đỉnh từ 549 xuống 256 chiều, sau đó dùng
+hai lớp graph attention~\cite{velickovic2018gat}, mỗi lớp bốn đầu chú ý.
+Cạnh truyền tin nối mọi cặp đối tượng khác nhau trong ảnh và có vòng tự nối (\textit{self-loop}).
+Tại mỗi lớp, đỉnh tổng hợp thông tin từ các đỉnh lân cận theo trọng số chú ý.
+Hai vector sau truyền tin được ghép thành 512 chiều và đi qua bộ phân lớp
+$512\to256\to51$. Mô hình dùng dropout 0,1.
 
-\subsection{Kết luận định lượng Nhiệm vụ 1}
-GAT hơn MLP về mR; adjusted loss cho mức tăng lớn và cùng dấu qua ba seed
-trong đối chứng phù hợp. KG node-level chưa vượt GAT; fusion đạt mean cao hơn
-nhưng chưa tách được lợi ích nội dung tri thức khỏi shuffled control một cách
-ổn định. Cấu hình mR cao nhất và bằng chứng một cơ chế có ích là hai
-kết luận cần báo cáo riêng.
+\textbf{Huấn luyện.} Nhóm dùng AdamW với tốc độ học $10^{-3}$, weight decay
+$10^{-2}$, batch hiệu dụng 512 ảnh, tối đa 200 epoch và dừng sớm với
+patience 15. Mỗi cặp dương được lấy kèm tối đa ba cặp nền. Vì hàm mất mát
+nhận một nhãn đích, bộ lấy mẫu bỏ qua các cặp có nhiều nhãn quan hệ khác nhau
+khi train. Bộ chấm vẫn giữ các chú thích này. Nhóm đánh giá 54 checkpoint, tương ứng 18 cấu hình, mỗi cấu hình chạy với ba seed
+42, 123 và 3407.
 
+\subsection{Điều chỉnh hàm mất mát và bổ sung tri thức nền}
+\textbf{Điều chỉnh theo tần suất lớp.} Mười loại quan hệ phổ biến nhất chiếm
+88,40\% chú thích quan hệ trong tập train. Để giảm thiên lệch về những lớp
+này, nhóm so sánh cross-entropy (CE) với \textit{logit-adjusted loss} theo công thức
+\[
+\mathcal{L}_{\mathrm{adj}}(z,y)=\operatorname{CE}(z+0{,}25\log\pi,\,y).
+\]
+Ở đây $z$ là vector điểm trước softmax, $y$ là nhãn đích và $\pi$ là phân bố
+lớp ước lượng từ train theo quy tắc lấy mẫu, có cộng một vào số đếm mỗi lớp.
+Vì $\log\pi$ âm hơn với lớp hiếm, mô hình phải học điểm $z$ cao hơn cho lớp
+đó để dự đoán đúng khi train. Khi suy luận, nhóm xếp hạng từ điểm $z$ gốc.
 
-\subsection{Năm hit và năm trường hợp bỏ lỡ}
-Bộ case cố định dùng GAT seed 42 trên validation. Hit nghĩa là GT xuất hiện
-trong GC top-50; miss nghĩa là GT chưa được thu hồi. Một miss có thể do thứ
-hạng hoặc GT đa nhãn, không đồng nghĩa dự đoán nhìn bằng mắt là sai.
+\textbf{Tri thức tại đỉnh.} Nhóm liên kết nhãn đối tượng với khái niệm trong
+WordNet hoặc ConceptNet~\cite{miller1995wordnet,speer2017conceptnet}. Với nhãn
+có liên kết, nhóm ghép một vector tri thức 64 chiều đã đóng băng và một cờ
+hợp lệ vào đặc trưng đỉnh. WordNet liên kết được 150/150 lớp, ConceptNet
+liên kết được 138/150 lớp. Nhóm dùng TransE cho cả hai nguồn, đồng thời thử
+RotatE và ComplEx trên ConceptNet~\cite{bordes2013transe,sun2019rotate,trouillon2016complex}.
 
-\begin{table*}[!t]\centering\small
-\caption{Năm GT được thu hồi trong top-50. Hạng tính trong toàn ảnh.}\label{tab:hits}
-\begin{tabularx}{\linewidth}{@{}l l l r X@{}}\toprule
-Mã & Subject--object & GT / dự đoán & Hạng & Nhận xét\\\midrule
-H01 & chair--table & near / near & 7 & Đúng quan hệ gần theo annotation.\\
-H02 & book--desk & on / on & 4 & Quan hệ nâng đỡ, nằm cao trong ranking.\\
-H03 & flower--vase & in / in & 1 & Bao chứa, đứng đầu ranking.\\
-H04 & door--cabinet & on / on & 36 & Đúng nhưng xếp thấp hơn nhiều cặp khác.\\
-H05 & bag--table & on / on & 3 & Quan hệ phổ biến được thu hồi sớm.\\
-\bottomrule\end{tabularx}\end{table*}
+\textbf{Tri thức tại cặp.} Với \textit{pair fusion}, hai vector tri thức của
+chủ thể và đích tạo ra phần hiệu chỉnh cộng vào điểm quan hệ của GAT.
+Một cổng học được điều khiển biên độ hiệu chỉnh. Với \textit{visual fusion},
+cổng còn nhận đặc trưng GAT của hai đối tượng trong ảnh và điều tiết riêng
+cho từng quan hệ. Để kiểm tra vai trò của ánh xạ lớp--khái niệm, nhóm giữ
+cùng kiến trúc và tráo vector giữa 138 lớp ConceptNet có liên kết hợp lệ
+(\textit{shuffled-KG}). Cả ba seed huấn luyện dùng cùng một hoán vị cố định.
 
-\begin{table*}[!t]\centering\small
-\caption{Năm GT bị bỏ lỡ: lỗi nhãn, xếp hạng và ràng buộc GC.}\label{tab:misses}
-\begin{tabularx}{\linewidth}{@{}l l l r X@{}}\toprule
-Mã & Subject--object & GT / dự đoán & Hạng & Chẩn đoán\\\midrule
-M01 & table--chair & near / with & 48 & Nhầm predicate; đúng entity chưa đủ để match GT.\\
-M02 & lady--hair & with / has & 12 & Nhãn gần nghĩa; vẫn tính miss của GT đã chọn.\\
-M03 & shelf--table & on / on & 64 & Đúng predicate nhưng ngoài top-50.\\
-M04 & door--cabinet & on / on & 61 & Lỗi ranking; có thể thu hồi ở @100.\\
-M05 & girl--hair & has / with & 5 & With cũng là GT; GC bỏ has vì chỉ giữ một predicate.\\
-\bottomrule\end{tabularx}\end{table*}
+\subsection{Kết quả chính và phân tích ablation}
+\begin{table}[!ht]
+\centering\small
+\caption{Dự đoán quan hệ trên 26.446 ảnh test VG150. Điểm là phần trăm,
+trung bình $\pm$ độ lệch chuẩn mẫu của ba seed. Mỗi nhóm có đối chứng riêng.}
+\label{tab:vgscore}
+\begin{tabular}{@{}lrr@{}}\toprule
+Cấu hình & R@50 & mR@50\\\midrule
+\multicolumn{3}{@{}l}{\textit{Mô hình cơ sở và tri thức tại đỉnh}}\\
+MLP & $63{,}56\pm0{,}77$ & $16{,}95\pm1{,}52$\\
+GAT & $63{,}87\pm0{,}73$ & $18{,}61\pm0{,}25$\\
+GAT nhánh WordNet, tắt KG & $63{,}89\pm0{,}38$ & $18{,}44\pm0{,}29$\\
+WordNet--TransE & $64{,}15\pm0{,}29$ & $17{,}84\pm0{,}09$\\
+WordNet--TransE, bỏ cạnh & $64{,}11\pm1{,}15$ & $18{,}41\pm0{,}90$\\
+ConceptNet--TransE & $64{,}10\pm0{,}27$ & $18{,}39\pm0{,}29$\\
+ConceptNet--TransE, bỏ cạnh & $64{,}59\pm0{,}19$ & $18{,}15\pm0{,}28$\\
+ConceptNet--RotatE & $64{,}21\pm0{,}37$ & $18{,}57\pm0{,}42$\\
+ConceptNet--ComplEx & $64{,}37\pm0{,}18$ & $18{,}33\pm0{,}24$\\\midrule
+\multicolumn{3}{@{}l}{\textit{Hàm mất mát $\times$ tri thức tại cặp}}\\
+CE, tắt KG & $64{,}42\pm0{,}10$ & $18{,}11\pm0{,}16$\\
+CE, bật KG & $63{,}63\pm0{,}14$ & $19{,}27\pm0{,}75$\\
+Adjusted, tắt KG & $62{,}18\pm0{,}16$ & $24{,}59\pm0{,}93$\\
+Adjusted, bật KG & $62{,}01\pm0{,}31$ & $24{,}67\pm1{,}07$\\\midrule
+\multicolumn{3}{@{}l}{\textit{Fusion với adjusted loss}}\\
+GAT, tắt nhánh hiệu chỉnh & $62{,}06\pm0{,}39$ & $24{,}32\pm0{,}91$\\
+Pair, KG thật & $62{,}37\pm0{,}19$ & $\mathbf{25{,}24\pm0{,}39}$\\
+Pair, KG xáo trộn & $62{,}34\pm0{,}18$ & $25{,}00\pm0{,}71$\\
+Visual, KG thật & $62{,}34\pm0{,}21$ & $24{,}52\pm0{,}64$\\
+Visual, KG xáo trộn & $62{,}20\pm0{,}23$ & $24{,}82\pm1{,}25$\\
+\bottomrule\end{tabular}
+\end{table}
 
-\textbf{Giới hạn bộ case.} Đây là phân tích theo annotation/evaluator,
-chưa thay thế kiểm tay 5 dự đoán sai ngữ nghĩa trên ảnh. Cùng tên lớp
-không đồng nghĩa cùng cặp instance. Khi minh họa cần giữ ID instance, ảnh và GT.
-Các case chỉ ra vì sao recall thấp nhưng chưa đóng yêu cầu kiểm tay 5 đúng/5 sai
-của đề.
+Trên cùng đặc trưng CLIP, GAT tăng mR@50 so với MLP ở cả ba seed, trung bình
+1,65 điểm phần trăm. R@50 tăng 0,31 điểm (Bảng~\ref{tab:vgscore}).
+Để xác định thành phần nào tạo nên chênh lệch, nhóm lần lượt thay một yếu tố
+trong từng họ mô hình. Bảng~\ref{tab:vgdelta} ghi hiệu số ghép cặp theo seed,
+tính trước khi làm tròn.
 
-\begin{figure*}[!t]\centering
-\includegraphics[width=.43\linewidth]{figures/vg-hit-contact-sheet.png}\hfill
-\includegraphics[width=.43\linewidth]{figures/vg-miss-contact-sheet.png}
-\caption{Trái: H01--H05; phải: M01--M05, theo hàng từ trái sang phải.
-Hộp đỏ là subject, xanh là object. Chi tiết GT và hạng nằm trong
-bảng~\ref{tab:hits}--\ref{tab:misses}; ảnh gốc độ phân giải đầy đủ có trong artifact case.}
-\end{figure*}
-\srcnote{Nguồn: \path{reports/level1/submission/cases/}.
-Đây là case validation đã có, không gắn lại nhãn thành case test.}
+\begin{table}[!ht]
+\centering\small\setlength{\tabcolsep}{3pt}
+\caption{Ablation trên VG150 test. Dấu dương biểu thị cấu hình bên trái
+cao hơn đối chứng bên phải. Các độ chênh tính bằng điểm phần trăm.}
+\label{tab:vgdelta}
+\begin{tabularx}{\columnwidth}{@{}Xrr@{}}\toprule
+Phép so sánh & $\Delta$R@50 & $\Delta$mR@50\\\midrule
+WordNet tại đỉnh: bật KG trừ tắt KG & $+0{,}26$ & $-0{,}60$\\
+WordNet: giữ cạnh trừ bỏ cạnh & $+0{,}04$ & $-0{,}57$\\
+ConceptNet: giữ cạnh trừ bỏ cạnh & $-0{,}49$ & $+0{,}24$\\
+Adjusted trừ CE, tắt KG tại cặp & $-2{,}24$ & $+6{,}48$\\
+Adjusted trừ CE, bật KG tại cặp & $-1{,}61$ & $+5{,}40$\\
+Bật trừ tắt KG tại cặp, adjusted loss & $-0{,}17$ & $+0{,}09$\\
+Pair: KG thật trừ tắt hiệu chỉnh & $+0{,}31$ & $+0{,}93$\\
+Pair: KG thật trừ KG xáo trộn & $+0{,}02$ & $+0{,}24$\\
+Visual: KG thật trừ KG xáo trộn & $+0{,}14$ & $-0{,}30$\\
+\bottomrule\end{tabularx}
+\end{table}
+
+\textit{(1) Ghép KG tại đỉnh.} Khi giữ cấu hình WordNet--TransE và bật vector
+tri thức, mR@50 giảm ở cả ba seed. Như vậy độ phủ liên kết 150/150 lớp vẫn
+chưa đủ để cải thiện khả năng nhận biết quan hệ theo lớp.
+
+\textit{(2) Truyền tin giữa các đối tượng.} Thí nghiệm \textit{edges-off} bỏ
+cạnh giữa các đỉnh, giữ self-loop và giữ nguyên toàn bộ cặp cần chấm điểm.
+Giữ cạnh giúp ConceptNet--TransE tăng 0,24 điểm mR@50, trong khi WordNet--TransE
+giảm 0,57 điểm. Tác dụng của ngữ cảnh đồ thị phụ thuộc cách biểu diễn đỉnh.
+
+\textit{(3) Loss và KG.} Trong thiết kế $2\times2$, thay CE bằng adjusted
+loss tăng mR@50 cả khi tắt lẫn khi bật KG tại cặp. Khi đã dùng adjusted
+loss, bật thêm KG chỉ tăng trung bình 0,09 điểm và có một seed giảm.
+Thay đổi lớn nhất trong nhóm đối chứng này đến từ điều chỉnh loss, đi kèm
+đánh đổi về R@50.
+
+\textit{(4) Nội dung tri thức trong fusion.} Pair fusion với KG thật đạt
+mR@50 cao nhất trong 18 cấu hình. So với đối chứng tráo vector, lợi thế
+chỉ còn 0,24 điểm, với hai seed tăng và một seed giảm. Visual fusion cho
+chênh lệch theo chiều ngược lại. Với ba seed và một hoán vị, lợi ích riêng
+của việc gắn đúng tri thức cho từng lớp còn chưa ổn định.
+
+\subsection{Quan hệ hiếm và phân tích lỗi}
+\textbf{Quan hệ nào được cải thiện?} Nhóm xếp 50 quan hệ theo số lần xuất hiện
+trong train, rồi chia thành 10 lớp phổ biến, 20 lớp trung bình và 20 lớp hiếm.
+Ở hai cấu hình cùng tắt KG, thay CE bằng adjusted loss làm mR@50 của nhóm
+trung bình tăng từ 16,19 lên 26,56\%, nhóm hiếm tăng từ 3,54 lên 9,55\%,
+còn nhóm phổ biến giảm từ 51,10 xuống 50,72\%. Kết quả này giải thích vì sao
+recall trung bình theo lớp tăng rõ dù recall trung bình theo ảnh giảm.
+
+\textbf{Bộ ba chưa gặp trong train.} Tập test chứa 7.848 chú thích trên
+4.660 ảnh có tổ hợp (lớp chủ thể, quan hệ, lớp đích) chưa xuất hiện trong
+chú thích train. Nhóm giữ cách xếp hạng toàn ảnh và tính recall riêng cho
+các chú thích này (zR@50). Với cùng quy tắc GC, chín checkpoint thuộc ba cấu
+hình fusion đạt trung bình 11,71\% khi tắt hiệu chỉnh, 11,43\% với KG thật
+tại cặp và 11,26\% với KG xáo trộn. Ưu thế mR@50 của pair fusion trên toàn
+tập vì thế chưa chuyển thành ưu thế trên các tổ hợp mới.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=.48\columnwidth]{hit03.png}\hfill
+\includegraphics[width=.48\columnwidth]{miss03.png}
+\caption{Hai cặp trong cùng ảnh validation số 89, chấm bằng GAT seed 42.
+Hộp đỏ đánh dấu chủ thể, hộp xanh đánh dấu đối tượng đích. Trái:
+\textit{flower--in--vase}, hạng 1. Phải: \textit{shelf--on--table}, hạng 64.}
+\label{fig:vg-paired}
+\end{figure}
+
+\textbf{Một ảnh, hai kết quả.} Ở Hình~\ref{fig:vg-paired}, GAT chọn đúng
+nhãn cho cả hai cặp, nhưng chỉ bộ ba ở hạng 1 được tính trúng trong top-50.
+Bộ ba ở hạng 64 được thu hồi khi tăng ngưỡng lên 100. Một cơ chế bỏ sót khác
+xuất hiện ở ảnh số 3. Cặp \textit{girl--hair} có cả hai nhãn chuẩn \textit{has}
+và \textit{with}. GC chỉ giữ \textit{with}. Hai ví dụ cho thấy cần xem cả
+điểm xếp hạng và số nhãn chuẩn của cặp trước khi quy lỗi cho bộ phân lớp.
+Phụ lục~\ref{app:vgcases} liệt kê đủ năm trường hợp trúng và năm trường hợp
+bỏ sót đã chọn trên validation.
