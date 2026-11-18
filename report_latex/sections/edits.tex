@@ -6,7 +6,7 @@ quan hệ và đỉnh cuối. Đổi màu của một vật được biểu di�
 giữ mã đối tượng và cập nhật thuộc tính màu. Nhóm đặt hai câu hỏi thực nghiệm.
 Trên MagicBrush, học từ những thay đổi phục vụ câu lệnh có cải thiện dự đoán
 so với học từ toàn bộ chênh lệch giữa hai đồ thị hay không? Khi có sẵn cặp đồ
-thị và câu lệnh, mô hình học được những thao tác nào trên bộ EMNLP 2020?
+thị và câu lệnh, mô hình học được những thao tác nào trên bộ dữ liệu chỉnh sửa đồ thị của He và cộng sự~\cite{he2020sgmod}?
 
 \subsubsection{Xây bộ dữ liệu từ MagicBrush}
 MagicBrush~\cite{zhang2023magicbrush} cung cấp ảnh trước và sau chỉnh sửa
@@ -123,10 +123,41 @@ chính xác đồ thị đích theo câu lệnh chỉ đạt 0,00\% với nhãn 
 khớp toàn bộ tập thao tác ở từng seed. Hình~\ref{fig:mb-test-errors} minh họa hai lỗi khác nhau của cùng
 một checkpoint: bỏ sót thay đổi thuộc tính và chọn sai tên đối tượng khi thêm đỉnh.
 
-\subsubsection{Hướng mở rộng trên EMNLP 2020}
-Để khảo sát khả năng học thao tác khi có sẵn đồ thị nguồn, câu lệnh và đồ
-thị đích, nhóm huấn luyện riêng MLP và GNN trên bộ chỉnh sửa đồ thị của
-He và cộng sự~\cite{he2020sgmod}. Bộ này có đồ thị nguồn nhỏ (1--3 đỉnh).
+\subsubsection{Dữ liệu chỉnh sửa đồ thị của He và cộng sự (2020)}
+Nhóm dùng phần \textit{crowdsourced} của bộ dữ liệu phát hành kèm bài
+\textit{Scene Graph Modification Based on Natural Language Commands} của
+He và cộng sự~\cite{he2020sgmod} (Findings of EMNLP, 2020).
+Trong \href{https://github.com/xlhex/SceneGraphModification}{kho dữ liệu của tác giả},
+phần này nằm ở \path{data/crowdsourced_data/}. Mỗi mẫu gồm đồ thị nguồn,
+câu yêu cầu và đồ thị đích. Người tham gia viết câu yêu cầu dựa trên cặp
+đồ thị, như ví dụ ở Hình~\ref{fig:he-crowd-example}. Gói phát hành chỉ
+chứa đồ thị và văn bản. Để huấn luyện MLP và GNN, nhóm ghép thực thể giữa
+hai đồ thị rồi suy ra các thao tác đích. Đồ thị nguồn trong tập nhóm sử dụng
+có từ một đến ba đỉnh.
+
+\begin{figure}[!htbp]\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize,
+  obj/.style={draw=inkblue,fill=mutedblue,rounded corners=2pt,
+              minimum width=.95cm,minimum height=.45cm},
+  gone/.style={obj,draw=cred,fill=cred!6},
+  link/.style={-{Stealth[length=4pt]},thin}]
+  \node[font=\footnotesize\bfseries] at (1.65,1.02) {Đồ thị nguồn};
+  \node[font=\footnotesize\bfseries] at (6.3,1.02) {Đồ thị đích};
+  \node[obj] (person) at (0,.23) {man};
+  \node[gone] (hat) at (2,.23) {hat};
+  \node[gone] (color) at (3.5,.23) {black};
+  \draw[link] (person) -- node[above] {wearing} (hat);
+  \draw[link] (hat) -- (color);
+  \draw[-{Stealth[length=6pt]},thick] (4.4,.23) -- (5.45,.23);
+  \node[obj] at (6.3,.23) {man};
+  \node at (3.05,-.48) {Yêu cầu (dịch): \textit{Chỉ tìm ảnh có người đàn ông.}};
+\end{tikzpicture}
+\caption{Ví dụ hướng dẫn người viết câu lệnh, vẽ lại từ Hình~2 của
+He và cộng sự~\cite{he2020sgmod}. Đồ thị nguồn mô tả người đội mũ đen.
+Yêu cầu bỏ điều kiện về chiếc mũ nên đồ thị đích chỉ giữ đỉnh \textit{man}.}
+\label{fig:he-crowd-example}
+\end{figure}
+
 Nhóm dùng 29.868 mẫu train, 532 validation và 530 test. Từ 1.000 mẫu test
 chính thức, nhóm loại 468 mẫu trùng đồ thị nguồn với train hoặc validation,
 cùng hai mẫu có ghép cặp thực thể mơ hồ. Việc chia tập dựa trên đồ thị nguồn;
@@ -135,7 +166,7 @@ Mỗi mô hình chạy với ba seed 42, 43, 44 và chọn checkpoint theo loss 
 validation.
 
 \begin{table}[!htbp]\centering\small
-\caption{EMNLP 2020, trung bình ba seed trên 530 mẫu test (\%). Macro-F1
+\caption{Phần crowdsourced của He và cộng sự (2020), trung bình ba seed trên 530 mẫu test (\%). Macro-F1
 lấy trung bình đều trên sáu loại thao tác. Cột cuối yêu cầu toàn bộ đồ thị
 đích khớp nhãn.}\label{tab:emnlp}
 \begin{tabular}{@{}lrrr@{}}\toprule
@@ -146,7 +177,7 @@ GNN & $82,44\pm0,39$ & $55,03\pm0,28$ & $68,55\pm0,22$\\\bottomrule
 
 \begin{figure}[!htbp]\centering
 \includegraphics[width=.98\linewidth]{emnlp-gnn-operations.pdf}
-\caption{F1 của GNN trên EMNLP theo từng thao tác, trung bình ba seed.
+\caption{F1 của GNN trên phần crowdsourced của He và cộng sự (2020) theo từng thao tác, trung bình ba seed.
 Số trong ngoặc là số thao tác chuẩn trên tập test. Phép xóa có nhiều mẫu
 và đạt F1 cao ở cả đỉnh lẫn cạnh.}
 \label{fig:emnlp-gnn-operations}
@@ -158,7 +189,7 @@ micro-F1 ở Bảng~\ref{tab:emnlp}. Thay đỉnh chỉ đạt 27,38\% trên 121
 tác. Cả sáu thao tác thay cạnh trong test đều bị dự đoán sai.
 Kết quả cho thấy mô hình học tốt phép xóa trong thiết lập có đồ thị cho sẵn.
 Quy mô train, kích thước đồ thị, phân bố thao tác và kiến trúc dự đoán
-đều khác giữa hai bộ. Vì vậy, khoảng cách điểm giữa EMNLP và MagicBrush
+đều khác giữa hai bộ. Vì vậy, khoảng cách điểm giữa hai bộ dữ liệu
 chưa cho phép định lượng riêng ảnh hưởng của nhiễu nhãn.
 Phép đối chứng trực tiếp trên MagicBrush cho thấy với 240 cặp train, hiệu
 chỉnh nhãn để bám sát câu lệnh vẫn chưa đủ để cải thiện micro-F1.

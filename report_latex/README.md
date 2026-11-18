@@ -1,7 +1,7 @@
 # Báo cáo IEEE Conference — VG150, GQA, VN100 và video PVSG
 
 Nguồn LaTeX theo mẫu Seminar ở `25C15039-25C15062/` (commit `5bdd556`).
-Bản hiện tại gồm Nhiệm vụ 1 trên VG150, Task A của Nhiệm vụ 2 trên GQA, Task B trên MagicBrush với đối chứng bổ sung EMNLP 2020, Nhiệm vụ 3 trên VN100 và phần mở rộng video trên PVSG.
+Bản hiện tại gồm Nhiệm vụ 1 trên VG150, Task A của Nhiệm vụ 2 trên GQA, Task B trên MagicBrush với đối chứng bổ sung trên phần crowdsourced của He và cộng sự (2020), Nhiệm vụ 3 trên VN100 và phần mở rộng video trên PVSG.
 Phụ lục A/B minh họa dự đoán trên validation, C bổ sung kết quả VN100 và D trình bày bảy lượt kiểm tra hội tụ muộn cùng mười timeline PVSG.
 
 ## Biên dịch
@@ -47,9 +47,11 @@ Notebook đọc tần suất train từ `reports/level2/gqa-scale-audit-v1.json`
 
 ## Đối chiếu Task B
 
-Nguồn cho số cặp, danh sách thao tác và phiếu 20 mẫu nằm trong [bộ dữ liệu MagicBrush theo prompt](../experiments/magicbrush_prompt_intent_v1/README.md). Hai ảnh minh họa lấy từ mẫu validation `magicbrush:484847:1`. [Kết quả MagicBrush](../reports/level2/magicbrush-prompt-intent-test-v1/README.md) ghi cách tái lập bảng test 59 cặp. [Kết quả EMNLP](../reports/level2/emnlp2020-task-b-wandb-v4-test-v1/README.md) ghi các chỉ số của hai mô hình trên 530 mẫu test.
+Bộ dữ liệu đối chứng do He và cộng sự phát hành kèm bài [Scene Graph Modification Based on Natural Language Commands](https://aclanthology.org/2020.findings-emnlp.87/), đăng tại *Findings of EMNLP 2020*. Nhóm dùng phần crowdsourced trong [gói dữ liệu của tác giả](https://github.com/xlhex/SceneGraphModification#data). Ví dụ người đội mũ trong báo cáo được vẽ lại từ Hình 2 của bài gốc.
 
-Từ gốc repo, chạy lệnh sau để dựng lại sơ đồ các cạnh nối với bàn, hai ca sai trên MagicBrush và biểu đồ F1 theo thao tác của GNN trên EMNLP. Script dùng ảnh MagicBrush trong workspace, dự đoán test đã lưu của nhánh prompt ở seed 42 và bảng điểm EMNLP.
+Nguồn cho số cặp, danh sách thao tác và phiếu 20 mẫu nằm trong [bộ dữ liệu MagicBrush theo prompt](../experiments/magicbrush_prompt_intent_v1/README.md). Hai ảnh minh họa lấy từ mẫu validation `magicbrush:484847:1`. [Kết quả MagicBrush](../reports/level2/magicbrush-prompt-intent-test-v1/README.md) ghi cách tái lập bảng test 59 cặp. [Kết quả trên phần crowdsourced của He và cộng sự (2020)](../reports/level2/emnlp2020-task-b-wandb-v4-test-v1/README.md) ghi các chỉ số của hai mô hình trên 530 mẫu test.
+
+Từ gốc repo, chạy lệnh sau để dựng lại sơ đồ các cạnh nối với bàn, hai ca sai trên MagicBrush và biểu đồ F1 theo thao tác của GNN trên phần crowdsourced. Script dùng ảnh MagicBrush trong workspace, dự đoán test đã lưu của nhánh prompt ở seed 42 và bảng điểm trên phần crowdsourced.
 
 ```bash
 myenv/bin/python -m experiments.magicbrush_prompt_intent_v1.report_figures
