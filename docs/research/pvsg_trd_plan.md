@@ -464,3 +464,11 @@ Các repo được đọc qua GitHub tại snapshot sau; PDF chỉ dùng để n
 [hf-ego]: https://huggingface.co/datasets/Jingkang/PVSG/tree/main/Ego4D
 [hf-epic]: https://huggingface.co/datasets/Jingkang/PVSG/tree/main/EpicKitchen
 [hf-vidor]: https://huggingface.co/datasets/Jingkang/PVSG/tree/main/VidOR
+
+### Kiểm tra hội tụ muộn sau M3/M4 (phân tích bổ sung)
+
+Sau khi xem 24 kết quả validation, chọn bảy lượt đạt R@50 và mR@50 bằng 0, dừng ở epoch 16 (epoch 1 là best, tiếp theo 15 epoch không cải thiện). ST-GAT và ST-GAT bỏ cạnh thời gian mỗi model dùng seed 17, 2026. ST-GAT chỉ giữ self-loop dùng seed 17, 42, 2026.
+
+Chạy lại từ epoch 1 với cùng seed, batch 32, optimizer, scheduler và tiêu chí chọn checkpoint. Thay đổi duy nhất trong lịch học là min_epochs từ 10 lên 50. Patience 15 vẫn tích lũy trong suốt quá trình train. Epoch 50 là lần đầu có thể dừng; nếu metric tiếp tục cải thiện thì được train đến tối đa 150. Do phép toán GPU có thể không tất định, ghi cả điểm tốt nhất trong 16 epoch đầu của lần chạy lại.
+
+Báo từng seed trong phụ lục “Kiểm tra hội tụ muộn theo yêu cầu sau khi xem validation”, gồm điểm gốc, điểm ở lần chạy bổ sung, epoch đầu tiên R@50 dương, epoch tốt nhất và epoch dừng. Bảng so sánh chính M3/M4 giữ kết quả theo protocol ban đầu cho đủ ba seed. Do chọn mẫu theo kết quả ban đầu, phụ lục chỉ trả lời liệu các trường hợp đó có thể học muộn. Launcher: `bash experiments/pvsg_trd_v1/min50_followup/launch.sh train`. Bảng riêng được ghi vào `reports/pvsg-trd-min50-followup-v1/validation_followup.json`.
