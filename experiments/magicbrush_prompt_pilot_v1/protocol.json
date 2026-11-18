@@ -1,0 +1,477 @@
+{
+  "version": "magicbrush-prompt-pilot-v1",
+  "label_author": "assistant; paired visual review of the 16 fixed train cases; no human attestation for these train labels",
+  "parent": "configs/level2/magicbrush-manual-experiment-v3.json",
+  "parent_sha256": "db91b13aa1abb6a5871833c3b81249428be21b5e399a7af5cc9f981e0e486e7d",
+  "cohort": "reports/level2/magicbrush-overfit16-v1/cohort.json",
+  "cohort_sha256": "9cec2a823702084b265eb2483e71e041d49c6acb6662c92c75fd9a838c05bc65",
+  "validation": "reviews/magicbrush-prompt-intent-val20-v1/proposals.json",
+  "validation_sha256": "200edc6e514ef7388b50813765e4fdf63ce53a16d91f1d94d27f03efc4903609",
+  "cache_manifest_sha256": "d96328c42fecb0c415bacc4f82ed8ec1a101edcb2876e5bd6bc888dbb15091c8",
+  "seed": 42,
+  "epochs": 50,
+  "batch_size": 7,
+  "device": "cpu",
+  "model": "gnn",
+  "validation_policy": "complete reference with no alternatives; all other reviewed IDs retained as out of scope for single-reference scoring",
+  "records": [
+    {
+      "id": "magicbrush:166761:1",
+      "prompt": "change the grass to water",
+      "source_group": "coco:166761",
+      "images": {
+        "source_image": "a9d177e1dbeda732af29e552a478502ea5b479fb0fb0b5a8f425d16872bedfd7",
+        "target_image": "5810cd9f178529249dcc1f7c4df240fcbfaf46bea4e28ca90b75ab9ce4f3c5fa"
+      },
+      "reason": "Đổi grass thành water. Màu nước và thay runway bằng platform ngoài yêu cầu.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [],
+            "id": "n002",
+            "label": "water"
+          },
+          "before": {
+            "attributes": [
+              "green"
+            ],
+            "id": "n002",
+            "label": "grass"
+          },
+          "kind": "replace_node"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:192047:2",
+      "prompt": "Put a towel on the hanger.",
+      "source_group": "coco:192047",
+      "images": {
+        "source_image": "dbbdc1ccf14af2554dca504f4a3fbc4edc28bb12851b5fe204c59580e15d67b0",
+        "target_image": "fb3a135d3cc290b70d63434e8dce9adde9f961e3a4220c49fda1a3d8fcd4fb9c"
+      },
+      "reason": "Thêm khăn treo vào giá đã có. Bỏ màu be và thay hình dáng giá.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [],
+            "id": "newn001",
+            "label": "towel"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n005",
+            "predicate": "hanging from",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:210671:2",
+      "prompt": "Put a fur coat on the bed.",
+      "source_group": "coco:210671",
+      "images": {
+        "source_image": "480db1c90d43a2c533bd0bf587a0bf3dfc87ebf70ca66061d5b4f8a164951e65",
+        "target_image": "53e731f0cef3a3b792a920e7a818f36c91cfdd338081559e6ae21a062f1123f7"
+      },
+      "reason": "Thêm fur coat trên bed; màu nâu và tư thế trải áo là chi tiết phụ.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [],
+            "id": "newn001",
+            "label": "fur coat"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:290080:1",
+      "prompt": "Put a lake next no the mountains.",
+      "source_group": "coco:290080",
+      "images": {
+        "source_image": "ae3af9d4cef64447fd79baa16327acafba364e440b28f4c5f0204b5d69a9f7fd",
+        "target_image": "18b8b55ea4d78ab6cccb5ff07614974a629e275b64a630f712a31fae1c1b264f"
+      },
+      "reason": "Ảnh có hồ cạnh núi. Dùng beside cho next to, bỏ màu hồ, cây mới và đặc điểm sườn núi.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [],
+            "id": "newn001",
+            "label": "lake"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n008",
+            "predicate": "beside",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:332775:1",
+      "prompt": "Let the cat's eyes turn blue.",
+      "source_group": "coco:332775",
+      "images": {
+        "source_image": "ea4c0059d5528f41ac8a1b34a43d9bc6d804d9278a69a96f5d7e726cbb6ad9a8",
+        "target_image": "89e9bc7ceee6905579f421b1a1d3ba2596a2c3344a5b9c2ba0080d1f8e6a6592"
+      },
+      "reason": "Đổi màu mắt thành xanh, giữ tabby.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [
+              "blue eyes",
+              "tabby"
+            ],
+            "id": "n001",
+            "label": "cat"
+          },
+          "before": {
+            "attributes": [
+              "tabby",
+              "yellow green eyes"
+            ],
+            "id": "n001",
+            "label": "cat"
+          },
+          "kind": "replace_node"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:426038:1",
+      "prompt": "put a giant shark in the background",
+      "source_group": "coco:426038",
+      "images": {
+        "source_image": "67c09672b8383e4646a763742911825bd7680842ce85186e2447c5f0ebe6c673",
+        "target_image": "e70f113bc6e765d7aa7e7cc32cd8124869529fd5c0a60769484f835fe4b2332d"
+      },
+      "reason": "Shark lớn nằm ở hậu cảnh bên ngoài cửa sổ; beyond window định vị hậu cảnh trong cảnh này. Bỏ miệng mở, tư thế trồi lên và cạnh in water.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [
+              "large"
+            ],
+            "id": "newn001",
+            "label": "shark"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n005",
+            "predicate": "beyond",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:435242:1",
+      "prompt": "leave only words on the page",
+      "source_group": "coco:435242",
+      "images": {
+        "source_image": "1f29a7fc99aa6212027b6e7135d1f0bb98ee82f603b34aa9bc8d7573fbc6d012",
+        "target_image": "b5aff4c014e5514768a281dea7e6a66f50c082581d3a02f0a59ab3a86596ec94"
+      },
+      "reason": "Xóa hình chim và cạnh nối vào trang. Bảo toàn chữ.",
+      "operations": [
+        {
+          "after": null,
+          "before": {
+            "attributes": [
+              "bird on branch",
+              "black white"
+            ],
+            "id": "n002",
+            "label": "illustration"
+          },
+          "kind": "delete_node"
+        },
+        {
+          "after": null,
+          "before": {
+            "id": "e001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "n002"
+          },
+          "kind": "delete_edge"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:441199:2",
+      "prompt": "Put a ball of icecream on top of the pancake.",
+      "source_group": "coco:441199",
+      "images": {
+        "source_image": "7fc84debb98b2efde8cf29d2b3508048c73f898d66dfebb1c1d05b7c2d01297a",
+        "target_image": "819401b57c988a10b2c4ba81e1da654e3fed2762cc27165a6852ad582ded0e2a"
+      },
+      "reason": "Một viên kem trên pancake; bỏ màu nhạt.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [
+              "single scoop"
+            ],
+            "id": "newn001",
+            "label": "ice cream"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:452272:2",
+      "prompt": "Let's add a dog on the bed.",
+      "source_group": "coco:452272",
+      "images": {
+        "source_image": "577368cf27d7ef1604669b7997de872e9d7e159e509c9755a5e2626eef4020b5",
+        "target_image": "392c996aa7080ae5875b206ce8ebee3522d76699ae6ede8866a98d0bf2f26b47"
+      },
+      "reason": "Thêm dog trên bed. Bỏ màu, phần cắt khung và tư thế nằm.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [],
+            "id": "newn001",
+            "label": "dog"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "n001",
+            "predicate": "on",
+            "subject": "newn001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:453050:1",
+      "prompt": "Let's add a table in the room.",
+      "source_group": "coco:453050",
+      "images": {
+        "source_image": "623bd2becd531cc7fa30922803640a8304224df1995646fda6ff0ef504b62012",
+        "target_image": "061229ef3fc6f64861050fc07b3d012e194ca2fab86662c8712c8cbf2dbf0544"
+      },
+      "reason": "Thêm bàn vào cảnh trong phòng; graph nguồn không có đỉnh room. Bỏ vật liệu, ghế, hoa, bình và các quan hệ bố trí ngoài yêu cầu.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [],
+            "id": "newn003",
+            "label": "table"
+          },
+          "before": null,
+          "kind": "add_node"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:458510:1",
+      "prompt": "Have the utensil be a visible fork",
+      "source_group": "coco:458510",
+      "images": {
+        "source_image": "cc2d2fa5037524592b6e11db6152fa1da776b168d9fe80ceb1ca98ed8fe604f9",
+        "target_image": "c8b032d92a75196748aa4e378a2697983af79635445ca76ce52af86387eb80a0"
+      },
+      "reason": "Thay utensil bằng fork có răng nhìn thấy. Giữ metal của nguồn.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [
+              "metal",
+              "tines visible"
+            ],
+            "id": "n001",
+            "label": "fork"
+          },
+          "before": {
+            "attributes": [
+              "head obscured",
+              "metal"
+            ],
+            "id": "n001",
+            "label": "utensil"
+          },
+          "kind": "replace_node"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:510636:3",
+      "prompt": "Change the sunglasses on the woman's head to be goggles",
+      "source_group": "coco:510636",
+      "images": {
+        "source_image": "b7e69add6c3339a4bd461f8a8681f681296e70189dc5f171fcb4dc8d4d6b6836",
+        "target_image": "603eef1edd84e5a5b73620cc8ebe319e2d04a05bcd87aae70d874bfbe550adfd"
+      },
+      "reason": "Thay kính mát bằng goggles. Bảo toàn màu đen của kính nguồn, bỏ kiểu khung và độ phản chiếu của ảnh đích.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [
+              "black"
+            ],
+            "id": "n003",
+            "label": "goggles"
+          },
+          "before": {
+            "attributes": [
+              "black"
+            ],
+            "id": "n003",
+            "label": "sunglasses"
+          },
+          "kind": "replace_node"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:548561:1",
+      "prompt": "Have the kids be eating salad instead of pizza",
+      "source_group": "coco:548561",
+      "images": {
+        "source_image": "cd3ec94f25e278d20ad9265774c61ed8de55a1b9c9146900fcab157f83e35497",
+        "target_image": "295690457e094b3cb8fc0eb237285eea8e22dfbaf450d9495ea0570dc0553c95"
+      },
+      "reason": "Ảnh cho thấy salad nhưng không xác nhận trẻ đang ăn; quy ước near của mẫu bò không áp dụng ở đây.",
+      "operations": null
+    },
+    {
+      "id": "magicbrush:557084:1",
+      "prompt": "What if the woman on the side of the bus was holding a baby?",
+      "source_group": "coco:557084",
+      "images": {
+        "source_image": "aa23480b267fbe68a2bb6ac1199587a83f5803b973d51c1f61bfe6122c72a7ae",
+        "target_image": "5f9960a4bfbaa2251ec46de92a2098d94ef4c2113672a3073ab4932536add954"
+      },
+      "reason": "Trong hình quảng cáo, nhãn nhân vật chuyển thành em bé và cạnh beside thành holding. Bỏ mô tả bộ đồ.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [],
+            "id": "n004",
+            "label": "depicted baby"
+          },
+          "before": {
+            "attributes": [
+              "curly hair"
+            ],
+            "id": "n004",
+            "label": "depicted child"
+          },
+          "kind": "replace_node"
+        },
+        {
+          "after": {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "holding",
+            "subject": "n003"
+          },
+          "before": {
+            "id": "e004",
+            "object": "n004",
+            "predicate": "beside",
+            "subject": "n003"
+          },
+          "kind": "replace_edge"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:575500:3",
+      "prompt": "Make like the monkey is grabbing a banana",
+      "source_group": "coco:575500",
+      "images": {
+        "source_image": "86a7c9d2647fb3a689f31ab3b1f61c4880ed859e8323d29db51336e338515509",
+        "target_image": "c14562cadb3a2345253dc1503da0585b61d77e395d7b5ef6adeb3f5988ea1bc0"
+      },
+      "reason": "Thêm một quả riêng và cạnh monkey holding banana. Màu của quả không được chỉ định.",
+      "operations": [
+        {
+          "after": {
+            "attributes": [],
+            "id": "newn001",
+            "label": "banana"
+          },
+          "before": null,
+          "kind": "add_node"
+        },
+        {
+          "after": {
+            "id": "newe001",
+            "object": "newn001",
+            "predicate": "holding",
+            "subject": "n001"
+          },
+          "before": null,
+          "kind": "add_edge"
+        }
+      ]
+    },
+    {
+      "id": "magicbrush:85160:1",
+      "prompt": "let the man have spike hair",
+      "source_group": "coco:85160",
+      "images": {
+        "source_image": "475d31d8f5310d77c77194cc07dec70fd4b4d7baa147461d601204119dc4cb64",
+        "target_image": "aed6abce861bcb8d0ec49b85a080f539136dc6c8c528c6eca177f535717654e1"
+      },
+      "reason": "Có nhiều đỉnh person và prompt the man chưa định danh duy nhất một ID trong graph nguồn.",
+      "operations": null
+    }
+  ]
+}
