@@ -45,10 +45,10 @@ quy tắc GC\footnote{GC = \textit{Graph Constraint}.}, nhóm giữ quan hệ c�
 Một dự đoán khớp chú thích khi đúng nhãn quan hệ, đúng hai lớp đối tượng theo
 thứ tự và độ giao trên hợp (IoU) của từng hộp với hộp chuẩn đạt ít nhất 0,5.
 
-\textbf{R@K} đo tỷ lệ quan hệ chuẩn được tìm lại trong $K$ dự đoán đứng đầu
+\textbf{R@K} đo tỷ lệ quan hệ chuẩn được tìm thấy trong top-$K$ dự đoán
 của mỗi ảnh, rồi lấy trung bình qua ảnh. \textbf{mR@K} tính recall theo ảnh
 cho từng loại quan hệ có mặt, rồi lấy trung bình trên 50 lớp. Vì vậy, một
-lượt tìm lại quan hệ hiếm có thể ít ảnh hưởng đến R@50 nhưng có ý nghĩa khi
+lượt tìm thấy quan hệ hiếm có thể ít ảnh hưởng đến R@50 nhưng có ý nghĩa khi
 xét mR@50. Toàn bộ bảng định lượng dùng cùng bộ chấm \textit{reference-v1}
 trên test. Nhóm chấm lại các checkpoint đã chọn bằng validation. Tập test
 này đã từng được đánh giá bằng bộ chấm trước đó. Theo đề bài, nhóm báo cáo cả $K=50$ và $K=100$.
@@ -242,7 +242,7 @@ Hộp đỏ đánh dấu chủ thể, hộp xanh đánh dấu đối tượng đ
 
 \textbf{Một ảnh, hai kết quả.} Ở Hình~\ref{fig:vg-paired}, GAT chọn đúng
 nhãn cho cả hai cặp, nhưng chỉ bộ ba ở hạng 1 được tính trúng trong top-50.
-Bộ ba ở hạng 64 được thu hồi khi tăng ngưỡng lên 100. Một cơ chế bỏ sót khác
+Bộ ba ở hạng 64 được tìm thấy trong top-100. Một cơ chế bỏ sót khác
 xuất hiện ở ảnh số 3. Cặp \textit{girl--hair} có cả hai nhãn chuẩn \textit{has}
 và \textit{with}. Quy tắc \textit{Graph Constraint} chỉ giữ \textit{with}. Hai ví dụ cho thấy cần xem cả
 điểm xếp hạng và số nhãn chuẩn của cặp trước khi quy lỗi cho bộ phân lớp.
