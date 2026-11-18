@@ -19,7 +19,8 @@ from tools import run_gqa_full_ram as ram
 from tools import train_gqa_pilot as evaluator
 
 CONFIG = Path("configs/level2/gqa-full-v3-bs512.json")
-OUT = Path("runs/level2/gqa-gat-loss-v1")
+OUT = Path("runs/level2/gqa-gat-loss-v2")
+CE_AUDIT = Path("reports/level2/gqa-full-v3-results-v1/verification.json")
 TAU = 0.25
 
 
@@ -45,6 +46,32 @@ def training_prior(train, classes):
         "add_one": 1,
         "tau": TAU,
         "prior": (smoothed / smoothed.sum()).tolist(),
+    }
+
+
+def load_ce_controls(config):
+    if sha256(CE_AUDIT) != "c80ba7dc6b9dce8b2fa0263505553b76bab38c0bb95234ff9a625065147a189b":
+        raise ValueError("GQA v3 audit changed")
+    audit = json.loads(CE_AUDIT.read_text())
+    old = json.loads((Path(config["output"]) / "experiment.json").read_text())
+    if old["config"] != config or digest(old) != audit["experiment_sha256"]:
+        raise ValueError("Historical GQA recipe differs")
+    controls = {}
+    for row in audit["runs"]:
+        if row["model"] != "gat":
+            continue
+        path = Path(row["result_path"])
+        if sha256(path) != row["result_sha256"] or sha256(path.with_name("best.pt")) != row["best_checkpoint_sha256"]:
+            raise ValueError(f"Changed CE control: {path}")
+        controls[row["seed"]] = json.loads(path.read_text())
+    if set(controls) != set(config["seeds"]):
+        raise ValueError("Expected three completed GAT CE controls")
+    return controls, {
+        "experiment_sha256": digest(old),
+        "audit": str(CE_AUDIT),
+        "audit_sha256": sha256(CE_AUDIT),
+        "ce_torch": old["torch_version"],
+        "adjusted_torch": str(torch.__version__),
     }
 
 
@@ -98,6 +125,8 @@ def run(output, device, smoke, stop):
     ]:
         if sha256(path) != expected:
             raise ValueError(f"Frozen GQA input changed: {path}")
+    controls, provenance = load_ce_controls(config)
+    print("[REUSE] Verified GQA v3 GAT CE seeds 42, 123, 3407", flush=True)
     config.update(output=str(output), device=device, models=["gat"])
     if smoke:
         config.update(epochs=1, seeds=[42], scope="smoke")
@@ -135,37 +164,44 @@ def run(output, device, smoke, stop):
             f"epochs={config['epochs']} seeds={config['seeds']} tau={TAU}",
             flush=True,
         )
+        condition = "adjusted"
         for seed in config["seeds"]:
-            pair = []
-            for condition in ("ce", "adjusted"):
-                if stop():
-                    return
-                directory = output / condition
-                spec = {
-                    **experiment,
-                    "condition": condition,
-                    "prior_sha256": digest(prior),
-                    "config": {**config, "output": str(directory)},
-                }
-                pin_json(directory / "experiment.json", spec)
-                # Only the training loop references trainer.cross_entropy_sum.
-                # evaluator.evaluate imports its own CE and always sees raw logits.
-                loss = cross_entropy_sum if condition == "ce" else lambda z, y: cross_entropy_sum(z + shift, y)
-                print(f"[TRAIN] GAT/{condition} seed={seed}", flush=True)
-                with patch.object(trainer, "cross_entropy_sum", loss):
-                    result = trainer.train_run(
-                        "gat", seed, train, val, None, spec, directory / str(seed), stop_requested=stop
-                    )
-                if result is None:
-                    return
-                pair.append(result)
-                print(
-                    f"[DONE] {condition} seed={seed} best_epoch={result['selected_epoch']} "
-                    f"peak_allocated_GiB={(result['peak_cuda_allocated_bytes_this_invocation'] or 0) / 2**30:.2f}",
-                    flush=True,
+            if stop():
+                return
+            directory = output / condition
+            spec = {
+                **experiment,
+                "condition": condition,
+                "ce_controls": provenance,
+                "prior_sha256": digest(prior),
+                "config": {**config, "output": str(directory)},
+            }
+            pin_json(directory / "experiment.json", spec)
+
+            # Only the training loop references trainer.cross_entropy_sum.
+            # evaluator.evaluate imports its own CE and always sees raw logits.
+            def loss(z, y):
+                return cross_entropy_sum(z + shift, y)
+
+            print(f"[TRAIN] GAT/{condition} seed={seed}", flush=True)
+            with patch.object(trainer, "cross_entropy_sum", loss):
+                result = trainer.train_run(
+                    "gat", seed, train, val, None, spec, directory / str(seed), stop_requested=stop
                 )
-            result_pairs[seed] = pair
+            if result is None:
+                return
+            if controls[seed]["initial_state_sha256"] != result["initial_state_sha256"]:
+                raise ValueError("Initial weights differ from historical CE")
+            print(
+                f"[DONE] {condition} seed={seed} best_epoch={result['selected_epoch']} "
+                f"peak_allocated_GiB={(result['peak_cuda_allocated_bytes_this_invocation'] or 0) / 2**30:.2f}",
+                flush=True,
+            )
+            if smoke:
+                continue  # Historic validation results use the full split.
+            result_pairs[seed] = (controls[seed], result)
             summary = paired_summary(result_pairs)
+            summary["ce_controls"] = provenance
             atomic_write(output / "validation-comparison.json", summary)
             print("[PAIRED]", summary["per_seed"][-1], flush=True)
 
