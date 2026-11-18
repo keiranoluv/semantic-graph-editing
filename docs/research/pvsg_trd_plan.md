@@ -1,6 +1,6 @@
 # Kế hoạch mở rộng Semantic Graph Editing sang PVSG Temporal Relation Detection
 
-Ngày khảo sát và cập nhật M0/M1: **18/11/2026 (Asia/Bangkok)**. Repository ban đầu được kiểm tra tại commit `c20812ad52ff3bc6823aae0dd3659eab90caa451`, M0 khóa ở `c576cfdcd4a51a7f3c76d6260d89c4695b0c0118`. M0 đã tải **annotation JSON và tài liệu nghiên cứu** để xác minh nguồn/split; M1 bổ sung parser, decoder, evaluator và graph batching trên CPU. Chưa tải video/masks/checkpoint, trích đặc trưng, chạy training hay sửa pipeline cũ. Các con số benchmark dưới đây là kết quả công bố, không phải kết quả tái lập của đồ án. Xem [snapshot M0](../../experiments/pvsg_trd_v1/README.md) và [bàn giao M1](../../experiments/pvsg_trd_v1/README_M1.md).
+Ngày khảo sát và cập nhật M0/M1/M2: **18/11/2026 (Asia/Bangkok)**. Repository ban đầu được kiểm tra tại commit `c20812ad52ff3bc6823aae0dd3659eab90caa451`, M0 khóa ở `c576cfdcd4a51a7f3c76d6260d89c4695b0c0118`, M1 hoàn thành tại `f28b9af3`. M2 đã tải media/checkpoint, audit CPU và chuẩn bị feature extractor; **full visual cache còn chờ người dùng chạy GPU**. Chưa training hoặc sửa pipeline cũ. Các con số benchmark dưới đây là kết quả công bố, không phải kết quả tái lập của đồ án. Xem [snapshot M0](../../experiments/pvsg_trd_v1/README.md), [bàn giao M1](../../experiments/pvsg_trd_v1/README_M1.md) và [bàn giao M2](../../experiments/pvsg_trd_v1/m2/README.md).
 
 ## 1. Kết luận và phạm vi
 
@@ -103,9 +103,9 @@ Artifact được chọn: revision `7e5f1ec9fd8f323182e84d990819854bb72da478`, 3
 
 [Manifest M0](../../experiments/pvsg_trd_v1/manifests/pvsg_author_release_338_62.lock.json) khóa đủ ID/source và SHA256 danh sách split `7437cadd922c9b81236700cad48b46e7bdf3e247d61fd6d0876ae77b04fdf65a`. Template 360/40 chỉ lưu dấu vết mục tiêu chưa xác minh, không được chọn để train. Không dựng lại 360/40 hoặc chuyển 22 video test sang train. Chưa tìm được manifest 360/40 trong nguồn đã kiểm tra không có nghĩa nó chưa từng tồn tại.
 
-M0 xác minh metadata tổng **149.488 frame**, 115 thing + 11 stuff classes và 57 predicates, tất cả video ở 5 FPS. M2 vẫn cần đối chiếu media thực, số visible tracks/triplets/intervals và phân bố lớp trên train. Các số “relation” trong paper có thể đếm bộ ba hợp nhất hoặc các đoạn; báo cáo cả hai, không dùng thay nhau. M0 chưa dùng phân bố relation của test để tạo prior hoặc quyết định model.
+M0 xác minh metadata tổng **149.488 frame**, 115 thing + 11 stuff classes và 57 predicates, tất cả video ở 5 FPS. M2 đã đối chiếu media thực; số visible tracks/triplets/intervals nằm trong [data summary](../../experiments/pvsg_trd_v1/m2/provenance/data_summary.json), phân bố predicate chỉ thống kê trên fit. Các số “relation” trong paper có thể đếm bộ ba hợp nhất hoặc các đoạn; báo cáo cả hai, không dùng thay nhau. M0 chưa dùng phân bố relation của test để tạo prior hoặc quyết định model.
 
-**Phát hiện từ parser M1:** kiểm tra cấu trúc raw annotation trên 338 train video phát hiện 34 video có lỗi: 17 lỗi predicate ngoài vocabulary, 16 lỗi interval vượt `num_frames`, 1 lỗi self-pair/track reference; mỗi video chỉ báo lỗi đầu tiên. [Report audit train](../../experiments/pvsg_trd_v1/provenance/m1_train_annotation_audit.json). 304 video qua kiểm tra cấu trúc chưa đồng nghĩa media/visibility hợp lệ. M2 cần đối chiếu preprocessing upstream với media trước khi chốt cách xử lý có version; không tự sửa nhãn, clip thời gian hoặc bỏ video, không đổi outer split. Dataset chưa sẵn sàng train.
+**Phát hiện từ parser M1:** kiểm tra cấu trúc raw annotation trên 338 train video phát hiện 34 video có lỗi: 17 lỗi predicate ngoài vocabulary, 16 lỗi interval vượt `num_frames`, 1 lỗi self-pair/track reference; mỗi video chỉ báo lỗi đầu tiên. [Report audit train](../../experiments/pvsg_trd_v1/provenance/m1_train_annotation_audit.json). 304 video qua kiểm tra cấu trúc chưa đồng nghĩa media/visibility hợp lệ. M2 đã đối chiếu upstream và media, thêm policy riêng `pvsg-gml-valid-support-v1`: quarantine predicate ngoài ontology/self-pair/track reference lỗi; lấy giao intervals với mask timeline và covisibility; quarantine empty support; bỏ negative supervision của key có thời gian lỗi nhưng giữ positives hợp lệ. Có ledger đầy đủ, raw annotation/M1 strict parser/400 IDs/outer split giữ nguyên. Đây là dataset variant GML, không phải khôi phục nhãn gốc hoặc tái lập benchmark gốc. Feature cache GPU chưa hoàn tất nên chưa train. [Policy và ledger summary](../../experiments/pvsg_trd_v1/m2/provenance/annotation_summary.json).
 
 ### Dùng GT để chỉ học relation prediction có khả thi không?
 
@@ -320,7 +320,7 @@ Spatial graph đầy đủ chỉ đổi thứ tự edges sẽ không đổi topo
 ## 7. Protocol huấn luyện và tái lập
 
 1. **Đã khóa 338 train / 62 test IDs** từ bản phát hành của tác giả ở M0; giữ nguyên 62 test video cho đánh giá cuối. Tách internal-val khoảng 15% chỉ trong 338 train, phân tầng theo nguồn; nếu nhiều clip cùng source video/session thì group chung. Không chia ngẫu nhiên theo frame hoặc window.
-2. Dự kiến khoảng **287 fit / 51 internal-val / 62 test**; số fit/internal-val cuối do group split quyết định ở M2, 62 test IDs giữ nguyên. Internal-val hiện chưa có danh sách ID khóa. Đây là phần tách phục vụ chọn hyperparameters bên trong official train, không thay đổi outer benchmark split. Khi train trên fit subset, báo rõ số video thực dùng và không mô tả là tái lập đủ train budget của bản phát hành.
+2. **Đã khóa 287 fit / 51 internal-val / 62 test** ở [manifest M2](../../experiments/pvsg_trd_v1/m2/manifests/dataset.lock.json), seed 17; 62 test IDs giữ nguyên. Fit/internal-val không chung source group suy ra từ ID. Official train/test có 4 Ego4D source UUID groups chung; ghi giới hạn này, không tự sửa outer split, chưa kết luận có frame trùng. Đây là phần tách phục vụ chọn hyperparameters bên trong official train, không thay đổi outer benchmark split. Khi train trên fit subset, báo rõ số video thực dùng và không mô tả là tái lập đủ train budget của bản phát hành.
 3. Mọi scaler, class weights, priors, tail bins và lựa chọn hyperparameter lấy từ fit/internal-val đúng vai trò. Không tune trên `val` upstream đang đóng vai trò test. Nếu không có lớp hiếm trong internal-val, báo support thay vì tune ngưỡng riêng lớp đó.
 4. Chính: 3 models × seeds `{17,42,2026}` = **9 runs**, chạy tuần tự. Pilot/ablations chọn trước và ghi riêng. Baseline Conv CVPR 2023 mức A pilot một seed; nếu đưa vào bảng so sánh chính thì chạy đủ ba seeds, nâng tổng lên **12 runs chính**. MLP+Conv1D control và nhánh tái lập mức B có kế hoạch chạy riêng; không tự thêm vào queue. Không có run KG.
 5. Khởi đầu AdamW, LR `1e-3`, weight decay `1e-4`, dropout `0.1`, tối đa 50 epochs, early stopping patience 10; microbatch 1 window, gradient accumulation 4. Đây là đề xuất chưa benchmark; giới hạn node/edge budget để window đông object không gây OOM. Không cắt bỏ track âm thầm.
@@ -332,9 +332,9 @@ Spatial graph đầy đủ chỉ đổi thứ tự edges sẽ không đổi topo
 
 ### Dung lượng và máy hiện có
 
-Metadata kho chính thức Hugging Face ghi **10,8 GB** tổng archive và `pvsg.json` khoảng **3,88 MB**. Các file nén: Ego4D masks 940 MB + videos 3,8 GB; EPIC-KITCHENS 742 MB + 3,53 GB; VidOR 353 MB + 1,42 GB. Đây là kích thước hiển thị, làm tròn; không phải dung lượng sau giải nén. M0 chỉ tải annotation cùng tài liệu nghiên cứu; các archive media chưa tải. [Kho HF][hf-root], [Ego4D][hf-ego], [EPIC-KITCHENS][hf-epic], [VidOR][hf-vidor].
+Metadata kho chính thức Hugging Face ghi **10,8 GB** tổng archive và `pvsg.json` khoảng **3,88 MB**. Các file nén: Ego4D masks 940 MB + videos 3,8 GB; EPIC-KITCHENS 742 MB + 3,53 GB; VidOR 353 MB + 1,42 GB. Đây là kích thước hiển thị, làm tròn; không phải dung lượng sau giải nén. M2 đã tải và kiểm SHA256 cả 6 archive: **10.792.485.748 bytes**. Chỉ giải nén MP4, đọc masks trực tiếp từ ZIP; chưa ghi RGB frames rời. [Kho HF][hf-root], [Ego4D][hf-ego], [EPIC-KITCHENS][hf-epic], [VidOR][hf-vidor].
 
-Các kích thước này dùng để lập ngân sách tải. Annotation 338/62 đã xác minh ID/revision/hash ở M0; mức đầy đủ của video/masks tương ứng vẫn cần audit sau khi tải media. Không suy ra media coverage từ tên dataset hoặc annotation.
+Audit M2 giải mã CPU đủ **400 video / 149.488 masks**. Header frame count khác masks ở 7 video; 5 trường hợp giải mã thực tế đủ frame. Còn 4 RGB frames thiếu: một frame cuối VidOR, ba frame trong gap PTS của một Ego4D clip. Ghép RGB theo timestamp 5 FPS, giữ geometry và cờ visual availability tại frame thiếu. Bốn video có mask ID không có object label; vùng này được loại khỏi inputs và ghi ledger. [Media audit](../../experiments/pvsg_trd_v1/m2/provenance/media_audit.json).
 
 Read-only system inspection trong phiên nghiên cứu: **RTX 5090, 32607 MiB VRAM (~31,8 GiB)**; RAM tổng 60 GiB; filesystem dự án còn khoảng **171 GiB**, đã dùng 91%. Không chạy CUDA workload hoặc cài package để lấy thông tin này.
 
@@ -349,7 +349,7 @@ Read-only system inspection trong phiên nghiên cứu: **RTX 5090, 32607 MiB VR
 
 | Hướng | Phụ thuộc | Nhận định |
 |---|---|---|
-| GML GT-track mới | PyTorch, torchvision/CLIP, PyG, NumPy, Pillow, FFmpeg; h5py hoặc shard NumPy; WandB | Ưu tiên environment riêng, không cần MMDetection để học quan hệ từ cached features |
+| GML GT-track mới | M2: PyTorch 2.9.1+cu128, CLIP visual vendored/pinned, NumPy 2.1.0, Pillow 11.2.1, PyAV 16.0.1, SciPy 1.15.3; M3 thêm GNN/WandB | Overlay environment riêng, không dùng torchvision đang không tương thích hoặc MMDetection; clean requirements trong `m2/` |
 | OpenPVSG nguyên bản | README hướng CUDA 10.1, `mmcv-full==1.4.0`, `mmdet==2.25.0`, tracker extensions | Có rủi ro build/ABI lớn khi đưa lên GPU và stack mới |
 | SegPVSG release | Python 3.9, torch 1.10.2, mmcv-full 1.6.0, mmdet 2.25.0; README môi trường RTX 3090 | Không suy ra chạy trực tiếp được trên RTX 5090 |
 
@@ -374,7 +374,7 @@ Không cần tải toàn bộ VidOR/Ego4D/EPIC-KITCHENS gốc cho MVP nếu bả
 
 ## 9. Tổ chức implementation dự kiến
 
-M0 đã tạo vùng riêng với `protocol.json`, schemas, manifest split, provenance, synthetic examples và validator CPU. M1 đã triển khai `data.py`, `contracts.py`, `intervals.py`, `graphs.py`, `decoding.py`, `evaluation.py`, `cli.py` và synthetic fixtures/tests. Features, model, loss và training runner dưới đây vẫn là kế hoạch cho M2/M3:
+M0 đã tạo vùng riêng với `protocol.json`, schemas, manifest split, provenance, synthetic examples và validator CPU. M1 đã triển khai `data.py`, `contracts.py`, `intervals.py`, `graphs.py`, `decoding.py`, `evaluation.py`, `cli.py` và synthetic fixtures/tests. M2 đã có `m2/` riêng chứa download/media/audit/target adaptation/internal split/feature extractor/provenance và launcher. Model, loss và training runner vẫn là kế hoạch M3; cây dưới đây thể hiện thiết kế tổng thể, không phải tất cả file đã tồn tại:
 
 ```text
 experiments/pvsg_trd_v1/
@@ -412,7 +412,7 @@ Thời lượng là ước lượng công việc triển khai, chưa gồm thờ
 |---|---|---|---|
 | **M0 — Hoàn thành: khóa phạm vi và protocol** | Xác minh bản phát hành tác giả năm 2023; người dùng chọn 338/62; khóa ID/hash, GT-track inputs/metrics, schema và manifest | [Artifacts M0](../../experiments/pvsg_trd_v1/README.md); protocol riêng; ghi sai khác CVF 360/40; kiểm tra CPU; không tự dựng split | Đã thực hiện |
 | **M1 — Hoàn thành: parser/evaluator CPU** | Adapter tách input/targets, multi-label timelines, decoder, evaluator, graph batching; đối chiếu Python-set reference | [97 tests CPU đạt và bàn giao M1](../../experiments/pvsg_trd_v1/README_M1.md); các ca perfect/wrong/overlong/K/duplicate/visibility/batching đều đạt; audit raw train ghi nhận 34 video có lỗi cần M2 | Đã thực hiện |
-| **M2 — Audit dữ liệu và features** | Điều tra 34 video train có lỗi cấu trúc, đối chiếu preprocessing/media với manifest 338/62; tạo repair provenance nếu cần; khóa internal-val; overlay ≥10 video đủ ba nguồn; build cache | Lỗi annotation được xử lý có bằng chứng/version; 62 test IDs giữ nguyên, split group sạch, feature alignment đúng, cache resumable và storage/throughput report | 1–2 ngày + thời gian audit/chạy |
+| **M2 — CPU/data hoàn tất; chờ full visual cache GPU** | 6 archives + checkpoint đã kiểm hash; audit toàn bộ media; policy nhãn có ledger; split 287/51/62; overlay 19 video; extractor/resume và CPU CLIP probe | [Bàn giao M2](../../experiments/pvsg_trd_v1/m2/README.md); còn chạy launcher GPU và xác nhận cache 400 video/storage/throughput. Giữ giới hạn 4 outer source groups chung | Người dùng chạy extraction; chưa đo thời gian GPU |
 | **M3 — Baselines chính** | MLP → Static GAT → ST-GAT; pilot CPU, GPU probe được phép trước khi chốt batch; train chính ba seeds/model | Chín runs cùng protocol, WandB đầy đủ, checkpoint/decoder chọn bằng internal-val; không chạy song song models | 2–3 ngày + train |
 | **M4 — Ablation và đối chứng CVPR 2023** | Bỏ spatial/temporal edges; ưu tiên Conv CVPR 2023 chuyển thể trên GT tracks; thử tái lập benchmark gốc nếu đủ artifacts | Tách hiệu ứng graph/time; baseline dùng cùng protocol; phân biệt chuyển thể, tái đánh giá checkpoint và tái lập; không làm KG | 1–3 ngày + train cho ablation/mức A; mức B phụ thuộc artifacts |
 | **M5 — Đánh giá đóng băng và báo cáo** | Freeze config rồi evaluate held-out một lượt kế hoạch; per-class/domain/tail; 5 đúng + 5 sai và timeline visualization | Mean±std; bảng protocol; giới hạn GT oracle; artifact tái lập; liên hệ với mục tiêu môn học | 1–2 ngày |
@@ -434,7 +434,7 @@ Các repo được đọc qua GitHub tại snapshot sau; PDF chỉ dùng để n
 | UNO | `6c05c555c01cce3f6bb2d2da179e4bee7e7877b6` |
 | SegPVSG | `12e7d1f38c4fe30ae717a4173dfee121154411fc` |
 
-Đã xác minh ở M0: checksum/revision/split IDs của annotation, thứ tự vocabulary và FPS metadata. M1 đã kiểm tra parser/evaluator bằng fixtures CPU và audit cấu trúc train, ghi nhận 34 video có lỗi đầu tiên cần điều tra. Chưa xác minh: media coverage/alignment và cách sửa annotation có bằng chứng; checkpoint upstream có tải được không; replication numbers; CUDA/PyG runtime; batch size tối đa; feature extraction/training time. Đây là các đầu việc của milestones tiếp theo, không phải kết quả đã có.
+Đã xác minh M0/M1: annotation identity/split/vocabulary, parser/evaluator và tests CPU. M2 đã tải đủ media và CLIP checkpoint, audit timeline/masks/visibility, review overlay 19 video, khóa internal split, version target policy và kiểm CLIP thật trên CPU. Chưa có full visual cache, throughput/VRAM GPU, CUDA/PyG training runtime, batch size tối đa, training time hoặc replication numbers. CLIP weights đã tải không có nghĩa checkpoint IPS/relation upstream để tái lập gốc đã đủ. Các bước này vẫn cần thực hiện ở lần chạy GPU/M3/M4.
 
 [pvsg-page]: https://jingkangyang.com/PVSG/
 [pvsg-paper]: https://openaccess.thecvf.com/content/CVPR2023/papers/Yang_Panoptic_Video_Scene_Graph_Generation_CVPR_2023_paper.pdf
