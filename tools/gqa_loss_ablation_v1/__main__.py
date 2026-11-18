@@ -4,6 +4,7 @@ import signal
 import statistics
 import tempfile
 from contextlib import ExitStack
+from importlib.metadata import version
 from pathlib import Path
 from unittest.mock import patch
 
@@ -19,7 +20,7 @@ from tools import run_gqa_full_ram as ram
 from tools import train_gqa_pilot as evaluator
 
 CONFIG = Path("configs/level2/gqa-full-v3-bs512.json")
-OUT = Path("runs/level2/gqa-gat-loss-v2")
+OUT = Path("runs/level2/gqa-gat-loss-v3-cu128")
 CE_AUDIT = Path("reports/level2/gqa-full-v3-results-v1/verification.json")
 TAU = 0.25
 
@@ -115,6 +116,17 @@ def datasets(config, metadata, smoke, stack):
 
 
 def run(output, device, smoke, stop):
+    expected = {
+        "torch": "2.7.0+cu128",
+        "torchvision": "0.22.0+cu128",
+        "torch-geometric": "2.6.1",
+        "wandb": "0.18.7",
+        "protobuf": "5.29.6",
+    }
+    runtime = {package: version(package) for package in expected}
+    if runtime != expected or str(torch.__version__) != expected["torch"] or torch.version.cuda != "12.8":
+        raise RuntimeError(f"Expected the pinned GQA venv. Installed versions: {runtime}")
+    print(f"[RUNTIME] {runtime}", flush=True)
     if sha256(CONFIG) != "7a1e9b3d768df9dcf8abc72028431da6305e8ac088e6bbdb6426acf0a200fe22":
         raise ValueError("Expected GQA v3 training recipe")
     config = historical.load_config(CONFIG)
@@ -138,6 +150,7 @@ def run(output, device, smoke, stop):
         if metadata["identity"]["splits"][split] != manifest["splits"][split]:
             raise ValueError("Cache and dataset split differ")
     experiment = historical.experiment_identity(config, manifest)
+    experiment["runtime_packages"] = runtime
     experiment["protocol"] = "GQA PredCls GAT KG-off; raw logits for validation GC/NG; fixed sampled soft targets"
     experiment["code_sha256"].update(
         {
@@ -145,6 +158,7 @@ def run(output, device, smoke, stop):
             for p in [
                 Path(__file__).resolve().relative_to(Path.cwd()),
                 Path("scripts/run_gqa_loss_ablation_v1.sh"),
+                Path("requirements-gqa-gat-loss-cu128.txt"),
                 Path(prepared.__file__).resolve().relative_to(Path.cwd()),
                 Path(ram.__file__).resolve().relative_to(Path.cwd()),
             ]
