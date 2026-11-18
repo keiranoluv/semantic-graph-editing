@@ -16,9 +16,9 @@ TEXINPUTS=.:../25C15039-25C15062/: latexmk -pdf -interaction=nonstopmode -halt-o
 Gói ZIP để duyệt gồm các nguồn đang dùng, lớp IEEEtran của Seminar và
 các hình. Trên Overleaf chọn `main.tex` và pdfLaTeX.
 
-## Hình vẽ trực tiếp bằng LaTeX
+## Hình 8 và 9 trên MagicBrush
 
-Các hình 3, 4, 6, 8, 9, 11 và 17 dùng TikZ/PGFPlots, cùng kiểu chữ và quy ước trục với Hình 15. Mã từng hình, bảng số liệu TSV và bốn ảnh của hai ca test MagicBrush nằm trong [figures/pgf](figures/pgf/). Biên dịch bằng lệnh trên để vẽ lại từ các tệp này. Tên tệp bắt đầu bằng `vg-`, `gqa-`, `pvsg-` tương ứng với phân tích trong các notebook bên dưới. Bảng `he-f1.tsv` lấy trung bình ba seed từ [kết quả của GNN](../reports/level2/emnlp2020-task-b-wandb-v4-test-v1/metrics.json). Ảnh Hình 8 dùng lại hai JPEG của mẫu validation; Hình 9 dùng hai cặp ảnh test và dự đoán đã lưu của seed 42.
+Hình 8 dùng TikZ để vẽ các cạnh nối với bàn dưới cặp ảnh validation. Hình 9 dùng TikZ để đặt hai cặp ảnh test cạnh nhãn đích và dự đoán của seed 42. Mã vẽ và ảnh của hai ca test nằm trong [figures/pgf](figures/pgf/).
 
 ## Tái tạo hình và Bảng II
 
@@ -55,7 +55,7 @@ Bộ dữ liệu đối chứng do He và cộng sự phát hành kèm bài [Sce
 
 Nguồn cho số cặp, danh sách thao tác và phiếu 20 mẫu nằm trong [bộ dữ liệu MagicBrush theo prompt](../experiments/magicbrush_prompt_intent_v1/README.md). Hai ảnh minh họa lấy từ mẫu validation `magicbrush:484847:1`. [Kết quả MagicBrush](../reports/level2/magicbrush-prompt-intent-test-v1/README.md) ghi cách tái lập bảng test 59 cặp. [Kết quả trên phần crowdsourced của He và cộng sự (2020)](../reports/level2/emnlp2020-task-b-wandb-v4-test-v1/README.md) ghi các chỉ số của hai mô hình trên 530 mẫu test.
 
-Từ gốc repo, chạy lệnh sau để tái tạo phiên bản Matplotlib dùng để đối chiếu sơ đồ các cạnh nối với bàn, hai ca sai trên MagicBrush và biểu đồ F1 theo thao tác của GNN trên phần crowdsourced. Script dùng ảnh MagicBrush trong workspace, dự đoán test đã lưu của nhánh prompt ở seed 42 và bảng điểm trên phần crowdsourced.
+Từ gốc repo, chạy lệnh sau để dựng lại biểu đồ F1 của GNN ở Hình 11 và các bản Matplotlib của hai minh họa MagicBrush. Script dùng ảnh MagicBrush trong workspace, dự đoán test đã lưu của nhánh prompt ở seed 42 và bảng điểm trên phần crowdsourced.
 
 ```bash
 myenv/bin/python -m experiments.magicbrush_prompt_intent_v1.report_figures
