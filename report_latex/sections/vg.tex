@@ -1,29 +1,33 @@
 \section{Nhiệm vụ 1. Dự đoán quan hệ trong đồ thị cảnh}
 
-\subsection{Bài toán và đầu vào, đầu ra}
-Trong Hình~\ref{fig:motifs}, một phụ nữ và một chiếc xe máy đã được khoanh vùng.
-Biết hai đối tượng này có mặt trong ảnh vẫn chưa đủ để mô tả cảnh. Quan hệ
-\textit{riding} (đang cưỡi) cho biết người phụ nữ đang làm gì với chiếc xe.
-Trong đồ thị cảnh, hai đối tượng là hai đỉnh, còn quan hệ này là một cạnh có
-hướng từ người phụ nữ đến xe máy.
+\subsection{Input và output của bài toán}
+Với mỗi cặp đối tượng có hướng trong ảnh, nhóm dự đoán quan hệ giữa hai đối
+tượng (\textit{Predicate Classification}, PredCls). Nhiệm vụ 1 so sánh GAT
+với MLP, baseline phi đồ thị, trên cùng các cặp và đặc trưng đầu vào.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=.83\columnwidth]{neural-motifs-fig1.pdf}
-\caption{Minh họa đầu vào và đích dự đoán. Phía trên là ảnh và các hộp đối tượng.
-Phía dưới là đồ thị chú thích, trong đó có bộ ba
-\textit{woman--riding--motorcycle}. Trích Hình~1, trang~1 của
-Zellers và cộng sự~\cite{zellers2018neuralmotifs}.}
+\begin{minipage}[c]{.53\columnwidth}\centering
+\textbf{Input}\\[2pt]
+\includegraphics[trim=0 55 0 0,clip,width=\linewidth]{neural-motifs-fig1.pdf}\\
+\footnotesize RGB + boxes + labels\\
+\textit{woman}, \textit{motorcycle}, \ldots
+\end{minipage}\hfill
+$\longrightarrow$\hfill
+\begin{minipage}[c]{.32\columnwidth}\centering
+\textbf{Output}\\[4pt]
+\begin{tikzpicture}[>=Latex,font=\footnotesize,
+ obj/.style={draw=inkblue,rounded corners=2pt,inner sep=3pt}]
+\node[obj] (s) {woman};
+\node[obj,below=9mm of s] (o) {motorcycle};
+\draw[->] (s) -- node[right]{\textit{riding}} (o);
+\end{tikzpicture}
+\end{minipage}
+\caption{PredCls cho sẵn hai đối tượng. Với cặp có thứ tự
+\textit{(woman, motorcycle)}, nhãn quan hệ cần dự đoán là \textit{riding}.
+Ảnh và ví dụ ground truth trích từ Hình~1 của Zellers và cộng sự~\cite{zellers2018neuralmotifs}.}
 \label{fig:motifs}
 \end{figure}
-
-Nhóm xét bài toán phân lớp quan hệ (\textit{Predicate Classification}, PredCls).
-\textbf{Đầu vào} gồm ảnh RGB, hộp bao và nhãn lớp thật của từng đối tượng.
-\textbf{Đầu ra} là danh sách bộ ba (đối tượng chủ thể, quan hệ, đối tượng đích),
-kèm điểm tin cậy. Hai đối tượng được xác định theo từng hộp cụ thể. Một ảnh có
-$N$ đối tượng tạo ra $N(N-1)$ cặp có hướng cần xét. Mô hình tự xác định cặp
-nào có quan hệ và dự đoán nhãn cho cặp đó. Các cạnh có nhãn trong đồ thị
-chú thích chỉ được dùng để huấn luyện và chấm kết quả.
 
 \subsection{Dữ liệu và cách đánh giá}
 VG150 là tập con của Visual Genome~\cite{krishna2017visualgenome}, gồm
@@ -33,67 +37,75 @@ lấy 5.000 ảnh hợp lệ đầu tiên theo thứ tự lưu trong phần trai
 validation, giữ 57.723 ảnh còn lại để huấn luyện và giữ 26.446 ảnh hợp lệ
 từ phần test để đánh giá. Các cặp đối tượng của một ảnh luôn thuộc cùng một tập.
 
-Mỗi cặp có 51 điểm đầu ra, gồm 50 quan hệ và lớp nền. Khi đánh giá với
+Với $N$ đối tượng, mô hình chấm $N(N-1)$ cặp có hướng và trả về danh sách
+triplet $(s,p,o)$ xếp theo predicate score. Mỗi cặp có 51 logits, gồm
+50 predicate và background. Khi đánh giá với
 \textit{graph constraint} (GC), nhóm giữ quan hệ có xác suất cao nhất trong
 50 quan hệ của mỗi cặp, sau đó xếp hạng tất cả các cặp trong cùng ảnh.
 Một dự đoán khớp chú thích khi đúng nhãn quan hệ, đúng hai lớp đối tượng theo
 thứ tự và độ giao trên hợp (IoU) của từng hộp với hộp chuẩn đạt ít nhất 0,5.
 
-\textbf{R@50} đo tỷ lệ quan hệ chuẩn được tìm lại trong 50 dự đoán đứng đầu
-của mỗi ảnh, rồi lấy trung bình qua ảnh. \textbf{mR@50} tính recall theo ảnh
+\textbf{R@K} đo tỷ lệ quan hệ chuẩn được tìm lại trong $K$ dự đoán đứng đầu
+của mỗi ảnh, rồi lấy trung bình qua ảnh. \textbf{mR@K} tính recall theo ảnh
 cho từng loại quan hệ có mặt, rồi lấy trung bình trên 50 lớp. Vì vậy, một
 lượt tìm lại quan hệ hiếm có thể ít ảnh hưởng đến R@50 nhưng có ý nghĩa khi
 xét mR@50. Toàn bộ bảng định lượng dùng cùng bộ chấm \textit{reference-v1}
 trên test. Nhóm chấm lại các checkpoint đã chọn bằng validation. Tập test
-này đã từng được đánh giá bằng bộ chấm trước đó.
+này đã từng được đánh giá bằng bộ chấm trước đó. Theo đề bài, nhóm báo cáo cả $K=50$ và $K=100$.
 
-\subsection{Hai mô hình cơ sở}
-Mỗi đỉnh có vector 549 chiều. Vector gồm 512 chiều thị giác trích từ vùng
-ảnh bằng CLIP ViT-B/32 đóng băng~\cite{radford2021clip}, năm số hình học
-(tọa độ tâm, chiều rộng, chiều cao, diện tích đã chuẩn hóa) và 32 chiều
-biểu diễn nhãn đối tượng học trong khi huấn luyện. Hai mô hình ở
-Hình~\ref{fig:vg-arch} dùng cùng đầu vào và chấm cùng tập cặp.
+\subsection{Baseline MLP và mô hình GAT}
+Mỗi đối tượng có một \textit{node feature} 549 chiều. Vector này ghép
+512 chiều từ CLIP ViT-B/32 đóng băng trên vùng ảnh~\cite{radford2021clip},
+5 chiều \textit{box geometry} (tâm, rộng, cao và diện tích chuẩn hóa)
+và 32 chiều \textit{object-label embedding} học trên tập train.
 
-\begin{figure}[!ht]
-\centering
+\textbf{MLP (non-graph baseline).} Với cặp $(s,o)$, MLP nối hai vector theo
+thứ tự subject rồi object. \textit{Pair classifier} gồm hai linear layer
+$1098\to256\to51$, với ReLU ở giữa. Mỗi cặp được chấm độc lập.
+
+\textbf{Graph Attention Network (GAT).} Sau linear projection $549\to256$,
+hai GAT layer thực hiện \textit{message passing} trên đồ thị có hướng nối
+mọi cặp đối tượng trong ảnh, có \textit{self-loop}. Mỗi layer dùng bốn
+\textit{attention head} để tổng hợp đặc trưng từ các node lân cận
+theo trọng số học được~\cite{velickovic2018gat}. Hai node embedding sau
+message passing được ghép lại và đưa qua pair classifier $512\to256\to51$
+với ReLU và dropout 0,1. Cả MLP và GAT đều trả về 51 logits cho mỗi cặp (Hình~\ref{fig:vg-arch}).
+
+\begin{figure}[!ht]\centering
 \begin{tikzpicture}[>=Latex,font=\footnotesize,align=center,
- box/.style={draw=inkblue,rounded corners=2pt,inner sep=4pt},
- model/.style={box,text width=.39\columnwidth,minimum height=12mm}]
-\node[box] (x) {Đặc trưng từng đối tượng (549 chiều)};
-\node[model,below left=5mm and 1mm of x.south] (m) {MLP\\Ghép chủ thể và đích};
-\node[model,below right=5mm and 1mm of x.south] (g) {GAT\\Truyền tin trên đồ thị,\\rồi ghép chủ thể và đích};
-\node[box,below=24mm of x.south] (y) {51 điểm cho mỗi cặp có hướng};
-\draw[->] (x.south) -- (m.north);
-\draw[->] (x.south) -- (g.north);
-\draw[->] (m.south) -- (y.north);
-\draw[->] (g.south) -- (y.north);
+ box/.style={draw=inkblue,rounded corners=2pt,inner sep=3pt}]
+\node[box] (in) {Node features (549-D)};
+\node[box,below left=4mm and 2mm of in.south] (mlp) {MLP\\Pair concatenation};
+\node[box,below right=4mm and 2mm of in.south] (gat) {GAT\\Message passing\\Pair concatenation};
+\node[box,below=20mm of in.south] (out) {Pair classifier: 51 logits};
+\draw[->] (in.south) -- (mlp.north);
+\draw[->] (in.south) -- (gat.north);
+\draw[->] (mlp.south) -- (out.north);
+\draw[->] (gat.south) -- (out.north);
 \end{tikzpicture}
-\caption{Hai đường dự đoán quan hệ. Thứ tự chủ thể và đối tượng đích được
-giữ khi ghép vector. Với GAT, đặc trưng của mỗi đỉnh còn phụ thuộc các đỉnh
-khác trong cùng ảnh.}
+\caption{MLP và GAT chấm cùng các cặp $(s,o)$. GAT cập nhật node embedding
+bằng thông tin từ các đối tượng khác trước khi ghép cặp.}
 \label{fig:vg-arch}
 \end{figure}
 
-\textbf{MLP.} Ghép hai vector theo thứ tự chủ thể và đích thành vector 1.098
-chiều. Hai lớp tuyến tính có kích thước $1.098\to256\to51$, với ReLU ở giữa,
-tạo điểm quan hệ chỉ từ cặp đang xét.
-
-\textbf{GAT.} Mô hình chiếu mỗi đỉnh từ 549 xuống 256 chiều, sau đó dùng
-hai lớp graph attention~\cite{velickovic2018gat}, mỗi lớp bốn đầu chú ý.
-Cạnh truyền tin nối mọi cặp đối tượng khác nhau trong ảnh và có vòng tự nối (\textit{self-loop}).
-Tại mỗi lớp, đỉnh tổng hợp thông tin từ các đỉnh lân cận theo trọng số chú ý.
-Hai vector sau truyền tin được ghép thành 512 chiều và đi qua bộ phân lớp
-$512\to256\to51$. Mô hình dùng dropout 0,1.
-
-\textbf{Huấn luyện.} Nhóm dùng AdamW với tốc độ học $10^{-3}$, weight decay
-$10^{-2}$, batch hiệu dụng 512 ảnh, tối đa 200 epoch và dừng sớm với
+\textbf{Training setup.} Nhóm dùng AdamW với learning rate $10^{-3}$, weight decay
+$10^{-2}$, effective batch size 512 ảnh, tối đa 200 epoch và early stopping với
 patience 15. Mỗi cặp dương được lấy kèm tối đa ba cặp nền. Vì hàm mất mát
 nhận một nhãn đích, bộ lấy mẫu bỏ qua các cặp có nhiều nhãn quan hệ khác nhau
 khi train. Bộ chấm vẫn giữ các chú thích này. Nhóm đánh giá 54 checkpoint, tương ứng 18 cấu hình, mỗi cấu hình chạy với ba seed
 42, 123 và 3407.
 
-\subsection{Điều chỉnh hàm mất mát và bổ sung tri thức nền}
-\textbf{Điều chỉnh theo tần suất lớp.} Mười loại quan hệ phổ biến nhất chiếm
+\subsection{Phân bố predicate, adjusted loss và KG fusion}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=.97\columnwidth]{vg-train-predicates.pdf}
+\caption{Mười predicate phổ biến nhất trên VG150 train. Mỗi dòng cho biết tỷ lệ
+và số annotation trong tổng số 405.860 annotation của 50 predicate foreground.
+Thanh xám gộp 40 lớp còn lại. Mỗi nhãn trên một cặp đa nhãn và mỗi dòng lặp
+đều được đếm trước khi áp dụng training sampler.}
+\label{fig:predicate-freq}
+\end{figure}
+\textbf{Logit-adjusted loss.} Riêng \textit{on} chiếm 29,08\% số annotation (Hình~\ref{fig:predicate-freq}). Mười predicate phổ biến nhất chiếm
 88,40\% chú thích quan hệ trong tập train. Để giảm thiên lệch về những lớp
 này, nhóm so sánh cross-entropy (CE) với \textit{logit-adjusted loss} theo công thức
 \[
@@ -104,17 +116,17 @@ lớp ước lượng từ train theo quy tắc lấy mẫu, có cộng một v�
 Vì $\log\pi$ âm hơn với lớp hiếm, mô hình phải học điểm $z$ cao hơn cho lớp
 đó để dự đoán đúng khi train. Khi suy luận, nhóm xếp hạng từ điểm $z$ gốc.
 
-\textbf{Tri thức tại đỉnh.} Nhóm liên kết nhãn đối tượng với khái niệm trong
+\textbf{Node-level KG embedding.} Nhóm liên kết nhãn đối tượng với khái niệm trong
 WordNet hoặc ConceptNet~\cite{miller1995wordnet,speer2017conceptnet}. Với nhãn
 có liên kết, nhóm ghép một vector tri thức 64 chiều đã đóng băng và một cờ
 hợp lệ vào đặc trưng đỉnh. WordNet liên kết được 150/150 lớp, ConceptNet
 liên kết được 138/150 lớp. Nhóm dùng TransE cho cả hai nguồn, đồng thời thử
 RotatE và ComplEx trên ConceptNet~\cite{bordes2013transe,sun2019rotate,trouillon2016complex}.
 
-\textbf{Tri thức tại cặp.} Với \textit{pair fusion}, hai vector tri thức của
+\textbf{Pair-level KG fusion.} Với \textit{pair fusion}, hai vector tri thức của
 chủ thể và đích tạo ra phần hiệu chỉnh cộng vào điểm quan hệ của GAT.
-Một cổng học được điều khiển biên độ hiệu chỉnh. Với \textit{visual fusion},
-cổng còn nhận đặc trưng GAT của hai đối tượng trong ảnh và điều tiết riêng
+Một \textit{gate} học được điều khiển biên độ hiệu chỉnh. Với \textit{visual fusion},
+gate còn nhận đặc trưng GAT của hai đối tượng trong ảnh và điều tiết riêng
 cho từng quan hệ. Để kiểm tra vai trò của ánh xạ lớp--khái niệm, nhóm giữ
 cùng kiến trúc và tráo vector giữa 138 lớp ConceptNet có liên kết hợp lệ
 (\textit{shuffled-KG}). Cả ba seed huấn luyện dùng cùng một hoán vị cố định.
@@ -151,36 +163,41 @@ Visual, KG xáo trộn & $62{,}20\pm0{,}23$ & $24{,}82\pm1{,}25$\\
 \bottomrule\end{tabular}
 \end{table}
 
-Trên cùng đặc trưng CLIP, GAT tăng mR@50 so với MLP ở cả ba seed, trung bình
-1,65 điểm phần trăm. R@50 tăng 0,31 điểm (Bảng~\ref{tab:vgscore}).
-Để xác định thành phần nào tạo nên chênh lệch, nhóm lần lượt thay một yếu tố
-trong từng họ mô hình. Bảng~\ref{tab:vgdelta} ghi hiệu số ghép cặp theo seed,
-tính trước khi làm tròn.
+Với cùng CLIP features, GAT đạt mR@50 là 18,61\%, còn MLP đạt 16,95\%
+(Bảng~\ref{tab:vgscore}). Chênh lệch dương ở cả ba seed. Khi mở rộng danh sách
+lên 100 dự đoán, GAT vẫn có mR cao hơn, trong khi R@100 giảm nhẹ.
+Bảng~\ref{tab:vgabsolute} đặt điểm của hai cấu hình cạnh nhau cho từng phép so sánh.
+Hình~\ref{fig:vgdelta} cho thấy cả chiều và độ lớn của thay đổi ở top-50.
 
-\begin{table}[!ht]
-\centering\small\setlength{\tabcolsep}{3pt}
-\caption{Ablation trên VG150 test. Dấu dương biểu thị cấu hình bên trái
-cao hơn đối chứng bên phải. Các độ chênh tính bằng điểm phần trăm.}
-\label{tab:vgdelta}
-\begin{tabularx}{\columnwidth}{@{}Xrr@{}}\toprule
-Phép so sánh & $\Delta$R@50 & $\Delta$mR@50\\\midrule
-WordNet tại đỉnh: bật KG trừ tắt KG & $+0{,}26$ & $-0{,}60$\\
-WordNet: giữ cạnh trừ bỏ cạnh & $+0{,}04$ & $-0{,}57$\\
-ConceptNet: giữ cạnh trừ bỏ cạnh & $-0{,}49$ & $+0{,}24$\\
-Adjusted trừ CE, tắt KG tại cặp & $-2{,}24$ & $+6{,}48$\\
-Adjusted trừ CE, bật KG tại cặp & $-1{,}61$ & $+5{,}40$\\
-Bật trừ tắt KG tại cặp, adjusted loss & $-0{,}17$ & $+0{,}09$\\
-Pair: KG thật trừ tắt hiệu chỉnh & $+0{,}31$ & $+0{,}93$\\
-Pair: KG thật trừ KG xáo trộn & $+0{,}02$ & $+0{,}24$\\
-Visual: KG thật trừ KG xáo trộn & $+0{,}14$ & $-0{,}30$\\
-\bottomrule\end{tabularx}
-\end{table}
+\begin{table*}[!t]
+\centering\small
+\caption{Điểm tuyệt đối trên VG150 test ở top-100 (\%, trung bình ba seed).
+Đọc mỗi hàng từ đối chứng A sang cấu hình B. Các hàng về cạnh dùng TransE
+với cùng nguồn KG.}
+\label{tab:vgabsolute}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+& & \multicolumn{2}{c}{R@100 (\%)} & \multicolumn{2}{c}{mR@100 (\%)}\\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Đối chứng A & Cấu hình B & A & B & A & B\\\midrule
+\input{figures/vg-ablation-at100.tex}
+\end{tabular}
+\end{table*}
 
-\textit{(1) Ghép KG tại đỉnh.} Khi giữ cấu hình WordNet--TransE và bật vector
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=.86\textwidth]{vg-ablation-deltas.pdf}
+\caption{Thay đổi R@50 và mR@50 trên VG150 test, tính bằng điểm phần trăm.
+Thứ tự hàng ứng với Bảng~\ref{tab:vgabsolute}. Mỗi giá trị là trung bình của
+ba hiệu số B trừ A ghép cùng seed. Thanh bên phải mốc 0 biểu thị điểm tăng.}
+\label{fig:vgdelta}
+\end{figure*}
+
+\textit{(1) Node-level KG.} Khi giữ cấu hình WordNet--TransE và bật vector
 tri thức, mR@50 giảm ở cả ba seed. Như vậy độ phủ liên kết 150/150 lớp vẫn
 chưa đủ để cải thiện khả năng nhận biết quan hệ theo lớp.
 
-\textit{(2) Truyền tin giữa các đối tượng.} Thí nghiệm \textit{edges-off} bỏ
+\textit{(2) Message passing.} Thí nghiệm \textit{edges-off} bỏ
 cạnh giữa các đỉnh, giữ self-loop và giữ nguyên toàn bộ cặp cần chấm điểm.
 Giữ cạnh giúp ConceptNet--TransE tăng 0,24 điểm mR@50, trong khi WordNet--TransE
 giảm 0,57 điểm. Tác dụng của ngữ cảnh đồ thị phụ thuộc cách biểu diễn đỉnh.
