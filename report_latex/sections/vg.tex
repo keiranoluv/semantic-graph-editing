@@ -40,7 +40,7 @@ từ phần test để đánh giá. Các cặp đối tượng của một ảnh
 Với $N$ đối tượng, mô hình chấm $N(N-1)$ cặp có hướng và trả về danh sách
 triplet $(s,p,o)$ xếp theo predicate score. Mỗi cặp có 51 logits, gồm
 50 predicate và background. Khi đánh giá với
-\textit{graph constraint} (GC), nhóm giữ quan hệ có xác suất cao nhất trong
+quy tắc GC\footnote{GC = \textit{Graph Constraint}.}, nhóm giữ quan hệ có xác suất cao nhất trong
 50 quan hệ của mỗi cặp, sau đó xếp hạng tất cả các cặp trong cùng ảnh.
 Một dự đoán khớp chú thích khi đúng nhãn quan hệ, đúng hai lớp đối tượng theo
 thứ tự và độ giao trên hợp (IoU) của từng hộp với hộp chuẩn đạt ít nhất 0,5.
@@ -225,7 +225,7 @@ recall trung bình theo lớp tăng rõ dù recall trung bình theo ảnh giảm
 \textbf{Bộ ba chưa gặp trong train.} Tập test chứa 7.848 chú thích trên
 4.660 ảnh có tổ hợp (lớp chủ thể, quan hệ, lớp đích) chưa xuất hiện trong
 chú thích train. Nhóm giữ cách xếp hạng toàn ảnh và tính recall riêng cho
-các chú thích này (zR@50). Với cùng quy tắc GC, chín checkpoint thuộc ba cấu
+các chú thích này (zR@50). Với cùng quy tắc GC\footnote{GC = \textit{Graph Constraint}.}, chín checkpoint thuộc ba cấu
 hình fusion đạt trung bình 11,71\% khi tắt hiệu chỉnh, 11,43\% với KG thật
 tại cặp và 11,26\% với KG xáo trộn. Ưu thế mR@50 của pair fusion trên toàn
 tập vì thế chưa chuyển thành ưu thế trên các tổ hợp mới.
@@ -244,7 +244,7 @@ Hộp đỏ đánh dấu chủ thể, hộp xanh đánh dấu đối tượng đ
 nhãn cho cả hai cặp, nhưng chỉ bộ ba ở hạng 1 được tính trúng trong top-50.
 Bộ ba ở hạng 64 được thu hồi khi tăng ngưỡng lên 100. Một cơ chế bỏ sót khác
 xuất hiện ở ảnh số 3. Cặp \textit{girl--hair} có cả hai nhãn chuẩn \textit{has}
-và \textit{with}. GC chỉ giữ \textit{with}. Hai ví dụ cho thấy cần xem cả
+và \textit{with}. Quy tắc \textit{Graph Constraint} chỉ giữ \textit{with}. Hai ví dụ cho thấy cần xem cả
 điểm xếp hạng và số nhãn chuẩn của cặp trước khi quy lỗi cho bộ phân lớp.
 Phụ lục~\ref{app:vgcases} liệt kê đủ năm trường hợp trúng và năm trường hợp
 bỏ sót đã chọn trên validation.
