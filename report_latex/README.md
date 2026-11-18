@@ -25,7 +25,7 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 Để ưu tiên đúng file lớp từ checkout Seminar khi build trong repo:
 
 ```sh
-TEXINPUTS=.:../../25C15039-25C15062/: latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+TEXINPUTS=.:../25C15039-25C15062/: latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 ```
 
 Trên Overleaf, nhập ZIP nguồn, đặt tài liệu chính là `main.tex` và chọn
