@@ -30,8 +30,10 @@ rồi chọn **Run All**. Notebook dùng Python 3.10+, Jupyter, pandas và Matpl
 - Phần 3 xuất các hàng điểm tuyệt đối tại K=100 cho Bảng II và vẽ chênh lệch
   tại K=50 sau khi ghép seed. Các cell hiển thị cả điểm và hiệu theo từng seed.
 
-Ba tệp sinh ra là **vg-train-predicates.pdf**, **vg-ablation-deltas.pdf** và
-**vg-ablation-at100.tex** trong thư mục figures của báo cáo.
+- Phần 4 ghép năm hàng hình H01–M01 đến H05–M05 từ các PNG từng ca và nhãn trong **cases.json**. Mỗi hàng được lưu thành một PDF riêng để cặp ảnh luôn cùng trang.
+
+Các tệp từ phần 1–3 là **vg-train-predicates.pdf**, **vg-ablation-deltas.pdf** và
+**vg-ablation-at100.tex** trong thư mục figures của báo cáo. Phần 4 xuất **vg-pair-01.pdf** đến **vg-pair-05.pdf** vào cùng thư mục.
 
 ## Đối chiếu nội dung từ gốc repository
 
@@ -42,4 +44,4 @@ Ba tệp sinh ra là **vg-train-predicates.pdf**, **vg-ablation-deltas.pdf** và
 | Hai bảng test GC và các hiệu số ghép seed | `reports/level1/reference-test27-v1/{summary,comparisons}.json` và `reports/level1/reference-loss-fusion-test27-v1/{summary,analysis}.json` |
 | Long-tail và zero-shot | `reports/level1/test-tail-zero-v1/{long-tail,zero-shot}.md` |
 | Hình mở đầu | Hình 1, trang 1, Zellers và cộng sự, *Neural Motifs*, CVPR 2018. Cắt từ bản PDF tác giả `1711.06640v2.pdf`; panel Input dùng vùng ảnh có bounding boxes. Panel Output minh họa một ground-truth triplet của cùng hình. |
-| Ảnh định tính và kiểm tay | `reports/level1/submission/cases/{cases.json,analysis.md,human-review.csv,hit03.png,miss03.png}`; hai contact sheet có trong `latex_report_source/figures/`. Biên bản chưa có xác nhận của người duyệt. |
+| Ảnh định tính và kiểm tay | `reports/level1/submission/cases/{cases.json,analysis.md,human-review.csv,hit01..05.png,miss01..05.png}`. Biên bản chưa có xác nhận của người duyệt. |
