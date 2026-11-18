@@ -1,0 +1,59 @@
+% !TEX program = xelatex
+\documentclass[conference,a4paper]{IEEEtran}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}
+\usepackage{amsmath,amssymb,graphicx,booktabs,tabularx,multirow}
+\usepackage{float,adjustbox,tikz,pgfplots}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\pgfplotsset{compat=1.18}
+\definecolor{inkblue}{HTML}{193C65}
+\definecolor{mutedblue}{HTML}{EAF1F7}
+\definecolor{cgreen}{HTML}{296B53}
+\definecolor{cred}{HTML}{9D4D45}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage[backend=biber,style=ieee,sorting=none,maxbibnames=4]{biblatex}
+\addbibresource{ref.bib}
+\graphicspath{{./}{../../latex_report_source/}{../pvsg-trd-m5-v1/}}
+\newcommand{\nd}{\textemdash}
+\newcommand{\srcnote}[1]{\par\smallskip{\raggedright\footnotesize #1\par}\smallskip}
+\newcommand{\reporttodo}[2]{\par\smallskip\noindent\textit{Bằng chứng còn thiếu (#1).} #2\par}
+\renewcommand{\tablename}{Bảng}
+\renewcommand{\figurename}{Hình}
+\renewcommand{\abstractname}{Tóm tắt}
+\renewcommand{\IEEEkeywordsname}{Từ khóa}
+\renewcommand{\appendixname}{Phụ lục}
+\title{Biểu diễn đồ thị ngữ nghĩa cho chỉnh sửa ảnh\\và dự đoán quan hệ trong video}
+\author{\IEEEauthorblockN{Hồ Thanh Bình, Dương Thuỷ Tiên, Bùi Mạnh Hùng, Nguyễn Đăng Khoa, Nguyễn Đăng Thới Toàn}
+\IEEEauthorblockA{Khoa Công nghệ Thông tin, Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM\\
+Học máy với dữ liệu đồ thị, 2026\\
+Giảng viên hướng dẫn: PGS. TS. Lê Ngọc Thành và ThS. Huỳnh Lâm Hải Đăng}}
+\begin{document}
+\maketitle
+\begin{abstract}
+Đồ án dùng đồ thị cảnh để trả lời ba câu hỏi: quan hệ nào tồn tại giữa hai đối tượng,
+cần sửa thành phần nào của đồ thị theo câu lệnh và ảnh sau chỉnh sửa có giữ đúng
+nội dung yêu cầu hay không. Trên VG150, GAT tăng 1,65 điểm phần trăm mR@50 so
+với MLP. Điều chỉnh hàm mất mát theo tần suất lớp tăng 6,48 điểm khi tắt tri thức
+nền. Ở bài toán biến đổi đồ thị, GNN đạt micro-F1 7,34\% trên MagicBrush và
+82,44\% trên bộ cặp đồ thị có cấu trúc EMNLP 2020. Trên 200 yêu cầu chỉnh sửa ảnh,
+điểm nhất quán đồ thị đánh giá được 45,5\% số cặp, với tương quan Spearman 0,1767
+so với nhãn người trên tập có điểm. Phần mở rộng video kiểm tra dự đoán quan hệ
+và thời gian trên track chuẩn của PVSG. Trong tám cấu hình, Temporal Conv đạt
+R@50 cao nhất (8,63\%), còn ST-GAT đạt mR@50 cao nhất (2,38\%).
+\end{abstract}
+\begin{IEEEkeywords}
+đồ thị cảnh, dự đoán quan hệ, chỉnh sửa đồ thị, nhất quán ngữ nghĩa, quan hệ theo thời gian
+\end{IEEEkeywords}
+\input{sections/overview}
+\input{sections/vg}
+\input{sections/gqa}
+\input{sections/edits}
+\input{sections/consistency}
+\input{sections/video}
+\input{sections/discussion}
+\printbibliography[title={Tài liệu tham khảo}]
+\onecolumn
+\appendices
+\input{sections/appendix}
+\end{document}

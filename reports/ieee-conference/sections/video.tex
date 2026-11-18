@@ -1,0 +1,128 @@
+\section{Mở rộng sang video trên PVSG}
+\subsection{Từ một cạnh trong ảnh đến một quan hệ có thời hạn}
+Ở thiết lập PredCls trên ảnh tĩnh, mô hình có thể dự đoán một quan hệ cho cặp
+đối tượng từ một lần quan sát. Trong video, hai đối tượng có thể xuất hiện cùng
+nhau lâu hơn hành động liên kết chúng. Chẳng hạn, người và chiếc cốc có thể
+cùng ở trong khung hình cả trước khi người cầm cốc và sau khi đặt cốc xuống.
+Đầu ra vì thế gồm ID chủ thể $s$, predicate $p$, ID đối tượng $o$ và tập frame
+$A_{spo}$ trên đó quan hệ có hiệu lực. Một bộ ba có thể có nhiều đoạn rời nhau.
+Hai cặp có thứ tự $(s,o)$ và $(o,s)$ được chấm riêng.
+
+PVSG tách việc tìm và theo dõi vùng đối tượng khỏi việc tìm quan hệ trên
+các track~\cite{yang2023pvsg}. Thực nghiệm này cấp mask, nhãn lớp và ID chuẩn
+của đối tượng ở từng frame. ID nối các quan sát của cùng một đối tượng qua
+thời gian. Mô hình phải tự chọn cặp, predicate và khoảng thời gian. Thiết lập
+này cho phép quy khác biệt giữa các cấu hình cho phần dự đoán quan hệ khi đầu
+vào đối tượng như nhau. Phạm vi khác với kiểm tra bảo toàn nội dung sau khi
+chỉnh sửa video trên DAVIS hoặc YouTube-VOS được gợi ý trong đề.
+
+\subsection{Dữ liệu, căn chỉnh và biểu diễn}
+Bản PVSG phát hành gồm 400 video tại 5 frame/giây với 149.488 frame chú thích,
+126 lớp đối tượng và 57 predicate. Ba nguồn là VidOR (289 video), Ego4D (56)
+và EPIC-Kitchens (55). Nhóm giữ danh sách 338 video train và 62 video test
+của bản phát hành. Tập train được chia thành 287 video fit và 51 video
+validation. Việc chia theo video giữ các cửa sổ chồng lấn của một video trong
+cùng một tập. Có bốn nhóm ID nguồn Ego4D xuất hiện ở cả hai phía của split phát
+hành. Vì vậy độ độc lập theo cảnh quay gốc còn là một giới hạn.
+
+Mask xác định trục thời gian và vùng nhìn thấy của mỗi track. Kiểm tra media phát
+hiện bốn frame RGB thiếu; tại những vị trí này vẫn giữ thông tin hình học và
+cờ chỉ báo thiếu đặc trưng thị giác. Với nhãn quan hệ, nhóm lấy giao thời gian
+chú thích với các frame hai track cùng nhìn thấy. Các nhãn ngoài từ vựng,
+tham chiếu track sai và đoạn rỗng sau phép giao được ghi vào nhật ký xử lý.
+Cách làm này giữ nguyên danh sách video và cho mọi mô hình cùng một tập đích.
+CLIP ViT-B/32~\cite{radford2021clip} đóng băng trích vector ảnh 512 chiều; cache dùng chung cho cả
+400 video. Nhờ vậy có thể thay relation head mà vẫn dùng đúng đặc trưng
+của cùng một vùng trên cùng một frame.
+
+\subsection{Đồ thị và các mô hình đối chứng}
+Một đỉnh biểu diễn một đối tượng nhìn thấy tại một frame. Cạnh không gian
+cho phép trao đổi thông tin giữa đối tượng cùng frame. Cạnh thời gian nối hai
+quan sát liền kề của cùng track. Tập cặp cần dự đoán gồm mọi cặp có hướng,
+khác ID, có ít nhất một frame đồng hiện. Tập cặp này vẫn giữ nguyên khi bỏ
+cạnh truyền thông điệp trong mô hình. Nhờ đó ablation đo ảnh hưởng của ngữ
+cảnh mà không làm bài toán dễ đi bằng cách loại ứng viên.
+
+MLP mã hóa đối tượng và chấm từng cặp ở từng frame. Static GAT cho phép các
+đỉnh lấy ngữ cảnh trong một frame trước khi chấm cặp. ST-GAT thêm ngữ cảnh
+trên track; hai lớp thời gian cho trường tiếp nhận tối đa năm frame.
+Ba biến thể lần lượt bỏ cạnh thời gian, bỏ cạnh không gian và bỏ cả hai loại
+cạnh giữa các đỉnh. Cả ba giữ self-loop và cùng kiến trúc ST-GAT. Do đó Static
+GAT và ST-GAT bỏ cạnh thời gian vẫn là hai cấu hình riêng.
+
+Mô hình Temporal Conv xử lý chuỗi đặc trưng của cùng một cặp đối tượng. Khi một
+đối tượng khuất, chuỗi được tách tại chỗ mất đồng hiện. Conv kernel 5, ba lớp
+chuyển thể thiết kế trong mục 5.2 của bài PVSG. Nhóm dùng projection cặp và
+đầu ra đa nhãn chung thay cho các đầu ra riêng của OpenPVSG. Conv kernel 3,
+hai lớp là đối chứng bổ sung. Trường tiếp nhận tối đa tương ứng là 13 và 5 frame.
+Trong bài CVPR, segmentation và tracking cung cấp track dự đoán, nên điểm
+end-to-end còn phản ánh cả lỗi mask, lớp và liên kết ID. Bảng của nhóm chỉ so
+sánh trực tiếp tám cấu hình dùng cùng GT track.
+
+\subsection{Từ điểm từng frame đến khoảng dự đoán}
+Với mỗi cặp và frame hợp lệ, mô hình xuất 57 logits; masked binary
+cross-entropy cho phép nhiều quan hệ đồng thời. Khi đánh giá, cửa sổ dài 64
+frame, bước trượt 32. Với frame thuộc nhiều cửa sổ, lấy trung bình logits
+trước sigmoid rồi chọn các frame có xác suất ít nhất 0,5. Mỗi đoạn frame liên
+tiếp tạo một interval với hai đầu mút tính cả. Điểm xếp hạng của bộ ba là xác
+suất trung bình trên các frame đã chọn. Cách này trả về nhiều khoảng cho cùng
+bộ ba và xếp hạng sau khi đã ghép toàn bộ video.
+
+Gọi $A$ là tập frame dự đoán và $B$ là tập frame chuẩn của cùng bộ ba.
+Khi đó $\mathrm{tIoU}=|A\cap B|/|A\cup B|$. Ví dụ, nếu nhãn gồm các
+frame 10--14 và dự đoán gồm các frame 12--16, phần giao có ba frame và
+phần hợp có bảy; bộ ba đúng vẫn bị tính trượt ở ngưỡng 0,5. Khi $B$ có hai
+đoạn rời, phép tính trên tập frame giữ được khoảng trống giữa hai đoạn.
+
+Mỗi video lấy tối đa 50 bộ ba có điểm cao nhất. Một lượt trúng cần khớp
+đúng thứ tự hai track, predicate và đạt tIoU ít nhất 0,5. R@50 lấy tổng
+số trúng chia cho 931 bộ ba chuẩn trên 62 video. mR@50 tính recall riêng
+từng lớp rồi lấy trung bình trên 54 lớp có mặt trong test. Cách gộp này khác
+với trung bình trên từng ảnh trong protocol VG150.
+
+\subsection{Huấn luyện và chọn checkpoint}
+Mỗi cấu hình chạy ba seed 17, 42 và 2026 với batch 32, tối đa 150 epoch
+và patience 15. Tiêu chí chọn là mR@50 validation, hòa thì xét R@50 rồi
+lấy epoch sớm hơn. Sau khi xem validation và trước khi chấm test, nhóm
+áp dụng cùng một điều kiện kiểm tra hội tụ muộn cho toàn bộ 24 cặp mô hình/seed.
+Nếu lượt gốc dừng ở epoch 16 với cả hai recall validation bằng 0, huấn
+luyện lại từ đầu với cùng seed và chỉ cho phép dừng từ epoch 50.
+Bảng~\ref{tab:pvsg} gồm 17 lượt gốc và 7 lượt huấn luyện lại; mỗi seed
+đóng góp đúng một giá trị. Cách chọn bảo đảm cùng tiêu chí giữa các seed
+trong khi cho phép chi phí huấn luyện thực tế khác nhau. Bảy so sánh từng
+cặp nằm ở Phụ lục~\ref{app:late}.
+
+\begin{table}[!ht]\centering
+\caption{PVSG test trên track chuẩn. Bảng chính có tính hội tụ muộn;
+trung bình $\pm$ độ lệch chuẩn mẫu của ba seed, đơn vị \%.}\label{tab:pvsg}
+\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrr@{}}\toprule
+Mô hình & R@50 & mR@50\\\midrule
+MLP & $3,80\pm0,43$ & $1,62\pm0,12$\\
+Static GAT & $3,80\pm0,65$ & $1,68\pm0,17$\\
+ST-GAT & $4,98\pm0,27$ & $\mathbf{2,38\pm0,54}$\\
+ST-GAT bỏ cạnh thời gian & $3,58\pm1,35$ & $1,28\pm0,75$\\
+ST-GAT bỏ cạnh không gian & $3,47\pm1,20$ & $1,07\pm0,70$\\
+ST-GAT chỉ giữ self-loop & $3,62\pm0,16$ & $1,51\pm0,04$\\
+Conv kernel 3, hai lớp & $6,77\pm0,65$ & $1,29\pm0,26$\\
+Conv kernel 5, ba lớp & $\mathbf{8,63\pm0,61}$ & $1,25\pm0,25$\\
+\bottomrule\end{tabular}
+\end{table}
+
+\subsection{Recall tổng, recall theo lớp và sai số thời gian}
+Conv kernel 5 thu hồi nhiều bộ ba nhất; recall theo nguồn Ego4D,
+EPIC-Kitchens và VidOR lần lượt là 11,72\%, 10,67\% và 7,18\%. Khi xếp 57
+predicate theo tần suất trên tập fit và chia đều thành ba nhóm, mR@50 của
+Conv kernel 5 lần lượt là 3,56\%, 0,00\% và 0,00\% từ phổ biến đến hiếm.
+Một mô hình tập trung vào lớp phổ biến vì thế có thể tăng R@50 dù nhiều lớp
+chưa có lượt trúng. ST-GAT đầy đủ đạt mR@50 cao nhất và có mean cao hơn cả
+ba ablation cạnh. Với ba seed và độ phân tán quan sát được, đây là nhận xét
+về các lượt đã đo. Hai Conv khác cả độ sâu lẫn số tham số; mức tăng R@50
+của Conv kernel 5 chưa tách riêng được tác dụng của cửa sổ ngữ cảnh.
+
+Ở Static GAT seed 17, bộ ba $(8,20,4)$ trong video \path{0004_11566980553}
+được xếp trong top 50 nhưng đạt tIoU 0,289. Ở video
+\path{0039_6951351121}, bộ ba $(14,43,3)$ có tIoU đúng bằng 0,50 và được
+tính trúng. Hình~\ref{fig:timeline} đối chiếu một số tập frame chuẩn và dự
+đoán. Cả hai ví dụ cho thấy phân tích chỉ ở mức tên quan hệ dễ bỏ qua sai số
+định vị thời gian.
