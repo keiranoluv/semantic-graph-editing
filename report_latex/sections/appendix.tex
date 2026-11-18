@@ -1,9 +1,13 @@
-\section{Bảy lượt kiểm tra hội tụ muộn trên PVSG}\label{app:late}
-Mỗi hàng đối chiếu hai lượt có cùng mô hình và seed. Lượt gốc có cả hai
+\clearpage
+\section{Kiểm tra hội tụ muộn và dự đoán theo frame trên PVSG}\label{app:late}
+\enlargethispage{\baselineskip}
+\setlength{\intextsep}{3pt}
+\noindent\begin{minipage}[c]{.44\linewidth}
+Mỗi hàng ở Bảng~\ref{tab:late} đối chiếu hai lượt có cùng mô hình và seed. Lượt gốc có cả hai
 recall test bằng 0. Khi hoãn thời điểm được phép dừng, cả bảy lượt vẫn có
-recall validation bằng 0 đến hết epoch 16. Lượt trúng validation đầu tiên
-xuất hiện trong khoảng epoch 17--20. Bảng~\ref{tab:late} ghi kết quả test
-của checkpoint chọn bằng validation trong mỗi lượt kiểm tra bổ sung.
+recall validation bằng 0 đến hết epoch 16. Hit đầu tiên trên validation
+xuất hiện trong khoảng epoch 17--20. Nhóm chọn checkpoint bằng validation.
+\end{minipage}\hfill\begin{minipage}[c]{.52\linewidth}
 \begin{table}[H]\centering\small
 \caption{Kết quả từng seed khi hoãn early stopping. Đơn vị \%.}\label{tab:late}
 \begin{tabular}{@{}lrrr@{}}\toprule
@@ -17,10 +21,20 @@ Chỉ giữ self-loop & 42 & 3,65 & 1,55\\
 Chỉ giữ self-loop & 2026 & 3,44 & 1,46\\
 \bottomrule\end{tabular}
 \end{table}
-\section{Ví dụ thời gian trên track chuẩn}
+\end{minipage}
+\subsection{Năm Hit và năm Miss trên track chuẩn}
 \begin{figure}[H]\centering
-\includegraphics[width=.80\linewidth]{case_timelines.png}
-\caption{Đoạn chuẩn (GT, xanh lá) và đoạn dự đoán (PRED, xanh dương) của Static GAT seed 17. Mười trường
-hợp được lấy theo thứ tự video và bộ ba trong mỗi nhóm trúng hoặc bỏ sót.
-Mỗi hàng có trục frame riêng.}\label{fig:timeline}
+\includegraphics[width=.94\linewidth]{pvsg-running-track.pdf}
+\caption{Hit 2 của Static GAT (seed 17) trong video \texttt{0039\_6951351121}.
+Khung vàng đánh dấu cùng một người (track 5) chạy trên cỏ (track 3) ở frame 3
+và 67. Ở frame 40 vẫn có người trên sân, nhưng mask chuẩn không có track 5.
+Nhãn \textit{running on} của cặp này gồm hai đoạn 0--10 và 65--70.
+Timeline ở Hình~\ref{fig:timeline} cho thấy dự đoán đạt tIoU 0,67.}
+\label{fig:pvsg-running}
+\end{figure}
+\begin{figure}[H]\centering
+\includegraphics[width=.86\linewidth]{pvsg-case-timelines.pdf}
+\caption{Các đoạn GT (xanh lá) và Pred (xanh dương) của Static GAT seed 17. Mười trường
+hợp được lấy theo thứ tự video và bộ ba trong mỗi nhóm Hit hoặc Miss.
+Mỗi ô có trục frame riêng. Số cuối tiêu đề là tIoU; dòng Pred trống khi bộ ba vắng mặt trong top-50. \gtpredlegend}\label{fig:timeline}
 \end{figure}

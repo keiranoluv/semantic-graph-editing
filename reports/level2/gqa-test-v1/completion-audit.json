@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "completed": 27,
+  "test_images": 10696,
+  "identity": {
+    "plan_sha256": "3f3d25bc40b7f16dff2ba43cb2c9d98d96a9c5dfc42aa2a045bee685ed37d0b7",
+    "cache_manifest_sha256": "4d76c14bc916e8a1f112ae3eb47a86ffc2b83037fdf12f6d845bf0018b8cd183"
+  },
+  "checks": [
+    "current checkpoint/source inventory matches frozen plan",
+    "test cache shards verified",
+    "all result identities and metric hashes verified",
+    "summary recomputed from 27 results"
+  ]
+}

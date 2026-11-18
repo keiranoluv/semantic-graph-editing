@@ -1,9 +1,8 @@
-# Bản nháp 2 — Nhiệm vụ 1 trên VG150
+# Báo cáo IEEE Conference — VG150, GQA, VN100 và video PVSG
 
 Nguồn LaTeX theo mẫu Seminar ở `25C15039-25C15062/` (commit `5bdd556`).
-Bản nháp giữ Tóm tắt và Giới thiệu ở TBD. Phần đang duyệt là
-`sections/vg.tex`, kèm `sections/vg_cases.tex` sau tài liệu tham khảo.
-Các tệp LaTeX của những nhiệm vụ khác thuộc bản trước và chưa được đưa vào PDF này.
+Bản hiện tại gồm Nhiệm vụ 1 trên VG150, Task A của Nhiệm vụ 2 trên GQA, Nhiệm vụ 3 trên VN100 và phần mở rộng video trên PVSG.
+Phụ lục A/B minh họa dự đoán trên validation, C bổ sung kết quả VN100 và D trình bày bảy lượt kiểm tra hội tụ muộn cùng mười timeline PVSG. Task B ở trạng thái TBD.
 
 ## Biên dịch
 
@@ -30,10 +29,25 @@ rồi chọn **Run All**. Notebook dùng Python 3.10+, Jupyter, pandas và Matpl
 - Phần 3 xuất các hàng điểm tuyệt đối tại K=100 cho Bảng II và vẽ chênh lệch
   tại K=50 sau khi ghép seed. Các cell hiển thị cả điểm và hiệu theo từng seed.
 
-- Phần 4 ghép năm hàng hình H01–M01 đến H05–M05 từ các PNG từng ca và nhãn trong **cases.json**. Mỗi hàng được lưu thành một PDF riêng để cặp ảnh luôn cùng trang.
+- Phần 4 ghép năm hàng hình H01–M01 đến H05–M05 từ các PNG từng ca và nhãn trong **cases.json**. Mỗi hàng được lưu thành một PDF riêng, với Hit bên trái và Miss bên phải.
 
 Các tệp từ phần 1–3 là **vg-train-predicates.pdf**, **vg-ablation-deltas.pdf** và
 **vg-ablation-at100.tex** trong thư mục figures của báo cáo. Phần 4 xuất **vg-pair-01.pdf** đến **vg-pair-05.pdf** vào cùng thư mục.
+
+## Tái tạo bảng và hình trên GQA
+
+Mở [notebook GQA](../notebooks/gqa_report_results.ipynb) trong môi trường của dự án
+và chạy toàn bộ cell trên CPU. Notebook đối chiếu 27 kết quả trong
+`reports/level2/gqa-test-v1/` và xuất `figures/gqa-test-rows.tex`. Phần hình
+dùng cache validation, archive ảnh GQA và hai checkpoint PE-PLPR, PE-PLPR + AlignG
+(seed 42) trong workspace để xuất `figures/gqa-validation-cases.pdf`.
+Notebook đọc tần suất train từ `reports/level2/gqa-scale-audit-v1.json` để vẽ
+`figures/gqa-train-predicates.pdf`. Sơ đồ `figures/gqa-penet-aligng.pdf` dùng
+ảnh validation 1056, cùng annotation và dự đoán với ca Hit 4 trong phụ lục.
+
+## Tái tạo ảnh minh họa VN100
+
+Chạy [notebook Nhiệm vụ 3](../notebooks/level3_report_figures.ipynb) trên CPU trong workspace có ảnh pilot và VN100. Notebook dùng pdfLaTeX với phông tiếng Việt của báo cáo để xuất `nv3-sgg-pair.pdf`, `nv3-evaluation-cases.pdf` ở thân bài và hai hình `nv3-editor-pilot.pdf`, `nv3-color-case.pdf` ở Phụ lục C.
 
 ## Đối chiếu nội dung từ gốc repository
 
@@ -45,3 +59,7 @@ Các tệp từ phần 1–3 là **vg-train-predicates.pdf**, **vg-ablation-delt
 | Long-tail và zero-shot | `reports/level1/test-tail-zero-v1/{long-tail,zero-shot}.md` |
 | Hình mở đầu | Hình 1, trang 1, Zellers và cộng sự, *Neural Motifs*, CVPR 2018. Cắt từ bản PDF tác giả `1711.06640v2.pdf`; panel Input dùng vùng ảnh có bounding boxes. Panel Output minh họa một ground-truth triplet của cùng hình. |
 | Ảnh định tính và kiểm tay | `reports/level1/submission/cases/{cases.json,analysis.md,human-review.csv,hit01..05.png,miss01..05.png}`. Biên bản chưa có xác nhận của người duyệt. |
+
+## Hình và bảng PVSG
+
+Chạy [notebook PVSG](../notebooks/pvsg_report_figures.ipynb) trên CPU với PyAV, NumPy và Matplotlib. Notebook dùng kết quả M5, video VidOR và cache PVSG v4 để vẽ phân bố predicate trên tập fit, minh họa hai cặp track qua nhiều frame, dựng timeline Hit/Miss và tính lại bảng test theo ba seed.

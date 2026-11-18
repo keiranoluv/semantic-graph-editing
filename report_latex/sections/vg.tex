@@ -25,7 +25,8 @@ $\longrightarrow$\hfill
 \end{minipage}
 \caption{PredCls cho sẵn hai đối tượng. Với cặp có thứ tự
 \textit{(woman, motorcycle)}, nhãn quan hệ cần dự đoán là \textit{riding}.
-Ảnh và ví dụ ground truth trích từ Hình~1 của Zellers và cộng sự~\cite{zellers2018neuralmotifs}.}
+Ảnh và bộ ba GT trích từ Hình~1 của Zellers và cộng sự~\cite{zellers2018neuralmotifs}.
+GT = \textit{Ground Truth} (nhãn chuẩn).}
 \label{fig:motifs}
 \end{figure}
 
@@ -44,6 +45,8 @@ quy tắc GC\footnote{GC = \textit{Graph Constraint}.}, nhóm giữ quan hệ c�
 50 quan hệ của mỗi cặp, sau đó xếp hạng tất cả các cặp trong cùng ảnh.
 Một dự đoán khớp chú thích khi đúng nhãn quan hệ, đúng hai lớp đối tượng theo
 thứ tự và độ giao trên hợp (IoU) của từng hộp với hộp chuẩn đạt ít nhất 0,5.
+Ở ngưỡng top-$K$, một bộ ba GT được tính là \textit{Hit} nếu có dự đoán khớp
+trong $K$ hạng đầu. Các bộ ba GT còn lại được tính là \textit{Miss}.
 
 \textbf{R@K} đo tỷ lệ quan hệ chuẩn được tìm thấy trong top-$K$ dự đoán
 của mỗi ảnh, rồi lấy trung bình qua ảnh. \textbf{mR@K} tính recall theo ảnh
@@ -54,7 +57,7 @@ trên test. Nhóm chấm lại các checkpoint đã chọn bằng validation. T�
 này đã từng được đánh giá bằng bộ chấm trước đó. Theo đề bài, nhóm báo cáo cả $K=50$ và $K=100$.
 
 \subsection{Baseline MLP và mô hình GAT}
-Mỗi đối tượng có một \textit{node feature} 549 chiều. Vector này ghép
+Mỗi đối tượng có một vector đặc trưng đỉnh 549 chiều. Vector này ghép
 512 chiều từ CLIP ViT-B/32 đóng băng trên vùng ảnh~\cite{radford2021clip},
 5 chiều \textit{box geometry} (tâm, rộng, cao và diện tích chuẩn hóa)
 và 32 chiều \textit{object-label embedding} học trên tập train.
@@ -66,15 +69,15 @@ $1098\to256\to51$, với ReLU ở giữa. Mỗi cặp được chấm độc l�
 \textbf{Graph Attention Network (GAT).} Sau linear projection $549\to256$,
 hai GAT layer thực hiện \textit{message passing} trên đồ thị có hướng nối
 mọi cặp đối tượng trong ảnh, có \textit{self-loop}. Mỗi layer dùng bốn
-\textit{attention head} để tổng hợp đặc trưng từ các node lân cận
-theo trọng số học được~\cite{velickovic2018gat}. Hai node embedding sau
+\textit{attention head} để tổng hợp đặc trưng từ các đỉnh lân cận
+theo trọng số học được~\cite{velickovic2018gat}. Hai vector biểu diễn đỉnh sau
 message passing được ghép lại và đưa qua pair classifier $512\to256\to51$
 với ReLU và dropout 0,1. Cả MLP và GAT đều trả về 51 logits cho mỗi cặp (Hình~\ref{fig:vg-arch}).
 
 \begin{figure}[!ht]\centering
 \begin{tikzpicture}[>=Latex,font=\footnotesize,align=center,
  box/.style={draw=inkblue,rounded corners=2pt,inner sep=3pt}]
-\node[box] (in) {Node features (549-D)};
+\node[box] (in) {Đặc trưng đỉnh (549 chiều)};
 \node[box,below left=4mm and 2mm of in.south] (mlp) {MLP\\Pair concatenation};
 \node[box,below right=4mm and 2mm of in.south] (gat) {GAT\\Message passing\\Pair concatenation};
 \node[box,below=20mm of in.south] (out) {Pair classifier: 51 logits};
@@ -83,7 +86,7 @@ với ReLU và dropout 0,1. Cả MLP và GAT đều trả về 51 logits cho m�
 \draw[->] (mlp.south) -- (out.north);
 \draw[->] (gat.south) -- (out.north);
 \end{tikzpicture}
-\caption{MLP và GAT chấm cùng các cặp $(s,o)$. GAT cập nhật node embedding
+\caption{MLP và GAT chấm cùng các cặp $(s,o)$. GAT cập nhật biểu diễn đỉnh
 bằng thông tin từ các đối tượng khác trước khi ghép cặp.}
 \label{fig:vg-arch}
 \end{figure}
@@ -124,7 +127,7 @@ liên kết được 138/150 lớp. Nhóm dùng TransE cho cả hai nguồn, đ�
 RotatE và ComplEx trên ConceptNet~\cite{bordes2013transe,sun2019rotate,trouillon2016complex}.
 
 \textbf{Pair-level KG fusion.} Với \textit{pair fusion}, hai vector tri thức của
-chủ thể và đích tạo ra phần hiệu chỉnh cộng vào điểm quan hệ của GAT.
+subject và object tạo ra phần hiệu chỉnh cộng vào điểm quan hệ của GAT.
 Một \textit{gate} học được điều khiển biên độ hiệu chỉnh. Với \textit{visual fusion},
 gate còn nhận đặc trưng GAT của hai đối tượng trong ảnh và điều tiết riêng
 cho từng quan hệ. Để kiểm tra vai trò của ánh xạ lớp--khái niệm, nhóm giữ
@@ -223,7 +226,7 @@ còn nhóm phổ biến giảm từ 51,10 xuống 50,72\%. Kết quả này gi�
 recall trung bình theo lớp tăng rõ dù recall trung bình theo ảnh giảm.
 
 \textbf{Bộ ba chưa gặp trong train.} Tập test chứa 7.848 chú thích trên
-4.660 ảnh có tổ hợp (lớp chủ thể, quan hệ, lớp đích) chưa xuất hiện trong
+4.660 ảnh có tổ hợp (lớp subject, predicate, lớp object) chưa xuất hiện trong
 chú thích train. Nhóm giữ cách xếp hạng toàn ảnh và tính recall riêng cho
 các chú thích này (zR@50). Với cùng quy tắc GC\footnote{GC = \textit{Graph Constraint}.}, chín checkpoint thuộc ba cấu
 hình fusion đạt trung bình 11,71\% khi tắt hiệu chỉnh, 11,43\% với KG thật
@@ -232,19 +235,30 @@ tập vì thế chưa chuyển thành ưu thế trên các tổ hợp mới.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=.48\columnwidth]{hit03.png}\hfill
-\includegraphics[width=.48\columnwidth]{miss03.png}
+\includegraphics[width=\columnwidth]{vg-pair-03.pdf}
 \caption{Hai cặp trong cùng ảnh validation số 89, chấm bằng GAT seed 42.
-Hộp đỏ đánh dấu chủ thể, hộp xanh đánh dấu đối tượng đích. Trái:
-\textit{flower--in--vase}, hạng 1. Phải: \textit{shelf--on--table}, hạng 64.}
+Hộp đỏ đánh dấu subject, hộp xanh đánh dấu object. Hit 3 (trái) đứng hạng 1.
+Miss 3 (phải) khớp nhãn nhưng đứng hạng 64, ngoài top-50. \gtpredlegend}
 \label{fig:vg-paired}
 \end{figure}
 
 \textbf{Một ảnh, hai kết quả.} Ở Hình~\ref{fig:vg-paired}, GAT chọn đúng
-nhãn cho cả hai cặp, nhưng chỉ bộ ba ở hạng 1 được tính trúng trong top-50.
+nhãn cho cả hai cặp, nhưng chỉ bộ ba ở hạng 1 được tính là Hit trong top-50.
 Bộ ba ở hạng 64 được tìm thấy trong top-100. Một cơ chế bỏ sót khác
 xuất hiện ở ảnh số 3. Cặp \textit{girl--hair} có cả hai nhãn chuẩn \textit{has}
 và \textit{with}. Quy tắc \textit{Graph Constraint} chỉ giữ \textit{with}. Hai ví dụ cho thấy cần xem cả
 điểm xếp hạng và số nhãn chuẩn của cặp trước khi quy lỗi cho bộ phân lớp.
-Phụ lục~\ref{app:vgcases} liệt kê đủ năm trường hợp trúng và năm trường hợp
-bỏ sót đã chọn trên validation.
+Phụ lục~\ref{app:vgcases} liệt kê đủ năm ca Hit và năm ca Miss đã chọn trên validation.
+
+\subsection{Kết luận Nhiệm vụ 1}
+Với bounding box và nhãn đối tượng cho trước trên VG150, nhóm đã dự đoán
+quan hệ cho từng cặp có hướng và so sánh GAT với baseline phi đồ thị MLP.
+Trên tập test, mR@50 trung bình qua ba seed đạt 18,61\% với GAT và
+16,95\% với MLP. Nhóm đã đánh giá R@50/100 và mR@50/100, tích hợp KG
+tại đỉnh và kiểm tra riêng ảnh hưởng của việc bỏ KG hoặc bỏ cạnh.
+
+Phần mở rộng khảo sát \textit{logit-adjusted loss} và cách kết hợp KG.
+Khi tắt KG, thay cross-entropy bằng adjusted loss giúp mR@50 tăng
+6,48 điểm phần trăm, đồng thời R@50 giảm 2,24 điểm phần trăm.
+Với \textit{pair fusion}, lợi thế của KG thật so với \textit{shuffled-KG}
+chỉ đạt 0,24 điểm phần trăm mR@50 và thay đổi theo seed.

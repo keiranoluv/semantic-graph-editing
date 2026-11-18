@@ -6,6 +6,7 @@
 \IEEEoverridecommandlockouts
 \usepackage{amsmath,amssymb,graphicx,booktabs,tabularx,multirow}
 \usepackage{float,adjustbox,tikz,pgfplots}
+\usepackage{placeins}
 \usetikzlibrary{arrows.meta,positioning,calc}
 \pgfplotsset{compat=1.18}
 \definecolor{inkblue}{HTML}{193C65}
@@ -21,6 +22,7 @@
 \addbibresource{ref.bib}
 \graphicspath{{figures/}{../reports/level1/submission/cases/}{../latex_report_source/figures/}}
 \newcommand{\nd}{\textemdash}
+\newcommand{\gtpredlegend}{GT = \textit{Ground Truth} (nhãn chuẩn). Pred = \textit{Prediction} (dự đoán).}
 \newcommand{\srcnote}[1]{\par\smallskip{\raggedright\footnotesize #1\par}\smallskip}
 \newcommand{\reporttodo}[2]{\par\smallskip\noindent\textit{Bằng chứng còn thiếu (#1).} #2\par}
 \addto\captionsvietnamese{%
@@ -35,8 +37,36 @@
 \input{frontmatter/abstract}
 \input{sections/overview}
 \input{sections/vg}
+\input{sections/gqa}
+\subsection{Task B. Dự đoán thao tác chỉnh sửa đồ thị}
+TBD
+\input{sections/consistency}
+\input{sections/video}
+\section{Kết luận}
+Nhóm đã so sánh GAT với MLP và kiểm tra vai trò của tri thức nền trong
+dự đoán quan hệ trên VG150. Trên GQA, nhóm điều chỉnh đầu vào của PE-Net
+(CVPR 2023) để dùng đặc trưng CLIP trong cùng bài toán PredCls.
+Với MagicBrush, nhóm xây dựng bộ cặp chỉnh sửa, kiểm tra tay một phần nhãn
+và huấn luyện mô hình dự đoán thao tác thêm, xóa, thay đỉnh hoặc cạnh từ
+đồ thị nguồn và yêu cầu chỉnh sửa. Trên bộ đánh giá VN100 do nhóm xây dựng,
+nhóm đối chiếu điểm đồ thị với nhãn tay, CLIPScore và LPIPS để đánh giá
+việc thực hiện yêu cầu và bảo toàn nội dung.
+
+Nhóm mở rộng thực nghiệm bằng cách kiểm chứng cơ chế phản hồi
+prototype của AlignG (ICML 2026) trên GQA và dự đoán quan hệ theo thời gian
+trên video PVSG. Khó khăn chính trên MagicBrush là ghép cùng một đối tượng
+giữa hai ảnh và xác định thay đổi nào do câu lệnh yêu cầu. Thử nghiệm trên
+EMNLP 2020 cho thấy mô hình học tốt thao tác xóa khi có sẵn đồ thị nguồn và đích.
+Trên VN100, đồ thị thiếu thuộc tính màu nên bộ chấm chưa đánh giá được
+các yêu cầu đổi màu. Bộ chấm cũng chưa dùng trực tiếp
+các thao tác do mô hình chỉnh sửa đồ thị dự đoán.
+
+\renewcommand*{\bibfont}{\normalfont\footnotesize}
 \printbibliography[title={Tài liệu tham khảo}]
 \onecolumn
 \appendices
 \input{sections/vg_cases}
+\input{sections/gqa_cases}
+\input{sections/consistency_appendix}
+\input{sections/appendix}
 \end{document}

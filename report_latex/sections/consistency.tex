@@ -1,76 +1,116 @@
 
 \section{Nhiệm vụ 3 -- Đánh giá nhất quán ngữ nghĩa}
-\subsection{Benchmark, mô hình và luồng đánh giá}
-VN100 có 100 ảnh nguồn và 200 yêu cầu: mỗi ảnh có hai edit độc lập bắt đầu từ
-ảnh gốc. Qwen-Image-2.1 sinh ảnh đích với BF16, 40 steps, batch 1, seed 42;
-REACT++ pretrained sinh 100 graph nguồn và 200 graph đích~\cite{qwenimage21,reactplusplus}.
-Không huấn luyện lại editor hoặc extractor.
-
 \begin{figure*}[!t]\centering
 \begin{tikzpicture}[font=\scriptsize,>=Latex,node distance=7mm and 5mm,
 b/.style={draw=inkblue,fill=mutedblue,rounded corners,align=center,text width=31mm,minimum height=11mm}]
-\node[b] (images) {100 ảnh nguồn\\200 instruction};
+\node[b] (images) {100 ảnh nguồn\\200 yêu cầu chỉnh sửa};
 \node[b,right=of images] (edit) {Qwen-Image-2.1\\200 ảnh đích};
-\node[b,right=of edit] (graphs) {REACT++\\graph nguồn/đích};
-\node[b,right=of graphs] (score) {Alignment + scoring\\$E,P,G$};
+\node[b,right=of edit] (graphs) {REACT++\\Đồ thị nguồn/đích};
+\node[b,right=of graphs] (score) {Căn chỉnh và chấm điểm\\$E,P,G$};
 \draw[->] (images)--(edit);\draw[->] (edit)--(graphs);\draw[->] (graphs)--(score);
-\node[b,below=of edit] (human) {Nhãn tay\\fulfillment/preservation};
+\node[b,below=of edit] (human) {Nhãn tay\\Thực hiện yêu cầu\\Bảo toàn nội dung};
 \node[b,below=of score] (eval) {Đánh giá tương quan\\cùng CLIPScore/$-$LPIPS};
 \draw[->] (score)--(eval);\draw[->] (human)--(eval);
 \end{tikzpicture}
-\caption{Nhãn tay chỉ đi vào bước đánh giá tương quan. Scorer dùng grounding
-instruction đã chuẩn bị, chưa nhận operation dự đoán từ Task 2.}
+\caption{Người duyệt chấm mức thực hiện yêu cầu (\textit{fulfillment}) và bảo toàn nội dung (\textit{preservation}).
+Nhãn tay chỉ đi vào bước đánh giá tương quan. Bộ chấm dùng thông tin định vị đối tượng trong yêu cầu chỉnh sửa đã chuẩn bị trước, chưa dùng thao tác do Task B dự đoán.}
 \end{figure*}
 
-\begin{table}[!ht]\centering\small
-\caption{Thiết lập alignment và scoring.}
-\begin{tabularx}{\linewidth}{@{}p{24mm}X@{}}\toprule
-Thành phần & Quy tắc\\\midrule
-Cặp node ứng viên & Nhãn chuẩn hóa bằng nhau, IoU hộp ít nhất 0,3.\\
-Matching & Hungarian: tối đa số cặp hợp lệ, sau đó tối đa tổng IoU.\\
-Mơ hồ & Chênh IoU so với ứng viên cạnh tranh dưới 0,05.\\
-Bằng chứng edit & Confidence ít nhất 0,4; IoU 0,5 để phát hiện khả năng relabel.\\
-Add / remove / replace & Node mới đúng lớp và ROI / mất instance và giảm count / kết hợp xóa và thêm.\\
-Abstention & Thiếu bằng chứng hoặc alignment mơ hồ: null, không tự gán 0.\\
-\bottomrule\end{tabularx}\end{table}
+\begin{figure*}[!t]\centering
+\includegraphics[width=.93\textwidth]{nv3-sgg-pair.pdf}
+\caption{Đồ thị cảnh do REACT++ trích từ ảnh nguồn (trái) và ảnh Qwen (phải) ở ca 69,
+VietTravelVQA-v2. Dưới mỗi ảnh là toàn bộ đồ thị do mô hình dự đoán. Khung vàng định vị
+thuyền mới, cùng màu với đỉnh \textit{boat} và hai cạnh mới. Mũi tên đi từ subject tới object.}
+\label{fig:nv3-sgg}
+\end{figure*}
 
-Gọi $\mathcal C$ là tập kiểm tra nhị phân quan sát được của instruction,
-$V^p,E^p$ là node/cạnh được bảo vệ sau khi loại phần được phép chỉnh sửa:
+\subsection{Lựa chọn mô hình từ các thử nghiệm ban đầu}
+\subsubsection{Công cụ chỉnh sửa ảnh}
+Nhóm chọn Qwen-Image-2.1~\cite{qwenimage21} vì trên các ca thay ghế và xóa xe,
+ảnh do Qwen sinh bám sát yêu cầu và giữ bố cục ảnh nguồn tốt hơn
+InstructPix2Pix~\cite{brooks2023instructpix2pix}. Với yêu cầu thay ghế xanh
+bằng chậu cây, Qwen đặt cây vào đúng vị trí và giữ lại người ngồi cùng chiếc
+ghế vàng. InstructPix2Pix biến cả cảnh cửa hàng thành sân vườn.
+Bảng~\ref{tab:task3-editor-pilot} ở Phụ lục~\ref{app:nv3} đối chiếu ba ví dụ trên cùng ảnh nguồn và prompt.
+Hai mô hình chỉnh sửa dùng số bước suy luận, độ phân giải đầu ra
+và seed thực tế khác nhau, nên pilot chỉ cung cấp đối chiếu định tính.
+
+\subsubsection{Bộ trích đồ thị cảnh}
+Nhóm đã chạy RelTR + CLIP trên 30 ảnh nguồn. Từ đó, nhóm dùng cùng 5 ảnh
+(3 ảnh vỉa hè, 2 ảnh du lịch) để xem bounding box và quan hệ có hướng của
+bốn phương án ở Bảng~\ref{tab:task3-extractor-pilot} (Phụ lục~\ref{app:nv3}). Nhóm chọn
+REACT++~\cite{reactplusplus} vì khi đối chiếu đồ thị với ảnh, nhóm có thể xác định
+từng instance qua bounding box và kiểm tra các quan hệ có hướng. Trên các mẫu
+đã duyệt, kết quả đủ tin cậy để phân tích từng ca, dù đôi khi quan hệ
+\textit{sitting on} trỏ nhầm ghế. Đây là đánh giá định tính trên mẫu.
+REACT++ xuất nhãn đối tượng và predicate, nhưng thiếu thuộc tính màu trên đỉnh.
+Vì vậy, nhóm đưa yêu cầu đổi màu vào bộ đánh giá để kiểm tra giới hạn này.
+
+\subsection{Benchmark, mô hình và luồng đánh giá}
+Nhóm xây dựng VN100 từ hai dataset công khai. Vietnamese Sidewalk Violation
+VQA~\cite{vnSidewalkVQA} cung cấp 50 ảnh vỉa hè và
+VietTravelVQA-v2~\cite{vietTravelVQAv2} cung cấp 50 ảnh du lịch, di sản và phong cảnh.
+Mỗi ảnh nguồn đi kèm hai yêu cầu độc lập. Cả hai lần chỉnh sửa đều bắt đầu từ
+ảnh gốc, tạo thành 200 cặp trước/sau. Qwen-Image-2.1 sinh ảnh đích với BF16, 40 steps, batch 1, seed 42;
+REACT++ sinh 100 đồ thị nguồn và 200 đồ thị đích~\cite{qwenimage21,reactplusplus}.
+Hai mô hình chạy ở chế độ suy luận với trọng số tiền huấn luyện.
+
+\begin{figure*}[!t]\centering
+\includegraphics[width=.97\textwidth]{nv3-evaluation-cases.pdf}
+\caption{Ba ca bất đồng trên ảnh VietTravelVQA-v2. So sánh ảnh nguồn (trái) với ảnh Qwen (giữa).
+Ở ca 58, khung vàng đánh dấu thuyền mới và ô phải là vùng crop $224\times224$ thực tế của CLIP.
+Ở ca 168 và 178, ô phải phóng to vùng khung vàng, kèm bounding box và nhãn của REACT++.
+Hai nhãn tay dưới mỗi yêu cầu lần lượt là thực hiện yêu cầu và bảo toàn nội dung.}
+\label{fig:nv3-real-cases}
+\end{figure*}
+
+Trong 100 yêu cầu bổ sung, nhóm chọn trước 10 yêu cầu chỉnh sửa màu
+(5 ảnh vỉa hè và 5 ảnh du lịch) để kiểm tra giới hạn biểu diễn của REACT++.
+Chẳng hạn, yêu cầu số 109 đề nghị Qwen đổi chiếc ghế nhựa vàng trước cửa hàng
+sang màu xanh dương và giữ nguyên phần còn lại. Dù Qwen đổi màu đúng, đỉnh
+\textit{chair} và các cạnh nối với nó vẫn có thể giữ nguyên. Người duyệt có
+thể đối chiếu màu trên ảnh nguồn và ảnh đích, còn đồ thị thiếu thuộc tính để
+xác nhận thay đổi này.
+
+Hình~\ref{fig:nv3-sgg} minh họa cách dùng hai đồ thị cảnh để chấm một lần chỉnh sửa.
+REACT++ phát hiện thêm \textit{boat} ở ảnh đích. Sau khi ghép instance theo
+nhãn và IoU giữa các bounding box, ba đỉnh nền và hai cạnh giữa chúng đều
+được giữ lại. Bảng~\ref{tab:nv3-matching} ghi các ngưỡng dùng trong bước ghép.
+
+Gọi $\mathcal C$ là tập các kiểm tra nhị phân cho yêu cầu chỉnh sửa. Điểm
+thực hiện yêu cầu $E$ là trung bình các kết quả khi mọi kiểm tra đều xác định.
+Để chấm bảo toàn nội dung, nhóm loại phần được phép chỉnh sửa và đưa các instance
+đã ghép về cùng hệ ID. Gọi $V_s,V_t$ là hai tập đỉnh còn lại ở ảnh nguồn
+và ảnh đích, $R_s,R_t$ là hai tập cạnh có hướng tương ứng. Với hệ số Dice
+$D$, nhóm tính
 \[
-E=\frac{1}{|\mathcal C|}\sum_{c\in\mathcal C}c,\qquad
-D(A,B)=\frac{2|A\cap B|}{|A|+|B|},
+E = \frac{1}{|\mathcal C|}\sum_{c\in\mathcal C} c, \qquad
+D(A,B) = \frac{2|A\cap B|}{|A|+|B|}.
 \]
 \[
-P=\operatorname{mean}\{D(V_s^p,V_t^p),D(E_s^p,E_t^p)\}_{\mathrm{defined}},
-\qquad G=E\,P.
+P = \operatorname{mean}\bigl\{D(V_s,V_t),\,D(R_s,R_t)\bigr\}_{\rm defined}.
 \]
-Các tập đích được đưa về hệ ID nguồn qua alignment; cạnh là triplet có hướng.
-$E$ chỉ xác định khi mọi kiểm tra cần thiết xác định. Mười edit màu có
-$E=G=\mathrm{null}$ vì graph không chứa màu; $P$ cấu trúc chỉ là chẩn đoán.
-\reporttodo{3-1}{Hoàn thiện data card VN100, nguồn/giấy phép từng ảnh và minh chứng
-được phép sử dụng. Thêm kiểm tay mẫu graph để đo độ tin cậy REACT++ trên benchmark.}
+Trung bình trong $P$ chỉ lấy thành phần Dice có mẫu số dương. Khi cả hai
+điểm đều xác định và bộ chấm có đủ bằng chứng để chấm, điểm nhất quán là
+\[
+G = E \cdot P.
+\]
+Ở ca minh họa, $E=1$ vì thuyền mới xuất hiện đúng vùng và $P=1$ vì phần đồ thị
+được bảo vệ giữ nguyên, nên $G=1$. Với yêu cầu đổi màu, $E$ và $G$ đều
+không xác định. Bộ chấm cũng có thể từ chối chấm khi việc ghép các instance
+cần bảo toàn còn mơ hồ.
 
-
-\subsection{Tương quan, error bar và coverage}
-Nhãn tổng là AND của fulfillment và preservation: 175/200 cặp đạt, 25 không đạt.
+\subsection{Tương quan, khoảng tin cậy và độ phủ}
+Một cặp đạt khi người duyệt xác nhận cả hai tiêu chí thực hiện yêu cầu và bảo toàn nội dung. Có 175/200 cặp đạt, 25 cặp không đạt.
 Có 287 ô trống trên 144 cặp được chuẩn hóa thành đạt theo xác nhận của người duyệt;
 đây là một phần protocol nhãn, không phải suy luận tự động từ ô trống.
 Tập giao có đủ $G$ gồm 91 cặp thuộc 62 ảnh, với 82 đạt và 9 không đạt.
-
-\begin{table}[!ht]\centering\small
-\caption{Spearman với nhãn tổng trên cùng $N=91$; bootstrap 2.000 lượt theo cụm ảnh, seed 42.}\label{tab:corr}
-\begin{adjustbox}{max width=\linewidth}\begin{tabular}{@{}lrc@{}}\toprule
-Điểm & $\rho$ & Khoảng bootstrap 95\%\\\midrule
-Graph $G$ & 0,1767 & $[-0,0304;\ 0,3571]$\\
-CLIPScore & 0,0561 & $[-0,1245;\ 0,2233]$\\
-$-\mathrm{LPIPS}$ & 0,1962 & $[-0,0178;\ 0,3908]$\\
-\bottomrule\end{tabular}\end{adjustbox}\end{table}
 
 \begin{figure}[!ht]\centering
 \begin{tikzpicture}
 \begin{axis}[width=.85\linewidth,height=4.6cm,xmin=-.18,xmax=.45,
 xtick={-.1,0,.1,.2,.3,.4},xticklabel style={/pgf/number format/fixed},
-ymin=.5,ymax=3.5,ytick={1,2,3},yticklabels={CLIPScore,Graph,$-\mathrm{LPIPS}$},
+ymin=.5,ymax=3.5,ytick={1,2,3},yticklabels={CLIPScore,Đồ thị $G$,$-\mathrm{LPIPS}$},
 xlabel={Spearman $\rho$, khoảng bootstrap 95\%},
 axis x line*=bottom,axis y line*=left,xmajorgrids]
 \addplot+[only marks,color=inkblue,error bars/.cd,x dir=both,x explicit]
@@ -79,75 +119,68 @@ coordinates {(.0561,1) +=(.1672,0) -=(.1806,0)
 (.1962,3) +=(.1946,0) -=(.2140,0)};
 \draw[dashed] (axis cs:0,.5)--(axis cs:0,3.5);
 \end{axis}\end{tikzpicture}
-\caption{Cả ba khoảng đều chứa 0. Thứ tự point estimate chưa đủ để kết luận
-một chỉ số tốt hơn chỉ số khác; cần xét phân phối chênh lệch ghép cặp.}
+\caption{Tương quan Spearman với nhãn tay trên cùng 91 cặp. Khoảng bootstrap
+ghép cặp 95\% cho $\rho_G-\rho_{\mathrm{CLIPScore}}$ là
+$[-0{,}1795;\,0{,}3964]$ và cho $\rho_G-\rho_{-\mathrm{LPIPS}}$ là
+$[-0{,}3179;\,0{,}2659]$. Cả hai khoảng chênh lệch đều chứa 0.}\label{fig:nv3-corr}
 \end{figure}
+
+Trên 91 cặp này, Spearman $\rho$ của $G$, CLIPScore và $-\mathrm{LPIPS}$ lần lượt là 0,1767, 0,0561 và 0,1962. Hình~\ref{fig:nv3-corr} cho thấy cả ba khoảng bootstrap 95\% đều chứa 0 (giá trị hai cận ở Bảng~\ref{tab:corr}).
 
 CLIPScore dùng CLIP ViT-B/32 và $2,5\max(\cos(I_t,q),0)$ với text prefix
 của pipeline~\cite{hessel2021clipscore}. LPIPS AlexNet đo khoảng cách ảnh
 nguồn--đích~\cite{zhang2018lpips}; lấy dấu âm để điểm cao tương ứng gần nguồn.
 LPIPS có thể thưởng cho giữ nguyên ảnh dù chưa làm đúng yêu cầu.
-Riêng $E$ tương quan 0,2008 với fulfillment ($N=162$);
-$P$ tương quan 0,0302 với preservation ($N=109$).
+Riêng $E$ tương quan 0,2008 với nhãn thực hiện yêu cầu ($N=162$);
+$P$ tương quan 0,0302 với nhãn bảo toàn nội dung ($N=109$).
+
+
 
 \begin{table}[!ht]\centering\small
-\caption{Coverage và tương quan theo loại edit. Không gán abstention thành lỗi ảnh.}\label{tab:coverage}
+\caption{Độ phủ và tương quan theo loại chỉnh sửa. Không gán abstention thành lỗi ảnh.}\label{tab:coverage}
 \begin{adjustbox}{max width=\linewidth}\begin{tabular}{@{}lrrrr@{}}\toprule
-Loại & Tổng cặp & Có $G$ & Coverage (\%) & $\rho_G$\\\midrule
-Thêm object & 106 & 60 & 56,6 & 0,0753\\
-Xóa object & 66 & 23 & 34,8 & 0,1271\\
-Thay object & 18 & 8 & 44,4 & 0,2474\\
+Loại & Tổng cặp & Có $G$ & Độ phủ (\%) & $\rho_G$\\\midrule
+Thêm đối tượng & 106 & 60 & 56,6 & 0,0753\\
+Xóa đối tượng & 66 & 23 & 34,8 & 0,1271\\
+Thay đối tượng & 18 & 8 & 44,4 & 0,2474\\
 Đổi màu & 10 & 0 & 0,0 & Không xác định\\\midrule
 Tổng & 200 & 91 & 45,5 & 0,1767\\
 \bottomrule\end{tabular}\end{adjustbox}\end{table}
-\reporttodo{3-2}{Đính kèm provenance xác nhận nhãn và quy tắc chuẩn hóa ô trống.
-Bổ sung người duyệt thứ hai/agreement nếu thực hiện; hiện chỉ có một người duyệt.
-Giữ nguyên kết quả hiện có, không điền nhãn mới theo điểm model.}
 
+Trong 109 ca không có điểm $G$, có 91 ca mà bộ chấm không xác định chắc chắn
+instance nào ở ảnh đích tương ứng với một instance cần bảo toàn ở ảnh nguồn.
+Một ca có thể có nhiều lý do từ chối chấm.
 
-\subsection{Failure taxonomy và mười ca bất đồng}
-Các ca được chọn theo chênh lệch thứ hạng giữa graph và baseline ảnh trên tập
-giao; tất cả thuộc nhóm thêm object. Đây là case study có chủ đích,
-không đại diện cho tần suất lỗi của 200 edit.
+Theo bộ nhãn tay cuối cùng, cả 10/10 ảnh đổi màu đều đạt tiêu chí thực hiện
+yêu cầu, trong đó 9/10 ảnh cũng đạt tiêu chí bảo toàn nội dung. Riêng ca ghế số 109
+đạt tiêu chí đổi màu nhưng người duyệt đánh giá phần còn lại của cảnh chưa
+được bảo toàn. Trên ảnh đích, cả chiếc ghế xanh lá bên trái cũng chuyển sang
+xanh dương dù yêu cầu chỉnh sửa chỉ nêu việc đổi chiếc ghế vàng bên phải. Dòng \textit{Đổi màu} ở Bảng~\ref{tab:coverage} ghi độ phủ
+$0/10$ vì đồ thị thiếu bằng chứng về màu. Mười ca này vẫn thuộc mẫu số 200
+khi báo cáo độ phủ và kết quả duyệt tay. Hình~\ref{fig:nv3-color-case} ở Phụ lục~\ref{app:nv3} đối chiếu hai chiếc ghế trước và sau chỉnh sửa. Bộ nhãn hiện do một người duyệt.
 
-\begin{table}[!ht]\centering\small
-\caption{Mười ca bất đồng đã phân tích; cần bổ sung ảnh/graph minh họa.}\label{tab:cases3}
-\begin{tabularx}{\linewidth}{@{}l p{29mm}X@{}}\toprule
-ID & Yêu cầu & Chẩn đoán\\\midrule
-58 & Thêm thuyền buồm & $G=1$; CLIP crop cắt thuyền ở bên trái.\\
-69 & Thêm thuyền chèo & $G=1$, LPIPS cao; CLIP thấp, nguyên nhân chưa xác định.\\
-178 & Thêm chim trên đá & Chim bị extractor nhận thành person; $G=0$.\\
-168 & Thêm mèo dưới cây & $G=1$ dù nền/cây bị đổi; graph bỏ sót lỗi bảo toàn.\\
-22 & Thêm chậu cây & Tủ vẫn còn nhưng mất refrigerator detection; $G=0,2$.\\
-188 & Thêm chim bên chùa & Chim sai vị trí; $G=0$ nhưng do thiếu detection, không phải hiểu đúng vị trí.\\
-160 & Thêm chim trên đá & Có bird nhưng tâm hộp ngoài ROI cứng; $G=0$.\\
-187 & Thêm chó bên thác & $E=1$, $P$ giảm do detection nền thay đổi.\\
-198 & Thêm chim bên ao & Graph phản ánh lan can thêm ngoài mục tiêu.\\
-48 & Thêm ghế gỗ & $G=0,875$; CLIP thấp dù crop còn chứa ghế.\\
-\bottomrule\end{tabularx}\end{table}
+\subsection{Khi điểm đồ thị và chỉ số ảnh bất đồng}
+Trên 91 cặp có đủ ba điểm, nhóm tính thứ hạng phân vị của từng chỉ số.
+Với mỗi cặp, nhóm lấy chênh lệch lớn hơn giữa hai phép đối chiếu
+($G$ với CLIPScore, $G$ với $-\mathrm{LPIPS}$), tính theo trị tuyệt đối.
+Mười cặp có chênh lệch lớn nhất đều là yêu cầu thêm đối tượng.
+Hình~\ref{fig:nv3-real-cases} minh họa ba ca trong số đó.
+Hai tiêu chí duyệt tay được xét riêng để xác định bất đồng liên quan đến
+việc thực hiện yêu cầu hay việc bảo toàn nội dung còn lại của ảnh.
 
-\begin{table}[!ht]\centering\small
-\caption{Phân tầng lỗi để tránh quy mọi lỗi cho scorer.}
-\begin{tabularx}{\linewidth}{@{}p{18mm}X p{15mm}@{}}\toprule
-Tầng & Cơ chế & Case minh họa\\\midrule
-Extractor & Bỏ sót hoặc nhầm nhãn object trước khi matching & 178, 22, 187\\
-Grounding / alignment & Ràng buộc ROI cứng hoặc correspondence không chắc chắn & 160, 188\\
-Biểu diễn & Graph không mã hóa đủ màu, texture, thay đổi nền & 168; edit màu\\
-Baseline ảnh & Crop hoặc embedding không phản ánh đúng object được thêm & 58, 48\\
-Chưa giải thích & Chênh lệch score chưa có nguyên nhân được xác minh & 69\\
-\bottomrule\end{tabularx}\end{table}
+\begin{itemize}
+\item \textbf{Ca 58 -- thuyền nằm ngoài vùng crop.} Người duyệt thấy thuyền buồm mới ở mép trái và đánh giá đạt cả hai tiêu chí. REACT++ phát hiện thêm một \textit{boat}, $G=1$. CLIPScore ở phân vị 3,3. Vùng crop giữa ảnh loại thuyền mới khỏi đầu vào của CLIP. Chưa có đối chứng để định lượng riêng tác động của crop lên điểm.
+\item \textbf{Ca 168 -- thêm đúng mèo, đổi cả nền.} REACT++ phát hiện \textit{cat} đúng vùng. Các đỉnh và cạnh dùng để chấm bảo toàn vẫn khớp nên $G=1$. Trên ảnh, chi tiết gốc cây và nền đất đã đổi. Người duyệt đánh trượt tiêu chí bảo toàn, còn $-\mathrm{LPIPS}$ ở phân vị 11,1, phù hợp với mức thay đổi nhìn thấy giữa hai ảnh.
+\item \textbf{Ca 178 -- chim bị nhận thành người.} Chim xuất hiện trên tảng đá theo yêu cầu, người duyệt cho đạt cả hai tiêu chí. REACT++ gán nhãn \textit{person} tại vùng chim nên $G=0$. Chỉ số $-\mathrm{LPIPS}$ ở phân vị 90,0, phản ánh phần lớn ảnh được giữ nguyên.
+\end{itemize}
 
-\reporttodo{3-3}{Chèn ảnh nguồn/đích thật và graph overlay cho 10 ID trên,
-kèm instruction, nhãn tay, $E/P/G$, CLIPScore và LPIPS. Ưu tiên panel 178
-(extractor), 168 (bảo toàn), 160 (ROI) và 58 (crop) trong thân bài;
-các panel còn lại có thể đặt ở phụ lục artifact.}
-\reporttodo{3-4}{Bổ sung bảng số lượng abstention theo reason code, phân biệt
-một mẫu có nhiều lý do với lý do chính. Không suy tần suất từ 10 case đã chọn.}
+Bảng~\ref{tab:cases3} ở Phụ lục~\ref{app:nv3} ghi kết quả và chẩn đoán cho đủ mười ca theo yêu cầu của đề.
+Bảng~\ref{tab:nv3-tax} nhóm các cơ chế quan sát được. Cách chọn theo chênh lệch thứ hạng chỉ cho phép phân tích từng ca; ước lượng tần suất lỗi cần lấy mẫu trên toàn bộ 200 lần chỉnh sửa.
 
-\textbf{Kết luận Nhiệm vụ 3.} Graph score giúp truy nguyên lỗi khi graph đáng tin,
-nhưng coverage 45,5\%, tương quan yếu và thiếu thuộc tính chưa cho phép thay thế
-human review. Bootstrap theo ảnh xử lý sự phụ thuộc của hai edit cùng nguồn;
-không khắc phục selection bias do 109 abstention hoặc hạn chế một seed sinh ảnh.
+\textbf{Kết luận Nhiệm vụ 3.} Điểm đồ thị giúp truy nguyên lỗi khi đồ thị đáng tin,
+nhưng độ phủ 45,5\%, tương quan yếu và thiếu thuộc tính chưa cho phép thay thế
+đánh giá của người duyệt. Bootstrap theo ảnh xử lý sự phụ thuộc của hai yêu cầu chỉnh sửa trên cùng một ảnh nguồn;
+không khắc phục selection bias do 109 ca bộ chấm từ chối cho điểm hoặc hạn chế một seed sinh ảnh.
 \srcnote{Nguồn: \path{docs/LEVEL3_RESULTS_V1.md},
 \path{LEVEL3_EVALUATION.md}, \path{LEVEL3_PIPELINE.md};
 \path{configs/level3/evaluation200-v1.json}.}
