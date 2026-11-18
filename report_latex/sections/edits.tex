@@ -1,133 +1,152 @@
+\subsection{Task B. Dự đoán thao tác chỉnh sửa đồ thị}
+Cho đồ thị cảnh nguồn $G_s$ và câu yêu cầu chỉnh sửa $q$, mô hình dự đoán tập
+thao tác $\Delta_q$ có thể áp dụng lên $G_s$. Mỗi thao tác chỉ rõ đối tượng
+hoặc cạnh cần thêm, xóa hay thay. Với cạnh, mô hình phải xác định cả đỉnh đầu,
+quan hệ và đỉnh cuối. Đổi màu của một vật được biểu diễn bằng thao tác thay đỉnh,
+giữ mã đối tượng và cập nhật thuộc tính màu. Nhóm đặt hai câu hỏi thực nghiệm.
+Trên MagicBrush, học từ những thay đổi phục vụ câu lệnh có cải thiện dự đoán
+so với học từ toàn bộ chênh lệch giữa hai đồ thị hay không? Khi có sẵn cặp đồ
+thị và câu lệnh, mô hình học được những thao tác nào trên bộ EMNLP 2020?
 
-\subsection{Task B -- Yêu cầu gốc và thí nghiệm MagicBrush}
-Yêu cầu gốc là xây ít nhất 300 cặp $(G_s,q,\Delta G)$ từ MagicBrush hoặc
-InstructPix2Pix, kiểm tay ít nhất 20 mẫu và dự đoán sáu thao tác:
-thêm/xóa/thay node, thêm/xóa/thay edge. Đầu ra không chỉ có loại thao tác;
-cần đúng entity, endpoint và payload để áp dụng lên graph nguồn.
+\subsubsection{Xây bộ dữ liệu từ MagicBrush}
+MagicBrush~\cite{zhang2023magicbrush} cung cấp ảnh trước và sau chỉnh sửa
+cùng câu lệnh. Nhóm dùng gán nhãn có hỗ trợ AI để mô tả đối tượng, thuộc tính
+và quan hệ trong hai ảnh, sau đó ghép các thực thể tương ứng. Từ 437 cặp có
+đồ thị, nhóm lập hai bộ nhãn cho cùng đầu vào. Nhãn \textit{chênh lệch đồ thị}
+ghi mọi thao tác cần để tái tạo đồ thị của ảnh đích. Nhãn \textit{theo câu
+lệnh} chỉ giữ các thay đổi phục vụ yêu cầu, kể cả thao tác cấu trúc cần thiết
+như xóa cạnh nối với một đỉnh bị xóa. Khi hai nhãn khác nhau, ảnh đích là
+bằng chứng để xem lại đối tượng và quan hệ. Lúc suy luận, mô hình chỉ nhận
+$G_s$ và $q$.
 
-\begin{table}[!ht]\centering\small
-\caption{Thiết lập MagicBrush và kết quả test (\%, ba seed).}\label{tab:magic}
-\begin{tabularx}{\linewidth}{@{}Xrr@{}}\toprule
-Chỉ số & MLP & GNN\\\midrule
-Micro-F1 operation & $3,75\pm1,82$ & $7,34\pm1,50$\\
-Exact target graph & 0 & 0\\
-Số cặp train / val / test & 301 / 67 / 69 & 301 / 67 / 69\\
-\bottomrule\end{tabularx}\end{table}
+\begin{figure}[!htbp]\centering
+\begin{tabular}{@{}cc@{}}
+\includegraphics[width=.455\linewidth]{magicbrush-laptop-source.jpg} &
+\includegraphics[width=.455\linewidth]{magicbrush-laptop-target.jpg}\\
+(a) Ảnh nguồn & (b) Ảnh sau chỉnh sửa
+\end{tabular}
+\caption{Mẫu validation \texttt{484847:1} của MagicBrush với yêu cầu
+\textit{put a laptop on the table}. Đồ thị của (a) có bàn, sách và điều khiển.
+Để tái tạo đồ thị của (b) cần sáu thao tác. Yêu cầu chỉ xác định hai thao tác:
+thêm đỉnh laptop và thêm cạnh $(\mathrm{laptop},\mathrm{on},\mathrm{table})$.
+Nhãn theo câu lệnh giữ sách, điều khiển và hai cạnh nối chúng với bàn.}
+\label{fig:mb-intent-laptop}
+\end{figure}
 
-MagicBrush~\cite{zhang2023magicbrush} cung cấp ảnh nguồn, instruction và ảnh đích.
-Graph sinh từ ảnh rồi căn chỉnh instance để lấy operation đích.
-Bản v3 dùng các head dự đoán có cấu trúc: copy entity cũ, tối đa 12 slot node mới,
-attention chọn endpoint và ràng buộc transaction. Hidden 192, dropout 0,1,
-batch 16, AdamW $3\times10^{-4}$, weight decay $10^{-2}$, tối đa 200 epoch;
-seed 42/123/3407, chọn checkpoint bằng validation operation-F1.
+Nhóm đối chiếu từng cặp với câu lệnh như Hình~\ref{fig:mb-intent-laptop}.
+Tổng cộng 92 cặp được để riêng do còn mơ hồ về đối tượng, quan hệ hoặc ảnh
+đích chưa thể hiện đủ yêu cầu. Bộ cuối gồm \textbf{345 cặp} $(G_s,q,\Delta_q)$
+(Bảng~\ref{tab:mb-cohort}), vượt mức tối thiểu 300 cặp của đề. Các lượt chỉnh
+sửa thuộc cùng nhóm ảnh nguồn nằm trong cùng một tập. Nhóm cũng kiểm tra
+hai vai ảnh trước/sau bằng mã băm pixel để phát hiện ảnh trùng giữa các tập.
 
-\begin{table*}[!t]\centering\small
-\caption{Chẩn đoán MagicBrush. Mỗi hàng ghi rõ mẫu số và phạm vi.}\label{tab:magicdiag}
-\begin{tabularx}{\linewidth}{@{}p{49mm}p{28mm}X@{}}\toprule
-Quan sát & Giá trị / phạm vi & Hàm ý\\\midrule
-Payload biểu diễn được & 154/219 operation val & Một phần target vượt vocabulary/representation.\\
-Mẫu biểu diễn đầy đủ & 15/67 mẫu val & Biểu diễn từng operation chưa bảo đảm cả chương trình khả thi.\\
-Đúng loại và entity & 37/118 dự đoán; GNN seed 42 val & Grounding còn sai trước khi xét payload.\\
-Node mới đúng tên object & 2/42; chẩn đoán val & Open vocabulary là nút thắt.\\
-Target không xác định duy nhất & 15/20 mẫu phân tích & Instruction không quyết định toàn bộ graph difference.\\
-\bottomrule\end{tabularx}\end{table*}
+\begin{table}[!htbp]\centering\small
+\caption{Số cặp MagicBrush trước và sau khi đối chiếu theo câu lệnh.
+Cột cuối đếm các cặp được giữ có nhãn khác chênh lệch đồ thị.}
+\label{tab:mb-cohort}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+Tập & Ban đầu & Giữ & Để riêng & Nhãn khác\\\midrule
+Train & 301 & 240 & 61 & 205\\
+Validation & 67 & 46 & 21 & 43\\
+Test & 69 & 59 & 10 & 48\\\midrule
+Tổng & 437 & 345 & 92 & 296\\\bottomrule
+\end{tabular}\end{table}
 
-GNN tăng 3,59 pp micro-F1 so MLP nhưng cả hai không khớp chính xác graph đích.
-Điểm thấp không chỉ là thiếu năng lực message passing: target còn chứa sai số
-extractor/alignment và thay đổi không được instruction chỉ định.
-Phân tích 20 mẫu nêu trên chưa được coi là kiểm tay độc lập toàn bộ dữ liệu.
+Nhóm lấy ngẫu nhiên 20 cặp từ 345 cặp, không hoàn lại (seed 20261119).
+Người duyệt xem hai ảnh, câu lệnh, đồ thị nguồn và toàn bộ thao tác đích.
+Một cặp đạt khi các thao tác tác động đúng thực thể, thực hiện đủ yêu cầu
+và bảo toàn nội dung ngoài yêu cầu. Người duyệt chấp nhận \textbf{20/20 cặp
+(100\%)}. Tỷ lệ này mô tả mức chấp nhận của một người trên mẫu kiểm tra tay.
+Cả 345 nhãn cũng vượt kiểm tra tự động về khả năng áp dụng thao tác lên đồ
+thị nguồn, bao gồm kiểm tra hai đầu mút của mỗi cạnh.
 
-\reporttodo{2B-1}{Hoàn thiện bảng P/R/F1 của MagicBrush cho cả sáu operation
-từ artifact v3, ghi support và tách loại không có GT khỏi F1 bằng 0.
-Kèm 20 mẫu kiểm tay có ID, tiêu chí, người duyệt và kết luận độ tin cậy.}
-\srcnote{Nguồn: \path{magicbrush-manual-experiment-v3/result-audit.json}
-(mean/std test đã đối chiếu); \path{magicbrush-manual-v3-error-analysis-v1/README.md}.
-Không ghép số chẩn đoán validation vào mẫu số test 69.}
+\subsubsection{Huấn luyện và đối chứng hai cách gán nhãn}
+Nhóm dùng GNN hai lớp, chiều ẩn 192. CLIP text ViT-B/32 đóng băng mã hóa câu
+lệnh, nhãn và thuộc tính đỉnh, cùng quan hệ trên cạnh. Bộ dự đoán chọn thao
+tác trên thực thể nguồn hoặc tạo thực thể mới, chọn nhãn và thuộc tính đỉnh,
+rồi chọn quan hệ và hai đầu mút cho cạnh. Hai nhánh dùng cùng 240 cặp train,
+chung từ vựng xây từ train, cùng khởi tạo và thứ tự batch theo từng seed
+42, 123, 3407. Biến thay đổi giữa hai nhánh là nhãn huấn luyện.
+Nhóm dùng AdamW, tốc độ học $3\times10^{-4}$, batch 16. Cả hai nhánh chọn
+checkpoint theo micro-F1 thao tác trên 46 cặp validation có nhãn theo câu lệnh.
+Bộ chấm tính một thao tác đúng khi loại, thực thể và nội dung chỉnh sửa đều
+khớp sau khi chuẩn hóa mã thực thể mới. Trong thử nghiệm ban đầu trên 69
+cặp test dùng toàn bộ chênh lệch làm nhãn chuẩn, MLP và GNN lần lượt đạt
+micro-F1 3,75\% và 7,34\%. Thực nghiệm dưới đây dùng cùng 59 cặp và
+cùng nhãn chuẩn theo câu lệnh để so sánh hai cách huấn luyện.
 
+\begin{table}[!htbp]\centering\small
+\caption{MagicBrush test. Precision (P), recall (R) và F1 theo phần trăm,
+trung bình ba seed. Cả hai nhánh cùng được chấm theo câu lệnh trên 59 cặp.
+$N$ là số thao tác chuẩn trên tập test.}
+\label{tab:mb-prf}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lr rrr rrr@{}}\toprule
+& & \multicolumn{3}{c}{Chênh lệch đồ thị} & \multicolumn{3}{c}{Theo câu lệnh}\\
+\cmidrule(lr){3-5}\cmidrule(l){6-8}
+Thao tác & $N$ & P & R & F1 & P & R & F1\\\midrule
+Thêm đỉnh & 24 & 0,00 & 0,00 & 0,00 & 5,95 & 5,56 & 5,73\\
+Xóa đỉnh & 12 & 26,51 & 16,67 & 20,29 & 16,67 & 2,78 & 4,76\\
+Thay đỉnh & 35 & 0,00 & 0,00 & 0,00 & 0,00 & 0,00 & 0,00\\
+Thêm cạnh & 17 & 2,39 & 5,88 & 3,39 & 2,56 & 1,96 & 2,22\\
+Xóa cạnh & 14 & 25,50 & 40,48 & 30,68 & 35,68 & 14,29 & 18,84\\
+Thay cạnh & 0 & \nd & \nd & \nd & \nd & \nd & \nd\\\midrule
+Micro & 102 & 5,30 & 8,50 & 6,53 & 5,35 & 3,92 & 4,45\\\bottomrule
+\end{tabular}\end{table}
 
-\subsection{Task B -- Vì sao chuyển sang EMNLP 2020?}
-\begin{table*}[!t]\centering\small
-\caption{Phạm vi được cải thiện và phần chưa được giải quyết khi đổi dataset.}
-\begin{tabularx}{\linewidth}{@{}X X X@{}}\toprule
-Vấn đề MagicBrush & EMNLP giải quyết gì & EMNLP không giải quyết gì\\\midrule
-Graph phải sinh từ ảnh & Có graph nguồn/đích sẵn & Không kiểm chứng pipeline từ ảnh.\\
-Instance alignment nhiễu & Correspondence cấu trúc rõ hơn & Chưa chứng minh image-disjoint.\\
-Target không duy nhất & Graph target xác định hơn & Graph nhỏ và đơn giản.\\
-Open vocabulary lớn & Từ vựng khép kín hơn & Không đại diện đầy đủ scene graph ảnh thật.\\
-\bottomrule\end{tabularx}\end{table*}
+Trên 59 cặp test, micro-F1 của nhánh chênh lệch đồ thị đạt
+$6,53\pm1,75\%$, nhánh theo câu lệnh đạt $4,45\pm1,59\%$
+(trung bình $\pm$ độ lệch chuẩn mẫu qua ba seed). Nhánh theo câu lệnh có
+micro-F1 thấp hơn ở cả ba seed. Precision trung bình gần bằng nhau, nhưng
+recall giảm từ 8,50\% xuống 3,92\%. Bảng~\ref{tab:mb-prf} cho thấy chiều
+thay đổi tùy thao tác. Học theo câu lệnh giúp F1 thêm đỉnh tăng lên
+5,73\%, trong khi F1 xóa cạnh giảm từ 30,68\% xuống 18,84\%.
+Cả hai nhánh đều có F1 bằng 0 cho 35 thao tác thay đỉnh. Riêng thao tác
+thay cạnh có ba nhãn ở train và không có nhãn ở test. Dấu gạch trong bảng
+biểu thị thiếu mẫu để đánh giá.
 
-EMNLP 2020~\cite{he2020sgmod} là \textbf{dataset thay thế cho Task 2B},
-dùng kiểm tra khả năng học operation với supervision có cấu trúc.
-Kết quả này không xóa bỏ hoặc thay thế khó khăn đã ghi nhận trên MagicBrush.
+Toàn bộ tập thao tác dự đoán đều áp dụng được về mặt cấu trúc. Tỷ lệ khớp
+chính xác đồ thị đích theo câu lệnh chỉ đạt 0,00\% với nhãn chênh lệch và
+0,56\% với nhãn theo câu lệnh, trung bình ba seed. Nếu quy ước yêu cầu
+đơn giản là cặp có đúng một thao tác đích, cả hai nhánh đạt 0/34 mẫu
+khớp toàn bộ tập thao tác ở từng seed. Chẳng hạn, với yêu cầu
+\textit{Let the table be round} (mẫu test \texttt{181753:1}), nhãn chuẩn đổi
+thuộc tính của bàn từ chữ nhật thành tròn và giữ chất liệu gỗ sẫm. GNN học
+theo câu lệnh ở seed 42 trả về tập thao tác rỗng. Với yêu cầu
+\textit{add a balloon} (\texttt{65564:2}), cùng mô hình dự đoán thao tác
+thêm đỉnh nhưng gán nhãn \textit{duck} và thêm một cạnh ngoài yêu cầu.
+Hai lỗi này cho thấy mô hình có thể bỏ sót cả yêu cầu hoặc chọn đúng loại
+thao tác nhưng sai đối tượng.
 
-\begin{table}[!ht]\centering\small
-\caption{Thiết lập EMNLP 2020, phiên bản W\&B v4.}
-\begin{tabularx}{\linewidth}{@{}p{24mm}X@{}}\toprule
-Thành phần & Thiết lập\\\midrule
-Dữ liệu & Train 29.868 / val 532 / test 530 mẫu.\\
-Test subset & Từ 1.000 mẫu official: loại 468 source overlap train/val và 2 correspondence mơ hồ.\\
-Representation & Graph gốc nhỏ (1--3 node), vô hướng, có attribute node; adapter tạo cạnh hai chiều.\\
-Mô hình / tối ưu & Hidden 96; GNN 2 lớp; batch 128; AdamW $10^{-3}$, weight decay $10^{-2}$.\\
-Chọn checkpoint & Validation token loss; tối đa 20 epoch, tối thiểu 6, patience 3; seed 42/43/44.\\
-Theo dõi & Sáu run có W\&B; tổng 61 epoch, từng run dừng ở epoch 9--11.\\
-\bottomrule\end{tabularx}\end{table}
+\subsubsection{Hướng mở rộng trên EMNLP 2020}
+Để khảo sát khả năng học thao tác khi có sẵn đồ thị nguồn, câu lệnh và đồ
+thị đích, nhóm huấn luyện riêng MLP và GNN trên bộ chỉnh sửa đồ thị của
+He và cộng sự~\cite{he2020sgmod}. Bộ này có đồ thị nguồn nhỏ (1--3 đỉnh).
+Nhóm dùng 29.868 mẫu train, 532 validation và 530 test. Từ 1.000 mẫu test
+chính thức, nhóm loại 468 mẫu trùng đồ thị nguồn với train hoặc validation,
+cùng hai mẫu có ghép cặp thực thể mơ hồ. Việc chia tập dựa trên đồ thị nguồn;
+metadata hiện có chưa đủ để kiểm chứng tính độc lập theo ảnh gốc.
+Mỗi mô hình chạy với ba seed 42, 43, 44 và chọn checkpoint theo loss trên
+validation.
 
-Chia theo source fingerprint giảm trùng graph nhưng chưa chứng minh tách theo
-ảnh gốc. Vocabulary chỉ xây từ train; 35/530 chương trình test có OOV vẫn được
-giữ trong mẫu số. Ngưỡng exact tối đa do vocabulary là 93,40\%, không phải điểm
-mô hình đạt được.
+\begin{table}[!htbp]\centering\small
+\caption{EMNLP 2020, trung bình ba seed trên 530 mẫu test (\%). Macro-F1
+lấy trung bình đều trên sáu loại thao tác. Cột cuối yêu cầu toàn bộ đồ thị
+đích khớp nhãn.}\label{tab:emnlp}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Mô hình & Micro-F1 & Macro-F1 & Khớp đồ thị đích\\\midrule
+MLP & $81,69\pm0,31$ & $54,25\pm0,51$ & $67,74\pm0,68$\\
+GNN & $82,44\pm0,39$ & $55,03\pm0,28$ & $68,55\pm0,22$\\\bottomrule
+\end{tabular}\end{table}
 
-\reporttodo{2B-2}{Bổ sung sơ đồ encoder/decoder và loss của EMNLP v4 từ code đã khóa,
-cách serialize operation và kiểm tra transaction. Không dùng mô tả các head
-MagicBrush v3 thay cho kiến trúc EMNLP.}
-\reporttodo{2B-3}{Hoàn thiện kiểm tay correspondence và instruction--target của EMNLP,
-ví dụ graph trước/sau; xác minh nguồn ảnh và image-disjoint nếu metadata cho phép.
-Ghi nhận việc trao đổi với giảng viên về thay đổi dataset.}
-
-
-\subsection{Task B -- Kết quả EMNLP và phân tích theo operation}
-\begin{table}[!ht]\centering\small
-\caption{EMNLP test, 530 mẫu; mean $\pm$ sample std (\%), ba seed.}\label{tab:emnlp}
-\begin{adjustbox}{max width=\linewidth}\begin{tabular}{@{}lrrrr@{}}\toprule
-Model & Micro-F1 & Macro-F1 & Exact target & Valid transaction\\\midrule
-MLP & $81,69\pm0,31$ & $54,25\pm0,51$ & $67,74\pm0,68$ & $95,60\pm0,29$\\
-GNN & $82,44\pm0,39$ & $55,03\pm0,28$ & $68,55\pm0,22$ & $95,79\pm0,39$\\
-\bottomrule\end{tabular}\end{adjustbox}\end{table}
-
-\begin{table*}[!t]\centering\small
-\caption{P/R/F1 theo operation trên EMNLP test; mean (\%). Support là số GT, không nhân ba seed.}\label{tab:operations}
-\begin{tabular}{@{}lrrrrr@{}}\toprule
-Operation & Support & MLP F1 & GNN P & GNN R & GNN F1\\\midrule
-add\_node & 105 & 59,72 & 62,50 & 65,40 & 63,86\\
-delete\_node & 363 & 97,10 & 97,53 & 97,98 & 97,76\\
-replace\_node & 121 & 27,71 & 30,59 & 24,79 & 27,38\\
-add\_edge & 210 & 43,86 & 42,64 & 44,60 & 43,56\\
-delete\_edge & 728 & 97,10 & 97,53 & 97,76 & 97,64\\
-replace\_edge & 6 & 0,00 & 0,00 & 0,00 & 0,00\\
-\bottomrule\end{tabular}\end{table*}
-
-GNN hơn MLP 0,75 pp micro-F1 nhưng chỉ hơn 0,78 pp macro-F1.
-Deletion chiếm nhiều GT và đạt F1 gần 98\%, kéo micro-F1 lên;
-replace-node chỉ 27,38\%, replace-edge có GT nhưng không có true positive.
-Vì vậy micro-F1 82,44\% không có nghĩa cả sáu operation đều được học tốt.
-
-\begin{table*}[!t]\centering\small
-\caption{Đối chứng và lát cắt bổ sung trên cùng test.}
-\begin{tabularx}{\linewidth}{@{}p{49mm}p{35mm}X@{}}\toprule
-Đối chứng / lát cắt & Kết quả & Cách đọc\\\midrule
-No-op & F1 0; exact 0; valid 100 & Hợp lệ cú pháp không đồng nghĩa đúng yêu cầu.\\
-Nearest training program & F1 56,22; exact 33,77 & Baseline retrieval bằng CLIP instruction và pooled source.\\
-GNN, simple exact & $24,79\pm1,65$ & 121 mẫu có đúng một GT operation; thấp hơn exact toàn tập.\\
-MLP, simple exact & $25,34\pm1,91$ & GNN không thắng ở mọi lát cắt.\\
-\bottomrule\end{tabularx}\end{table*}
-
-Validation micro-F1 của MLP là 80,39\%, GNN 80,25\%: thứ hạng không giống test.
-Bản v4 giữ kết quả test bằng v3 vì best-checkpoint tensor bằng nhau; đóng góp
-của v4 là tracking/resume/early stopping, không phải accuracy gain.
-
-\reporttodo{2B-4}{Chèn hình graph nguồn, instruction, operation GT/dự đoán và graph
-sau áp dụng cho các case đúng/sai đã lưu ID/hash. Tách lỗi identity, payload,
-loại thao tác và transaction; bổ sung xác nhận ngữ nghĩa bằng người.}
-\srcnote{Nguồn: \path{emnlp2020-task-b-wandb-v4-test-v1/README.md},
-\path{metrics.json}, \path{error-analysis.json}. Test này từng được xem ở v3;
-v4 không chọn lại cấu hình theo kết quả test.}
+Trên EMNLP, GNN đạt F1 97,76\% cho xóa đỉnh và 97,64\% cho xóa cạnh.
+Hai loại này chiếm 1.091 trong 1.533 thao tác chuẩn, nên ảnh hưởng lớn đến
+micro-F1 ở Bảng~\ref{tab:emnlp}. Thay đỉnh chỉ đạt 27,38\% trên 121 thao
+tác. Cả sáu thao tác thay cạnh trong test đều bị dự đoán sai.
+Kết quả cho thấy mô hình học tốt phép xóa trong thiết lập có đồ thị cho sẵn.
+Quy mô train, kích thước đồ thị, phân bố thao tác và kiến trúc dự đoán
+đều khác giữa hai bộ. Vì vậy, khoảng cách điểm giữa EMNLP và MagicBrush
+chưa cho phép định lượng riêng ảnh hưởng của nhiễu nhãn.
+Phép đối chứng trực tiếp trên MagicBrush cho thấy với 240 cặp train, hiệu
+chỉnh nhãn để bám sát câu lệnh vẫn chưa đủ để cải thiện micro-F1.
+\FloatBarrier

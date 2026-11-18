@@ -1,8 +1,8 @@
 # Báo cáo IEEE Conference — VG150, GQA, VN100 và video PVSG
 
 Nguồn LaTeX theo mẫu Seminar ở `25C15039-25C15062/` (commit `5bdd556`).
-Bản hiện tại gồm Nhiệm vụ 1 trên VG150, Task A của Nhiệm vụ 2 trên GQA, Nhiệm vụ 3 trên VN100 và phần mở rộng video trên PVSG.
-Phụ lục A/B minh họa dự đoán trên validation, C bổ sung kết quả VN100 và D trình bày bảy lượt kiểm tra hội tụ muộn cùng mười timeline PVSG. Task B ở trạng thái TBD.
+Bản hiện tại gồm Nhiệm vụ 1 trên VG150, Task A của Nhiệm vụ 2 trên GQA, Task B trên MagicBrush với đối chứng bổ sung EMNLP 2020, Nhiệm vụ 3 trên VN100 và phần mở rộng video trên PVSG.
+Phụ lục A/B minh họa dự đoán trên validation, C bổ sung kết quả VN100 và D trình bày bảy lượt kiểm tra hội tụ muộn cùng mười timeline PVSG.
 
 ## Biên dịch
 
@@ -44,6 +44,10 @@ dùng cache validation, archive ảnh GQA và hai checkpoint PE-PLPR, PE-PLPR + 
 Notebook đọc tần suất train từ `reports/level2/gqa-scale-audit-v1.json` để vẽ
 `figures/gqa-train-predicates.pdf`. Sơ đồ `figures/gqa-penet-aligng.pdf` dùng
 ảnh validation 1056, cùng annotation và dự đoán với ca Hit 4 trong phụ lục.
+
+## Đối chiếu Task B
+
+Nguồn cho số cặp, danh sách thao tác và phiếu 20 mẫu nằm trong [bộ dữ liệu MagicBrush theo prompt](../experiments/magicbrush_prompt_intent_v1/README.md). Hai ảnh minh họa lấy từ mẫu validation `magicbrush:484847:1`. [Kết quả MagicBrush](../reports/level2/magicbrush-prompt-intent-test-v1/README.md) ghi cách tái lập bảng test 59 cặp. [Kết quả EMNLP](../reports/level2/emnlp2020-task-b-wandb-v4-test-v1/README.md) ghi các chỉ số của hai mô hình trên 530 mẫu test.
 
 ## Tái tạo ảnh minh họa VN100
 

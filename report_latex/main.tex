@@ -38,17 +38,16 @@
 \input{sections/overview}
 \input{sections/vg}
 \input{sections/gqa}
-\subsection{Task B. Dự đoán thao tác chỉnh sửa đồ thị}
-TBD
+\input{sections/edits}
 \input{sections/consistency}
 \input{sections/video}
 \section{Kết luận}
 Nhóm đã so sánh GAT với MLP và kiểm tra vai trò của tri thức nền trong
 dự đoán quan hệ trên VG150. Trên GQA, nhóm điều chỉnh đầu vào của PE-Net
 (CVPR 2023) để dùng đặc trưng CLIP trong cùng bài toán PredCls.
-Với MagicBrush, nhóm xây dựng bộ cặp chỉnh sửa, kiểm tra tay một phần nhãn
-và huấn luyện mô hình dự đoán thao tác thêm, xóa, thay đỉnh hoặc cạnh từ
-đồ thị nguồn và yêu cầu chỉnh sửa. Trên bộ đánh giá VN100 do nhóm xây dựng,
+Với MagicBrush, nhóm giữ 345 cặp chỉnh sửa và người duyệt chấp nhận 20/20 mẫu
+kiểm tra tay. Trên 59 cặp test, GNN học từ chênh lệch đồ thị đạt micro-F1
+6,53\%, còn GNN học từ nhãn theo câu lệnh đạt 4,45\%. Trên bộ đánh giá VN100 do nhóm xây dựng,
 nhóm đối chiếu điểm đồ thị với nhãn tay, CLIPScore và LPIPS để đánh giá
 việc thực hiện yêu cầu và bảo toàn nội dung.
 
