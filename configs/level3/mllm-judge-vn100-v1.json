@@ -1,0 +1,2014 @@
+{
+  "parents": [
+    {
+      "path": "configs/level3/qwen200-cohort-v1.json",
+      "sha256": "3abb396609aea1b981ee99f3cbb0c2237bd13a6882ec5e4f80351ecf76c29109"
+    },
+    {
+      "path": "runs/level3/qwen200/seed42/index.json",
+      "sha256": "ba723eaf6536004b0ad020bfbfc220d42a0453dbd69af05bac697be0316ffbda"
+    }
+  ],
+  "cases": [
+    {
+      "task_id": "sidewalk-76268403d14e5f-q100-1",
+      "image_id": "sidewalk-76268403d14e5f",
+      "instruction": "Add a bicycle parked on the sidewalk to the right of the vendor's table, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-76268403d14e5f-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-76268403d14e5f-q100-1/target.png",
+      "source_sha256": "37b041b8b93ebad6419a5e4dcd38e225ae1bbe497a4cb1347a5c556d043ffa8e",
+      "target_sha256": "731e435e9fc4396d2da8252b5b21c6f4b195f3ebcaca167e43eaa91ebea50fbe",
+      "binding": "6224f0dd716a740d222387696ccdc14649e37c836de775f027716a4740dc2f0a"
+    },
+    {
+      "task_id": "sidewalk-32a2f39d76e383-q100-1",
+      "image_id": "sidewalk-32a2f39d76e383",
+      "instruction": "Remove the parked motorcycle on the left beside the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-32a2f39d76e383-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-32a2f39d76e383-q100-1/target.png",
+      "source_sha256": "f136466de92e46ad29c0efcdf1cfa80be7fc68a786dac4837274933b5ed56d45",
+      "target_sha256": "de4bf621c3e900d64cb2905d09e470a9b702cd54493d8fbe2ea740818d709bf6",
+      "binding": "7b996bdc25c72d6e2b88348b3f793eafb4a455110f01d4689986d9e3ff0a2139"
+    },
+    {
+      "task_id": "sidewalk-91f59e6bfd220c-q100-1",
+      "image_id": "sidewalk-91f59e6bfd220c",
+      "instruction": "Replace the motorcycle parked at the shop entrance with a bicycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-91f59e6bfd220c-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-91f59e6bfd220c-q100-1/target.png",
+      "source_sha256": "2d31c8859e2c9432e685f814085fee6ab6037d1d88223275d21f4c4106ccc06b",
+      "target_sha256": "ef68d8b5b225ca552454f4a0bdb546e293368bbc938ac15fdc3e34f54b1a6e3f",
+      "binding": "668bdb91512cfd03e5e5862d8795f32f14dc63459e71c6b92dc8c76b58c595d6"
+    },
+    {
+      "task_id": "sidewalk-6215d5b6c7c477-q100-1",
+      "image_id": "sidewalk-6215d5b6c7c477",
+      "instruction": "Add a potted plant on the empty pavement to the right of the standing man, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-6215d5b6c7c477-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-6215d5b6c7c477-q100-1/target.png",
+      "source_sha256": "092661f006e4ec5b4d1d2822fb32f0d3c368b1f9bc503376c1ddaacfee492dbb",
+      "target_sha256": "8da1104ba120dc6ed330723d651bddbb177548b53704afb18bd3d558e6e96726",
+      "binding": "2e106f5df16ea3f56d1c662082cfb77eedc00e1d5e8186816aac983436ad4c74"
+    },
+    {
+      "task_id": "sidewalk-fce6aef5958616-q100-1",
+      "image_id": "sidewalk-fce6aef5958616",
+      "instruction": "Remove the purple plastic chair to the right of the coconut cart, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-fce6aef5958616-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-fce6aef5958616-q100-1/target.png",
+      "source_sha256": "2f54349350d3bc9aaee22e20bf4289bf040388e370c8c8ab05d704cc8ada4e78",
+      "target_sha256": "9069da0dad38b3aa9792f110b78d1006cb79a0e7513e1eb639b500530c3efc69",
+      "binding": "03ac0d56102a8e8b864a3d64d90e215d93f563fc435e7d59e4562fe924f89127"
+    },
+    {
+      "task_id": "sidewalk-fab6a6e91c14c8-q100-1",
+      "image_id": "sidewalk-fab6a6e91c14c8",
+      "instruction": "Remove the white scooter on the far left, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-fab6a6e91c14c8-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-fab6a6e91c14c8-q100-1/target.png",
+      "source_sha256": "55926cfadc900d282f7bbebb191bbb22f82603b1e123067bb757af7678baa239",
+      "target_sha256": "d4d61a859f6b888c4072608c9ff831745c41bba114952de66755c3d868ae75b5",
+      "binding": "c26cc0fdb0430d2d88ac9f349b3b4483de2a20a8759df111d07e858a29632a33"
+    },
+    {
+      "task_id": "sidewalk-f9506670d2c5fc-q100-1",
+      "image_id": "sidewalk-f9506670d2c5fc",
+      "instruction": "Remove the parked motorcycle to the left of the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-f9506670d2c5fc-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-f9506670d2c5fc-q100-1/target.png",
+      "source_sha256": "dcae8fc3bf1fe60be8de45d1db625b0fb687b14c0009cbe1bef2c13abd0205d0",
+      "target_sha256": "7721b1842e4920203d1b3e725c888790af1f64150a97d59ef822871973c6be4a",
+      "binding": "7c37a2e2a2e7f0d1c1460726204bea4095c374bee02b12505c274ec68955bb6e"
+    },
+    {
+      "task_id": "sidewalk-c468de89896457-q100-1",
+      "image_id": "sidewalk-c468de89896457",
+      "instruction": "Add a person standing in the middle of the empty sidewalk, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-c468de89896457-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-c468de89896457-q100-1/target.png",
+      "source_sha256": "3b04b7ee72381b3d101c86a6f71b7dab0559aab43f714542ceead119f1c644ba",
+      "target_sha256": "16794de3a9c3692ba6294352815c564b10cb9540868487ff9a43a272fd69a286",
+      "binding": "776eadd448da54d8d5bc31d1f597545b19075be66564eaec98b825fa9490df44"
+    },
+    {
+      "task_id": "sidewalk-b1bb633496439f-q100-1",
+      "image_id": "sidewalk-b1bb633496439f",
+      "instruction": "Remove the yellow chair in front of the shop, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-b1bb633496439f-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-b1bb633496439f-q100-1/target.png",
+      "source_sha256": "bca64de26c0e5c3168df0d02d875e4a40690d4220d5a5afce03187b28580b819",
+      "target_sha256": "f516e0e7b654cc6c78e637a4e412918765319e2c0f2e2036313be240d2acb005",
+      "binding": "28663a98c2c08d5e11e2118551d0608c19e81643266e7e2487063fa48183b121"
+    },
+    {
+      "task_id": "sidewalk-a0e9e9faf44346-q100-1",
+      "image_id": "sidewalk-a0e9e9faf44346",
+      "instruction": "Remove the bicycle between the parked scooters, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-a0e9e9faf44346-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-a0e9e9faf44346-q100-1/target.png",
+      "source_sha256": "752b955f8add05d4e364a30d68767e36a0fd26da10161889fbcfa074c3e41722",
+      "target_sha256": "ec45391468bbc37511395945be6d1556c12b03aff19bbab2d103cdc5b46dd313",
+      "binding": "01f10e0e226fe4b5e5e18dab61b9f5b2869e7edc4f6fced8438b68ab36a099cc"
+    },
+    {
+      "task_id": "sidewalk-2a7fa2d343bdf7-q100-1",
+      "image_id": "sidewalk-2a7fa2d343bdf7",
+      "instruction": "Add a dog sitting on the sidewalk to the left of the food cart, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-2a7fa2d343bdf7-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-2a7fa2d343bdf7-q100-1/target.png",
+      "source_sha256": "ec5f3b6756baa45b8c7560d711443821fdd2fe09a8fd5144b4bd8a10b82fe5dc",
+      "target_sha256": "704d26ac57c0487f121733efac303bfac0df9be9e1a7ce2e5c241fddfc13c5de",
+      "binding": "4e5e9748586a7743703917d13e129308f9b4d48bf366ac4f83e7b4177785ba40"
+    },
+    {
+      "task_id": "sidewalk-fb4cb69b6f4d09-q100-1",
+      "image_id": "sidewalk-fb4cb69b6f4d09",
+      "instruction": "Remove the blue plastic chair beside the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-fb4cb69b6f4d09-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-fb4cb69b6f4d09-q100-1/target.png",
+      "source_sha256": "6e0ca0f11d506f9252df3326425ed9170e637ddbde17558fab418bbb000af72a",
+      "target_sha256": "2f1e8ef6d0f6b20d8ec331342e539e6227b1ee2ffa8260b1bc9d0676eea92ffd",
+      "binding": "f01f7fb4e01b4a7ef62bc18ce5ab6554c27f04c18df77c2a17bf6f3bb29d26c2"
+    },
+    {
+      "task_id": "sidewalk-74b093944a2075-q100-1",
+      "image_id": "sidewalk-74b093944a2075",
+      "instruction": "Remove the small blue stool to the left of the red cooler, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-74b093944a2075-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-74b093944a2075-q100-1/target.png",
+      "source_sha256": "0e1563349a9f6e7fadc869192f183e054bb60a53e192b25da61422e2b6e65bd4",
+      "target_sha256": "620b70c0943348e47a354255515dd1fbb651c433469b947aac5a28f5b06d957e",
+      "binding": "41baa7b133a45f869b619fd71ac9f86a80c193ee9fabb228458659b6a4977170"
+    },
+    {
+      "task_id": "sidewalk-64c0579368fe90-q100-1",
+      "image_id": "sidewalk-64c0579368fe90",
+      "instruction": "Add a cat sitting on the wooden bench on the left, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-64c0579368fe90-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-64c0579368fe90-q100-1/target.png",
+      "source_sha256": "125af6014d133b07851e7c2390123d8282155723790b22544db76a5b3d57e416",
+      "target_sha256": "bd0a410ee896e136b911372c5e656a1deefb3d91d1042dc9154b883d0ba20049",
+      "binding": "898e093da20f47b4d792355c598c333c4ba5591bb0c36517c312b05b0d437d8b"
+    },
+    {
+      "task_id": "sidewalk-95d2cda95de1b3-q100-1",
+      "image_id": "sidewalk-95d2cda95de1b3",
+      "instruction": "Replace the pink chair beside the pole with a potted plant, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-95d2cda95de1b3-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-95d2cda95de1b3-q100-1/target.png",
+      "source_sha256": "88053ab9e3175e4ed0694168038438149d2e44af67a84cade6af68aa33de4dd3",
+      "target_sha256": "92e4e757a0b629c6c2426678e4b8ac117a955ce246fbebf3bf54ed4deac03cb8",
+      "binding": "c6ea15f1180508d39b7bd54baf82ccdb75f0e7d182567bfd05788c7916857ed7"
+    },
+    {
+      "task_id": "sidewalk-ff83497c40e264-q100-1",
+      "image_id": "sidewalk-ff83497c40e264",
+      "instruction": "Replace the pink scooter beside the wall with a bicycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-ff83497c40e264-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-ff83497c40e264-q100-1/target.png",
+      "source_sha256": "e5d14d6a0c0734beefb6f697a7708fc0c8437d9e5e2e3eb4a74ddd03461722a4",
+      "target_sha256": "8ec58c7f572c33d2d4e8e85629f679bb65f083a69fdf86015aff7097d5cc3c75",
+      "binding": "353d865ae48c6437617b26b345e9928e2cdbceb44d23618feed9c38f4270a485"
+    },
+    {
+      "task_id": "sidewalk-0bef11eb7e3710-q100-1",
+      "image_id": "sidewalk-0bef11eb7e3710",
+      "instruction": "Remove the orange and black scooter on the right, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-0bef11eb7e3710-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-0bef11eb7e3710-q100-1/target.png",
+      "source_sha256": "1b00014ddd36325d13b0409ba72ace87a75aa3ff4f3053dfe93f36bbebfab833",
+      "target_sha256": "076bd3780335dfb43251468599e2e4d9ec3169edd8bfd91763ae47fdc50a9746",
+      "binding": "8494476aba0d5ed7fb6fb3392cb66dde5162c0f6bea780523d56f5711b4afa91"
+    },
+    {
+      "task_id": "sidewalk-9d26e7a8c66b6a-q100-1",
+      "image_id": "sidewalk-9d26e7a8c66b6a",
+      "instruction": "Add a bicycle parked on the pavement in front of the flower shop, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-9d26e7a8c66b6a-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-9d26e7a8c66b6a-q100-1/target.png",
+      "source_sha256": "29656ae6b5cb8a52b196da6bb97505cb50bc34ebf4dbd952454eaa90f46c76b7",
+      "target_sha256": "1c73f89b2be86fe30d91a1209b54ac9acf956a2d970e6368fdb650bb6ef193a7",
+      "binding": "5dab15c8da555a55b2e0aab094c4a2b248075d3335ed0423cdd2cf1e4b439ea1"
+    },
+    {
+      "task_id": "sidewalk-2a44674d2f881f-q100-1",
+      "image_id": "sidewalk-2a44674d2f881f",
+      "instruction": "Add a dog sitting on the pavement to the left of the standing man, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-2a44674d2f881f-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-2a44674d2f881f-q100-1/target.png",
+      "source_sha256": "215e9083d7aa96536bee645339d7205a0effb4abd69c6a839c5ff77734e0eb6c",
+      "target_sha256": "1a75e37d1e8f1b598b143b34314840c76e697c3270101d3e33b7dd251c0b6579",
+      "binding": "21fb93209ba4f1010662f3d8173447eb344536adfca956016ff2e7e91fdc4053"
+    },
+    {
+      "task_id": "sidewalk-01db96a8d3719a-q100-1",
+      "image_id": "sidewalk-01db96a8d3719a",
+      "instruction": "Add a bicycle parked in the center of the empty sidewalk, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-01db96a8d3719a-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-01db96a8d3719a-q100-1/target.png",
+      "source_sha256": "58c26cf33cbbea864c17cca5f2559206ea46200cb69b35af85e8c28b0c49988e",
+      "target_sha256": "87ba93e137394cd631ee335d747810b584da13dca922d353cb06732033523af2",
+      "binding": "a43660d6c4628c8e0ffc3cd53a1f93b044b53d47d01504be808fdf60692c724e"
+    },
+    {
+      "task_id": "sidewalk-161d79c18ac9bf-q100-1",
+      "image_id": "sidewalk-161d79c18ac9bf",
+      "instruction": "Remove the red chair to the left of the street cart, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-161d79c18ac9bf-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-161d79c18ac9bf-q100-1/target.png",
+      "source_sha256": "300dac4eead8492164d09263d37c502616c6925db3769d40a10ae3b9ec0f03bc",
+      "target_sha256": "e9347e90917dadd0b9c5aa2a3ed3fd771df466d9abe849421337e8a19ceeabe8",
+      "binding": "3ac6954c2069c924970dcd4f6a8ad71d138c906669faa9a20449e4b5fb67b628"
+    },
+    {
+      "task_id": "sidewalk-33f7974a8750b3-q100-1",
+      "image_id": "sidewalk-33f7974a8750b3",
+      "instruction": "Add a potted plant on the sidewalk in front of the closed green shutter, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-33f7974a8750b3-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-33f7974a8750b3-q100-1/target.png",
+      "source_sha256": "5bd1ba2d4a439f861e7ef5726ffc9feab9ecd63993b18c6f1a9c2c2249e3822a",
+      "target_sha256": "18fffb53f3b54646adc2e509bb5f28cf60362ac6ee5fa29e3dfa278e907183b0",
+      "binding": "ff126f5a267fc4c561e3ecb5e6b02eb064854a0773444b7cf8f977ecc5d56b67"
+    },
+    {
+      "task_id": "sidewalk-0da2002f7b7d10-q100-1",
+      "image_id": "sidewalk-0da2002f7b7d10",
+      "instruction": "Add a person standing on the sidewalk to the right of the drinks stand, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-0da2002f7b7d10-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-0da2002f7b7d10-q100-1/target.png",
+      "source_sha256": "17effc1ce4dc016854a706b808b8628d76ab2ae6e9c6e38fbe935d2bf000942b",
+      "target_sha256": "11100dd0d3d12eb08a1023d849b323fe0d0309ef4ce80cd7a50f159371c1b82a",
+      "binding": "d4d93450bc034165a9b51b834c4fcd13da59eb359c7c47fecb0acdbb43ff2517"
+    },
+    {
+      "task_id": "sidewalk-a0f552eadcb413-q100-1",
+      "image_id": "sidewalk-a0f552eadcb413",
+      "instruction": "Add a bicycle parked beside the shop doorway on the left, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-a0f552eadcb413-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-a0f552eadcb413-q100-1/target.png",
+      "source_sha256": "284816976ec58a59c24b9612f88e817962d350488e60395ed5949084e461a163",
+      "target_sha256": "0e0d789cf648514cfc23d4b0fb5cdef53c68f914378b198e733cd92816070c27",
+      "binding": "3649d577093035210737821af6bd50db8f661b14426a3a95adaf838621c08026"
+    },
+    {
+      "task_id": "sidewalk-50a5f1b8e28d01-q100-1",
+      "image_id": "sidewalk-50a5f1b8e28d01",
+      "instruction": "Replace the maroon scooter in front of the shop with a bicycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-50a5f1b8e28d01-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-50a5f1b8e28d01-q100-1/target.png",
+      "source_sha256": "02ff05b59d3b30d26abc3aae997046dcc28d7f5a74aeaab27a480e7a1676c6b1",
+      "target_sha256": "82058318e6d70ab86de2f7d6607fbe4d5b67b9bb050add9d5c464b35dcb0352c",
+      "binding": "cee02ba208c25fe308558b1c16f93198237a9013348f04969cf58fda9794e94f"
+    },
+    {
+      "task_id": "sidewalk-12ec56c21ca37f-q100-1",
+      "image_id": "sidewalk-12ec56c21ca37f",
+      "instruction": "Remove the parked scooter with blue bags beside the shop, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-12ec56c21ca37f-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-12ec56c21ca37f-q100-1/target.png",
+      "source_sha256": "1a67a91b293a7a5ada2dc7b0fb21b2f0d40caa8f3fa6c769b7f3c46292d8dcbb",
+      "target_sha256": "44d504a2e250f26617afd9471cfbdba39306cdedadc9ea51a4fd31db089e0204",
+      "binding": "c55f1098f305603e8f2c9b8049e0094e776b80626d1ba307428055e4e3bcf50d"
+    },
+    {
+      "task_id": "sidewalk-e5da4b252b25fc-q100-1",
+      "image_id": "sidewalk-e5da4b252b25fc",
+      "instruction": "Add a bicycle leaning against the blue gate, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-e5da4b252b25fc-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-e5da4b252b25fc-q100-1/target.png",
+      "source_sha256": "1a82402ea8b2b4d082b0728e5cf9dd5d89acc3f8837947ac38f9cee3c53216c8",
+      "target_sha256": "432a63c457b8848bc4a56eaaf4aa4f10c77ccc251d954037114ba59752226c66",
+      "binding": "eae3edf86594fc960c65e3bceebdfdfc0e897bfa0b6aa16932434343a7fcf695"
+    },
+    {
+      "task_id": "sidewalk-ae78d27e407cb8-q100-1",
+      "image_id": "sidewalk-ae78d27e407cb8",
+      "instruction": "Remove the bicycle to the right of the foreground tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-ae78d27e407cb8-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-ae78d27e407cb8-q100-1/target.png",
+      "source_sha256": "4160bb2d546727124f69d106bb9b4a2f4e21b40851fb114247c0a8eb292e4e49",
+      "target_sha256": "68f3bd4b51573090a45b2eed683c963cef642b87fd6160ef5bde0ced98d8fbe9",
+      "binding": "ada82b2432d7872de942231da0405fb42cbe2a5e9f265a6279b2840acddc1629"
+    },
+    {
+      "task_id": "sidewalk-98d8c84f866b1b-q100-1",
+      "image_id": "sidewalk-98d8c84f866b1b",
+      "instruction": "Remove the parked motorcycle closest to the blue sign, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-98d8c84f866b1b-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-98d8c84f866b1b-q100-1/target.png",
+      "source_sha256": "15945e5f589d0014875147d63453ac5e38c2454aaf8a5e174b79fdd5baaa5a9b",
+      "target_sha256": "5bf2ec9ebb24ff05fd72c5f74945af4e05981cc1657c5085fe799cfbbb50a1cb",
+      "binding": "1de563a638514462ececcc002a16ce7949962b9d0842a80c2f88dd9b25fb6ca8"
+    },
+    {
+      "task_id": "sidewalk-aca212bca64123-q100-1",
+      "image_id": "sidewalk-aca212bca64123",
+      "instruction": "Remove the red and black scooter in front of the green shutter, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-aca212bca64123-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-aca212bca64123-q100-1/target.png",
+      "source_sha256": "22a66107468c7e60998951b160e67467db29120c4ed534f6a97988c83823d6e1",
+      "target_sha256": "28ebbef58874f6848ace6c31a4ee572dd1d815e41b8f209d8eb6c3d16f98f70b",
+      "binding": "677b31fc8261b10bd915fc071dccb98f6dcc7a73933088b043106be5ab2adffd"
+    },
+    {
+      "task_id": "sidewalk-94436587ba5c0b-q100-1",
+      "image_id": "sidewalk-94436587ba5c0b",
+      "instruction": "Replace the red motorcycle in front of the glass shop with a bicycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-94436587ba5c0b-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-94436587ba5c0b-q100-1/target.png",
+      "source_sha256": "c0e7b4d0d8f51dc201131230c3ba8d0961b032ae48f4aa3fc319bdc154b70399",
+      "target_sha256": "ff823d5671de2885c2abf9cc7acee267cc69098581de37e2591bc5758e653a87",
+      "binding": "da7a359f111a5612ad36e34207257accdd56b35dd400664475ba8e0ef9b12a9d"
+    },
+    {
+      "task_id": "sidewalk-2929d93b8d10dd-q100-1",
+      "image_id": "sidewalk-2929d93b8d10dd",
+      "instruction": "Add a potted plant on the pavement to the right of the white utility box, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-2929d93b8d10dd-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-2929d93b8d10dd-q100-1/target.png",
+      "source_sha256": "744d52709ec0f8d3b63b32acdb7272f3c4a1d3ade9e28d57ea4b487e613b4539",
+      "target_sha256": "9a93a6c862c8c68394c5e226367a63a6570125420c996335ca2771c95c5a5733",
+      "binding": "f32cd99df070e6cf23d5c332fbae5c8f4c10f1463e790f36f8419121dd0e5600"
+    },
+    {
+      "task_id": "sidewalk-42c377bb0ed790-q100-1",
+      "image_id": "sidewalk-42c377bb0ed790",
+      "instruction": "Add a wooden bench in the center of the empty sidewalk, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-42c377bb0ed790-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-42c377bb0ed790-q100-1/target.png",
+      "source_sha256": "d7423f7d4b23d8822acc7b605eb521e15a2412a1b35130758acc18705b5b00f7",
+      "target_sha256": "a2c36d4784af392bab0b716cc4b0438446cc67163d6993a5d4a48b65365de041",
+      "binding": "56b3b3f2a1eb108e53dd2a341b0fff3b4d55f4c7c06f54b262f3c9a08b7804e1"
+    },
+    {
+      "task_id": "sidewalk-a4a64a283fc2ba-q100-1",
+      "image_id": "sidewalk-a4a64a283fc2ba",
+      "instruction": "Add a cat sitting on the ground between the cement bags and the metal gate, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-a4a64a283fc2ba-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-a4a64a283fc2ba-q100-1/target.png",
+      "source_sha256": "fbac6e082b1b0734438c87c24199f5eab66c6ded80bc8cc85dca1fd3a6301d59",
+      "target_sha256": "29a6b2c2013a765c0d77b102c81ed635f7a7b39cf728edcdc513497a07d9adff",
+      "binding": "1785746b54545cde721f1d679e73e9622a96218fa91761a270a34f725a1b2288"
+    },
+    {
+      "task_id": "sidewalk-76628fe34608f9-q100-1",
+      "image_id": "sidewalk-76628fe34608f9",
+      "instruction": "Add a person standing on the sidewalk outside the open blue gate, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-76628fe34608f9-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-76628fe34608f9-q100-1/target.png",
+      "source_sha256": "bf340de602e0c77dcc8e1d3691fc63354f19f911bf8dcfadba30144294099cc3",
+      "target_sha256": "7453514bcd011625ce65068d89711101fdacf0d59d75f3449f9e763f17356ffa",
+      "binding": "5f150f5ed8214bf7cb118797eca9c03e053463ba5cff39ed10a88331b4c122d7"
+    },
+    {
+      "task_id": "sidewalk-03f2a3df56c3c7-q100-1",
+      "image_id": "sidewalk-03f2a3df56c3c7",
+      "instruction": "Add a dog sitting on the pavement to the left of the motorcycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-03f2a3df56c3c7-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-03f2a3df56c3c7-q100-1/target.png",
+      "source_sha256": "f1fe6952aa2fe62bd3f504a101a7cefd0232b85d1a1e9c5f6bfcc7e505b14410",
+      "target_sha256": "a6bebf3dfef81813368e92da71f36b844f0eb6096638151163861e553fc09bf6",
+      "binding": "e225398277f5f6644c3f62c3997eb13c79f7e1f94cdf15079afa7a98ebc315b7"
+    },
+    {
+      "task_id": "sidewalk-a585bc2b279cf9-q100-1",
+      "image_id": "sidewalk-a585bc2b279cf9",
+      "instruction": "Add a potted plant on the pavement to the right of the white scooter, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-a585bc2b279cf9-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-a585bc2b279cf9-q100-1/target.png",
+      "source_sha256": "0340e9e7c7bd8ff712dcf99afccd3d8f5c2a1c543755818511ad22c0fb236864",
+      "target_sha256": "79688b3fa91f307495489970d9fdbbe7129e9cc38ee127a769182fbb7c76eb57",
+      "binding": "f11fe60506523a4475ab3818e7a0060ff0a2df79642107c61e6ae45db7d11a3d"
+    },
+    {
+      "task_id": "sidewalk-26bf9cf2a299f4-q100-1",
+      "image_id": "sidewalk-26bf9cf2a299f4",
+      "instruction": "Add a dog sitting beside the small tree on the sidewalk, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-26bf9cf2a299f4-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-26bf9cf2a299f4-q100-1/target.png",
+      "source_sha256": "0cdd245c384ad4c29475e90bfb3ca7c64e8de13d1aa753bd168324a85ea8864c",
+      "target_sha256": "c457f2653c1df38b77862dbdca630bbe951fdb17e8557b99a928b859a426fd81",
+      "binding": "1a5fc10d9d49e7a851c4864571b049f993391df3dd47b76748cdf3c27abe3219"
+    },
+    {
+      "task_id": "sidewalk-725a21ceb968e4-q100-1",
+      "image_id": "sidewalk-725a21ceb968e4",
+      "instruction": "Remove the parked motorcycle nearest the closed shutter, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-725a21ceb968e4-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-725a21ceb968e4-q100-1/target.png",
+      "source_sha256": "5f7b60cf724214eda8004d86e4e869f45480d9c4514b9ad6de0b0146b43e0ed1",
+      "target_sha256": "fc0f4acddb6a867b666f41ec06dc7fd24747de741bbde2ce7bf3ed6adc295a94",
+      "binding": "c99f2de83c9c614e7f4175852c4c46dccc2f5f810247668cb72d02d24d994d5f"
+    },
+    {
+      "task_id": "sidewalk-e6eb3efb2e4967-q100-1",
+      "image_id": "sidewalk-e6eb3efb2e4967",
+      "instruction": "Remove the motorcycle on the far right near the shop steps, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-e6eb3efb2e4967-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-e6eb3efb2e4967-q100-1/target.png",
+      "source_sha256": "3ce196d125112f3bfa7ba13c130e10e4cbf685d6d299b27e67d9354b1bb29007",
+      "target_sha256": "36adec18a7807509cb5334ef5b62706c3ae2d6a0cc96203fb668135fecda3053",
+      "binding": "34ff9c4ff55dea9a699c210fe415472d4ce0e98344c62e0c0fdcdbda6c9ecd2a"
+    },
+    {
+      "task_id": "sidewalk-18dd1ee14713ee-q100-1",
+      "image_id": "sidewalk-18dd1ee14713ee",
+      "instruction": "Replace the large potted plant to the left of the glass entrance with a chair, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-18dd1ee14713ee-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-18dd1ee14713ee-q100-1/target.png",
+      "source_sha256": "341c90d56a19278905a716711492e2f1c4294781577f7df5d3676fac45c5b02f",
+      "target_sha256": "999bd9915b3178cc9fbe117f0b80e90ede5632af5ca92337c7778b818ec4560b",
+      "binding": "8d23c1a6bbc355eaa92089e18e837b27a9495d81481ccd646bc84d42498c00d6"
+    },
+    {
+      "task_id": "sidewalk-8d6e4a92c117a9-q100-1",
+      "image_id": "sidewalk-8d6e4a92c117a9",
+      "instruction": "Add a bicycle parked on the pavement to the left of the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-8d6e4a92c117a9-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-8d6e4a92c117a9-q100-1/target.png",
+      "source_sha256": "ae48b010bc7cc38f5320d4924c7c3b26d104a4880f50edc8fdf1c6e32b9488d0",
+      "target_sha256": "095b9de9b5b8511000fd1c37594dbd35886b9861d04f0ff75406842b1f61be28",
+      "binding": "41097cdc39e5bd28cee29f7b9d5fde1c306c416476e3e3b65b2584007c33c289"
+    },
+    {
+      "task_id": "sidewalk-8c036fbacfee64-q100-1",
+      "image_id": "sidewalk-8c036fbacfee64",
+      "instruction": "Add a dog sitting on the sidewalk in front of the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-8c036fbacfee64-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-8c036fbacfee64-q100-1/target.png",
+      "source_sha256": "3f4819a7257e07e87a03593a945643ea3049c784fb489ae979dfdbe184372601",
+      "target_sha256": "7fb4920f49a456bd874b61b39316c99c865a27986369ca652d1eaa9a6455a632",
+      "binding": "95f9ed65de69d91e06b10135f03cbf603cdde19a9dfe763a69e3d2fa29ccef99"
+    },
+    {
+      "task_id": "sidewalk-1c6d831ce91c73-q100-1",
+      "image_id": "sidewalk-1c6d831ce91c73",
+      "instruction": "Remove the black scooter on the left, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-1c6d831ce91c73-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-1c6d831ce91c73-q100-1/target.png",
+      "source_sha256": "35d787d2b455a877c4a6403ec16c854e53d1896c6bfdc43c0dd59f0e2929eccd",
+      "target_sha256": "4aec45abb06821f9b451835ad775ff166e7c1ec0aafc46b077d982bddfbcc941",
+      "binding": "cf8852fe71571f7ec8fb8642586c92590cb48faf14bf3078debc26ceae5c642c"
+    },
+    {
+      "task_id": "sidewalk-9b7529f82d4405-q100-1",
+      "image_id": "sidewalk-9b7529f82d4405",
+      "instruction": "Add a chair on the sidewalk to the right of the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-9b7529f82d4405-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-9b7529f82d4405-q100-1/target.png",
+      "source_sha256": "0179bdd6c8032dd9ba72b3ac4c49537d7b3989313c11545cd55ecc3180ccff49",
+      "target_sha256": "91aacfb701fc4dd8da63e767cfef743704a0f0a227114290a450fb7259a8dde1",
+      "binding": "1c5036efddbbfd9d5502fb507a29251b5382c725fc5f50cc16dfc8f0558a713a"
+    },
+    {
+      "task_id": "sidewalk-341e5d3cc859b8-q100-1",
+      "image_id": "sidewalk-341e5d3cc859b8",
+      "instruction": "Remove the yellow and black scooter beside the stairs, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-341e5d3cc859b8-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-341e5d3cc859b8-q100-1/target.png",
+      "source_sha256": "6ad5018689892c6e1bd59d06f25d25f0e8bf1e8cf6fcd0b98f3c0761b321b571",
+      "target_sha256": "4cb28fd477db09b4c9435c016bf3ec50a4a096ee914f2d94f8d1a190efba3ca9",
+      "binding": "9a23e2bf122ca74211d3a41796f5a1cc7c64cde079db535d21c7a6711d90b414"
+    },
+    {
+      "task_id": "sidewalk-9607c45e866d43-q100-1",
+      "image_id": "sidewalk-9607c45e866d43",
+      "instruction": "Remove the uncovered scooter on the right, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-9607c45e866d43-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-9607c45e866d43-q100-1/target.png",
+      "source_sha256": "89bafdb9087ba12fcde5af5804ddeabc9f6bace2e0ae8113b3595a9ece8bf838",
+      "target_sha256": "fe7232d69f8c3f31d6d2d83778df440e20887dde0e78378ac1542d4f07d51113",
+      "binding": "fbc4aded93bed7496e0ad3b32c0f7a64c45377364be66485eed41fc223a4af12"
+    },
+    {
+      "task_id": "sidewalk-6ae28a57c0ade0-q100-1",
+      "image_id": "sidewalk-6ae28a57c0ade0",
+      "instruction": "Add a wooden bench in front of the hedge to the right of the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-6ae28a57c0ade0-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-6ae28a57c0ade0-q100-1/target.png",
+      "source_sha256": "970f5b4a91b6f461d03ddbd74875a5ac968481331aba91505d627c29cdda4604",
+      "target_sha256": "5f4dc50fa3afd4ce80466572b1b97ddc52cbc0b4d34c51df34358c14561afe4a",
+      "binding": "e6148778cffdd657ec8772fa8f1399b07e1b3cd348059ef7c7acd8dd939b312c"
+    },
+    {
+      "task_id": "sidewalk-f7b2003cc25447-q100-1",
+      "image_id": "sidewalk-f7b2003cc25447",
+      "instruction": "Remove the pink stool outside the shop, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-f7b2003cc25447-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-f7b2003cc25447-q100-1/target.png",
+      "source_sha256": "61e1ce1f57e1da3b63c1bd5fae7c90d3f23f2877831d52f0f51bc0229ae265df",
+      "target_sha256": "1b9e3824727975b32c981349160110705aa6d6e2d533d4157023d0483a9626c6",
+      "binding": "f90b09d7adbdda917c5e76f95dc40867ee162e01206ec7c1832c9d03e159093c"
+    },
+    {
+      "task_id": "sidewalk-2379c16d31b34b-q100-1",
+      "image_id": "sidewalk-2379c16d31b34b",
+      "instruction": "Remove the potted plant in the foreground beside the broken pavement, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-2379c16d31b34b-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/sidewalk-2379c16d31b34b-q100-1/target.png",
+      "source_sha256": "cf0681c4364a3baa899843c5cce31c466aa150739a1a9a9726ef5acf60794d41",
+      "target_sha256": "b84a8bc4f6e6f1b34c6ea6e3793a9df208afcb95c03905c74f5a66d86dca4c4a",
+      "binding": "437efd46adc2d80d76cfd84e4fe85dfe6521e4229aa3b279a20693f295e62ef1"
+    },
+    {
+      "task_id": "travel-8f0de11e954ddb-q100-1",
+      "image_id": "travel-8f0de11e954ddb",
+      "instruction": "Add a person standing in the courtyard in front of the shrine, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-8f0de11e954ddb-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-8f0de11e954ddb-q100-1/target.png",
+      "source_sha256": "aec2cf63c36a6cc876680807eab4afc43f75bbae6e1d2bec16bd7494919c3b34",
+      "target_sha256": "158a0a7bb645a8978651c9c4794e3c5084f908664ed95386808b947a15791176",
+      "binding": "765fefbf34fb363f358cccc15f67dd66daf67fe63295d64b4649cd8be1e055a3"
+    },
+    {
+      "task_id": "travel-d10a9c038514ad-q100-1",
+      "image_id": "travel-d10a9c038514ad",
+      "instruction": "Add a small rowboat on the open water near the cave entrance, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-d10a9c038514ad-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-d10a9c038514ad-q100-1/target.png",
+      "source_sha256": "61e7a18f905167c204e3a2682f556165dc60d59efcd197e2beb228f9ca65b99c",
+      "target_sha256": "655425037d665e805923cc3da3f6ad913f1ab6cd8a614887fb4d4054e8cb08c0",
+      "binding": "8b333965cf3569bcb589d2c675a8228827e0890124d1b265caff8f2068de0bfc"
+    },
+    {
+      "task_id": "travel-2c70601665fa6c-q100-1",
+      "image_id": "travel-2c70601665fa6c",
+      "instruction": "Add a bird flying in the sky to the left of the tower, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-2c70601665fa6c-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-2c70601665fa6c-q100-1/target.png",
+      "source_sha256": "a73aacda7f503dda0b740f22a52a818b1484263fb1d959e94855506cb834f70b",
+      "target_sha256": "bcb0a90ac842f2f1cef3b8d061a8663f963248fce45f6c1f522881fbe06dee99",
+      "binding": "3714e8c1bddd4503a0d997a273c24c95ea90abbc19172f08eaca97183878ce10"
+    },
+    {
+      "task_id": "travel-672935ff3d0085-q100-1",
+      "image_id": "travel-672935ff3d0085",
+      "instruction": "Remove the truck parked in front of the yellow building, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-672935ff3d0085-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-672935ff3d0085-q100-1/target.png",
+      "source_sha256": "f41653abb65042b3deb24c2d0ae12756852e05da09e1ada4ad9727fdda250388",
+      "target_sha256": "409210090082088d82bdd3ea19e2d19b160b88cdb5efcf3f6b3560a4379f9833",
+      "binding": "01e2b54592db9c3ed75daa25ebdef310fa30faa6ab9ea9124b6f461721895aac"
+    },
+    {
+      "task_id": "travel-c779ea8e2f5b35-q100-1",
+      "image_id": "travel-c779ea8e2f5b35",
+      "instruction": "Add a bird flying in the sky above the tiled roofs, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-c779ea8e2f5b35-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-c779ea8e2f5b35-q100-1/target.png",
+      "source_sha256": "8aa79e8cb496038e54a263305ac6e9184b76638667484699d91671cfbbe7552b",
+      "target_sha256": "cd1af7a80c9e558b3665778556a5d760fbc21950c3f26c58c39b213acf1b98b6",
+      "binding": "f2b264933b6253b7b6dc927de5e8a46729272aef79086d1b97ddf0a35e366878"
+    },
+    {
+      "task_id": "travel-3fa95f6c07d8e1-q100-1",
+      "image_id": "travel-3fa95f6c07d8e1",
+      "instruction": "Add a beach chair on the sand to the left of the lifeguard tower, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-3fa95f6c07d8e1-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-3fa95f6c07d8e1-q100-1/target.png",
+      "source_sha256": "0044e860d5af1a2a29f5e69f9afb4173c06282bf8d2a3e16efd27f631e1fd750",
+      "target_sha256": "521c7582bae973ffe0ef4ebd55a480145a08036ab327ffdfb66e538e598d5930",
+      "binding": "bb30f4c913775fd089f082bee9a2b1d65dd6ce5fe55cc78f027d8b9c898fc2ce"
+    },
+    {
+      "task_id": "travel-0e7d4b77967270-q100-1",
+      "image_id": "travel-0e7d4b77967270",
+      "instruction": "Add a bird flying above the waterfall, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-0e7d4b77967270-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-0e7d4b77967270-q100-1/target.png",
+      "source_sha256": "337edcb4d7283bd60fb0c2f6de96267f42203c002374d7218145fded6eddc5c6",
+      "target_sha256": "382581c3474ed5e63b7e833df2bae337d807a6ca740e734fba47b2b18ed84c96",
+      "binding": "4ee307749af2b1a97d1267a7fe922179b536972da3cc37b585c73110430667ca"
+    },
+    {
+      "task_id": "travel-7bb0c6b3635205-q100-1",
+      "image_id": "travel-7bb0c6b3635205",
+      "instruction": "Add a small sailboat on the water in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-7bb0c6b3635205-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-7bb0c6b3635205-q100-1/target.png",
+      "source_sha256": "cba528c4498c6857be7c3fb3648cbfaf0aa380c8156c97e42425204f768bc69e",
+      "target_sha256": "7626b425bab2ea816b9698494d0f5cb8db5fa47d1dd49d739ab8149dcdb4ac88",
+      "binding": "d48e04fb5fbdabe0e772ed92ef60433abfb324ebde14e7b6c9d9994e4ac8a6d0"
+    },
+    {
+      "task_id": "travel-b1042945bd3832-q100-1",
+      "image_id": "travel-b1042945bd3832",
+      "instruction": "Add a bicycle parked in the courtyard in front of the temple, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-b1042945bd3832-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-b1042945bd3832-q100-1/target.png",
+      "source_sha256": "a074f7052679c128624dd0b8e8dbc9a78aa19f9cf2548d9a7babe38c05f8fa2e",
+      "target_sha256": "55095a09ca5f3143e629df24c565b1c5c5116b742b17c973c2164b1f5e292242",
+      "binding": "0372433d664bedec966ed93aba9f65b3b27ad6b479132477f8f48094bb2c2289"
+    },
+    {
+      "task_id": "travel-04ea5302b09c26-q100-1",
+      "image_id": "travel-04ea5302b09c26",
+      "instruction": "Add a person standing beside the large rock at ground level, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-04ea5302b09c26-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-04ea5302b09c26-q100-1/target.png",
+      "source_sha256": "dc9f48fc2e351704741b8085277c68df1e81ca6afc287293401c81f829581007",
+      "target_sha256": "00934da564ee286a868bcd8a3ffa86bedea638648a102b6f5afbded4ae763796",
+      "binding": "09fc4c1398f53b92b53e07dbdfd0a6dc28806719bf11ca079eb947534e34f257"
+    },
+    {
+      "task_id": "travel-f7950a24be3a68-q100-1",
+      "image_id": "travel-f7950a24be3a68",
+      "instruction": "Add a person standing in the open courtyard in front of the temple, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-f7950a24be3a68-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-f7950a24be3a68-q100-1/target.png",
+      "source_sha256": "9f3879ac74018062b6dc1afe92e365f92a95daadd08cec8a05852dd67462ca00",
+      "target_sha256": "924696dec3dea29b0e44d806d9b9191329fa94572bc247b43d412b46df4bbfa0",
+      "binding": "2806e020d0c05586d05f7f9104dba428522a7d524ee3f379bc60032b28f2b7c9"
+    },
+    {
+      "task_id": "travel-685ed0a42dc65a-q100-1",
+      "image_id": "travel-685ed0a42dc65a",
+      "instruction": "Add a person standing on the central paved path in front of the museum, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-685ed0a42dc65a-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-685ed0a42dc65a-q100-1/target.png",
+      "source_sha256": "ddf3a42b4f9ebb1c9d2f1cc991728ee0b4a619c1a393b4ad1d3922e85a54dc02",
+      "target_sha256": "e99b7a53b38cc3d923f411077258a84809939b2e4c29229b962b8f7fce29b11e",
+      "binding": "c9d5f2218dd24fec0e6704d2921437a23b194d83e17098305d80a2846b3261a1"
+    },
+    {
+      "task_id": "travel-ec43428fb4eeac-q100-1",
+      "image_id": "travel-ec43428fb4eeac",
+      "instruction": "Add a small sailboat on the water near the beach, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-ec43428fb4eeac-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-ec43428fb4eeac-q100-1/target.png",
+      "source_sha256": "668d8b5682ab6318d47ef55f2e7bf54cdfb50eb5d70b7609b333deac7f2d8313",
+      "target_sha256": "3f25189b6b8624046b840b61d6e08603813e94a4933ec7ae4d1389ace02a12b5",
+      "binding": "8592d8a195a6539f4f1203f89d178f041074c86c70f3af6eb8c3b7f6f2ba26b2"
+    },
+    {
+      "task_id": "travel-775298dec24e75-q100-1",
+      "image_id": "travel-775298dec24e75",
+      "instruction": "Remove the person standing in the center gateway, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-775298dec24e75-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-775298dec24e75-q100-1/target.png",
+      "source_sha256": "111128bd8e8de344b0c881b8976f7d35e1a3eedb8168f8c9334ed20bbb0a7747",
+      "target_sha256": "87a5bc9d775f38cac7df9ba0dd55c9657ee965fb3ceaa76fdbdb4232a991b1e0",
+      "binding": "094190ec6a3b3995d85152ceeec64263acedd767d522429b987e45bf0ecf715e"
+    },
+    {
+      "task_id": "travel-8aa742b211241b-q100-1",
+      "image_id": "travel-8aa742b211241b",
+      "instruction": "Add a bicycle parked in front of the entrance steps, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-8aa742b211241b-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-8aa742b211241b-q100-1/target.png",
+      "source_sha256": "7549878c4314d932529128a23305102c9ecdd78197ccbe377cad76fef2e0f90c",
+      "target_sha256": "bc55828cbc6c02c0440aa49e891815b3541951eee15dc39cf9037ebe66da75c1",
+      "binding": "4c0edd37904af951d4ca07efd8985bb87db38dbd886c5de5d7fb787882ae89fd"
+    },
+    {
+      "task_id": "travel-1a7ad4e7b50126-q100-1",
+      "image_id": "travel-1a7ad4e7b50126",
+      "instruction": "Add a dog sitting in the courtyard in front of the gate, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-1a7ad4e7b50126-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-1a7ad4e7b50126-q100-1/target.png",
+      "source_sha256": "59a47ab4a18574ae7c397aeffb40ed909ac1c6acbe5d9a43e161099fee742113",
+      "target_sha256": "8ef00f60d400a36d12f83e59aedc2f56f96b549bdd4cb2ec605678eb1fca9691",
+      "binding": "e55a3d428150bdbec4a4848332498c932dc9c116803aa36388de1f942835bf54"
+    },
+    {
+      "task_id": "travel-9a72725aa512e7-q100-1",
+      "image_id": "travel-9a72725aa512e7",
+      "instruction": "Remove the red motorcycle in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-9a72725aa512e7-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-9a72725aa512e7-q100-1/target.png",
+      "source_sha256": "0368b5c3471f8433528d250faec4865355cead6ea17fbaf1fd9c14cfe4fefa2d",
+      "target_sha256": "29ae84d2d93398582affff4bafe84301b6ce69b32fe00a91bf19dd634a54c817",
+      "binding": "f2b9de91aeececa9b19f0f698c54b4cf6261c074a6c4964f09cc926882a3a695"
+    },
+    {
+      "task_id": "travel-5335a75704bb20-q100-1",
+      "image_id": "travel-5335a75704bb20",
+      "instruction": "Add a bird perched on a branch near the middle of the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-5335a75704bb20-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-5335a75704bb20-q100-1/target.png",
+      "source_sha256": "36a0c9560d74f208153adfb24b5f6c05518abac3a96c7ac2b9710ab132e2121b",
+      "target_sha256": "67dd29002ad9000ad9b28fc25c47132e1e5186769417469ec21a83f1f93af62e",
+      "binding": "ce09a90b34fc7adeb66aaf51aaa7e0237f46a8ad233de511c6ea323ca769f73e"
+    },
+    {
+      "task_id": "travel-f50006ee6533fd-q100-1",
+      "image_id": "travel-f50006ee6533fd",
+      "instruction": "Add a small rowboat on the water in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-f50006ee6533fd-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-f50006ee6533fd-q100-1/target.png",
+      "source_sha256": "98c6dafbe1e23caed9d25f3034721a0f2e55248adb3a4af296f95b28f74a971a",
+      "target_sha256": "413a32fe5c5a6b35796ea8056503a799a73cef23fbfac91f274735cc18f1123f",
+      "binding": "88ad8f9f17733899a438dd4ace2c2adc26df8e791a491918e37d96bcbaad194a"
+    },
+    {
+      "task_id": "travel-18e256235fa976-q100-1",
+      "image_id": "travel-18e256235fa976",
+      "instruction": "Remove the motorcycle on the left side of the road, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-18e256235fa976-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-18e256235fa976-q100-1/target.png",
+      "source_sha256": "ec254432dd0856d0898d746a9c2d7e69d4e43c7d0ea800aed2671a0ab66ce355",
+      "target_sha256": "d9a8fee4bef4f5da37cc3782e886d41822285fcdbbea4effe57fb68438321547",
+      "binding": "461e9e26c3befebe357c6108658cefd161cd47932d94b7b09f515d8667351a04"
+    },
+    {
+      "task_id": "travel-9620d5a43793f0-q100-1",
+      "image_id": "travel-9620d5a43793f0",
+      "instruction": "Add a cat sitting on the ground beside the doorway, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-9620d5a43793f0-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-9620d5a43793f0-q100-1/target.png",
+      "source_sha256": "a8f89fe7482601e76233cb5a2ce16afe1d888ab0d7a0feda30e8d79f38ba5285",
+      "target_sha256": "7c5fdc38d8b5361733eef89e9050d9f8d9a17236725a14dff27ff3f0dba8160b",
+      "binding": "8b225c68adfe190baf923ebf6765f7ce7c07521f012a761bbe9250339029fd0f"
+    },
+    {
+      "task_id": "travel-ecd8f6c6ba45d9-q100-1",
+      "image_id": "travel-ecd8f6c6ba45d9",
+      "instruction": "Add a small sailboat on the water to the left of the existing vessel, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-ecd8f6c6ba45d9-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-ecd8f6c6ba45d9-q100-1/target.png",
+      "source_sha256": "35a44947008a0f80c75dbd90f0004733deb8031860797aa97c37265886756292",
+      "target_sha256": "6b042ae3bfb1543f4c3ba568ce56efee1ff04522752972f9b7631d7db03a2278",
+      "binding": "574ff2600d09bf81735af5fb4afb80175acbec2d5d5fffa9cf97ea31e40ef6cd"
+    },
+    {
+      "task_id": "travel-5cd07e642e01ef-q100-1",
+      "image_id": "travel-5cd07e642e01ef",
+      "instruction": "Remove the person standing beside the boat at the lower right, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-5cd07e642e01ef-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-5cd07e642e01ef-q100-1/target.png",
+      "source_sha256": "8a50b203fd8a06afd6832edf8af23e5f5741bc64d2981d0500610268cc8b4472",
+      "target_sha256": "6ce6a860a19d083116381803c85c9a66efad8db2f3a57f4389ecd0a3e7958089",
+      "binding": "026543a5267e3ffa4e409e314e9c584d48611318d014a7fbdd886915df85d0d3"
+    },
+    {
+      "task_id": "travel-3b441e6c90046c-q100-1",
+      "image_id": "travel-3b441e6c90046c",
+      "instruction": "Add a beach umbrella on the sand in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-3b441e6c90046c-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-3b441e6c90046c-q100-1/target.png",
+      "source_sha256": "2b27eb13e37d5123ea0d6c9f9814d70458ad3e6a97feeba2595f7a904ab863d4",
+      "target_sha256": "09792f316f65e5b8a55f74d154f68d4e6e492275ec1f05ddfdd7fd00555770c0",
+      "binding": "b6b6c741a575d070551ebe0317a9780b95d3647675d0e83778ada23ec1859cfb"
+    },
+    {
+      "task_id": "travel-35d9d94c374a5e-q100-1",
+      "image_id": "travel-35d9d94c374a5e",
+      "instruction": "Add a bicycle parked to the left of the temple entrance, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-35d9d94c374a5e-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-35d9d94c374a5e-q100-1/target.png",
+      "source_sha256": "90e70b3c5c8c93d3e0e47ec64fd0257fd3cada7a541212fa0e2f25528b938e95",
+      "target_sha256": "225b48cff417fb0fe73ffa5bddfbe26eb342c72234a57fb59aeab19291f912b7",
+      "binding": "660c569872643ebf904ed1b6d104ad4b7fffd86373007594e21cf5f1af5b6bba"
+    },
+    {
+      "task_id": "travel-b3f5ed3ef9dffa-q100-1",
+      "image_id": "travel-b3f5ed3ef9dffa",
+      "instruction": "Add a small boat on the river below the bridge, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-b3f5ed3ef9dffa-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-b3f5ed3ef9dffa-q100-1/target.png",
+      "source_sha256": "8a093c669fac9e479f3e89323758d9b8205e0b7583af7535bbd8ce9c047233d9",
+      "target_sha256": "ac9da5de4c0fe8ba6e2e091f8ab84b2bacb0673e7484bd6f18e27a1cd50140ad",
+      "binding": "e712edc0ac0eef5fe8a10ff3d1c23ae4e3ca1fad2bb6099495b3d77e91749520"
+    },
+    {
+      "task_id": "travel-a0874afd877dfc-q100-1",
+      "image_id": "travel-a0874afd877dfc",
+      "instruction": "Add a car parked on the road in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-a0874afd877dfc-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-a0874afd877dfc-q100-1/target.png",
+      "source_sha256": "f3deaa3ae25d262a23e189f0a03994405781b060b9329fa11adf54f5eb937e20",
+      "target_sha256": "6b10830f29c9b30e011be25f1dd5ffa15d2338d4119afa74ceb0c61fe68949f2",
+      "binding": "ea1de5c2740a6df30f37d6e8e98074d3d8720e05cf8c34faa1e74531499bfe3b"
+    },
+    {
+      "task_id": "travel-4b531787105fc7-q100-1",
+      "image_id": "travel-4b531787105fc7",
+      "instruction": "Add a small sailboat on the water to the right of the rocks, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-4b531787105fc7-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-4b531787105fc7-q100-1/target.png",
+      "source_sha256": "3ff19f49934308c511e2e428dbb9cca1c215ae0a854dad3555a97f506b42ab05",
+      "target_sha256": "fef4bab7325b94d7fc109521af904537b399ddd7a6bafd85ea0f342d2218c981",
+      "binding": "e7bcdf0f2a5f10e7b5e49b22faf85df79753340553e5455746b90ef9d58dfccf"
+    },
+    {
+      "task_id": "travel-450c8a7f3ad4c7-q100-1",
+      "image_id": "travel-450c8a7f3ad4c7",
+      "instruction": "Add a person standing on the sand near the lifeguard tower, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-450c8a7f3ad4c7-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-450c8a7f3ad4c7-q100-1/target.png",
+      "source_sha256": "0e7766b237aa0355885362fc22f4ca8d9fcad510cee04319fc692b63a4e4995e",
+      "target_sha256": "23db193f1171ae697b4d5a3d6076fd128574871f5b658d7156a9cd9e04adfd44",
+      "binding": "70df903c420ac24106880c99fc4f74277c961d0075d4bfe23f60ac6f417f39ba"
+    },
+    {
+      "task_id": "travel-b5e207f7537a0d-q100-1",
+      "image_id": "travel-b5e207f7537a0d",
+      "instruction": "Add a person standing on the walkway in front of the lighthouse, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-b5e207f7537a0d-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-b5e207f7537a0d-q100-1/target.png",
+      "source_sha256": "01c24d5ff9f00a3195a41f5212ddafcc4603eb7f5c51ae81f4db22eff3b52949",
+      "target_sha256": "93aabcf6a47b8b4a960d80b2cc9bf5071676370ee14d40f2a2d49f3938c592ff",
+      "binding": "cf718f7b79b0967c3463bd87dee33121449f34f6b05a017243dbe14052cf90a2"
+    },
+    {
+      "task_id": "travel-298c2632eeb124-q100-1",
+      "image_id": "travel-298c2632eeb124",
+      "instruction": "Add a bicycle parked to the left of the foreground tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-298c2632eeb124-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-298c2632eeb124-q100-1/target.png",
+      "source_sha256": "3b73c6617489997250821890a2c86afb3f9e290a430a6d51246fc5d5dc2eb360",
+      "target_sha256": "baedf2eb1cd9c8e4148870739977f27ef06c97f27beef36fee0d8c91c19b5e81",
+      "binding": "8d679ed7a212375f05f4ebf2587d4604cd2163287e6f8379984e1a4a2eafe4e6"
+    },
+    {
+      "task_id": "travel-169b5385edcb45-q100-1",
+      "image_id": "travel-169b5385edcb45",
+      "instruction": "Remove the blue stool at the lower right, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-169b5385edcb45-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-169b5385edcb45-q100-1/target.png",
+      "source_sha256": "1bd1d0e0d46b5bfa310c6d81577d6d2f9ae2bdea4ed2936af351aab96b84c57b",
+      "target_sha256": "8f8cc4e2adb9de25e10b3e6d8a4d4fcddcd1c8b26991203c4e4c41e8d24c6278",
+      "binding": "458c4e4f032cd02d954753a532182b5e6801574e1268e5715746c7a8d6852a6c"
+    },
+    {
+      "task_id": "travel-651ba046dbeab1-q100-1",
+      "image_id": "travel-651ba046dbeab1",
+      "instruction": "Add a dog standing on the sand beside the water, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-651ba046dbeab1-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-651ba046dbeab1-q100-1/target.png",
+      "source_sha256": "a0ef22083785fa94c98a7043409b8b129962f9c7173e47a4824c92f2a33d10ef",
+      "target_sha256": "35f979b0fccc41d74c0d807fc77b0841d9cee14659eebd92ae8e764c6f729435",
+      "binding": "c070c0109e00649e8dccfcabf56e30e74d06a2feb6cea4a492ac84a3dbbe5f88"
+    },
+    {
+      "task_id": "travel-3d39216de4993b-q100-1",
+      "image_id": "travel-3d39216de4993b",
+      "instruction": "Add a person standing on the rocky ground to the left of the waterfall, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-3d39216de4993b-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-3d39216de4993b-q100-1/target.png",
+      "source_sha256": "78cfcb64f8b8a684f0f6bbd7703d5862be19fe8e78fa411f65d123ca75cab433",
+      "target_sha256": "5ab43b3334effe75029dd48eb2de563f9d631d53220474ac37614e834bc1280c",
+      "binding": "c7c598a31f67366108ae765c538c52612a926f2da7c61cd06f63f8726fb4aa9d"
+    },
+    {
+      "task_id": "travel-7ba7bd7fe9ab98-q100-1",
+      "image_id": "travel-7ba7bd7fe9ab98",
+      "instruction": "Add a small boat on the water beneath the illuminated bridge, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-7ba7bd7fe9ab98-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-7ba7bd7fe9ab98-q100-1/target.png",
+      "source_sha256": "cddad69a310a87ed41a91a090834a792562f465501290d803ae53a7bbc127e2e",
+      "target_sha256": "8573b9071397bbaec0494eeaec7ed0109e1e199d895269a51014f2dc59468950",
+      "binding": "21fb0634ed68ef14eb38bc7daa7de05de983553ab8b6707ee08ae50769ee9eea"
+    },
+    {
+      "task_id": "travel-df1eb66e4e784f-q100-1",
+      "image_id": "travel-df1eb66e4e784f",
+      "instruction": "Add a sailboat on the water in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-df1eb66e4e784f-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-df1eb66e4e784f-q100-1/target.png",
+      "source_sha256": "3c3fdd82d1cf26ccde4ff1dd54d10d81084ac579cc6af62796a312b95b14481a",
+      "target_sha256": "698abbad22a0cae2425d9be90608240f29909c6ef7b453ff0e76a05522db541d",
+      "binding": "5dda76654e98d2474cff2923502469804fc80dcad9b01671c6352e7f5d0a6a7a"
+    },
+    {
+      "task_id": "travel-9a88db6f11f97f-q100-1",
+      "image_id": "travel-9a88db6f11f97f",
+      "instruction": "Add a person standing on the foreground rocks beside the waterfall, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-9a88db6f11f97f-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-9a88db6f11f97f-q100-1/target.png",
+      "source_sha256": "ca7f4a0f1cbf503bc058fb736937806cafa449177ca29760439e8eed0956c6d4",
+      "target_sha256": "5849bd0af695e0888a421ba1c54ecd9b8a674dc535f4b8061c6722bc2b39a24e",
+      "binding": "0d87011b75be46eb282c77e0d5e1079c3e6b76af54a05c92883e43bd2edb7c95"
+    },
+    {
+      "task_id": "travel-024f0364d89cf8-q100-1",
+      "image_id": "travel-024f0364d89cf8",
+      "instruction": "Add a small rowboat in the center of the pond, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-024f0364d89cf8-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-024f0364d89cf8-q100-1/target.png",
+      "source_sha256": "413af41444ae248bb95d3e5718a00b8711686d1a40a1c25aa8178af2f496a148",
+      "target_sha256": "e88ac02dc10a407eb4d7c1b41024bc1034923e8c2cba6639ee15d837844f0c4a",
+      "binding": "657f2ad1011dec5b5768e1a01cdc11d11a2cb0865ec5b1e31e125dcc84daa780"
+    },
+    {
+      "task_id": "travel-52fa179c01253a-q100-1",
+      "image_id": "travel-52fa179c01253a",
+      "instruction": "Add a small rowboat on the water in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-52fa179c01253a-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-52fa179c01253a-q100-1/target.png",
+      "source_sha256": "cbfe8581081c9bb0301dd09512069596589575f99b4e56366d8f503c84e7d0c2",
+      "target_sha256": "dd3d0ae482d1412fff5bf7461308fe4ca91c2c608c98a9d9b795ac8171d93742",
+      "binding": "2dfb5e3846d582e7c5acbb19fb3549201891cc42bf45bcb9d24b02454619abcd"
+    },
+    {
+      "task_id": "travel-7749b11c352517-q100-1",
+      "image_id": "travel-7749b11c352517",
+      "instruction": "Add a bird flying in the sky above the rock passage, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-7749b11c352517-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-7749b11c352517-q100-1/target.png",
+      "source_sha256": "b9039b376b4210f9071d21206ddf27f8d24043edb7c7063a6e47861f7defcdc1",
+      "target_sha256": "fd5d6cfe40b045e0f55442c23832820c16971b6ee74c9afa3daebb9e4290468c",
+      "binding": "423d1bf99a5b06cc93c2533637883907dfe87e86376fa7783c639851b2e838a4"
+    },
+    {
+      "task_id": "travel-1ea3505c52d4d4-q100-1",
+      "image_id": "travel-1ea3505c52d4d4",
+      "instruction": "Add a small sailboat on the water at the lower left, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-1ea3505c52d4d4-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-1ea3505c52d4d4-q100-1/target.png",
+      "source_sha256": "bee45ce269b86d52eb3a78e105b264d1a3c780575cd3fded0e890f530b4e5f08",
+      "target_sha256": "deb4ec192e916cc4b24d2c1acc0248f51e3ebb992f671935650a6737cfd48547",
+      "binding": "17ba178db0667d4bdacc99c952a4dc98abaad8c93f3dc80a71a521e9cfeeabe9"
+    },
+    {
+      "task_id": "travel-64522241784623-q100-1",
+      "image_id": "travel-64522241784623",
+      "instruction": "Add a bird flying above the stone pillars, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-64522241784623-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-64522241784623-q100-1/target.png",
+      "source_sha256": "9af4decf284e415efc8be73086a838e269ec617fb6bdc9601c1a8fa08f6c90ee",
+      "target_sha256": "38bd62d05510ecff61f2e58d4d0eb49c884250609b2f0207ebe27a2a56543d49",
+      "binding": "dd1cac8d91c704699108f0cbb2a5431b65c9c09adb6d4086c6a35cde42727ef0"
+    },
+    {
+      "task_id": "travel-08875e2c81a66f-q100-1",
+      "image_id": "travel-08875e2c81a66f",
+      "instruction": "Add a bicycle parked to the left of the stone gate entrance, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-08875e2c81a66f-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-08875e2c81a66f-q100-1/target.png",
+      "source_sha256": "30501c5b4d0da30128512672b2606dc129177b326eb2d1ff58b9f7b5b6e607ff",
+      "target_sha256": "341c1caa1132c06f873675655f065be8737bf14ee375f47ad832e984fc63de3c",
+      "binding": "920ddf85311b5ee7dafc87b262124a322da4538ad81168143c6226c28d104e58"
+    },
+    {
+      "task_id": "travel-e8f244f99aec3b-q100-1",
+      "image_id": "travel-e8f244f99aec3b",
+      "instruction": "Add a small rowboat on the water near the beach, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-e8f244f99aec3b-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-e8f244f99aec3b-q100-1/target.png",
+      "source_sha256": "5127f23c1e53e629831939b38d96825467592dbd0eddb66c5c62191ef8d1fdf4",
+      "target_sha256": "8c111ef7d75f89377e2e735f76eb93452031779d64be73b451b6610d938b961b",
+      "binding": "47cb2e05b8e7f9b75e2423d537be43570d0608d9bcb87b6cf02cf52e9b06f92e"
+    },
+    {
+      "task_id": "travel-f61ddff839b69c-q100-1",
+      "image_id": "travel-f61ddff839b69c",
+      "instruction": "Add a person standing at the cave opening beside the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-f61ddff839b69c-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-f61ddff839b69c-q100-1/target.png",
+      "source_sha256": "af6dd5d9c1c4a5518b986974d98a21225ffa424672d6b817ff0e9e4e1423e6dd",
+      "target_sha256": "49fea6bd837a95febd5f3150f187c0910c9a5baf008eaba87eb9c2be2337a93c",
+      "binding": "82781033cde0b7101ae44862f7bdbc2a519550ef4cce04f12c01c2b1bf8870fc"
+    },
+    {
+      "task_id": "travel-538b61324d7268-q100-1",
+      "image_id": "travel-538b61324d7268",
+      "instruction": "Add a person standing on the central path in front of the temple, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-538b61324d7268-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-538b61324d7268-q100-1/target.png",
+      "source_sha256": "027e2f3e04cd195fbab9dcd4efce1753b672146961937f4d0c38b7c83dcd3a07",
+      "target_sha256": "98356520cfe53c1fc5057fb51f72a30d4adaf69ccdc08db1c249a5ffef7ede17",
+      "binding": "042bd0985082c89ff79e01e7f03f553f403b20054b434b2ba6c82368e8a16131"
+    },
+    {
+      "task_id": "travel-a4fe5a686b0396-q100-1",
+      "image_id": "travel-a4fe5a686b0396",
+      "instruction": "Add a person standing on the foreground rocks beside the pool, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-a4fe5a686b0396-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-a4fe5a686b0396-q100-1/target.png",
+      "source_sha256": "743dede532b1c0f2891d657414797db77194d2f8d8b051bf4691a6fabd6f94a7",
+      "target_sha256": "cf82e5010c29d629a488bdbb5cbf10e821fbf7ee70338aee8f9e9d6c641df76a",
+      "binding": "f12225e16b92c18766d4559a1a78a7bef3794915a7fe6c29b48f9ac93f1941cc"
+    },
+    {
+      "task_id": "travel-bc738e0b6f7cc0-q100-1",
+      "image_id": "travel-bc738e0b6f7cc0",
+      "instruction": "Add a small rowboat on the pond in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-bc738e0b6f7cc0-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-bc738e0b6f7cc0-q100-1/target.png",
+      "source_sha256": "a7c82f118fcd0060050f52b6afc0bb46a0f7ea5158e15724b62887f587c86971",
+      "target_sha256": "a274b7ca4b5c0592c1c85c3f9b1d633f926081c57ae325c9ba3d656af4752d4b",
+      "binding": "0ac7f70f9ddbc886e61c033bc015e47967d1612c06f2f793de225baf2b3237a7"
+    },
+    {
+      "task_id": "travel-0de54606e699f4-q100-1",
+      "image_id": "travel-0de54606e699f4",
+      "instruction": "Add a bird flying in the sky above the mountains, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-0de54606e699f4-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-0de54606e699f4-q100-1/target.png",
+      "source_sha256": "493af535f352ba0c19ee3c0d07233ad487ce8b7771d490d70b25a3266549e68e",
+      "target_sha256": "2c31ace9ad95b8ad643af644a20285c1b57ebefcc4d711088b96b99f40df112b",
+      "binding": "2264338b16274e6890d3bbe0f686932d55b2a7670427be01ff8491063b7715f2"
+    },
+    {
+      "task_id": "travel-cc2d058d944095-q100-1",
+      "image_id": "travel-cc2d058d944095",
+      "instruction": "Remove the potted plant in the middle of the courtyard, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen100-v1/seed42-v1/cases/travel-cc2d058d944095-q100-1/source.png",
+      "target": "runs/level3/qwen100-v1/seed42-v1/cases/travel-cc2d058d944095-q100-1/target.png",
+      "source_sha256": "98766d5f70a01d4de56796371af70be6824e8f6ce21e1f92b0412df433a304ac",
+      "target_sha256": "67f6957815f5ab5a5411f00df3a416770ccac22d26f280c3e1ffb1b453cdf98c",
+      "binding": "8dc6402644bb8eb040bb5f4f748a44c94552e1bb7b83011c9992b9fbd6a976b7"
+    },
+    {
+      "task_id": "sidewalk-76268403d14e5f-q200-2",
+      "image_id": "sidewalk-76268403d14e5f",
+      "instruction": "Remove the clear plastic water bottle from the vendor's table, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-76268403d14e5f-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-76268403d14e5f-q200-2/target.png",
+      "source_sha256": "37b041b8b93ebad6419a5e4dcd38e225ae1bbe497a4cb1347a5c556d043ffa8e",
+      "target_sha256": "7bd406defd905b442bc5639b5d860fef1146eb6201a3062e7ee0ef36c597d95d",
+      "binding": "606dd9c884cc859bc0c759a62658b675927c97daf5b7321397bf470e0b52645f"
+    },
+    {
+      "task_id": "sidewalk-32a2f39d76e383-q200-2",
+      "image_id": "sidewalk-32a2f39d76e383",
+      "instruction": "Replace the motorcycle parked on the left beside the tree with a bicycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-32a2f39d76e383-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-32a2f39d76e383-q200-2/target.png",
+      "source_sha256": "f136466de92e46ad29c0efcdf1cfa80be7fc68a786dac4837274933b5ed56d45",
+      "target_sha256": "5c3227a481edeab899889e0bfeb966c9628c6113a39a05facffe8946cfdb1af2",
+      "binding": "a8d752b3aba4679303fbb0498b658a231d2f4e55afbd9e84256d6fa18e65dc4c"
+    },
+    {
+      "task_id": "sidewalk-91f59e6bfd220c-q200-2",
+      "image_id": "sidewalk-91f59e6bfd220c",
+      "instruction": "Remove the red motorcycle parked at the shop entrance, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-91f59e6bfd220c-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-91f59e6bfd220c-q200-2/target.png",
+      "source_sha256": "2d31c8859e2c9432e685f814085fee6ab6037d1d88223275d21f4c4106ccc06b",
+      "target_sha256": "693f442ccfc9d9a2cdfda612e2a3aaaadb66d1728da4d14663ea47d18d477d92",
+      "binding": "021d01027535ee080d2c147bb6be83f7784b5567d955536785ebad378784ccaf"
+    },
+    {
+      "task_id": "sidewalk-6215d5b6c7c477-q200-2",
+      "image_id": "sidewalk-6215d5b6c7c477",
+      "instruction": "Remove the man in black standing on the sidewalk, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-6215d5b6c7c477-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-6215d5b6c7c477-q200-2/target.png",
+      "source_sha256": "092661f006e4ec5b4d1d2822fb32f0d3c368b1f9bc503376c1ddaacfee492dbb",
+      "target_sha256": "3245b7e2b34f7560aeb7b55f2d43aa4cf8f251040ff0bbafd165572acd159810",
+      "binding": "ec41fa71bfac067c6de7050f9e5ffe3f8e66ad10d1715b72a1855a6796683525"
+    },
+    {
+      "task_id": "sidewalk-fce6aef5958616-q200-2",
+      "image_id": "sidewalk-fce6aef5958616",
+      "instruction": "Replace the purple plastic chair to the right of the coconut cart with a potted plant, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-fce6aef5958616-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-fce6aef5958616-q200-2/target.png",
+      "source_sha256": "2f54349350d3bc9aaee22e20bf4289bf040388e370c8c8ab05d704cc8ada4e78",
+      "target_sha256": "37c079e420c69145441c44434a8a6032e79cabcc97f53395265ce666e602d3bb",
+      "binding": "01fa56597b822d2c5a8be64e1335b2f2efe2a16c13bbd5ea46d8cebca03d6326"
+    },
+    {
+      "task_id": "sidewalk-fab6a6e91c14c8-q200-2",
+      "image_id": "sidewalk-fab6a6e91c14c8",
+      "instruction": "Remove the maroon scooter parked beside the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-fab6a6e91c14c8-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-fab6a6e91c14c8-q200-2/target.png",
+      "source_sha256": "55926cfadc900d282f7bbebb191bbb22f82603b1e123067bb757af7678baa239",
+      "target_sha256": "ac6853c1976497ac07648584b92dfe2b3f1266b7ecf957dfabfe04cc061d4a18",
+      "binding": "9e3071cf9d487bbbe10e5d51a87163bcd816b9a7a0e44b90bb828312c40b59fd"
+    },
+    {
+      "task_id": "sidewalk-f9506670d2c5fc-q200-2",
+      "image_id": "sidewalk-f9506670d2c5fc",
+      "instruction": "Replace the motorcycle parked to the left of the tree with a bicycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-f9506670d2c5fc-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-f9506670d2c5fc-q200-2/target.png",
+      "source_sha256": "dcae8fc3bf1fe60be8de45d1db625b0fb687b14c0009cbe1bef2c13abd0205d0",
+      "target_sha256": "e1ebcde2497edce46458e0272ed59d2a6d0065030776b00acd2d732d60a0dcae",
+      "binding": "a887ae1b41a34985ae05b7441d4e75c33ee8bcb28d0c97e9c03625bc0140b4b7"
+    },
+    {
+      "task_id": "sidewalk-c468de89896457-q200-2",
+      "image_id": "sidewalk-c468de89896457",
+      "instruction": "Add a bicycle parked on the pavement to the left of the freestanding sign, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-c468de89896457-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-c468de89896457-q200-2/target.png",
+      "source_sha256": "3b04b7ee72381b3d101c86a6f71b7dab0559aab43f714542ceead119f1c644ba",
+      "target_sha256": "3db89e3f555525fdcc833d0fc71b11221f554eb4ce1c6e17bb216338fad166bd",
+      "binding": "458f3db622cacb83ccd44b421e31fcc08ca0d6e110f77f01e8f2a33c349631fb"
+    },
+    {
+      "task_id": "sidewalk-b1bb633496439f-q200-2",
+      "image_id": "sidewalk-b1bb633496439f",
+      "instruction": "Change the yellow plastic chair in front of the shop to blue, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-b1bb633496439f-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-b1bb633496439f-q200-2/target.png",
+      "source_sha256": "bca64de26c0e5c3168df0d02d875e4a40690d4220d5a5afce03187b28580b819",
+      "target_sha256": "5563c34f2b2e6f58e1294ba28dd87830fe760b88ca6ab826f20edeca30d50863",
+      "binding": "081edc77ddbea2559e1debc8733eef64103485ccc73e5466398356950f85af71"
+    },
+    {
+      "task_id": "sidewalk-a0e9e9faf44346-q200-2",
+      "image_id": "sidewalk-a0e9e9faf44346",
+      "instruction": "Remove the man in the white shirt walking toward the shop, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-a0e9e9faf44346-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-a0e9e9faf44346-q200-2/target.png",
+      "source_sha256": "752b955f8add05d4e364a30d68767e36a0fd26da10161889fbcfa074c3e41722",
+      "target_sha256": "82b284b5380fb851d6464336f2a57eef61869425591376b5408a50a56589da35",
+      "binding": "6aeed5343537acfb483c282fc96958ee2194d46681d563bf5bceea770491b397"
+    },
+    {
+      "task_id": "sidewalk-2a7fa2d343bdf7-q200-2",
+      "image_id": "sidewalk-2a7fa2d343bdf7",
+      "instruction": "Remove the motorcycle parked to the left of the food cart, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-2a7fa2d343bdf7-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-2a7fa2d343bdf7-q200-2/target.png",
+      "source_sha256": "ec5f3b6756baa45b8c7560d711443821fdd2fe09a8fd5144b4bd8a10b82fe5dc",
+      "target_sha256": "2ee9da10a41c47850a76d40f45a1c16d6d467ed4120e3159d656733c39c7bc4f",
+      "binding": "0c9d6ba1bb3cef9b1063a3c120418559cf510c540206373e0f55622ba6eedb98"
+    },
+    {
+      "task_id": "sidewalk-fb4cb69b6f4d09-q200-2",
+      "image_id": "sidewalk-fb4cb69b6f4d09",
+      "instruction": "Remove the brown chair beside the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-fb4cb69b6f4d09-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-fb4cb69b6f4d09-q200-2/target.png",
+      "source_sha256": "6e0ca0f11d506f9252df3326425ed9170e637ddbde17558fab418bbb000af72a",
+      "target_sha256": "a1c5a9a38cab798f01d589f7db10eb8b005e67168695436179bae2a6e068ed12",
+      "binding": "86293da649bcc675d258735c3ec0c2418d5414a10eefd63fa09701c6c2519eaa"
+    },
+    {
+      "task_id": "sidewalk-74b093944a2075-q200-2",
+      "image_id": "sidewalk-74b093944a2075",
+      "instruction": "Replace the small blue stool to the left of the red cooler with a potted plant, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-74b093944a2075-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-74b093944a2075-q200-2/target.png",
+      "source_sha256": "0e1563349a9f6e7fadc869192f183e054bb60a53e192b25da61422e2b6e65bd4",
+      "target_sha256": "b212b7c164c0ca670f1651e51a1842d6f48f37a4f74f102fce420068a5675b3d",
+      "binding": "45b66c20dcf038acc518f36bcb89d513dc8fdbb778cb1f9c9e9273fd1a8bcc12"
+    },
+    {
+      "task_id": "sidewalk-64c0579368fe90-q200-2",
+      "image_id": "sidewalk-64c0579368fe90",
+      "instruction": "Remove the wooden bench on the far right, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-64c0579368fe90-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-64c0579368fe90-q200-2/target.png",
+      "source_sha256": "125af6014d133b07851e7c2390123d8282155723790b22544db76a5b3d57e416",
+      "target_sha256": "08eaa3eb0ccb10d37d7536b71c407487ca02e6c8174b1bbcee4b79d5f0688753",
+      "binding": "e67da7078525af74b09ec5f97eafec86f482a0f33c3286216dc853cde49807f6"
+    },
+    {
+      "task_id": "sidewalk-95d2cda95de1b3-q200-2",
+      "image_id": "sidewalk-95d2cda95de1b3",
+      "instruction": "Change the pink plastic chair beside the pole to yellow, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-95d2cda95de1b3-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-95d2cda95de1b3-q200-2/target.png",
+      "source_sha256": "88053ab9e3175e4ed0694168038438149d2e44af67a84cade6af68aa33de4dd3",
+      "target_sha256": "b08bab42c1780ed0ba89790243dc920553a8d3f9b86a8eda425de6cc954e6194",
+      "binding": "69638fe783876a3d6ed12921a1d94ba54d35de7c305e67c45eb580747457ad3f"
+    },
+    {
+      "task_id": "sidewalk-ff83497c40e264-q200-2",
+      "image_id": "sidewalk-ff83497c40e264",
+      "instruction": "Change the pink body panels of the scooter beside the wall to blue, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-ff83497c40e264-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-ff83497c40e264-q200-2/target.png",
+      "source_sha256": "e5d14d6a0c0734beefb6f697a7708fc0c8437d9e5e2e3eb4a74ddd03461722a4",
+      "target_sha256": "ea397dfb0a57271c8e0e5b9905dc16b9e321a2a6b0b6cdc0302372651a950923",
+      "binding": "156d77689cb06295d12331e064ee984444edead3bc809c227455b4f000e063ff"
+    },
+    {
+      "task_id": "sidewalk-0bef11eb7e3710-q200-2",
+      "image_id": "sidewalk-0bef11eb7e3710",
+      "instruction": "Remove the white scooter parked on the left, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-0bef11eb7e3710-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-0bef11eb7e3710-q200-2/target.png",
+      "source_sha256": "1b00014ddd36325d13b0409ba72ace87a75aa3ff4f3053dfe93f36bbebfab833",
+      "target_sha256": "5687c1d5e62a978088687407c23c77087354474ddbde71072fb8dc345b043e68",
+      "binding": "7a55796a202ea5431ebb4ba5af982ac1f8e8bbc172a46b4875d590ae29124b4f"
+    },
+    {
+      "task_id": "sidewalk-9d26e7a8c66b6a-q200-2",
+      "image_id": "sidewalk-9d26e7a8c66b6a",
+      "instruction": "Remove the large potted tree on the far right of the flower shop, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-9d26e7a8c66b6a-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-9d26e7a8c66b6a-q200-2/target.png",
+      "source_sha256": "29656ae6b5cb8a52b196da6bb97505cb50bc34ebf4dbd952454eaa90f46c76b7",
+      "target_sha256": "1fd19e3c4c3970f16b9b45885afc1c9f28d65879a12f05e6d46c360daf72b425",
+      "binding": "e12b08a2cc5c4411601714d13074ea28a2f9db559616d138f624617027e237ab"
+    },
+    {
+      "task_id": "sidewalk-2a44674d2f881f-q200-2",
+      "image_id": "sidewalk-2a44674d2f881f",
+      "instruction": "Remove the man in black standing beside the scooter, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-2a44674d2f881f-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-2a44674d2f881f-q200-2/target.png",
+      "source_sha256": "215e9083d7aa96536bee645339d7205a0effb4abd69c6a839c5ff77734e0eb6c",
+      "target_sha256": "3104736f15cfd4f5f257c0d9a3e38e1d068bc32d0759493a2bed1eede13c9449",
+      "binding": "db0c06f93f46b05c0b9289ecce18efec538d9a198840fbb6f5a1294e14bfdfd9"
+    },
+    {
+      "task_id": "sidewalk-01db96a8d3719a-q200-2",
+      "image_id": "sidewalk-01db96a8d3719a",
+      "instruction": "Remove the man seated at the yellow table on the right, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-01db96a8d3719a-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-01db96a8d3719a-q200-2/target.png",
+      "source_sha256": "58c26cf33cbbea864c17cca5f2559206ea46200cb69b35af85e8c28b0c49988e",
+      "target_sha256": "45558319deb7174399f3eac7341e9dda267657228651d75732e4bbb237e2b3c5",
+      "binding": "32f642beb710e30dcfed7f95622a771b46dc2a212c462b6973de6662bac78f5e"
+    },
+    {
+      "task_id": "sidewalk-161d79c18ac9bf-q200-2",
+      "image_id": "sidewalk-161d79c18ac9bf",
+      "instruction": "Remove the red motorcycle parked to the right of the street cart, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-161d79c18ac9bf-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-161d79c18ac9bf-q200-2/target.png",
+      "source_sha256": "300dac4eead8492164d09263d37c502616c6925db3769d40a10ae3b9ec0f03bc",
+      "target_sha256": "62129c0b0f1f3b0eec54b85eee1fe2cd76df97541e9c0723b766f6b5dd9dd962",
+      "binding": "7a0877660a41bc86f3783a54f3e045406cd1351777f67076bcb2753dea73409b"
+    },
+    {
+      "task_id": "sidewalk-33f7974a8750b3-q200-2",
+      "image_id": "sidewalk-33f7974a8750b3",
+      "instruction": "Add a cat sitting on the pavement in front of the closed green shutter, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-33f7974a8750b3-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-33f7974a8750b3-q200-2/target.png",
+      "source_sha256": "5bd1ba2d4a439f861e7ef5726ffc9feab9ecd63993b18c6f1a9c2c2249e3822a",
+      "target_sha256": "00f58381b5efddbde1f75f2a038a9b1f4afec51b6bee2eb1825e1943eda1c7b1",
+      "binding": "f2d18ee645b1fdda3987a1cc99233acd69a25d92591af50eb49a48ee3c47e83d"
+    },
+    {
+      "task_id": "sidewalk-0da2002f7b7d10-q200-2",
+      "image_id": "sidewalk-0da2002f7b7d10",
+      "instruction": "Remove the motorcycle parked to the left of the drinks stand, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-0da2002f7b7d10-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-0da2002f7b7d10-q200-2/target.png",
+      "source_sha256": "17effc1ce4dc016854a706b808b8628d76ab2ae6e9c6e38fbe935d2bf000942b",
+      "target_sha256": "cb507479cab7306c8c4eef307df8b49fefd9186049095c5ac66e58d2176251f5",
+      "binding": "970b724ea0be33daff6711eb1d81a738f8e153559d4a40fd449031065a8eea36"
+    },
+    {
+      "task_id": "sidewalk-a0f552eadcb413-q200-2",
+      "image_id": "sidewalk-a0f552eadcb413",
+      "instruction": "Remove the motorcycle parked directly in front of the central shop entrance, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-a0f552eadcb413-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-a0f552eadcb413-q200-2/target.png",
+      "source_sha256": "284816976ec58a59c24b9612f88e817962d350488e60395ed5949084e461a163",
+      "target_sha256": "d6a738d30d987b3cef43df2ac60d3a70e66f7db01f99c05dc594428f40c8038f",
+      "binding": "c0571fad8d922250d6811ac3652398a238d326f23ed838b3869fc9cab9fa111b"
+    },
+    {
+      "task_id": "sidewalk-50a5f1b8e28d01-q200-2",
+      "image_id": "sidewalk-50a5f1b8e28d01",
+      "instruction": "Change the maroon body panels of the scooter in front of the shop to green, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-50a5f1b8e28d01-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-50a5f1b8e28d01-q200-2/target.png",
+      "source_sha256": "02ff05b59d3b30d26abc3aae997046dcc28d7f5a74aeaab27a480e7a1676c6b1",
+      "target_sha256": "9b4405647fa84f6b856a4e39976e84f27aba0dd127fa6e815e18635578b7e53a",
+      "binding": "a50b926d01123690d2d5b9a97ba88e3cac4c58d1e211499b3706287f3c264b87"
+    },
+    {
+      "task_id": "sidewalk-12ec56c21ca37f-q200-2",
+      "image_id": "sidewalk-12ec56c21ca37f",
+      "instruction": "Add a wooden chair on the empty pavement to the left of the bakery entrance, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-12ec56c21ca37f-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-12ec56c21ca37f-q200-2/target.png",
+      "source_sha256": "1a67a91b293a7a5ada2dc7b0fb21b2f0d40caa8f3fa6c769b7f3c46292d8dcbb",
+      "target_sha256": "dc815bd07121b7e6506121089df39167a3019800bc2ec31d940a53dd15cbf840",
+      "binding": "3284bef2c44077ad078bdf1af9203829e54a329199bfbdbf7fb43cfa3c852a4e"
+    },
+    {
+      "task_id": "sidewalk-e5da4b252b25fc-q200-2",
+      "image_id": "sidewalk-e5da4b252b25fc",
+      "instruction": "Add a potted plant on the sidewalk in front of the left side of the blue gate, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-e5da4b252b25fc-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-e5da4b252b25fc-q200-2/target.png",
+      "source_sha256": "1a82402ea8b2b4d082b0728e5cf9dd5d89acc3f8837947ac38f9cee3c53216c8",
+      "target_sha256": "4175ae4689d58459600ffc3802bef7aace0730e00a7e8622117899001af0c0bd",
+      "binding": "f4f594fdec1b8dc19f69a39dbba0cdd147f3dd3fe4a5d390b2e0a8715411df1f"
+    },
+    {
+      "task_id": "sidewalk-ae78d27e407cb8-q200-2",
+      "image_id": "sidewalk-ae78d27e407cb8",
+      "instruction": "Remove the woman in the turquoise top beside the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-ae78d27e407cb8-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-ae78d27e407cb8-q200-2/target.png",
+      "source_sha256": "4160bb2d546727124f69d106bb9b4a2f4e21b40851fb114247c0a8eb292e4e49",
+      "target_sha256": "4b5f711e0396ed1042397ad5703fe4cdd1b6d6eead9062ee08e8f748da2404c4",
+      "binding": "cc520c793a694bcd61adfcb4f3862b8cfc85b1ad54665abeb3677ca0cc881ebe"
+    },
+    {
+      "task_id": "sidewalk-98d8c84f866b1b-q200-2",
+      "image_id": "sidewalk-98d8c84f866b1b",
+      "instruction": "Replace the parked motorcycle closest to the blue sign with a bicycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-98d8c84f866b1b-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-98d8c84f866b1b-q200-2/target.png",
+      "source_sha256": "15945e5f589d0014875147d63453ac5e38c2454aaf8a5e174b79fdd5baaa5a9b",
+      "target_sha256": "a922224cf15f1f1daf535d9a98aeb42a54fc50956b23ac2b7b69d53d58c81b09",
+      "binding": "e198e8e9399e53f3ce0af4b117927f6499c45e226903368220143f83c468a8f4"
+    },
+    {
+      "task_id": "sidewalk-aca212bca64123-q200-2",
+      "image_id": "sidewalk-aca212bca64123",
+      "instruction": "Replace the red and black scooter in front of the green shutter with a bicycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-aca212bca64123-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-aca212bca64123-q200-2/target.png",
+      "source_sha256": "22a66107468c7e60998951b160e67467db29120c4ed534f6a97988c83823d6e1",
+      "target_sha256": "fc0d30957d1a112fb9551be3f50cab4eeba3a962c90a9e8dc2d71d246a50740f",
+      "binding": "b38b12a786edaa354c75a026cbac079d3d39e545385b7569987de41608eabb37"
+    },
+    {
+      "task_id": "sidewalk-94436587ba5c0b-q200-2",
+      "image_id": "sidewalk-94436587ba5c0b",
+      "instruction": "Remove the silver and black motorcycle parked immediately to the left of the red motorcycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-94436587ba5c0b-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-94436587ba5c0b-q200-2/target.png",
+      "source_sha256": "c0e7b4d0d8f51dc201131230c3ba8d0961b032ae48f4aa3fc319bdc154b70399",
+      "target_sha256": "15d9224339dabb9fb19adc0c0a386053742cf0a169002e2a598f0b2ca791e0d2",
+      "binding": "a4d2ad4d6f091e33728db17b4be46608345a4480d691371d6af714896357ae29"
+    },
+    {
+      "task_id": "sidewalk-2929d93b8d10dd-q200-2",
+      "image_id": "sidewalk-2929d93b8d10dd",
+      "instruction": "Remove the man in the light-colored shirt standing beside the utility box, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-2929d93b8d10dd-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-2929d93b8d10dd-q200-2/target.png",
+      "source_sha256": "744d52709ec0f8d3b63b32acdb7272f3c4a1d3ade9e28d57ea4b487e613b4539",
+      "target_sha256": "f97448731ec2961b0735148459ab978fdf2c07961505e6467289ec00ddf08854",
+      "binding": "ec5e1f241ed121b8efc1c430128683a3d6269dcbda09159f81c537f00cf6b022"
+    },
+    {
+      "task_id": "sidewalk-42c377bb0ed790-q200-2",
+      "image_id": "sidewalk-42c377bb0ed790",
+      "instruction": "Remove the motorcycle parked beside the stacked cardboard boxes on the right, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-42c377bb0ed790-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-42c377bb0ed790-q200-2/target.png",
+      "source_sha256": "d7423f7d4b23d8822acc7b605eb521e15a2412a1b35130758acc18705b5b00f7",
+      "target_sha256": "42fcd62150f5cdc7642f3c5356b5cc5b3961779ae5c5411e6edcfabce3c41b31",
+      "binding": "63419205ee3054a9d24e15b4f8e6fc6933f45ec2dbfb9cc40f028e708f6d5e15"
+    },
+    {
+      "task_id": "sidewalk-a4a64a283fc2ba-q200-2",
+      "image_id": "sidewalk-a4a64a283fc2ba",
+      "instruction": "Add a wooden chair in front of the closed metal gate, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-a4a64a283fc2ba-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-a4a64a283fc2ba-q200-2/target.png",
+      "source_sha256": "fbac6e082b1b0734438c87c24199f5eab66c6ded80bc8cc85dca1fd3a6301d59",
+      "target_sha256": "d32856dc9746193aff4dbb48b4af23f2c18ccd8acec94d5133740d748e78d2a9",
+      "binding": "adad0afc4d3e7c16dde9b58102645691ccab17514d64423d9dd50a393b0855fc"
+    },
+    {
+      "task_id": "sidewalk-76628fe34608f9-q200-2",
+      "image_id": "sidewalk-76628fe34608f9",
+      "instruction": "Remove the potted plant in the white pot on the left side of the open doorway, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-76628fe34608f9-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-76628fe34608f9-q200-2/target.png",
+      "source_sha256": "bf340de602e0c77dcc8e1d3691fc63354f19f911bf8dcfadba30144294099cc3",
+      "target_sha256": "a338178be5256931c7860c8d603abb2161b80482a89bab9f5e08f6fe3b83dbb3",
+      "binding": "08dd46372a18eb5ef19d91735da9a3efe02e75e26d990a5967b3d02477dca2d1"
+    },
+    {
+      "task_id": "sidewalk-03f2a3df56c3c7-q200-2",
+      "image_id": "sidewalk-03f2a3df56c3c7",
+      "instruction": "Add a bicycle leaning against the metal fence to the left of the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-03f2a3df56c3c7-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-03f2a3df56c3c7-q200-2/target.png",
+      "source_sha256": "f1fe6952aa2fe62bd3f504a101a7cefd0232b85d1a1e9c5f6bfcc7e505b14410",
+      "target_sha256": "8d39eefa46038fc0afaa32beacebee86205c217b56a9a7575c0e228c02426b99",
+      "binding": "73b8bc2beafcf3cecb9752d8f84cc7e725932f1253f3f48ccbc290bd8c056e3e"
+    },
+    {
+      "task_id": "sidewalk-a585bc2b279cf9-q200-2",
+      "image_id": "sidewalk-a585bc2b279cf9",
+      "instruction": "Remove the person in the turquoise jacket standing beside the white scooter, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-a585bc2b279cf9-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-a585bc2b279cf9-q200-2/target.png",
+      "source_sha256": "0340e9e7c7bd8ff712dcf99afccd3d8f5c2a1c543755818511ad22c0fb236864",
+      "target_sha256": "58a497ef01cbc1f378a4d1dc6850059115a31f85ddef5bbe6a9bfe73dc03c564",
+      "binding": "0e2bfd08579f6fc11b8d828425b70b1d5826491a48917ef40697f229d3ea6823"
+    },
+    {
+      "task_id": "sidewalk-26bf9cf2a299f4-q200-2",
+      "image_id": "sidewalk-26bf9cf2a299f4",
+      "instruction": "Add a bicycle leaning against the small tree on the sidewalk, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-26bf9cf2a299f4-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-26bf9cf2a299f4-q200-2/target.png",
+      "source_sha256": "0cdd245c384ad4c29475e90bfb3ca7c64e8de13d1aa753bd168324a85ea8864c",
+      "target_sha256": "905cc0280bccb175a06f9609e82fa68098ea391742ea0ea1e638cd57638cbb2c",
+      "binding": "38034e18bcd7d675995a0f47671daf7abd46f7a5fcf3d9b151979ddc81232425"
+    },
+    {
+      "task_id": "sidewalk-725a21ceb968e4-q200-2",
+      "image_id": "sidewalk-725a21ceb968e4",
+      "instruction": "Replace the parked motorcycle nearest the closed shutter with a bicycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-725a21ceb968e4-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-725a21ceb968e4-q200-2/target.png",
+      "source_sha256": "5f7b60cf724214eda8004d86e4e869f45480d9c4514b9ad6de0b0146b43e0ed1",
+      "target_sha256": "d854b9f45a2f0d296d14be31052276878246d631d4bf94fd4e7865ae7eb728f8",
+      "binding": "9a709bef7b6303339233f5b8d759e8e949bb8b6c51874fd7d2e7a3d739de1654"
+    },
+    {
+      "task_id": "sidewalk-e6eb3efb2e4967-q200-2",
+      "image_id": "sidewalk-e6eb3efb2e4967",
+      "instruction": "Remove the white scooter parked to the left of the utility pole, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-e6eb3efb2e4967-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-e6eb3efb2e4967-q200-2/target.png",
+      "source_sha256": "3ce196d125112f3bfa7ba13c130e10e4cbf685d6d299b27e67d9354b1bb29007",
+      "target_sha256": "a0cec856ac2a3c229d4f1de7dc18d48a593483f7dc696d18fcaa8d7fd5ce682a",
+      "binding": "127cf65f1b27ae3ed14a148c4659f0d3e05b9eca29dc8e2cf13dbadd856207b2"
+    },
+    {
+      "task_id": "sidewalk-18dd1ee14713ee-q200-2",
+      "image_id": "sidewalk-18dd1ee14713ee",
+      "instruction": "Change the gray pot of the large plant to the left of the glass entrance to blue, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-18dd1ee14713ee-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-18dd1ee14713ee-q200-2/target.png",
+      "source_sha256": "341c90d56a19278905a716711492e2f1c4294781577f7df5d3676fac45c5b02f",
+      "target_sha256": "92697c23bc33ae06c459b05e35529ef86b1b3e756f6afbb478455a7ae0743ecb",
+      "binding": "ed0f3e13ab327257c61fd793a6c19a1bdc00173244e0d42d97b8f1b128e64cf1"
+    },
+    {
+      "task_id": "sidewalk-8d6e4a92c117a9-q200-2",
+      "image_id": "sidewalk-8d6e4a92c117a9",
+      "instruction": "Remove the single scooter parked to the right of the tree in front of the counter, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-8d6e4a92c117a9-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-8d6e4a92c117a9-q200-2/target.png",
+      "source_sha256": "ae48b010bc7cc38f5320d4924c7c3b26d104a4880f50edc8fdf1c6e32b9488d0",
+      "target_sha256": "0c45fe3c37ed4ab64987359c007b72f3478db130e656585141dc8ed512dd139a",
+      "binding": "c193200a50f061639d660ec061a328480808dcffa3508899bb235919a9a7f453"
+    },
+    {
+      "task_id": "sidewalk-8c036fbacfee64-q200-2",
+      "image_id": "sidewalk-8c036fbacfee64",
+      "instruction": "Remove the motorcycle parked immediately to the left of the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-8c036fbacfee64-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-8c036fbacfee64-q200-2/target.png",
+      "source_sha256": "3f4819a7257e07e87a03593a945643ea3049c784fb489ae979dfdbe184372601",
+      "target_sha256": "b4d2171255780017ce5170635966eccc7d7e2cc8b330c268038af97907510a90",
+      "binding": "e047730bd6eaa6176caf2b2fcb0121bddfda9f764621a7b98233d0d6e3d29e26"
+    },
+    {
+      "task_id": "sidewalk-1c6d831ce91c73-q200-2",
+      "image_id": "sidewalk-1c6d831ce91c73",
+      "instruction": "Remove the man in the yellow shirt seated beside the menu sign, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-1c6d831ce91c73-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-1c6d831ce91c73-q200-2/target.png",
+      "source_sha256": "35d787d2b455a877c4a6403ec16c854e53d1896c6bfdc43c0dd59f0e2929eccd",
+      "target_sha256": "c317367b386f54eac43d6101ac81165baf982970e27d2f7643659c2f377ce6c4",
+      "binding": "4eb3bf5df73ba7930c7cdc83bcfe346efd25c566c7b9697201a444f32dd31082"
+    },
+    {
+      "task_id": "sidewalk-9b7529f82d4405-q200-2",
+      "image_id": "sidewalk-9b7529f82d4405",
+      "instruction": "Add a cat sitting on the pavement to the left of the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-9b7529f82d4405-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-9b7529f82d4405-q200-2/target.png",
+      "source_sha256": "0179bdd6c8032dd9ba72b3ac4c49537d7b3989313c11545cd55ecc3180ccff49",
+      "target_sha256": "fea5b0d4d3e6e9948afbfedbdffa5d222db5569bf0fd831cca7ec9ba5555a73f",
+      "binding": "d58ad2d57e6a538130c7679d420af3e4273988c684d33f1fd34f5c2e06ba3758"
+    },
+    {
+      "task_id": "sidewalk-341e5d3cc859b8-q200-2",
+      "image_id": "sidewalk-341e5d3cc859b8",
+      "instruction": "Remove the scooter parked to the left of the foreground tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-341e5d3cc859b8-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-341e5d3cc859b8-q200-2/target.png",
+      "source_sha256": "6ad5018689892c6e1bd59d06f25d25f0e8bf1e8cf6fcd0b98f3c0761b321b571",
+      "target_sha256": "11ca2fd6ddf3e2529b19e48e7d4e924df76de71705c49b0338b52dac949b4fda",
+      "binding": "f378fc75d6f94f3922fe8e580ee8e1cb03a2dcd7febbc989f99c4e20de17f8c7"
+    },
+    {
+      "task_id": "sidewalk-9607c45e866d43-q200-2",
+      "image_id": "sidewalk-9607c45e866d43",
+      "instruction": "Replace the uncovered scooter on the right with a bicycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-9607c45e866d43-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-9607c45e866d43-q200-2/target.png",
+      "source_sha256": "89bafdb9087ba12fcde5af5804ddeabc9f6bace2e0ae8113b3595a9ece8bf838",
+      "target_sha256": "e577ecaef690008864acb41b32824a768801a3f719d0567eb814d5d143dfce2e",
+      "binding": "851ea815ea1897c997f88e4e956f56dfb78ec2936bbf4085f459dccdedfcc06c"
+    },
+    {
+      "task_id": "sidewalk-6ae28a57c0ade0-q200-2",
+      "image_id": "sidewalk-6ae28a57c0ade0",
+      "instruction": "Add a person standing on the pavement in front of the hedge to the right of the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-6ae28a57c0ade0-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-6ae28a57c0ade0-q200-2/target.png",
+      "source_sha256": "970f5b4a91b6f461d03ddbd74875a5ac968481331aba91505d627c29cdda4604",
+      "target_sha256": "60ff5019a5339f82e75f279ee5dc8e65eb9d3420b41a68209f9a819c58bbecfa",
+      "binding": "47b2e30f832e4b118ab32b95302c54839ceeccc156781a7cbe458b7097654ddc"
+    },
+    {
+      "task_id": "sidewalk-f7b2003cc25447-q200-2",
+      "image_id": "sidewalk-f7b2003cc25447",
+      "instruction": "Remove the leftmost of the three motorcycles parked in front of the shop, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-f7b2003cc25447-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-f7b2003cc25447-q200-2/target.png",
+      "source_sha256": "61e1ce1f57e1da3b63c1bd5fae7c90d3f23f2877831d52f0f51bc0229ae265df",
+      "target_sha256": "d0fec5489be32511ef1442807c9878d9420511cad4bbcf88ff5d8dccb6ecc469",
+      "binding": "dcac4ea2d8329972cf34575039d19127dcb3914af97ab967e1f5dae657f3a162"
+    },
+    {
+      "task_id": "sidewalk-2379c16d31b34b-q200-2",
+      "image_id": "sidewalk-2379c16d31b34b",
+      "instruction": "Replace the large potted plant beside the broken pavement with a wooden chair, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-2379c16d31b34b-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/sidewalk-2379c16d31b34b-q200-2/target.png",
+      "source_sha256": "cf0681c4364a3baa899843c5cce31c466aa150739a1a9a9726ef5acf60794d41",
+      "target_sha256": "a4affb6f12915fadf12a4b776a440e1aa1362815064952874e078cb88915ee57",
+      "binding": "2848202dc01450dead7aadc9fb142ceabf605272461eb2b2b7f9b809e82e043e"
+    },
+    {
+      "task_id": "travel-8f0de11e954ddb-q200-2",
+      "image_id": "travel-8f0de11e954ddb",
+      "instruction": "Add a cat sitting in the center of the courtyard in front of the shrine, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-8f0de11e954ddb-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-8f0de11e954ddb-q200-2/target.png",
+      "source_sha256": "aec2cf63c36a6cc876680807eab4afc43f75bbae6e1d2bec16bd7494919c3b34",
+      "target_sha256": "0e35866631c8cd75654722004be78cf863f151c3f5f9f2d61280b741ad8e4457",
+      "binding": "9f479ba6d420154cc2b47d4e7c40e41f0d78615cad3849743d12fa2eecdae6e0"
+    },
+    {
+      "task_id": "travel-d10a9c038514ad-q200-2",
+      "image_id": "travel-d10a9c038514ad",
+      "instruction": "Remove the boat with the orange canopy near the cave entrance, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-d10a9c038514ad-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-d10a9c038514ad-q200-2/target.png",
+      "source_sha256": "61e7a18f905167c204e3a2682f556165dc60d59efcd197e2beb228f9ca65b99c",
+      "target_sha256": "c12083f04776089b42813628cdefc6857053a8352eaa0abe88ea21ab9a15b339",
+      "binding": "e8d4ca5d484fd86697ca4044a5c1bf1449fa8072a19c2948cfbef408e865676e"
+    },
+    {
+      "task_id": "travel-2c70601665fa6c-q200-2",
+      "image_id": "travel-2c70601665fa6c",
+      "instruction": "Add a potted plant beside the right-hand arched doorway at the base of the tower, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-2c70601665fa6c-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-2c70601665fa6c-q200-2/target.png",
+      "source_sha256": "a73aacda7f503dda0b740f22a52a818b1484263fb1d959e94855506cb834f70b",
+      "target_sha256": "8c560b071bd4e6f1f4b12fef094e0e123f588b21819fa1c8a5d62f532938bcd0",
+      "binding": "11c264e909be5d22ac423523b3b1603fd9312a0fc3a28e63779717aa1fbced95"
+    },
+    {
+      "task_id": "travel-672935ff3d0085-q200-2",
+      "image_id": "travel-672935ff3d0085",
+      "instruction": "Change the white cab of the truck in front of the yellow building to blue, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-672935ff3d0085-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-672935ff3d0085-q200-2/target.png",
+      "source_sha256": "f41653abb65042b3deb24c2d0ae12756852e05da09e1ada4ad9727fdda250388",
+      "target_sha256": "0f4a970093a1e8d45331117678ec4d0720209b11c1ec225e222898694c73cb7f",
+      "binding": "93caf8361d6db76d8c33b0380b4fd09cb9004c2c4b6bf3f4d5675d8f463a7f09"
+    },
+    {
+      "task_id": "travel-c779ea8e2f5b35-q200-2",
+      "image_id": "travel-c779ea8e2f5b35",
+      "instruction": "Remove the leafy tree visible behind the roofs on the far left, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-c779ea8e2f5b35-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-c779ea8e2f5b35-q200-2/target.png",
+      "source_sha256": "8aa79e8cb496038e54a263305ac6e9184b76638667484699d91671cfbbe7552b",
+      "target_sha256": "fb1b4f724050375aedcd984d2403c2fcef8ac65fe21ea653a2cf18d91c0e404e",
+      "binding": "700fb4fccb8de200289248230f8148c5088edeacd60d823f846a525d86fddf42"
+    },
+    {
+      "task_id": "travel-3fa95f6c07d8e1-q200-2",
+      "image_id": "travel-3fa95f6c07d8e1",
+      "instruction": "Change the red roof of the lifeguard tower to blue, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-3fa95f6c07d8e1-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-3fa95f6c07d8e1-q200-2/target.png",
+      "source_sha256": "0044e860d5af1a2a29f5e69f9afb4173c06282bf8d2a3e16efd27f631e1fd750",
+      "target_sha256": "15b45f1f0bc07ddd2a8e6e3695af090556815cff8ed3c9c54990dbd23c08a080",
+      "binding": "a2f57ebbd3dd055ed8ab95a7b241ca3fc38932ccf46d1444da42060200847de1"
+    },
+    {
+      "task_id": "travel-0e7d4b77967270-q200-2",
+      "image_id": "travel-0e7d4b77967270",
+      "instruction": "Remove the thin tree in the right foreground in front of the waterfall, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-0e7d4b77967270-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-0e7d4b77967270-q200-2/target.png",
+      "source_sha256": "337edcb4d7283bd60fb0c2f6de96267f42203c002374d7218145fded6eddc5c6",
+      "target_sha256": "507842620399c9272de3391d16093d45e541cadcdaeb4231e60dd9b1836bb437",
+      "binding": "d93d10192dc22627f9070532c407a3e71c91943f242dbbc17c1e7e5508eaed52"
+    },
+    {
+      "task_id": "travel-7bb0c6b3635205-q200-2",
+      "image_id": "travel-7bb0c6b3635205",
+      "instruction": "Add a bird flying in the sky above the center of the lake, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-7bb0c6b3635205-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-7bb0c6b3635205-q200-2/target.png",
+      "source_sha256": "cba528c4498c6857be7c3fb3648cbfaf0aa380c8156c97e42425204f768bc69e",
+      "target_sha256": "b233ebfdb01ad0dab1c25d66ba3f2ec4e593a9bc98892be7a8e60effe90521cd",
+      "binding": "3f84a9eef85b00b8fe041c4d51aaf526301ccfd903006f508127f474a0734e9b"
+    },
+    {
+      "task_id": "travel-b1042945bd3832-q200-2",
+      "image_id": "travel-b1042945bd3832",
+      "instruction": "Remove the long white bench directly below the round window of the temple, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-b1042945bd3832-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-b1042945bd3832-q200-2/target.png",
+      "source_sha256": "a074f7052679c128624dd0b8e8dbc9a78aa19f9cf2548d9a7babe38c05f8fa2e",
+      "target_sha256": "3e87856c8586c54ebea174bf60b692e1d82afc55dbe106c5904cb627092acbac",
+      "binding": "18348271a0d58cf6ffd5d1272a0cf073ecde354fded596d23e753efccf1ebad0"
+    },
+    {
+      "task_id": "travel-04ea5302b09c26-q200-2",
+      "image_id": "travel-04ea5302b09c26",
+      "instruction": "Add a bird flying in the sky to the upper right of the large rock, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-04ea5302b09c26-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-04ea5302b09c26-q200-2/target.png",
+      "source_sha256": "dc9f48fc2e351704741b8085277c68df1e81ca6afc287293401c81f829581007",
+      "target_sha256": "62d145a5c99e1aa86c3e3888b916e18fce70f5b6b581bfcf70d73aed009c0e71",
+      "binding": "01b779e1ee4c4a8e7494a680ff7407e8e45617a6ce73d7e0623435d150896c0a"
+    },
+    {
+      "task_id": "travel-f7950a24be3a68-q200-2",
+      "image_id": "travel-f7950a24be3a68",
+      "instruction": "Remove the double-arm streetlight in the center foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-f7950a24be3a68-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-f7950a24be3a68-q200-2/target.png",
+      "source_sha256": "9f3879ac74018062b6dc1afe92e365f92a95daadd08cec8a05852dd67462ca00",
+      "target_sha256": "38b7dc94e053db0ff2607cff630cba5bf9c8bd9e3646c8fa04c3e38a2c34b9b2",
+      "binding": "a3c448ec8b312310bd9afe6243e3d804a06ef7501b668b5fec5c1ebb813ee0b5"
+    },
+    {
+      "task_id": "travel-685ed0a42dc65a-q200-2",
+      "image_id": "travel-685ed0a42dc65a",
+      "instruction": "Add a cat sitting on the central path in front of the museum stairs, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-685ed0a42dc65a-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-685ed0a42dc65a-q200-2/target.png",
+      "source_sha256": "ddf3a42b4f9ebb1c9d2f1cc991728ee0b4a619c1a393b4ad1d3922e85a54dc02",
+      "target_sha256": "28d04b407218afdce8d99c3e3f5c66f52406b40d1386b84792a42d52cfb3a540",
+      "binding": "cec805649d1248eb4557bf63b7b047bd92828f76eb21d442341600d56b5dc8b4"
+    },
+    {
+      "task_id": "travel-ec43428fb4eeac-q200-2",
+      "image_id": "travel-ec43428fb4eeac",
+      "instruction": "Add a person standing on the sandy beach on the right near the waterline, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-ec43428fb4eeac-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-ec43428fb4eeac-q200-2/target.png",
+      "source_sha256": "668d8b5682ab6318d47ef55f2e7bf54cdfb50eb5d70b7609b333deac7f2d8313",
+      "target_sha256": "f0d0e0ffd00c563573386435151d15dc180f1ec57e49671c9c67922b33867e26",
+      "binding": "48236cfb64f24914eee673ed5000975fcba5c7f81fdc223495be16feca824554"
+    },
+    {
+      "task_id": "travel-775298dec24e75-q200-2",
+      "image_id": "travel-775298dec24e75",
+      "instruction": "Change the red tiles on the uppermost roof of the central gateway to blue, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-775298dec24e75-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-775298dec24e75-q200-2/target.png",
+      "source_sha256": "111128bd8e8de344b0c881b8976f7d35e1a3eedb8168f8c9334ed20bbb0a7747",
+      "target_sha256": "a5db359cdf1c9aecfba16a9e17bcadcca71feeade32f1888a336a1ccf7f29119",
+      "binding": "a9f74f156bf9ddaf90c89e0e8b4625d65b8aebca5a1579e7049973846461636e"
+    },
+    {
+      "task_id": "travel-8aa742b211241b-q200-2",
+      "image_id": "travel-8aa742b211241b",
+      "instruction": "Add a cat sitting in the courtyard in front of the entrance steps, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-8aa742b211241b-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-8aa742b211241b-q200-2/target.png",
+      "source_sha256": "7549878c4314d932529128a23305102c9ecdd78197ccbe377cad76fef2e0f90c",
+      "target_sha256": "b979cceeaba75f99d2b675774da055c6e0b91e850883d078b5804453173eb318",
+      "binding": "5576e3083435f4ca8592fc502e5b72e9f689a461d5b58fd8ea1933860e151a26"
+    },
+    {
+      "task_id": "travel-1a7ad4e7b50126-q200-2",
+      "image_id": "travel-1a7ad4e7b50126",
+      "instruction": "Add a bicycle parked beside the left side of the ornate gateway, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-1a7ad4e7b50126-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-1a7ad4e7b50126-q200-2/target.png",
+      "source_sha256": "59a47ab4a18574ae7c397aeffb40ed909ac1c6acbe5d9a43e161099fee742113",
+      "target_sha256": "3b0ff05871a0b230941cc336db3d7f388cafcca008b8937c5b0a40364e491b85",
+      "binding": "fe2a4801ab25370600c003fc8064ba8edc1e45f32d7e8665a46babc5040c7745"
+    },
+    {
+      "task_id": "travel-9a72725aa512e7-q200-2",
+      "image_id": "travel-9a72725aa512e7",
+      "instruction": "Replace the red motorcycle in the center foreground with a bicycle, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-9a72725aa512e7-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-9a72725aa512e7-q200-2/target.png",
+      "source_sha256": "0368b5c3471f8433528d250faec4865355cead6ea17fbaf1fd9c14cfe4fefa2d",
+      "target_sha256": "a2de5e4936dc8450d9aded38d2104a8dd0f820f6af677c6dcc2aad92e5f20f2e",
+      "binding": "14756bb4f161ccc8257ed8b717d209d097b8527eed916c7b6d3820319ab91e8e"
+    },
+    {
+      "task_id": "travel-5335a75704bb20-q200-2",
+      "image_id": "travel-5335a75704bb20",
+      "instruction": "Add a cat sitting on the ground at the base of the large tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-5335a75704bb20-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-5335a75704bb20-q200-2/target.png",
+      "source_sha256": "36a0c9560d74f208153adfb24b5f6c05518abac3a96c7ac2b9710ab132e2121b",
+      "target_sha256": "370232fc67b9b50b3d179951eb087d2b2c2f6cf68df3c7e149ccaa44b07ce2cd",
+      "binding": "761ce1b507d65822ce78a8127d5315bbf4ac09f1cec9fd0dbd32c669de2e2a12"
+    },
+    {
+      "task_id": "travel-f50006ee6533fd-q200-2",
+      "image_id": "travel-f50006ee6533fd",
+      "instruction": "Add a bird flying in the sky above the mountains on the left, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-f50006ee6533fd-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-f50006ee6533fd-q200-2/target.png",
+      "source_sha256": "98c6dafbe1e23caed9d25f3034721a0f2e55248adb3a4af296f95b28f74a971a",
+      "target_sha256": "1588c4ce1a2f3fb6ddf997e14e34754b295bac59b61a27eb9974b379d6bdd166",
+      "binding": "f9094bb8fd9453c4694d084fa2dd5d62d9301b6f6495219b720668cbff60f793"
+    },
+    {
+      "task_id": "travel-18e256235fa976-q200-2",
+      "image_id": "travel-18e256235fa976",
+      "instruction": "Change the nearest white car on the opposite side of the road to red, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-18e256235fa976-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-18e256235fa976-q200-2/target.png",
+      "source_sha256": "ec254432dd0856d0898d746a9c2d7e69d4e43c7d0ea800aed2671a0ab66ce355",
+      "target_sha256": "8c226949be5fd9c16e9093029c2bfa6a54aeec2019711d395573128aa161e52a",
+      "binding": "43d9305d37c6730de0cc94b794e876d099404e7b97aa699307ddaf931ce25a1f"
+    },
+    {
+      "task_id": "travel-9620d5a43793f0-q200-2",
+      "image_id": "travel-9620d5a43793f0",
+      "instruction": "Add a small wooden chair on the ground to the right of the doorway, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-9620d5a43793f0-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-9620d5a43793f0-q200-2/target.png",
+      "source_sha256": "a8f89fe7482601e76233cb5a2ce16afe1d888ab0d7a0feda30e8d79f38ba5285",
+      "target_sha256": "1d6b758c2b0bca5afc4f41ee590205eccc0597642509ae81ea5ec6058105bef6",
+      "binding": "f80e8ccd2eb438b97d51a94ac969e3e67859188a698b8ae7037d43704d860648"
+    },
+    {
+      "task_id": "travel-ecd8f6c6ba45d9-q200-2",
+      "image_id": "travel-ecd8f6c6ba45d9",
+      "instruction": "Remove the white vessel on the water near the far bank, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-ecd8f6c6ba45d9-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-ecd8f6c6ba45d9-q200-2/target.png",
+      "source_sha256": "35a44947008a0f80c75dbd90f0004733deb8031860797aa97c37265886756292",
+      "target_sha256": "97cb1624c69e49e0cb3f5e41ed6c5273d79b6830addf09222e5780c2ed50cd4c",
+      "binding": "3c4fdb82d61735c7f1e892b18ac16bb7ae637611d1aa6d973eac4949b30b0293"
+    },
+    {
+      "task_id": "travel-5cd07e642e01ef-q200-2",
+      "image_id": "travel-5cd07e642e01ef",
+      "instruction": "Remove the person in the red shirt standing on the shore to the left of the boat, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-5cd07e642e01ef-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-5cd07e642e01ef-q200-2/target.png",
+      "source_sha256": "8a50b203fd8a06afd6832edf8af23e5f5741bc64d2981d0500610268cc8b4472",
+      "target_sha256": "dea1cc3d4e976bb765b22e59f6af4901d5e60492e95f317bcd6777493ae24728",
+      "binding": "c2c44bc9645dbbebf92fd5b6b59231400545f27e94494308bbf3ca56eb9b2eec"
+    },
+    {
+      "task_id": "travel-3b441e6c90046c-q200-2",
+      "image_id": "travel-3b441e6c90046c",
+      "instruction": "Add a dog sitting on the sand in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-3b441e6c90046c-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-3b441e6c90046c-q200-2/target.png",
+      "source_sha256": "2b27eb13e37d5123ea0d6c9f9814d70458ad3e6a97feeba2595f7a904ab863d4",
+      "target_sha256": "a867890948d188340071004c89eb1b0587d8f2255974adc76d2c35399db8be3a",
+      "binding": "df5ed8bae32281d34350e48573c056571f350186cff95a8dca805db8f0b9563d"
+    },
+    {
+      "task_id": "travel-35d9d94c374a5e-q200-2",
+      "image_id": "travel-35d9d94c374a5e",
+      "instruction": "Add a potted plant beside the right side of the temple entrance, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-35d9d94c374a5e-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-35d9d94c374a5e-q200-2/target.png",
+      "source_sha256": "90e70b3c5c8c93d3e0e47ec64fd0257fd3cada7a541212fa0e2f25528b938e95",
+      "target_sha256": "d39d164d4641f9ceb01dba328636f53f08206dc6460cc5243fc5a47119b324b9",
+      "binding": "4181e3a164e9820ec83316b14a2e1abaeb0b7a9fe4ff0a10430157e49ef52e80"
+    },
+    {
+      "task_id": "travel-b3f5ed3ef9dffa-q200-2",
+      "image_id": "travel-b3f5ed3ef9dffa",
+      "instruction": "Add a bird flying above the river to the left of the foreground bridge, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-b3f5ed3ef9dffa-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-b3f5ed3ef9dffa-q200-2/target.png",
+      "source_sha256": "8a093c669fac9e479f3e89323758d9b8205e0b7583af7535bbd8ce9c047233d9",
+      "target_sha256": "4adc6c4fad430ee40807aaf87284f73054c48ebbbc180c398d7a7a4284681bcf",
+      "binding": "75836a0ad83d43d62d65e89f74a84946c89c9fbe1a4bf698ee156ff92c240343"
+    },
+    {
+      "task_id": "travel-a0874afd877dfc-q200-2",
+      "image_id": "travel-a0874afd877dfc",
+      "instruction": "Add a person standing on the road in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-a0874afd877dfc-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-a0874afd877dfc-q200-2/target.png",
+      "source_sha256": "f3deaa3ae25d262a23e189f0a03994405781b060b9329fa11adf54f5eb937e20",
+      "target_sha256": "7029ba27a075b7c8cd2ebda87328ccf70b99f5f0eabb5301f2d00937068ed596",
+      "binding": "0e3bb13efbb8e7dd28728d40ffb56e69e149893771623b579ec3fb29eacb2405"
+    },
+    {
+      "task_id": "travel-4b531787105fc7-q200-2",
+      "image_id": "travel-4b531787105fc7",
+      "instruction": "Add a bird perched on the highest boulder on the left, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-4b531787105fc7-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-4b531787105fc7-q200-2/target.png",
+      "source_sha256": "3ff19f49934308c511e2e428dbb9cca1c215ae0a854dad3555a97f506b42ab05",
+      "target_sha256": "33a50d20b78967e7965b73805eb0eb5ab7a48daded3c1f8aa9c94e8dfff5e278",
+      "binding": "ecaf4c18bbf6c4eb8594fce4f28f8232a59263fe6b4f597c07a1a518c2e658c3"
+    },
+    {
+      "task_id": "travel-450c8a7f3ad4c7-q200-2",
+      "image_id": "travel-450c8a7f3ad4c7",
+      "instruction": "Remove the red plastic chair at the lower right, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-450c8a7f3ad4c7-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-450c8a7f3ad4c7-q200-2/target.png",
+      "source_sha256": "0e7766b237aa0355885362fc22f4ca8d9fcad510cee04319fc692b63a4e4995e",
+      "target_sha256": "85fa208947510c73240a1e5c3a3cddb4361deb80685b8ad9f13ac025de39f979",
+      "binding": "c17a8032ba81b5ea888df2e8862abc6544bb4c4b59f15d4db79eeab26b79f36e"
+    },
+    {
+      "task_id": "travel-b5e207f7537a0d-q200-2",
+      "image_id": "travel-b5e207f7537a0d",
+      "instruction": "Change the blue bands on the lighthouse tower to red, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-b5e207f7537a0d-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-b5e207f7537a0d-q200-2/target.png",
+      "source_sha256": "01c24d5ff9f00a3195a41f5212ddafcc4603eb7f5c51ae81f4db22eff3b52949",
+      "target_sha256": "4901e4e09d850f45452afa44023f66d019b17dd3bde64d35531a9f09c0196dbe",
+      "binding": "42e1f735f4f4dbba15ddab8f7d67c345a9f534e87b54ba5604f222937d2a9b67"
+    },
+    {
+      "task_id": "travel-298c2632eeb124-q200-2",
+      "image_id": "travel-298c2632eeb124",
+      "instruction": "Add a cat sitting on the paved ground to the right of the foreground tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-298c2632eeb124-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-298c2632eeb124-q200-2/target.png",
+      "source_sha256": "3b73c6617489997250821890a2c86afb3f9e290a430a6d51246fc5d5dc2eb360",
+      "target_sha256": "98482ec4e3993025e831dafdc611286343c5be21a9b13cb20453c11d54316b6f",
+      "binding": "8b66a7bc270bebc6cc263dc020a3de36415e1796766633b3080ad4b747f17286"
+    },
+    {
+      "task_id": "travel-169b5385edcb45-q200-2",
+      "image_id": "travel-169b5385edcb45",
+      "instruction": "Replace the blue stool at the lower right with a potted plant, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-169b5385edcb45-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-169b5385edcb45-q200-2/target.png",
+      "source_sha256": "1bd1d0e0d46b5bfa310c6d81577d6d2f9ae2bdea4ed2936af351aab96b84c57b",
+      "target_sha256": "504076ed6381ca8d482443f6b41493913f4e99fd13037c39408f53ea2979cdd9",
+      "binding": "3a809c1ed61f33a42808d59a78b777d4dc82db0357c309e45dc2115485421fef"
+    },
+    {
+      "task_id": "travel-651ba046dbeab1-q200-2",
+      "image_id": "travel-651ba046dbeab1",
+      "instruction": "Add an open beach umbrella planted in the dry sand in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-651ba046dbeab1-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-651ba046dbeab1-q200-2/target.png",
+      "source_sha256": "a0ef22083785fa94c98a7043409b8b129962f9c7173e47a4824c92f2a33d10ef",
+      "target_sha256": "46b8dfc7b8ead63075b09bcb5e634228a2ac507ca130d4be48c9d75b0ac1f81d",
+      "binding": "16afcc70845a6fe3d51fc832e3507ba25d8b449e52e5473c82c38b6231f5dabf"
+    },
+    {
+      "task_id": "travel-3d39216de4993b-q200-2",
+      "image_id": "travel-3d39216de4993b",
+      "instruction": "Add a dog standing on the rocky ground to the left of the waterfall, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-3d39216de4993b-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-3d39216de4993b-q200-2/target.png",
+      "source_sha256": "78cfcb64f8b8a684f0f6bbd7703d5862be19fe8e78fa411f65d123ca75cab433",
+      "target_sha256": "c2fed67a411559cad50f64ee102b11804e7eac398c9c1ed52244a8e62496c3f5",
+      "binding": "e02fa3a1aeab192e3036466c847762e142e57cd823a70db64a4b27cc40f2342d"
+    },
+    {
+      "task_id": "travel-7ba7bd7fe9ab98-q200-2",
+      "image_id": "travel-7ba7bd7fe9ab98",
+      "instruction": "Add a small airplane flying in the night sky above the right side of the bridge, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-7ba7bd7fe9ab98-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-7ba7bd7fe9ab98-q200-2/target.png",
+      "source_sha256": "cddad69a310a87ed41a91a090834a792562f465501290d803ae53a7bbc127e2e",
+      "target_sha256": "211947fff7898e2d8b08dd8f0a32f0b2b7db55c1728df9eabde288e107ac0ffd",
+      "binding": "50f86eea4f67be446079aecf05af1c1ba189517f96fb38f8a147b40e32c01aa8"
+    },
+    {
+      "task_id": "travel-df1eb66e4e784f-q200-2",
+      "image_id": "travel-df1eb66e4e784f",
+      "instruction": "Add a bird flying in the sky above the center of the islands, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-df1eb66e4e784f-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-df1eb66e4e784f-q200-2/target.png",
+      "source_sha256": "3c3fdd82d1cf26ccde4ff1dd54d10d81084ac579cc6af62796a312b95b14481a",
+      "target_sha256": "03e1485a699e0b0e209a15f909ba7a3d8131c1e931f5a7a581e9de7bbe7b18b9",
+      "binding": "a11632feace18275d7c423a19fc32bdc5aacdc71232f0cb2a7012f50a5a1afe4"
+    },
+    {
+      "task_id": "travel-9a88db6f11f97f-q200-2",
+      "image_id": "travel-9a88db6f11f97f",
+      "instruction": "Add a dog standing on the foreground rocks beside the waterfall, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-9a88db6f11f97f-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-9a88db6f11f97f-q200-2/target.png",
+      "source_sha256": "ca7f4a0f1cbf503bc058fb736937806cafa449177ca29760439e8eed0956c6d4",
+      "target_sha256": "cab10cf061876beda809bc6e3ed3f081c10ccd0e30c88531b55ee2919b4df24a",
+      "binding": "1734ceb92d386b7edc0a0c4fd397effcc675430651bc74b88703959a893cf0a4"
+    },
+    {
+      "task_id": "travel-024f0364d89cf8-q200-2",
+      "image_id": "travel-024f0364d89cf8",
+      "instruction": "Add a bird perched on the railing beside the pagoda on the left, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-024f0364d89cf8-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-024f0364d89cf8-q200-2/target.png",
+      "source_sha256": "413af41444ae248bb95d3e5718a00b8711686d1a40a1c25aa8178af2f496a148",
+      "target_sha256": "6d4bb04c270da66feade32c43449fe0ff9b35e6238ec983dc5ab4b11e3c50a32",
+      "binding": "2061ac666e0bd1953bb4562f9ba7ef6c4cd25913bcb7344f20a6348c87df6f3a"
+    },
+    {
+      "task_id": "travel-52fa179c01253a-q200-2",
+      "image_id": "travel-52fa179c01253a",
+      "instruction": "Remove the double streetlight on the far right beside the water, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-52fa179c01253a-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-52fa179c01253a-q200-2/target.png",
+      "source_sha256": "cbfe8581081c9bb0301dd09512069596589575f99b4e56366d8f503c84e7d0c2",
+      "target_sha256": "6bf7fc0d28d2f2aa92587b57d4d43d9da9b6e7b3dfec0fea3d7a5517fade8101",
+      "binding": "61b27d5bbf18671df0cc5612f99afbf5553b02b0951d8ca2b32b1fac4d51d722"
+    },
+    {
+      "task_id": "travel-7749b11c352517-q200-2",
+      "image_id": "travel-7749b11c352517",
+      "instruction": "Remove the person in the light blue jacket in the lower left foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-7749b11c352517-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-7749b11c352517-q200-2/target.png",
+      "source_sha256": "b9039b376b4210f9071d21206ddf27f8d24043edb7c7063a6e47861f7defcdc1",
+      "target_sha256": "770dfe32ecca8eab44a1298224f44b1ae0b96d356aea552d4f1f4a437f542eda",
+      "binding": "b80495935782cad68e929c2c5a5e0dcfa8624876380611c71b50e2ad7439f0aa"
+    },
+    {
+      "task_id": "travel-1ea3505c52d4d4-q200-2",
+      "image_id": "travel-1ea3505c52d4d4",
+      "instruction": "Add a bird flying in the sky above the forested hill on the right, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-1ea3505c52d4d4-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-1ea3505c52d4d4-q200-2/target.png",
+      "source_sha256": "bee45ce269b86d52eb3a78e105b264d1a3c780575cd3fded0e890f530b4e5f08",
+      "target_sha256": "96214bcb86b2b86b5e35096b909c8b6f609e491c756f83ff7bd454edfe3a062a",
+      "binding": "e38a1e08ca75aa2af9675558f58b441b9e33b79f3b373e57e5348215638f4954"
+    },
+    {
+      "task_id": "travel-64522241784623-q200-2",
+      "image_id": "travel-64522241784623",
+      "instruction": "Add a train on the railway tracks in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-64522241784623-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-64522241784623-q200-2/target.png",
+      "source_sha256": "9af4decf284e415efc8be73086a838e269ec617fb6bdc9601c1a8fa08f6c90ee",
+      "target_sha256": "086d68f12b3eee1cb325cc1653ff552a4180187ee938123810df42e328f1282e",
+      "binding": "eaabbfb301b4dd9e8ab7d8b359fa16481ed8c85296f666f45d4ed73d7f8cf0be"
+    },
+    {
+      "task_id": "travel-08875e2c81a66f-q200-2",
+      "image_id": "travel-08875e2c81a66f",
+      "instruction": "Add a cat sitting on the ground to the left of the stone gateway entrance, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-08875e2c81a66f-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-08875e2c81a66f-q200-2/target.png",
+      "source_sha256": "30501c5b4d0da30128512672b2606dc129177b326eb2d1ff58b9f7b5b6e607ff",
+      "target_sha256": "e19b99d4acdaac84be367a11209dc6763b7ed2c857f70da025c13b96f8bded31",
+      "binding": "170ac62600d1885d347da0791ee948c2e68bf0f2fbd6d01adf5bea75d1523f5a"
+    },
+    {
+      "task_id": "travel-e8f244f99aec3b-q200-2",
+      "image_id": "travel-e8f244f99aec3b",
+      "instruction": "Add a dog sitting on the sand in the foreground under the overhanging branches, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-e8f244f99aec3b-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-e8f244f99aec3b-q200-2/target.png",
+      "source_sha256": "5127f23c1e53e629831939b38d96825467592dbd0eddb66c5c62191ef8d1fdf4",
+      "target_sha256": "d96b5b9f2352af7f0b4ce74991b812b2c2a3b3b1ae1b669331c9823f578c2836",
+      "binding": "5d2bffdedac9df3116a390484964ee72fc71538ff24dac0f40613f9508c95e4c"
+    },
+    {
+      "task_id": "travel-f61ddff839b69c-q200-2",
+      "image_id": "travel-f61ddff839b69c",
+      "instruction": "Add a dog standing at the cave opening beside the tree, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-f61ddff839b69c-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-f61ddff839b69c-q200-2/target.png",
+      "source_sha256": "af6dd5d9c1c4a5518b986974d98a21225ffa424672d6b817ff0e9e4e1423e6dd",
+      "target_sha256": "50a1cd1c45afce3271acefc61be8372e025d301a3bb3e3b66457e8bdead68431",
+      "binding": "bc388edc7b2f3fcdfd3e23ebcbb6260a6b6e020d665430ddd7804320a4e5f349"
+    },
+    {
+      "task_id": "travel-538b61324d7268-q200-2",
+      "image_id": "travel-538b61324d7268",
+      "instruction": "Remove the large cone-shaped tree directly in front of the temple steps, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-538b61324d7268-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-538b61324d7268-q200-2/target.png",
+      "source_sha256": "027e2f3e04cd195fbab9dcd4efce1753b672146961937f4d0c38b7c83dcd3a07",
+      "target_sha256": "27238e401029c2c2d665693bd6fae6479687b84309f2fe92c57f832f2c712947",
+      "binding": "860f8a8ea35d9b683d942d87c1958e3cf9501523ff25762d10b4e8c352432024"
+    },
+    {
+      "task_id": "travel-a4fe5a686b0396-q200-2",
+      "image_id": "travel-a4fe5a686b0396",
+      "instruction": "Add a dog standing on the foreground rocks beside the natural pool, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-a4fe5a686b0396-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-a4fe5a686b0396-q200-2/target.png",
+      "source_sha256": "743dede532b1c0f2891d657414797db77194d2f8d8b051bf4691a6fabd6f94a7",
+      "target_sha256": "5795c598245e0585a69fda0886b7fa8c2795e6256ec8366f17bc28a10b5b7e48",
+      "binding": "15b16e5a03c5dd8ad6ee6d95a832bc3da74332488b17f6f120808d12ca58cbf1"
+    },
+    {
+      "task_id": "travel-bc738e0b6f7cc0-q200-2",
+      "image_id": "travel-bc738e0b6f7cc0",
+      "instruction": "Add a bird perched on the stone railing on the left side of the pond, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-bc738e0b6f7cc0-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-bc738e0b6f7cc0-q200-2/target.png",
+      "source_sha256": "a7c82f118fcd0060050f52b6afc0bb46a0f7ea5158e15724b62887f587c86971",
+      "target_sha256": "45920e30b732a42b639e7af3967024239f7de9c9d6e702edb34f8903d4e034a1",
+      "binding": "42b44a76d2074ad65cc186b58910bf1c79dbc24003422dd9907ed29e02f54137"
+    },
+    {
+      "task_id": "travel-0de54606e699f4-q200-2",
+      "image_id": "travel-0de54606e699f4",
+      "instruction": "Add a person standing on the grassy bank in the foreground, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-0de54606e699f4-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-0de54606e699f4-q200-2/target.png",
+      "source_sha256": "493af535f352ba0c19ee3c0d07233ad487ce8b7771d490d70b25a3266549e68e",
+      "target_sha256": "a191750a2cb0f0eb3e8022120a5cb145319882ec0eaab9bf459fb6e280d12481",
+      "binding": "0a63ac6daf3da9c85c2fa0f5b8c9d005300358c4939da67fecaecacee4cfda45"
+    },
+    {
+      "task_id": "travel-cc2d058d944095-q200-2",
+      "image_id": "travel-cc2d058d944095",
+      "instruction": "Replace the potted plant in the middle of the courtyard with a wooden chair, leaving the rest of the scene unchanged.",
+      "source": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-cc2d058d944095-q200-2/source.png",
+      "target": "runs/level3/qwen200-extension-v1/seed42-v1/cases/travel-cc2d058d944095-q200-2/target.png",
+      "source_sha256": "98766d5f70a01d4de56796371af70be6824e8f6ce21e1f92b0412df433a304ac",
+      "target_sha256": "a328d3b26c88477f90df970f6eea7c38b195116cc8a4526f43029f660e03c8eb",
+      "binding": "037bfdfe686f4c62253b36d09e720e4879fc6078bcf41646516a8b9ed0af35e4"
+    }
+  ]
+}
