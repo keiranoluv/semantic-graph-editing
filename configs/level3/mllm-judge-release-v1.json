@@ -1,0 +1,63 @@
+{
+  "protocol": {
+    "code": {
+      "commit": "478380325e8d5e14e3a15d3e2dac4dc0540c7a1f",
+      "files": {
+        "configs/level3/mllm-judge-prompt-v1.txt": "14ac70f1305275d2f0fdd33d50620ccad34b51b604a6f951c85d5ea51a93bdc4",
+        "configs/level3/mllm-judge-smoke-v1.json": "dde74ac22086437fde55eb86527593e24386d44d476801928edeb6bde5b92082",
+        "configs/level3/mllm-judge-v1.json": "192c2178e8aeb4a1bd42dd4d950a7b1de1b6391075124eb2d4b80b959c2173bd",
+        "configs/level3/mllm-judge-vn100-v1.json": "8a620d379c177bd252253e39f383769606fd22034e6603577c546975f395ad4e",
+        "requirements-level3-mllm-judge-v1.txt": "d33aad8cde54702147cd87e67938ea50f9e796b73a33e21de1524b1b7a5f18bf",
+        "scripts/run_level3_mllm_judge_v1.sh": "ad282114e4f95e97ea55b7dc59868fab69de76090d2c49b58d73d99920470c60",
+        "tools/level3_analysis_v1/core.py": "871f19224b2085e51f0443a7b273064a1a50bd3b573fb9ef3b041b6bfcc11890",
+        "tools/level3_image_graph_v1/core.py": "4e4219b998029017bdaa9477c5090e9ffb10c78c42efc20abd9b7c644b3484dc",
+        "tools/level3_mllm_judge_v1/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tools/level3_mllm_judge_v1/__main__.py": "ea6197cdcc2dd5eec81dd80efa6ebaf7906df2d17161605235b2a2d59c34c93a",
+        "tools/level3_mllm_judge_v1/backend.py": "445881afac466e42e5baabd565364d1636ea0dfb5168ea2d8b91809f1c3a1683",
+        "tools/level3_mllm_judge_v1/protocol.py": "09e9717deff62d0b8230d111121c9e804d1fd2ba864707cbbd5545268de8855b",
+        "tools/level3_mllm_judge_v1/report.py": "d17d40465b66f4b3488997110ad06628d7a1f671ddb090057e7ce73ac168adf1",
+        "tools/level3_mllm_judge_v1/runner.py": "6be44a232fcf8f0c8cd67eb88d8199d3b9378a4e0381055f103b4c437606b552",
+        "tools/level3_qwen_unified/core.py": "0cdf006da024fd00bb2b8c936dccd33ca5c40421aa302cdc9dcaa78624bd9a84"
+      },
+      "packages": {
+        "Jinja2": "3.1.6",
+        "Pillow": "11.3.0",
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "pytest": "8.4.2",
+        "safetensors": "0.8.0",
+        "scipy": "1.16.3",
+        "tokenizers": "0.22.2",
+        "torch": "2.7.1+cu128",
+        "torchvision": "0.22.1+cu128",
+        "transformers": "4.57.1",
+        "wandb": "0.23.0"
+      }
+    },
+    "config": "caaab5b8679d99bf18f8430f736c4b5e27c041fa2a1837b2bc175b475861a77c",
+    "smoke_manifest": "20c8ed82ab2d8a075ab257a3aa9690c34ae325f38c0db4901e33bb72ba5b1a5d",
+    "vn100_manifest": "e4834543e4982eccaa26e2a5958c3de1c85378a2d7880a6c97e08c19d7cedfba"
+  },
+  "review": "Reviewed all five raw responses for one readable evidence sentence and correct image roles.",
+  "schema": "level3-mllm-judge-release-v1",
+  "smoke_receipt_sha256": "5fc2123b8cfa0656c2df9a58fa00aaa437beb8b06da7260415852ca9f76572d2",
+  "smoke_summary": {
+    "attempted": 5,
+    "case_digests": {
+      "magicbrush:124157:1": "15842d70c18cd2a5623ff27849d1dd9bed93cd6b48a46428f9ec4895d2afea3c",
+      "magicbrush:171050:1": "bfcd915bc6be17831132f0b53d36ef6d43b146414b883d7e52f83b6999f7245f",
+      "magicbrush:21217:2": "400c1ffccc7c8dfdb219f3fcdeafed2de1aa15886e1cbfe880e3d21a558170e7",
+      "magicbrush:21972:2": "d923b00e21b476702da12a209a27ef008f315e05937ca9b163a51ed24e536091",
+      "magicbrush:270722:2": "a63c46aec54eb333424732f7d4ff3cdacbd7529e1d1a3de20b67ff467cbc8b82"
+    },
+    "max_load_peak_mib": {
+      "allocated_mib": 16734.896484375,
+      "reserved_mib": 16902.0
+    },
+    "max_score_peak_mib": {
+      "allocated_mib": 17439.482421875,
+      "reserved_mib": 17728.0
+    },
+    "valid": 5
+  }
+}
