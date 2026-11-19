@@ -9,7 +9,7 @@ b/.style={draw=inkblue,fill=mutedblue,rounded corners,align=center,text width=31
 \node[b,right=of graphs] (score) {Căn chỉnh và chấm điểm\\$E,P,G$};
 \draw[->] (images)--(edit);\draw[->] (edit)--(graphs);\draw[->] (graphs)--(score);
 \node[b,below=of edit] (human) {Nhãn tay\\Thực hiện yêu cầu\\Bảo toàn nội dung};
-\node[b,below=of score] (eval) {Đánh giá tương quan\\cùng CLIPScore/$-$LPIPS};
+\node[b,below=of score] (eval) {Đánh giá tương quan\\$G$, $J$, CLIPScore, $-$LPIPS};
 \draw[->] (score)--(eval);\draw[->] (human)--(eval);
 \end{tikzpicture}
 \caption{Người duyệt chấm mức thực hiện yêu cầu (\textit{fulfillment}) và bảo toàn nội dung (\textit{preservation}).
@@ -100,6 +100,15 @@ G = E \cdot P.
 không xác định. Bộ chấm cũng có thể từ chối chấm khi việc ghép các instance
 cần bảo toàn còn mơ hồ.
 
+\subsubsection{Đối chứng bằng mô hình thị giác--ngôn ngữ}
+Qwen3-VL-8B-Instruct~\cite{qwen3VLinstruct} đọc ảnh nguồn, ảnh đã chỉnh và nguyên văn yêu cầu tiếng Anh. Mô hình trả hai điểm nguyên từ 0 đến 4 cho mức thực hiện yêu cầu ($F$) và mức bảo toàn phần còn lại của cảnh ($B$), kèm một câu nêu bằng chứng. Nhóm tính
+\[
+J=\frac{F}{4}\,\frac{B}{4}=\frac{F B}{16}.
+\]
+Mẫu số $16=4\times4$ là tích lớn nhất của hai điểm. Chuẩn hóa như vậy đưa $J$ về cùng thang $[0,1]$ với $G$ và giữ nguyên thứ hạng dùng để tính Spearman. Một tiêu chí bằng 0 thì $J=0$.
+
+Nhóm kiểm tra định dạng trên 5 cặp MagicBrush ngoài VN100 rồi khóa phiên bản mô hình, prompt, mô tả các mức điểm và công thức trước khi chấm. Mô hình dùng trọng số đóng băng trên RTX 5090, BF16, mỗi lượt một cặp, giải mã tham lam với seed 42 và tối đa 128 token đầu ra. Hai ảnh giữ toàn khung và tỉ lệ, cạnh dài tối đa 1024 pixel.
+
 \subsection{Tương quan, khoảng tin cậy và độ phủ}
 Một cặp đạt khi người duyệt xác nhận cả hai tiêu chí thực hiện yêu cầu và bảo toàn nội dung. Có 175/200 cặp đạt, 25 cặp không đạt.
 Có 287 ô trống trên 144 cặp được chuẩn hóa thành đạt theo xác nhận của người duyệt;
@@ -108,16 +117,17 @@ Tập giao có đủ $G$ gồm 91 cặp thuộc 62 ảnh, với 82 đạt và 9 
 
 \begin{figure}[!ht]\centering
 \begin{tikzpicture}
-\begin{axis}[width=.85\linewidth,height=4.6cm,xmin=-.18,xmax=.45,
-xtick={-.1,0,.1,.2,.3,.4},xticklabel style={/pgf/number format/fixed},
-ymin=.5,ymax=3.5,ytick={1,2,3},yticklabels={CLIPScore,Đồ thị $G$,$-\mathrm{LPIPS}$},
+\begin{axis}[width=.85\linewidth,height=4.9cm,xmin=-.18,xmax=.53,
+xtick={-.1,0,.1,.2,.3,.4,.5},xticklabel style={/pgf/number format/fixed},
+ymin=.5,ymax=4.5,ytick={1,2,3,4},yticklabels={CLIPScore,Đồ thị $G$,$-\mathrm{LPIPS}$,Qwen3-VL $J$},
 xlabel={Spearman $\rho$, khoảng bootstrap 95\%},
 axis x line*=bottom,axis y line*=left,xmajorgrids]
 \addplot+[only marks,color=inkblue,error bars/.cd,x dir=both,x explicit]
 coordinates {(.0561,1) +=(.1672,0) -=(.1806,0)
 (.1767,2) +=(.1804,0) -=(.2071,0)
-(.1962,3) +=(.1946,0) -=(.2140,0)};
-\draw[dashed] (axis cs:0,.5)--(axis cs:0,3.5);
+(.1962,3) +=(.1946,0) -=(.2140,0)
+(.2628,4) +=(.2332,0) -=(.2599,0)};
+\draw[dashed] (axis cs:0,.5)--(axis cs:0,4.5);
 \end{axis}\end{tikzpicture}
 \caption{Tương quan Spearman với nhãn tay trên cùng 91 cặp. Khoảng bootstrap
 ghép cặp 95\% cho $\rho_G-\rho_{\mathrm{CLIPScore}}$ là
@@ -125,7 +135,7 @@ $[-0{,}1795;\,0{,}3964]$ và cho $\rho_G-\rho_{-\mathrm{LPIPS}}$ là
 $[-0{,}3179;\,0{,}2659]$. Cả hai khoảng chênh lệch đều chứa 0.}\label{fig:nv3-corr}
 \end{figure}
 
-Trên 91 cặp này, Spearman $\rho$ của $G$, CLIPScore và $-\mathrm{LPIPS}$ lần lượt là 0,1767, 0,0561 và 0,1962. Hình~\ref{fig:nv3-corr} cho thấy cả ba khoảng bootstrap 95\% đều chứa 0 (giá trị hai cận ở Bảng~\ref{tab:corr}).
+Trên cùng 91 cặp, $J$ có tương quan quan sát cao nhất với nhãn đạt cả hai tiêu chí ($\rho=0{,}2628$), tiếp theo là $-\mathrm{LPIPS}$ (0,1962), $G$ (0,1767) và CLIPScore (0,0561). Các thanh ngang ở Hình~\ref{fig:nv3-corr} biểu diễn khoảng tin cậy cho từng hệ số. Để so sánh hai bộ chấm, nhóm tính chênh lệch $\rho$ trong cùng mỗi lượt bootstrap theo ảnh nguồn. Cả ba khoảng 95\% cho chênh lệch giữa $J$ và từng đối chứng đều chứa 0 (Bảng~\ref{tab:corr}), nên chưa đủ bằng chứng kết luận Qwen3-VL xếp hạng tốt hơn.
 
 CLIPScore dùng CLIP ViT-B/32 và $2,5\max(\cos(I_t,q),0)$ với text prefix
 của pipeline~\cite{hessel2021clipscore}. LPIPS AlexNet đo khoảng cách ảnh
@@ -149,7 +159,18 @@ Tổng & 200 & 91 & 45,5 & 0,1767\\
 
 Trong 109 ca không có điểm $G$, có 91 ca mà bộ chấm không xác định chắc chắn
 instance nào ở ảnh đích tương ứng với một instance cần bảo toàn ở ảnh nguồn.
-Một ca có thể có nhiều lý do từ chối chấm.
+Một ca có thể có nhiều lý do từ chối chấm. Qwen3-VL cho điểm hợp lệ ở 108/109 ca này. Ca còn lại có hai câu bằng chứng nên bị loại theo quy tắc định dạng đã khóa. Bảng~\ref{tab:nv3-judge-panels} đối chiếu điểm của mô hình với nhãn tay theo từng tập.
+
+\begin{table}[!ht]\centering\small
+\caption{Độ phủ của Qwen3-VL và tương quan Spearman trên các cặp có phản hồi hợp lệ. $F$ đối chiếu với nhãn thực hiện yêu cầu, $J$ với nhãn đạt cả hai tiêu chí.}\label{tab:nv3-judge-panels}
+\begin{tabular}{@{}lrrr@{}}\toprule
+Tập đánh giá & Hợp lệ/tổng & $\rho_F$ & $\rho_J$\\\midrule
+Có điểm $G$ & 91/91 & 0,1482 & 0,2628\\
+Thiếu điểm $G$ & 108/109 & 0,1325 & 0,2056\\
+Toàn bộ VN100 & 199/200 & 0,1373 & 0,2284\\
+\bottomrule\end{tabular}\end{table}
+
+Ở cả 199 cặp hợp lệ, Qwen3-VL đều cho $B=4$, kể cả 17 cặp người duyệt đánh trượt tiêu chí bảo toàn. Vì $B$ là hằng số, tương quan Spearman giữa $B$ và nhãn bảo toàn không xác định. Trên lượt chạy này, $J=F/4$, nên thứ hạng của $J$ hoàn toàn do điểm thực hiện yêu cầu quyết định.
 
 Theo bộ nhãn tay cuối cùng, cả 10/10 ảnh đổi màu đều đạt tiêu chí thực hiện
 yêu cầu, trong đó 9/10 ảnh cũng đạt tiêu chí bảo toàn nội dung. Riêng ca ghế số 109

@@ -52,12 +52,13 @@ Abstention & Thiếu bằng chứng hoặc alignment mơ hồ: null, không tự
 \bottomrule\end{tabularx}\end{table}
 
 \begin{table}[H]\centering\small
-\caption{Spearman với nhãn tổng trên cùng $N=91$; bootstrap 2.000 lượt theo cụm ảnh, seed 42.}\label{tab:corr}
-\begin{adjustbox}{max width=\linewidth}\begin{tabular}{@{}lrc@{}}\toprule
-Điểm & $\rho$ & Khoảng bootstrap 95\%\\\midrule
-Điểm đồ thị $G$ & 0,1767 & $[-0,0304;\ 0,3571]$\\
-CLIPScore & 0,0561 & $[-0,1245;\ 0,2233]$\\
-$-\mathrm{LPIPS}$ & 0,1962 & $[-0,0178;\ 0,3908]$\\
+\caption{Spearman với nhãn đạt cả hai tiêu chí trên cùng 91 cặp. Hai cột cuối so sánh $J$ với từng chỉ số bằng 2.000 lượt bootstrap ghép cặp theo ảnh nguồn, seed 42.}\label{tab:corr}
+\begin{adjustbox}{max width=\linewidth}\begin{tabular}{@{}lrrrr@{}}\toprule
+Chỉ số $M$ & $\rho_M$ & Khoảng 95\% của $\rho_M$ & $\rho_J-\rho_M$ & Khoảng 95\% của chênh lệch\\\midrule
+Điểm đồ thị $G$ & 0,1767 & $[-0{,}0304;\ 0{,}3571]$ & 0,0861 & $[-0{,}1829;\ 0{,}3367]$\\
+CLIPScore & 0,0561 & $[-0{,}1245;\ 0{,}2233]$ & 0,2067 & $[-0{,}0579;\ 0{,}4642]$\\
+$-\mathrm{LPIPS}$ & 0,1962 & $[-0{,}0178;\ 0{,}3908]$ & 0,0666 & $[-0{,}2656;\ 0{,}4054]$\\
+Qwen3-VL $J$ & 0,2628 & $[0{,}0029;\ 0{,}4960]$ & \nd & \nd\\
 \bottomrule\end{tabular}\end{adjustbox}\end{table}
 
 \clearpage
