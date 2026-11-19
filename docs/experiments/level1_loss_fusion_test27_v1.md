@@ -33,3 +33,30 @@ rằng ý tưởng cải tiến đã sử dụng test để lựa chọn thiết
 
 Chạy CPU tests: `CUDA_VISIBLE_DEVICES='' myenv/bin/python -m pytest -q
 tests/test_level1_loss_fusion_test27_v1.py tests/test_level1_reference_test27_v1.py`.
+
+## NV1 · Gắn đúng vector ConceptNet có giúp pair fusion trên VG150?
+
+Giữ nguyên GAT pair fusion, logit-adjusted loss (τ = 0,25) và ba seed train
+42, 123, 3407. Mỗi hoán vị tráo vector giữa 138 lớp có liên kết ConceptNet và
+giữ cố định ánh xạ trong suốt train và test. Nhóm dùng lại ba checkpoint KG
+thật và ba checkpoint của hoán vị gốc, rồi train sáu lượt cho hai hoán vị mới.
+Checkpoint được chọn theo validation mR@50. Cả sáu lượt mới đã được chấm
+trên cùng 26.446 ảnh VG150 test bằng reference-v1 với graph constraint.
+[Launcher và cấu hình](../../tools/vg150_pair_permutations_v1/__main__.py)
+
+KG thật đạt trung bình **25,24% mR@50** và **62,37% R@50** qua ba seed.
+Trong bảng, Δ là điểm KG thật trừ điểm KG tráo ở cùng seed, tính bằng điểm
+phần trăm trước khi làm tròn.
+
+| Hoán vị KG | mR@50 KG tráo (%) | Δ mR@50 seed 42 | Δ mR@50 seed 123 | Δ mR@50 seed 3407 | Δ mR@50 trung bình | Δ R@50 trung bình |
+|---|---:|---:|---:|---:|---:|---:|
+| 20261025 (gốc) | 25,00 | +0,40 | −0,82 | +1,14 | +0,24 | +0,02 |
+| 20261026 | 24,81 | +0,48 | +0,003 | +0,80 | +0,43 | +0,14 |
+| 20261027 | 24,92 | +0,36 | +0,10 | +0,51 | +0,32 | +0,35 |
+
+Lợi thế trung bình của ánh xạ đúng lặp lại với cả hai hoán vị mới. Mức
+tăng mR@50 nhỏ và phụ thuộc seed. Ở seed 123, KG thật thấp hơn hoán vị
+gốc 0,82 điểm và gần như ngang hoán vị 20261026 (+0,003 điểm). Tám trong
+chín hiệu số mR@50 dương, nhưng ba so sánh của mỗi seed dùng chung một
+checkpoint KG thật. Đây là kiểm tra độ ổn định trên tập test đã xem trước
+đó. [Kết quả từng seed và cả hai chỉ số](../../reports/level1/vg150-pair-permutations-v1/summary.json)

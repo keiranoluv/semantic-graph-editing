@@ -1,0 +1,142 @@
+{
+  "protocol": "PredCls_reference_v1_iou50_image_macro_per_predicate_50",
+  "test_images": 26446,
+  "scope": "exploratory follow-up on previously evaluated test split",
+  "comparisons": [
+    {
+      "permutation": 20261025,
+      "per_seed": {
+        "42": {
+          "mR@50": {
+            "real_pct": 25.54804768376214,
+            "shuffled_pct": 25.147815389202744,
+            "real_minus_shuffled_pp": 0.4002322945593939
+          },
+          "R@50": {
+            "real_pct": 62.22127939188028,
+            "shuffled_pct": 62.17881697062604,
+            "real_minus_shuffled_pp": 0.04246242125424127
+          }
+        },
+        "123": {
+          "mR@50": {
+            "real_pct": 24.809083921655102,
+            "shuffled_pct": 25.63164708063369,
+            "real_minus_shuffled_pp": -0.8225631589785898
+          },
+          "R@50": {
+            "real_pct": 62.301574579016105,
+            "shuffled_pct": 62.31477020430574,
+            "real_minus_shuffled_pp": -0.013195625289630364
+          }
+        },
+        "3407": {
+          "mR@50": {
+            "real_pct": 25.368853797939643,
+            "shuffled_pct": 24.233754851862276,
+            "real_minus_shuffled_pp": 1.1350989460773675
+          },
+          "R@50": {
+            "real_pct": 62.57579571451243,
+            "shuffled_pct": 62.530467096068755,
+            "real_minus_shuffled_pp": 0.045328618443674085
+          }
+        }
+      },
+      "mean_real_minus_shuffled_pp": {
+        "mR@50": 0.23758936055272387,
+        "R@50": 0.024865138136094995
+      }
+    },
+    {
+      "permutation": 20261026,
+      "per_seed": {
+        "42": {
+          "mR@50": {
+            "real_pct": 25.54804768376214,
+            "shuffled_pct": 25.066069139942936,
+            "real_minus_shuffled_pp": 0.48197854381920036
+          },
+          "R@50": {
+            "real_pct": 62.22127939188028,
+            "shuffled_pct": 62.72456427584356,
+            "real_minus_shuffled_pp": -0.5032848839632842
+          }
+        },
+        "123": {
+          "mR@50": {
+            "real_pct": 24.809083921655102,
+            "shuffled_pct": 24.805992652012954,
+            "real_minus_shuffled_pp": 0.00309126964214701
+          },
+          "R@50": {
+            "real_pct": 62.301574579016105,
+            "shuffled_pct": 62.20599955273699,
+            "real_minus_shuffled_pp": 0.09557502627911552
+          }
+        },
+        "3407": {
+          "mR@50": {
+            "real_pct": 25.368853797939643,
+            "shuffled_pct": 24.567539307885898,
+            "real_minus_shuffled_pp": 0.801314490053745
+          },
+          "R@50": {
+            "real_pct": 62.57579571451243,
+            "shuffled_pct": 61.75015019820732,
+            "real_minus_shuffled_pp": 0.8256455163051069
+          }
+        }
+      },
+      "mean_real_minus_shuffled_pp": {
+        "mR@50": 0.4287947678383641,
+        "R@50": 0.1393118862069794
+      }
+    },
+    {
+      "permutation": 20261027,
+      "per_seed": {
+        "42": {
+          "mR@50": {
+            "real_pct": 25.54804768376214,
+            "shuffled_pct": 25.188652092299023,
+            "real_minus_shuffled_pp": 0.35939559146311306
+          },
+          "R@50": {
+            "real_pct": 62.22127939188028,
+            "shuffled_pct": 62.517134939607985,
+            "real_minus_shuffled_pp": -0.29585554772770806
+          }
+        },
+        "123": {
+          "mR@50": {
+            "real_pct": 24.809083921655102,
+            "shuffled_pct": 24.71388624526064,
+            "real_minus_shuffled_pp": 0.0951976763944623
+          },
+          "R@50": {
+            "real_pct": 62.301574579016105,
+            "shuffled_pct": 62.0202704988951,
+            "real_minus_shuffled_pp": 0.28130408012100316
+          }
+        },
+        "3407": {
+          "mR@50": {
+            "real_pct": 25.368853797939643,
+            "shuffled_pct": 24.860462604850664,
+            "real_minus_shuffled_pp": 0.5083911930889806
+          },
+          "R@50": {
+            "real_pct": 62.57579571451243,
+            "shuffled_pct": 61.50547694887404,
+            "real_minus_shuffled_pp": 1.0703187656383895
+          }
+        }
+      },
+      "mean_real_minus_shuffled_pp": {
+        "mR@50": 0.3209948203155187,
+        "R@50": 0.35192243267722817
+      }
+    }
+  ]
+}
