@@ -4,13 +4,10 @@ import math
 from pathlib import Path
 
 import torch
-
-from task2_graph_editing.magicbrush.sequence_model.codec import encode_actions, score_predictions
-from task2_graph_editing.magicbrush.sequence_model.runner import capture_rng, restore_rng, save_checkpoint
 from common.io import read, sha256, write
-
+from common.training.random_state import capture_rng, restore_rng, save_checkpoint
 from task2_graph_editing.magicbrush.preprocess import digest
-
+from task2_graph_editing.magicbrush.sequence_model.codec import encode_actions, score_predictions
 from task2_graph_editing.magicbrush.structured_model.model import StructuredPredictor
 from task2_graph_editing.magicbrush.structured_model.runtime import training_step, validate, validation_loss
 from task2_graph_editing.magicbrush.structured_model.vocabulary import prototype_vectors

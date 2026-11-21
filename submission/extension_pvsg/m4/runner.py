@@ -4,35 +4,35 @@ Keep its training/resume/WandB behavior, change only model, collate and identity
 Duplicating this orchestration avoids modifying or monkey-patching locked M3.
 """
 
-import argparse
-import fcntl
-import os
 import time
 from pathlib import Path
 
 import numpy as np
 import torch
-from torch.utils.data import DataLoader
-
 from extension_pvsg.contracts import read_json
 from extension_pvsg.m2.download import sha256
-from extension_pvsg.m2.preflight import verify_locks
 from extension_pvsg.m3.common import seed_all, write_json
 from extension_pvsg.m3.data import FitSampler, Store, Windows, to_device
-from extension_pvsg.m3.engine import backward_microbatch, diagnostics, restore_checkpoint, save_checkpoint, selection_key, should_stop
+from extension_pvsg.m3.engine import (
+    backward_microbatch,
+    diagnostics,
+    restore_checkpoint,
+    save_checkpoint,
+    selection_key,
+    should_stop,
+)
 from extension_pvsg.m3.runner import tracking
-from extension_pvsg.validate_m0 import canonical_sha256
-from extension_pvsg.m4.common import GPU_LOCK, PROJECT, config, identity, require_committed, verify_parent, verify_self
+from extension_pvsg.m4.common import identity
 from extension_pvsg.m4.data import collate
 from extension_pvsg.m4.models import RelationModel
-from extension_pvsg.m4.preflight import check_features, check_profile, check_runtime
 from extension_pvsg.m4.validation import validate
+from extension_pvsg.validate_m0 import canonical_sha256
+from torch.utils.data import DataLoader
 
 
-def train(cfg, kind, seed, profile, feature_sha, device):
+def train(cfg, kind, seed, batch_size, feature_sha, device):
     seed_all(seed)
     cuda = torch.device(device).type == "cuda"
-    batch_size = profile["models"][kind]["batch_size"]
     effective = cfg["effective_batch_windows"]
     out = Path(cfg["output_root"]) / kind / f"seed-{seed}"
     out.mkdir(parents=True, exist_ok=True)
@@ -41,7 +41,7 @@ def train(cfg, kind, seed, profile, feature_sha, device):
         "model": kind,
         "seed": seed,
         "batch_size": batch_size,
-        "profile_sha256": canonical_sha256(profile),
+        "batch_policy": "explicit_fixed_batch",
     }
     sig = canonical_sha256(run_identity)
     if (out / "complete.json").exists():
@@ -228,42 +228,3 @@ def train(cfg, kind, seed, profile, feature_sha, device):
     except BaseException:
         tracker.finish(exit_code=1)
         raise
-
-
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--model", choices=tuple(config()["models"]), required=True)
-    parser.add_argument("--seed", type=int, choices=(17, 42, 2026), required=True)
-    parser.add_argument("--profile", type=Path, default=None)
-    args = parser.parse_args()
-    os.chdir(PROJECT)
-    require_committed()
-    verify_locks()
-    verify_parent()
-    verify_self()
-    check_runtime()
-    cfg = config()
-    digest = check_features(cfg)
-    profile = check_profile(
-        args.profile or Path(cfg["output_root"]) / "profiles" / f"{args.model}.json", cfg, digest, args.model
-    )
-    root = Path(cfg["output_root"])
-    root.mkdir(parents=True, exist_ok=True)
-    GPU_LOCK.parent.mkdir(parents=True, exist_ok=True)
-    with GPU_LOCK.open("a") as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        if not torch.cuda.is_available() or not torch.cuda.is_bf16_supported():
-            raise ValueError("The profiled CUDA BF16 runtime is required")
-        if torch.cuda.get_device_name(0) != profile["gpu"]["name"]:
-            raise ValueError("GPU model differs from the sizing profile")
-        selected = profile["models"][args.model]
-        measured = next(row for row in selected["candidates"] if row["batch_size"] == selected["batch_size"])
-        required = max(measured["heavy"]["peak_reserved_bytes"], measured["mixed"]["peak_reserved_bytes"])
-        free, _ = torch.cuda.mem_get_info(0)
-        if free < required * 1.1:
-            raise ValueError("Current free VRAM lacks 10% headroom above the profiled peak; free GPU resources first")
-        train(cfg, args.model, args.seed, profile, digest, torch.device("cuda:0"))
-
-
-if __name__ == "__main__":
-    main()

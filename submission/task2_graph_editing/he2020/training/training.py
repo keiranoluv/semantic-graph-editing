@@ -6,13 +6,11 @@ import time
 from pathlib import Path
 
 import torch
-from torch import nn
-
-from task2_graph_editing.magicbrush.sequence_model.runner import capture_rng, restore_rng, save_checkpoint
 from common.io import read, sha256, write
-
+from common.training.random_state import capture_rng, restore_rng, save_checkpoint
 from task2_graph_editing.he2020.models.runner import evaluate, make_model, predict, tensor_subset
 from task2_graph_editing.he2020.training import tracking
+from torch import nn
 
 
 def initial_state():

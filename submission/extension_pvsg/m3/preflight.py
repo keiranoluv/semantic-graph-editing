@@ -1,15 +1,12 @@
 """CPU-only gates: immutable earlier stages, complete cache, tested batch profile."""
 
-import argparse
 import fcntl
 from pathlib import Path
 
 from extension_pvsg.contracts import read_json
 from extension_pvsg.m2.download import sha256
-from extension_pvsg.m2.features import cache_identity
-from extension_pvsg.m2.preflight import verify_locks
+from extension_pvsg.m3.common import ROOT, runtime_versions
 from extension_pvsg.validate_m0 import canonical_sha256
-from extension_pvsg.m3.common import ROOT, code_identity, config, require_committed, runtime_versions
 
 
 def check_runtime():
@@ -44,8 +41,12 @@ def check_features(cfg):
     if summary["feature_id"] != feature_cfg["feature_id"]:
         raise ValueError("Feature variant mismatch")
     actual = summary["identity"]
-    if actual != cache_identity(feature_cfg, actual["device_type"], actual["batch_size"]):
-        raise ValueError("M2 feature extraction identity changed")
+    if actual["config_sha256"] != canonical_sha256(feature_cfg):
+        raise ValueError("M2 feature extraction config changed")
+    from common.provenance import verify_artifact
+
+    for name, expected_hash in actual["code_sha256"].items():
+        verify_artifact(ROOT.parent / "m2" / name, expected_hash)
     for vid in sorted(expected):
         meta = read_json(root / f"{vid}.json")
         if (
@@ -55,47 +56,3 @@ def check_features(cfg):
         ):
             raise ValueError(f"Feature shard corrupt/incompatible: {vid}")
     return sha256(root / "summary.json")
-
-
-def check_profile(path, cfg, feature_sha):
-    if not Path(path).is_file():
-        raise ValueError(
-            "GPU profile missing: run launch_profile.sh after M2 and review sizing/overfit before training"
-        )
-    profile = read_json(path)
-    if (
-        profile["state"] != "passed"
-        or profile["code_sha256"] != code_identity()
-        or profile["config_sha256"] != canonical_sha256(cfg)
-        or profile["feature_summary_sha256"] != feature_sha
-        or profile["runtime"] != runtime_versions()
-    ):
-        raise ValueError("A successful GPU profile for this exact code/config/cache is required")
-    for model in cfg["models"]:
-        result = profile["models"][model]
-        if not result["overfit"]["passed"] or result["batch_size"] not in cfg["profile_batch_candidates"]:
-            raise ValueError(f"Unverified batch/convergence smoke check: {model}")
-        if cfg["effective_batch_windows"] % result["batch_size"]:
-            raise ValueError("Physical batch must divide the effective batch")
-    return profile
-
-
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--cpu-only", action="store_true", help="Check code/runtime while M2 is running; no GPU")
-    parser.add_argument("--profile", type=Path, default=Path("reports/pvsg-trd-m3-v1/gpu_profile.json"))
-    args = parser.parse_args()
-    verify_locks()
-    check_runtime()
-    if args.cpu_only:
-        print("CPU locks/runtime passed; full features and GPU sizing not asserted")
-        return
-    require_committed()
-    cfg = config()
-    digest = check_features(cfg)
-    check_profile(args.profile, cfg, digest)
-    print("Main-training preflight passed; no GPU work was started")
-
-
-if __name__ == "__main__":
-    main()

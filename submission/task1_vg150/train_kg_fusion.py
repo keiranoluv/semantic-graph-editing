@@ -11,16 +11,16 @@ import sys
 from pathlib import Path
 
 import torch
-
-from task1_vg150.training_utils import atomic_text_save, atomic_torch_save, resolve_device, restore_training_state
-from task1_vg150.train import frozen_config, parse_args, train_one_epoch
-from task1_vg150.train_mlp import make_dataset
 from common.datasets.batching import make_graph_loader
 from common.evaluation.gat import validate_gat
 from common.knowledge.export import load_class_features
 from common.knowledge.pair_relation import load_pair_scores
 from common.knowledge.transe.core import sha256
 from common.models.gat_kg_fusion import KnowledgeFusionGAT
+from common.provenance import revision
+from common.training.checkpoints import atomic_text_save, atomic_torch_save, resolve_device, restore_training_state
+from task1_vg150.data import make_dataset
+from task1_vg150.train import frozen_config, parse_args, train_one_epoch
 
 
 def main(argv=None):
@@ -121,7 +121,9 @@ def main(argv=None):
         interpretation=feature_manifest["interpretation"],
         max_epochs=args.epochs,
         code_sha256={
-            str(path): sha256(path) for root in (Path("src"), Path("scripts")) for path in sorted(root.rglob("*.py"))
+            str(path): sha256(path)
+            for root in (Path("common"), Path("task1_vg150"))
+            for path in sorted(root.rglob("*.py"))
         },
         data_sha256=hashes,
     )
@@ -159,7 +161,7 @@ def main(argv=None):
         )
         freeze = subprocess.run([sys.executable, "-m", "pip", "freeze"], capture_output=True, text=True, check=True)
         atomic_text_save(freeze.stdout, run_dir / "requirements-frozen.txt")
-    git_sha = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
+    git_sha = revision()
     print(
         f"[{feature_manifest['mode'].upper()}] device={device}; train={train_limit}; val={val_limit}; run={run_dir}",
         flush=True,

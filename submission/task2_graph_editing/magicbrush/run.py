@@ -6,22 +6,23 @@ import os
 from pathlib import Path
 
 import torch
-
-from task2_graph_editing.magicbrush.examples.run import checked_json, example
-from task2_graph_editing.magicbrush.sequence_model.text import TextStore, load_store, text_key
 from common.io import read, sha256, write
-
+from common.locking import exclusive
+from task2_graph_editing.magicbrush.dataset import HERE, MANIFEST, rows
+from task2_graph_editing.magicbrush.examples import checked_json, example
+from task2_graph_editing.magicbrush.preprocess import ROOT, digest
+from task2_graph_editing.magicbrush.provenance import source_hashes, versions
+from task2_graph_editing.magicbrush.sequence_model.text import TextStore, load_store, text_key
 from task2_graph_editing.magicbrush.structured_model.cache import input_texts
 from task2_graph_editing.magicbrush.structured_model.model import StructuredPredictor
-from task2_graph_editing.magicbrush.structured_model.pipeline import source_hashes, versions
 from task2_graph_editing.magicbrush.structured_model.runtime import training_step, validate
 from task2_graph_editing.magicbrush.structured_model.targets import encode_targets
 from task2_graph_editing.magicbrush.structured_model.training import train_one
-from task2_graph_editing.magicbrush.structured_model.vocabulary import build_vocabulary, prototype_inputs, prototype_vectors
-from task2_graph_editing.magicbrush.preprocess import ROOT, digest
-from task2_gqa.run_gqa_full import exclusive
-
-from task2_graph_editing.magicbrush.dataset import HERE, MANIFEST, rows
+from task2_graph_editing.magicbrush.structured_model.vocabulary import (
+    build_vocabulary,
+    prototype_inputs,
+    prototype_vectors,
+)
 
 OUTPUT = ROOT / "runs/level2/magicbrush-prompt-intent-v1"
 
@@ -79,7 +80,7 @@ def prepare(*, historical=False):
         "runtime_versions": versions(),
         "runner_sha256": sha256(__file__),
         "dataset_reader_sha256": sha256(HERE / "dataset.py"),
-        "example_builder_sha256": sha256(HERE / "examples/run.py"),
+        "example_builder_sha256": sha256(HERE / "examples.py"),
         "launcher_sha256": sha256(ROOT / "task2_graph_editing/magicbrush/commands/run_magicbrush_prompt_intent_v1.sh"),
         "cache_manifest_sha256": manifest["cache_manifest_sha256"],
         "clip_cpu_extension": delta,
@@ -89,10 +90,13 @@ def prepare(*, historical=False):
     }
     if historical:
         from common.provenance import original_hash
+
         identity["runner_sha256"] = original_hash("task2_graph_editing/magicbrush/run.py")
         identity["dataset_reader_sha256"] = original_hash("task2_graph_editing/magicbrush/dataset.py")
-        identity["example_builder_sha256"] = original_hash("task2_graph_editing/magicbrush/examples/run.py")
-        identity["launcher_sha256"] = original_hash("task2_graph_editing/magicbrush/commands/run_magicbrush_prompt_intent_v1.sh")
+        identity["example_builder_sha256"] = original_hash("task2_graph_editing/magicbrush/examples.py")
+        identity["launcher_sha256"] = original_hash(
+            "task2_graph_editing/magicbrush/commands/run_magicbrush_prompt_intent_v1.sh"
+        )
     return arms, validation, config, store, identity
 
 

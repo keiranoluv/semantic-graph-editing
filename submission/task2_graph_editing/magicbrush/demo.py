@@ -1,10 +1,9 @@
 """Run the submission notebook's held-out chair edit on CPU."""
 
 import torch
-
-from task2_graph_editing.magicbrush.dataset import rows
-from task2_graph_editing.magicbrush.examples.run import example
 from common.editing.operations import EditGraph
+from task2_graph_editing.magicbrush.dataset import rows
+from task2_graph_editing.magicbrush.examples import example
 from task2_graph_editing.magicbrush.predict import predict
 
 

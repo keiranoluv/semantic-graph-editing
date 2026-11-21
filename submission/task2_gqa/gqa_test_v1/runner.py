@@ -7,12 +7,11 @@ import statistics
 from pathlib import Path
 
 import torch
-
 from common.datasets.gqa_full import GQAFullDataset, atomic_write, digest, pin_json, verify_cache
 from common.knowledge.transe.core import sha256
+from common.locking import exclusive
 from common.training.gqa_full import create_model, load_vectors
 from task2_gqa.gqa_test_v1.cache import TestDataset, prepare_cache
-from task2_gqa.run_gqa_full import exclusive
 
 MANIFEST = Path("data/processed/level2/gqa-v1/manifest.json")
 OUTPUT = Path("reports/level2/gqa-test-v1")
@@ -183,7 +182,7 @@ def build(job):
     kind, backend = job["model"], job["backend"]
     if backend == "kg":
         from task2_gqa.gqa_wordnet_v2_features import load_v2
-        from task2_gqa.run_gqa_kg_pilot import create_model as factory
+        from task2_gqa.knowledge import create_model as factory
 
         features, valid, _ = load_v2(Path("data/knowledge/gqa-wordnet-features-v2"), MANIFEST)
         model = factory(kind, dims, features, valid)
@@ -204,7 +203,7 @@ def evaluate(job, graphs, device, batch_size):
     if job["backend"] in ("fast", "ablation"):
         from task2_gqa.training.evaluation import evaluate as evaluator
     else:
-        from task2_gqa.train_gqa_pilot import evaluate as evaluator
+        from task2_gqa.evaluation import evaluate as evaluator
     try:
         return evaluator(
             model.to(device),

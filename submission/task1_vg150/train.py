@@ -5,27 +5,26 @@ import json
 import math
 import os
 import random
-import subprocess
 from pathlib import Path
 
 import torch
 import torch.nn.functional as F
-from tqdm.auto import tqdm
-
-from task1_vg150.training_utils import (
-    atomic_text_save,
-    atomic_torch_save,
-    create_run_dir,
-    resolve_device,
-    restore_training_state,
-)
-from task1_vg150.train_mlp import make_dataset
 from common.datasets.batching import graph_batches, make_graph_loader
 from common.evaluation.gat import validate_gat
 from common.features.visual import load_visual_manifest
 from common.graph.gnn_batching import collate_gnn_graphs, forward_gat_batch
 from common.knowledge.transe.core import sha256
 from common.models.gat import build_gat_model
+from common.provenance import revision
+from common.training.checkpoints import (
+    atomic_text_save,
+    atomic_torch_save,
+    create_run_dir,
+    resolve_device,
+    restore_training_state,
+)
+from task1_vg150.data import make_dataset
+from tqdm.auto import tqdm
 
 
 def train_one_epoch(
@@ -206,7 +205,7 @@ def frozen_config(args, num_objects, num_predicates, train_limit, val_limit):
         }
         config["code_sha256"] = {
             str(path): sha256(path)
-            for folder in (Path("src"), Path("scripts"))
+            for folder in (Path("common"), Path("task1_vg150"))
             for path in sorted(folder.rglob("*.py"))
         }
     if args.num_workers:
@@ -246,7 +245,7 @@ def main(argv=None):
     model = build_gat_model(config).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     generator = torch.Generator().manual_seed(args.seed)
-    git_sha = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=False).stdout.strip()
+    git_sha = revision()
 
     start_epoch = 1
     best_score = -math.inf

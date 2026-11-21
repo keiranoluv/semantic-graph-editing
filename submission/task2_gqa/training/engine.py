@@ -11,16 +11,14 @@ import time
 from pathlib import Path
 
 import torch
-
-from task2_gqa.models import AlignGConfig
 from common.datasets.gqa_full import atomic_write, digest, pin_json
 from common.knowledge.transe.core import sha256
 from common.training.gqa_full import math_finite
 from common.training.gqa_tracking import RunTracker
 from common.training.penet import prototype_losses
-from task2_gqa.train_gqa_pilot import compact_metrics
-from task1_vg150.train_penet_pilot import state_hash
-
+from common.training.state import state_hash
+from task2_gqa.evaluation import compact_metrics
+from task2_gqa.models import AlignGConfig
 from task2_gqa.training.batching import collate, model_inputs
 from task2_gqa.training.evaluation import evaluate
 from task2_gqa.training.model import FastAlignG, FastConfig

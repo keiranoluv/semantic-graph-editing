@@ -3,19 +3,16 @@
 from pathlib import Path
 
 import torch
-
-from task2_graph_editing.magicbrush.examples.run import checked_json, example
-from task2_graph_editing.magicbrush.sequence_model.text import load_store
 from common.io import read, sha256, write
-
 from task2_graph_editing.magicbrush.data_processing.evaluation import aggregate_metrics, score_rows
+from task2_graph_editing.magicbrush.dataset import MANIFEST, rows
+from task2_graph_editing.magicbrush.examples import checked_json, example
+from task2_graph_editing.magicbrush.preprocess import ROOT, digest
+from task2_graph_editing.magicbrush.run import OUTPUT, prepare
+from task2_graph_editing.magicbrush.sequence_model.text import load_store
 from task2_graph_editing.magicbrush.structured_model.model import StructuredPredictor
 from task2_graph_editing.magicbrush.structured_model.runtime import validate
 from task2_graph_editing.magicbrush.structured_model.vocabulary import prototype_vectors
-from task2_graph_editing.magicbrush.preprocess import ROOT, digest
-
-from task2_graph_editing.magicbrush.dataset import MANIFEST, rows
-from task2_graph_editing.magicbrush.run import OUTPUT, prepare
 
 REPORT = ROOT / "reports/level2/magicbrush-prompt-intent-test-v1"
 TEST_CACHE_SHA = "8fb1f532feec844da7c922c964defc21aa1ece1477e656dfb696949deca6631b"
@@ -65,6 +62,7 @@ def main():
     torch.use_deterministic_algorithms(True)
     protocol = read(OUTPUT / "prompt/seed-42/protocol.json")
     from common.provenance import original_hash
+
     historical = protocol["runner_sha256"] == original_hash("task2_graph_editing/magicbrush/run.py")
     arms, validation, config, train_store, identity = prepare(historical=historical)
     chosen = freeze(arms, validation, config, identity)

@@ -2,18 +2,15 @@
 
 import argparse
 import copy
-import fcntl
 import gc
 import importlib.metadata
 import json
 import shutil
 import signal
 import sys
-from contextlib import contextmanager
 from pathlib import Path
 
 import torch
-
 from common.datasets.gqa_full import (
     GQAFullDataset,
     atomic_write,
@@ -25,6 +22,7 @@ from common.datasets.gqa_full import (
     verify_cache,
 )
 from common.knowledge.transe.core import sha256
+from common.locking import exclusive
 from common.training.gqa_full import MODELS, load_vectors, model_config, setup_runtime, summarize_matrix, train_run
 
 
@@ -100,21 +98,6 @@ def load_config(path):
     return config
 
 
-@contextmanager
-def exclusive(directory):
-    directory = Path(directory)
-    directory.mkdir(parents=True, exist_ok=True)
-    with (directory / ".lock").open("a") as lock:
-        try:
-            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError as error:
-            raise RuntimeError(f"Another process is writing {directory}") from error
-        try:
-            yield
-        finally:
-            fcntl.flock(lock, fcntl.LOCK_UN)
-
-
 def preflight(config):
     manifest_path = Path(config["manifest"])
     manifest = json.loads(manifest_path.read_text())
@@ -160,10 +143,10 @@ def preflight(config):
 
 def experiment_identity(config, manifest):
     files = [
-        *sorted(Path("src").rglob("*.py")),
-        Path("task2_gqa/run_gqa_full.py"),
-        Path("task2_gqa/train_gqa_pilot.py"),
-        Path("task1_vg150/train_penet_pilot.py"),
+        *sorted(Path("common").rglob("*.py")),
+        Path("task2_gqa/train_baselines.py"),
+        Path("task2_gqa/evaluation.py"),
+        Path("common/training/state.py"),
     ]
     return {
         "schema_version": 1,

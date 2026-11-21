@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 
 import torch
-
+from extension_pvsg.cases import CASES
 from extension_pvsg.contracts import read_json
 from extension_pvsg.evaluation import evaluate
 from extension_pvsg.intervals import window_bounds
@@ -23,9 +23,8 @@ from extension_pvsg.m3.preflight import check_features, check_runtime
 from extension_pvsg.m4.common import verify_parent, verify_self
 from extension_pvsg.m4.data import collate as collate_m4
 from extension_pvsg.m4.models import RelationModel as M4Model
-from extension_pvsg.min50_followup.run import CASES
-from extension_pvsg.validate_m0 import canonical_sha256
 from extension_pvsg.m5.report import diagnostics, summarize
+from extension_pvsg.validate_m0 import canonical_sha256
 
 OUT = Path("reports/pvsg-trd-m5-v1")
 M3 = ("mlp", "static_gat", "st_gat")

@@ -1,241 +1,479 @@
-"""Train VG150 geometry-only MLP with optional W&B tracking."""
+"""Mini-batch VG150 MLP training with CUDA, tqdm and early stopping."""
 
 import argparse
+import json
 import math
-import subprocess
+import os
+import random
 from pathlib import Path
 
 import torch
-from torch.nn import functional as F
+import torch.nn.functional as F
+from common.datasets.batching import graph_batches, make_graph_loader
+from common.evaluation.batched import evaluate_graph_batch
+from common.evaluation.scene_graph import summarize_evaluation
+from common.features.visual import load_visual_manifest
+from common.knowledge.transe.core import sha256
+from common.provenance import revision
+from common.training.checkpoints import (
+    atomic_text_save,
+    atomic_torch_save,
+    create_run_dir,
+    resolve_device,
+    restore_training_state,
+)
+from common.training.sampling import sample_training_pairs
+from task1_vg150.data import make_dataset
+from task1_vg150.models import build_model
+from tqdm.auto import tqdm
 
-import wandb
-from common.datasets.vg150 import VG150AnnotationLoader, VG150GraphDataset
-from common.features.geometry import GeometryFeatureExtractor
-from common.features.visual import GeometryVisualFeatureExtractor, VisualFeatureExtractor
-from common.graph.builder import SceneGraphBuilder
-from common.models.mlp import MLPPredicateClassifier
-from common.training.trainer import train_step
+
+def collate_training_graphs(graphs, ratio, generator):
+    """Sample each image independently, then concatenate selected nodes/pairs."""
+    xs = []
+    object_labels = []
+    pair_indices = []
+    targets = []
+    node_offset = 0
+    skipped = 0
+
+    for graph in graphs:
+        selected = sample_training_pairs(
+            graph.edge_label,
+            negative_ratio=ratio,
+            generator=generator,
+        )
+        if selected.numel() == 0:
+            skipped += 1
+            continue
+
+        xs.append(graph.x)
+        object_labels.append(graph.object_labels)
+        pair_indices.append(graph.edge_label_index[:, selected] + node_offset)
+        targets.append(graph.edge_label[selected])
+        node_offset += graph.num_nodes
+
+    if not targets:
+        return None, skipped
+
+    return {
+        "x": torch.cat(xs, dim=0),
+        "object_labels": torch.cat(object_labels, dim=0),
+        "pairs": torch.cat(pair_indices, dim=1),
+        "targets": torch.cat(targets, dim=0),
+    }, skipped
 
 
-def make_dataset(root, split, box_policy, visual_cache=None):
-    loader = VG150AnnotationLoader(
-        root=root,
-        split=split,
-        split_manifest=root / "splits.json",
-        box_policy=box_policy,
+def forward_batch(model, batch, name, device):
+    x = batch["x"].to(device)
+    pairs = batch["pairs"].to(device)
+
+    if name == "mlp_semantic":
+        labels = batch["object_labels"].to(device)
+        return model(x=x, edge_label_index=pairs, object_labels=labels)
+
+    return model(x=x, edge_label_index=pairs)
+
+
+def train_one_epoch(
+    model,
+    dataset,
+    limit,
+    batch_size,
+    optimizer,
+    ratio,
+    generator,
+    name,
+    device,
+    batch_loader=None,
+):
+    model.train()
+    total_loss = 0.0
+    total_pairs = 0
+    steps = 0
+    skipped = 0
+
+    progress = tqdm(
+        graph_batches(dataset, limit, batch_size, batch_loader),
+        total=math.ceil(limit / batch_size),
+        desc=f"Train {name}",
+        unit="batch",
     )
-    extractor = (
-        GeometryVisualFeatureExtractor(VisualFeatureExtractor(visual_cache, root, box_policy))
-        if visual_cache is not None
-        else GeometryFeatureExtractor()
-    )
-    return VG150GraphDataset(
-        loader=loader,
-        feature_extractor=extractor,
-        graph_builder=SceneGraphBuilder(),
-    )
+
+    for start, graphs in progress:
+        end = min(start + batch_size, limit)
+
+        batch, batch_skipped = collate_training_graphs(graphs, ratio, generator)
+        skipped += batch_skipped
+
+        if batch is None:
+            continue
+
+        optimizer.zero_grad(set_to_none=True)
+
+        logits = forward_batch(model, batch, name, device)
+        targets = batch["targets"].to(device)
+
+        loss = F.cross_entropy(logits, targets)
+
+        if not torch.isfinite(loss).item():
+            raise RuntimeError(f"Non-finite loss at batch starting {start}")
+
+        loss.backward()
+        optimizer.step()
+
+        count = targets.numel()
+        total_loss += loss.detach().item() * count
+        total_pairs += count
+        steps += 1
+
+        progress.set_postfix(
+            loss=f"{total_loss / total_pairs:.4f}",
+            images=end,
+            steps=steps,
+        )
+
+    if steps == 0:
+        raise RuntimeError("No successful optimizer steps")
+
+    return total_loss / total_pairs, steps, skipped
 
 
 @torch.no_grad()
-def validate(model, dataset, limit):
-    """Evaluate cross-entropy over all non-ambiguous candidate pairs."""
+def validate(model, dataset, limit, name, device, batch_size=128, batch_loader=None):
     model.eval()
     total_loss = 0.0
     total_pairs = 0
+    results = []
 
-    for idx in range(limit):
-        graph = dataset[idx]
-        mask = graph.edge_label >= 0
+    progress = tqdm(
+        graph_batches(dataset, limit, batch_size, batch_loader),
+        total=math.ceil(limit / batch_size),
+        desc=f"Val {name}",
+        unit="batch",
+    )
 
-        if not mask.any():
-            continue
+    for begin, graphs in progress:
+        end = min(begin + batch_size, limit)
 
-        logits = model(graph.x, graph.edge_label_index[:, mask])
-        targets = graph.edge_label[mask]
+        batch_results, loss_sum, pair_count = evaluate_graph_batch(model, graphs, name, device, compute_loss=True)
 
-        loss = F.cross_entropy(logits, targets, reduction="sum")
-        total_loss += loss.item()
-        total_pairs += targets.numel()
+        results.extend(batch_results)
+        total_loss += loss_sum
+        total_pairs += pair_count
+        progress.set_postfix(images=end)
 
-    return total_loss / total_pairs if total_pairs else float("nan")
+    if total_pairs == 0:
+        raise RuntimeError("No validation candidate pairs")
+
+    metrics = summarize_evaluation(results)
+    metrics["loss"] = total_loss / total_pairs
+    return metrics
+
+
+def check_resume_compatibility(saved, current):
+    """Reject changes to optimization and data protocol on resume."""
+    frozen = (
+        "model",
+        "features",
+        "hidden_dim",
+        "embedding_dim",
+        "num_object_classes",
+        "num_classes",
+        "box_policy",
+        "negative_ratio",
+        "batch_size",
+        "lr",
+        "weight_decay",
+        "patience",
+        "min_delta",
+        "deterministic",
+        "seed",
+        "train_limit",
+        "val_limit",
+        "selection_metric",
+        "dataset",
+        "geometry_dim",
+        "num_workers",
+        "visual_cache_manifest_sha256",
+        "data_sha256",
+        "code_sha256",
+    )
+    for key in frozen:
+        if saved.get(key) != current.get(key):
+            raise ValueError(f"Resume config mismatch for {key}: {saved.get(key)!r} != {current.get(key)!r}")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--model", choices=["mlp", "mlp_semantic"], required=True)
     parser.add_argument("--root", type=Path, default=Path("data/raw/vg150"))
-    parser.add_argument("--epochs", type=int, default=3)
-    parser.add_argument("--max-train-images", type=int, default=100)
-    parser.add_argument("--max-val-images", type=int, default=20)
-    parser.add_argument("--box-policy", choices=["strict", "clip"], default="clip")
-    parser.add_argument("--negative-ratio", type=int, default=3)
-    parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--visual-cache", type=Path, help="Completed frozen CLIP region cache")
+    parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
+    parser.add_argument("--batch-size", type=int, default=512)
+    parser.add_argument("--val-batch-size", type=int, default=128)
+    parser.add_argument("--num-workers", type=int, default=0, help="Persistent graph loading workers per split")
+    parser.add_argument("--epochs", type=int, default=100)
+    parser.add_argument("--patience", type=int, default=10)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--weight-decay", type=float, default=0.01)
+    parser.add_argument("--min-delta", type=float, default=0.0)
+    parser.add_argument("--negative-ratio", type=int, default=3)
+    parser.add_argument("--max-train-images", type=int, default=57723)
+    parser.add_argument("--max-val-images", type=int, default=5000)
+    parser.add_argument("--hidden-dim", type=int, default=256)
+    parser.add_argument("--embedding-dim", type=int, default=32)
+    parser.add_argument("--box-policy", choices=["strict", "clip"], default="clip")
+    parser.add_argument("--output-dir", type=Path, default=Path("checkpoints/experiments"))
+    parser.add_argument("--run-name", type=str, default=None)
     parser.add_argument(
-        "--checkpoint",
-        type=Path,
-        default=Path("checkpoints/mlp_latest.pt"),
+        "--resume", type=Path, default=None, help="Resume a checkpoint created by the new runner (use last.pt)"
     )
-    parser.add_argument("--resume", action="store_true")
-    parser.add_argument(
-        "--wandb-mode",
-        choices=["online", "offline", "disabled"],
-        default="offline",
-    )
+    parser.add_argument("--deterministic", action="store_true")
+    parser.add_argument("--wandb-mode", choices=["online", "offline", "disabled"], default="offline")
     args = parser.parse_args()
 
-    if args.epochs <= 0 or args.max_train_images <= 0 or args.max_val_images <= 0:
-        parser.error("Epoch and image limits must be positive")
-    if args.negative_ratio < 0 or args.lr <= 0:
-        parser.error("Invalid negative ratio or learning rate")
+    if (
+        min(
+            args.batch_size,
+            args.val_batch_size,
+            args.epochs,
+            args.patience,
+            args.max_train_images,
+            args.max_val_images,
+            args.hidden_dim,
+            args.embedding_dim,
+        )
+        <= 0
+    ):
+        parser.error("Batch sizes, epochs, patience, limits and dimensions must be positive")
+    if args.lr <= 0 or args.negative_ratio < 0 or args.weight_decay < 0 or args.min_delta < 0:
+        parser.error("Invalid learning rate, negative ratio, weight decay or min delta")
+    if args.num_workers < 0:
+        parser.error("num-workers must be nonnegative")
 
+    if args.deterministic:
+        os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
+        torch.use_deterministic_algorithms(True)
+
+    random.seed(args.seed)
     torch.manual_seed(args.seed)
     torch.set_num_threads(1)
+    device = resolve_device(args.device)
 
-    train_data = make_dataset(args.root, "train", args.box_policy)
-    val_data = make_dataset(args.root, "val", args.box_policy)
+    with (args.root / "VG-SGG-dicts-with-attri.json").open(encoding="utf-8") as f:
+        vocabulary = json.load(f)
+    num_objects = max(vocabulary["label_to_idx"].values()) + 1
+    num_classes = max(vocabulary["predicate_to_idx"].values()) + 1
+    if num_classes != 51:
+        raise ValueError(f"Expected 51 classes; got {num_classes}")
 
+    train_data = make_dataset(args.root, "train", args.box_policy, args.visual_cache)
+    val_data = make_dataset(args.root, "val", args.box_policy, args.visual_cache)
     train_limit = min(args.max_train_images, len(train_data))
     val_limit = min(args.max_val_images, len(val_data))
 
-    model = MLPPredicateClassifier(
-        input_dim=5,
-        hidden_dim=256,
-        num_classes=51,
-    )
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
-    generator = torch.Generator().manual_seed(args.seed)
-
     config = {
+        "model": args.model,
         "dataset": "VG150",
-        "root": str(args.root.resolve()),
-        "model": "mlp",
-        "features": "geometry",
-        "hidden_dim": 256,
-        "num_classes": 51,
+        "features": (
+            "geometry+frozen_clip_vit_b32"
+            if args.model == "mlp"
+            else "geometry+frozen_clip_vit_b32+trainable_object_embedding"
+        )
+        if args.visual_cache
+        else ("geometry" if args.model == "mlp" else "geometry+trainable_object_embedding"),
+        "geometry_dim": 517 if args.visual_cache else 5,
+        "visual_cache": str(args.visual_cache.resolve()) if args.visual_cache else None,
+        "visual_cache_manifest_sha256": sha256(args.visual_cache / "manifest.json") if args.visual_cache else None,
+        "hidden_dim": args.hidden_dim,
+        "embedding_dim": args.embedding_dim,
+        "num_object_classes": num_objects,
+        "num_classes": num_classes,
         "box_policy": args.box_policy,
         "negative_ratio": args.negative_ratio,
+        "batch_size": args.batch_size,
+        "val_batch_size": args.val_batch_size,
         "lr": args.lr,
+        "weight_decay": args.weight_decay,
+        "patience": args.patience,
+        "min_delta": args.min_delta,
+        "deterministic": args.deterministic,
         "seed": args.seed,
         "train_limit": train_limit,
         "val_limit": val_limit,
+        "selection_metric": "mR@50",
     }
+    if args.visual_cache:
+        load_visual_manifest(args.visual_cache, args.root, args.box_policy)
+        config["data_sha256"] = {
+            name: sha256(args.root / name)
+            for name in ("VG-SGG-with-attri.h5", "VG-SGG-dicts-with-attri.json", "image_data.json", "splits.json")
+        }
+        config["code_sha256"] = {
+            str(path): sha256(path)
+            for folder in (Path("common"), Path("task1_vg150"))
+            for path in sorted(folder.rglob("*.py"))
+        }
+    if args.num_workers:
+        config["num_workers"] = args.num_workers
 
-    start_epoch = 0
-    run_id = None
+    model = build_model(config).to(device)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    generator = torch.Generator().manual_seed(args.seed)
+    sha = revision()
+
+    run_name = args.run_name or f"{args.model}_bs{args.batch_size}_seed{args.seed}"
+    start_epoch = 1
+    best_score = -math.inf
+    best_epoch = 0
+    bad_epochs = 0
+    history = []
+    wandb_id = None
 
     if args.resume:
-        checkpoint = torch.load(
-            args.checkpoint,
-            map_location="cpu",
-            weights_only=True,
+        checkpoint_path = args.resume.resolve()
+        if checkpoint_path.name != "last.pt":
+            raise ValueError("Resume requires last.pt, not best.pt")
+        checkpoint = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
+        if checkpoint.get("checkpoint_version") != 2:
+            raise ValueError(
+                "Legacy checkpoint detected. Resume is only supported for v2 runs; old files remain untouched"
+            )
+        check_resume_compatibility(checkpoint["config"], config)
+        run_dir = checkpoint_path.parent
+        if not (run_dir / "config.json").is_file():
+            raise ValueError("Run directory missing config.json")
+        if json.loads((run_dir / "config.json").read_text()) != checkpoint["config"]:
+            raise ValueError("Run config.json differs from checkpoint")
+        start_epoch, best_score, best_epoch, bad_epochs, history = restore_training_state(
+            checkpoint, model, optimizer, generator, device
         )
+        if args.epochs < start_epoch:
+            raise ValueError("--epochs must be >= the next epoch when resuming")
+        wandb_id = checkpoint.get("wandb_id")
+        print(f"[RESUME] {checkpoint_path} -> epoch {start_epoch}", flush=True)
+    else:
+        run_dir = create_run_dir(args.output_dir, run_name)
+        (run_dir / "config.json").write_text(json.dumps(config, indent=2) + "\n")
 
-        if checkpoint["config"] != config:
-            raise ValueError("Checkpoint configuration mismatch")
-
-        model.load_state_dict(checkpoint["model"])
-        optimizer.load_state_dict(checkpoint["optimizer"])
-        generator.set_state(checkpoint["sampler_rng"])
-        torch.set_rng_state(checkpoint["torch_rng"])
-
-        start_epoch = checkpoint["epoch"]
-        run_id = checkpoint.get("wandb_run_id")
-
-        print(f"[RESUME] From epoch {start_epoch}", flush=True)
-
-    git_sha = subprocess.run(
-        ["git", "rev-parse", "HEAD"],
-        capture_output=True,
-        text=True,
-        check=False,
-    ).stdout.strip()
+    print(
+        f"[INFO] model={args.model} device={device} batch_size={args.batch_size} val_batch_size={args.val_batch_size}",
+        flush=True,
+    )
+    print(f"[INFO] train={train_limit} val={val_limit} output={run_dir}", flush=True)
 
     run = None
-
     if args.wandb_mode != "disabled":
+        import wandb
+
+        if args.resume and not wandb_id:
+            raise ValueError("Cannot resume W&B logging: previous run has no W&B ID; use --wandb-mode disabled")
         run = wandb.init(
             project="semantic-graph-editing",
-            name=f"mlp-geometry-seed{args.seed}",
-            id=run_id,
-            resume="allow" if run_id else "never",
+            name=run_name,
             mode=args.wandb_mode,
-            config={**config, "git_sha": git_sha},
+            id=wandb_id,
+            resume="must" if wandb_id else None,
+            config={**config, "git_sha": sha, "device": str(device)},
         )
+        wandb_id = run.id
+    elif args.resume and wandb_id:
+        print("[WARN] W&B is disabled; original run will not be updated", flush=True)
 
-    print(f"[INFO] Train images: {train_limit}", flush=True)
-    print(f"[INFO] Validation images: {val_limit}", flush=True)
-
+    train_loader = (
+        make_graph_loader(train_data, train_limit, args.batch_size, args.num_workers, args.seed + 100_000)
+        if args.num_workers
+        else None
+    )
+    val_loader = (
+        make_graph_loader(val_data, val_limit, args.val_batch_size, args.num_workers, args.seed + 200_000)
+        if args.num_workers
+        else None
+    )
     try:
-        for epoch in range(start_epoch, args.epochs):
-            losses = []
-            skipped = 0
-
-            for idx in range(train_limit):
-                graph = train_data[idx]
-
-                loss = train_step(
-                    model=model,
-                    graph=graph,
-                    optimizer=optimizer,
-                    negative_ratio=args.negative_ratio,
-                    generator=generator,
-                )
-
-                if loss is None:
-                    skipped += 1
-                    continue
-
-                if not math.isfinite(loss):
-                    raise RuntimeError(f"Non-finite loss at image {idx}")
-
-                losses.append(loss)
-
-            if not losses:
-                raise RuntimeError("No successful training steps")
-
-            train_loss = sum(losses) / len(losses)
-            val_loss = validate(model, val_data, val_limit)
-
-            if not math.isfinite(val_loss):
-                raise RuntimeError("Non-finite validation loss")
+        for epoch in range(start_epoch, args.epochs + 1):
+            train_loss, steps, skipped = train_one_epoch(
+                model,
+                train_data,
+                train_limit,
+                args.batch_size,
+                optimizer,
+                args.negative_ratio,
+                generator,
+                args.model,
+                device,
+                train_loader,
+            )
+            val = validate(model, val_data, val_limit, args.model, device, args.val_batch_size, val_loader)
+            score = val["mR@50"]
+            if score is None or not math.isfinite(score):
+                raise RuntimeError("Invalid mR@50: cannot select checkpoint")
 
             metrics = {
-                "epoch": epoch + 1,
+                "epoch": epoch,
                 "train/loss": train_loss,
-                "val/loss": val_loss,
-                "train/optimizer_steps": len(losses),
+                "train/optimizer_steps": steps,
                 "train/skipped_graphs": skipped,
-                "train/learning_rate": optimizer.param_groups[0]["lr"],
+                "val/loss": val["loss"],
+                "val/R@50": val["R@50"],
+                "val/R@100": val["R@100"],
+                "val/mR@50": val["mR@50"],
+                "val/mR@100": val["mR@100"],
+            }
+            history.append(metrics)
+
+            improved = score > best_score + args.min_delta
+            if improved:
+                best_score = score
+                best_epoch = epoch
+                bad_epochs = 0
+            else:
+                bad_epochs += 1
+
+            checkpoint = {
+                "checkpoint_version": 2,
+                "epoch": epoch,
+                "model": model.state_dict(),
+                "optimizer": optimizer.state_dict(),
+                "sampler_rng": generator.get_state(),
+                "torch_rng": torch.get_rng_state(),
+                "cuda_rng": torch.cuda.get_rng_state_all() if device.type == "cuda" else None,
+                "python_rng": random.getstate(),
+                "best_score": best_score,
+                "best_epoch": best_epoch,
+                "bad_epochs": bad_epochs,
+                "history": history,
+                "config": config,
+                "validation": val,
+                "git_sha": sha,
+                "wandb_id": wandb_id,
             }
 
+            if improved:
+                atomic_torch_save(checkpoint, run_dir / "best.pt")
+            atomic_torch_save(checkpoint, run_dir / "last.pt")
+            atomic_text_save(json.dumps(history, indent=2) + "\n", run_dir / "history.json")
+
             print(
-                f"[Epoch {epoch + 1}/{args.epochs}] "
-                f"train_loss={train_loss:.4f} "
-                f"val_loss={val_loss:.4f} "
-                f"steps={len(losses)} "
-                f"skipped={skipped}",
+                f"[Epoch {epoch:03d}/{args.epochs}] "
+                f"train={train_loss:.4f} val_loss={val['loss']:.4f} "
+                f"R50={val['R@50']:.4f} mR50={score:.4f} "
+                f"best={best_score:.4f}@{best_epoch} steps={steps} "
+                f"{'NEW_BEST' if improved else ''}",
                 flush=True,
             )
-
             if run is not None:
-                run.log(metrics, step=epoch + 1)
+                run.log(metrics, step=epoch)
+            if bad_epochs >= args.patience:
+                print(f"[EARLY STOP] patience={args.patience}", flush=True)
+                break
 
-            args.checkpoint.parent.mkdir(parents=True, exist_ok=True)
-
-            torch.save(
-                {
-                    "epoch": epoch + 1,
-                    "model": model.state_dict(),
-                    "optimizer": optimizer.state_dict(),
-                    "sampler_rng": generator.get_state(),
-                    "torch_rng": torch.get_rng_state(),
-                    "config": config,
-                    "wandb_run_id": run.id if run is not None else None,
-                },
-                args.checkpoint,
-            )
-
-        print("[PASS] Training completed", flush=True)
+        print(f"[PASS] Best epoch={best_epoch} mR@50={best_score:.4f}", flush=True)
+        print(f"[INFO] Checkpoints: {run_dir}", flush=True)
     finally:
         if run is not None:
             run.finish()

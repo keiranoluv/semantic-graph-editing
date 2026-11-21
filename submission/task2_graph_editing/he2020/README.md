@@ -1,7 +1,18 @@
 # Mở rộng nhiệm vụ 2B · He và cộng sự
 
-preprocessing/ đọc và chuẩn hóa bộ crowdsourced gốc. data_processing/ chuẩn bị train/validation. models/ cài MLP/GNN, training/ huấn luyện và evaluate.py chấm test.
+Chạy từ gốc submission/, dùng environments/graph-training.txt và protobuf==5.29.5. Dữ liệu đã chuẩn hóa cùng CLIP cache nằm ở data/processed/level2/emnlp2020-task-b-v2/.
 
-Notebook tổng hợp phát lại một dự đoán đúng và một dự đoán sai, kèm thao tác áp trên đồ thị nguồn.
+## Huấn luyện
 
-Cấu hình ở configs/level2/emnlp2020-task-b-wandb-v4.json. Môi trường graph-training cần protobuf==5.29.5. Launcher commands/run_emnlp2020_task_b_wandb_v4.sh nhận EMNLP_PYTHON, chạy tuần tự MLP/GNN × ba seeds theo cấu hình, W&B online. Output nằm dưới runs/level2/. Cần dữ liệu và cache đã chuẩn bị.
+    python -m task2_graph_editing.he2020.training --config configs/level2/emnlp2020-task-b-wandb-v4.json --stage preflight
+    python -m task2_graph_editing.he2020.training --config configs/level2/emnlp2020-task-b-wandb-v4.json --stage train
+
+Runner chạy tuần tự MLP rồi GNN, mỗi model có seeds 42, 43, 44. Batch 128, hidden 96, 2 lớp, lr 0.001, weight decay 0.01, tối đa 20 epoch, tối thiểu 6, patience 3, min_delta 0.001, gradient clip 5. W&B online. Output ở runs/level2/emnlp2020-task-b-wandb-v4/{model}-seed{seed}/. Runner tự chuyển lượt tiếp theo khi hoàn tất.
+
+## Suy luận và đánh giá
+
+    python -m task2_graph_editing.he2020.evaluate --config configs/level2/emnlp2020-task-b-wandb-v4.json --stage eval --device cpu
+
+Evaluator đọc sáu checkpoint đã chọn và chấm 530 mẫu test sau lọc, với đối chiếu nguồn và cache. Notebook tổng hợp phát lại một dự đoán đúng và một dự đoán sai rồi áp thao tác lên đồ thị nguồn.
+
+preprocessing/ đọc và chuẩn hóa bộ gốc, data_processing/ chuẩn bị train/validation, models/ cài MLP/GNN, training/ huấn luyện với W&B. Tính độc lập của split theo ảnh gốc chưa được xác minh.

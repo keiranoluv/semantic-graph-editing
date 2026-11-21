@@ -8,15 +8,14 @@ from pathlib import Path
 
 import numpy as np
 import torch
-
 from common.datasets.gqa_full import atomic_write, digest, pin_json
 from common.knowledge.transe.core import sha256
 from common.models.penet import PENetPredicateClassifier
 from common.training.gqa_pilot import collate, cross_entropy_sum, forward
 from common.training.gqa_tracking import RunTracker
 from common.training.penet import prototype_losses
-from task2_gqa.train_gqa_pilot import build_model, compact_metrics, evaluate
-from task1_vg150.train_penet_pilot import state_hash
+from common.training.state import state_hash
+from task2_gqa.evaluation import build_model, compact_metrics, evaluate
 
 MODELS = ("mlp", "gat", "pe-ce", "pe-pl", "pe-plpr")
 

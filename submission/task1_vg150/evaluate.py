@@ -5,23 +5,22 @@ import json
 from collections import Counter
 from pathlib import Path
 
-import torch
 import numpy as np
-
-from task1_vg150.evaluate_mlp import build_model
-from task1_vg150.training_utils import resolve_device
-from task1_vg150.train_mlp import make_dataset
+import torch
 from common.datasets.batching import graph_batches, make_graph_loader
 from common.evaluation.batched import evaluate_graph_batch
 from common.evaluation.gat import evaluate_gat_batch
-from common.evaluation.scene_graph import summarize_evaluation
 from common.evaluation.reference_predcls import NG_PROTOCOL, PROTOCOL, REFERENCE_COMMIT, summarize_reference
+from common.evaluation.scene_graph import summarize_evaluation
 from common.features.visual import load_visual_manifest
 from common.knowledge.transe.core import sha256
 from common.models.gat import build_gat_model
 from common.models.gat_kg import model_from_checkpoint
 from common.models.gat_kg_fusion import model_from_checkpoint as fusion_model_from_checkpoint
 from common.models.gat_pair_kg import model_from_checkpoint as pair_model_from_checkpoint
+from common.training.checkpoints import resolve_device
+from task1_vg150.data import make_dataset
+from task1_vg150.models import build_model
 
 
 def load_model(checkpoint):
