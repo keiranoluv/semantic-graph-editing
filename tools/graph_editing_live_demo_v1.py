@@ -15,10 +15,10 @@ from tools.magicbrush_experiment_v3.vocabulary import PrototypeInput, prototype_
 from tools.prepare_magicbrush import ROOT, digest
 
 
-def predict(source, instruction):
+def predict(source, instruction, *, seed=42):
     """Return decoded operations, the resulting graph and checkpoint provenance."""
     selection = checked_json(REPORT / "selection.json", read(REPORT / "summary.json")["selection_sha256"])
-    entry = next(row for row in selection if row["policy"] == "prompt" and row["seed"] == 42)
+    entry = next(row for row in selection if row["policy"] == "prompt" and row["seed"] == seed)
     path = ROOT / entry["checkpoint"]
     if sha256(path) != entry["sha256"]:
         raise ValueError("Checkpoint checksum mismatch")
