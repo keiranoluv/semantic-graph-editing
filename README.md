@@ -1,31 +1,38 @@
-# semantic-graph-editing
+# Chỉnh sửa ảnh theo yêu cầu bằng đồ thị cảnh
 
-VG150 scene graph learning, external knowledge exploration and planned controllable image editing.
+Đồ án nghiên cứu ba câu hỏi: hai đối tượng trong ảnh có quan hệ gì, câu lệnh yêu cầu thay đổi đồ thị thế nào, và ảnh sau chỉnh sửa có đáp ứng yêu cầu trong khi bảo toàn phần còn lại của cảnh hay không.
 
-**Current scope:** VG150 PredCls MLP/GAT/GAT+KG with frozen CLIP region features; reviewed WordNet/ConceptNet mappings and TransE/RotatE/ComplEx exports. The 54 eligible frozen checkpoints have both graph-constrained and no-graph-constraint validation evaluations: [side-by-side results](reports/level1/reference-comparison/comparison.md). The main matrix also has historical legacy validation/test results; six relation-prior runs remain excluded pending L1/L2 resolution. See the [short Level 1 report](docs/LEVEL1_REPORT.md), [simple demo with both scoring modes](notebooks/level1_reference_demo.ipynb), [evaluation protocol](docs/evaluation/PredCls.md) and [audit](docs/experiments/level1_audit_2026-11-11.md). Human error analysis and the final submission remain unfinished.
+| Bạn muốn | Mở |
+|---|---|
+| Xem toàn bộ đồ án ngay sau khi clone | [Notebook tổng hợp đã lưu output](notebooks/project_submission_demo.ipynb). Mở trong JupyterLab hoặc VS Code để xem ảnh, đồ thị và bảng điểm. |
+| Chạy demo trực tiếp trên CPU | [Notebook chỉnh sửa đồ thị](notebooks/graph_editing_live_demo.ipynb). Ba ca lần lượt là thêm thuyền buồm, thêm chó trên đá và xóa ghế. [Cài môi trường và chạy](docs/REPRODUCE.md#chay-demo). |
+| Xem 100 ảnh Việt Nam và 200 ảnh Qwen chỉnh sửa | [VN100 · image-pairs/dev](https://huggingface.co/datasets/ndttoan/vn100-graph-editing/viewer/image-pairs/dev). Mỗi hàng gồm ảnh nguồn, câu lệnh và ảnh đích. [Nhãn và điểm E/P/G · default/dev](https://huggingface.co/datasets/ndttoan/vn100-graph-editing/viewer/default/dev) · [Data card](docs/LEVEL3_DATA_CARD.md). |
+| Tái lập một kết quả, kiểm tra checkpoint hoặc split | [Hướng dẫn tái lập](docs/REPRODUCE.md) · [Danh mục đầu vào ngoài Git của các demo CPU](submission/demo-assets.json). |
 
-**Level 3:** [One pipeline, two independent commands](docs/LEVEL3_PIPELINE.md): Qwen-Image-2.1 creates 200 edited images from 100 source images; REACT++ produces 300 scene graphs from the same run. Both steps resume their own completed artifacts. The current run is complete; use the same new `RUN_ID` for both commands to reproduce it. See the [cleanup record](docs/LEVEL3_CLEANUP.md) for retained artifacts and retired pilot code.
+## Bản đồ mã nguồn theo nhiệm vụ
 
-Start with the [submission demo for all three tasks](notebooks/project_submission_demo.ipynb). Run it on CPU in the project environment with `myenv/bin/jupyter-lab notebooks/project_submission_demo.ipynb`. It reproduces the VG150 and GQA validation Hit/Miss examples, runs a MagicBrush checkpoint, replays saved He et al. predictions and scores a VN100 image pair.
+| Nhiệm vụ | Dữ liệu và phép kiểm | Mã nguồn | Kết quả |
+|---|---|---|---|
+| **1. Dự đoán quan hệ** | VG150 PredCls, so MLP, GAT và các biến thể có tri thức nền. Demo tính lại 5 Hit và 5 Miss ở GC top-50. | [Mô hình](src/models) · [Evaluator PredCls](src/evaluation/reference_predcls.py) | [So sánh GC/NG](reports/level1/reference-comparison/comparison.md) |
+| **2A. Dự đoán quan hệ trên tập thứ hai** | GQA, so PE-PLPR với PE-PLPR + AlignG trên cùng cặp đối tượng. Demo tái hiện 5 Hit và 5 Miss. | [AlignG](experiments/aligng_fast_v1) · [Chấm test](tools/gqa_test_v1) | [Kết quả GQA](reports/level2/gqa-test-v1/README.md) |
+| **2B. Dự đoán thao tác theo câu lệnh** | MagicBrush, từ đồ thị nguồn và câu lệnh dự đoán thao tác trên nút/cạnh. Demo xóa ghế chạy GNN seed 123 trên CPU. | [Dữ liệu, runner và evaluator](experiments/magicbrush_prompt_intent_v1) | [Đánh giá 59 ca test](reports/level2/magicbrush-prompt-intent-test-v1/README.md) |
+| **2B mở rộng. Chỉnh sửa đồ thị truy vấn** | Bộ crowdsourced của He và cộng sự. Notebook phát lại một dự đoán đúng và một dự đoán sai rồi áp dụng thao tác lên đồ thị nguồn. | [Trình chấm checkpoint v4](tools/eval_emnlp2020_task_b_wandb_v4_test_v1.py) | [Kết quả trên 530 mẫu](reports/level2/emnlp2020-task-b-wandb-v4-test-v1/README.md) |
+| **3. Kiểm tra ảnh sau chỉnh sửa** | VN100, Qwen tạo ảnh và REACT++ trích đồ thị. Notebook tính lại điểm chỉnh sửa, bảo toàn và nhất quán cho sáu cặp ảnh, đối chiếu với nhãn tay. | [Hai bước tạo ảnh và đồ thị](docs/LEVEL3_PIPELINE.md) · [Bộ chấm](tools/level3_evaluation) | [Kết quả VN100](docs/LEVEL3_TASK3_REPORT.md) |
+| **Mở rộng video** | PVSG, dự đoán quan hệ theo thời gian giữa hai track chuẩn. | [Pipeline PVSG](experiments/pvsg_trd_v1) | [Kết quả và phân tích lỗi](reports/pvsg-trd-m5-v1/final.md) |
 
-Open the [live graph editing notebook](notebooks/graph_editing_live_demo.ipynb) in the project environment with `myenv/bin/jupyter-lab notebooks/graph_editing_live_demo.ipynb`. It runs the selected MagicBrush GNN on CPU and recomputes graph consistency for the independently edited Qwen image using the local experiment artifacts.
+## Chạy thử một ca
 
-- [Level 1 progress and collaboration rules](docs/LEVEL1_PROGRESS.md)
-- [Model guide: inputs, outputs, scoring examples and purpose of every experiment](docs/LEVEL1_MODEL_GUIDE.md)
-- [Long-tail analysis: train-defined head/body/tail for all 54 checkpoints](reports/level1/long-tail-reference-v1/analysis.md)
-- [Zero-shot recall: nine fixed fusion checkpoints, GC/NG and per-seed comparisons](reports/level1/zero-shot-reference-v1/analysis.md)
-- [Team environment and VG150 download commands](docs/TEAM_SETUP_LEVEL1.md)
-- [Reviewed WordNet export, GAT+WordNet and GPU commands](docs/knowledge/c2_gat_wordnet.md)
-- [Frozen CLIP region features and matched Level 1 GPU matrix](docs/experiments/level1_clip_regions.md)
-- [WordNet mapping review and representative-sense notes](docs/knowledge/LEVEL1_MAPPING_REVIEW.md)
-- [Level 1 handoff: Markdown report and demo](docs/LEVEL1_SUBMISSION.md)
-- [Level 2 startup: GQA adapter, graph-edit operations, scoring and remaining requirements](docs/LEVEL2_PROGRESS.md)
+Sau khi cài môi trường CPU và khôi phục bộ tệp `chair` theo [hướng dẫn](docs/REPRODUCE.md#chay-demo), chạy từ thư mục gốc:
 
-- [Team reproducibility guide and offline/online + two evaluation modes](docs/TEAM_REPRODUCIBILITY_AND_PROTOCOLS.md)
-- [Step 6 repository audit and known issues](docs/STEP6_REPOSITORY_AUDIT.md)
-- [VG150 dataset setup](docs/datasets/VG150.md)
-- [PredCls evaluation protocol](docs/evaluation/PredCls.md)
-- [Human review required](docs/knowledge/HUMAN_REVIEW_REQUIRED.md)
-- [ConceptNet B.2.1 pipeline](docs/knowledge/b2_conceptnet_workflow.md)
+```bash
+.venv/bin/python -m scripts.demo_magicbrush_chair
+```
 
-Never commit downloaded data, generated graphs, checkpoints or private credentials. Respect ConceptNet CC BY-SA attribution rules.
+Với yêu cầu *remove the chairs*, checkpoint dự đoán xóa nút ghế và cạnh nối ghế với quầy. Hai dòng cuối kiểm tra tập thao tác và đồ thị đích đều in `True`.
+
+## Cấu trúc bản nộp
+
+- `src/`, `experiments/`, `tools/`, `scripts/`, `configs/` chứa mô hình, mã xử lý dữ liệu, lệnh chạy và cấu hình thí nghiệm.
+- `notebooks/`, `reports/`, `reviews/`, `docs/` chứa demo, kết quả theo từng lượt, minh chứng kiểm tra dữ liệu và hướng dẫn.
+- `submission/` chứa môi trường demo, manifest để khôi phục artifact và nguồn của bộ dữ liệu phát hành.
+- `archived/` chứa bản đóng gói cũ và ghi chú lịch sử, có thể bỏ khỏi bản nộp. Một số module đang dùng có chữ `pilot` trong tên; hãy giữ chúng tại đường dẫn hiện tại.
