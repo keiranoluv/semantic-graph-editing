@@ -25,7 +25,7 @@ python3.12 -m venv .venv
 | `live` | Chạy đủ ba ca trong notebook end-to-end | 21 | 412 MiB |
 | `overview` | Chạy từ đầu toàn bộ notebook tổng hợp, gồm checkpoint VG150/GQA và kho ảnh GQA | 51 | 22,05 GiB |
 
-Các bộ có tệp dùng chung. [Manifest](../submission/code/submission/demo-assets.json) ghi đường dẫn khôi phục, bộ sử dụng, kích thước theo byte và SHA-256 của từng tệp. Artifact ở workspace thực nghiệm của nhóm, trong các cây `data/` và `runs/`. Dataset công khai VN100 cung cấp ảnh, lệnh, nhãn và điểm để tra cứu. Notebook còn đọc checkpoint, cache riêng, scene graph và receipt của lượt thực nghiệm.
+Các bộ có tệp dùng chung. [Manifest](../submission/assets/demo-assets.json) ghi đường dẫn khôi phục, bộ sử dụng, kích thước theo byte và SHA-256 của từng tệp. Artifact ở workspace thực nghiệm của nhóm, trong các cây `data/` và `runs/`. Dataset công khai VN100 cung cấp ảnh, lệnh, nhãn và điểm để tra cứu. Notebook còn đọc checkpoint, cache riêng, scene graph và receipt của lượt thực nghiệm.
 
 **Nếu clone trên máy đang giữ workspace**, trỏ `--from-dir` tới gốc workspace cũ. Chạy trong bản clone mới:
 

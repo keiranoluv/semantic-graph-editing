@@ -24,7 +24,7 @@ def main():
     parser.add_argument("--from-dir", type=Path, help="Original workspace or transferred directory tree")
     parser.add_argument("--to-dir", type=Path, default=ROOT, help="Destination, default: this checkout")
     args = parser.parse_args()
-    index = json.loads((ROOT / "submission/code/submission/demo-assets.json").read_text())
+    index = json.loads((ROOT / "submission/assets/demo-assets.json").read_text())
     files = {name: row for name, row in index.items() if args.profile in row["profiles"]}
     for name, record in files.items():
         dest = args.to_dir / name

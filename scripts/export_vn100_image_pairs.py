@@ -9,7 +9,7 @@ import pyarrow.parquet as pq
 from tools.level3_submission_v1.demo import checked, open_bundle
 
 ROOT = Path(__file__).resolve().parents[1]
-HUB = ROOT / "submission/code/datasets/vn100"
+HUB = ROOT / "submission/assets/datasets/vn100"
 OUTPUT = ROOT / "runs/level3/vn100-hf/image-pairs"
 SHARD_SIZE = 25
 

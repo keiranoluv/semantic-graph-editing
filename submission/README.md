@@ -1,52 +1,49 @@
 # Chỉnh sửa ảnh theo yêu cầu bằng đồ thị cảnh
 
-Bài làm gồm ba nhiệm vụ: dự đoán quan hệ giữa các đối tượng, dự đoán thao tác chỉnh sửa từ câu lệnh và đánh giá ảnh chỉnh sửa bằng đồ thị cảnh. Phần mở rộng PVSG xét quan hệ giữa các đối tượng theo thời gian.
-
-[Mở notebook tổng hợp đã lưu kết quả](notebooks/project_submission_demo.ipynb) · [Demo trực tiếp ba ca chỉnh sửa](notebooks/graph_editing_live_demo.ipynb) · [Dữ liệu VN100 và data card](https://huggingface.co/datasets/ndttoan/vn100-graph-editing)
+Mã nguồn gồm ba nhiệm vụ và phần mở rộng video. [Notebook tổng hợp](notebooks/project_submission_demo.ipynb) có ảnh và kết quả đã lưu. [Notebook demo trực tiếp](notebooks/graph_editing_live_demo.ipynb) chạy GNN trên ba yêu cầu chỉnh sửa.
 
 ## Mã nguồn theo nhiệm vụ
 
-| Nhiệm vụ | Tiền xử lý và đồ thị | Huấn luyện và đánh giá |
-|---|---|---|
-| **1 · VG150** | [Tạo split](code/scripts/build_vg150_manifest.py), [đọc dữ liệu](code/src/datasets/vg150.py), [dựng đồ thị](code/src/graph), [đặc trưng CLIP](code/scripts/cache_vg150_regions.py) | [MLP](code/scripts/train_mlp.py), [GAT](code/scripts/train_gat.py), [GAT với tri thức nền](code/scripts/train_gat_kg.py), [chấm PredCls](code/scripts/evaluate_level1.py) |
-| **2A · GQA** | [Chia tập theo ảnh và xây từ vựng trên train](code/tools/prepare_level2_gqa.py) | [PE-PLPR và AlignG](code/experiments/aligng_fast_v1), [đánh giá test](code/tools/gqa_test_v1/runner.py) |
-| **2B · MagicBrush** | [Bộ cặp và split cố định](code/experiments/magicbrush_prompt_intent_v1/data), [quy tắc thao tác trên đồ thị](code/src/editing/operations.py) | [Huấn luyện GNN](code/experiments/magicbrush_prompt_intent_v1/run.py), [đánh giá thao tác](code/experiments/magicbrush_prompt_intent_v1/evaluate.py), [kết quả kiểm tay](code/experiments/magicbrush_prompt_intent_v1/review20-result.json) |
-| **2B mở rộng · He và cộng sự** | [Chuẩn hóa cặp đồ thị và câu lệnh](code/tools/emnlp2020_graph_modification_v1) | [Huấn luyện MLP/GNN](code/tools/emnlp2020_task_b_wandb_v4), [đánh giá trên 530 mẫu test](code/tools/eval_emnlp2020_task_b_wandb_v4_test_v1.py) |
-| **3 · VN100** | [Manifest 200 yêu cầu](code/configs/level3/qwen200-cohort-v1.json), [Qwen chỉnh ảnh](code/tools/level3_qwen_unified), [REACT++ trích đồ thị](code/tools/level3_qwen_sgg) | [So khớp đồ thị và tính điểm](code/tools/level3_evaluation). Notebook minh họa sáu ca có ảnh, đồ thị và nhãn tay. |
-| **Video · PVSG** | [Split theo video](code/experiments/pvsg_trd_v1/manifests/pvsg_author_release_338_62.lock.json), [đặc trưng vùng và track](code/experiments/pvsg_trd_v1/m2) | [Mô hình và huấn luyện](code/experiments/pvsg_trd_v1/m3), [đánh giá quan hệ theo thời gian](code/experiments/pvsg_trd_v1/m5) |
+| Nhiệm vụ | Tiền xử lý và split | Mô hình | Huấn luyện | Đánh giá và suy luận |
+|---|---|---|---|---|
+| [1 · VG150](task1_vg150/README.md) | [Split](task1_vg150/preprocess.py), [cache CLIP](task1_vg150/cache_vg150_regions.py) | [GAT](common/models/gat.py), [GAT + KG](common/models/gat_kg.py) | [GAT](task1_vg150/train.py), [MLP](task1_vg150/train_mlp.py) | [Chấm checkpoint](task1_vg150/evaluate.py) |
+| [2A · GQA](task2_gqa/README.md) | [Chuẩn hóa và chia tập](task2_gqa/prepare_level2_gqa.py) | [PE-PLPR + AlignG](task2_gqa/training/model.py) | [Runner](task2_gqa/training/runner.py) | [Chấm test](task2_gqa/gqa_test_v1/runner.py) |
+| [2B · MagicBrush](task2_graph_editing/magicbrush/README.md) | [Cặp và split](task2_graph_editing/magicbrush/data), [đọc cặp](task2_graph_editing/magicbrush/dataset.py) | [GNN](task2_graph_editing/magicbrush/structured_model/model.py) | [Runner](task2_graph_editing/magicbrush/run.py) | [Dự đoán](task2_graph_editing/magicbrush/predict.py), [chấm test](task2_graph_editing/magicbrush/evaluate.py) |
+| [2B mở rộng · He và cộng sự](task2_graph_editing/he2020/README.md) | [Đọc bộ gốc](task2_graph_editing/he2020/preprocessing/dataset.py) | [MLP/GNN](task2_graph_editing/he2020/models/model.py) | [Runner](task2_graph_editing/he2020/training/runner.py) | [Chấm test](task2_graph_editing/he2020/evaluate.py) |
+| [3 · VN100](task3_vn100/README.md) | [200 yêu cầu](configs/level3/qwen200-cohort-v1.json) | [Qwen](task3_vn100/qwen_unified), [REACT++](task3_vn100/qwen_sgg) | Mô hình pretrained | [Chấm ảnh bằng đồ thị](task3_vn100/evaluation) |
+| [Mở rộng · PVSG](extension_pvsg/README.md) | [Split video](extension_pvsg/manifests/pvsg_author_release_338_62.lock.json) | [MLP, GAT](extension_pvsg/m3/models.py), [mô hình thời gian](extension_pvsg/m4/models.py) | [M3](extension_pvsg/m3), [M4](extension_pvsg/m4) | [Chấm test](extension_pvsg/m5/run.py) |
 
-## Dữ liệu và cách đọc kết quả
+common/ chứa thao tác đồ thị, mô hình dùng chung, đặc trưng và evaluator PredCls. configs/ lưu cấu hình cố định. reports/ và reviews/ lưu kết quả và minh chứng mà demo hoặc quá trình chuẩn bị dữ liệu sử dụng. assets/ chứa data card VN100, manifest trọng số và xuất xứ mã nguồn.
 
-- **VG150/GQA.** Demo chạy checkpoint trên validation và đối chiếu 5 Hit, 5 Miss của mỗi bộ. VG150 dùng split cố định theo ảnh. GQA chia train chính thức thành 69.942 ảnh train và 5.000 ảnh validation; 10.696 ảnh validation chính thức dùng làm test của đồ án.
-- **MagicBrush.** Mỗi mẫu có đồ thị nguồn, câu lệnh và thao tác đích. Nhãn thao tác được lập với hỗ trợ AI từ cặp trước/sau, giữ thay đổi mà câu lệnh yêu cầu và các thao tác cấu trúc liên quan. Đồ thị đích dùng để chấm được tạo bằng cách áp nhãn thao tác lên đồ thị nguồn. Dữ liệu dùng 240/46/59 cặp train/validation/test, tách theo nhóm COCO và hash pixel hai ảnh. Có 20/20 mẫu đạt trong đợt [kiểm tra tay trên 345 cặp](code/experiments/magicbrush_prompt_intent_v1/review20.json).
-- **He và cộng sự.** Tập test đã lọc gồm 530 mẫu. Quy trình kiểm tra các nhóm nguồn đã dành cho train/validation; tính độc lập theo ảnh gốc chưa được xác minh. Notebook dùng dự đoán đã lưu để dựng lại đồ thị đích.
-- **VN100.** Split phát triển gồm 100 ảnh Việt Nam và 200 yêu cầu. Hai chỉnh sửa của cùng ảnh có chung `image_id`. [Data card, nguồn ảnh và giấy phép](code/datasets/vn100/README.md) · [Ảnh nguồn, câu lệnh và ảnh Qwen](https://huggingface.co/datasets/ndttoan/vn100-graph-editing/viewer/image-pairs/dev) · [Nhãn và điểm E/P/G](https://huggingface.co/datasets/ndttoan/vn100-graph-editing/viewer/default/dev).
-- **PVSG.** Chia 338 video train thành 287 fit và 51 validation; 62 video test theo split phát hành. Các cửa sổ của cùng video ở cùng tập. Bốn nhóm ID nguồn Ego4D xuất hiện hai phía của split phát hành.
+## Chạy demo trên CPU
 
-## Chạy lại một ca trên CPU
+Dùng Linux và Python 3.12, chạy từ thư mục chứa README này.
 
-Notebook tổng hợp có thể mở trực tiếp để xem output. Để suy luận lại, cài môi trường trên Linux với Python 3.12. Chạy các lệnh sau từ thư mục chứa README này:
+    python3.12 -m venv .venv
+    .venv/bin/pip install --index-url https://download.pytorch.org/whl/cpu torch==2.9.1 torchvision==0.24.1
+    .venv/bin/pip install -r environments/demo-cpu.txt
+    .venv/bin/python -m common.restore_assets chair --from-dir /duong/dan/artifacts
+    .venv/bin/python -m task2_graph_editing.magicbrush.demo
 
-```bash
-python3.12 -m venv .venv
-.venv/bin/pip install --index-url https://download.pytorch.org/whl/cpu torch==2.9.1 torchvision==0.24.1
-.venv/bin/pip install -r environments/demo-cpu.txt
-cd code
-../.venv/bin/python scripts/submission_assets.py chair --from-dir /duong/dan/workspace-thuc-nghiem
-../.venv/bin/python -m scripts.demo_magicbrush_chair
-```
+Thư mục artifacts có data/, runs/, hoặc nội dung đã giải nén từ chair-assets.tar. Ca xóa ghế cần 7 tệp, khoảng 357 MiB, gồm CLIP và checkpoint GNN seed 123. Hai dòng kiểm tra thao tác và đồ thị đích phải in True. [Đường dẫn, dung lượng và SHA-256](assets/demo-assets.json)
 
-Thay đường dẫn bằng workspace có `data/`, `runs/` hoặc thư mục đã giải nén gói artifact tương ứng. Với gói `chair-assets.tar` của nhóm, dùng `tar -xf chair-assets.tar -C /duong/dan/thu-muc-trong` rồi truyền thư mục đó cho `--from-dir`. Ca `remove the chairs` cần 7 tệp (357 MiB), gồm trọng số CLIP và GNN seed 123. Hai dòng cuối kiểm tra tập thao tác và đồ thị đích đều in `True`. [Danh mục tệp, dung lượng và SHA-256](code/submission/demo-assets.json)
+Để chạy notebook, khôi phục bộ live (412 MiB) hoặc overview (22,05 GiB), rồi mở JupyterLab với kernel của môi trường vừa cài.
 
-Để chạy notebook, thay `chair` bằng `live` (412 MiB) hoặc `overview` (22,05 GiB). Từ `code/`, mở `../.venv/bin/jupyter lab ../notebooks` và dùng kernel của môi trường vừa cài. Mỗi tệp trong [environments/](environments) dành cho một pipeline. Các lượt đầy đủ cần dữ liệu, cache và checkpoint tương ứng.
+    .venv/bin/python -m common.restore_assets overview --from-dir /duong/dan/artifacts
+    .venv/bin/jupyter lab notebooks
 
-## Chạy lại huấn luyện và đánh giá
+Notebook tổng hợp hiển thị 5 Hit và 5 Miss trên validation của mỗi bộ VG150/GQA, kết quả He, demo GNN MagicBrush và sáu ca VN100.
 
-Ví dụ với GAT trên VG150, chạy từ `code/` trong môi trường `graph-training.txt`, cài thêm `protobuf==5.29.5` cho W&B và đăng nhập W&B. Đặt dữ liệu VG150 đã chia tập vào `data/raw/vg150/` và cache CLIP vào `data/cache/vg150-clip-vit-b32-v1/`. Lệnh đầu huấn luyện một model, seed 42, batch 32 đồ thị, tích lũy 16 batch mỗi bước cập nhật. Lệnh thứ hai dùng checkpoint tốt nhất của lượt đầu để chấm validation trên CPU.
+## Dữ liệu và split
 
-```bash
-python -m scripts.train_gat --device cuda --wandb-mode online --seed 42 --batch-size 32 --accumulation-steps 16 --visual-cache data/cache/vg150-clip-vit-b32-v1 --output-dir runs/vg150 --run-name gat-seed42
-python -m scripts.evaluate_level1 --checkpoint runs/vg150/gat-seed42/run_0001/best.pt --split val --protocol reference-v1 --device cpu --output runs/vg150/gat-seed42/run_0001/val.json
-```
+- VG150 dùng split theo ID ảnh. GQA chia train chính thức thành 69.942 ảnh train và 5.000 validation. 10.696 ảnh validation chính thức dùng làm test của đồ án. Từ vựng xây trên train.
+- MagicBrush có 240/46/59 cặp train/validation/test, tách theo nhóm COCO và hash pixel hai ảnh. Nhãn có hỗ trợ AI, giữ thao tác theo câu lệnh và thay đổi cấu trúc liên quan. Đồ thị đích chấm điểm được dựng bằng cách áp nhãn lên đồ thị nguồn. [Kết quả kiểm tay 20 mẫu](task2_graph_editing/magicbrush/review20-result.json).
+- Bộ He có 530 mẫu test sau lọc. Quy trình kiểm tra nhóm nguồn dành cho train/validation. Tính độc lập theo ảnh gốc chưa được xác minh. Notebook phát lại dự đoán đã lưu.
+- VN100 có 100 ảnh nguồn và 200 yêu cầu. Hai yêu cầu cùng ảnh có chung image_id. [Data card và nguồn ảnh](assets/datasets/vn100/README.md) · [Ảnh và dataset](https://huggingface.co/datasets/ndttoan/vn100-graph-editing).
+- PVSG chia 338 video train thành 287 fit và 51 validation, giữ các cửa sổ cùng video trong cùng tập. Test gồm 62 video theo split phát hành. Bốn nhóm ID nguồn Ego4D xuất hiện hai phía của split phát hành.
 
-Với nhiệm vụ 2B, [launcher MagicBrush](code/scripts/run_magicbrush_prompt_intent_v1_wandb.sh) chạy các cấu hình đã khóa lần lượt. Khi có đủ sáu checkpoint, chạy `python -m experiments.magicbrush_prompt_intent_v1.evaluate` từ `code/` để chấm 59 cặp test. Các launcher cần kiểm tra phiên bản mã nguồn qua Git phải chạy từ bản clone.
+## Môi trường và xuất xứ
+
+[environments/](environments) có môi trường riêng cho demo CPU, huấn luyện đồ thị, Qwen, REACT++, chấm ảnh và VLM judge. Graph-training cần thêm protobuf==5.29.5 khi dùng W&B. Từng nhiệm vụ có hướng dẫn ngắn về dữ liệu và lệnh chạy.
+
+[Danh mục xuất xứ](assets/source_origins.json) liên kết mã đã tổ chức lại với mã gốc. [Manifest bản nộp](assets/refactor_manifest.json) kiểm tra mã hiện tại. Cấu hình, nhãn và receipt lịch sử giữ thông tin của lượt đã tạo checkpoint. Huấn luyện bằng bản refactor ghi nhận hash mới. Launcher kiểm tra Git cần chạy từ bản clone đã commit.
