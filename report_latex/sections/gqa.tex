@@ -36,6 +36,10 @@ gồm 42 lớp có dưới 20 chú thích.}
 \subsubsection{Baseline và điều chỉnh đầu vào của PE-Net}
 Nhóm dùng MLP trên cặp đối tượng làm baseline phi đồ thị, GAT để thêm
 message passing và GAT + KG để khảo sát nhúng WordNet--TransE.
+Trên GAT tắt KG, nhóm lặp lại ablation của VG150 bằng cách thay
+cross-entropy (CE) bằng logit-adjusted loss ($\tau=0{,}25$).
+Tần suất lớp được ước lượng trên train. Khi chấm, hai cấu hình đều xếp
+hạng bằng logits gốc.
 Để đáp ứng yêu cầu triển khai một phương pháp từ năm 2023, nhóm chọn
 PE-Net (CVPR 2023)~\cite{zheng2023penet}. Phương pháp học biểu diễn cặp
 đối tượng và prototype của predicate trong cùng một không gian.
@@ -69,18 +73,6 @@ trước phép so khớp cosine. PE-PLPR và PE-PLPR + AlignG (seed 42) đều c
 \label{fig:gqa-penet-aligng}
 \end{figure*}
 
-\subsubsection{Kết quả test trên GQA}
-Bảng~\ref{tab:gqatest} tổng hợp đủ 27 lượt của chín cấu hình. Mỗi lượt dùng
-checkpoint đã chọn theo GC mR@50 trên validation.
-PE-PL đạt R@50 và R@100 cao nhất (78,21\% và 88,48\%). Khi thêm PR vào
-PE-PL, mR@50 tăng từ 3,40 lên 4,07\%, còn R@50 giảm từ 78,21 xuống
-78,00\%. Với baseline, chuyển từ MLP sang GAT làm R@50 tăng từ 76,86 lên
-77,46\% nhưng mR@50 giảm từ 3,58 xuống 2,97\%.
-Phân tích theo predicate cho thấy ảnh hưởng của phân bố nhãn. Với PE-PL,
-recall ở top-50 trung bình trên hai lớp trái/phải đạt 86,51\%, còn trung bình
-trên 308 lớp còn lại chỉ đạt 2,86\% (trung bình ba seed, giữ các lớp vắng
-trong test theo cùng quy ước).
-
 \begin{table*}[!t]\centering\small
 \caption{PredCls trên GQA test của đồ án (10.696 ảnh). Điểm tính theo \%,
 trung bình $\pm$ độ lệch chuẩn mẫu qua ba seed 42, 123 và 3407.}
@@ -92,6 +84,21 @@ Cấu hình & R@50 & R@100 & mR@50 & mR@100\\\midrule
 {\footnotesize GC = \textit{Graph Constraint}. Mỗi cặp có hướng giữ một
 predicate foreground trước khi xếp hạng trên toàn ảnh.}
 \end{table*}
+
+\subsubsection{Kết quả test trên GQA}
+Bảng~\ref{tab:gqatest} tổng hợp 30 lượt test của mười cấu hình. Mỗi lượt dùng
+checkpoint đã chọn theo GC mR@50 trên validation.
+PE-PL đạt R@50 và R@100 cao nhất (78,21\% và 88,48\%). Khi thêm PR vào
+PE-PL, mR@50 tăng từ 3,40 lên 4,07\%, còn R@50 giảm từ 78,21 xuống
+78,00\%. Với baseline, chuyển từ MLP sang GAT làm R@50 tăng từ 76,86 lên
+77,46\% nhưng mR@50 giảm từ 3,58 xuống 2,97\% khi dùng CE.
+Trên cùng GAT tắt KG, adjusted loss tăng mR@50 ở cả ba seed,
+từ 2,97 lên 4,62\% trung bình, trong khi R@50 giảm từ 77,46 xuống
+77,07\%.
+Phân tích theo predicate cho thấy ảnh hưởng của phân bố nhãn. Với PE-PL,
+recall ở top-50 trung bình trên hai lớp trái/phải đạt 86,51\%, còn trung bình
+trên 308 lớp còn lại chỉ đạt 2,86\% (trung bình ba seed, giữ các lớp vắng
+trong test theo cùng quy ước).
 
 \FloatBarrier
 \subsubsection{Mở rộng theo công trình năm 2026 --- Prototype feedback với AlignG}
@@ -130,7 +137,7 @@ lại tăng từ 3,53 lên 4,09\%. Nhóm lớp này đóng góp phần tăng mR@
 quan sát được khi bật AlignG.
 
 \subsubsection{Phân tích dự đoán trên validation}
-Nhóm chọn PE-PLPR + AlignG để xem cấu hình dẫn đầu về mean Recall tìm
+Nhóm chọn PE-PLPR + AlignG để xem nhánh phản hồi prototype tìm
 thấy và bỏ sót những quan hệ nào. Phụ lục~\ref{app:gqacases} trình bày
 năm ca Hit và năm ca Miss theo GC top-50 với seed cố định 42,
 kèm dự đoán của PE-PLPR cùng seed trên từng cặp.
@@ -148,8 +155,8 @@ tính là Hit. Ở cả mười ví dụ, PE-PLPR và PE-PLPR + AlignG giữ cù
 Trên dataset thứ hai, nhóm đã điều chỉnh đầu vào của PE-Net và đánh giá
 theo cùng bài toán PredCls như trên VG150. PE-PL đạt tỷ lệ quan hệ chuẩn được tìm
 thấy trong top-50 cao nhất khi lấy trung bình theo ảnh (R@50 = 78,21\%).
-Khi lấy trung bình đều theo lớp, PE-PLPR + AlignG đứng đầu
-(mR@50 = 4,62\%). Ngay cả với cấu hình này, recall trung bình của 308 lớp
-ngoài hai quan hệ vị trí phổ biến nhất chỉ đạt 4,09\%.
+GAT dùng adjusted loss và PE-PLPR + AlignG đều đạt 4,62\% mR@50
+khi làm tròn đến hai chữ số thập phân. Ở top-100, GAT dùng adjusted loss
+đạt 7,97\% mR@100, còn PE-PLPR + AlignG đạt 7,44\%.
 Với ablation AlignG trên GQA, nhóm đề nghị xét điểm cộng theo tiêu chí
 \textit{áp dụng công trình mới năm 2026} tại mục 5 của đề bài.

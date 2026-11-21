@@ -132,7 +132,9 @@ Một \textit{gate} học được điều khiển biên độ hiệu chỉnh. V
 gate còn nhận đặc trưng GAT của hai đối tượng trong ảnh và điều tiết riêng
 cho từng quan hệ. Để kiểm tra vai trò của ánh xạ lớp--khái niệm, nhóm giữ
 cùng kiến trúc và tráo vector giữa 138 lớp ConceptNet có liên kết hợp lệ
-(\textit{shuffled-KG}). Cả ba seed huấn luyện dùng cùng một hoán vị cố định.
+(\textit{shuffled-KG}). Với pair fusion, nhóm thử ba hoán vị cố định,
+mỗi hoán vị dùng chung cho ba seed train 42, 123 và 3407. Visual fusion
+dùng hoán vị gốc (20261025).
 
 \subsection{Kết quả chính và phân tích ablation}
 \begin{table}[!ht]
@@ -160,7 +162,9 @@ Adjusted, bật KG & $62{,}01\pm0{,}31$ & $24{,}67\pm1{,}07$\\\midrule
 \multicolumn{3}{@{}l}{\textit{Fusion với adjusted loss}}\\
 GAT, tắt nhánh hiệu chỉnh & $62{,}06\pm0{,}39$ & $24{,}32\pm0{,}91$\\
 Pair, KG thật & $62{,}37\pm0{,}19$ & $\mathbf{25{,}24\pm0{,}39}$\\
-Pair, KG xáo trộn & $62{,}34\pm0{,}18$ & $25{,}00\pm0{,}71$\\
+Pair, tráo 20261025 & $62{,}34\pm0{,}18$ & $25{,}00\pm0{,}71$\\
+Pair, tráo 20261026 & $62{,}23\pm0{,}49$ & $24{,}81\pm0{,}25$\\
+Pair, tráo 20261027 & $62{,}01\pm0{,}51$ & $24{,}92\pm0{,}24$\\
 Visual, KG thật & $62{,}34\pm0{,}21$ & $24{,}52\pm0{,}64$\\
 Visual, KG xáo trộn & $62{,}20\pm0{,}23$ & $24{,}82\pm1{,}25$\\
 \bottomrule\end{tabular}
@@ -176,7 +180,7 @@ Hình~\ref{fig:vgdelta} cho thấy cả chiều và độ lớn của thay đổ
 \centering\small
 \caption{Điểm tuyệt đối trên VG150 test ở top-100 (\%, trung bình ba seed).
 Đọc mỗi hàng từ đối chứng A sang cấu hình B. Các hàng về cạnh dùng TransE
-với cùng nguồn KG.}
+với cùng nguồn KG. Các hàng shuffled dùng hoán vị gốc.}
 \label{tab:vgabsolute}
 \begin{tabular}{@{}llrrrr@{}}
 \toprule
@@ -211,11 +215,13 @@ loss, bật thêm KG chỉ tăng trung bình 0,09 điểm và có một seed gi�
 Thay đổi lớn nhất trong nhóm đối chứng này đến từ điều chỉnh loss, đi kèm
 đánh đổi về R@50.
 
-\textit{(4) Nội dung tri thức trong fusion.} Pair fusion với KG thật đạt
-mR@50 cao nhất trong 18 cấu hình. So với đối chứng tráo vector, lợi thế
-chỉ còn 0,24 điểm, với hai seed tăng và một seed giảm. Visual fusion cho
-chênh lệch theo chiều ngược lại. Với ba seed và một hoán vị, lợi ích riêng
-của việc gắn đúng tri thức cho từng lớp còn chưa ổn định.
+\textit{(4) Nội dung tri thức trong fusion.} Với pair fusion, KG thật đạt 25,24\% mR@50,
+cao hơn ba hoán vị theo thứ tự trong Bảng~\ref{tab:vgscore} lần lượt
+0,24, 0,43 và 0,32 điểm phần trăm. Mức tăng phụ thuộc seed.
+ở seed 123, KG thật thấp hơn hoán vị gốc 0,82 điểm và gần như ngang
+hoán vị 20261026. Ba so sánh dùng lại cùng checkpoint KG thật ở mỗi seed.
+Hai hoán vị bổ sung được chấm trên tập test đã dùng ở thí nghiệm gốc.
+Với visual fusion, hoán vị gốc đạt mR@50 cao hơn KG thật.
 
 \subsection{Quan hệ hiếm và phân tích lỗi}
 \textbf{Quan hệ nào được cải thiện?} Nhóm xếp 50 quan hệ theo số lần xuất hiện
@@ -261,4 +267,4 @@ Phần mở rộng khảo sát \textit{logit-adjusted loss} và cách kết hợ
 Khi tắt KG, thay cross-entropy bằng adjusted loss giúp mR@50 tăng
 6,48 điểm phần trăm, đồng thời R@50 giảm 2,24 điểm phần trăm.
 Với \textit{pair fusion}, lợi thế của KG thật so với \textit{shuffled-KG}
-chỉ đạt 0,24 điểm phần trăm mR@50 và thay đổi theo seed.
+dao động từ 0,24 đến 0,43 điểm phần trăm mR@50 khi lấy trung bình ba seed. So sánh từng seed cho cả hai chiều tăng và giảm.

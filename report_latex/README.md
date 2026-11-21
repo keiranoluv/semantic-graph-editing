@@ -42,7 +42,8 @@ Các tệp từ phần 1–3 là **vg-train-predicates.pdf**, **vg-ablation-delt
 
 Mở [notebook GQA](../notebooks/gqa_report_results.ipynb) trong môi trường của dự án
 và chạy toàn bộ cell trên CPU. Notebook đối chiếu 27 kết quả trong
-`reports/level2/gqa-test-v1/` và xuất `figures/gqa-test-rows.tex`. Phần hình
+`reports/level2/gqa-test-v1/` và ba lượt GAT dùng adjusted loss trong
+`reports/level2/gqa-gat-loss-test-v1/`, rồi xuất `figures/gqa-test-rows.tex`. Phần hình
 dùng cache validation, archive ảnh GQA và hai checkpoint PE-PLPR, PE-PLPR + AlignG
 (seed 42) trong workspace để xuất `figures/gqa-validation-cases.pdf`.
 Notebook đọc tần suất train từ `reports/level2/gqa-scale-audit-v1.json` để vẽ
@@ -72,6 +73,7 @@ Chạy [notebook Nhiệm vụ 3](../notebooks/level3_report_figures.ipynb) trên
 | Split, đặc trưng và bộ chấm | `scripts/build_vg150_manifest.py`, `docs/LEVEL1_MODEL_GUIDE.md`, `docs/evaluation/PredCls.md` |
 | MLP, GAT, hai cách fusion | `src/models/mlp_semantic.py`, `src/models/gat.py`, `src/models/gat_pair_kg.py`, `src/models/gat_kg_fusion.py` |
 | Hai bảng test GC và các hiệu số ghép seed | `reports/level1/reference-test27-v1/{summary,comparisons}.json` và `reports/level1/reference-loss-fusion-test27-v1/{summary,analysis}.json` |
+| Hai hoán vị bổ sung cho pair fusion trong bảng VG150 | [Kết quả theo seed và đối chứng KG thật](../reports/level1/vg150-pair-permutations-v1/summary.json) |
 | Long-tail và zero-shot | `reports/level1/test-tail-zero-v1/{long-tail,zero-shot}.md` |
 | Hình mở đầu | Hình 1, trang 1, Zellers và cộng sự, *Neural Motifs*, CVPR 2018. Cắt từ bản PDF tác giả `1711.06640v2.pdf`; panel Input dùng vùng ảnh có bounding boxes. Panel Output minh họa một ground-truth triplet của cùng hình. |
 | Ảnh định tính và kiểm tay | `reports/level1/submission/cases/{cases.json,analysis.md,human-review.csv,hit01..05.png,miss01..05.png}`. Biên bản chưa có xác nhận của người duyệt. |
