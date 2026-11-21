@@ -31,14 +31,14 @@ Nhóm chọn Qwen-Image-2.1~\cite{qwenimage21} vì trên các ca thay ghế và 
 InstructPix2Pix~\cite{brooks2023instructpix2pix}. Với yêu cầu thay ghế xanh
 bằng chậu cây, Qwen đặt cây vào đúng vị trí và giữ lại người ngồi cùng chiếc
 ghế vàng. InstructPix2Pix biến cả cảnh cửa hàng thành sân vườn.
-Bảng~\ref{tab:task3-editor-pilot} ở Phụ lục~\ref{app:nv3} đối chiếu ba ví dụ trên cùng ảnh nguồn và prompt.
+Bảng~\ref{tab:task3-editor-pilot} ở mục~\ref{app:nv3} của phụ lục đối chiếu ba ví dụ trên cùng ảnh nguồn và prompt.
 Hai mô hình chỉnh sửa dùng số bước suy luận, độ phân giải đầu ra
 và seed thực tế khác nhau, nên pilot chỉ cung cấp đối chiếu định tính.
 
 \subsubsection{Bộ trích đồ thị cảnh}
 Nhóm đã chạy RelTR + CLIP trên 30 ảnh nguồn. Từ đó, nhóm dùng cùng 5 ảnh
 (3 ảnh vỉa hè, 2 ảnh du lịch) để xem bounding box và quan hệ có hướng của
-bốn phương án ở Bảng~\ref{tab:task3-extractor-pilot} (Phụ lục~\ref{app:nv3}). Nhóm chọn
+bốn phương án ở Bảng~\ref{tab:task3-extractor-pilot} (mục~\ref{app:nv3} của phụ lục). Nhóm chọn
 REACT++~\cite{reactplusplus} vì khi đối chiếu đồ thị với ảnh, nhóm có thể xác định
 từng instance qua bounding box và kiểm tra các quan hệ có hướng. Trên các mẫu
 đã duyệt, kết quả đủ tin cậy để phân tích từng ca, dù đôi khi quan hệ
@@ -178,7 +178,7 @@ yêu cầu, trong đó 9/10 ảnh cũng đạt tiêu chí bảo toàn nội dung
 được bảo toàn. Trên ảnh đích, cả chiếc ghế xanh lá bên trái cũng chuyển sang
 xanh dương dù yêu cầu chỉnh sửa chỉ nêu việc đổi chiếc ghế vàng bên phải. Dòng \textit{Đổi màu} ở Bảng~\ref{tab:coverage} ghi độ phủ
 $0/10$ vì đồ thị thiếu bằng chứng về màu. Mười ca này vẫn thuộc mẫu số 200
-khi báo cáo độ phủ và kết quả duyệt tay. Hình~\ref{fig:nv3-color-case} ở Phụ lục~\ref{app:nv3} đối chiếu hai chiếc ghế trước và sau chỉnh sửa. Bộ nhãn hiện do một người duyệt.
+khi báo cáo độ phủ và kết quả duyệt tay. Hình~\ref{fig:nv3-color-case} ở mục~\ref{app:nv3} của phụ lục đối chiếu hai chiếc ghế trước và sau chỉnh sửa. Bộ nhãn hiện do một người duyệt.
 
 \subsection{Khi điểm đồ thị và chỉ số ảnh bất đồng}
 Trên 91 cặp có đủ ba điểm, nhóm tính thứ hạng phân vị của từng chỉ số.
@@ -195,7 +195,7 @@ việc thực hiện yêu cầu hay việc bảo toàn nội dung còn lại c�
 \item \textbf{Ca 178 -- chim bị nhận thành người.} Chim xuất hiện trên tảng đá theo yêu cầu, người duyệt cho đạt cả hai tiêu chí. REACT++ gán nhãn \textit{person} tại vùng chim nên $G=0$. Chỉ số $-\mathrm{LPIPS}$ ở phân vị 90,0, phản ánh phần lớn ảnh được giữ nguyên.
 \end{itemize}
 
-Bảng~\ref{tab:cases3} ở Phụ lục~\ref{app:nv3} ghi kết quả và chẩn đoán cho đủ mười ca theo yêu cầu của đề.
+Bảng~\ref{tab:cases3} ở mục~\ref{app:nv3} của phụ lục ghi kết quả và chẩn đoán cho đủ mười ca theo yêu cầu của đề.
 Bảng~\ref{tab:nv3-tax} nhóm các cơ chế quan sát được. Cách chọn theo chênh lệch thứ hạng chỉ cho phép phân tích từng ca; ước lượng tần suất lỗi cần lấy mẫu trên toàn bộ 200 lần chỉnh sửa.
 
 \textbf{Đối chứng center crop.} Nhóm chấm lại cùng 200 ảnh và caption bằng CLIP ViT-B/32, so sánh center crop với letterbox ở cùng kích thước $224\times224$.

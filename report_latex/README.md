@@ -2,7 +2,7 @@
 
 Nguồn LaTeX theo mẫu Seminar ở `25C15039-25C15062/` (commit `5bdd556`).
 Bản hiện tại gồm Nhiệm vụ 1 trên VG150, Task A của Nhiệm vụ 2 trên GQA, Task B trên MagicBrush với đối chứng bổ sung trên phần crowdsourced của He và cộng sự (2020), Nhiệm vụ 3 trên VN100 và phần mở rộng video trên PVSG.
-Phụ lục A/B minh họa dự đoán trên validation, C bổ sung kết quả VN100 và D trình bày bảy lượt kiểm tra hội tụ muộn cùng mười timeline PVSG. Phụ lục E tổng hợp các thử nghiệm Task B, VG150, ConceptNet và GQA.
+Phụ lục gồm bốn mục: A trình bày dự đoán và đối chứng trên VG150/GQA, B tổng hợp các thử nghiệm chỉnh sửa đồ thị, C bổ sung kết quả VN100 và D đối chiếu bảy lượt hội tụ muộn cùng các ví dụ PVSG.
 
 ## Biên dịch
 
@@ -64,7 +64,7 @@ myenv/bin/python -m experiments.magicbrush_prompt_intent_v1.report_figures
 
 ## Tái tạo ảnh minh họa VN100
 
-Chạy [notebook Nhiệm vụ 3](../notebooks/level3_report_figures.ipynb) trên CPU trong workspace có ảnh pilot và VN100. Notebook dùng pdfLaTeX với phông tiếng Việt của báo cáo để xuất `nv3-sgg-pair.pdf`, `nv3-evaluation-cases.pdf` ở thân bài và hai hình `nv3-editor-pilot.pdf`, `nv3-color-case.pdf` ở Phụ lục C.
+Chạy [notebook Nhiệm vụ 3](../notebooks/level3_report_figures.ipynb) trên CPU trong workspace có ảnh pilot và VN100. Notebook dùng pdfLaTeX với phông tiếng Việt của báo cáo để xuất `nv3-sgg-pair.pdf`, `nv3-evaluation-cases.pdf` ở thân bài và hai hình `nv3-editor-pilot.pdf`, `nv3-color-case.pdf` ở mục C của phụ lục.
 
 ## Đối chiếu nội dung từ gốc repository
 

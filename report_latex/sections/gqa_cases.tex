@@ -1,8 +1,8 @@
-\clearpage
-\raggedbottom
-\enlargethispage{1.5\baselineskip}
-\section{Đối chiếu mười dự đoán trên GQA validation}\label{app:gqacases}
-\setlength{\intextsep}{5pt}
+\subsubsection{GQA}\label{app:gqacases}
+Với 512 ảnh train, 128 ảnh validation, seed 42 và năm epoch, GC mR@50 đạt
+0,340\% với MLP và 0,315\% với GAT. Trong ba biến thể PE-Net, PE-CE đạt
+0,215\%, PE-PL đạt 0,479\% và PE-PLPR đạt 0,441\%.
+
 Nhóm duyệt ảnh validation và chú thích theo thứ tự lưu. Với PE-PLPR + AlignG (seed 42), mỗi ảnh đóng góp tối đa
 một Hit và một Miss. Mỗi nhóm có năm predicate khác nhau. Kết quả trên cặp được chọn phải khớp bộ chấm IoU.
 Bảng~\ref{tab:gqacases} đối chiếu PE-PLPR cùng seed trên mười ca của Hình~\ref{fig:gqacases}.
@@ -29,15 +29,14 @@ Miss 5 & 1060 & window $\to$ curtains & to the right of & to the right of & 63 &
 \end{table}
 
 \begin{figure}[H]\centering
-\includegraphics[page=1,width=.91\linewidth]{gqa-validation-cases.pdf}\par\medskip
-\includegraphics[page=2,width=.91\linewidth]{gqa-validation-cases.pdf}
+\includegraphics[page=1,width=.83\linewidth]{gqa-validation-cases.pdf}\par\medskip
+\includegraphics[page=2,width=.83\linewidth]{gqa-validation-cases.pdf}
 \caption{Năm ca Hit (trái) và năm ca Miss (phải) trong GC top-50.
 Hộp đỏ đánh dấu subject, hộp xanh đánh dấu object. Mỗi ô ghi ID ảnh, GT và Pred kèm hạng của từng mô hình.
 AlignG trong hình là cấu hình PE-PLPR + AlignG. \gtpredlegend}
 \label{fig:gqacases}
 \end{figure}
 
-\clearpage
 \begin{figure}[H]\centering
 \includegraphics[page=3,width=.97\linewidth]{gqa-validation-cases.pdf}\par\medskip
 \includegraphics[page=4,width=.97\linewidth]{gqa-validation-cases.pdf}\par\medskip

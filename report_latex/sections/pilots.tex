@@ -1,9 +1,8 @@
-\clearpage
-\section{Thực nghiệm bổ sung về chỉnh sửa đồ thị và dự đoán quan hệ}\label{app:probes}
-
+\subsection{Dự đoán thao tác chỉnh sửa đồ thị}\label{app:probes}
 \begin{table}[H]\centering\small
 \caption{Các bước kiểm tra Task B. F1 là micro-F1 theo thao tác. Cỡ mẫu và
 tập chấm được ghi theo từng phép thử do bộ nhãn thay đổi trong quá trình phát triển.}
+\label{tab:edit-pilots}
 \begin{tabular}{@{}p{.24\linewidth}p{.70\linewidth}@{}}\toprule
 Phép thử & Kết quả và phạm vi diễn giải\\\midrule
 Kiểm tra nhãn ảnh &
@@ -34,27 +33,4 @@ Cùng 14 mẫu train và seed 42, F1 train đạt 86,49\% với nhãn chênh l�
 Tái lập trên dữ liệu của He và cộng sự &
 Qua sáu lượt MLP/GNN, cơ chế dừng sớm của v4 giảm tổng số epoch từ 72 xuống 61.
 Các checkpoint được chọn cho dự đoán trùng với v3 trên 530 mẫu test.\\\bottomrule
-\end{tabular}\end{table}
-
-\begin{table}[H]\centering\small
-\caption{Các đối chứng trước khi đánh giá PredCls trên tập test. MRR đo thứ hạng
-của thực thể đích trong bài toán tri thức; mR@50 đo recall trung bình theo lớp quan hệ trong ảnh.}
-\begin{tabular}{@{}p{.24\linewidth}p{.70\linewidth}@{}}\toprule
-Phép thử & Kết quả trên validation\\\midrule
-Quy tắc xếp hạng VG150 &
-Nhóm chấm lại 54 checkpoint trên cùng 5.000 ảnh. Với GAT, mR@50 trung bình ba seed
-là 19,55\% khi mỗi cặp giữ một predicate (GC), và 33,21\% khi mọi predicate
-đều được tham gia xếp hạng toàn ảnh (NG).\\
-Điểm quan hệ ConceptNet &
-Ở nhánh fusion dùng điểm quan hệ của KG trên 5.000 ảnh VG150, mR@50 đạt
-25,904\% với ánh xạ thật và 25,863\% khi tráo ánh xạ, trung bình ba seed theo
-bộ chấm validation của lượt này.\\
-Nhúng tri thức &
-Trên 512 bộ ba validation của ConceptNet, MRR của TransE là 0,01567, ComplEx
-là 0,01497 và RotatE v2 là 0,01324 (seed 42). Ở lượt RotatE v1, checkpoint
-tốt nhất xuất hiện ngay tại epoch đầu.\\
-Pilot GQA &
-Với 512 ảnh train, 128 ảnh validation, seed 42 và năm epoch, GC mR@50 đạt
-0,340\% với MLP và 0,315\% với GAT. Trong ba biến thể PE-Net, PE-CE đạt
-0,215\%, PE-PL đạt 0,479\% và PE-PLPR đạt 0,441\%.\\\bottomrule
 \end{tabular}\end{table}

@@ -1,6 +1,5 @@
-\clearpage
-\section{Thử nghiệm và phân tích bổ sung cho Nhiệm vụ 3}\label{app:nv3}
-\subsection{Lựa chọn công cụ chỉnh sửa và bộ trích đồ thị cảnh}
+\subsection{Đánh giá nhất quán ngữ nghĩa trên VN100}\label{app:nv3}
+\subsubsection{Lựa chọn công cụ chỉnh sửa và bộ trích đồ thị cảnh}\leavevmode\par\nobreak
 \begin{table}[H]\centering\small
 \caption{Quan sát trên ba yêu cầu dùng chung ảnh nguồn và prompt.}
 \label{tab:task3-editor-pilot}
@@ -38,7 +37,7 @@ REACT++ PSG (YOLO12m) & 5/5 ảnh có đồ thị đọc được &
 Đồ thị gọn, dễ kiểm tra từng cạnh. Có trường hợp gán \textit{sitting on} cho sai chiếc ghế. Đồ thị đầu ra thiếu thuộc tính màu.\\
 \bottomrule\end{tabularx}\end{table}
 
-\subsection{Thiết lập chấm điểm và khoảng tin cậy}
+\subsubsection{Thiết lập chấm điểm và khoảng tin cậy}\leavevmode\par\nobreak
 \begin{table}[H]\centering\small
 \caption{Thiết lập căn chỉnh và chấm điểm.}\label{tab:nv3-matching}
 \begin{tabularx}{\linewidth}{@{}p{24mm}X@{}}\toprule
@@ -61,7 +60,7 @@ $-\mathrm{LPIPS}$ & 0,1962 & $[-0{,}0178;\ 0{,}3908]$ & 0,0666 & $[-0{,}2656;\ 0
 Qwen3-VL $J$ & 0,2628 & $[0{,}0029;\ 0{,}4960]$ & \nd & \nd\\
 \bottomrule\end{tabular}\end{adjustbox}\end{table}
 
-\subsection{Các trường hợp bất đồng giữa điểm đồ thị và chỉ số ảnh}
+\subsubsection{Các trường hợp bất đồng giữa điểm đồ thị và chỉ số ảnh}\leavevmode\par\nobreak
 \begin{table}[H]\centering\small
 \caption{Mười ca bất đồng, theo chênh lệch phân vị lớn nhất giữa $G$ và một trong hai chỉ số ảnh. Ba cột số là thứ hạng phân vị trên cùng 91 cặp, từ 0 đến 100.}\label{tab:cases3}
 \begin{tabularx}{\linewidth}{@{}l l r r r X@{}}\toprule
@@ -89,7 +88,7 @@ Baseline ảnh & Crop hoặc embedding không phản ánh đúng đối tượng
 Chưa giải thích & Chênh lệch score chưa có nguyên nhân được xác minh & 69\\
 \bottomrule\end{tabularx}\end{table}
 
-\subsection{Giới hạn khi chấm yêu cầu đổi màu}
+\subsubsection{Giới hạn khi chấm yêu cầu đổi màu}\leavevmode\par\nobreak
 \begin{figure}[H]\centering
 \includegraphics[width=.92\linewidth]{nv3-color-case.pdf}
 \caption{Ca 109, ảnh từ Vietnamese Sidewalk Violation VQA. Qwen đổi chiếc ghế vàng thành xanh dương nhưng đổi cả ghế xanh lá ở bên trái. Người duyệt đánh giá đạt yêu cầu đổi màu và không đạt tiêu chí bảo toàn nội dung. REACT++ thiếu thuộc tính màu nên $G$ không xác định. Ca này được tính khi tổng hợp nhãn tay và độ phủ.}\label{fig:nv3-color-case}

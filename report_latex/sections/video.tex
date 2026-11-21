@@ -13,7 +13,7 @@ Trong video ở Hình~\ref{fig:pvsg-holding}, người và món quà vẫn cùng
 ở nhiều frame, nhưng quan hệ \textit{holding} chỉ có nhãn từ frame 36 đến 72.
 Mỗi dự đoán gồm ID của subject $s$, predicate $p$, ID của object $o$ và tập frame
 $A_{spo}$ trên đó quan hệ có hiệu lực. Một bộ ba có thể có nhiều đoạn rời nhau.
-Hình~\ref{fig:pvsg-running} ở Phụ lục~\ref{app:late} minh họa hai đoạn rời của cùng một cặp track.
+Hình~\ref{fig:pvsg-running} ở mục~\ref{app:late} của phụ lục minh họa hai đoạn rời của cùng một cặp track.
 Hai cặp có thứ tự $(s,o)$ và $(o,s)$ được chấm riêng.
 
 Nhóm chọn PVSG~\cite{yang2023pvsg} vì mỗi quan hệ có nhãn theo frame.
@@ -95,7 +95,7 @@ nhóm huấn luyện lại bảy lượt này từ đầu với cùng seed và c
 \textit{early stopping} từ epoch 50. Cả bảy lượt đều có dự đoán đúng đầu tiên
 trên validation trong khoảng epoch 17--20. Bảng~\ref{tab:pvsg} dùng checkpoint
 của 17 lượt gốc và 7 lượt chạy lại, mỗi cặp mô hình/seed đóng góp đúng một lần.
-Phụ lục~\ref{app:late} đối chiếu kết quả từng lượt.
+Bảng~\ref{tab:late} đối chiếu kết quả từng lượt.
 
 \begin{table}[!ht]\centering
 \caption{PVSG test trên track chuẩn. Bảng chính có tính hội tụ muộn;
@@ -119,7 +119,7 @@ ba ablation cạnh. Với ba seed và độ phân tán quan sát được, đây
 về các lượt đã đo. Hai Conv khác cả độ sâu lẫn số tham số; mức tăng R@50
 của Conv kernel 5 chưa tách riêng được tác dụng của cửa sổ ngữ cảnh.
 
-Có hai kiểu Miss trong mười ví dụ ở Phụ lục~\ref{app:late}. Ở kiểu thứ nhất,
+Có hai kiểu Miss trong mười ví dụ ở mục~\ref{app:late} của phụ lục. Ở kiểu thứ nhất,
 bộ ba chuẩn vắng mặt trong top-50. Ở kiểu thứ hai, mô hình tìm đúng hai track
 và predicate nhưng trượt ngưỡng tIoU, như ca \textit{holding} ở
 Hình~\ref{fig:pvsg-holding}. Ngược lại, trong video \texttt{0039\_6951351121},

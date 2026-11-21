@@ -64,10 +64,13 @@ các thao tác do mô hình chỉnh sửa đồ thị dự đoán.
 \renewcommand*{\bibfont}{\normalfont\footnotesize}
 \printbibliography[title={Tài liệu tham khảo}]
 \onecolumn
-\appendices
+\appendix
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\renewcommand{\thesubsubsectiondis}{\thesubsubsection.}
+\subsection{Dự đoán quan hệ trên VG150 và GQA}
 \input{sections/vg_cases}
 \input{sections/gqa_cases}
+\input{sections/pilots}
 \input{sections/consistency_appendix}
 \input{sections/appendix}
-\input{sections/pilots}
 \end{document}

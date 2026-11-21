@@ -1,6 +1,7 @@
 # Quy ước làm việc của dự án
 
 - Giao tiếp với người dùng bằng tiếng Việt.
+- Khi hoàn tất thay đổi, mặc định commit tại máy. Chỉ push khi người dùng yêu cầu.
 - Trước mỗi tác vụ tính toán GPU (train, inference, benchmark), hoàn tất code
   và kiểm tra phù hợp trên CPU, commit code, rồi gửi người dùng lệnh chạy cùng
   mô tả phạm vi. Người dùng tự chạy; assistant không tự khởi chạy thêm tác vụ GPU.

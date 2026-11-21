@@ -1,4 +1,4 @@
-\section{Đối chiếu mười dự đoán trên VG150 validation}\label{app:vgcases}
+\subsubsection{VG150}\label{app:vgcases}
 Nhóm dùng GAT với đặc trưng CLIP, seed 42. Quy tắc chọn duyệt 100 ảnh validation
 đầu tiên theo thứ tự xáo bằng seed 2026, lấy chú thích đầu tiên của mỗi loại
 (Hit hoặc Miss) trên mỗi ảnh cho đến khi đủ năm trường hợp mỗi loại.
@@ -35,14 +35,32 @@ ID đối tượng), predicate dự đoán và hạng trong ảnh. Hộp đỏ c
 \label{fig:vg-case-pairs}
 \end{figure}
 
-\clearpage
 \begin{figure}[H]
 \centering
-\includegraphics[width=.97\linewidth]{vg-pair-03.pdf}\par\medskip
-\includegraphics[width=.97\linewidth]{vg-pair-04.pdf}\par\medskip
-\includegraphics[width=.97\linewidth]{vg-pair-05.pdf}\par
+\includegraphics[width=.86\linewidth]{vg-pair-03.pdf}\par\medskip
+\includegraphics[width=.86\linewidth]{vg-pair-04.pdf}\par\medskip
+\includegraphics[width=.86\linewidth]{vg-pair-05.pdf}\par
 \makeatletter
 \@makecaption{\figurename~\ref{fig:vg-case-pairs} \textit{(tiếp)}}%
   {Ở Miss 3 và Miss 4, GAT dự đoán đúng predicate nhưng bộ ba xếp ngoài top-50. \gtpredlegend}
 \makeatother
 \end{figure}
+
+\begin{table}[H]\centering\small
+\caption{Đối chứng trên VG150 và kết quả nhúng ConceptNet. MRR đo thứ hạng
+của thực thể đích trong bài toán tri thức; mR@50 đo recall trung bình theo lớp quan hệ trong ảnh.}
+\begin{tabular}{@{}p{.24\linewidth}p{.70\linewidth}@{}}\toprule
+Phép thử & Kết quả trên validation\\\midrule
+Quy tắc xếp hạng VG150 &
+Nhóm chấm lại 54 checkpoint trên cùng 5.000 ảnh. Với GAT, mR@50 trung bình ba seed
+là 19,55\% khi mỗi cặp giữ một predicate (GC), và 33,21\% khi mọi predicate
+đều được tham gia xếp hạng toàn ảnh (NG).\\
+Điểm quan hệ ConceptNet &
+Ở nhánh fusion dùng điểm quan hệ của KG trên 5.000 ảnh VG150, mR@50 đạt
+25,904\% với ánh xạ thật và 25,863\% khi tráo ánh xạ, trung bình ba seed theo
+bộ chấm validation của lượt này.\\
+Nhúng tri thức &
+Trên 512 bộ ba validation của ConceptNet, MRR của TransE là 0,01567, ComplEx
+là 0,01497 và RotatE v2 là 0,01324 (seed 42). Ở lượt RotatE v1, checkpoint
+tốt nhất xuất hiện ngay tại epoch đầu.\\\bottomrule
+\end{tabular}\end{table}
