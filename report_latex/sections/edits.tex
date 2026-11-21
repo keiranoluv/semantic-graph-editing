@@ -10,9 +10,17 @@ thị và câu lệnh, mô hình học được những thao tác nào trên b�
 
 \subsubsection{Xây bộ dữ liệu từ MagicBrush}
 MagicBrush~\cite{zhang2023magicbrush} cung cấp ảnh trước và sau chỉnh sửa
-cùng câu lệnh. Nhóm dùng gán nhãn có hỗ trợ AI để mô tả đối tượng, thuộc tính
-và quan hệ trong hai ảnh, sau đó ghép các thực thể tương ứng. Từ 437 cặp có
-đồ thị, nhóm lập hai bộ nhãn cho cùng đầu vào. Nhãn \textit{chênh lệch đồ thị}
+cùng câu lệnh. Nhóm thử hai cách tự động tạo nhãn. Trên 100 mẫu
+InstructPix2Pix, bộ phân tích không dựng được cặp đồ thị nào từ hai caption,
+nên chưa có đầu vào để ghép thực thể. Trên 20 cặp MagicBrush, cách định vị
+vật thể bằng ảnh cho 18 tập thao tác rỗng và hai ca không định vị được vật
+thể nguồn. Chẳng hạn, khi lệnh yêu cầu thêm một quả lê, bộ phát hiện đã thấy
+lê trong ảnh nguồn, còn quy tắc thêm đỉnh chỉ chấp nhận lớp vật thể mới.
+Hai kết quả này cho thấy điểm nghẽn xuất hiện ngay ở bước tạo nhãn.
+
+Nhóm đã xử lý 602 cặp MagicBrush và để riêng 165 cặp do ảnh lỗi hoặc thay đổi
+còn mơ hồ. Với 437 cặp còn lại, nhóm dùng gán nhãn có hỗ trợ AI để mô tả đối tượng, thuộc tính
+và quan hệ trong hai ảnh, sau đó ghép các thực thể tương ứng. Từ các đồ thị này, nhóm lập hai bộ nhãn cho cùng đầu vào. Nhãn \textit{chênh lệch đồ thị}
 ghi mọi thao tác cần để tái tạo đồ thị của ảnh đích. Nhãn \textit{theo câu
 lệnh} chỉ giữ các thay đổi phục vụ yêu cầu, kể cả thao tác cấu trúc cần thiết
 như xóa cạnh nối với một đỉnh bị xóa. Khi hai nhãn khác nhau, ảnh đích là
@@ -33,6 +41,11 @@ thêm đỉnh laptop và thêm cạnh $(\mathrm{laptop},\mathrm{on},\mathrm{tabl
 Sơ đồ bên dưới chỉ vẽ phần đồ thị liên quan đến bàn. Hai cạnh có sẵn nối sách và điều khiển với bàn được giữ lại.}
 \label{fig:mb-intent-laptop}
 \end{figure}
+
+Trên cùng cặp ảnh laptop, REACT++ tìm được laptop và cạnh nối đến bàn,
+nhưng chênh lệch giữa hai đồ thị do bộ trích sinh ra gồm 32 thao tác.
+Hai thao tác mà câu lệnh yêu cầu được thể hiện ở Hình~\ref{fig:mb-intent-laptop}.
+Phụ lục~\ref{app:probes} tổng hợp kết quả trên cả 20 cặp validation.
 
 Nhóm đối chiếu từng cặp với câu lệnh như Hình~\ref{fig:mb-intent-laptop}.
 Tổng cộng 92 cặp được để riêng do còn mơ hồ về đối tượng, quan hệ hoặc ảnh
@@ -181,11 +194,12 @@ Mỗi mô hình chạy với ba seed 42, 43, 44 và chọn checkpoint theo loss 
 validation.
 
 \begin{table}[!htbp]\centering\small
-\caption{Phần crowdsourced của He và cộng sự (2020), trung bình ba seed trên 530 mẫu test (\%). Macro-F1
+\caption{Phần crowdsourced của He và cộng sự (2020), trên 530 mẫu test; MLP và GNN lấy trung bình ba seed (\%). Macro-F1
 lấy trung bình đều trên sáu loại thao tác. Cột cuối yêu cầu toàn bộ đồ thị
 đích khớp nhãn.}\label{tab:emnlp}
 \begin{tabular}{@{}lrrr@{}}\toprule
 Mô hình & Micro-F1 & Macro-F1 & Khớp đồ thị đích\\\midrule
+Truy xuất & 56,22 & 34,38 & 33,77\\
 MLP & $81,69\pm0,31$ & $54,25\pm0,51$ & $67,74\pm0,68$\\
 GNN & $82,44\pm0,39$ & $55,03\pm0,28$ & $68,55\pm0,22$\\\bottomrule
 \end{tabular}\end{table}
@@ -197,6 +211,16 @@ Số trong ngoặc là số thao tác chuẩn trên tập test. Phép xóa có n
 và đạt F1 cao ở cả đỉnh lẫn cạnh.}
 \label{fig:emnlp-gnn-operations}
 \end{figure}
+
+Đối chứng truy xuất dùng đặc trưng CLIP của câu lệnh và đồ thị nguồn
+để lấy chương trình chỉnh sửa của mẫu train gần nhất. Trên 532 mẫu
+validation, nhóm còn giữ nguyên trọng số và thay đổi đầu vào lúc suy luận.
+Khi xáo câu lệnh, micro-F1 của MLP giảm từ 80,39\% xuống 66,34\%,
+của GNN từ 80,25\% xuống 67,56\%. Câu lệnh có đóng góp, còn thông tin
+trong đồ thị nguồn vẫn giúp mô hình dự đoán được nhiều thao tác. Khi bỏ
+cạnh, micro-F1 của GNN còn 9,15\%. Phép thử này đồng thời loại quan hệ và
+hai đầu mút khỏi bộ nhớ của mô hình, nên không tách riêng được tác dụng
+của truyền thông tin qua cạnh.
 
 Trong Hình~\ref{fig:emnlp-gnn-operations}, GNN đạt F1 97,76\% cho xóa đỉnh và 97,64\% cho xóa cạnh.
 Hai loại này chiếm 1.091 trong 1.533 thao tác chuẩn, nên ảnh hưởng lớn đến

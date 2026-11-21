@@ -2,7 +2,7 @@
 
 Nguồn LaTeX theo mẫu Seminar ở `25C15039-25C15062/` (commit `5bdd556`).
 Bản hiện tại gồm Nhiệm vụ 1 trên VG150, Task A của Nhiệm vụ 2 trên GQA, Task B trên MagicBrush với đối chứng bổ sung trên phần crowdsourced của He và cộng sự (2020), Nhiệm vụ 3 trên VN100 và phần mở rộng video trên PVSG.
-Phụ lục A/B minh họa dự đoán trên validation, C bổ sung kết quả VN100 và D trình bày bảy lượt kiểm tra hội tụ muộn cùng mười timeline PVSG.
+Phụ lục A/B minh họa dự đoán trên validation, C bổ sung kết quả VN100 và D trình bày bảy lượt kiểm tra hội tụ muộn cùng mười timeline PVSG. Phụ lục E tổng hợp các thử nghiệm Task B, VG150, ConceptNet và GQA.
 
 ## Biên dịch
 
@@ -81,3 +81,15 @@ Chạy [notebook Nhiệm vụ 3](../notebooks/level3_report_figures.ipynb) trên
 ## Hình và bảng PVSG
 
 Chạy [notebook PVSG](../notebooks/pvsg_report_figures.ipynb) trên CPU với PyAV, NumPy và Matplotlib. Notebook dùng kết quả M5, video VidOR và cache PVSG v4 để vẽ phân bố predicate trên tập fit, minh họa hai cặp track qua nhiều frame, dựng timeline Hit/Miss và tính lại bảng test theo ba seed.
+
+## Nguồn số liệu cho các thực nghiệm bổ sung
+
+| Phép thử | Bằng chứng |
+|---|---|
+| Tạo nhãn và chọn cặp | [InstructPix2Pix](../reports/level2/instructpix2pix-caption-graph-v1/README.md), [grounded v2](../reports/level2/magicbrush-grounded-failure-audit-v1/README.md), [602 cặp MagicBrush](../reports/level2/magicbrush-manual-full602-v1/README.md) |
+| REACT++ trên MagicBrush | [20 cặp](../reports/level2/magicbrush-react-pilot20-v1/cohort.json), [đối chiếu từng cặp](../reports/level2/magicbrush-react-pilot20-v1/sg-assessment.md), [kết quả ghép và thao tác](../reports/level2/magicbrush-react-pilot20-v1/pairs.json) |
+| Giải mã và học thuộc | [v1](../reports/level2/magicbrush-manual-experiment-v1/failure-audit.json), [v2](../reports/level2/magicbrush-manual-experiment-v2/result-audit.json), [16 mẫu đầy đủ](../reports/level2/magicbrush-overfit16-v1/result-audit.json), [16 mẫu rút gọn](../reports/level2/magicbrush-compact-overfit16-v1/result-audit.json) |
+| Chọn thực thể và nhãn thao tác | [Nhãn rút gọn](../reports/level2/magicbrush-compact-pilot-v1/result-audit.json), [liên kết từ](../reports/level2/magicbrush-lexical-pilot-v1/RESULTS.md), [sao chép tên](../reports/level2/magicbrush-easy-copy-v1/RESULTS.md), [pilot 14 mẫu](../reports/level2/magicbrush-prompt-pilot-v1/pilot.json) |
+| EMNLP | [Ablation trên validation](../reports/level2/emnlp2020-task-b-gpu-v3/README.md), [baseline và đối chiếu v3/v4 trên test](../reports/level2/emnlp2020-task-b-wandb-v4-test-v1/README.md) |
+| VG150 và ConceptNet | [GC/NG](../reports/level1/reference-comparison/comparison.md), [relation fusion](../docs/experiments/level1_fusion_v1.md), [TransE và RotatE](../docs/knowledge/rotate_conceptnet_workflow.md), [ComplEx](../docs/knowledge/complex_conceptnet_workflow.md) |
+| Pilot GQA | [MLP và GAT](../reports/level2/GQA_PILOT.md), [PE-Net](../reports/level2/PENET_PILOT.md) |
