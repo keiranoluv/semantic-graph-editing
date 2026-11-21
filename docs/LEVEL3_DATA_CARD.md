@@ -66,15 +66,13 @@ Bộ này phù hợp cho demo/đánh giá Task 3 và phân tích lỗi. Nó chư
 
 Đơn vị đánh giá là một yêu cầu (`task_id`). Dùng `image_id` để nối hai yêu cầu với cùng ảnh nguồn. Với mẫu `travel-a4fe5a686b0396-q200-2`, ảnh nguồn thuộc VietTravelVQA-v2; câu lệnh tiếng Anh yêu cầu thêm chó trên đá ở tiền cảnh cạnh hồ. Ảnh đích là kết quả Qwen. Hai đồ thị nguồn/đích là dự đoán REACT++. Hai nhãn tay về chỉnh sửa và bảo toàn đều đạt. Bộ chấm ghi E = 1 và G ≈ 0,829. Giá trị G trống ở các mẫu thiếu bằng chứng cần được giữ là null khi xuất bảng.
 
-## Phạm vi đề xuất cho Hugging Face
+## Bản phát hành trên Hugging Face
 
-VN100 là tập chỉnh sửa dẫn xuất. Hai bộ VQA cung cấp ảnh nguồn; phần nhóm xây dựng gồm việc chọn ảnh, soạn yêu cầu, chạy chỉnh sửa và trích đồ thị, thu nhãn đánh giá và tính điểm. Ngôn ngữ câu lệnh là tiếng Anh; bối cảnh ảnh là Việt Nam.
+Bản phát hành có hai cấu hình cùng split `dev`. Cấu hình `default` chứa metadata, nhãn tay, provenance của các trường trống đã chuẩn hóa và điểm của 200 yêu cầu. Cấu hình `image-pairs` chứa ảnh nguồn, câu lệnh và ảnh PNG Qwen cho cùng 200 yêu cầu. Dùng `task_id` để nối hai bảng và `image_id` để nhóm hai chỉnh sửa của cùng một ảnh. Câu lệnh tiếng Anh là đầu vào đã gửi cho Qwen. [VN100 Graph Editing](https://huggingface.co/datasets/ndttoan/vn100-graph-editing)
 
-Bản manifest khóa ghi `local_evaluation_only: true` và `per_image_rights_verified: false` cho cả 200 yêu cầu trên 100 ảnh. Đây là trạng thái xác minh của nhóm. Khi chuẩn bị bản công khai, cần lưu nguồn ghi công, điều kiện sử dụng và phạm vi tái phân phối của từng ảnh được chọn, kể cả việc phát hành ảnh sau chỉnh sửa. Với VietTravelVQA, liên kết tệp tại revision đã khóa giúp tìm lại ảnh trong bộ VQA; thông tin tác giả và giấy phép ảnh Commons gốc là các trường riêng. [Manifest 200 yêu cầu](../configs/level3/qwen200-cohort-v1.json) · [Nguồn gốc VietTravelVQA](https://data.mendeley.com/datasets/fvxtpnh8mh/2)
+Manifest lịch sử ghi nhận trạng thái kiểm chứng tại thời điểm chạy local. Bản phát hành bổ sung bảng ghi công riêng. Với 50 ảnh du lịch, tên tệp trong revision VietTravelVQA-v2 được nối với URL Wikimedia trong metadata upstream, sau đó tra trang Commons để lấy tác giả, ghi công và giấy phép từng ảnh. Với 50 ảnh vỉa hè, bảng giữ link theo revision, ghi công Dao, Manh Dung và Cao, Thanh Huy và điều kiện CC BY-NC 4.0 của nguồn. Ảnh Qwen được ghi rõ là bản chỉnh sửa. Điều kiện sử dụng theo từng ảnh được mô tả trong card phát hành. [Bảng ghi công](../submission/vn100-hf/source-credits.jsonl) · [Data card phát hành](../submission/vn100-hf/README.md)
 
-Đề xuất bản đầu trên Hub gồm data card và một bảng metadata 200 dòng do nhóm xuất từ manifest và kết quả đã khóa. Mỗi dòng nên có `task_id`, `image_id`, nguồn và URL ảnh tại revision, hash ảnh nguồn, câu lệnh, loại thao tác, hai nhãn tay, điểm E/P/G cùng lý do G trống. Giữ provenance về nhãn trống đã chuẩn hóa. Loại đường dẫn máy cá nhân khi xuất. Bảng dùng một tập đánh giá phát triển; tránh tự tạo split train/test từ 200 dòng.
-
-Khi có bằng chứng ghi công và quyền phân phối tương ứng, có thể bổ sung ảnh và các sản phẩm dẫn xuất vào phiên bản sau, kèm danh sách tệp, checksum và điều kiện sử dụng theo thành phần. Trên Hub, data card đặt ở `README.md` tại gốc dataset repo. [Hướng dẫn dataset card của Hugging Face](https://huggingface.co/docs/hub/datasets-cards)
+Chạy `myenv/bin/python -m scripts.export_vn100_image_pairs` từ thư mục gốc để dựng lại các shard Parquet trong `runs/level3/vn100-hf/image-pairs/`. Trình xuất đối chiếu prompt, ID ca và SHA-256 ảnh đích với kết quả Qwen trước khi ghép cặp.
 
 ## Nội dung gói và truy xuất
 

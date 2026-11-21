@@ -11,16 +11,21 @@ tags:
 - evaluation
 configs:
 - config_name: default
+  default: true
   data_files:
   - split: dev
     path: data/dev.jsonl
+- config_name: image-pairs
+  data_files:
+  - split: dev
+    path: image-pairs/*.parquet
 ---
 
 # VN100 Graph Editing
 
 VN100 is a development evaluation set for instruction-guided image editing in Vietnamese street and travel scenes. It contains 200 English editing requests on 100 source photographs. Each source has two independent requests. Both edits start from the same original image.
 
-This metadata edition distributes prompts, revision-pinned upstream image references, outcome labels and graph-based evaluation scores. Source and edited image pixels are omitted. The project selected the images, prepared instructions with AI assistance, ran the editor and graph extractor, and evaluated the resulting edits.
+Select **image-pairs → dev** to browse the 200 original/edited pairs and their English prompts. Each row contains the original upstream photograph, the exact PNG produced by Qwen and its SHA-256. The **default → dev** configuration provides lightweight metadata, outcome labels and graph-based scores. Join the two configurations by `task_id`. The project selected the images, prepared instructions with AI assistance, ran the editor and graph extractor, and evaluated the resulting edits.
 
 ## Contents
 
@@ -60,4 +65,8 @@ The sidewalk photographs come from a collection published under CC BY-NC 4.0. [V
 
 VietTravelVQA-v2 is published under CC BY 4.0 at the collection level. The original authors identify Wikimedia Commons as the source of the travel photographs. Original attribution and image-specific terms should be checked at the source. [VietTravelVQA-v2](https://huggingface.co/datasets/phunguyendinhkh/VietTravelVQA-v2) · [VietTravelVQA v2 author list and DOI](https://doi.org/10.17632/fvxtpnh8mh.2)
 
-The project records the source images as local-evaluation assets with per-image redistribution rights unverified. The license column describes the upstream collection only.
+## Image credits and adaptations
+
+Each row in **image-pairs** identifies the source title, creator or collection credit, original file page, license and attribution. The same information is available once per original photograph in [source-credits.jsonl](source-credits.jsonl). Sidewalk photographs are credited to Dao, Manh Dung and Cao, Thanh Huy and distributed for non-commercial use under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Street scenes can contain visible people and vehicle plates.
+
+For the 50 travel photographs, the pinned VietTravelVQA metadata points to individual Wikimedia Commons files. Their file pages identify the creator and applicable license or public-domain status; these vary by photograph. Each edited image is labeled as a Qwen-Image-2.1 modification of the photograph in the same row. The `instruction` records the requested change. For Creative Commons licensed works the edited image is shared under the same license as the source, including its version, non-commercial or ShareAlike conditions where applicable. The collection license in the default table describes the upstream dataset. Use the image-specific details when reusing pictures. [VietTravelVQA source mapping](https://huggingface.co/datasets/phunguyendinhkh/VietTravelVQA-v2/blob/1aa7c4f3c3bd179b94c3093678515af7f6f3da48/metadata.jsonl)
