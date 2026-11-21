@@ -1,0 +1,44 @@
+{
+  "checked_at_utc": "2026-11-18",
+  "paper": {
+    "title": "Panoptic Video Scene Graph Generation",
+    "venue": "CVPR 2023",
+    "url": "https://openaccess.thecvf.com/content/CVPR2023/papers/Yang_Panoptic_Video_Scene_Graph_Generation_CVPR_2023_paper.pdf",
+    "section": "5.2",
+    "architecture": "learnable Conv1D: kernel 5, 3 layers; this is the CVF specification",
+    "download_sha256": "3599a256b42b9ed8dd6230ca843961637ad775469e2199331c8025f4e12af337"
+  },
+  "author_release": {
+    "url": "https://jingkangyang.com/PVSG/static/pdfs/pvsg.pdf",
+    "note": "Later author PDF gives kernel 5 without asserting 3 Conv layers; official release split 338/62 retained. Do not conflate CVF specification with released constructor default.",
+    "local_pdf_sha256": "83cec9a0dea15145002854ec6f1e897180e5a10f189d2bd72899939837bf50cb"
+  },
+  "openpvsg": {
+    "repository": "https://github.com/LilyDaytoy/OpenPVSG",
+    "commit": "b2850b980c272368215a754299986cb904d55820",
+    "file_url": "https://github.com/LilyDaytoy/OpenPVSG/blob/b2850b980c272368215a754299986cb904d55820/models/relation_head/convolution.py",
+    "constructor": "Learnable1DConv(input_dim, num_relations, kernel_size=5, num_layers=1)",
+    "heads": "span_head per frame and pred_head with temporal max pooling",
+    "license_url": "https://github.com/LilyDaytoy/OpenPVSG/blob/b2850b980c272368215a754299986cb904d55820/LICENSE",
+    "license": "S-Lab License 1.0; non-commercial redistribution terms retained in OPENPVSG_LICENSE.txt"
+  },
+  "local_parent": {
+    "commit": "cb135234",
+    "module": "experiments/pvsg_trd_v1/m3",
+    "reused": "Store, windows, sampler, sparse targets, chunked loss, checkpoints, decoder, evaluator, probe case selection, online WandB tracking",
+    "versioned_copies": "runner training loop, validation loop, probe measure/overfit orchestration; these bind M4 factories/collation without mutating M3"
+  },
+  "adaptation": {
+    "name": "pvsg_conv_k5_l3",
+    "status": "GT-track design adaptation, not end-to-end benchmark reproduction",
+    "changes": [
+      "GT masks, labels, track IDs and frozen CLIP instead of predicted IPS/VPS object-query tubes",
+      "M3 MLP node encoder and 128-D pair projection before Conv",
+      "Framewise shared 57-label head, masked BCE and fixed M1 interval decoder instead of released two heads and pairing losses",
+      "All co-visible ordered pairs; split visibility gaps; padding masked after every Conv",
+      "Frozen M2 287/51/62 internal split and target adaptation; raw annotation untouched",
+      "No end-to-end segmentation/tracking; no KG"
+    ],
+    "comparison": "Only compare to M3 under same GT-track protocol. RF=13 vs ST-GAT RF=5; use mlp_conv_k3_l2 as optional RF control."
+  }
+}

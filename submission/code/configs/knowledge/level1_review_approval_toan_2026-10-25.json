@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "reviewer": "Toan",
+  "review_date": "2026-10-25",
+  "approval_scope": "all_150_representative_synsets",
+  "statement": "Toan confirmed the supplied 150 synsets as the official representative mapping for Level 1.",
+  "per_class_rationale_provided": false,
+  "limitation": "A representative synset may not describe every object instance in a polysemous VG150 class."
+}

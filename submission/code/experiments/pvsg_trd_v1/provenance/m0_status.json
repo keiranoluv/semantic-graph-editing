@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "milestone": "M0",
+  "state": "complete",
+  "m0_complete": true,
+  "protocol_id": "pvsg-gt-trd-tiouv1",
+  "protocol_sha256": "53fbb1782721716591531b007b62b0f861b20e8b9df629330fa5eb997ebd2547",
+  "selected_manifest": "pvsg_author_release_338_62.lock.json",
+  "selected_split_id": "pvsg-author-release-338-62-hf7e5f1ec-v1",
+  "training_enabled": false,
+  "ready_for_m1_cpu": true,
+  "dataset_media_ready": false,
+  "internal_validation_locked": false,
+  "decision": {
+    "source": "explicit_user_reply",
+    "date_local": "2026-11-18",
+    "choice": "Dùng split 338/62 chính thức đã xác minh (khuyến nghị)",
+    "supersedes": "CVF paper 360/40 target without verified ID manifest"
+  },
+  "deliverables": {
+    "source_identity": "complete",
+    "outer_split_ids": "complete",
+    "scope_and_protocol": "complete",
+    "schemas_and_examples": "complete",
+    "manifest_template": "complete",
+    "cpu_verification": "complete"
+  },
+  "remaining_m1_m2": [
+    "Implement the actual video parser/evaluator and semantic fixtures.",
+    "Audit frame/mask availability and visibility after a later media download.",
+    "Create grouped fit/internal-validation IDs within 338 train videos.",
+    "Pin feature extraction environment/checkpoint/preprocessing before GPU work."
+  ],
+  "artifact_sha256": {
+    "README.md": "33c863b875c42c7cf55ab963692aaa263d05bb569a50e025cc866faa2291ea19",
+    "examples/synthetic_predictions.json": "a508b95001b0ede013c341db63fd418150fd098c5817c40c7d8ff60cd3f3997c",
+    "examples/synthetic_targets.json": "1705249994b2a9e5c905497f89a5829fe27a79bf8f973ba63ff2dfae2ea69ed4",
+    "examples/synthetic_video.json": "1cc54ceca375b0f089644fc3e57d410b847440d8e2077d5304fe387bd4da6bc1",
+    "manifests/cvf_360_40.unresolved.template.json": "b62fc2e7b3966c13d925fb62ad3b82afb8111e61a82c30bdb4c4261b2502f548",
+    "manifests/pvsg_author_release_338_62.lock.json": "f48ac9e1ac9b42afd52fc668c3fb6095d946489b02e546c1761b69fa08bd3120",
+    "protocol.json": "53fbb1782721716591531b007b62b0f861b20e8b9df629330fa5eb997ebd2547",
+    "provenance/sources.json": "2301f9f5fa24cd07d53d93436703ece3e9841d19a6c9294fdecfd0c6b7df7a28",
+    "provenance/vocabulary.json": "f087402abe59e9560b708bb8da2ecbae16cba59b6617feface63f0da1666f0c1",
+    "requirements-cpu-m0.txt": "cae35ed269a840d55a017da4a7c25f01122f1c270cb14d541c36f6d1af544dbd",
+    "schemas/dataset_manifest.schema.json": "142513b53216df9acbddb0e8213c5fe1347f4192169cd5250517a3a3d00e3e44",
+    "schemas/predictions.schema.json": "ab05c7cd91f10d50691c4a866f7f04a49e39e5981c4a70164aeb6e4d57ea983a",
+    "schemas/targets.schema.json": "8fa03b6e5e306695256d9531d20159bfbfb525020b0e1b70678239f79a904cdf",
+    "schemas/video.schema.json": "9c3dd6ad26f028717135ebeca0be922686d99a8cd8302e8f4086dd1e4c02fb84",
+    "tests/test_m0_contracts.py": "1999e5dbb49fad0739d1c875fad042595b8c06ed39410992244e0b9557da6f24",
+    "validate_m0.py": "03ebe6c54b9149c0166a4f31cc41a2059ea620d77d6e8b03245fac01aacf475f",
+    "provenance/verification.json": "dca025f8990317cb6091ec648fd9cdc4b81af6b84d6da80e478d14f152b02199"
+  },
+  "repository": {
+    "research_reference_commit": "c20812ad52ff3bc6823aae0dd3659eab90caa451",
+    "head_before_m0_commit": "8c00664ad4889c2833ed2bb9e287a3b7b0ce5f50",
+    "implementation_root": "experiments/pvsg_trd_v1",
+    "protected_existing_files": 193
+  }
+}

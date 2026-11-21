@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "root": "data/raw/vg150",
+  "visual_cache": "data/cache/vg150-clip-vit-b32-v1",
+  "kg_features": "data/knowledge/c2-wordnet-reviewed-filtered-v2",
+  "glove_text": "data/external/glove/glove.6B.300d.txt",
+  "glove_provenance": "data/external/glove/source-verified.json",
+  "prepared": "data/processed/level2/vg150-penet-v1",
+  "report": "reports/level2/vg150-penet-v1",
+  "output": "runs/level2/vg150-penet-v1",
+  "reference_experiment": "runs/level2/gqa-full-v3-bs512/experiment.json",
+  "expected_data_sha256": {
+    "VG-SGG-with-attri.h5": "ad52a01f8e6142bb7bc62d91f97dad1567f44772a23eac68d60a5b7766ffe4b1",
+    "VG-SGG-dicts-with-attri.json": "1255873ae0250555f59d20f8d1e5a4bdf22b331119502c850f765173b6963ca1",
+    "image_data.json": "aa6ffcc11edf68d9d5376bc7dac04caa4eafab589d4db0290b6990a616ff00db",
+    "splits.json": "d9402d67ad0dc22fa67adc558d39502bfb479f9998bc689ffb3d74058bac4bf0"
+  },
+  "expected_visual_manifest_sha256": "e5b2d67d074fbc56ccaf751839445a9ee1f9dcb9a6c5d7bc43d0d6abfbbd5dcc",
+  "device": "cuda",
+  "models": ["mlp", "gat", "gat-kg", "pe-ce", "pe-pl", "pe-plpr"],
+  "seeds": [42, 123, 3407],
+  "epochs": 200,
+  "train_batch_size": 128,
+  "val_batch_size": 128,
+  "lr": 0.001,
+  "weight_decay": 0.01,
+  "gradient_clip_norm": 5.0,
+  "checkpoint_every_batches": 10,
+  "num_threads": 1,
+  "early_stopping": {"enabled": true, "patience": 15, "min_delta": 0.0},
+  "pilot": {"train_images": 512, "val_images": 128, "epochs": 5, "seed": 42},
+  "wandb": {"mode": "online", "entity": "keiranoluv-hcmus", "project": "semantic-graph-editing"}
+}

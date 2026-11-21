@@ -1,0 +1,10 @@
+.venv/
+myenv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+code/data/
+code/runs/
+code/logs/
+code/wandb/

@@ -1,0 +1,20 @@
+{
+  "date_local": "2026-11-18",
+  "timezone": "Asia/Bangkok",
+  "tests": {
+    "command": "data/external/pvsg_m3_env/bin/python -m pytest -q experiments/pvsg_trd_v1/tests experiments/pvsg_trd_v1/m2 experiments/pvsg_trd_v1/m3 --basetemp=data/external/pvsg_m3_cpu_final_tests",
+    "passed": 132,
+    "M0_M1_M2": 110,
+    "M3": 22,
+    "elapsed_seconds": 11.41
+  },
+  "protected_files_checked": 298,
+  "protected_files_changed": [],
+  "GPU_work_started": false,
+  "main_training_started": false,
+  "test_pt_artifacts_remaining": [],
+  "checkpoint_cleanup_scope": "Only assistant-owned M3 test directories; original CLIP and other experiment weights preserved",
+  "GPU_profile": "pending_after_M2",
+  "physical_batch": "not_measured_or_selected",
+  "online_WandB_auth": "not_tested; offline SDK smoke passed"
+}

@@ -8,7 +8,7 @@ from tools.level3_submission_v1.bundle import sha
 from tools.level3_submission_v1.demo import checked, open_bundle, recompute
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "submission/vn100-hf/data/dev.jsonl"
+OUTPUT = ROOT / "submission/code/datasets/vn100/data/dev.jsonl"
 
 
 def main():

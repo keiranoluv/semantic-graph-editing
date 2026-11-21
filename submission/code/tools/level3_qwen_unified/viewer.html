@@ -1,0 +1,56 @@
+<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qwen · 200 yêu cầu</title>
+<style>
+*{box-sizing:border-box}body{max-width:1500px;margin:24px auto;padding:0 20px;font:16px system-ui;background:#f3f5f7;color:#203344}h1{font-size:26px}button,select{font:inherit;padding:8px;border:1px solid #bbc5ce;border-radius:6px;background:white}button{cursor:pointer}button:disabled{opacity:.4;cursor:default}.toolbar,.labels{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.labels{margin:20px 0}.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}article{background:white;padding:20px;border-radius:10px;margin:20px 0}figure{margin:0}img{width:100%;max-height:720px;object-fit:contain}figcaption{margin-bottom:10px}p{line-height:1.5}.muted{font-size:14px;color:#526575}#import{display:none}@media(max-width:750px){.pair{grid-template-columns:1fr}body{padding:0 10px}}
+</style>
+<h1>Qwen-Image-2.1 · 200 yêu cầu</h1><p id="count">Đang tải…</p>
+<nav class="toolbar"><button id="previous">Trước</button><select id="pick" aria-label="Yêu cầu"></select><button id="next">Sau</button>
+<select id="filter" aria-label="Lọc"><option value="all">Tất cả</option><option value="ready">Đã có ảnh</option><option value="pending">Chưa có ảnh</option><option value="unreviewed">Chưa chấm đủ</option></select>
+<button id="refresh">Cập nhật</button><button id="load">Nhập nhãn JSON</button><input id="import" type="file" accept=".json,application/json"><button id="export">Tải nhãn JSON</button></nav>
+<p id="notice" class="muted"></p><main id="case"></main>
+<script>
+let DATA,visible=[],position=0,saved={};const fields=['edit_fulfillment','preservation'];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const valid=v=>v===null||typeof v==='boolean';const storeKey=()=> 'qwen-unified-review-v1:'+DATA.cohort_sha256;
+const entry=c=>saved[c.task_id]?.[c.binding]||{edit_fulfillment:null,preservation:null};
+const complete=c=>c.target&&fields.every(k=>typeof entry(c)[k]==='boolean');
+function persist(){try{localStorage.setItem(storeKey(),JSON.stringify(saved))}catch(_){document.getElementById('notice').textContent='Không lưu được trên trình duyệt. Hãy tải nhãn JSON trước khi đóng trang.'}}
+function importReview(pack,overwrite=false){
+ const cases=Object.fromEntries(DATA.cases.map(c=>[c.task_id,c]));let bindings;
+ if(pack.schema==='qwen-unified-review-v1'){
+  if(pack.cohort_sha256!==DATA.cohort_sha256)throw Error('Nhãn thuộc bộ yêu cầu khác');
+  bindings=Object.fromEntries(pack.reviews.map(r=>[r.task_id,r.binding]));
+ }else{
+  const legacy=DATA.legacy.find(l=>l.results_sha256===pack.results_sha256);
+  if(!legacy)throw Error('Không xác minh được bộ ảnh của file nhãn cũ');bindings=legacy.bindings;
+ }
+ const seen=new Set();for(const r of pack.reviews){const c=cases[r.task_id];
+  if(!c||seen.has(r.task_id)||!fields.every(k=>valid(r[k]))||(r.model!==undefined&&r.model!=='qwen21'))throw Error('Nhãn có ID trùng/không hợp lệ hoặc thuộc mô hình khác');seen.add(r.task_id);
+  if(fields.some(k=>r[k]!==null)&&(!c.target||bindings[r.task_id]!==c.binding))throw Error('Nhãn không khớp ảnh hiện tại');
+ }
+ for(const r of pack.reviews){const c=cases[r.task_id];if(!c.target||bindings[r.task_id]!==c.binding)continue;saved[c.task_id]??={};
+  if(overwrite||!saved[c.task_id][c.binding])saved[c.task_id][c.binding]=Object.fromEntries(fields.map(k=>[k,r[k]]));
+ }persist();
+}
+function count(){document.getElementById('count').textContent=`Đã có ảnh ${DATA.successful}/${DATA.cases.length} · Đã chấm ${DATA.cases.filter(complete).length}/${DATA.cases.length}`}
+function render(){count();document.getElementById('previous').disabled=position===0;document.getElementById('next').disabled=!visible.length||position>=visible.length-1;
+ if(!visible.length){document.getElementById('case').textContent='Không có yêu cầu phù hợp';return}
+ const c=DATA.cases[visible[position]],r=entry(c);document.getElementById('pick').value=String(visible[position]);
+ const picture=(a,name)=>`<figure><figcaption>${name}</figcaption>${a?`<a href="${a.native}" target="_blank" rel="noopener"><img src="${a.preview}" alt="${name}"></a>`:'<p>Chưa có ảnh đích để duyệt.</p>'}</figure>`;
+ document.getElementById('case').innerHTML=`<article><h2>${c.index}/200 · ${esc(c.image_id)}</h2><p>${esc(c.prompt)}</p><div class="pair">${picture(c.source,'Ảnh nguồn')}${picture(c.target,'Ảnh Qwen')}</div><div class="labels">${fields.map(k=>`<label>${k==='preservation'?'Bảo toàn':'Đúng yêu cầu'} <select data-field="${k}" ${c.target?'':'disabled'}>${[['','Chưa chấm'],['true','Đạt'],['false','Không đạt']].map(([v,t])=>`<option value="${v}" ${(r[k]===null?'':String(r[k]))===v?'selected':''}>${t}</option>`).join('')}</select></label>`).join('')}</div></article>`;
+ document.querySelectorAll('[data-field]').forEach(el=>el.onchange=e=>{saved[c.task_id]??={};saved[c.task_id][c.binding]={...entry(c),[e.target.dataset.field]:e.target.value===''?null:e.target.value==='true'};persist();count()});
+}
+function populate(){const f=document.getElementById('filter').value;visible=DATA.cases.map((_,i)=>i).filter(i=>f==='all'||(f==='ready'?DATA.cases[i].target:f==='pending'?!DATA.cases[i].target:!complete(DATA.cases[i])));position=0;document.getElementById('pick').innerHTML=visible.map(i=>`<option value="${i}">${DATA.cases[i].index} · ${esc(DATA.cases[i].image_id)}</option>`).join('');render()}
+async function load(){const res=await fetch('review-data.json',{cache:'no-store'});if(!res.ok)throw Error('Không tải được dữ liệu review');DATA=await res.json();
+ try{const cached=JSON.parse(localStorage.getItem(storeKey())||'{}');saved={};
+  for(const c of DATA.cases){const records=cached[c.task_id];if(records&&typeof records==='object'){saved[c.task_id]={};for(const [binding,r]of Object.entries(records)){if(r&&fields.every(k=>valid(r[k])))saved[c.task_id][binding]=Object.fromEntries(fields.map(k=>[k,r[k]]))}}}
+ }catch(_){saved={}}
+ for(const legacy of DATA.legacy){try{const rows=JSON.parse(localStorage.getItem('qwen-only-review-v2:'+legacy.results_sha256));if(Array.isArray(rows))importReview({results_sha256:legacy.results_sha256,reviews:rows})}catch(_){}}
+ document.getElementById('notice').textContent='Hai nhãn được lưu trên trình duyệt; tải JSON để giữ bản sao. Bấm ảnh để xem bản gốc. Cập nhật chỉ đọc kết quả đã thu thập, không chạy inference.';populate();}
+document.getElementById('previous').onclick=()=>{position=Math.max(0,position-1);render()};document.getElementById('next').onclick=()=>{position=Math.min(visible.length-1,position+1);render()};
+document.getElementById('pick').onchange=e=>{position=visible.indexOf(Number(e.target.value));render()};document.getElementById('filter').onchange=populate;
+document.getElementById('refresh').onclick=()=>load().catch(e=>document.getElementById('notice').textContent=e.message);
+document.getElementById('load').onclick=()=>document.getElementById('import').click();document.getElementById('import').onchange=async e=>{try{importReview(JSON.parse(await e.target.files[0].text()),true);document.getElementById('notice').textContent='Đã nhập nhãn khớp bộ ảnh.';populate()}catch(err){document.getElementById('notice').textContent=err.message}e.target.value=''};
+document.getElementById('export').onclick=()=>{const pack={schema:'qwen-unified-review-v1',cohort_sha256:DATA.cohort_sha256,reviews:DATA.cases.map(c=>({task_id:c.task_id,binding:c.binding,status:complete(c)?'reviewed':'pending',...entry(c)}))};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(pack,null,2)],{type:'application/json'}));a.download='qwen200-reviewed.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+load().catch(e=>document.getElementById('notice').textContent=e.message);
+</script></html>

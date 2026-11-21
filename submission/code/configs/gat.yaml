@@ -1,0 +1,24 @@
+# Reference experiment preset. scripts/train_gat.py uses CLI arguments, NOT this YAML.
+# Keep the values below aligned with the command documented in docs/experiments.
+model:
+  name: gat
+  geometry_dim: 5
+  object_embedding_dim: 32
+  hidden_dim: 256
+  num_heads: 4
+  num_layers: 2
+  dropout: 0.1
+  num_predicate_classes: 51
+  message_passing: fully_connected_directed_no_predicate_labels
+train:
+  batch_size: 32
+  accumulation_steps: 16   # effective train batch = 32 * 16 = 512 graphs
+  val_batch_size: 32
+  max_epochs: 200
+  patience: 15
+  lr: 0.001
+  weight_decay: 0.01
+  negative_ratio: 3
+  box_policy: clip
+  seeds: [42, 123, 3407]
+  checkpoint_selection: validation_mR_at_50

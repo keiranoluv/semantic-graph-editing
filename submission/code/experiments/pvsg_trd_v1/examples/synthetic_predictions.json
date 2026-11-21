@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "kind": "relation_predictions",
+  "protocol_id": "pvsg-gt-trd-tiouv1",
+  "video_id": "synthetic_m0_only",
+  "num_frames": 10,
+  "predictions": [
+    {
+      "subject_id": 7,
+      "object_id": 12,
+      "predicate_id": 0,
+      "intervals": [
+        [
+          2,
+          3
+        ],
+        [
+          7,
+          8
+        ]
+      ],
+      "score": 0.9
+    }
+  ]
+}

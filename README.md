@@ -4,10 +4,11 @@
 
 | Bạn muốn | Mở |
 |---|---|
+| Lấy bản mã nguồn để nộp | Chép riêng thư mục [submission/](submission/). [README của bản nộp](submission/README.md) có hướng dẫn mở notebook, khôi phục trọng số và chạy lại demo. |
 | Xem toàn bộ đồ án ngay sau khi clone | [Notebook tổng hợp đã lưu output](notebooks/project_submission_demo.ipynb). Mở trong JupyterLab hoặc VS Code để xem ảnh, đồ thị và bảng điểm. |
 | Chạy demo trực tiếp trên CPU | [Notebook chỉnh sửa đồ thị](notebooks/graph_editing_live_demo.ipynb). Ba ca lần lượt là thêm thuyền buồm, thêm chó trên đá và xóa ghế. [Cài môi trường và chạy](docs/REPRODUCE.md#chay-demo). |
 | Xem 100 ảnh Việt Nam và 200 ảnh Qwen chỉnh sửa | [VN100 · image-pairs/dev](https://huggingface.co/datasets/ndttoan/vn100-graph-editing/viewer/image-pairs/dev). Mỗi hàng gồm ảnh nguồn, câu lệnh và ảnh đích. [Nhãn và điểm E/P/G · default/dev](https://huggingface.co/datasets/ndttoan/vn100-graph-editing/viewer/default/dev) · [Data card](docs/LEVEL3_DATA_CARD.md). |
-| Tái lập một kết quả, kiểm tra checkpoint hoặc split | [Hướng dẫn tái lập](docs/REPRODUCE.md) · [Danh mục đầu vào ngoài Git của các demo CPU](submission/demo-assets.json). |
+| Tái lập một kết quả, kiểm tra checkpoint hoặc split | [Hướng dẫn tái lập](docs/REPRODUCE.md) · [Danh mục đầu vào ngoài Git của các demo CPU](submission/code/submission/demo-assets.json). |
 
 ## Bản đồ mã nguồn theo nhiệm vụ
 
@@ -30,9 +31,9 @@ Sau khi cài môi trường CPU và khôi phục bộ tệp `chair` theo [hướ
 
 Với yêu cầu *remove the chairs*, checkpoint dự đoán xóa nút ghế và cạnh nối ghế với quầy. Hai dòng cuối kiểm tra tập thao tác và đồ thị đích đều in `True`.
 
-## Cấu trúc bản nộp
+## Cấu trúc repo
 
 - `src/`, `experiments/`, `tools/`, `scripts/`, `configs/` chứa mô hình, mã xử lý dữ liệu, lệnh chạy và cấu hình thí nghiệm.
 - `notebooks/`, `reports/`, `reviews/`, `docs/` chứa demo, kết quả theo từng lượt, minh chứng kiểm tra dữ liệu và hướng dẫn.
-- `submission/` chứa môi trường demo, manifest để khôi phục artifact và nguồn của bộ dữ liệu phát hành.
-- `archived/` chứa bản đóng gói cũ và ghi chú lịch sử, có thể bỏ khỏi bản nộp. Một số module đang dùng có chữ `pilot` trong tên; hãy giữ chúng tại đường dẫn hiện tại.
+- `submission/` chứa bản mã nguồn để nộp, hai notebook, môi trường và tài liệu dữ liệu VN100.
+- `archived/` lưu các gói thực nghiệm cũ.

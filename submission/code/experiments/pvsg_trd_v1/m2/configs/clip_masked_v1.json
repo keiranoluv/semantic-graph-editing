@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "feature_id": "pvsg-clip-vitb32-masked-rgb-v1",
+  "model": "OpenAI CLIP ViT-B/32 visual encoder",
+  "model_source_commit": "d05afc436d78f1c48dc0dbf8e5980a9d471f35f6",
+  "checkpoint_sha256": "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af",
+  "checkpoint_url": "https://openaipublic.azureedge.net/clip/models/40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af/ViT-B-32.pt",
+  "torch_version": "2.9.1+cu128",
+  "image_size": 224,
+  "background_rgb": [
+    123,
+    117,
+    104
+  ],
+  "mean": [
+    0.48145466,
+    0.4578275,
+    0.40821073
+  ],
+  "std": [
+    0.26862954,
+    0.26130258,
+    0.27577711
+  ],
+  "crop": "mask bounding box with exclusive right/bottom pixel edges",
+  "resize": "Pillow BICUBIC short side 224 then center crop; floor resize and round crop offsets",
+  "dimension": 512,
+  "l2_normalized": true,
+  "storage_dtype": "float16",
+  "missing_rgb": "zero visual vector and explicit visual_available=false; retain mask geometry",
+  "timeline": "annotation/mask 5 FPS; align RGB using relative PTS; gaps stay absent; exclude extra unannotated RGB tail",
+  "seed": 17,
+  "training": false,
+  "augmentation": false
+}

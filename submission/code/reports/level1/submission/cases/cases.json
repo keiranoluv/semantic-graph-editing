@@ -1,0 +1,448 @@
+{
+  "protocol": "PredCls_reference_v1_iou50_image_macro_per_predicate_50",
+  "checkpoint": "runs/level1-clip-v1/clip-gat-seed42-v1/run_0001/best.pt",
+  "checkpoint_sha256": "79eebd6324c1581513e408866791c9a8caa46ab3c7d864bd6847b7132df216d8",
+  "model": "gat",
+  "seed": 42,
+  "split": "val",
+  "selection_seed": 2026,
+  "pool_size": 100,
+  "selection": "shuffle first 100 validation images; first GT annotation per category per image; stop at five each; no visual cherry-picking",
+  "scope": "illustrative validation cases; not a prevalence estimate; human review pending",
+  "cases": {
+    "hit": [
+      {
+        "case_id": "hit01",
+        "kind": "hit",
+        "validation_index": 38,
+        "image_id": "40",
+        "gt_annotation_row": 1,
+        "subject_node": 3,
+        "object_node": 0,
+        "subject_label": "chair",
+        "object_label": "table",
+        "gt_predicate": "near",
+        "same_pair_prediction": "near",
+        "same_pair_rank": 7,
+        "first_reference_match_rank": 7,
+        "reason": "matched_in_top50",
+        "subject_box": [
+          0.0,
+          292.578125,
+          212.890625,
+          763.671875
+        ],
+        "object_box": [
+          126.171875,
+          335.546875,
+          556.640625,
+          745.703125
+        ],
+        "annotation_size": [
+          560,
+          800
+        ],
+        "image_sha256": "368c2089c3795004aba755af951932cc05ebfcfe76a04a6f4bc9991539542656",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/40.jpg",
+        "image_path": "data/raw/vg150/images/40.jpg",
+        "panel": "hit01.png",
+        "human_review_status": "pending",
+        "human_reviewer": "",
+        "human_analysis": "",
+        "jpeg_size": [
+          560,
+          800
+        ]
+      },
+      {
+        "case_id": "hit02",
+        "kind": "hit",
+        "validation_index": 6,
+        "image_id": "7",
+        "gt_annotation_row": 0,
+        "subject_node": 10,
+        "object_node": 4,
+        "subject_label": "book",
+        "object_label": "desk",
+        "gt_predicate": "on",
+        "same_pair_prediction": "on",
+        "same_pair_rank": 4,
+        "first_reference_match_rank": 4,
+        "reason": "matched_in_top50",
+        "subject_box": [
+          704.6875,
+          531.25,
+          767.1875,
+          571.875
+        ],
+        "object_box": [
+          578.515625,
+          453.515625,
+          798.046875,
+          598.046875
+        ],
+        "annotation_size": [
+          800,
+          600
+        ],
+        "image_sha256": "d2c75cc6ce3413a928521ab198e9777b6a5edc59af8f8a9ad4d3488628fcd4de",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/7.jpg",
+        "image_path": "data/raw/vg150/images/7.jpg",
+        "panel": "hit02.png",
+        "human_review_status": "pending",
+        "human_reviewer": "",
+        "human_analysis": "",
+        "jpeg_size": [
+          800,
+          600
+        ]
+      },
+      {
+        "case_id": "hit03",
+        "kind": "hit",
+        "validation_index": 77,
+        "image_id": "89",
+        "gt_annotation_row": 0,
+        "subject_node": 13,
+        "object_node": 6,
+        "subject_label": "flower",
+        "object_label": "vase",
+        "gt_predicate": "in",
+        "same_pair_prediction": "in",
+        "same_pair_rank": 1,
+        "first_reference_match_rank": 1,
+        "reason": "matched_in_top50",
+        "subject_box": [
+          234.375,
+          126.5625,
+          337.5,
+          192.1875
+        ],
+        "object_box": [
+          255.46875,
+          176.5625,
+          294.53125,
+          228.125
+        ],
+        "annotation_size": [
+          800,
+          533
+        ],
+        "image_sha256": "a08839dbd34f3c2f70e899bfc8a02bd232ec38094450e34fea9638e0a52f4203",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K_2/89.jpg",
+        "image_path": "data/raw/vg150/images/89.jpg",
+        "panel": "hit03.png",
+        "human_review_status": "pending",
+        "human_reviewer": "",
+        "human_analysis": "",
+        "jpeg_size": [
+          800,
+          533
+        ]
+      },
+      {
+        "case_id": "hit04",
+        "kind": "hit",
+        "validation_index": 69,
+        "image_id": "81",
+        "gt_annotation_row": 2,
+        "subject_node": 3,
+        "object_node": 1,
+        "subject_label": "door",
+        "object_label": "cabinet",
+        "gt_predicate": "on",
+        "same_pair_prediction": "on",
+        "same_pair_rank": 36,
+        "first_reference_match_rank": 36,
+        "reason": "matched_in_top50",
+        "subject_box": [
+          0.0,
+          401.0,
+          71.0,
+          510.0
+        ],
+        "object_box": [
+          0.0,
+          349.0,
+          70.0,
+          510.0
+        ],
+        "annotation_size": [
+          352,
+          512
+        ],
+        "image_sha256": "558ce283ada14f8ba5c11c1fd56f7c159e45043d140933a4d1ea5c6e97aca4ee",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K_2/81.jpg",
+        "image_path": "data/raw/vg150/images/81.jpg",
+        "panel": "hit04.png",
+        "human_review_status": "pending",
+        "human_reviewer": "",
+        "human_analysis": "",
+        "jpeg_size": [
+          352,
+          512
+        ]
+      },
+      {
+        "case_id": "hit05",
+        "kind": "hit",
+        "validation_index": 2,
+        "image_id": "3",
+        "gt_annotation_row": 1,
+        "subject_node": 2,
+        "object_node": 0,
+        "subject_label": "bag",
+        "object_label": "table",
+        "gt_predicate": "on",
+        "same_pair_prediction": "on",
+        "same_pair_rank": 3,
+        "first_reference_match_rank": 3,
+        "reason": "matched_in_top50",
+        "subject_box": [
+          572.5,
+          272.5,
+          638.75,
+          402.5
+        ],
+        "object_box": [
+          128.75,
+          230.3125,
+          636.25,
+          474.6875
+        ],
+        "annotation_size": [
+          640,
+          480
+        ],
+        "image_sha256": "b083a54e04d40bbf85fc60dfcdf6b3461baeb465cf66cf2a4ae622be0c04392e",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/3.jpg",
+        "image_path": "data/raw/vg150/images/3.jpg",
+        "panel": "hit05.png",
+        "human_review_status": "pending",
+        "human_reviewer": "",
+        "human_analysis": "",
+        "jpeg_size": [
+          640,
+          480
+        ]
+      }
+    ],
+    "miss": [
+      {
+        "case_id": "miss01",
+        "kind": "miss",
+        "validation_index": 38,
+        "image_id": "40",
+        "gt_annotation_row": 0,
+        "subject_node": 0,
+        "object_node": 3,
+        "subject_label": "table",
+        "object_label": "chair",
+        "gt_predicate": "near",
+        "same_pair_prediction": "with",
+        "same_pair_rank": 48,
+        "first_reference_match_rank": null,
+        "reason": "no_matching_prediction",
+        "subject_box": [
+          126.171875,
+          335.546875,
+          556.640625,
+          745.703125
+        ],
+        "object_box": [
+          0.0,
+          292.578125,
+          212.890625,
+          763.671875
+        ],
+        "annotation_size": [
+          560,
+          800
+        ],
+        "image_sha256": "368c2089c3795004aba755af951932cc05ebfcfe76a04a6f4bc9991539542656",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/40.jpg",
+        "image_path": "data/raw/vg150/images/40.jpg",
+        "panel": "miss01.png",
+        "human_review_status": "pending",
+        "human_reviewer": "",
+        "human_analysis": "",
+        "jpeg_size": [
+          560,
+          800
+        ]
+      },
+      {
+        "case_id": "miss02",
+        "kind": "miss",
+        "validation_index": 6,
+        "image_id": "7",
+        "gt_annotation_row": 1,
+        "subject_node": 12,
+        "object_node": 11,
+        "subject_label": "lady",
+        "object_label": "hair",
+        "gt_predicate": "with",
+        "same_pair_prediction": "has",
+        "same_pair_rank": 12,
+        "first_reference_match_rank": null,
+        "reason": "no_matching_prediction",
+        "subject_box": [
+          4.296875,
+          314.84375,
+          148.828125,
+          583.59375
+        ],
+        "object_box": [
+          0.0,
+          312.5,
+          39.0625,
+          393.75
+        ],
+        "annotation_size": [
+          800,
+          600
+        ],
+        "image_sha256": "d2c75cc6ce3413a928521ab198e9777b6a5edc59af8f8a9ad4d3488628fcd4de",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/7.jpg",
+        "image_path": "data/raw/vg150/images/7.jpg",
+        "panel": "miss02.png",
+        "human_review_status": "pending",
+        "human_reviewer": "",
+        "human_analysis": "",
+        "jpeg_size": [
+          800,
+          600
+        ]
+      },
+      {
+        "case_id": "miss03",
+        "kind": "miss",
+        "validation_index": 77,
+        "image_id": "89",
+        "gt_annotation_row": 3,
+        "subject_node": 11,
+        "object_node": 14,
+        "subject_label": "shelf",
+        "object_label": "table",
+        "gt_predicate": "on",
+        "same_pair_prediction": "on",
+        "same_pair_rank": 64,
+        "first_reference_match_rank": 64,
+        "reason": "matching_prediction_below_top50",
+        "subject_box": [
+          229.6875,
+          214.453125,
+          304.6875,
+          237.109375
+        ],
+        "object_box": [
+          221.484375,
+          211.71875,
+          328.515625,
+          316.40625
+        ],
+        "annotation_size": [
+          800,
+          533
+        ],
+        "image_sha256": "a08839dbd34f3c2f70e899bfc8a02bd232ec38094450e34fea9638e0a52f4203",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K_2/89.jpg",
+        "image_path": "data/raw/vg150/images/89.jpg",
+        "panel": "miss03.png",
+        "human_review_status": "pending",
+        "human_reviewer": "",
+        "human_analysis": "",
+        "jpeg_size": [
+          800,
+          533
+        ]
+      },
+      {
+        "case_id": "miss04",
+        "kind": "miss",
+        "validation_index": 69,
+        "image_id": "81",
+        "gt_annotation_row": 0,
+        "subject_node": 14,
+        "object_node": 11,
+        "subject_label": "door",
+        "object_label": "cabinet",
+        "gt_predicate": "on",
+        "same_pair_prediction": "on",
+        "same_pair_rank": 61,
+        "first_reference_match_rank": 61,
+        "reason": "matching_prediction_below_top50",
+        "subject_box": [
+          213.0,
+          80.0,
+          228.0,
+          166.0
+        ],
+        "object_box": [
+          215.0,
+          83.0,
+          227.0,
+          167.0
+        ],
+        "annotation_size": [
+          352,
+          512
+        ],
+        "image_sha256": "558ce283ada14f8ba5c11c1fd56f7c159e45043d140933a4d1ea5c6e97aca4ee",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K_2/81.jpg",
+        "image_path": "data/raw/vg150/images/81.jpg",
+        "panel": "miss04.png",
+        "human_review_status": "pending",
+        "human_reviewer": "",
+        "human_analysis": "",
+        "jpeg_size": [
+          352,
+          512
+        ]
+      },
+      {
+        "case_id": "miss05",
+        "kind": "miss",
+        "validation_index": 2,
+        "image_id": "3",
+        "gt_annotation_row": 0,
+        "subject_node": 1,
+        "object_node": 3,
+        "subject_label": "girl",
+        "object_label": "hair",
+        "gt_predicate": "has",
+        "same_pair_prediction": "with",
+        "same_pair_rank": 5,
+        "first_reference_match_rank": null,
+        "reason": "no_matching_prediction",
+        "subject_box": [
+          523.4375,
+          93.4375,
+          636.5625,
+          231.5625
+        ],
+        "object_box": [
+          582.5,
+          96.5625,
+          638.75,
+          205.9375
+        ],
+        "annotation_size": [
+          640,
+          480
+        ],
+        "image_sha256": "b083a54e04d40bbf85fc60dfcdf6b3461baeb465cf66cf2a4ae622be0c04392e",
+        "image_url": "https://cs.stanford.edu/people/rak248/VG_100K/3.jpg",
+        "image_path": "data/raw/vg150/images/3.jpg",
+        "panel": "miss05.png",
+        "human_review_status": "pending",
+        "human_reviewer": "",
+        "human_analysis": "",
+        "jpeg_size": [
+          640,
+          480
+        ]
+      }
+    ]
+  }
+}

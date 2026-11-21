@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "kind": "gt_track_video",
+  "video_id": "synthetic_m0_only",
+  "source": "vidor",
+  "num_frames": 10,
+  "fps": 5,
+  "width": 100,
+  "height": 80,
+  "tracks": [
+    {
+      "track_id": 7,
+      "class_id": 0,
+      "is_thing": true,
+      "visible_intervals": [
+        [
+          0,
+          9
+        ]
+      ]
+    },
+    {
+      "track_id": 12,
+      "class_id": 115,
+      "is_thing": false,
+      "visible_intervals": [
+        [
+          0,
+          9
+        ]
+      ]
+    }
+  ],
+  "mask_reference": "synthetic://no-real-masks"
+}

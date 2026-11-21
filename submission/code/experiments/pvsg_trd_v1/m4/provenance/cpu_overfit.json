@@ -1,0 +1,179 @@
+{
+  "device": "cpu",
+  "precision": "fp32",
+  "fixture": "M3 synthetic video, frames 0--3 inclusive",
+  "seed": 17,
+  "hidden_dim": 128,
+  "steps": 200,
+  "dropout": 0.0,
+  "weight_decay": 0.0,
+  "models": {
+    "pvsg_conv_k5_l3": {
+      "passed": true,
+      "first": {
+        "loss": 0.6903643608093262,
+        "positive_bce": 0.672730286916097,
+        "negative_bce": 0.6904031271462913,
+        "positive_labels": 3,
+        "frame_precision": 0.004724409448818898,
+        "frame_recall": 1.0,
+        "frame_f1": 0.009404388714733543,
+        "active_fraction": 0.4641812865497076
+      },
+      "last": {
+        "loss": 1.7348450853660324e-07,
+        "positive_bce": 4.318719826793919e-05,
+        "negative_bce": 7.894886282337454e-08,
+        "positive_labels": 3,
+        "frame_precision": 1.0,
+        "frame_recall": 1.0,
+        "frame_f1": 1.0,
+        "active_fraction": 0.0021929824561403508
+      },
+      "steps": 200,
+      "seconds": 0.3982013549975818,
+      "video_id": "synthetic_m1",
+      "start": 0,
+      "stop": 4,
+      "dropout": 0.0,
+      "weight_decay": 0.0,
+      "note": "Memorization smoke check on one fit window; not validation/generalization",
+      "checkpoint_roundtrip_sha256": "0d7dd40174405dfbb1ae037406702abccf857a33ab72263f01a2df6980cd1f98",
+      "test_checkpoint_deleted": true
+    },
+    "mlp_conv_k3_l2": {
+      "passed": true,
+      "first": {
+        "loss": 0.6878658533096313,
+        "positive_bce": 0.6746878623962402,
+        "negative_bce": 0.6878947834392171,
+        "positive_labels": 3,
+        "frame_precision": 0.00482315112540193,
+        "frame_recall": 1.0,
+        "frame_f1": 0.0096,
+        "active_fraction": 0.4546783625730994
+      },
+      "last": {
+        "loss": 2.925962462541065e-06,
+        "positive_bce": 0.000606108612070481,
+        "negative_bce": 1.6002864628047734e-06,
+        "positive_labels": 3,
+        "frame_precision": 1.0,
+        "frame_recall": 1.0,
+        "frame_f1": 1.0,
+        "active_fraction": 0.0021929824561403508
+      },
+      "steps": 200,
+      "seconds": 0.33114256199041847,
+      "video_id": "synthetic_m1",
+      "start": 0,
+      "stop": 4,
+      "dropout": 0.0,
+      "weight_decay": 0.0,
+      "note": "Memorization smoke check on one fit window; not validation/generalization",
+      "checkpoint_roundtrip_sha256": "784e69796cb1b186d06a187fe2074f0ff7f58598e9e92df7d36d1cd4ba2e47f9",
+      "test_checkpoint_deleted": true
+    },
+    "st_no_spatial": {
+      "passed": true,
+      "first": {
+        "loss": 0.6897141933441162,
+        "positive_bce": 0.6212698618570963,
+        "negative_bce": 0.6898646763392857,
+        "positive_labels": 3,
+        "frame_precision": 0.004784688995215311,
+        "frame_recall": 1.0,
+        "frame_f1": 0.009523809523809525,
+        "active_fraction": 0.4583333333333333
+      },
+      "last": {
+        "loss": 0.00011752091813832521,
+        "positive_bce": 0.02022595703601837,
+        "negative_bce": 7.332655099722056e-05,
+        "positive_labels": 3,
+        "frame_precision": 1.0,
+        "frame_recall": 1.0,
+        "frame_f1": 1.0,
+        "active_fraction": 0.0021929824561403508
+      },
+      "steps": 200,
+      "seconds": 0.46908374699705746,
+      "video_id": "synthetic_m1",
+      "start": 0,
+      "stop": 4,
+      "dropout": 0.0,
+      "weight_decay": 0.0,
+      "note": "Memorization smoke check on one fit window; not validation/generalization",
+      "checkpoint_roundtrip_sha256": "395777dcd689dba5e465cd8508d0baabb21b33a7eb1dbf5f0a6cf5050686ef7f",
+      "test_checkpoint_deleted": true
+    },
+    "st_no_temporal": {
+      "passed": true,
+      "first": {
+        "loss": 0.6917579174041748,
+        "positive_bce": 0.6185495058695475,
+        "negative_bce": 0.6919188111692994,
+        "positive_labels": 3,
+        "frame_precision": 0.003215434083601286,
+        "frame_recall": 0.6666666666666666,
+        "frame_f1": 0.0064,
+        "active_fraction": 0.4546783625730994
+      },
+      "last": {
+        "loss": 2.0681671230704524e-05,
+        "positive_bce": 0.004102186610301335,
+        "negative_bce": 1.171133020421961e-05,
+        "positive_labels": 3,
+        "frame_precision": 1.0,
+        "frame_recall": 1.0,
+        "frame_f1": 1.0,
+        "active_fraction": 0.0021929824561403508
+      },
+      "steps": 200,
+      "seconds": 0.4651849039946683,
+      "video_id": "synthetic_m1",
+      "start": 0,
+      "stop": 4,
+      "dropout": 0.0,
+      "weight_decay": 0.0,
+      "note": "Memorization smoke check on one fit window; not validation/generalization",
+      "checkpoint_roundtrip_sha256": "623e3fc061007d5548e3e2ac3eb0cb8bf7b361b047ef78c614c8c160011552c0",
+      "test_checkpoint_deleted": true
+    },
+    "st_no_edges": {
+      "passed": true,
+      "first": {
+        "loss": 0.6900076866149902,
+        "positive_bce": 0.6241641839345297,
+        "negative_bce": 0.6901523687900641,
+        "positive_labels": 3,
+        "frame_precision": 0.0047694753577106515,
+        "frame_recall": 1.0,
+        "frame_f1": 0.00949367088607595,
+        "active_fraction": 0.4597953216374269
+      },
+      "last": {
+        "loss": 0.00016522436635568738,
+        "positive_bce": 0.031371881564458214,
+        "negative_bce": 9.663829873333048e-05,
+        "positive_labels": 3,
+        "frame_precision": 1.0,
+        "frame_recall": 1.0,
+        "frame_f1": 1.0,
+        "active_fraction": 0.0021929824561403508
+      },
+      "steps": 200,
+      "seconds": 0.46358882400090806,
+      "video_id": "synthetic_m1",
+      "start": 0,
+      "stop": 4,
+      "dropout": 0.0,
+      "weight_decay": 0.0,
+      "note": "Memorization smoke check on one fit window; not validation/generalization",
+      "checkpoint_roundtrip_sha256": "06a0acebf2415992e6ee0f68e61304178c58133e4aed162c2ec2ba4f78f46bab",
+      "test_checkpoint_deleted": true
+    }
+  },
+  "test_checkpoint_files_remaining": 0,
+  "note": "Memorization smoke checks only; not PVSG convergence or validation performance"
+}

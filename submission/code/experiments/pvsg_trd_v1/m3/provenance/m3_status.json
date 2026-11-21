@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "milestone": "M3",
+  "state": "code_CPU_ready_pending_GPU_profile_and_user_main_training",
+  "date_local": "2026-11-18",
+  "timezone": "Asia/Bangkok",
+  "parent_commit": "5482deff192d9c661e670463f2b53d5330b901f4",
+  "model_parameters": {
+    "mlp": 191801,
+    "static_gat": 192313,
+    "st_gat": 226873
+  },
+  "tests_passed": 132,
+  "GPU_profile_executed": false,
+  "main_training_executed": false,
+  "physical_batch_selected": false,
+  "effective_batch_windows": 32,
+  "physical_batch_candidates": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "window_frames": 64,
+  "max_epochs": 50,
+  "min_epochs": 10,
+  "early_stopping_patience": 10,
+  "runtime": {
+    "torch": "2.9.1+cu128",
+    "torch-geometric": "2.6.1",
+    "numpy": "2.1.0",
+    "wandb": "0.18.7",
+    "protobuf": "5.29.5",
+    "setuptools": "78.1.0"
+  },
+  "test_checkpoints_remaining": 0,
+  "mandatory_main_WandB": "online",
+  "automatic_queue_scope": "launch_train.sh explicitly runs MLP seeds17/42/2026 then StaticGAT seeds17/42/2026 then STGAT seeds17/42/2026; sequential, stop on failure",
+  "remaining": [
+    "Complete and verify all 400 M2 feature shards.",
+    "Run committed GPU profile; inspect reserved VRAM/throughput and real-window overfit.",
+    "Delete all GPU probe .pt artifacts (probe finally cleanup) and review concrete batch/accumulation results.",
+    "Only user launches nine main training runs with WandB after profile passes."
+  ],
+  "artifact_sha256": {
+    "README.md": "fdf4bdb03a71a6b8225a2cd3d00a4462664f479a7435cb43e18c1004438b8c97",
+    "__init__.py": "74ee64abe4cd88395e9ba65efd9de441720565d3695535a14682900b615ad6c1",
+    "common.py": "fb1b38eb1ba307f613359546ec705545edf19c1b847e77cadeb8aa3d1a7442f5",
+    "configs/baselines_v1.json": "d48d2fe2e639bf91f859e78c8bed1eff3ece268dfe30f4525e36162aa93ae70e",
+    "data.py": "283d6c701823559c85440d60362d5a00da2dc7aaf9ec77d5a1987549397c4e4a",
+    "decoding.py": "fabdca6c6d0f28e98574bdf1d0565b527d203410f7c865c34cf5152a91d7ac41",
+    "engine.py": "300cf6de7e2826d566f306ec097f9178b36fd69bbdd5ee9e2f0c235adf1c7ed2",
+    "launch_profile.sh": "6eeb97841777a711abf0d738836306059c510813301a4cfba7e7a2bab55e9f36",
+    "launch_train.sh": "d214a9e3d3b071079d696b4d982623ccfb2806a59c287ddbb88e06f7ca0f925f",
+    "models.py": "41be6042bbacb0d6d0fa170c372d19f1577d9c4c32758ac3c27da7d5ba87bc26",
+    "preflight.py": "e262792e7fc0610d134eb736b7c728b3b266e657463d5e37904a5774aa7053f8",
+    "probe.py": "6c7eab4a48ac8a8d822ce69514438d3fc107ecab7d9e3467372d9ee191d489f8",
+    "provenance/cpu_overfit.json": "3a2f25040f1b61231bdcc57a2d51830b7c156f39fa4bdc4daf32f8a9d58dc79e",
+    "provenance/cpu_real_window.json": "49c3d549abcc689e727928a79d61ae19b8b1ef4a24a9183178d4e882b2b1a160",
+    "provenance/environment.json": "09c8679b90d0b238a2dc8211a3317ce3a352fb730c48ec6ee7d6abde32fd821c",
+    "provenance/fit_statistics.json": "5fe21c249f09a72355787b881caf5d822c6f67fbd37af96f2845c1d59f2362bc",
+    "provenance/sources.json": "2ac8b736db3946da9fcb8efe00644389e03b44ae2c329ef5a023417195572e7f",
+    "provenance/verification.json": "b52b4cca25769695813cf370efcce66d051cb022be32ebd56f0228c6ec7c0969",
+    "requirements.txt": "797cd95fa122c9e9c13659a54f4d56e88e7af571f1df381ef367fd4d6f9aa1be",
+    "runner.py": "3178aea16c515b18882b0d46bc6791dc8343b04c4773403232806983f5df72ae",
+    "runtime.json": "9f4743a5c2a892145f8171042ad8f691168ebfd01a92d1c5a38d6c3f1fdac6f5",
+    "summarize.py": "a7473a632c0a4142947505eface3a7286243c0d74ac31043a5b0d436db5b06f7",
+    "test_m3.py": "010ea8b5467a64c19c793dfeb655fdd56e55c115b3a4cc777560a82d649f5f86",
+    "validation.py": "eae6f9ea206567696935b0cb12285fb70e21103f0bd10dfbfc6bb8cd5bb45219"
+  }
+}

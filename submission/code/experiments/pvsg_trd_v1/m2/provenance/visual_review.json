@@ -1,0 +1,68 @@
+{
+  "state": "reviewed",
+  "cohort": "12 deterministic train samples plus 7 header/mask length cases; no selection using relation labels",
+  "videos": 19,
+  "frames": 57,
+  "pages": [
+    {
+      "path": "provenance/overlays/contact_1.jpg",
+      "video_ids": [
+        "181a2c5e-5b2c-4436-ba8d-26c7d7db4bb8",
+        "43b0205a-4e3c-46a7-9d1c-c04ead730180",
+        "5c676dd6-d0d7-479d-b107-abf5857be8e0",
+        "6e0a6558-c212-4cab-b374-007671edb59c_1"
+      ]
+    },
+    {
+      "path": "provenance/overlays/contact_2.jpg",
+      "video_ids": [
+        "760a2d62-d580-4422-b32f-2c4fc9a35c7c_2",
+        "85f21d37-73c8-42e8-bdda-1ff89dd6eb15",
+        "92f8142a-25aa-444a-ae37-43fae4f95f18_1",
+        "d1d4a1b3-a651-4eb8-bb7f-8d66982854fa"
+      ]
+    },
+    {
+      "path": "provenance/overlays/contact_3.jpg",
+      "video_ids": [
+        "ec2e69c1-fd07-48ec-adff-0b2cf3ab25b6",
+        "eed8d8d7-6773-493b-af21-880f0acb063a",
+        "P06_14",
+        "P26_02"
+      ]
+    },
+    {
+      "path": "provenance/overlays/contact_4.jpg",
+      "video_ids": [
+        "P28_10",
+        "P28_21",
+        "1001_5247398775",
+        "1008_4294147314"
+      ]
+    },
+    {
+      "path": "provenance/overlays/contact_5.jpg",
+      "video_ids": [
+        "1019_3004044251",
+        "1020_6410117677",
+        "1023_4664554429"
+      ]
+    }
+  ],
+  "limitations": [
+    "First/middle/last frames only; not a complete semantic or segmentation quality audit."
+  ],
+  "reviewer": "assistant_visual_inspection",
+  "date_utc": "2026-11-18",
+  "observations": [
+    "Viewed all five final contact sheets: 19 video IDs, 57 first/middle/last frames, all three sources.",
+    "No obvious frame-wide RGB/mask displacement in the sampled frames with RGB; moving hands/people and scene objects remain aligned at the contact-sheet scale.",
+    "VidOR 1019_3004044251 frame 111 correctly displays a neutral background marked NO RGB; geometry is retained.",
+    "Ego4D ec2e69c1-fd07-48ec-adff-0b2cf3ab25b6 final RGB uses mask frame 414, consistent with PTS 82.8 seconds; absent frames 411-413 are not filled.",
+    "Coarse mask boundaries, occlusion and imperfect coverage remain upstream annotation quality limits; labels and relation semantics were not visually re-annotated."
+  ],
+  "pts_gap_comparison": {
+    "path": "provenance/overlays/pts_gap_tail_comparison.jpg",
+    "note": "Diagnostic rendered before the final PTS-aware audit: the same last RGB frame is paired with masks 410, 411, 414. The main contact sheets use the final timestamp mapping; low scene motion alone cannot prove temporal index correctness."
+  }
+}

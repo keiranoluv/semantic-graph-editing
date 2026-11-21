@@ -1,0 +1,13 @@
+{
+  "bike": "Representative motorcycle sense. Train examples also include bicycles (for example image 2396132); a single synset does not describe every instance.",
+  "building": "Images 1592671 and 2389149 have low-quality or weakly informative building boxes; other examples show building facades.",
+  "cap": "Representative headwear sense. Train examples also include a bottle cap (image 2399043), so a single synset does not describe every instance.",
+  "ear": "Five train boxes show visible outer ears; auricle.n.02 is a more specific alternative to the selected broad ear.n.01.",
+  "glass": "Reviewer chose the drinking-vessel sense as representative. Train examples include drinking glasses (2362080, 2398917), eyeglasses (2396412, 2407062), and a small glazed region (2388478).",
+  "orange": "Reviewer corrected color sense orange.n.02 to fruit sense orange.n.01. Most sampled boxes show whole or sliced oranges; image 2399904 is not a clear fruit instance.",
+  "screen": "The selected WordNet definition mentions cathode-ray tubes, while sample boxes also include phone and modern television screens; treat this as an approximate representative sense.",
+  "short": "Reviewer selected short pants. This noun synset was added to the review candidates with explicit WordNet 3.0 provenance.",
+  "stand": "Reviewer corrected stand.n.02 (a position) to base.n.08 (a physical support); samples include a TV stand, motorcycle kickstand, and microphone stand.",
+  "trunk": "Representative tree-trunk sense. Train image 2376992 shows an elephant trunk, so the class is polysemous.",
+  "wing": "Representative animal-wing sense. Train images 2386268 and 2388990 show airplane wings, so the class is polysemous."
+}

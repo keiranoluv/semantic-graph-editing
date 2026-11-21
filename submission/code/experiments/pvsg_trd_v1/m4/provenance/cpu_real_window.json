@@ -1,0 +1,86 @@
+{
+  "video_id": "0003_6141007489",
+  "frames": [
+    0,
+    7
+  ],
+  "nodes": 131,
+  "query_frames": 2016,
+  "models": {
+    "pvsg_conv_k5_l3": {
+      "parameters": 437945,
+      "diagnostics": {
+        "loss": 0.6902255415916443,
+        "positive_bce": 0.7260638475418091,
+        "negative_bce": 0.6902252337760102,
+        "positive_labels": 1,
+        "frame_precision": 0.0,
+        "frame_recall": 0.0,
+        "frame_f1": 0.0,
+        "active_fraction": 0.44492115431475615
+      },
+      "finite_gradients": true
+    },
+    "mlp_conv_k3_l2": {
+      "parameters": 290361,
+      "diagnostics": {
+        "loss": 0.6859427690505981,
+        "positive_bce": 0.6837096810340881,
+        "negative_bce": 0.6859428983873915,
+        "positive_labels": 1,
+        "frame_precision": 2.2585089324028278e-05,
+        "frame_recall": 1.0,
+        "frame_f1": 4.516915849857717e-05,
+        "active_fraction": 0.38532565182580847
+      },
+      "finite_gradients": true
+    },
+    "st_no_spatial": {
+      "parameters": 226873,
+      "diagnostics": {
+        "loss": 0.6982070207595825,
+        "positive_bce": 0.6882318258285522,
+        "negative_bce": 0.6982071642719765,
+        "positive_labels": 1,
+        "frame_precision": 1.780817038857428e-05,
+        "frame_recall": 1.0,
+        "frame_f1": 3.561570652657822e-05,
+        "active_fraction": 0.4886866014550771
+      },
+      "finite_gradients": true
+    },
+    "st_no_temporal": {
+      "parameters": 226873,
+      "diagnostics": {
+        "loss": 0.693635106086731,
+        "positive_bce": 0.7212085127830505,
+        "negative_bce": 0.6936348525329179,
+        "positive_labels": 1,
+        "frame_precision": 0.0,
+        "frame_recall": 0.0,
+        "frame_f1": 0.0,
+        "active_fraction": 0.4670257945486824
+      },
+      "finite_gradients": true
+    },
+    "st_no_edges": {
+      "parameters": 226873,
+      "diagnostics": {
+        "loss": 0.7117142081260681,
+        "positive_bce": 0.5153164863586426,
+        "negative_bce": 0.711715914826773,
+        "positive_labels": 1,
+        "frame_precision": 1.6010502889895773e-05,
+        "frame_recall": 1.0,
+        "frame_f1": 3.202049311559398e-05,
+        "active_fraction": 0.5435565843979532
+      },
+      "finite_gradients": true
+    }
+  },
+  "device": "cpu",
+  "optimizer_steps": 0,
+  "CUDA_initialized": false,
+  "checkpoint_files_created": 0,
+  "note": "Real cached fit window; one forward/backward per M4 model. No GPU or generalization claim."
+}

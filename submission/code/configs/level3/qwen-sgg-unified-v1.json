@@ -1,0 +1,35 @@
+{
+  "asset_lock_sha256": "ff8ff376ae51c319c90fb593ee3d0a2b88c2c58e9964d8c7c4ea4e2bbf32a522",
+  "automatic_next_run": false,
+  "backend": "official_REACT++_PSG_yolo12m_ONNX",
+  "batch_size": 1,
+  "default_max_new_images": 100,
+  "default_output": "runs/level3/qwen-sgg/seed42",
+  "expected_pairs": 200,
+  "expected_unique_images": 300,
+  "legacy_config_sha256": "74b03d2414d4835c738d6fcc1aa8ef5ea4892dd1ab17018aae6d60a62c06901a",
+  "legacy_receipt_sha256": "5fc2ef998c3e1c44575dad5e2532b2798615cc9b8c7836ea5d017b3cbf374edd",
+  "legacy_run": "runs/level3/qwen-react100-v1/seed42-v1",
+  "manifest": "configs/level3/qwen200-cohort-v1.json",
+  "manifest_sha256": "3abb396609aea1b981ee99f3cbb0c2237bd13a6882ec5e4f80351ecf76c29109",
+  "normalization": "EXIF_transpose_RGBA_composite_white_RGB_original_size",
+  "parent_sgg_config_sha256": "659eef181ade184d0172231b08ce731cfb52348fa3483f6d5e6215970128522b",
+  "pipeline_files_sha256": {
+    "src/editing/operations.py": "a4fb5a647eb0ff718015e77e1b56e9a3a925a316775f49888907faf95fa6fa44",
+    "tools/level3_image_graph_v1/core.py": "4e4219b998029017bdaa9477c5090e9ffb10c78c42efc20abd9b7c644b3484dc",
+    "tools/level3_qwen_graphs_v1/core.py": "02024e6140b79b9b0e299a67ba050d0a7c5c811f9687a938e038b8edee744b92",
+    "tools/level3_sgg_pretrained_v2/adapter.py": "954e6c8aac418c0e4c37b7dc9edb7cf93ab703b04b5003a2056ae7556dc6aeaa",
+    "tools/level3_sgg_pretrained_v2/backends.py": "f989f6212ba3ed19a70c6576578a0d8817182de419da463d29f38eb56cd09345"
+  },
+  "preprocess": "official_640_letterbox_BGR_to_RGB_CHW_float32_div255",
+  "qwen_index_sha256": "ba723eaf6536004b0ad020bfbfc220d42a0453dbd69af05bac697be0316ffbda",
+  "qwen_run": "runs/level3/qwen200/seed42",
+  "react": {
+    "box_threshold": 0.4,
+    "relation_threshold": 0.05
+  },
+  "schema": "qwen-sgg-unified-v1",
+  "seed": 42,
+  "training": false,
+  "wandb_project": "level3-qwen-sgg200"
+}

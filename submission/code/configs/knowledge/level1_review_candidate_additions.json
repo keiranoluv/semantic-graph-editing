@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "wordnet_version": "3.0",
+  "additions": [
+    {
+      "class_id": 113,
+      "label": "short",
+      "synset_id": "short_pants.n.01",
+      "reason": "Reviewer selected the clothing sense. The original lexical candidates for short contain only baseball and circuit senses."
+    }
+  ]
+}

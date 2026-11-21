@@ -1,0 +1,89 @@
+{
+  "experiment_id": "pvsg-gt-trd-m4-v1",
+  "models": [
+    "pvsg_conv_k5_l3",
+    "mlp_conv_k3_l2",
+    "st_no_spatial",
+    "st_no_temporal",
+    "st_no_edges"
+  ],
+  "seeds": [
+    17,
+    42,
+    2026
+  ],
+  "window_frames": 64,
+  "validation_stride": 32,
+  "windows_per_fit_video_per_epoch": 4,
+  "hidden_dim": 128,
+  "class_embedding_dim": 64,
+  "heads": 4,
+  "blocks": 2,
+  "dropout": 0.1,
+  "pair_chunk_size": 4096,
+  "effective_batch_windows": 32,
+  "profile_batch_candidates": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "profile_memory_fraction": 0.8,
+  "profile_warmup_steps": 1,
+  "profile_measured_steps": 3,
+  "precision": "bf16",
+  "loader_workers": 4,
+  "prefetch_factor": 2,
+  "worker_video_cache": 2,
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "gradient_clip_norm": 1.0,
+  "max_epochs": 50,
+  "min_epochs": 10,
+  "early_stopping_patience": 10,
+  "lr_plateau_patience": 3,
+  "lr_plateau_factor": 0.5,
+  "min_learning_rate": 1e-05,
+  "loss": "per_window_mean_masked_BCE_then_mean_over_effective_windows",
+  "pos_weight": 1.0,
+  "decoder_threshold": 0.5,
+  "selection": "validation_mR50_tIoU0.5_then_R50_then_earliest_epoch",
+  "wandb_project": "pvsg-trd-v1",
+  "wandb_mode": "online",
+  "dataset_cache": "data/external/pvsg_m2_cache_v4",
+  "feature_cache": "data/external/pvsg_clip_cache_v1",
+  "output_root": "reports/pvsg-trd-m4-v1",
+  "test_evaluation_in_training": false,
+  "knowledge_graph": false,
+  "variants": {
+    "pvsg_conv_k5_l3": {
+      "kernel_size": 5,
+      "temporal_layers": 3,
+      "receptive_field_frames": 13,
+      "role": "CVPR2023 temporal-Conv design adapted to GT-track CLIP and M3 head/loss"
+    },
+    "mlp_conv_k3_l2": {
+      "kernel_size": 3,
+      "temporal_layers": 2,
+      "receptive_field_frames": 5,
+      "role": "non-graph temporal control matching ST-GAT temporal radius"
+    },
+    "st_no_spatial": {
+      "remove_spatial": true,
+      "remove_temporal": false,
+      "role": "same parameters as M3 ST-GAT; temporal messages and self loops"
+    },
+    "st_no_temporal": {
+      "remove_spatial": false,
+      "remove_temporal": true,
+      "role": "same parameters as M3 ST-GAT; spatial messages and self loops"
+    },
+    "st_no_edges": {
+      "remove_spatial": true,
+      "remove_temporal": true,
+      "role": "same parameters as M3 ST-GAT; self loops only"
+    }
+  }
+}

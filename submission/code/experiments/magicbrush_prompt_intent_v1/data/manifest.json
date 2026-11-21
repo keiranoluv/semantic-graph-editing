@@ -1,0 +1,60 @@
+{
+  "cache_manifest_sha256": "d96328c42fecb0c415bacc4f82ed8ec1a101edcb2876e5bd6bc888dbb15091c8",
+  "counts": {
+    "test": {
+      "held": 10,
+      "kept": 59,
+      "operation_types": {
+        "add_edge": 17,
+        "add_node": 24,
+        "delete_edge": 14,
+        "delete_node": 12,
+        "replace_node": 35
+      },
+      "relabeled": 48
+    },
+    "train": {
+      "held": 61,
+      "kept": 240,
+      "operation_types": {
+        "add_edge": 73,
+        "add_node": 89,
+        "delete_edge": 40,
+        "delete_node": 33,
+        "replace_edge": 3,
+        "replace_node": 137
+      },
+      "relabeled": 205
+    },
+    "val": {
+      "held": 21,
+      "kept": 46,
+      "operation_types": {
+        "add_edge": 15,
+        "add_node": 17,
+        "delete_edge": 15,
+        "delete_node": 12,
+        "replace_node": 21
+      },
+      "relabeled": 43
+    }
+  },
+  "files": {
+    "test-01.jsonl": "012e568e2ac8a819b8233071dd80578a8399d430cdc12250339d7e29e0fc6bbe",
+    "test-02.jsonl": "6a0a357a943e596a12d5935adb18226f25eea431a2c3089e69e3cf30f63dd246",
+    "test-held.jsonl": "9816b33afab572382d2e1ec6e69ab524297c25bdff5192c6d463869a80c9b805",
+    "train-01.jsonl": "7fb9d2c3f9feced500a6167a0e717aa20d9d007b8d4f9afceb22a211b1e2a29b",
+    "train-02.jsonl": "198b3e0cadd4c867854e2bf03a30f3c2d5fd3b7032a2c664e9f4868e07848129",
+    "train-03.jsonl": "411f9d1c2ddc40d1ade677ebe41bc7b7f0a3611622050fcf159bcf4b84f0d809",
+    "train-04.jsonl": "6400b22224c7e5abdbe0e9262cebda13f9cfb340c026bfa9c8df68c661348b99",
+    "train-05.jsonl": "5366a6a7861227e75136fe9a45e7f1f0c5d5f7f92604f3d8dbe31b47f034fd20",
+    "train-held.jsonl": "4e28643d4bfae82e9e9847970742da946aa5917b605bcee8b439e40d70bd1da9",
+    "val-01.jsonl": "4ed08fe0d61d3e8071a0cb2e1432e0f469eda55b2d4296d531649fd86069c473",
+    "val-held.jsonl": "9c735a10e18c5ffa0f54d28872f92ae638d1603dd1a79e7fff274a42af769529"
+  },
+  "parent_config": "configs/level2/magicbrush-manual-experiment-v3.json",
+  "parent_config_sha256": "db91b13aa1abb6a5871833c3b81249428be21b5e399a7af5cc9f981e0e486e7d",
+  "pilot_sha256": "25511229e6435af3eac01a7c3e510668886c8e1718e8751808fae71535cbebd6",
+  "val20_sha256": "200edc6e514ef7388b50813765e4fdf63ce53a16d91f1d94d27f03efc4903609",
+  "version": "magicbrush-prompt-intent-v1"
+}

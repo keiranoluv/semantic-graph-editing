@@ -1,0 +1,15 @@
+dataset:
+  root: data/raw/vg150
+  split: train
+  annotation_format: null  # TODO: decide actual VG150 preprocessing variant
+  split_manifest: null      # TODO: standard, image-level split manifest
+
+graph:
+  connectivity: fully_connected_directed
+  self_loops: false
+  background_predicate_id: 0
+
+features:
+  geometry: true
+  semantic: false            # TODO: frozen/precomputed text embeddings
+  visual: false              # TODO: frozen/precomputed region features

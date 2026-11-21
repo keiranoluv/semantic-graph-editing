@@ -1,0 +1,111 @@
+{
+  "videos": 400,
+  "mask_frames": 149488,
+  "rgb_frames_decoded": 149484,
+  "visible_observations": 1512183,
+  "visible_observations_without_rgb": 49,
+  "max_visible_objects_per_frame": 38,
+  "max_annotated_objects_per_video": 70,
+  "ordered_covisible_pair_frame_observations": 16837384,
+  "annotated_tracks": 7596,
+  "annotated_tracks_never_visible": 0,
+  "raw_relation_rows": 4587,
+  "raw_interval_entries": 6035,
+  "adapted_unique_gt_tuples": 4384,
+  "adapted_covisible_interval_entries": 14242,
+  "rgb_missing_frames": {
+    "1019_3004044251": [
+      111
+    ],
+    "ec2e69c1-fd07-48ec-adff-0b2cf3ab25b6": [
+      411,
+      412,
+      413
+    ]
+  },
+  "header_vs_decoded_mismatches": [
+    {
+      "video_id": "1019_3004044251",
+      "header_frames": 111,
+      "decoded_frames": 111,
+      "mask_frames": 112
+    },
+    {
+      "video_id": "43b0205a-4e3c-46a7-9d1c-c04ead730180",
+      "header_frames": 980,
+      "decoded_frames": 937,
+      "mask_frames": 937
+    },
+    {
+      "video_id": "760a2d62-d580-4422-b32f-2c4fc9a35c7c_2",
+      "header_frames": 919,
+      "decoded_frames": 915,
+      "mask_frames": 915
+    },
+    {
+      "video_id": "85f21d37-73c8-42e8-bdda-1ff89dd6eb15",
+      "header_frames": 1055,
+      "decoded_frames": 1052,
+      "mask_frames": 1052
+    },
+    {
+      "video_id": "d1d4a1b3-a651-4eb8-bb7f-8d66982854fa",
+      "header_frames": 919,
+      "decoded_frames": 877,
+      "mask_frames": 877
+    },
+    {
+      "video_id": "ec2e69c1-fd07-48ec-adff-0b2cf3ab25b6",
+      "header_frames": 412,
+      "decoded_frames": 412,
+      "mask_frames": 415
+    },
+    {
+      "video_id": "eed8d8d7-6773-493b-af21-880f0acb063a",
+      "header_frames": 343,
+      "decoded_frames": 335,
+      "mask_frames": 335
+    }
+  ],
+  "unannotated_mask_regions": {
+    "0054_2971876369": {
+      "38": {
+        "frames": 15,
+        "pixels": 714884
+      }
+    },
+    "1005_8631926258": {
+      "33": {
+        "frames": 13,
+        "pixels": 1001874
+      }
+    },
+    "1008_6094765133": {
+      "10": {
+        "frames": 2,
+        "pixels": 217
+      }
+    },
+    "1014_5820886415": {
+      "10": {
+        "frames": 187,
+        "pixels": 486475
+      }
+    }
+  },
+  "storage": {
+    "archive_bytes": 10792485748,
+    "extracted_mp4_bytes": 8769795865,
+    "geometry_bytes": 46271744,
+    "cpu_cache_total_bytes": 58075473,
+    "clip_checkpoint_bytes": 353976522,
+    "planned_visual_feature_values_bytes": 1548475392,
+    "planned_visual_row_indices_and_availability_bytes": 25707111,
+    "visual_cache_actual_bytes": null
+  },
+  "audit_cpu_workers": 4,
+  "audit_wall_seconds": 484.4591632669908,
+  "gpu_throughput": null,
+  "gpu_peak_memory": null,
+  "no_training_run": true
+}

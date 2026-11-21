@@ -1,0 +1,10 @@
+# Full GQA v3 training stack. Linux x86_64, CPython 3.12, CUDA 12.8 wheels.
+torch @ https://download.pytorch.org/whl/cu128/torch-2.7.0%2Bcu128-cp312-cp312-manylinux_2_28_x86_64.whl
+torchvision @ https://download.pytorch.org/whl/cu128/torchvision-0.22.0%2Bcu128-cp312-cp312-manylinux_2_28_x86_64.whl
+torch-geometric==2.6.1
+wandb==0.18.7
+protobuf==5.29.6
+numpy==2.2.6
+h5py==3.13.0
+Pillow==11.2.1
+pytest

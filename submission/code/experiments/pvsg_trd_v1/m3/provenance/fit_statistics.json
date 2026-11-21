@@ -1,0 +1,10 @@
+{
+  "scope": "fit_only_full_frame_counts_not_window_sampler_weights",
+  "videos": 287,
+  "ordered_query_frames": 12162714,
+  "positive_labels": 395011,
+  "ignored_negative_labels": 11514,
+  "supervised_labels": 693263184,
+  "positive_fraction": 0.000569785052944626,
+  "loss_weights_changed": false
+}

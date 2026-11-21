@@ -1,0 +1,83 @@
+"""GT-track adaptations, NOT end-to-end PVSG benchmark reproductions.
+
+Conv design reference: Yang et al., CVPR 2023, section 5.2 (k=5, 3 layers).
+See provenance/sources.json and README for source version and changed heads.
+"""
+
+import torch
+from torch import nn
+
+from ..m3.models import RelationModel as M3RelationModel
+
+
+class EdgeAblation(M3RelationModel):
+    """Keep every ST-GAT parameter/self-loop; remove only message edges."""
+
+    def __init__(self, kind, cfg):
+        super().__init__("st_gat", cfg)
+        self.variant = kind
+
+    def encode(self, batch):
+        changed = dict(batch)
+        if self.variant in ("st_no_spatial", "st_no_edges"):
+            changed["spatial_edges"] = batch["spatial_edges"][:, :0]
+        if self.variant in ("st_no_temporal", "st_no_edges"):
+            changed["temporal_edges"] = batch["temporal_edges"][:, :0]
+            changed["temporal_delta_frames"] = batch["temporal_delta_frames"][:0]
+        return super().encode(changed)
+
+
+class PairTemporalConv(M3RelationModel):
+    """M3 MLP pair projection -> temporal Conv/ReLU -> shared 57-label head.
+
+    Convolve each contiguous co-visible pair segment independently. Re-mask the
+    padding after EVERY layer, so artificial padded activations cannot leak back
+    into real frames. Encoder outputs pair rows, compatible with M3's proxy-based
+    chunked loss/backward. Pair chunks never truncate the temporal receptive field."""
+
+    def __init__(self, kind, cfg):
+        super().__init__("mlp", cfg)
+        spec = cfg["variants"][kind]
+        h = cfg["hidden_dim"]
+        kernel, layers = spec["kernel_size"], spec["temporal_layers"]
+        self.receptive_field = 1 + layers * (kernel - 1)
+        self.pair_chunk_size = cfg["pair_chunk_size"]
+        self.convs = nn.ModuleList([nn.Conv1d(h, h, kernel, padding=kernel // 2) for _ in range(layers)])
+
+    def encode(self, batch):
+        nodes = super().encode(batch)
+        count = batch["query_edges"].shape[1]
+        if not count:
+            return nodes[:0]
+        rows = []
+        for low in range(0, count, self.pair_chunk_size):
+            high = low + self.pair_chunk_size
+            q = batch["query_edges"][:, low:high]
+            s, o = nodes[q[0]], nodes[q[1]]
+            pair = torch.cat((s, o, s * o, s - o, batch["pair_geometry"][low:high]), dim=1)
+            rows.append(self.head[1](self.head[0](pair)))
+        pairs = torch.cat(rows)
+        padded = torch.cat((pairs, pairs.new_zeros(1, pairs.shape[1])))
+        outputs = []
+        for width in batch["sequence_widths"]:
+            indices = batch[f"sequence_indices_{width}"]
+            valid = indices != count
+            x = padded[indices].transpose(1, 2)
+            mask = valid.unsqueeze(1).to(x.dtype)
+            for conv in self.convs:
+                x = torch.relu(conv(x)) * mask
+            outputs.append(x.transpose(1, 2)[valid])
+        return torch.cat(outputs)[batch["sequence_inverse"]]
+
+    def score(self, encoded, batch, low=0, high=None):
+        return self.head[3](self.head[2](encoded[low:high]))
+
+
+def RelationModel(kind, cfg):
+    if kind not in cfg["models"]:
+        raise ValueError(f"Unknown M4 model: {kind}")
+    if kind.startswith("st_no_"):
+        return EdgeAblation(kind, cfg)
+    if kind in ("pvsg_conv_k5_l3", "mlp_conv_k3_l2"):
+        return PairTemporalConv(kind, cfg)
+    raise ValueError(f"No implementation for M4 model: {kind}")

@@ -1,0 +1,10 @@
+{
+  "wandb": "0.18.7",
+  "protobuf": "5.29.5",
+  "setuptools": "78.1.0",
+  "offline_init_log_finish": "passed",
+  "online_auth_tested": false,
+  "gpu_initialized": false,
+  "legacy_and_M2_environment_changed": false,
+  "m3_environment": "data/external/pvsg_m3_env"
+}

@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "checked_date_local": "2026-11-18",
+  "timezone": "Asia/Bangkok",
+  "observed_manifest": "pvsg_author_release_338_62.lock.json",
+  "sources": [
+    {
+      "id": "hf_current_annotation",
+      "url": "https://huggingface.co/datasets/Jingkang/PVSG/resolve/7e5f1ec9fd8f323182e84d990819854bb72da478/pvsg.json",
+      "path": "data/external/pvsg_m0/pvsg.hf_7e5f1ec.json",
+      "sha256": "2cbc23b060386ccf090475f90cb0282a3e96cefb29c69772f9f8fd916995ba08",
+      "bytes": 3884637,
+      "top_keys": [
+        "objects",
+        "relations",
+        "split",
+        "data"
+      ],
+      "split_counts": {
+        "vidor": {
+          "train": 249,
+          "val": 40
+        },
+        "epic_kitchen": {
+          "train": 44,
+          "val": 11
+        },
+        "ego4d": {
+          "train": 45,
+          "val": 11
+        }
+      },
+      "video_count": 400,
+      "object_class_counts": {
+        "thing": 115,
+        "stuff": 11
+      },
+      "predicate_count": 57,
+      "video_keys": [
+        "video_id",
+        "meta",
+        "objects",
+        "relations",
+        "captions",
+        "qa_pairs",
+        "summary"
+      ],
+      "object_keys": [
+        "object_id",
+        "category",
+        "is_thing",
+        "status"
+      ],
+      "revision": "7e5f1ec9fd8f323182e84d990819854bb72da478",
+      "observed_split_totals": {
+        "train": 338,
+        "heldout": 62
+      },
+      "split_ids_sha256": "7437cadd922c9b81236700cad48b46e7bdf3e247d61fd6d0876ae77b04fdf65a",
+      "total_frames_from_meta": 149488
+    },
+    {
+      "id": "hf_2023_11_23_annotation",
+      "revision": "d9fcf1c31f3b04fb64cb8f80b417d81c95f25802",
+      "url": "https://huggingface.co/datasets/Jingkang/PVSG/resolve/d9fcf1c31f3b04fb64cb8f80b417d81c95f25802/pvsg.json",
+      "path": "data/external/pvsg_m0/pvsg.hf_d9fcf1c.json",
+      "sha256": "27765a3f89051816d94be0170626b3f3e6449a177224b5c9a6dd181f0b4d269c",
+      "bytes": 3884627,
+      "video_count": 400,
+      "split_counts": {
+        "vidor": {
+          "train": 249,
+          "val": 40
+        },
+        "epic_kitchen": {
+          "train": 44,
+          "val": 11
+        },
+        "ego4d": {
+          "train": 45,
+          "val": 11
+        }
+      },
+      "same_split_lists_as_selected": true,
+      "same_vocab_as_selected": true
+    },
+    {
+      "id": "hf_2023_11_29_annotation",
+      "revision": "4bb0362c2b4fef283defc6d0f60b83cc6371f3c0",
+      "url": "https://huggingface.co/datasets/Jingkang/PVSG/resolve/4bb0362c2b4fef283defc6d0f60b83cc6371f3c0/pvsg.json",
+      "path": "data/external/pvsg_m0/pvsg.hf_4bb0362.json",
+      "sha256": "2cbc23b060386ccf090475f90cb0282a3e96cefb29c69772f9f8fd916995ba08",
+      "bytes": 3884637,
+      "video_count": 400,
+      "split_counts": {
+        "vidor": {
+          "train": 249,
+          "val": 40
+        },
+        "epic_kitchen": {
+          "train": 44,
+          "val": 11
+        },
+        "ego4d": {
+          "train": 45,
+          "val": 11
+        }
+      },
+      "same_split_lists_as_selected": true,
+      "same_vocab_as_selected": true
+    },
+    {
+      "id": "cvf_camera_ready_paper",
+      "url": "https://openaccess.thecvf.com/content/CVPR2023/papers/Yang_Panoptic_Video_Scene_Graph_Generation_CVPR_2023_paper.pdf",
+      "sha256": "3599a256b42b9ed8dd6230ca843961637ad775469e2199331c8025f4e12af337",
+      "location": "Section 6, pages 6-7",
+      "reported_split": {
+        "train": 360,
+        "test": 40
+      },
+      "matching_split_ids_found": false
+    },
+    {
+      "id": "author_release_paper",
+      "url": "https://jingkangyang.com/PVSG/static/pdfs/pvsg.pdf",
+      "sha256": "83cec9a0dea15145002854ec6f1e897180e5a10f189d2bd72899939837bf50cb",
+      "location": "Section 6, page 7",
+      "reported_split": {
+        "train": 338,
+        "test": 62
+      }
+    },
+    {
+      "id": "openpvsg_loader",
+      "url": "https://github.com/LilyDaytoy/OpenPVSG/blob/b2850b980c272368215a754299986cb904d55820/datasets/datasets/pvsg_relation.py",
+      "commit": "b2850b980c272368215a754299986cb904d55820",
+      "finding": "Reads source-specific train/val lists and thing+stuff vocabulary in annotation order."
+    },
+    {
+      "id": "openpvsg_evaluator",
+      "url": "https://github.com/LilyDaytoy/OpenPVSG/blob/b2850b980c272368215a754299986cb904d55820/utils/rel_metrics.py",
+      "commit": "b2850b980c272368215a754299986cb904d55820",
+      "finding": "Full calculate_viou is not the strict temporal-set IoU adopted by this experiment."
+    }
+  ],
+  "hf_history_api": "https://huggingface.co/api/datasets/Jingkang/PVSG/commits/main",
+  "hf_history": [
+    {
+      "revision": "7e5f1ec9fd8f323182e84d990819854bb72da478",
+      "date": "2023-11-29T17:52:11.000Z",
+      "title": "Update README.md"
+    },
+    {
+      "revision": "3556aae938b2cf91e6e92594989a41f25c02f723",
+      "date": "2023-11-29T06:04:20.000Z",
+      "title": "Upload 6 files"
+    },
+    {
+      "revision": "4d221e99d646bcec36736705124f87f3ead8ffb8",
+      "date": "2023-11-29T03:25:10.000Z",
+      "title": "Update README.md"
+    },
+    {
+      "revision": "4bb0362c2b4fef283defc6d0f60b83cc6371f3c0",
+      "date": "2023-11-29T03:18:53.000Z",
+      "title": "Upload pvsg.json"
+    },
+    {
+      "revision": "d9fcf1c31f3b04fb64cb8f80b417d81c95f25802",
+      "date": "2023-11-23T13:24:19.000Z",
+      "title": "Upload pvsg.json"
+    },
+    {
+      "revision": "782623f96876fe916cd457f138e1939564369c8b",
+      "date": "2023-11-23T13:07:42.000Z",
+      "title": "initial commit"
+    }
+  ],
+  "scope": {
+    "media_archives_downloaded": false,
+    "checkpoints_downloaded": false,
+    "gpu_workloads_run": false,
+    "raw_annotations_committed": false,
+    "heldout_relation_statistics_used": false
+  },
+  "search_limits": [
+    "No verified 360/40 ID manifest was located in the inspected sources. This is not proof that it never existed.",
+    "Legacy SharePoint access required sign-in in the previous research check.",
+    "No author was contacted."
+  ]
+}
