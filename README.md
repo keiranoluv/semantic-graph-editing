@@ -6,6 +6,8 @@ VG150 scene graph learning, external knowledge exploration and planned controlla
 
 **Level 3:** [One pipeline, two independent commands](docs/LEVEL3_PIPELINE.md): Qwen-Image-2.1 creates 200 edited images from 100 source images; REACT++ produces 300 scene graphs from the same run. Both steps resume their own completed artifacts. The current run is complete; use the same new `RUN_ID` for both commands to reproduce it. See the [cleanup record](docs/LEVEL3_CLEANUP.md) for retained artifacts and retired pilot code.
 
+Open the [live graph editing notebook](notebooks/graph_editing_live_demo.ipynb) in the project environment with `myenv/bin/jupyter-lab notebooks/graph_editing_live_demo.ipynb`. It runs the selected MagicBrush GNN on CPU and recomputes graph consistency for the independently edited Qwen image using the local experiment artifacts.
+
 - [Level 1 progress and collaboration rules](docs/LEVEL1_PROGRESS.md)
 - [Model guide: inputs, outputs, scoring examples and purpose of every experiment](docs/LEVEL1_MODEL_GUIDE.md)
 - [Long-tail analysis: train-defined head/body/tail for all 54 checkpoints](reports/level1/long-tail-reference-v1/analysis.md)
