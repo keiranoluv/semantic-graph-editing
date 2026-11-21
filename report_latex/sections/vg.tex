@@ -95,8 +95,9 @@ bằng thông tin từ các đối tượng khác trước khi ghép cặp.}
 $10^{-2}$, effective batch size 512 ảnh, tối đa 200 epoch và early stopping với
 patience 15. Mỗi cặp dương được lấy kèm tối đa ba cặp nền. Vì hàm mất mát
 nhận một nhãn đích, bộ lấy mẫu bỏ qua các cặp có nhiều nhãn quan hệ khác nhau
-khi train. Bộ chấm vẫn giữ các chú thích này. Nhóm đánh giá 54 checkpoint, tương ứng 18 cấu hình, mỗi cấu hình chạy với ba seed
-42, 123 và 3407.
+khi train. Bộ chấm vẫn giữ các chú thích này. Thực nghiệm gốc gồm 54 checkpoint thuộc 18 cấu hình, mỗi cấu hình chạy với ba seed
+42, 123 và 3407. Nhóm đánh giá thêm sáu checkpoint cho đối chứng pair fusion
+(3 seed $\times$ 2 hoán vị ConceptNet), nâng tổng số lên 60.
 
 \subsection{Phân bố predicate, adjusted loss và KG fusion}
 \begin{figure}[!ht]
@@ -218,7 +219,7 @@ Thay đổi lớn nhất trong nhóm đối chứng này đến từ điều ch�
 \textit{(4) Nội dung tri thức trong fusion.} Với pair fusion, KG thật đạt 25,24\% mR@50,
 cao hơn ba hoán vị theo thứ tự trong Bảng~\ref{tab:vgscore} lần lượt
 0,24, 0,43 và 0,32 điểm phần trăm. Mức tăng phụ thuộc seed.
-ở seed 123, KG thật thấp hơn hoán vị gốc 0,82 điểm và gần như ngang
+Ở seed 123, KG thật thấp hơn hoán vị gốc 0,82 điểm và gần như ngang
 hoán vị 20261026. Ba so sánh dùng lại cùng checkpoint KG thật ở mỗi seed.
 Hai hoán vị bổ sung được chấm trên tập test đã dùng ở thí nghiệm gốc.
 Với visual fusion, hoán vị gốc đạt mR@50 cao hơn KG thật.

@@ -54,8 +54,9 @@ kiểm tra tay. Trên 59 cặp test, GNN học từ chênh lệch đồ thị đ
 Nhóm mở rộng thực nghiệm bằng cách kiểm chứng cơ chế phản hồi
 prototype của AlignG (ICML 2026) trên GQA và dự đoán quan hệ theo thời gian
 trên video PVSG. Khó khăn chính trên MagicBrush là ghép cùng một đối tượng
-giữa hai ảnh và xác định thay đổi nào do câu lệnh yêu cầu. Thử nghiệm trên phần crowdsourced của bộ dữ liệu do
-He và cộng sự~\cite{he2020sgmod} công bố cho thấy mô hình học tốt thao tác xóa khi có sẵn đồ thị nguồn và đích.
+giữa hai ảnh và xác định thay đổi nào do câu lệnh yêu cầu. Trên phần crowdsourced của bộ dữ liệu do He và cộng sự~\cite{he2020sgmod} công bố,
+GNN nhận đồ thị nguồn và câu lệnh để dự đoán thao tác. Trên tập test, F1 đạt
+97,76\% cho xóa đỉnh và 97,64\% cho xóa cạnh.
 Trên VN100, đồ thị thiếu thuộc tính màu nên bộ chấm chưa đánh giá được
 các yêu cầu đổi màu. Bộ chấm cũng chưa dùng trực tiếp
 các thao tác do mô hình chỉnh sửa đồ thị dự đoán.
