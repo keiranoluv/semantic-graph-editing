@@ -25,13 +25,23 @@ predicate rồi lấy trung bình đều trên 310 lớp. Hai lớp trái/phải
 $2/310$ trọng số của mR@$K$. Có 15 lớp vắng trong test được tính recall bằng 0.
 
 \begin{figure}[!ht]\centering
-\includegraphics[width=\columnwidth]{gqa-train-predicates.pdf}
+\includegraphics[width=.92\columnwidth]{gqa-train-predicates.pdf}
 \caption{Phân bố 3.541.725 chú thích quan hệ trên GQA train. Mỗi điểm
 ứng với một trong 310 predicate, xếp theo tần suất giảm dần. Trục tung dùng
 thang log. Hai lớp đầu có 1.578.919 chú thích mỗi lớp. Vùng tô ở đuôi
 gồm 42 lớp có dưới 20 chú thích.}
 \label{fig:gqa-train-predicates}
 \end{figure}
+
+\begin{figure*}[!t]\centering
+\includegraphics[width=.98\textwidth]{gqa-penet-aligng.pdf}
+\caption{PE-Net và nhánh AlignG trên ảnh GQA validation 1056. Đường trên
+mã hóa cặp có hướng và so khớp với prototype toàn cục. Khi bật AlignG,
+các cặp trong cùng ảnh góp thông tin để cập nhật prototype bằng GRU.
+Attention ngược dùng các prototype theo ảnh để hiệu chỉnh vector cặp
+trước phép so khớp cosine. PE-PLPR và PE-PLPR + AlignG (seed 42) đều cho Pred là \textit{wearing} ở hạng 7, khớp với GT. \gtpredlegend}
+\label{fig:gqa-penet-aligng}
+\end{figure*}
 
 \subsubsection{Baseline và điều chỉnh đầu vào của PE-Net}
 Nhóm dùng MLP trên cặp đối tượng làm baseline phi đồ thị, GAT để thêm
@@ -47,12 +57,10 @@ Nhóm điều chỉnh đầu vào để dùng đặc trưng CLIP ViT-B/32 đã t
 Mỗi đối tượng được biểu diễn bằng 512 giá trị CLIP của vùng ảnh và năm giá trị
 hình học chuẩn hóa (tọa độ tâm, chiều rộng, chiều cao và diện tích của box).
 PE-Net gốc lấy đặc trưng từ vùng bao cả hai đối tượng (\textit{union box}).
-Trong triển khai của nhóm, một MLP nhận hai vector 517 chiều ghép theo thứ tự
-subject rồi object và tạo vector 256 chiều cho cặp. Mô hình khởi tạo
-embedding tên lớp bằng GloVe và chấm điểm từng predicate bằng cosine
-similarity giữa biểu diễn cặp và prototype. PE-Net gốc báo cáo trên Visual
-Genome và Open Images. Các điểm dưới đây dùng đặc trưng, vocabulary và
-split riêng của GQA trong đồ án.
+Nhóm ghép hai vector 517 chiều theo thứ tự subject--object rồi dùng MLP tạo
+vector cặp 256 chiều. Mô hình khởi tạo embedding tên lớp bằng GloVe và chấm
+điểm bằng cosine giữa vector cặp và prototype. PE-Net gốc được đánh giá trên
+Visual Genome và Open Images. Với GQA, nhóm dùng đặc trưng, từ vựng và tập chia riêng.
 
 Ba cấu hình dùng cùng cách biểu diễn để tách tác dụng của loss.
 \textit{PE-CE} học bằng cross-entropy. Khi một cặp có nhiều predicate
@@ -62,16 +70,6 @@ khuyến khích biểu diễn cặp gần prototype đúng hơn các prototype �
 \textit{PE-PLPR} thêm Prototype Regularization để tách các prototype
 của các lớp khác nhau. Đường trên của Hình~\ref{fig:gqa-penet-aligng}
 minh họa cách PE-Net chấm điểm cặp \textit{person--jeans}.
-
-\begin{figure*}[!t]\centering
-\includegraphics[width=.98\textwidth]{gqa-penet-aligng.pdf}
-\caption{PE-Net và nhánh AlignG trên ảnh GQA validation 1056. Đường trên
-mã hóa cặp có hướng và so khớp với prototype toàn cục. Khi bật AlignG,
-các cặp trong cùng ảnh góp thông tin để cập nhật prototype bằng GRU.
-Attention ngược dùng các prototype theo ảnh để hiệu chỉnh vector cặp
-trước phép so khớp cosine. PE-PLPR và PE-PLPR + AlignG (seed 42) đều cho Pred là \textit{wearing} ở hạng 7, khớp với GT. \gtpredlegend}
-\label{fig:gqa-penet-aligng}
-\end{figure*}
 
 \begin{table*}[!t]\centering\small
 \caption{PredCls trên GQA test của đồ án (10.696 ảnh). Điểm tính theo \%,
@@ -100,7 +98,6 @@ recall ở top-50 trung bình trên hai lớp trái/phải đạt 86,51\%, còn 
 trên 308 lớp còn lại chỉ đạt 2,86\% (trung bình ba seed, giữ các lớp vắng
 trong test theo cùng quy ước).
 
-\FloatBarrier
 \subsubsection{Mở rộng theo công trình năm 2026 --- Prototype feedback với AlignG}
 \textit{Nếu cho prototype của mỗi predicate thích nghi với ngữ cảnh của
 từng ảnh, mean Recall có tăng so với cùng mô hình PE-Net hay không?}
