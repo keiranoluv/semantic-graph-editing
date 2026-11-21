@@ -12,13 +12,6 @@ Xóa xe bên trái, giữ cụm xe bên phải và mặt tiền. Một số chi 
 Xóa ghế vàng & Ghế vàng vẫn còn trong ảnh đích. &
 Xóa ghế vàng nhưng xóa luôn ghế xanh bên cạnh.\\
 \bottomrule\end{tabularx}
-\par\medskip
-\includegraphics[width=.98\linewidth]{nv3-editor-pilot.pdf}
-\par\smallskip
-{\footnotesize Ảnh minh họa từ Vietnamese Sidewalk Violation VQA.
-Trên sáu yêu cầu chỉnh sửa được chấm tay, Qwen thực hiện đúng 6/6 yêu cầu và đạt cả hai
-tiêu chí ở 5/6 ca. Ở hàng cuối, Qwen xóa cả ghế xanh nên không đạt tiêu chí
-bảo toàn nội dung. InstructPix2Pix đạt 0/6 ở từng tiêu chí.}
 \end{table}
 
 \begin{table}[H]\centering\small
@@ -36,6 +29,14 @@ Cũng ở ảnh này, mô hình nối người với chiếc ghế gần ngườ
 REACT++ PSG (YOLO12m) & 5/5 ảnh có đồ thị đọc được &
 Đồ thị gọn, dễ kiểm tra từng cạnh. Có trường hợp gán \textit{sitting on} cho sai chiếc ghế. Đồ thị đầu ra thiếu thuộc tính màu.\\
 \bottomrule\end{tabularx}\end{table}
+
+\begin{figure}[H]\centering
+\includegraphics[width=.80\linewidth]{nv3-editor-pilot.pdf}
+\caption{Ảnh minh họa cho Bảng~\ref{tab:task3-editor-pilot} từ Vietnamese Sidewalk Violation VQA.
+Trên sáu yêu cầu chỉnh sửa được chấm tay, Qwen thực hiện đúng 6/6 yêu cầu và đạt cả hai
+tiêu chí ở 5/6 ca. Ở hàng cuối, Qwen xóa cả ghế xanh nên không đạt tiêu chí
+bảo toàn nội dung. InstructPix2Pix đạt 0/6 ở từng tiêu chí.}
+\end{figure}
 
 \subsubsection{Thiết lập chấm điểm và khoảng tin cậy}\leavevmode\par\nobreak
 \begin{table}[H]\centering\small
