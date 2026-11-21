@@ -13,7 +13,7 @@ b/.style={draw=inkblue,fill=mutedblue,rounded corners,align=center,text width=31
 \draw[->] (score)--(eval);\draw[->] (human)--(eval);
 \end{tikzpicture}
 \caption{Người duyệt chấm mức thực hiện yêu cầu (\textit{fulfillment}) và bảo toàn nội dung (\textit{preservation}).
-Nhãn tay chỉ đi vào bước đánh giá tương quan. Bộ chấm dùng thông tin định vị đối tượng trong yêu cầu chỉnh sửa đã chuẩn bị trước, chưa dùng thao tác do Task B dự đoán.}
+Nhãn tay dùng để đánh giá các bộ chấm. Bộ chấm đồ thị dùng thông tin đối tượng và vùng ảnh do trợ lý xác định trước từ câu lệnh, ảnh và đồ thị nguồn. Các thao tác dự đoán ở Task B chưa được dùng trong bước này.}
 \end{figure*}
 
 \begin{figure*}[!t]\centering
@@ -40,9 +40,7 @@ Nhóm đã chạy RelTR + CLIP trên 30 ảnh nguồn. Từ đó, nhóm dùng c�
 (3 ảnh vỉa hè, 2 ảnh du lịch) để xem bounding box và quan hệ có hướng của
 bốn phương án ở Bảng~\ref{tab:task3-extractor-pilot} (mục~\ref{app:nv3} của phụ lục). Nhóm chọn
 REACT++~\cite{reactplusplus} vì khi đối chiếu đồ thị với ảnh, nhóm có thể xác định
-từng instance qua bounding box và kiểm tra các quan hệ có hướng. Trên các mẫu
-đã duyệt, kết quả đủ tin cậy để phân tích từng ca, dù đôi khi quan hệ
-\textit{sitting on} trỏ nhầm ghế. Đây là đánh giá định tính trên mẫu.
+từng instance qua bounding box và kiểm tra các quan hệ có hướng. Ở một ảnh trong pilot, quan hệ \textit{sitting on} trỏ nhầm ghế. Năm ảnh này chỉ được đối chiếu định tính; nhóm chưa đo độ chính xác của bộ trích trên đồ thị chuẩn.
 REACT++ xuất nhãn đối tượng và predicate, nhưng thiếu thuộc tính màu trên đỉnh.
 Vì vậy, nhóm đưa yêu cầu đổi màu vào bộ đánh giá để kiểm tra giới hạn này.
 
@@ -64,7 +62,7 @@ Hai nhãn tay dưới mỗi yêu cầu lần lượt là thực hiện yêu cầ
 \label{fig:nv3-real-cases}
 \end{figure*}
 
-Trong 100 yêu cầu bổ sung, nhóm chọn trước 10 yêu cầu chỉnh sửa màu
+Sau khi đã xem kết quả của 100 yêu cầu đầu, nhóm bổ sung 100 yêu cầu trên cùng các ảnh nguồn. Trong lượt bổ sung, nhóm chọn trước 10 yêu cầu chỉnh sửa màu
 (5 ảnh vỉa hè và 5 ảnh du lịch) để kiểm tra giới hạn biểu diễn của REACT++.
 Chẳng hạn, yêu cầu số 109 đề nghị Qwen đổi chiếc ghế nhựa vàng trước cửa hàng
 sang màu xanh dương và giữ nguyên phần còn lại. Dù Qwen đổi màu đúng, đỉnh
@@ -137,8 +135,10 @@ $[-0{,}3179;\,0{,}2659]$. Cả hai khoảng chênh lệch đều chứa 0.}\labe
 
 Trên cùng 91 cặp, $J$ có tương quan quan sát cao nhất với nhãn đạt cả hai tiêu chí ($\rho=0{,}2628$), tiếp theo là $-\mathrm{LPIPS}$ (0,1962), $G$ (0,1767) và CLIPScore (0,0561). Các thanh ngang ở Hình~\ref{fig:nv3-corr} biểu diễn khoảng tin cậy cho từng hệ số. Để so sánh hai bộ chấm, nhóm tính chênh lệch $\rho$ trong cùng mỗi lượt bootstrap theo ảnh nguồn. Cả ba khoảng 95\% cho chênh lệch giữa $J$ và từng đối chứng đều chứa 0 (Bảng~\ref{tab:corr}), nên chưa đủ bằng chứng kết luận Qwen3-VL xếp hạng tốt hơn.
 
-CLIPScore dùng CLIP ViT-B/32 và $2,5\max(\cos(I_t,q),0)$ với text prefix
-của pipeline~\cite{hessel2021clipscore}. LPIPS AlexNet đo khoảng cách ảnh
+CLIPScore~\cite{hessel2021clipscore} dùng CLIP ViT-B/32 để so ảnh đích $I_t$
+với mô tả tiếng Anh $c$ của ảnh mong muốn. Trợ lý soạn mô tả từ yêu cầu và
+ngữ cảnh nguồn. Bộ chấm thêm tiền tố \textit{A photo depicts} vào $c$, rồi
+tính $2{,}5\max(\cos(v_{I_t},v_c),0)$ từ hai vector ảnh và văn bản. LPIPS AlexNet đo khoảng cách ảnh
 nguồn--đích~\cite{zhang2018lpips}; lấy dấu âm để điểm cao tương ứng gần nguồn.
 LPIPS có thể thưởng cho giữ nguyên ảnh dù chưa làm đúng yêu cầu.
 Riêng $E$ tương quan 0,2008 với nhãn thực hiện yêu cầu ($N=162$);
@@ -186,11 +186,12 @@ Với mỗi cặp, nhóm lấy chênh lệch lớn hơn giữa hai phép đối 
 ($G$ với CLIPScore, $G$ với $-\mathrm{LPIPS}$), tính theo trị tuyệt đối.
 Mười cặp có chênh lệch lớn nhất đều là yêu cầu thêm đối tượng.
 Hình~\ref{fig:nv3-real-cases} minh họa ba ca trong số đó.
-Hai tiêu chí duyệt tay được xét riêng để xác định bất đồng liên quan đến
-việc thực hiện yêu cầu hay việc bảo toàn nội dung còn lại của ảnh.
+Sau khi chấm điểm, trợ lý đối chiếu ảnh, đồ thị và thứ hạng của mười ca này.
+Các nhận xét về nguyên nhân bất đồng là diễn giải định tính. Người duyệt cung cấp
+nhãn thực hiện yêu cầu và bảo toàn nội dung.
 
 \begin{itemize}
-\item \textbf{Ca 58 -- thuyền nằm ngoài vùng crop.} Người duyệt thấy thuyền buồm mới ở mép trái và đánh giá đạt cả hai tiêu chí. REACT++ phát hiện thêm một \textit{boat}, $G=1$. CLIPScore ở phân vị 3,3. Vùng crop giữa ảnh loại thuyền mới khỏi đầu vào của CLIP. Khi giữ toàn khung và thêm viền (letterbox), CLIPScore của ca này giảm từ 0,589 xuống 0,565.
+\item \textbf{Ca 58 -- thuyền nằm ngoài vùng crop.} Thuyền buồm mới xuất hiện ở mép trái. Người duyệt đánh giá đạt cả hai tiêu chí. REACT++ phát hiện thêm một \textit{boat}, $G=1$. CLIPScore ở phân vị 3,3. Vùng crop giữa ảnh loại thuyền mới khỏi đầu vào của CLIP. Khi giữ toàn khung và thêm viền (letterbox), CLIPScore của ca này giảm từ 0,589 xuống 0,565.
 \item \textbf{Ca 168 -- thêm đúng mèo, đổi cả nền.} REACT++ phát hiện \textit{cat} đúng vùng. Các đỉnh và cạnh dùng để chấm bảo toàn vẫn khớp nên $G=1$. Trên ảnh, chi tiết gốc cây và nền đất đã đổi. Người duyệt đánh trượt tiêu chí bảo toàn, còn $-\mathrm{LPIPS}$ ở phân vị 11,1, phù hợp với mức thay đổi nhìn thấy giữa hai ảnh.
 \item \textbf{Ca 178 -- chim bị nhận thành người.} Chim xuất hiện trên tảng đá theo yêu cầu, người duyệt cho đạt cả hai tiêu chí. REACT++ gán nhãn \textit{person} tại vùng chim nên $G=0$. Chỉ số $-\mathrm{LPIPS}$ ở phân vị 90,0, phản ánh phần lớn ảnh được giữ nguyên.
 \end{itemize}

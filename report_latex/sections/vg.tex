@@ -52,7 +52,7 @@ trong $K$ hạng đầu. Các bộ ba GT còn lại được tính là \textit{M
 của mỗi ảnh, rồi lấy trung bình qua ảnh. \textbf{mR@K} tính recall theo ảnh
 cho từng loại quan hệ có mặt, rồi lấy trung bình trên 50 lớp. Vì vậy, một
 lượt tìm thấy quan hệ hiếm có thể ít ảnh hưởng đến R@50 nhưng có ý nghĩa khi
-xét mR@50. Toàn bộ bảng định lượng dùng cùng bộ chấm \textit{reference-v1}
+xét mR@50. Các bảng kết quả VG150 trong phần chính dùng bộ chấm \textit{reference-v1}
 trên test. Nhóm chấm lại các checkpoint đã chọn bằng validation. Tập test
 này đã từng được đánh giá bằng bộ chấm trước đó. Theo đề bài, nhóm báo cáo cả $K=50$ và $K=100$.
 
@@ -118,7 +118,7 @@ này, nhóm so sánh cross-entropy (CE) với \textit{logit-adjusted loss} theo 
 Ở đây $z$ là vector điểm trước softmax, $y$ là nhãn đích và $\pi$ là phân bố
 lớp ước lượng từ train theo quy tắc lấy mẫu, có cộng một vào số đếm mỗi lớp.
 Vì $\log\pi$ âm hơn với lớp hiếm, mô hình phải học điểm $z$ cao hơn cho lớp
-đó để dự đoán đúng khi train. Khi suy luận, nhóm xếp hạng từ điểm $z$ gốc.
+đó để dự đoán đúng khi train. Khi suy luận, nhóm lấy softmax của $z$ gốc rồi xếp hạng theo xác suất predicate.
 
 \textbf{Node-level KG embedding.} Nhóm liên kết nhãn đối tượng với khái niệm trong
 WordNet hoặc ConceptNet~\cite{miller1995wordnet,speer2017conceptnet}. Với nhãn

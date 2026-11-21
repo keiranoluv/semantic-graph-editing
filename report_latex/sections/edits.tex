@@ -75,10 +75,10 @@ yêu cầu thêm bóng bay. Mô hình thêm vịt và nối nó với đỉnh h�
 \end{figure*}
 
 Nhóm lấy ngẫu nhiên 20 cặp từ 345 cặp, không hoàn lại (seed 20261119).
-Người duyệt xem hai ảnh, câu lệnh, đồ thị nguồn và toàn bộ thao tác đích.
+Phiếu kiểm tra hiển thị hai ảnh, câu lệnh, đồ thị nguồn và các thao tác đích.
 Một cặp đạt khi các thao tác tác động đúng thực thể, thực hiện đủ yêu cầu
-và bảo toàn nội dung ngoài yêu cầu. Người duyệt chấp nhận \textbf{20/20 cặp
-(100\%)}. Tỷ lệ này mô tả mức chấp nhận của một người trên mẫu kiểm tra tay.
+và bảo toàn nội dung ngoài yêu cầu. Theo xác nhận chung của người duyệt được ghi lại cho từng ID, \textbf{20/20 cặp
+(100\%)} đạt tiêu chí. Tỷ lệ này mô tả mức chấp nhận của một người trên mẫu kiểm tra tay.
 Cả 345 nhãn cũng vượt kiểm tra tự động về khả năng áp dụng thao tác lên đồ
 thị nguồn, bao gồm kiểm tra hai đầu mút của mỗi cạnh.
 
@@ -187,7 +187,7 @@ Ban đầu, ảnh phải có người đàn ông đội mũ đen. Sau khi sửa 
 Nhóm dùng 29.868 mẫu train, 532 validation và 530 test. Từ 1.000 mẫu test
 chính thức, nhóm loại 468 mẫu trùng đồ thị nguồn với train hoặc validation,
 cùng hai mẫu có ghép cặp thực thể mơ hồ. Việc chia tập dựa trên đồ thị nguồn;
-metadata hiện có chưa đủ để kiểm chứng tính độc lập theo ảnh gốc.
+metadata hiện có chưa đủ để kiểm chứng tính độc lập theo ảnh gốc. Cùng 530 mẫu test này đã được chấm trong lượt thực nghiệm trước.
 Mỗi mô hình chạy với ba seed 42, 43, 44 và chọn checkpoint theo loss trên
 validation.
 
@@ -223,7 +223,7 @@ của truyền thông tin qua cạnh.
 Trong Hình~\ref{fig:emnlp-gnn-operations}, GNN đạt F1 97,76\% cho xóa đỉnh và 97,64\% cho xóa cạnh.
 Hai loại này chiếm 1.091 trong 1.533 thao tác chuẩn, nên ảnh hưởng lớn đến
 micro-F1 ở Bảng~\ref{tab:emnlp}. Thay đỉnh chỉ đạt 27,38\% trên 121 thao
-tác. Cả sáu thao tác thay cạnh trong test đều bị dự đoán sai.
+tác. Không có thao tác thay cạnh nào khớp trong sáu thao tác chuẩn trên test. Bộ chấm biểu diễn mỗi liên kết vô hướng bằng hai cung, nên số thao tác cạnh được đếm theo cung.
 Micro-F1 82,44\% đo khả năng dự đoán thao tác trên đồ thị truy vấn,
 với kết quả cao nhất ở phép xóa. Việc xác định nhãn thao tác từ hai ảnh
 trước và sau chỉnh sửa được khảo sát riêng trong thực nghiệm MagicBrush.

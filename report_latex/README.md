@@ -90,6 +90,18 @@ Chạy [notebook PVSG](../notebooks/pvsg_report_figures.ipynb) trên CPU với P
 | REACT++ trên MagicBrush | [20 cặp](../reports/level2/magicbrush-react-pilot20-v1/cohort.json), [đối chiếu từng cặp](../reports/level2/magicbrush-react-pilot20-v1/sg-assessment.md), [kết quả ghép và thao tác](../reports/level2/magicbrush-react-pilot20-v1/pairs.json) |
 | Giải mã và học thuộc | [v1](../reports/level2/magicbrush-manual-experiment-v1/failure-audit.json), [v2](../reports/level2/magicbrush-manual-experiment-v2/result-audit.json), [16 mẫu đầy đủ](../reports/level2/magicbrush-overfit16-v1/result-audit.json), [16 mẫu rút gọn](../reports/level2/magicbrush-compact-overfit16-v1/result-audit.json) |
 | Chọn thực thể và nhãn thao tác | [Nhãn rút gọn](../reports/level2/magicbrush-compact-pilot-v1/result-audit.json), [liên kết từ](../reports/level2/magicbrush-lexical-pilot-v1/RESULTS.md), [sao chép tên](../reports/level2/magicbrush-easy-copy-v1/RESULTS.md), [pilot 14 mẫu](../reports/level2/magicbrush-prompt-pilot-v1/pilot.json) |
-| EMNLP | [Ablation trên validation](../reports/level2/emnlp2020-task-b-gpu-v3/README.md), [baseline và đối chiếu v3/v4 trên test](../reports/level2/emnlp2020-task-b-wandb-v4-test-v1/README.md) |
+| EMNLP | [Ablation trên validation](../reports/level2/emnlp2020-task-b-gpu-v3/README.md), [baseline và kết quả test](../reports/level2/emnlp2020-task-b-wandb-v4-test-v1/README.md) |
 | VG150 và ConceptNet | [GC/NG](../reports/level1/reference-comparison/comparison.md), [relation fusion](../docs/experiments/level1_fusion_v1.md), [TransE và RotatE](../docs/knowledge/rotate_conceptnet_workflow.md), [ComplEx](../docs/knowledge/complex_conceptnet_workflow.md) |
 | Pilot GQA | [MLP và GAT](../reports/level2/GQA_PILOT.md), [PE-Net](../reports/level2/PENET_PILOT.md) |
+
+## Kiểm tra các bảng kết quả chính
+
+| Bảng hoặc hình trong báo cáo | Dữ liệu dùng để đối chiếu |
+|---|---|
+| VG150 test | Tổng hợp theo cấu hình và ba seed từ từng tệp `*-test26446.json` trong [ma trận gốc](../reports/level1/reference-test27-v1), [loss và fusion](../reports/level1/reference-loss-fusion-test27-v1) và [hai hoán vị bổ sung](../reports/level1/vg150-pair-permutations-v1). |
+| GQA test | Đọc `metrics.gc` của từng `<model>/<seed>/result.json` trong [chín cấu hình](../reports/level2/gqa-test-v1) và [GAT với adjusted loss](../reports/level2/gqa-gat-loss-test-v1). |
+| MagicBrush và dữ liệu của He và cộng sự | Lấy trung bình chỉ số từng seed từ trường `per_seed` của [MagicBrush](../reports/level2/magicbrush-prompt-intent-test-v1/summary.json) và trường `runs` của [bộ crowdsourced](../reports/level2/emnlp2020-task-b-wandb-v4-test-v1/metrics.json). Điểm truy xuất nằm ở trường `baselines`. [Phiếu kiểm tay MagicBrush](../experiments/magicbrush_prompt_intent_v1/review20-result.json) ghi nguồn xác nhận. |
+| VN100 | Trong workspace có kết quả chạy, lọc các dòng có điểm đồ thị trong `runs/level3/mllm-judge-v1/seed42/report/results.csv`, rồi tính Spearman của từng cột điểm với `overall_pass`. [Mã tính CLIPScore](../tools/level3_evaluation/metrics.py) và [nguồn caption, thông tin định vị](../configs/level3/evaluation200-authoring-v1.json) xác định đầu vào. |
+| PVSG | Dùng kết quả từng seed trong [baseline](../reports/pvsg-trd-m5-v1/baseline), thay đúng bảy cặp mô hình/seed có bản [min50](../reports/pvsg-trd-m5-v1/min50), lấy R và mR ở tIoU 0,5, K=50. [Bảng đối chiếu hai quy tắc dừng](../reports/pvsg-trd-m5-v1/combined_min50.md). |
+
+Các bảng ghi trung bình và độ lệch chuẩn qua seed dùng độ lệch chuẩn mẫu. Với VG150 và GQA, đổi recall từ tỷ lệ sang phần trăm trước khi trình bày. Kết quả từng seed của PVSG đã dùng thang phần trăm.
