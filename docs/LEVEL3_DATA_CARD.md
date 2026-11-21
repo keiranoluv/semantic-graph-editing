@@ -62,6 +62,20 @@ Toàn bộ 200 cặp là bộ đánh giá phát triển; không có tuyên bố 
 
 Bộ này phù hợp cho demo/đánh giá Task 3 và phân tích lỗi. Nó chưa đại diện mọi bối cảnh Việt Nam hoặc mọi loại edit. Độ phủ G chỉ 91/200; 10 yêu cầu màu nằm ngoài biểu diễn. Không có graph GT, nên chưa có object/relation precision, recall, F1 chuẩn của SGG trên bộ này.
 
+## Đọc một mẫu VN100
+
+Đơn vị đánh giá là một yêu cầu (`task_id`). Dùng `image_id` để nối hai yêu cầu với cùng ảnh nguồn. Với mẫu `travel-a4fe5a686b0396-q200-2`, ảnh nguồn thuộc VietTravelVQA-v2; câu lệnh tiếng Anh yêu cầu thêm chó trên đá ở tiền cảnh cạnh hồ. Ảnh đích là kết quả Qwen. Hai đồ thị nguồn/đích là dự đoán REACT++. Hai nhãn tay về chỉnh sửa và bảo toàn đều đạt. Bộ chấm ghi E = 1 và G ≈ 0,829. Giá trị G trống ở các mẫu thiếu bằng chứng cần được giữ là null khi xuất bảng.
+
+## Phạm vi đề xuất cho Hugging Face
+
+VN100 là tập chỉnh sửa dẫn xuất. Hai bộ VQA cung cấp ảnh nguồn; phần nhóm xây dựng gồm việc chọn ảnh, soạn yêu cầu, chạy chỉnh sửa và trích đồ thị, thu nhãn đánh giá và tính điểm. Ngôn ngữ câu lệnh là tiếng Anh; bối cảnh ảnh là Việt Nam.
+
+Bản manifest khóa ghi `local_evaluation_only: true` và `per_image_rights_verified: false` cho cả 200 yêu cầu trên 100 ảnh. Đây là trạng thái xác minh của nhóm. Khi chuẩn bị bản công khai, cần lưu nguồn ghi công, điều kiện sử dụng và phạm vi tái phân phối của từng ảnh được chọn, kể cả việc phát hành ảnh sau chỉnh sửa. Với VietTravelVQA, liên kết tệp tại revision đã khóa giúp tìm lại ảnh trong bộ VQA; thông tin tác giả và giấy phép ảnh Commons gốc là các trường riêng. [Manifest 200 yêu cầu](../configs/level3/qwen200-cohort-v1.json) · [Nguồn gốc VietTravelVQA](https://data.mendeley.com/datasets/fvxtpnh8mh/2)
+
+Đề xuất bản đầu trên Hub gồm data card và một bảng metadata 200 dòng do nhóm xuất từ manifest và kết quả đã khóa. Mỗi dòng nên có `task_id`, `image_id`, nguồn và URL ảnh tại revision, hash ảnh nguồn, câu lệnh, loại thao tác, hai nhãn tay, điểm E/P/G cùng lý do G trống. Giữ provenance về nhãn trống đã chuẩn hóa. Loại đường dẫn máy cá nhân khi xuất. Bảng dùng một tập đánh giá phát triển; tránh tự tạo split train/test từ 200 dòng.
+
+Khi có bằng chứng ghi công và quyền phân phối tương ứng, có thể bổ sung ảnh và các sản phẩm dẫn xuất vào phiên bản sau, kèm danh sách tệp, checksum và điều kiện sử dụng theo thành phần. Trên Hub, data card đặt ở `README.md` tại gốc dataset repo. [Hướng dẫn dataset card của Hugging Face](https://huggingface.co/docs/hub/datasets-cards)
+
 ## Nội dung gói và truy xuất
 
 `portable-manifest.json` cung cấp 100 nguồn, 200 case, 300 prediction và đường dẫn tương đối. `BACKUP_INDEX.json` ghi SHA256/kích thước từng thành viên archive và commit code. Gói có ảnh nguyên bản, ảnh editor dùng, ảnh đích, graph/native output, instruction, nhãn raw/final, điểm/receipts, HTML phân tích, code đã commit, notebook và tài liệu. Tên/thư mục lịch sử được giữ để bảo toàn hash; đó không phải các cohort riêng.
