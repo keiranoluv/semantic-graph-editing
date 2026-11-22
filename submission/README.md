@@ -69,3 +69,7 @@ Chọn kernel của môi trường vừa cài. Với notebook tổng hợp, thay
 [environments/](environments) có môi trường riêng cho demo CPU, huấn luyện đồ thị, Qwen, REACT++, chấm ảnh và PVSG. Từng nhiệm vụ có hướng dẫn ngắn về dữ liệu và lệnh chạy.
 
 [Danh mục xuất xứ](assets/source_origins.json) liên kết mã đã tổ chức lại với mã gốc. [Manifest bản nộp](assets/refactor_manifest.json) kiểm tra mã hiện tại. Cấu hình, nhãn và receipt lịch sử giữ thông tin của lượt đã tạo checkpoint. Huấn luyện bằng bản refactor ghi nhận hash mới. Các lượt train trong bản clone ghi Git revision. Bản chép độc lập ghi hash manifest mã nguồn.
+
+## Công cụ AI sử dụng:
+- Codex: Sử dụng để viết mã nguồn (học viên đã kiểm chứng).
+- ChatGPT: Soạn nội dung slide, báo cáo (học viên đã kiểm chứng).
