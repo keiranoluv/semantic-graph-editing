@@ -2,6 +2,16 @@
 
 Mã nguồn gồm ba nhiệm vụ và phần mở rộng video. [Notebook tổng hợp](notebooks/project_submission_demo.ipynb) có ảnh và kết quả đã lưu. [Notebook demo trực tiếp](notebooks/graph_editing_live_demo.ipynb) chạy GNN trên ba yêu cầu chỉnh sửa.
 
+## Thành viên
+
+| Mã học viên | Họ và tên |
+|---|---|
+| 24C15002 | Hồ Thanh Bình |
+| 24C15026 | Dương Thuỷ Tiên |
+| 25C15039 | Bùi Mạnh Hùng |
+| 25C15046 | Nguyễn Đăng Khoa |
+| 25C15062 | Nguyễn Đăng Thới Toàn |
+
 ## Mã nguồn theo nhiệm vụ
 
 | Nhiệm vụ | Tiền xử lý và split | Mô hình | Huấn luyện | Đánh giá và suy luận |

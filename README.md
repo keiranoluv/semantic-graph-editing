@@ -10,6 +10,16 @@
 | Xem 100 ảnh Việt Nam và 200 ảnh Qwen chỉnh sửa | [VN100 · image-pairs/dev](https://huggingface.co/datasets/ndttoan/vn100-graph-editing/viewer/image-pairs/dev). Mỗi hàng gồm ảnh nguồn, câu lệnh và ảnh đích. [Nhãn và điểm E/P/G · default/dev](https://huggingface.co/datasets/ndttoan/vn100-graph-editing/viewer/default/dev) · [Data card](docs/LEVEL3_DATA_CARD.md). |
 | Tái lập một kết quả, kiểm tra checkpoint hoặc split | [Hướng dẫn tái lập](docs/REPRODUCE.md) · [Danh mục đầu vào ngoài Git của các demo CPU](submission/assets/demo-assets.json). |
 
+## Thành viên
+
+| Mã học viên | Họ và tên |
+|---|---|
+| 24C15002 | Hồ Thanh Bình |
+| 24C15026 | Dương Thuỷ Tiên |
+| 25C15039 | Bùi Mạnh Hùng |
+| 25C15046 | Nguyễn Đăng Khoa |
+| 25C15062 | Nguyễn Đăng Thới Toàn |
+
 ## Bản đồ mã nguồn theo nhiệm vụ
 
 | Nhiệm vụ | Dữ liệu và phép kiểm | Mã nguồn | Kết quả |
