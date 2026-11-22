@@ -70,6 +70,17 @@ Chọn kernel của môi trường vừa cài. Với notebook tổng hợp, thay
 
 [Danh mục xuất xứ](assets/source_origins.json) liên kết mã đã tổ chức lại với mã gốc. [Manifest bản nộp](assets/refactor_manifest.json) kiểm tra mã hiện tại. Cấu hình, nhãn và receipt lịch sử giữ thông tin của lượt đã tạo checkpoint. Huấn luyện bằng bản refactor ghi nhận hash mới. Các lượt train trong bản clone ghi Git revision. Bản chép độc lập ghi hash manifest mã nguồn.
 
+## Phân chia công việc
+
+| Thành viên | Phân công công việc |
+| :--- | :--- |
+| **Nguyễn Đăng Thới Toàn, Nguyễn Đăng Khoa, Dương Thuỷ Tiên, Hồ Thanh Bình** | **Cấp độ 1:** Nghiên cứu và xây dựng các mô hình dự đoán quan hệ MLP, GAT; tích hợp tri thức nền WordNet/ConceptNet; hỗ trợ xử lý dữ liệu, kiểm thử và đánh giá kết quả thực nghiệm. |
+| **Nguyễn Đăng Thới Toàn, Bùi Mạnh Hùng, Nguyễn Đăng Khoa** | **Cấp độ 2:** Nghiên cứu và tái lập các phương pháp mới; xây dựng bộ dữ liệu chỉnh sửa đồ thị, triển khai và đánh giá mô hình dự đoán thao tác biến đổi đồ thị. |
+| **Hồ Thanh Bình, Nguyễn Đăng Thới Toàn, Bùi Mạnh Hùng, Dương Thuỷ Tiên** | **Cấp độ 3:** Nghiên cứu và xây dựng quy trình đánh giá tính nhất quán ngữ nghĩa; chuẩn bị dữ liệu đánh giá, kiểm thử các phương pháp so khớp đồ thị và phân tích kết quả chỉnh sửa ảnh. |
+| **Cả nhóm** | **Mở rộng:** Cùng tìm hiểu, thảo luận và đề xuất các hướng cải tiến, mở rộng bài toán sang video. |
+| **Cả nhóm** | **Báo cáo và hoàn thiện đồ án:** Tổng hợp kết quả, viết và rà soát báo cáo, chuẩn bị slide, demo và nội dung bảo vệ. |
+
+
 ## Công cụ AI sử dụng:
 - Codex: Sử dụng để viết mã nguồn (học viên đã kiểm chứng).
 - ChatGPT: Soạn nội dung slide, báo cáo (học viên đã kiểm chứng).
