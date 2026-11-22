@@ -34,10 +34,12 @@ Dùng Linux và Python 3.12, chạy từ thư mục chứa README này.
     python3.12 -m venv .venv
     .venv/bin/pip install --index-url https://download.pytorch.org/whl/cpu torch==2.9.1 torchvision==0.24.1
     .venv/bin/pip install -r environments/demo-cpu.txt
-    .venv/bin/python -m common.restore_assets chair --from-dir /duong/dan/artifacts
+    .venv/bin/pip install huggingface_hub
+    .venv/bin/hf download ndttoan/GraphML_Artifacts --repo-type dataset --local-dir artifacts
+    .venv/bin/python -m common.restore_assets chair --from-dir artifacts
     .venv/bin/python -m task2_graph_editing.magicbrush.demo
 
-Thư mục artifacts có data/, runs/, hoặc nội dung đã giải nén từ chair-assets.tar. Ca xóa ghế cần 7 tệp, khoảng 357 MiB, gồm CLIP và checkpoint GNN seed 123. Hai dòng kiểm tra thao tác và đồ thị đích phải in True. [Đường dẫn, dung lượng và SHA-256](assets/demo-assets.json)
+Thư mục tương đối `artifacts/` chứa `data/` và `runs/` tải từ [GraphML_Artifacts](https://huggingface.co/datasets/ndttoan/GraphML_Artifacts). Ca xóa ghế cần 7 tệp, khoảng 357 MiB, gồm CLIP và checkpoint GNN seed 123. Hai dòng kiểm tra thao tác và đồ thị đích phải in True. [Đường dẫn, dung lượng và SHA-256](assets/demo-assets.json)
 
 Hai notebook đã lưu output, nên có thể mở xem mà không khôi phục artifact. Để chạy lại các ô, chọn bộ tương ứng:
 
@@ -51,10 +53,15 @@ Bộ overview chứa kho ảnh GQA khoảng 20,32 GiB. Bộ live đủ cho noteb
 
 Ví dụ chạy notebook demo trực tiếp:
 
-    .venv/bin/python -m common.restore_assets live --from-dir /duong/dan/artifacts
+    .venv/bin/python -m common.restore_assets live --from-dir artifacts
     .venv/bin/jupyter lab notebooks
 
 Chọn kernel của môi trường vừa cài. Với notebook tổng hợp, thay live bằng overview. Notebook tổng hợp hiển thị 5 Hit và 5 Miss trên validation của mỗi bộ VG150/GQA, kết quả He, demo GNN MagicBrush và sáu ca VN100.
+
+## Artifact demo và theo dõi thực nghiệm
+
+- [GraphML_Artifacts trên Hugging Face](https://huggingface.co/datasets/ndttoan/GraphML_Artifacts): gói công khai 412 MiB để chạy lại [notebook demo trực tiếp](notebooks/graph_editing_live_demo.ipynb). Gói gồm các checkpoint và cache cần cho ba ca thuyền buồm, chó và ghế. [Manifest và SHA-256](assets/demo-assets.json) nằm trong thư mục nộp bài.
+- [WandB project](https://forge.coreweave.com/wandb/keiranoluv-hcmus/semantic-graph-editing?nw=nwuserkeiranoluv): theo dõi các lượt thực nghiệm của đồ án.
 
 ## Dữ liệu và split
 

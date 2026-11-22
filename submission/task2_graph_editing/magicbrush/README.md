@@ -16,7 +16,7 @@ Cần CLIP weights và các cache train/validation/test theo đường dẫn tro
 
 ## Suy luận và chấm điểm
 
-    python -m common.restore_assets chair --from-dir /duong/dan/artifacts
+    python -m common.restore_assets chair --from-dir artifacts
     python -m task2_graph_editing.magicbrush.demo
     python -m task2_graph_editing.magicbrush.evaluate --seed 123 --policy prompt --split val --max-examples 5
 

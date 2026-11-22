@@ -11,7 +11,7 @@ Runner chạy tuần tự MLP rồi GNN, mỗi model có seeds 42, 43, 44. Batch
 
 ## Suy luận và đánh giá
 
-    python -m task2_graph_editing.he2020.predict --checkpoint runs/level2/emnlp2020-task-b-wandb-v4/gnn-seed42/best.pt --model gnn --input /duong/dan/input.json
+    python -m task2_graph_editing.he2020.predict --checkpoint runs/level2/emnlp2020-task-b-wandb-v4/gnn-seed42/best.pt --model gnn --input ./input.json
     python -m task2_graph_editing.he2020.evaluate --checkpoint runs/level2/emnlp2020-task-b-wandb-v4/gnn-seed42/best.pt --model gnn --split val --max-examples 5
 
 input.json chứa source_graph theo schema common/editing/operations.py và instruction. Suy luận chạy CPU, trả thao tác và đồ thị đích. Evaluator chấm một checkpoint trên validation hoặc test, đọc các cache đã tạo. Notebook phát lại một ca đúng và một ca sai đã lưu.
