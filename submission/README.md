@@ -6,8 +6,8 @@ Mã nguồn gồm ba nhiệm vụ và phần mở rộng video. [Notebook tổng
 
 | Mã học viên | Họ và tên |
 |---|---|
-| 24C15002 | Hồ Thanh Bình |
-| 24C15026 | Dương Thuỷ Tiên |
+| 25C15002 | Hồ Thanh Bình |
+| 25C15026 | Dương Thuỷ Tiên |
 | 25C15039 | Bùi Mạnh Hùng |
 | 25C15046 | Nguyễn Đăng Khoa |
 | 25C15062 | Nguyễn Đăng Thới Toàn |
