@@ -1775,7 +1775,8 @@
     },
     "task2_gqa/cache_gqa_pilot.py": {
       "original": "code/tools/cache_gqa_pilot.py",
-      "original_sha256": "372a598016d9c81c533c0e3f2f802d009b357b3dcb8c3894678b5647b499436b"
+      "original_sha256": "372a598016d9c81c533c0e3f2f802d009b357b3dcb8c3894678b5647b499436b",
+      "omitted": true
     },
     "task2_graph_editing/magicbrush/sequence_model/__init__.py": {
       "original": "code/tools/edit_model_v1/__init__.py",
@@ -1912,11 +1913,13 @@
     },
     "task2_gqa/export_gqa_wordnet.py": {
       "original": "code/tools/export_gqa_wordnet.py",
-      "original_sha256": "0da3a66893fa7cde12e27c0073d7a221d80502c6b1be62bb2d48490f8a4efea5"
+      "original_sha256": "0da3a66893fa7cde12e27c0073d7a221d80502c6b1be62bb2d48490f8a4efea5",
+      "omitted": true
     },
     "task2_gqa/gqa_loss_ablation_v1/__init__.py": {
       "original": "code/tools/gqa_loss_ablation_v1/__init__.py",
-      "original_sha256": "2f8c4f39d8cda9b585e337a1d6c1f5c3ebcb8a1e318ea2169310e6267442442e"
+      "original_sha256": "2f8c4f39d8cda9b585e337a1d6c1f5c3ebcb8a1e318ea2169310e6267442442e",
+      "omitted": true
     },
     "task2_gqa/gqa_loss_ablation_v1/__main__.py": {
       "original": "code/tools/gqa_loss_ablation_v1/__main__.py",
@@ -1935,7 +1938,8 @@
     },
     "task2_gqa/gqa_review_snapshot": {
       "original": "code/tools/gqa_review_snapshot.js",
-      "original_sha256": "3403ec08b7f9534b6db6b356f3e7a62ad9dcfcdf683f364b422cf63eb5590462"
+      "original_sha256": "3403ec08b7f9534b6db6b356f3e7a62ad9dcfcdf683f364b422cf63eb5590462",
+      "omitted": true
     },
     "task2_gqa/gqa_test_v1/__init__.py": {
       "original": "code/tools/gqa_test_v1/__init__.py",
@@ -1955,19 +1959,23 @@
     },
     "task2_gqa/gqa_wordnet_review/index.html": {
       "original": "code/tools/gqa_wordnet_review/index.html",
-      "original_sha256": "08b1a87397d5bce9088d191c1bf7483d7682d539f19c54c52faddc85a0788635"
+      "original_sha256": "08b1a87397d5bce9088d191c1bf7483d7682d539f19c54c52faddc85a0788635",
+      "omitted": true
     },
     "task2_gqa/gqa_wordnet_review/viewer.css": {
       "original": "code/tools/gqa_wordnet_review/viewer.css",
-      "original_sha256": "116f4895134fb4f4186c9b2a4655a9ca21e2915576e3f34f0a0cccc5aeecdf96"
+      "original_sha256": "116f4895134fb4f4186c9b2a4655a9ca21e2915576e3f34f0a0cccc5aeecdf96",
+      "omitted": true
     },
     "task2_gqa/gqa_wordnet_review/viewer.js": {
       "original": "code/tools/gqa_wordnet_review/viewer.js",
-      "original_sha256": "f6b3a872762aefc8eec99938ede7593bd3ac4977f30f25c48ed30938c2b5961e"
+      "original_sha256": "f6b3a872762aefc8eec99938ede7593bd3ac4977f30f25c48ed30938c2b5961e",
+      "omitted": true
     },
     "task2_gqa/gqa_wordnet_v2_features.py": {
       "original": "code/tools/gqa_wordnet_v2_features.py",
-      "original_sha256": "201426676e07505b624ca8aa71e7278255bb97ce6ec496e5d46d87adbe577f4f"
+      "original_sha256": "201426676e07505b624ca8aa71e7278255bb97ce6ec496e5d46d87adbe577f4f",
+      "omitted": true
     },
     "task2_graph_editing/magicbrush/predict.py": {
       "original": "code/tools/graph_editing_live_demo_v1.py",
@@ -2290,7 +2298,8 @@
     },
     "task2_gqa/prepare_gqa_wordnet.py": {
       "original": "code/tools/prepare_gqa_wordnet.py",
-      "original_sha256": "21b3218c05ece3ca52628a92e80a27ee68bd2286a4b08d1cdd74d8bf2cad21b5"
+      "original_sha256": "21b3218c05ece3ca52628a92e80a27ee68bd2286a4b08d1cdd74d8bf2cad21b5",
+      "omitted": true
     },
     "task2_gqa/prepare_gqa_wordnet_review.py": {
       "original": "code/tools/prepare_gqa_wordnet_review.py",
@@ -2304,7 +2313,8 @@
     },
     "task2_gqa/prepare_level2_gqa.py": {
       "original": "code/tools/prepare_level2_gqa.py",
-      "original_sha256": "fbf75b933ef2eddc9022370cb16a684f006283f7e82c37ce56cf53c1b10bbfa7"
+      "original_sha256": "fbf75b933ef2eddc9022370cb16a684f006283f7e82c37ce56cf53c1b10bbfa7",
+      "omitted": true
     },
     "task2_graph_editing/magicbrush/preprocess.py": {
       "original": "code/tools/prepare_magicbrush.py",
@@ -2312,7 +2322,8 @@
     },
     "task2_gqa/prepare_penet_glove.py": {
       "original": "code/tools/prepare_penet_glove.py",
-      "original_sha256": "2d20657decbd05a2e1f4e7d932f60f419261fc38ab22ed8be57335a1bf45161a"
+      "original_sha256": "2d20657decbd05a2e1f4e7d932f60f419261fc38ab22ed8be57335a1bf45161a",
+      "omitted": true
     },
     "task2_graph_editing/he2020/report.py": {
       "original": "code/tools/report_emnlp2020_task_b_v2.py",
@@ -2522,6 +2533,34 @@
         "source_hashes",
         "versions"
       ]
+    },
+    "task2_gqa/knowledge_features.py": {
+      "original": "code/tools/gqa_wordnet_v2_features.py",
+      "original_sha256": "201426676e07505b624ca8aa71e7278255bb97ce6ec496e5d46d87adbe577f4f",
+      "extracted_symbols": [
+        "SCOPE",
+        "load_v2"
+      ]
+    },
+    "task2_gqa/preprocessing/graphs.py": {
+      "original": "code/tools/prepare_level2_gqa.py",
+      "original_sha256": "fbf75b933ef2eddc9022370cb16a684f006283f7e82c37ce56cf53c1b10bbfa7"
+    },
+    "task2_gqa/preprocessing/glove.py": {
+      "original": "code/tools/prepare_penet_glove.py",
+      "original_sha256": "2d20657decbd05a2e1f4e7d932f60f419261fc38ab22ed8be57335a1bf45161a"
+    },
+    "task2_gqa/preprocessing/wordnet_mapping.py": {
+      "original": "code/tools/prepare_gqa_wordnet.py",
+      "original_sha256": "21b3218c05ece3ca52628a92e80a27ee68bd2286a4b08d1cdd74d8bf2cad21b5"
+    },
+    "task2_gqa/preprocessing/export_wordnet.py": {
+      "original": "code/tools/export_gqa_wordnet.py",
+      "original_sha256": "0da3a66893fa7cde12e27c0073d7a221d80502c6b1be62bb2d48490f8a4efea5"
+    },
+    "task2_gqa/preprocessing/knowledge.py": {
+      "original": "code/tools/gqa_wordnet_v2_features.py",
+      "original_sha256": "201426676e07505b624ca8aa71e7278255bb97ce6ec496e5d46d87adbe577f4f"
     }
   },
   "new_entrypoints": {

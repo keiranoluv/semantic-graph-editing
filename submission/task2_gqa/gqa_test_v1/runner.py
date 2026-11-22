@@ -181,8 +181,8 @@ def build(job):
     vectors = load_vectors(config, dims)
     kind, backend = job["model"], job["backend"]
     if backend == "kg":
-        from task2_gqa.gqa_wordnet_v2_features import load_v2
         from task2_gqa.knowledge import create_model as factory
+        from task2_gqa.knowledge_features import load_v2
 
         features, valid, _ = load_v2(Path("data/knowledge/gqa-wordnet-features-v2"), MANIFEST)
         model = factory(kind, dims, features, valid)

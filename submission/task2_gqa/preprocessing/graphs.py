@@ -89,7 +89,7 @@ def main():
             "gt_annotation_rows": graph.gt_predicate.numel(),
             "feature_dim": graph.x.shape[1],
         },
-        "source_sha256": {p: sha256(Path(p)) for p in ("common/datasets/gqa.py", "task2_gqa/prepare_level2_gqa.py")},
+        "source_sha256": {p: sha256(Path(p)) for p in ("common/datasets/gqa.py", "task2_gqa/preprocessing/graphs.py")},
         "training_performed": False,
         "model_evaluation_performed": False,
         "limitations": [

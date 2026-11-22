@@ -12,11 +12,11 @@ import json
 import random
 from pathlib import Path
 
-from task1_vg150.build_wordnet_graph import serialize_graph
-from task1_vg150.prepare_knowledge import _save_outputs
 from common.knowledge.entity_linking import link_vocabulary
 from common.knowledge.graph_builder import build_wordnet_graph
 from common.knowledge.transe.core import check_gate, load_kg, sha256
+from task1_vg150.build_wordnet_graph import serialize_graph
+from task1_vg150.prepare_knowledge import _save_outputs
 
 
 def json_bytes(value):
@@ -133,7 +133,7 @@ def main(argv=None):
         "source_code_sha256": {
             name: sha256(Path(name))
             for name in (
-                "task2_gqa/prepare_gqa_wordnet.py",
+                "task2_gqa/preprocessing/wordnet_mapping.py",
                 "common/knowledge/entity_linking.py",
                 "common/knowledge/graph_builder.py",
                 "common/knowledge/sense_review.py",

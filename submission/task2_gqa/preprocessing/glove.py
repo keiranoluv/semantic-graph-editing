@@ -5,10 +5,9 @@ import json
 from pathlib import Path
 
 import numpy as np
-
 from common.features.glove import map_vocabulary, needed_tokens, read_glove_subset
 from common.knowledge.transe.core import sha256
-from task2_gqa.prepare_level2_gqa import write_fixed
+from task2_gqa.preprocessing.graphs import write_fixed
 
 
 def main(argv=None):
@@ -54,7 +53,7 @@ def main(argv=None):
         "objects": object_info,
         "predicates": relation_info,
         "test_annotation_opened": False,
-        "code_sha256": {s: sha256(Path(s)) for s in ("common/features/glove.py", "task2_gqa/prepare_penet_glove.py")},
+        "code_sha256": {s: sha256(Path(s)) for s in ("common/features/glove.py", "task2_gqa/preprocessing/glove.py")},
     }
     write_fixed(args.output / "manifest.json", report)
     write_fixed(args.report, report)
