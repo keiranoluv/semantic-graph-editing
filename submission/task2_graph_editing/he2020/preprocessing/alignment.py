@@ -3,7 +3,7 @@
 from itertools import permutations
 
 from common.editing.operations import Edge, EditGraph, Node
-from task2_graph_editing.he2020.preprocessing.dataset import ALIGNMENT
+from task2_graph_editing.he2020.preprocessing import ALIGNMENT
 
 
 class AlignmentError(ValueError):

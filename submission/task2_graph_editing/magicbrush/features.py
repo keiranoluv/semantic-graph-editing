@@ -4,11 +4,11 @@ import hashlib
 from pathlib import Path
 
 import torch
+from common.editing.data import feature_texts
+from common.editing.text import TextStore, load_store, text_key
 from common.io import sha256
 from task2_graph_editing.magicbrush.examples import checked_json
-from task2_graph_editing.magicbrush.sequence_model.text import TextStore, load_store, text_key
-from task2_graph_editing.magicbrush.structured_model.cache import input_texts
-from task2_graph_editing.magicbrush.structured_model.vocabulary import prototype_inputs
+from task2_graph_editing.magicbrush.vocabulary import prototype_inputs
 
 
 def text_store(config, manifest, examples, vocabulary):
@@ -36,3 +36,13 @@ def text_store(config, manifest, examples, vocabulary):
         "text_keys": keys,
         "vectors_sha256": hashlib.sha256(delta.contiguous().numpy().tobytes()).hexdigest(),
     }
+
+
+def input_texts(examples):
+    texts = set()
+    for example in examples:
+        item = feature_texts(**example.model_input())
+        texts.add(item["instruction"])
+        texts.update(item["nodes"])
+        texts.update(item["edges"])
+    return sorted(texts, key=lambda t: (text_key(t), t))

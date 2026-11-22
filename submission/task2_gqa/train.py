@@ -1,0 +1,187 @@
+"""Train PE-PLPR and AlignG sequentially with the recorded seeds and online W&B."""
+
+import argparse
+import gc
+import json
+import signal
+import time
+from dataclasses import asdict
+from pathlib import Path
+
+import task2_gqa.configuration as configuration
+import torch
+from common.knowledge.transe import sha256
+from common.locking import exclusive
+from task2_gqa.batching import prepare_graph
+from task2_gqa.cache import atomic_write, digest, pin_json
+from task2_gqa.models.fast import FastConfig
+from task2_gqa.training import engine
+from task2_gqa.training.standard import summarize_matrix
+
+ROOT = configuration.ROOT
+
+CONFIG = ROOT / "configs/level2/aligng-gqa-fast-v1-bs512.json"
+
+MODELS = ("pe-plpr-aligng", "pe-plpr")
+
+SEEDS = (42, 123, 3407)
+
+
+def queue():
+    return [(model, seed) for seed in SEEDS for model in MODELS]
+
+
+def load_config(path=CONFIG):
+    cfg = configuration.load_config(path)
+    if cfg["scope"] != "full" or cfg["train_batch_size"] != 512 or cfg["val_batch_size"] != 512:
+        raise ValueError("This recipe requires full training with train/val batch512")
+    if cfg["wandb"]["mode"] != "online":
+        raise ValueError("Online W&B is mandatory")
+    if cfg["output"] != "runs/level2/aligng-gqa-fast-v1/full":
+        raise ValueError("Use the new isolated batch512 output, never a historical run directory")
+    return cfg
+
+
+def source_identity():
+    base = configuration.source_identity()
+    return {**base, "parent_code_commit": base["code_commit"]}
+
+
+def prepare(cfg):
+    exp, metadata, vectors = configuration.prepare(cfg)
+    exp.update(source_identity())
+    exp["dimensions"]["fast"] = asdict(FastConfig())
+    exp["execution_version"] = "aligng_fast_v1"
+    exp["numerical_policy"] = "same equations; different dropout draw order and FP reduction; fresh experiment only"
+    exp["config"] = {**cfg, "models": list(MODELS), "seeds": list(SEEDS)}
+    exp.update(
+        queue_order=[{"model": m, "seed": s} for m, s in queue()],
+        queue_policy="one GPU model at a time; stop on error/signal; resume unfinished; verify and skip completed",
+        config_sha256=sha256(CONFIG),
+    )
+    return exp, metadata, vectors
+
+
+def completed(exp, directory, model, seed):
+    path = Path(directory) / "result.json"
+    if not path.exists():
+        return None
+    result = json.loads(path.read_text())
+    if result["identity"] != {"experiment_sha256": digest(exp), "model": model, "seed": seed}:
+        raise ValueError("Completed run identity changed")
+    if result["status"] != "PASS" or sha256(Path(directory) / "best.pt") != result["checkpoint_sha256"]:
+        raise ValueError("Completed run checkpoint changed")
+    return result
+
+
+def run_queue(exp, train, val, vectors, *, stop_requested=lambda: False):
+    """Caller holds GPU/output locks for the whole queue. No retry after failure."""
+    output = Path(exp["config"]["output"])
+    pin_json(output / "experiment.json", exp)
+    state = {
+        "experiment_sha256": digest(exp),
+        "queue": exp["queue_order"],
+        "completed": [],
+        "status": "running",
+        "current": None,
+    }
+    path = output / "queue-status.json"
+    try:
+        for model, seed in queue():
+            if stop_requested():
+                state["status"] = "interrupted"
+                atomic_write(path, state)
+                return 130
+            state["current"] = {"model": model, "seed": seed}
+            atomic_write(path, state)
+            directory = output / model / str(seed)
+            result = completed(exp, directory, model, seed)
+            if result is None:
+                print(f"[QUEUE START] {model} seed={seed} batch512/512", flush=True)
+                result = engine.train_run(
+                    model, seed, train, val, vectors, exp, directory, stop_requested=stop_requested
+                )
+                if result is None:
+                    state["status"] = "interrupted"
+                    atomic_write(path, state)
+                    return 130
+                if completed(exp, directory, model, seed) is None:
+                    raise RuntimeError("Trainer returned without a durable completed result")
+            else:
+                print(f"[QUEUE SKIP] verified complete {model} seed={seed}", flush=True)
+            state["completed"].append({"model": model, "seed": seed})
+            atomic_write(path, state)
+            gc.collect()
+            if exp["config"]["device"] == "cuda":
+                torch.cuda.empty_cache()
+        summarize_matrix(exp, output)
+        state.update(status="completed", current=None)
+        atomic_write(path, state)
+        return 0
+    except Exception as error:
+        state.update(status="failed", error=f"{type(error).__name__}: {error}")
+        atomic_write(path, state)
+        raise
+
+
+def datasets(cfg, metadata, workers=4):
+    data = configuration.datasets(cfg, metadata, workers)
+    try:
+        for split, dataset in zip(("train", "val"), data, strict=True):
+            start = time.perf_counter()
+            for i, graph in enumerate(dataset.graphs):
+                dataset.graphs[i] = prepare_graph(graph)
+                if (i + 1) % 10000 == 0:
+                    print(f"[CPU PREP] {split}: {i + 1}/{len(dataset)} images", flush=True)
+            print(f"[CPU PREP READY] {split}: {len(dataset)} images, {time.perf_counter() - start:.1f}s", flush=True)
+        return data
+    except BaseException:
+        for dataset in data:
+            dataset.close()
+        raise
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--stage", choices=("plan", "check", "train-all", "summary"), default="plan")
+    parser.add_argument("--loader-workers", type=int, default=4)
+    args = parser.parse_args(argv)
+    if args.loader_workers < 1:
+        parser.error("Positive worker count required")
+    cfg = load_config()
+    exp, metadata, vectors = prepare(cfg)
+    if args.stage == "plan":
+        print(
+            json.dumps(
+                {"config": cfg, "experiment_sha256": digest(exp), "jobs": exp["queue_order"], "GPU_started": False},
+                indent=2,
+            )
+        )
+        return 0
+    if args.stage == "check":
+        with exclusive(ROOT / "runs/level2/.gqa-kg-training-device"):
+            pass
+        print(
+            "[READY] six sequential jobs, train/val/effective batch512, online W&B, committed source verified",
+            flush=True,
+        )
+        return 0
+    if args.stage == "summary":
+        summarize_matrix(exp, cfg["output"])
+        return 0
+    stopped = {"value": False}
+    for sig in (signal.SIGINT, signal.SIGTERM):
+        signal.signal(sig, lambda *_: stopped.update(value=True))
+    with exclusive(ROOT / "runs/level2/.gqa-kg-training-device"), exclusive(cfg["output"]):
+        engine.setup_runtime(cfg)
+        pin_json(Path(cfg["output"]) / "experiment.json", exp)
+        train, val = datasets(cfg, metadata, args.loader_workers)
+        try:
+            return run_queue(exp, train, val, vectors, stop_requested=lambda: stopped["value"])
+        finally:
+            train.close()
+            val.close()
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

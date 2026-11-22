@@ -6,8 +6,8 @@ from pathlib import Path
 
 import numpy as np
 from common.features.glove import map_vocabulary, needed_tokens, read_glove_subset
-from common.knowledge.transe.core import sha256
-from task2_gqa.preprocessing.graphs import write_fixed
+from common.knowledge.transe import sha256
+from task2_gqa.preprocess import write_fixed
 
 
 def main(argv=None):

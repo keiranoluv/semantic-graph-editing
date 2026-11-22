@@ -10,7 +10,7 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 import torch
-from common.datasets.gqa_full import GQAFullDataset
+from task2_gqa.cache import GQAFullDataset
 from torch_geometric.data import Data
 
 

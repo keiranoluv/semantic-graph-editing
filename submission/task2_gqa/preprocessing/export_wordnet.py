@@ -6,8 +6,8 @@ from pathlib import Path
 import torch
 from common.knowledge.entity_linking import _read_classes
 from common.knowledge.sense_review import _validate_mapping
-from common.knowledge.transe.core import load_kg, sha256, split_triples_transductive
-from task1_vg150.prepare_knowledge import _save_outputs
+from common.knowledge.transe import load_kg, sha256, split_triples_transductive
+from task1_vg150.knowledge.prepare import _save_outputs
 from task2_gqa.preprocessing.wordnet_mapping import json_bytes
 
 

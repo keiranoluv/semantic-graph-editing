@@ -5,11 +5,11 @@ import json
 from pathlib import Path
 
 import torch
+from common.editing.text import TextStore
 from common.io import read, sha256
-from task2_graph_editing.he2020.data_processing.data import load_bundle
+from task2_graph_editing.he2020.dataset import load_bundle
 from task2_graph_editing.he2020.predict import load_model
 from task2_graph_editing.he2020.runtime import evaluate, inputs_tensor, predict
-from task2_graph_editing.magicbrush.sequence_model.text import TextStore
 
 
 def main():

@@ -5,11 +5,11 @@ import json
 from pathlib import Path
 
 import torch
-from extension_pvsg.m3.data import Store
-from extension_pvsg.m3.models import RelationModel as M3
-from extension_pvsg.m3.validation import validate as validate_m3
-from extension_pvsg.m4.models import RelationModel as M4
-from extension_pvsg.m4.validation import validate as validate_m4
+from extension_pvsg.ablations.models import RelationModel as AblationModel
+from extension_pvsg.ablations.models import collate as collate_ablations
+from extension_pvsg.baselines.data import Store
+from extension_pvsg.baselines.models import RelationModel as BaselineModel
+from extension_pvsg.baselines.validation import validate
 
 
 class EvaluationStore(Store):
@@ -18,13 +18,12 @@ class EvaluationStore(Store):
         self.split = split
 
     def ids(self, split):
-        return self.manifest["outer_split"]["test_ids"] if self.split == "test" else super().ids(split)
+        return self.manifest["outer_split"]["heldout_ids"] if self.split == "test" else super().ids(split)
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--checkpoint", type=Path, required=True)
-    p.add_argument("--family", choices=("m3", "m4"), required=True)
     p.add_argument("--split", choices=("validation", "test"), default="validation")
     p.add_argument("--allow-test", action="store_true")
     p.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
@@ -37,11 +36,12 @@ def main():
     saved = torch.load(a.checkpoint, map_location="cpu", weights_only=True)
     identity = saved["identity"]
     cfg = identity["config"]
-    model = (M3(identity["model"], cfg) if a.family == "m3" else M4(identity["model"], cfg)).to(a.device)
+    ablation = "variants" in cfg
+    model = (AblationModel if ablation else BaselineModel)(identity["model"], cfg).to(a.device)
     model.load_state_dict(saved["model"])
     store = EvaluationStore(cfg["dataset_cache"], cfg["feature_cache"], a.split)
-    validation = validate_m3 if a.family == "m3" else validate_m4
-    print(json.dumps(validation(model, store, cfg, a.device, a.batch_size), indent=2))
+    options = {"collate_fn": collate_ablations} if ablation else {}
+    print(json.dumps(validate(model, store, cfg, a.device, a.batch_size, **options), indent=2))
 
 
 if __name__ == "__main__":

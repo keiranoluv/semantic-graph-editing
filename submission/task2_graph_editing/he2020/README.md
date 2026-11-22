@@ -4,8 +4,8 @@ Chạy từ gốc submission/, dùng environments/graph-training.txt. Dữ liệ
 
 ## Huấn luyện
 
-    python -m task2_graph_editing.he2020.training --config configs/level2/emnlp2020-task-b-wandb-v4.json --stage preflight
-    python -m task2_graph_editing.he2020.training --config configs/level2/emnlp2020-task-b-wandb-v4.json --stage train
+    python -m task2_graph_editing.he2020.train --config configs/level2/emnlp2020-task-b-wandb-v4.json --stage preflight
+    python -m task2_graph_editing.he2020.train --config configs/level2/emnlp2020-task-b-wandb-v4.json --stage train
 
 Runner chạy tuần tự MLP rồi GNN, mỗi model có seeds 42, 43, 44. Batch 128, hidden 96, 2 lớp, lr 0.001, weight decay 0.01, tối đa 20 epoch, tối thiểu 6, patience 3, min_delta 0.001, gradient clip 5. W&B online. Output ở runs/level2/emnlp2020-task-b-wandb-v4/{model}-seed{seed}/. Runner tự chuyển lượt tiếp theo khi hoàn tất.
 
@@ -18,6 +18,6 @@ input.json chứa source_graph theo schema common/editing/operations.py và inst
 
 ## Chuẩn bị dữ liệu
 
-    python -m task2_graph_editing.he2020.preprocessing --archive data/raw/emnlp2020-graph-modification-v1/scene_graph_modification_data.tgz --output data/processed/level2/emnlp2020-task-b-v2
+    python -m task2_graph_editing.he2020.preprocess --archive data/raw/emnlp2020-graph-modification-v1/scene_graph_modification_data.tgz --output data/processed/level2/emnlp2020-task-b-v2
 
-Thêm --test để chuyển đổi tập test sau khi đã khóa train/validation. Bộ đọc pickle chạy trong tiến trình cô lập. data_processing/ chuẩn hóa và lọc trùng theo nhóm nguồn. runtime.py chứa hàm dựng mô hình, chuẩn bị batch, dự đoán và tính metric dùng chung với trainer. Tính độc lập theo ảnh gốc chưa được xác minh.
+Thêm --test để chuyển đổi tập test sau khi đã khóa train/validation. Bộ đọc pickle trong preprocessing/ chạy trong tiến trình cô lập. dataset.py chuẩn hóa và lọc trùng theo nhóm nguồn; model.py định nghĩa MLP/GNN và từ vựng thao tác; features.py tạo CLIP cache. training.py chứa vòng tối ưu và W&B, runtime.py chuẩn bị batch, dự đoán và tính metric dùng chung với trainer. Encoder và codec dùng chung với MagicBrush nằm ở common/editing/. Tính độc lập theo ảnh gốc chưa được xác minh.

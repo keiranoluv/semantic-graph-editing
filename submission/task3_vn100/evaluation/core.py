@@ -2,8 +2,8 @@ import math
 from pathlib import Path
 
 from common.paths import ROOT
-from task3_vn100.image_graph.core import digest, read, sha256, validate_record
-from task3_vn100.qwen_unified.core import atomic, load_case
+from task3_vn100.generation.core import atomic, load_case
+from task3_vn100.image_graph import digest, read, sha256, validate_record
 
 CONFIG = ROOT / "configs/level3/evaluation200-v1.json"
 
@@ -119,3 +119,13 @@ def read_stage(path):
 
 def stage_binding(cfg, records):
     return digest({"config": cfg, "cases": [case_header(r) for r in records]})
+
+
+def validate_stage(pack, records, binding):
+    if pack.get("evaluation_eligible") is not True or pack.get("stage_binding") != binding:
+        raise ValueError("wrong_stage_protocol_or_smoke_not_eligible")
+    if [r["task_id"] for r in pack["rows"]] != [r["task"]["task_id"] for r in records]:
+        raise ValueError("stage_task_membership_changed")
+    for row, record in zip(pack["rows"], records, strict=True):
+        if any(row.get(k) != v for k, v in case_header(record).items()):
+            raise ValueError("stage_case_binding_mismatch")

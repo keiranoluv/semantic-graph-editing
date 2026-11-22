@@ -6,14 +6,16 @@ Mã nguồn gồm ba nhiệm vụ và phần mở rộng video. [Notebook tổng
 
 | Nhiệm vụ | Tiền xử lý và split | Mô hình | Huấn luyện | Đánh giá và suy luận |
 |---|---|---|---|---|
-| [1 · VG150](task1_vg150/README.md) | [Split](task1_vg150/preprocess.py), [cache CLIP](task1_vg150/cache_vg150_regions.py) | [GAT](common/models/gat.py), [GAT + KG](common/models/gat_kg.py) | [Launcher theo báo cáo](task1_vg150/train_report.py), [GAT](task1_vg150/train.py), [MLP](task1_vg150/train_mlp.py) | [Chấm checkpoint](task1_vg150/evaluate.py) |
-| [2A · GQA](task2_gqa/README.md) | [Chuẩn hóa và chia tập](task2_gqa/preprocessing/graphs.py) | [PE-PLPR + AlignG](task2_gqa/training/model.py) | [Runner](task2_gqa/training/runner.py) | [Đánh giá checkpoint](task2_gqa/evaluate.py) |
-| [2B · MagicBrush](task2_graph_editing/magicbrush/README.md) | [Cặp và split](task2_graph_editing/magicbrush/data), [đọc cặp](task2_graph_editing/magicbrush/dataset.py) | [GNN](task2_graph_editing/magicbrush/structured_model/model.py) | [Runner](task2_graph_editing/magicbrush/run.py) | [Dự đoán](task2_graph_editing/magicbrush/predict.py), [chấm test](task2_graph_editing/magicbrush/evaluate.py) |
-| [2B mở rộng · He và cộng sự](task2_graph_editing/he2020/README.md) | [Đọc bộ gốc](task2_graph_editing/he2020/preprocessing/dataset.py) | [MLP/GNN](task2_graph_editing/he2020/models/model.py) | [Runner](task2_graph_editing/he2020/training/runner.py) | [Chấm test](task2_graph_editing/he2020/evaluate.py) |
-| [3 · VN100](task3_vn100/README.md) | [200 yêu cầu](configs/level3/qwen200-cohort-v1.json) | [Qwen](task3_vn100/qwen_unified), [REACT++](task3_vn100/qwen_sgg) | Mô hình pretrained | [Chấm ảnh bằng đồ thị](task3_vn100/evaluation) |
-| [Mở rộng · PVSG](extension_pvsg/README.md) | [Split video](extension_pvsg/manifests/pvsg_author_release_338_62.lock.json) | [MLP, GAT](extension_pvsg/m3/models.py), [mô hình thời gian](extension_pvsg/m4/models.py) | [Train một model](extension_pvsg/train.py) | [Đánh giá checkpoint](extension_pvsg/evaluate.py) |
+| [1 · VG150](task1_vg150/README.md) | [Split](task1_vg150/preprocess.py), [cache CLIP](task1_vg150/preprocessing/cache_regions.py) | [GAT](common/models/gat.py), [GAT + KG](common/models/gat_kg.py) | [Launcher theo báo cáo](task1_vg150/train.py), [GAT](task1_vg150/training/gat.py), [MLP](task1_vg150/training/mlp.py) | [Chấm checkpoint](task1_vg150/evaluate.py) |
+| [2A · GQA](task2_gqa/README.md) | [Chuẩn hóa và chia tập](task2_gqa/preprocess.py) | [PE-PLPR + AlignG](task2_gqa/models/fast.py) | [Runner](task2_gqa/train.py) | [Đánh giá checkpoint](task2_gqa/evaluate.py) |
+| [2B · MagicBrush](task2_graph_editing/magicbrush/README.md) | [Cặp và split](task2_graph_editing/magicbrush/data), [đọc cặp](task2_graph_editing/magicbrush/dataset.py) | [GNN](task2_graph_editing/magicbrush/model.py) | [Runner](task2_graph_editing/magicbrush/train.py) | [Dự đoán](task2_graph_editing/magicbrush/predict.py), [chấm test](task2_graph_editing/magicbrush/evaluate.py) |
+| [2B mở rộng · He và cộng sự](task2_graph_editing/he2020/README.md) | [Chuẩn hóa và chia tập](task2_graph_editing/he2020/preprocess.py) | [MLP/GNN](task2_graph_editing/he2020/model.py) | [Train](task2_graph_editing/he2020/train.py) | [Dự đoán](task2_graph_editing/he2020/predict.py), [chấm checkpoint](task2_graph_editing/he2020/evaluate.py) |
+| [3 · VN100](task3_vn100/README.md) | [200 yêu cầu](configs/level3/qwen200-cohort-v1.json) | [Qwen](task3_vn100/generation/backend.py), [REACT++](task3_vn100/models/react.py) | Mô hình pretrained | [Tạo ảnh](task3_vn100/generate.py), [trích đồ thị](task3_vn100/extract_graphs.py), [chấm điểm](task3_vn100/evaluation) |
+| [Mở rộng · PVSG](extension_pvsg/README.md) | [Split video](extension_pvsg/manifests/pvsg_author_release_338_62.lock.json) | [MLP, GAT](extension_pvsg/baselines/models.py), [mô hình thời gian](extension_pvsg/ablations/models.py) | [Train một model](extension_pvsg/train.py) | [Đánh giá checkpoint](extension_pvsg/evaluate.py) |
 
-common/ chứa thao tác đồ thị, mô hình dùng chung, đặc trưng và evaluator PredCls. configs/ lưu cấu hình cố định. assets/ chứa các ví dụ và danh mục checkpoint cần cho notebook, data card VN100, manifest trọng số và xuất xứ mã nguồn.
+Mỗi task có lệnh tiền xử lý, huấn luyện và đánh giá trong README riêng. training.py hoặc training/ chứa vòng tối ưu; model.py hoặc models/ định nghĩa mô hình; dataset.py hoặc data.py đọc dữ liệu. Phần dùng chung giữa các task nằm trong common/, gồm encoder và codec chỉnh sửa đồ thị, đặc trưng, các mô hình và metric.
+
+configs/ lưu cấu hình cố định. assets/ chứa ví dụ và danh mục checkpoint cho notebook, data card VN100, manifest trọng số và xuất xứ mã nguồn.
 
 ## Chạy demo trên CPU
 
@@ -27,12 +29,22 @@ Dùng Linux và Python 3.12, chạy từ thư mục chứa README này.
 
 Thư mục artifacts có data/, runs/, hoặc nội dung đã giải nén từ chair-assets.tar. Ca xóa ghế cần 7 tệp, khoảng 357 MiB, gồm CLIP và checkpoint GNN seed 123. Hai dòng kiểm tra thao tác và đồ thị đích phải in True. [Đường dẫn, dung lượng và SHA-256](assets/demo-assets.json)
 
-Để chạy notebook, khôi phục bộ live (412 MiB) hoặc overview (22,05 GiB), rồi mở JupyterLab với kernel của môi trường vừa cài.
+Hai notebook đã lưu output, nên có thể mở xem mà không khôi phục artifact. Để chạy lại các ô, chọn bộ tương ứng:
 
-    .venv/bin/python -m common.restore_assets overview --from-dir /duong/dan/artifacts
+| Bộ artifact | Dung lượng | Phạm vi |
+|---|---|---|
+| chair | 357 MiB | Lệnh demo xóa ghế bên trên. |
+| live | 412 MiB | graph_editing_live_demo.ipynb: thuyền buồm, chó và ghế. |
+| overview | 22,05 GiB | project_submission_demo.ipynb: các nhiệm vụ VG150, GQA, MagicBrush, He và VN100. |
+
+Bộ overview chứa kho ảnh GQA khoảng 20,32 GiB. Bộ live đủ cho notebook demo trực tiếp. Để chạy lại cả hai notebook, khôi phục cả live và overview; phần chung được dùng lại, tổng khoảng 22,08 GiB.
+
+Ví dụ chạy notebook demo trực tiếp:
+
+    .venv/bin/python -m common.restore_assets live --from-dir /duong/dan/artifacts
     .venv/bin/jupyter lab notebooks
 
-Notebook tổng hợp hiển thị 5 Hit và 5 Miss trên validation của mỗi bộ VG150/GQA, kết quả He, demo GNN MagicBrush và sáu ca VN100.
+Chọn kernel của môi trường vừa cài. Với notebook tổng hợp, thay live bằng overview. Notebook tổng hợp hiển thị 5 Hit và 5 Miss trên validation của mỗi bộ VG150/GQA, kết quả He, demo GNN MagicBrush và sáu ca VN100.
 
 ## Dữ liệu và split
 

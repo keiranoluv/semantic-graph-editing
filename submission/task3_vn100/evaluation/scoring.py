@@ -1,8 +1,8 @@
 from collections import Counter
 
-from task3_vn100.image_graph.core import validate_record
-from task3_vn100.qwen_scoring.scoring import align, dice
-from task3_vn100.qwen_scoring.scoring import score as original_score
+from task3_vn100.image_graph import validate_record
+from task3_vn100.scoring import align, dice
+from task3_vn100.scoring import score as original_score
 
 
 def score(record, cfg):

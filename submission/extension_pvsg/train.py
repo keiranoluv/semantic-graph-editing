@@ -8,16 +8,15 @@ import torch
 from common.locking import exclusive
 from common.paths import ROOT
 from common.provenance import source_hashes
+from extension_pvsg.baselines.preflight import check_features, check_runtime
+from extension_pvsg.baselines.runner import train
 from extension_pvsg.cases import CASES
 from extension_pvsg.contracts import read_json
-from extension_pvsg.m3.preflight import check_features, check_runtime
-from extension_pvsg.m3.runner import train as train_m3
-from extension_pvsg.m4.runner import train as train_m4
 
 
 def main():
-    base = read_json(ROOT / "extension_pvsg/m3/configs/baselines_v1.json")
-    ablations = read_json(ROOT / "extension_pvsg/m4/configs/ablations_v1.json")
+    base = read_json(ROOT / "extension_pvsg/baselines/configs/baselines_v1.json")
+    ablations = read_json(ROOT / "extension_pvsg/ablations/configs/ablations_v1.json")
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", choices=[*base["models"], *ablations["models"]], required=True)
     parser.add_argument("--seed", type=int, choices=(17, 42, 2026), required=True)
@@ -27,8 +26,8 @@ def main():
     args = parser.parse_args()
     if args.minimum_epochs == 50 and args.seed not in CASES.get(args.model, ()):
         parser.error("The reported min50 follow-up covers only the seven model/seed pairs in cases.py")
-    family = "m3" if args.model in base["models"] else "m4"
-    cfg = dict(base if family == "m3" else ablations)
+    family = "baselines" if args.model in base["models"] else "ablations"
+    cfg = dict(base if family == "baselines" else ablations)
     cfg.update(
         max_epochs=150,
         min_epochs=args.minimum_epochs,
@@ -46,9 +45,8 @@ def main():
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA is required for PVSG training")
     os.environ["WANDB_MODE"] = "online"
-    trainer = train_m3 if family == "m3" else train_m4
     with exclusive(ROOT / "runs/pvsg-training-gpu"):
-        trainer(cfg, args.model, args.seed, 32, feature_hash, torch.device("cuda:0"))
+        train(cfg, args.model, args.seed, 32, feature_hash, torch.device("cuda:0"))
 
 
 if __name__ == "__main__":

@@ -6,13 +6,12 @@ import json
 from dataclasses import asdict
 from pathlib import Path
 
-from common.datasets.gqa_full import GQAFullDataset, digest, verify_cache
-from common.datasets.gqa_pilot import validate_cohort
-from common.knowledge.transe.core import sha256
+from common.knowledge.transe import sha256
 from common.paths import ROOT
-from common.training.gqa_full import load_vectors, math_finite, model_config
+from task2_gqa.cache import GQAFullDataset, digest, validate_cohort, verify_cache
 from task2_gqa.dataset import RAMGQADataset
-from task2_gqa.models.model import AlignGConfig
+from task2_gqa.models.aligng import AlignGConfig
+from task2_gqa.training.standard import load_vectors, math_finite, model_config
 
 
 def load_config(path):

@@ -1,8 +1,10 @@
 """VG150 checkpoint publication, run directories and RNG restoration."""
 
+import hashlib
 import os
 import random
 import re
+from pathlib import Path
 
 import torch
 
@@ -69,3 +71,33 @@ def atomic_text_save(content, path):
         os.replace(temp, path)
     finally:
         temp.unlink(missing_ok=True)
+
+
+def save_checkpoint(path, payload):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(".pt.tmp")
+    torch.save(payload, temporary)
+    os.replace(temporary, path)
+
+
+def capture_rng(device):
+    return {
+        "cpu": torch.get_rng_state(),
+        "cuda": torch.cuda.get_rng_state_all() if str(device).startswith("cuda") else [],
+    }
+
+
+def restore_rng(state, device):
+    torch.set_rng_state(state["cpu"].cpu())
+    if str(device).startswith("cuda"):
+        torch.cuda.set_rng_state_all(state["cuda"])
+
+
+def state_hash(model):
+    h = hashlib.sha256()
+    for name, value in sorted(model.state_dict().items()):
+        h.update(name.encode())
+        h.update(str((tuple(value.shape), str(value.dtype))).encode())
+        h.update(value.detach().cpu().contiguous().numpy().tobytes())
+    return h.hexdigest()

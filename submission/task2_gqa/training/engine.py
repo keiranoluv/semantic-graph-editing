@@ -1,8 +1,4 @@
-"""Fast v1 trainer, copied from frozen task2_gqa/recipe/engine.py.
-
-Parent 4e149ce: atomic checkpoint, sampler/RNG resume, earliest-tie selection.
-No modification/monkeypatch of historical modules. See README.md for deltas.
-"""
+"""Optimize the batched PE-Net and AlignG models with checkpoint resume."""
 
 import hashlib
 import json
@@ -11,15 +7,15 @@ import time
 from pathlib import Path
 
 import torch
-from common.datasets.gqa_full import atomic_write, digest, pin_json
-from common.knowledge.transe.core import sha256
-from common.training.gqa_full import math_finite
-from common.training.gqa_tracking import RunTracker
+from common.knowledge.transe import sha256
+from common.training.checkpoints import state_hash
 from common.training.penet import prototype_losses
-from common.training.state import state_hash
-from task2_gqa.models.model import AlignGConfig
-from task2_gqa.training.batching import collate, model_inputs
-from task2_gqa.training.model import FastAlignG, FastConfig
+from task2_gqa.batching import collate, model_inputs
+from task2_gqa.cache import atomic_write, digest, pin_json
+from task2_gqa.models.aligng import AlignGConfig
+from task2_gqa.models.fast import FastAlignG, FastConfig
+from task2_gqa.training.standard import math_finite
+from task2_gqa.training.tracking import RunTracker
 from task2_gqa.validation import compact_metrics
 from task2_gqa.validation import evaluate_fast as evaluate
 

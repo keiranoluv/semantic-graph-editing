@@ -1,7 +1,7 @@
 """Construct the reported AlignG ablation models."""
 
-from task2_gqa.models.model import AlignGConfig
-from task2_gqa.training.model import FastAlignG, FastConfig
+from task2_gqa.models.aligng import AlignGConfig
+from task2_gqa.models.fast import FastAlignG, FastConfig
 
 VARIANTS = {
     "edge-only": {

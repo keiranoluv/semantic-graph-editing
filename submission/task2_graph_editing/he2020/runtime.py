@@ -1,27 +1,18 @@
-"""GPU protocol v3, derived from frozen v2 orchestration to preserve CPU evidence.
-
-Runtime differences: explicit device transfer, device-correct encoder mask,
-CUDA deterministic settings and independent configuration/output/provenance.
-Dataset/compiler, supervision, action vocabulary and evaluation remain v2.
-"""
+"""Construct MLP/GNN models, prepare batches, decode operations and compute edit metrics."""
 
 from collections import Counter
 
 import torch
-from common.io import digest, sha256
-from common.paths import ROOT
-from task2_graph_editing.he2020.models.model import LexicalPredictor
-from task2_graph_editing.magicbrush.sequence_model.codec import canonical_actions, decode_actions, score_predictions
-from task2_graph_editing.magicbrush.sequence_model.model import collate_inputs
+from common.editing.codec import canonical_actions, decode_actions, score_predictions
+from common.editing.encoders import collate_inputs
+from common.io import digest
+from task2_graph_editing.he2020.model import LexicalPredictor
 
 
 def identity(config):
-    paths = list((ROOT / "task2_graph_editing/he2020/data_processing").glob("*.py"))
-    paths += list((ROOT / "task2_graph_editing/he2020/preprocessing").glob("*.py"))
-    paths += list((ROOT / "task2_graph_editing/magicbrush/sequence_model").glob("*.py"))
-    paths += list((ROOT / "common/editing").glob("*.py"))
-    paths += list((ROOT / "task2_graph_editing/he2020/models").glob("*.py"))
-    return {"config": config, "files": {str(p.relative_to(ROOT)): sha256(p) for p in sorted(paths)}}
+    from common.provenance import source_hashes
+
+    return {"config": config, "files": source_hashes()}
 
 
 def tensor_subset(tensors, indices, device):

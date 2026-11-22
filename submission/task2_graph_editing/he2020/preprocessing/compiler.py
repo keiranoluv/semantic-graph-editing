@@ -1,15 +1,9 @@
 """Graph-to-operations labels, strict transaction/codec/budget gates."""
 
+from common.editing.codec import canonical_source, decode_actions, encode_actions, normalize_label
 from common.editing.operations import KINDS, apply_operations, diff_aligned_graphs
-from task2_graph_editing.he2020.preprocessing import VERSION
+from task2_graph_editing.he2020.preprocessing import ALIGNMENT, POLICY, VERSION
 from task2_graph_editing.he2020.preprocessing.alignment import align, attribute_policy, canonical_raw, validate_raw
-from task2_graph_editing.he2020.preprocessing.dataset import ALIGNMENT, POLICY
-from task2_graph_editing.magicbrush.sequence_model.codec import (
-    canonical_source,
-    decode_actions,
-    encode_actions,
-    normalize_label,
-)
 
 STAGES = (
     "input_availability",

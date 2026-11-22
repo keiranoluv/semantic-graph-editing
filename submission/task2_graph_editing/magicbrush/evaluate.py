@@ -7,7 +7,7 @@ from pathlib import Path
 from task2_graph_editing.magicbrush.dataset import rows
 from task2_graph_editing.magicbrush.examples import example
 from task2_graph_editing.magicbrush.predict import load_model
-from task2_graph_editing.magicbrush.structured_model.runtime import validate
+from task2_graph_editing.magicbrush.runtime import validate
 
 
 def main():

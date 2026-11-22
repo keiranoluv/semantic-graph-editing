@@ -4,8 +4,8 @@ import argparse
 import json
 from pathlib import Path
 
-from common.datasets.gqa_full import GQAFullDataset
 from common.io import read, sha256
+from task2_gqa.cache import GQAFullDataset
 from task2_gqa.dataset import HeldoutDataset
 from task2_gqa.predict import MANIFEST, build
 from task2_gqa.validation import evaluate, evaluate_fast

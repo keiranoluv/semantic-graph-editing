@@ -45,7 +45,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -144,7 +144,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -243,7 +243,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -342,7 +342,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -441,7 +441,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -540,7 +540,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -639,7 +639,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -738,7 +738,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -837,7 +837,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -936,7 +936,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -1035,7 +1035,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -1134,7 +1134,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -1227,7 +1227,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train",
+        "task1_vg150.training.gat",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -1316,7 +1316,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train",
+        "task1_vg150.training.gat",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -1405,7 +1405,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train",
+        "task1_vg150.training.gat",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -1500,7 +1500,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -1600,7 +1600,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -1700,7 +1700,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -1787,7 +1787,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_mlp",
+        "task1_vg150.training.mlp",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -1863,7 +1863,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_mlp",
+        "task1_vg150.training.mlp",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -1939,7 +1939,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_mlp",
+        "task1_vg150.training.mlp",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -2028,7 +2028,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -2127,7 +2127,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -2226,7 +2226,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -2325,7 +2325,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -2424,7 +2424,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -2523,7 +2523,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_gat_kg",
+        "task1_vg150.training.gat_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -2628,7 +2628,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -2741,7 +2741,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -2854,7 +2854,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -2967,7 +2967,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -3080,7 +3080,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -3193,7 +3193,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -3306,7 +3306,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -3421,7 +3421,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -3536,7 +3536,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -3651,7 +3651,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -3764,7 +3764,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -3877,7 +3877,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -3990,7 +3990,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -4105,7 +4105,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -4220,7 +4220,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -4331,7 +4331,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -4438,7 +4438,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -4545,7 +4545,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -4652,7 +4652,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -4759,7 +4759,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -4866,7 +4866,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -4973,7 +4973,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -5080,7 +5080,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -5187,7 +5187,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -5294,7 +5294,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -5401,7 +5401,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -5508,7 +5508,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_pair_kg",
+        "task1_vg150.training.pair_kg",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -5619,7 +5619,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -5734,7 +5734,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -5849,7 +5849,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -5964,7 +5964,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -6079,7 +6079,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",
@@ -6194,7 +6194,7 @@
       },
       "argv": [
         "-m",
-        "task1_vg150.train_kg_fusion",
+        "task1_vg150.training.kg_fusion",
         "--root",
         "data/raw/vg150",
         "--visual-cache",

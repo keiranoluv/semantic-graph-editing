@@ -3,8 +3,8 @@
 from pathlib import Path
 
 import torch
-from common.knowledge.transe.core import sha256
-from common.training.gqa_full import create_model, load_vectors
+from common.knowledge.transe import sha256
+from task2_gqa.training.standard import create_model, load_vectors
 
 MANIFEST = Path("data/processed/level2/gqa-v1/manifest.json")
 
@@ -18,8 +18,8 @@ def build(job):
     vectors = load_vectors(config, dims)
     kind, backend = job["model"], job["backend"]
     if backend == "kg":
-        from task2_gqa.knowledge import create_model as factory
-        from task2_gqa.knowledge_features import load_v2
+        from task2_gqa.models.knowledge import create_model as factory
+        from task2_gqa.models.knowledge import load_v2
 
         features, valid, _ = load_v2(Path("data/knowledge/gqa-wordnet-features-v2"), MANIFEST)
         model = factory(kind, dims, features, valid)

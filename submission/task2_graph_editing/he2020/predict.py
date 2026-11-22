@@ -8,13 +8,14 @@ from contextlib import redirect_stdout
 from pathlib import Path
 
 import torch
+from common.editing.codec import canonical_actions, canonical_source, decode_actions
+from common.editing.encoders import collate_inputs
 from common.editing.operations import EditGraph, apply_operations
 from common.io import read, sha256
-from task2_graph_editing.he2020.data_processing.model import ActionVocabulary, frozen_features
+from task2_graph_editing.he2020.features import frozen_features
+from task2_graph_editing.he2020.model import ActionVocabulary
 from task2_graph_editing.he2020.runtime import make_model, predict
-from task2_graph_editing.magicbrush.sequence_model.codec import canonical_actions, canonical_source, decode_actions
-from task2_graph_editing.magicbrush.sequence_model.model import collate_inputs
-from task2_graph_editing.magicbrush.structured_model.vocabulary import PrototypeInput
+from task2_graph_editing.magicbrush.vocabulary import PrototypeInput
 
 
 def load_model(checkpoint, kind):

@@ -5,7 +5,7 @@ from pathlib import Path
 
 import torch
 from common.knowledge.export import load_class_features
-from common.knowledge.transe.core import sha256
+from common.knowledge.transe import sha256
 
 
 def load_pair_scores(folder: Path, features_dir: Path) -> tuple[torch.Tensor, torch.Tensor, dict]:

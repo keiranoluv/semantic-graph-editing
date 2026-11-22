@@ -1,3 +1,3 @@
-"""AlignG adapted to frozen-CLIP PredCls: isolated CPU-verified P0 extension."""
+"""AlignG prototype feedback for scene graph relation classification."""
 
-from task2_gqa.models.model import AlignGConfig, AlignGPredicateClassifier
+from task2_gqa.models.aligng import AlignGConfig, AlignGPredicateClassifier

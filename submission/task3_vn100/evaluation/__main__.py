@@ -13,7 +13,7 @@ from task3_vn100.evaluation.core import (
     stage_binding,
     workspace,
 )
-from task3_vn100.qwen_unified.core import GPU_LOCK, atomic, lock
+from task3_vn100.generation.core import GPU_LOCK, atomic, lock
 
 
 def main():
@@ -40,7 +40,7 @@ def main():
             path = out / "graph/results.json"
             binding = stage_binding(cfg, records)
             if path.exists():
-                from task3_vn100.evaluation.validation import validate_stage
+                from task3_vn100.evaluation.core import validate_stage
 
                 pack = read_stage(path)
                 validate_stage(pack, records, binding)

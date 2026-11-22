@@ -7,8 +7,8 @@ import shutil
 import tempfile
 from pathlib import Path
 
-from common.datasets.gqa_full import atomic_write
-from common.knowledge.transe.core import sha256
+from common.knowledge.transe import sha256
+from task2_gqa.cache import atomic_write
 from task2_gqa.preprocessing.export_wordnet import export_features
 
 SCOPE = "gqa_wordnet_v2_partial_human_sample_review"

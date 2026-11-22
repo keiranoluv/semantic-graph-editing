@@ -1,9 +1,9 @@
 """Build graph-edit supervision and verify pinned JSON inputs."""
 
+from common.editing.codec import canonical_actions
+from common.editing.data import Example
 from common.editing.operations import EditGraph, Operation, apply_operations
 from common.io import read, sha256
-from task2_graph_editing.magicbrush.sequence_model.codec import canonical_actions
-from task2_graph_editing.magicbrush.sequence_model.data import Example
 
 
 def checked_json(path, expected):

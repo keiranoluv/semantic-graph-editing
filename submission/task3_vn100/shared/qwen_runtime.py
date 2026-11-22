@@ -9,8 +9,8 @@ import time
 
 import numpy as np
 from PIL import Image
-from task3_vn100.image_graph.core import read, sha256
-from task3_vn100.qwen21.core import CONFIG
+from task3_vn100.image_graph import read, sha256
+from task3_vn100.qwen_assets import CONFIG
 
 
 def runtime():

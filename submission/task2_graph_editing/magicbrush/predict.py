@@ -3,18 +3,18 @@
 from pathlib import Path
 
 import torch
+from common.editing.codec import decode_actions
+from common.editing.encoders import collate_inputs
 from common.editing.operations import apply_operations
 from common.io import read, sha256
 from common.paths import ROOT
 from task2_graph_editing.magicbrush.dataset import MANIFEST
+from task2_graph_editing.magicbrush.decoding import decode_batch
 from task2_graph_editing.magicbrush.examples import checked_json
 from task2_graph_editing.magicbrush.features import text_store
+from task2_graph_editing.magicbrush.model import StructuredPredictor
 from task2_graph_editing.magicbrush.preprocess import digest
-from task2_graph_editing.magicbrush.sequence_model.codec import decode_actions
-from task2_graph_editing.magicbrush.sequence_model.model import collate_inputs
-from task2_graph_editing.magicbrush.structured_model.decoding import decode_batch
-from task2_graph_editing.magicbrush.structured_model.model import StructuredPredictor
-from task2_graph_editing.magicbrush.structured_model.vocabulary import PrototypeInput, prototype_vectors
+from task2_graph_editing.magicbrush.vocabulary import PrototypeInput, prototype_vectors
 
 
 def load_model(examples, *, seed=42, policy="prompt", checkpoint=None):
