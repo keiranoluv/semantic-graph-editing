@@ -1,0 +1,49 @@
+{
+  "source_commit": "47dea69aaff481ce2121e3c7dde42018442d2e87",
+  "files": {
+    "vg150/baselines.json": {
+      "original": "reports/level1/reference-test27-v1/summary.json",
+      "sha256": "0b6b2aa2855c231ce0632ca91a8a977c1e9db02896673dde215187c43b4b6d01"
+    },
+    "vg150/knowledge_fusion.json": {
+      "original": "reports/level1/reference-loss-fusion-test27-v1/summary.json",
+      "sha256": "cc0dad86b71403b7b9302f7bea522bcd4b1d70d8506130de64c83185ae4a68a2"
+    },
+    "vg150/knowledge_permutations.json": {
+      "original": "reports/level1/vg150-pair-permutations-v1/summary.json",
+      "sha256": "4420db0af003c4b25c223461c6bdda803face1f4bbfb334c0283845f9776bb67"
+    },
+    "vg150/long_tail.json": {
+      "original": "reports/level1/test-tail-zero-v1/long-tail.json",
+      "sha256": "d736e047c6d9137ce6e2e7d47b3294b00f1b4947b02f99fad0e88cde5977a4f8"
+    },
+    "vg150/zero_shot.json": {
+      "original": "reports/level1/test-tail-zero-v1/zero-shot-summary.json",
+      "sha256": "943f315f5731b7ab64e57d76781d8dca99717ecc027a442cb13fd5ca238244ed"
+    },
+    "gqa/models.json": {
+      "original": "reports/level2/gqa-test-v1/summary.json",
+      "sha256": "045918a0463ab3c1f3a5ea92247b01c744178e1ae947ff6e21cce23ee1dadd7d"
+    },
+    "gqa/adjusted_loss.json": {
+      "original": "reports/level2/gqa-gat-loss-test-v1/summary.json",
+      "sha256": "8d372633c7d7b719322cc84d83ce6219a5a8e7c2c5bafe6328511c8bc34529a1"
+    },
+    "magicbrush/test.json": {
+      "original": "reports/level2/magicbrush-prompt-intent-test-v1/summary.json",
+      "sha256": "652d3c43e2e90c2f0b7af835e8b166695b24888ba5cc3922796ba581851562ec"
+    },
+    "he2020/test.json": {
+      "original": "reports/level2/emnlp2020-task-b-wandb-v4-test-v1/metrics.json",
+      "sha256": "13c0ece1f0d28b82852ce71c4da5599930444773f5dbecf28e2e3387c41799f9"
+    },
+    "vn100/consistency.json": {
+      "original": "reports/level3/evaluation200-v1/results-summary.json",
+      "sha256": "fd679d96d9714c4bb53f6f36d232be4819a9ff34ef7cb47f5d1fe4b9ea9dd21f"
+    },
+    "pvsg/test.json": {
+      "original": "reports/pvsg-trd-m5-v1/summary.json",
+      "sha256": "530c9960a894e98200481c3e1648a3a18cabc4ebeaabe37d816e7348f8c8f76d"
+    }
+  }
+}

@@ -21,4 +21,5 @@ ignore = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["."]
+python_files = ["test_submission_*.py"]
+pythonpath = ["submission", "."]

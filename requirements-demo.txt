@@ -1,2 +1,0 @@
--r requirements.txt
-jupyterlab==4.4.10

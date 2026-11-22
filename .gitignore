@@ -36,3 +36,49 @@ scripts/pilot_mlp.py.bak
 
 # Official EMNLP dataset terms unspecified; keep records/review evidence local.
 /reviews/emnlp2020-*/
+
+# Research snapshot: keep the original local files, publish maintained code in submission/.
+/src/
+/experiments/
+/tools/
+/scripts/
+/configs/
+/reports/
+/reviews/
+/report_latex/
+/latex_report_source/
+/requirements*.txt
+/licenses/
+/.vscode/
+/1711.06640v2.pdf
+/screen.mp4
+/archived/*
+!/archived/README.md
+!/archived/snapshot.json
+/docs/*
+!/docs/REPRODUCE.md
+/notebooks/*
+!/notebooks/README.md
+!/notebooks/level1_scene_graph_demo.ipynb
+/tests/*
+!/tests/test_submission_operations.py
+!/tests/test_submission_predcls.py
+
+# Local exports, document build files and unrelated environments.
+/*.zip
+/README_BUNDLE.md
+/README_PROVENANCE_PILOT.md
+/VALIDATION*.json
+/magicbrush-manual-*.json
+/qwen*-reviewed.json
+/tasks-reviewed.json
+/vietnam_*.json
+/.venv-*/
+/MOSS-TTS/
+/25C15039-25C15062/
+
+# Local assistant instructions.
+AGENTS.md
+AGENT.md
+agent.md
+agents.md

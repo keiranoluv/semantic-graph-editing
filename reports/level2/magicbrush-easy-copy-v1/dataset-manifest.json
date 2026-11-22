@@ -1,9 +1,0 @@
-{
-  "files": {
-    "data/processed/level2/magicbrush-easy-copy-v1/detail-sidecar.json": "2106b200ad18db4babcabbc483d50db86a5846543b239f879c4828c9e190d290",
-    "data/processed/level2/magicbrush-easy-copy-v1/identity.json": "f8e029a331c2105d5a01d7877772d945484016565a71b7889337fd56942e7c77",
-    "data/processed/level2/magicbrush-easy-copy-v1/trainval-edits.json": "994226d79d5dce2a5d71d435df3dd907144d5a4953abcfa3bd88d82bcd88ca4d",
-    "data/processed/level2/magicbrush-easy-copy-v1/vocabulary-train.json": "8ae3a89832f6bb326fa76a2721950d1434154dbd909f4ea15c83ce2bca375ba8"
-  },
-  "identity_sha256": "2436f4a513003f8b3214dfa117cef6342ef68cc43810ca39d01c1d60f6499d39"
-}

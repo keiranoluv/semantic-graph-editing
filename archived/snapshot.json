@@ -1,0 +1,11 @@
+{
+  "commit": "47dea69aaff481ce2121e3c7dde42018442d2e87",
+  "files": 2176,
+  "zip_bytes": 100778769,
+  "sha256": "194ab627726f184cfac257cb80421266d8cef86bdcb71986f33266d6f92f0031",
+  "git_blobs_verified": true,
+  "includes_uncommitted_changes": false,
+  "retired_from_current_tree": 1885,
+  "snapshot_filename": "research-47dea69a.zip",
+  "recovery": "git worktree add --detach ../semantic-graph-editing-research 47dea69aaff481ce2121e3c7dde42018442d2e87"
+}

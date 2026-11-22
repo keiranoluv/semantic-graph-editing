@@ -1,7 +1,0 @@
-# Separate versioned extension; install into existing myenv (no Level 1/2 changes).
-torch==2.7.0
-torchvision==0.22.0
-Pillow==11.2.1
-scipy==1.15.3
-git+https://github.com/openai/CLIP.git@d05afc436d78f1c48dc0dbf8e5980a9d471f35f6
-pytest>=8,<10

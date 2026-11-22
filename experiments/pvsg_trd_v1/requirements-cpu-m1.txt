@@ -1,5 +1,0 @@
-# M1 CPU adapter/decoder/evaluator; direct dependencies, tested on Python 3.12.3.
-# Independent from the future feature extraction/training environment.
-numpy==2.1.0
-jsonschema==4.26.0
-pytest==8.3.5

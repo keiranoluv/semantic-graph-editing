@@ -8,11 +8,6 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
         args: ["--maxkb=500"]
-        # Reviewed Level 1 evidence: train vocabulary, validation cohort and
-        # two image contact sheets (each below 1.5 MB); no model/data binaries.
-        # Reviewed technical report: PDF, source bundle and copies of those
-        # contact sheets. Keep the size guard for all other paths.
-        exclude: ^(reports/level1/(zero-shot-reference-v1/(train-seen-triplets|validation-cohort)\.json|submission/cases/(hit|miss)-contact-sheet\.png)|latex_report_source/(main\.pdf|figures/vg-(hit|miss)-contact-sheet\.png)|archived/snapshots/technical_report_rewritten_v2\.zip)$
       - id: check-merge-conflict
       - id: debug-statements
 
@@ -34,10 +29,6 @@ repos:
     rev: 5.13.2
     hooks:
       - id: isort
-        # Preserve exact source hashes of the frozen Level 1 evaluations.
-        # These four files pass Black/Ruff; re-enable import sorting when a
-        # new evaluator version and its reports replace this frozen version.
-        exclude: ^(scripts/evaluate_level1\.py|src/evaluation/gat\.py|tools/(check_reference_predcls|level1_zero_shot)\.py)$
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.9.10

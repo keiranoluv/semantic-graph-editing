@@ -1,4 +1,0 @@
--r requirements-level3-sgg-pretrained-v2.txt
-diffusers==0.35.1
-accelerate==1.11.0
-lpips==0.1.4
