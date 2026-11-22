@@ -1,4 +1,5 @@
 """Resumable structured training with train-only semantic prototypes."""
+
 import json
 import math
 from pathlib import Path
@@ -16,10 +17,6 @@ SELECTION_POLICY = (
     "validation micro operation F1, then exact target graph accuracy, then lower "
     "validation structured loss (OOV payload fields masked, examples retained); exact ties keep earlier epoch"
 )
-
-
-class QualityGateError(RuntimeError):
-    """A completed development run cannot release further training or test."""
 
 
 def quality_gate(metrics, config):
@@ -41,13 +38,6 @@ def quality_gate(metrics, config):
         "thresholds": thresholds,
         "scope": "validation only; operational sanity check, not proof of useful generalization",
     }
-
-
-def require_quality(metrics, config):
-    result = quality_gate(metrics, config)
-    if not result["passed"]:
-        raise QualityGateError("Validation quality gate failed; queue/test remain blocked: " + json.dumps(result))
-    return result
 
 
 def selection_rank(metrics, token_loss):

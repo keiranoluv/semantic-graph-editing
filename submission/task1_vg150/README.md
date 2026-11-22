@@ -1,6 +1,6 @@
 # Nhiệm vụ 1 · VG150
 
-Chạy các lệnh từ thư mục gốc submission/ với môi trường environments/graph-training.txt, thêm protobuf==5.29.5 và đăng nhập W&B.
+Chạy các lệnh từ thư mục gốc submission/ với môi trường environments/graph-training.txt và đăng nhập W&B.
 
 ## Cấu hình đã dùng
 

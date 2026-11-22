@@ -1,8 +1,6 @@
 """Collect/resume/serve one SGG cohort, with a hard ceiling on new GPU predictions."""
 
 import argparse
-import functools
-import http.server
 import json
 import os
 import signal
@@ -13,23 +11,30 @@ from pathlib import Path
 from task3_vn100.image_graph.core import sha256, write
 from task3_vn100.qwen21.core import finish
 from task3_vn100.qwen_graphs.core import normalize
+from task3_vn100.qwen_sgg.core import (
+    accept,
+    collect,
+    identity,
+    inputs,
+    pair_results,
+    prediction,
+    protocol,
+    save_index,
+    workspace,
+)
 from task3_vn100.qwen_unified.core import GPU_LOCK, atomic, lock
 from task3_vn100.qwen_unified.runner import attempt_dir
 from task3_vn100.sgg_pretrained_v2.adapter import adapt
-
-from task3_vn100.qwen_sgg.core import accept, collect, identity, inputs, pair_results, prediction, protocol, save_index, workspace
-from task3_vn100.qwen_sgg.viewer import render
 
 
 def refresh(out, cfg, rows, images):
     save_index(out, cfg, rows, images)
     pairs = pair_results(out, rows, images)
-    render(pairs, images, out)
     atomic(
         out / "snapshot.json",
         {
             "schema": "qwen-sgg-snapshot-v1",
-            "complete": all(i["status"] == "ok" for i in images.values()),
+            "complete": all((i["status"] == "ok" for i in images.values())),
             "files_sha256": {
                 n: sha256(out / n)
                 for n in ("run.json", "index.json", "results.json", "review-data.json", "comparison.html")
@@ -37,7 +42,7 @@ def refresh(out, cfg, rows, images):
             "pair_receipts": {
                 r["task_id"]: sha256(out / "pairs" / r["task_id"] / "receipt.json")
                 for r in pairs
-                if all(i["status"] == "ok" for i in r["roles"].values())
+                if all((i["status"] == "ok" for i in r["roles"].values()))
             },
         },
     )
@@ -72,7 +77,7 @@ def infer_pending(out, cfg, rows, images, code, max_new, backend_factory=None, t
     }
     write(attempt / "run.json", provenance)
     backend = tracking = case = None
-    error, runtime = None, {}
+    error, runtime = (None, {})
     generated = attempted = 0
     started = time.perf_counter()
     try:
@@ -166,7 +171,7 @@ def infer_pending(out, cfg, rows, images, code, max_new, backend_factory=None, t
             "new_images_completed": generated,
             "new_images_attempted": attempted,
             "parse_success_on_attempted_images": generated / attempted if attempted else None,
-            "successful_images": sum(i["status"] == "ok" for i in images.values()),
+            "successful_images": sum((i["status"] == "ok" for i in images.values())),
             "error": error,
             "seconds_including_load_inference": time.perf_counter() - started,
             **runtime,
@@ -186,18 +191,17 @@ def infer_pending(out, cfg, rows, images, code, max_new, backend_factory=None, t
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("command", choices=["preflight", "collect", "infer", "serve"])
+    p.add_argument("command", choices=["preflight", "collect", "infer"])
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--no-import", action="store_true", help="For a fresh 300-image reproduction in a separate output")
     p.add_argument("--max-new-images", type=int, default=100)
-    p.add_argument("--port", type=int, default=8009)
     args = p.parse_args()
     code = identity()
     cfg, rows = inputs(args.output.name)
     from task3_vn100.qwen_sgg.backend import preflight
 
     if args.command in ("preflight", "infer"):
-        preflight()  # hashes + wheel/provider capabilities; no model session or GPU work
+        preflight()
     out = workspace(args.output, cfg, code)
     with lock(out / ".state.lock"):
         images = collect(out, cfg, rows, use_legacy=not args.no_import and cfg["schema"] != "qwen-sgg-unified-v2")
@@ -211,7 +215,7 @@ def main():
                     "unique_images": len(images),
                     "cached_images": len(images) - len(pending),
                     "pending_images": len(pending),
-                    "pending_roles": dict(Counter(u["role"] for i in pending for u in i["uses"])),
+                    "pending_roles": dict(Counter((u["role"] for i in pending for u in i["uses"]))),
                 }
             ),
             flush=True,
@@ -226,12 +230,4 @@ def main():
             signal.signal(signal.SIGTERM, terminate)
             with lock(GPU_LOCK):
                 return infer_pending(out, cfg, rows, images, code, args.max_new_images)
-    if args.command == "serve":
-        handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(out))
-        with http.server.ThreadingHTTPServer(("127.0.0.1", args.port), handler) as server:
-            print(f"http://localhost:{args.port}/comparison.html", flush=True)
-            try:
-                server.serve_forever()
-            except KeyboardInterrupt:
-                pass
     return 0

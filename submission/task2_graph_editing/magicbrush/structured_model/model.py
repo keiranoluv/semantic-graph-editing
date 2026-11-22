@@ -1,11 +1,11 @@
 """Matched MLP/GNN encoders and categorical, copy-aware graph-slot heads."""
+
 import math
 
 import torch
+from task2_graph_editing.magicbrush.sequence_model.model import MessageLayer
 from torch import nn
 from torch.nn import functional as F
-
-from task2_graph_editing.magicbrush.sequence_model.model import MessageLayer
 
 
 class SemanticHead(nn.Module):

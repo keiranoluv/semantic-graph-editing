@@ -1,32 +1,19 @@
 import math
-import subprocess
 from pathlib import Path
 
-from task3_vn100.image_graph.core import ROOT, digest, read, sha256, validate_record
+from common.paths import ROOT
+from task3_vn100.image_graph.core import digest, read, sha256, validate_record
 from task3_vn100.qwen_unified.core import atomic, load_case
 
 CONFIG = ROOT / "configs/level3/evaluation200-v1.json"
+
 DEFAULT_OUTPUT = ROOT / "runs/level3/evaluation-v1/seed42"
 
 
 def identity():
-    files = list(Path(__file__).parent.glob("*.py")) + [
-        CONFIG,
-        ROOT / "configs/level3/evaluation200-authoring-v1.json",
-        ROOT / "task3_vn100/commands/run_level3_eval.sh",
-        ROOT / "environments/image-evaluation.txt",
-        ROOT / "task3_vn100/qwen_scoring/scoring.py",
-        ROOT / "task3_vn100/qwen_unified/core.py",
-        ROOT / "task3_vn100/image_graph/core.py",
-        ROOT / "task3_vn100/shared/geometry.py",
-        ROOT / "common/editing/operations.py",
-    ]
-    if subprocess.check_output(["git", "status", "--porcelain", "--", *map(str, files)], cwd=ROOT):
-        raise ValueError("commit_evaluation_code_before_running")
-    return {
-        "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
-        "files_sha256": {str(p.relative_to(ROOT)): sha256(p) for p in sorted(files)},
-    }
+    from common.provenance import revision, source_hashes
+
+    return {"commit": revision(), "files_sha256": source_hashes()}
 
 
 def inputs():

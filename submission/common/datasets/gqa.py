@@ -6,16 +6,13 @@ Original strings are retained; no synonym or singular/plural normalization.
 
 import hashlib
 import io
-import json
 import zipfile
 from collections import Counter
 from pathlib import Path
 
-from PIL import Image
-
 from common.datasets.schemas import SceneGraphRecord, SceneObject, SceneRelation
 from common.datasets.vg150 import _clip_box_to_image
-from common.knowledge.transe.core import sha256
+from PIL import Image
 
 
 def make_splits(train_ids, official_val_ids, *, seed=42, val_size=5000):
@@ -109,35 +106,6 @@ def normalize_gqa(image_id, annotation, vocabulary):
     counts["images_without_relations"] += not bool(relations)
     counts["images_fewer_than_two_objects"] += len(objects) < 2
     return record, counts
-
-
-class GQAAnnotationLoader:
-    def __init__(self, root, split, manifest_path):
-        self.root = Path(root)
-        manifest = json.loads(Path(manifest_path).read_text())
-        if split not in ("train", "val", "test"):
-            raise ValueError("Unknown split")
-        groups = [manifest["splits"][k] for k in ("train", "val", "test")]
-        if any(len(g) != len(set(g)) for g in groups) or any(
-            set(groups[i]) & set(groups[j]) for i in range(3) for j in range(i + 1, 3)
-        ):
-            raise ValueError("Non-disjoint image split")
-        for name, digest in manifest["annotation_sha256"].items():
-            if sha256(self.root / "sceneGraphs" / name) != digest:
-                raise ValueError("GQA annotations differ from frozen manifest")
-        filename = "val_sceneGraphs.json" if split == "test" else "train_sceneGraphs.json"
-        self.annotations = json.loads((self.root / "sceneGraphs" / filename).read_text())
-        self.indices = manifest["splits"][split]
-        if not set(self.indices) <= self.annotations.keys():
-            raise ValueError("Split contains images outside its official annotation file")
-        self.vocabulary = manifest["vocabulary"]
-
-    def __len__(self):
-        return len(self.indices)
-
-    def load(self, index):
-        image_id = self.indices[index]
-        return normalize_gqa(image_id, self.annotations[image_id], self.vocabulary)[0]
 
 
 def image_archive_index(archive):

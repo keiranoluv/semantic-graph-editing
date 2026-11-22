@@ -1,7 +1,6 @@
 """Frozen M3 validation loop with M4 target-free pair-sequence collation."""
 
 import numpy as np
-
 from extension_pvsg.evaluation import evaluate
 from extension_pvsg.intervals import window_bounds
 from extension_pvsg.m3.data import sparse_targets, to_device

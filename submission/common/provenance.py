@@ -1,4 +1,5 @@
 """Verify the refactored submission independently of historical source locks."""
+
 import json
 
 from common.io import sha256
@@ -11,11 +12,6 @@ def source_hashes():
         if sha256(ROOT / name) != expected:
             raise ValueError(f"Submission source changed: {name}")
     return manifest["source_sha256"]
-
-
-def original_hash(name):
-    origins = json.loads((ROOT / "assets/source_origins.json").read_text())
-    return origins["files"][name]["original_sha256"]
 
 
 def verify_artifact(path, expected):

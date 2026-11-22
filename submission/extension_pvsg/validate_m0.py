@@ -5,7 +5,6 @@ The optional annotation audit reads vocabulary, metadata and split IDs only;
 it does not use held-out relation labels to construct statistics or priors.
 """
 
-import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -22,10 +21,6 @@ def read_json(path):
 def canonical_sha256(value):
     raw = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(raw).hexdigest()
-
-
-def file_sha256(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
 def validate_document(document, schema_name):
@@ -99,83 +94,3 @@ def validate_annotation_identity(path, manifest, vocabulary):
     if vocabulary["annotation_sha256"] != manifest["annotation"]["sha256"]:
         raise ValueError("Vocabulary annotation provenance mismatch")
     return {"videos": len(video_ids), "train": len(train), "heldout": len(heldout)}
-
-
-def validate_examples():
-    video = read_json(ROOT / "examples" / "synthetic_video.json")
-    targets = read_json(ROOT / "examples" / "synthetic_targets.json")
-    predictions = read_json(ROOT / "examples" / "synthetic_predictions.json")
-    for doc, schema in (
-        (video, "video.schema.json"),
-        (targets, "targets.schema.json"),
-        (predictions, "predictions.schema.json"),
-    ):
-        validate_document(doc, schema)
-    for doc in (targets, predictions):
-        if doc["video_id"] != video["video_id"] or doc["num_frames"] != video["num_frames"]:
-            raise ValueError("Synthetic example video identity mismatch")
-    track_ids = {track["track_id"] for track in video["tracks"]}
-    for item in targets["relations"] + predictions["predictions"]:
-        if item["subject_id"] == item["object_id"] or not {item["subject_id"], item["object_id"]} <= track_ids:
-            raise ValueError("Example refers to a self pair or unknown track")
-        for start, end in item["intervals"]:
-            if not 0 <= start <= end < video["num_frames"]:
-                raise ValueError("Example contains an invalid inclusive interval")
-
-
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--annotation", type=Path, help="Optional local annotation identity check")
-    parser.add_argument("--require-selected", action="store_true", help="Fail if outer split selection is unresolved")
-    args = parser.parse_args()
-    protocol = read_json(ROOT / "protocol.json")
-    status = read_json(ROOT / "provenance" / "m0_status.json")
-    sources = read_json(ROOT / "provenance" / "sources.json")
-    if file_sha256(ROOT / "protocol.json") != status["protocol_sha256"]:
-        raise ValueError("Protocol specification hash mismatch")
-    if protocol["protocol_id"] != status["protocol_id"] or protocol["knowledge_graph"]:
-        raise ValueError("Protocol identity/scope mismatch")
-    if status["training_enabled"] or protocol["execution"]["training_enabled"]:
-        raise ValueError("M0 must not enable training")
-    for path in sorted((ROOT / "schemas").glob("*.json")):
-        Draft202012Validator.check_schema(read_json(path))
-    for path in sorted((ROOT / "manifests").glob("*.json")):
-        validate_manifest(read_json(path))
-    candidate_path = ROOT / "manifests" / sources["observed_manifest"]
-    candidate = read_json(candidate_path)
-    validate_examples()
-    if args.require_selected:
-        if not status["selected_manifest"]:
-            raise ValueError("M0 is awaiting split selection; no training dataset is locked")
-        if status["selected_manifest"] != sources["observed_manifest"]:
-            raise ValueError("Selected manifest differs from audited source manifest")
-        if status["selected_split_id"] != candidate["split_id"]:
-            raise ValueError("Selected split ID differs from manifest")
-        validate_manifest(candidate, require_selected=True)
-    annotation_summary = None
-    if args.annotation:
-        annotation_summary = validate_annotation_identity(
-            args.annotation, candidate, read_json(ROOT / "provenance" / "vocabulary.json")
-        )
-    if not status["artifact_sha256"]:
-        raise ValueError("M0 artifact hashes have not been recorded")
-    for filename, expected in status["artifact_sha256"].items():
-        from common.provenance import verify_artifact
-        verify_artifact(ROOT / filename, expected)
-    print(
-        json.dumps(
-            {
-                "validation": "passed",
-                "m0_state": status["state"],
-                "m0_complete": status["m0_complete"],
-                "selected_manifest": status["selected_manifest"],
-                "annotation_identity": annotation_summary,
-                "training_enabled": False,
-            },
-            indent=2,
-        )
-    )
-
-
-if __name__ == "__main__":
-    main()

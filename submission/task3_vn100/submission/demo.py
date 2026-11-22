@@ -1,11 +1,22 @@
 """Portable notebook helpers. Read saved predictions; recompute graph scores on CPU."""
+
 import base64
 import html
 import json
 import math
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
-from task3_vn100.submission.bundle import DEFAULT, read, safe_name, sha
+from common.io import read
+from common.io import sha256 as sha
+
+DEFAULT = Path("runs/level3/submission-v1")
+
+
+def safe_name(name):
+    p = PurePosixPath(name)
+    if p.is_absolute() or ".." in p.parts or "\\" in name or not p.parts or name != str(p) or ":" in p.parts[0]:
+        raise ValueError("unsafe_archive_path:" + name)
+    return str(p)
 
 
 def open_bundle(root, manifest=None):
@@ -44,28 +55,6 @@ def recompute(root, manifest, task_id, images=True):
     return {**case, "graphs_loaded": graphs, "recomputed": result}
 
 
-def verify_all_scores(root, manifest):
-    from task3_vn100.evaluation.report import comparison
-
-    rows = []
-    for case in manifest["cases"]:
-        result = recompute(root, manifest, case["task_id"], images=False)["recomputed"]
-        row = dict(case["scores_and_labels"])
-        row.update({k: result[k] for k in ("edit_score", "preservation_score", "graph_consistency")})
-        row["evaluable_preservation"] = result["preservation_score"] if result["preservation_evaluable"] else None
-        rows.append(row)
-    actual = comparison(rows)
-    expected = read(checked(root, manifest, manifest["summary"]))["all"]
-    if actual != expected:
-        raise ValueError("recomputed_correlations_differ")
-    return {
-        "pairs_recomputed": len(rows),
-        "graph_available": actual["graph_available"],
-        "common_n": actual["common_n"],
-        "spearman": {m: r["spearman"] for m, r in actual["common_case_correlations"].items()},
-    }
-
-
 def table(headers, rows):
     esc = html.escape
     return (
@@ -85,7 +74,7 @@ def table(headers, rows):
 
 
 def image_pair_html(root, case, boxes=True):
-    from task3_vn100.analysis.core import graph_svg
+    from task3_vn100.visualization import graph_svg
 
     blocks = []
     for role, title in (("source", "Ảnh nguồn"), ("target", "Ảnh Qwen")):

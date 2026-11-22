@@ -1,6 +1,6 @@
 # Mở rộng video · PVSG
 
-Chạy từ gốc submission/ với môi trường PVSG, tương ứng runtime đã ghi trong m3/runtime.json. Video, geometry và CLIP cache nằm ở data/external/pvsg_m2_cache_v4/ và data/external/pvsg_clip_cache_v1/.
+Chạy từ gốc submission/ với môi trường PVSG, tương ứng runtime đã ghi trong m3/runtime.json. Cài môi trường từ environments/pvsg.txt. Video, geometry và CLIP cache nằm ở data/external/pvsg_m2_cache_v4/ và data/external/pvsg_clip_cache_v1/.
 
 ## Huấn luyện
 
@@ -23,9 +23,12 @@ train.py đọc m3/configs/baselines_v1.json hoặc m4/configs/ablations_v1.json
 
 ## Đánh giá
 
-    python -m extension_pvsg.m5.run check
-    python -m extension_pvsg.m5.run evaluate
+    python -m extension_pvsg.evaluate --checkpoint runs/retrain-pvsg/m3/st_gat/seed-17/best.pt --family m3 --split validation --device cpu
 
-m5/run.py chấm danh mục checkpoint lịch sử đã chọn trên validation, gồm bảng chính và bảy lượt min50. Cần các artifact và metadata tương ứng tại đường dẫn đã khóa trong evaluator. Với lượt train mới, chọn checkpoint từ validation và lập danh mục đánh giá riêng theo cùng evaluator.
+Evaluator dựng mô hình theo config trong checkpoint và dùng lại validation của vòng train. Với M4, truyền --family m4. Chấm test bằng --split test --allow-test sau khi chọn checkpoint trên validation.
 
-m2/ tạo đặc trưng vùng và track. m3/models.py, m4/models.py cài mô hình. manifests/ khóa split theo video. provenance/ lưu nguồn dữ liệu và metadata thực nghiệm gốc.
+## Tiền xử lý
+
+m2/preparation.py chuẩn hóa nhãn và cố định split. m2/build_geometry.py tạo geometry từ mask và video. m2/features.py trích CLIP theo vùng track. Các bước chuẩn bị có --help với đầu vào và output tương ứng.
+
+m3/models.py và m4/models.py cài mô hình. manifests/ giữ split theo video. Các metadata trong provenance/ được giữ theo các hash dữ liệu mà trainer kiểm tra.

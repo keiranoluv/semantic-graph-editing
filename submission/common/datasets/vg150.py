@@ -6,12 +6,11 @@ from pathlib import Path
 from typing import Literal
 
 import h5py
-from torch_geometric.data import Data, Dataset
-
 from common.datasets.hdf5_session import ProcessLocalH5
 from common.datasets.schemas import SceneGraphRecord, SceneObject, SceneRelation
 from common.graph.builder import SceneGraphBuilder
 from common.graph.features import FeatureExtractor
+from torch_geometric.data import Data, Dataset
 
 
 def _clip_box_to_image(
@@ -75,7 +74,9 @@ def _clip_rounding_overflow(
 
 
 BoxPolicy = Literal["strict", "clip"]
+
 Split = Literal["train", "val", "test"]
+
 BOX_SCALE = 1024.0
 
 

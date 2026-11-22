@@ -1,7 +1,6 @@
 """Mini-batched MLP inference preserving per-image scene graphs."""
 
 import torch
-
 from common.evaluation.protocols import evaluate_graph_image
 
 

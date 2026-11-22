@@ -16,6 +16,7 @@ from pathlib import Path
 from urllib.parse import unquote
 
 CONCEPTNET_VERSION = "5.7.0"
+
 RELATIONS = (
     "IsA",
     "PartOf",
@@ -28,7 +29,9 @@ RELATIONS = (
     "ReceivesAction",
     "RelatedTo",
 )
+
 SUPPORTED_LICENSES = {"cc:by/4.0", "cc:by-sa/4.0", "cc:by-sa/3.0", "cc:by/3.0"}
+
 RELATION_URIS = frozenset(f"/r/{name}" for name in RELATIONS)
 
 

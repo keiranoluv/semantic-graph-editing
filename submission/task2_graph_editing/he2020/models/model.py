@@ -1,7 +1,6 @@
 """The v2 encoder with device-correct padding mask; v2 source stays frozen."""
 
 import torch
-
 from task2_graph_editing.he2020.data_processing.model import LexicalPredictor as CPULexicalPredictor
 
 

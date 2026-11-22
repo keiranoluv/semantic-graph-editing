@@ -9,7 +9,6 @@ from typing import Any
 
 from common.knowledge.sense_review import _validate_mapping
 
-# Direction, relation labels and WordNet source accessors are explicit.
 WORDNET_RELATIONS = (
     ("IsA", "hypernyms", "wordnet.hypernyms"),
     ("InstanceOf", "instance_hypernyms", "wordnet.instance_hypernyms"),

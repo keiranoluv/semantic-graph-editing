@@ -2,10 +2,9 @@
 
 import torch
 import torch.nn.functional as F
-
 from common.datasets.batching import graph_batches
-from common.evaluation.scene_graph import summarize_evaluation
 from common.evaluation.protocols import evaluate_graph_image
+from common.evaluation.scene_graph import summarize_evaluation
 from common.graph.gnn_batching import collate_gnn_graphs, forward_gat_batch
 
 

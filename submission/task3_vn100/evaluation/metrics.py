@@ -1,15 +1,15 @@
 """Frozen offline models, one model at a time; per-case resumable metric evidence."""
+
 import gc
 import importlib.metadata
 import time
 
 import numpy as np
+from common.paths import ROOT
 from PIL import Image, ImageOps
-
-from task3_vn100.image_graph.core import ROOT, read, sha256
-from task3_vn100.qwen_unified.core import atomic
-
 from task3_vn100.evaluation.core import case_header, read_stage, save_stage, stage_binding
+from task3_vn100.image_graph.core import read, sha256
+from task3_vn100.qwen_unified.core import atomic
 
 CACHE = ROOT / "data/cache/level3-task3-v1"
 

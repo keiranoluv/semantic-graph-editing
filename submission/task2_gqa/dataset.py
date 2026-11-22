@@ -5,7 +5,9 @@ import io
 import json
 import multiprocessing
 import time
+from collections import OrderedDict
 from concurrent.futures import ProcessPoolExecutor
+from pathlib import Path
 
 import torch
 from common.datasets.gqa_full import GQAFullDataset
@@ -105,3 +107,13 @@ class RAMGQADataset:
 
     def close(self):
         self.graphs.clear()
+
+
+class HeldoutDataset(GQAFullDataset):
+    def __init__(self, directory, metadata):
+        if set(metadata["identity"]["splits"]) != {"test"}:
+            raise ValueError("Expected test-only cache")
+        self.directory = Path(directory)
+        self.ids = metadata["identity"]["splits"]["test"]
+        self.locations = {i: e["file"] for e in metadata["shards"] for i in e["ids"]}
+        self.handles = OrderedDict()

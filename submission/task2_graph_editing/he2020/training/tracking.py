@@ -5,7 +5,6 @@ import os
 from common.io import digest
 
 
-
 def flatten(metrics, prefix):
     result = {}
     for key, value in metrics.items():

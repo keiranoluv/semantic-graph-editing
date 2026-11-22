@@ -7,13 +7,13 @@ Mã nguồn gồm ba nhiệm vụ và phần mở rộng video. [Notebook tổng
 | Nhiệm vụ | Tiền xử lý và split | Mô hình | Huấn luyện | Đánh giá và suy luận |
 |---|---|---|---|---|
 | [1 · VG150](task1_vg150/README.md) | [Split](task1_vg150/preprocess.py), [cache CLIP](task1_vg150/cache_vg150_regions.py) | [GAT](common/models/gat.py), [GAT + KG](common/models/gat_kg.py) | [Launcher theo báo cáo](task1_vg150/train_report.py), [GAT](task1_vg150/train.py), [MLP](task1_vg150/train_mlp.py) | [Chấm checkpoint](task1_vg150/evaluate.py) |
-| [2A · GQA](task2_gqa/README.md) | [Chuẩn hóa và chia tập](task2_gqa/preprocessing/graphs.py) | [PE-PLPR + AlignG](task2_gqa/training/model.py) | [Runner](task2_gqa/training/runner.py) | [Chấm test](task2_gqa/gqa_test_v1/runner.py) |
+| [2A · GQA](task2_gqa/README.md) | [Chuẩn hóa và chia tập](task2_gqa/preprocessing/graphs.py) | [PE-PLPR + AlignG](task2_gqa/training/model.py) | [Runner](task2_gqa/training/runner.py) | [Đánh giá checkpoint](task2_gqa/evaluate.py) |
 | [2B · MagicBrush](task2_graph_editing/magicbrush/README.md) | [Cặp và split](task2_graph_editing/magicbrush/data), [đọc cặp](task2_graph_editing/magicbrush/dataset.py) | [GNN](task2_graph_editing/magicbrush/structured_model/model.py) | [Runner](task2_graph_editing/magicbrush/run.py) | [Dự đoán](task2_graph_editing/magicbrush/predict.py), [chấm test](task2_graph_editing/magicbrush/evaluate.py) |
 | [2B mở rộng · He và cộng sự](task2_graph_editing/he2020/README.md) | [Đọc bộ gốc](task2_graph_editing/he2020/preprocessing/dataset.py) | [MLP/GNN](task2_graph_editing/he2020/models/model.py) | [Runner](task2_graph_editing/he2020/training/runner.py) | [Chấm test](task2_graph_editing/he2020/evaluate.py) |
 | [3 · VN100](task3_vn100/README.md) | [200 yêu cầu](configs/level3/qwen200-cohort-v1.json) | [Qwen](task3_vn100/qwen_unified), [REACT++](task3_vn100/qwen_sgg) | Mô hình pretrained | [Chấm ảnh bằng đồ thị](task3_vn100/evaluation) |
-| [Mở rộng · PVSG](extension_pvsg/README.md) | [Split video](extension_pvsg/manifests/pvsg_author_release_338_62.lock.json) | [MLP, GAT](extension_pvsg/m3/models.py), [mô hình thời gian](extension_pvsg/m4/models.py) | [Train một model](extension_pvsg/train.py) | [Chấm test](extension_pvsg/m5/run.py) |
+| [Mở rộng · PVSG](extension_pvsg/README.md) | [Split video](extension_pvsg/manifests/pvsg_author_release_338_62.lock.json) | [MLP, GAT](extension_pvsg/m3/models.py), [mô hình thời gian](extension_pvsg/m4/models.py) | [Train một model](extension_pvsg/train.py) | [Đánh giá checkpoint](extension_pvsg/evaluate.py) |
 
-common/ chứa thao tác đồ thị, mô hình dùng chung, đặc trưng và evaluator PredCls. configs/ lưu cấu hình cố định. reports/ và reviews/ lưu kết quả và minh chứng mà demo hoặc quá trình chuẩn bị dữ liệu sử dụng. assets/ chứa data card VN100, manifest trọng số và xuất xứ mã nguồn.
+common/ chứa thao tác đồ thị, mô hình dùng chung, đặc trưng và evaluator PredCls. configs/ lưu cấu hình cố định. assets/ chứa các ví dụ và danh mục checkpoint cần cho notebook, data card VN100, manifest trọng số và xuất xứ mã nguồn.
 
 ## Chạy demo trên CPU
 
@@ -44,6 +44,6 @@ Notebook tổng hợp hiển thị 5 Hit và 5 Miss trên validation của mỗi
 
 ## Môi trường và xuất xứ
 
-[environments/](environments) có môi trường riêng cho demo CPU, huấn luyện đồ thị, Qwen, REACT++, chấm ảnh và VLM judge. Graph-training cần thêm protobuf==5.29.5 khi dùng W&B. Từng nhiệm vụ có hướng dẫn ngắn về dữ liệu và lệnh chạy.
+[environments/](environments) có môi trường riêng cho demo CPU, huấn luyện đồ thị, Qwen, REACT++, chấm ảnh và PVSG. Từng nhiệm vụ có hướng dẫn ngắn về dữ liệu và lệnh chạy.
 
 [Danh mục xuất xứ](assets/source_origins.json) liên kết mã đã tổ chức lại với mã gốc. [Manifest bản nộp](assets/refactor_manifest.json) kiểm tra mã hiện tại. Cấu hình, nhãn và receipt lịch sử giữ thông tin của lượt đã tạo checkpoint. Huấn luyện bằng bản refactor ghi nhận hash mới. Các lượt train trong bản clone ghi Git revision. Bản chép độc lập ghi hash manifest mã nguồn.

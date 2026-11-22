@@ -1,7 +1,6 @@
 """Sparse streaming implementation of the frozen M1 decoder, checked against it."""
 
 import numpy as np
-
 from extension_pvsg.contracts import PROTOCOL_ID, normalize_predictions, visibility_masks
 from extension_pvsg.intervals import mask_to_intervals
 

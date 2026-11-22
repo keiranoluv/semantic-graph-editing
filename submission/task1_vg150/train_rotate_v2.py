@@ -7,7 +7,6 @@ from pathlib import Path
 
 import numpy as np
 import torch
-
 from common.knowledge.rotate import RotateV2, evaluate_rotate
 from common.knowledge.transe.core import (
     check_gate,

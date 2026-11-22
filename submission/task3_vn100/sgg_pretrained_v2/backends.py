@@ -1,15 +1,11 @@
 """Official ONNX models, original preprocessing, explicit CUDA execution evidence."""
 
-import gc
 import importlib.util
 import json
-import sys
 from collections import Counter
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
-
 from task3_vn100.sgg_pretrained_v2.adapter import react_decode
 
 
@@ -72,127 +68,3 @@ class React:
 
     def close(self):
         return finish_profile(self.sess, self.device)
-
-
-def detect_owl(cache, device, rows, locked, output, cfg):
-    """Run detector stage then release it before loading the relation model."""
-    import torch
-    from torchvision.ops import nms
-    from transformers import Owlv2ForObjectDetection, Owlv2Processor
-
-    processor = Owlv2Processor.from_pretrained(cache / "owl", local_files_only=True, use_fast=False)
-    model = Owlv2ForObjectDetection.from_pretrained(cache / "owl", local_files_only=True).eval().to(device)
-    labels = cfg["object_vocabulary"]
-    result = {}
-    with torch.inference_mode():
-        for row in rows:
-            im = Image.open(locked / row["image_path"]).convert("RGB")
-            inputs = processor(text=[[f"a photo of a {x}" for x in labels]], images=im, return_tensors="pt").to(device)
-            raw = model(**inputs)
-            np.savez_compressed(
-                output / "native" / (row["image_id"] + "-owl.npz"),
-                logits=raw.logits.cpu().numpy(),
-                pred_boxes=raw.pred_boxes.cpu().numpy(),
-                objectness_logits=raw.objectness_logits.cpu().numpy(),
-            )
-            pred = processor.post_process_object_detection(
-                raw, threshold=cfg["box_threshold"], target_sizes=torch.tensor([im.size[::-1]])
-            )[0]
-            boxes, scores, classes = (pred[k].cpu() for k in ("boxes", "scores", "labels"))
-            before_clip = boxes.clone()
-            boxes[:, 0::2].clamp_(0, im.width)
-            boxes[:, 1::2].clamp_(0, im.height)
-            valid = ((boxes[:, 2:] - boxes[:, :2]) > 0).all(1)
-            idx = torch.where(valid)[0]
-            # Class-agnostic NMS prevents synonyms becoming duplicate instances.
-            selected = idx[nms(boxes[idx], scores[idx], cfg["nms_iou"])[: cfg["max_boxes"]]]
-            objects = [
-                {
-                    "label": labels[int(classes[i])],
-                    "confidence": float(scores[i]),
-                    "bbox_xyxy": boxes[i].tolist(),
-                    "native_index": int(i),
-                }
-                for i in selected
-            ]
-            result[row["image_id"]] = {
-                "objects": objects,
-                "detector_native": {
-                    "raw_npz": row["image_id"] + "-owl.npz",
-                    "postprocess_boxes_before_clip": before_clip.tolist(),
-                    "postprocess_scores": scores.tolist(),
-                    "postprocess_labels": classes.tolist(),
-                    "selected_indices": selected.tolist(),
-                    "device": str(model.device),
-                },
-            }
-    del raw, inputs, model, processor
-    gc.collect()
-    if device == "cuda":
-        torch.cuda.empty_cache()
-    return result
-
-
-class Relate:
-    def __init__(self, cache, device, output, cfg):
-        sys.path.insert(0, str(cache / "RelateAnything"))
-        from deploy.postprocess import ThresholdConfig, decode
-        from deploy.runtime import OnnxRelationHead
-
-        # Use the official preprocessing/vocabulary/decoding with our profiled session.
-        class ProfiledHead(OnnxRelationHead):
-            def _build_engine(head, path, threads, providers):
-                head.sess = session(path, device, output / "relate-profile")
-                head.input_names = [x.name for x in head.sess.get_inputs()]
-                return [x.name for x in head.sess.get_outputs()]
-
-        self.head = ProfiledHead(str(cache / "relate/relateanything.onnx"), str(cache / "relate/predicate_bank.npz"))
-        if not self.head.emits_logits:
-            raise ValueError("require_raw_logit_ONNX_export")
-        self.head.set_predicates(self.head.available_predicates())
-        if cfg["max_boxes"] > self.head.max_boxes:
-            raise ValueError("box_budget_exceeds_export")
-        self.cfg = ThresholdConfig(
-            threshold=cfg["relation_threshold"],
-            topk=cfg["topk"],
-            calib_a=self.head.contract.calib_a,
-            calib_b=self.head.contract.calib_b,
-            pair_weight=1.0,
-            box_score_weight=True,
-            max_per_pair=1,
-        )
-        self.decode, self.device = decode, device
-        self.metadata = {
-            "predicates": self.head.predicates,
-            "vocabulary_scope": "entire_released_ONNX_predicate_bank",
-            "calibration": self.cfg.__dict__,
-            "max_boxes": self.head.max_boxes,
-        }
-
-    def predict(self, path, objects, native_path):
-        import cv2
-
-        if len(objects) < 2:
-            return [], {"relation_stage": "skipped_fewer_than_two_detections"}
-        boxes = np.array([o["bbox_xyxy"] for o in objects], dtype=np.float32)
-        scores = np.array([o["confidence"] for o in objects], dtype=np.float32)
-        raw = self.head(cv2.imread(str(path)), boxes)
-        np.savez_compressed(
-            native_path,
-            **dict(zip(("pred_logits", "pair_logits", "sub_idx", "obj_idx", "valid_mask"), raw, strict=False)),
-        )
-        trips = self.decode(*raw, self.head.predicates, self.cfg, boxes_xyxy=boxes, box_scores=scores)
-        return [
-            {
-                "subject": t.subject_idx,
-                "object": t.object_idx,
-                "predicate": t.predicate,
-                "confidence": t.score,
-                "confidence_kind": "official_calibrated_relation_score",
-                "ranking_score": t.score * float(scores[t.subject_idx]) * float(scores[t.object_idx]),
-            }
-            for t in trips
-        ], {"raw_npz": native_path.name}
-
-    def close(self):
-        return finish_profile(self.head.sess, self.device)

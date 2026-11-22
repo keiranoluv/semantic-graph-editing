@@ -4,10 +4,10 @@ Raw head decisions are retained and scored separately. The constrained output
 masks dead endpoints, explicitly deletes edges incident to removed nodes, and
 keeps the first edge for duplicate triples. It never consults a reference target.
 """
+
 from collections import Counter
 
 import torch
-
 from common.editing.operations import Edge, EditGraph, Node, Operation, diff_aligned_graphs
 from task2_graph_editing.magicbrush.sequence_model.codec import encode_actions
 

@@ -4,7 +4,6 @@ import json
 from pathlib import Path
 
 import torch
-
 from common.knowledge.entity_linking import _read_classes
 from common.knowledge.sense_review import _validate_mapping
 from common.knowledge.transe.core import check_gate, load_kg, sha256

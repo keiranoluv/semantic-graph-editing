@@ -5,7 +5,6 @@ import random
 import time
 
 import numpy as np
-
 from task3_vn100.image_graph.core import write
 from task3_vn100.qwen_graphs.core import verify_react
 from task3_vn100.sgg_pretrained_v2.assets import CACHE

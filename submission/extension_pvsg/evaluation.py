@@ -1,12 +1,20 @@
 """GT-track temporal-set-IoU evaluator. Not OpenPVSG volumetric compatibility."""
 
 import numpy as np
-
-from extension_pvsg.contracts import NUM_PREDICATES, PROTOCOL_ID, normalize_predictions, normalize_targets, relation_key, validate_video
+from extension_pvsg.contracts import (
+    NUM_PREDICATES,
+    PROTOCOL_ID,
+    normalize_predictions,
+    normalize_targets,
+    relation_key,
+    validate_video,
+)
 from extension_pvsg.intervals import integer, temporal_iou
 
 EVALUATOR_ID = "pvsg-gt-trd-tiouv1-cpu-m1"
+
 DEFAULT_KS = (20, 50, 100)
+
 DEFAULT_THRESHOLDS = (0.3, 0.5, 0.7)
 
 

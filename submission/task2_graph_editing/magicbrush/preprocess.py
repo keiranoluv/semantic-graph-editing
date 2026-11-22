@@ -10,17 +10,20 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import requests
-from PIL import Image
-
-from task1_vg150.prepare_knowledge import _save_outputs
 from common.editing.splits import grouped_split
 from common.knowledge.transe.core import sha256
-
 from common.paths import ROOT
+from PIL import Image
+from task1_vg150.prepare_knowledge import _save_outputs
+
 REVISION = "6c254560879df7851233ea0fd2ae2a62764d0ef2"
+
 REPO = "osunlp/MagicBrush"
+
 RAW = ROOT / "data/raw/magicbrush-hf-6c254560"
+
 DATA = ROOT / "data/processed/level2/magicbrush-v1"
+
 REPORT = ROOT / "reports/level2/magicbrush-v1"
 
 

@@ -1,6 +1,5 @@
 """Export vocabulary-bound GQA TransE features without VG150 ID assumptions."""
 
-import argparse
 import json
 from pathlib import Path
 
@@ -116,60 +115,3 @@ def export_features(checkpoint_path, mapping_dir, output):
     metadata["tensor_sha256"] = sha256(tensor_path)
     _save_outputs(output, {"manifest.json": json_bytes(metadata)}, dry_run=False)
     return metadata
-
-
-def load_features(folder, manifest_path):
-    """Fail closed on changed tensors, class ordering or train vocabulary."""
-    metadata = json.loads((folder / "manifest.json").read_text())
-    manifest = json.loads(manifest_path.read_text())
-    labels = manifest["vocabulary"]["label_to_idx"]
-    if (
-        metadata.get("schema_version") != 1
-        or metadata.get("kg_source") != "wordnet"
-        or metadata.get("gqa_manifest_sha256") != sha256(manifest_path)
-        or metadata.get("class_count") != len(labels) + 1
-        or metadata.get("scope") != "draft_pilot_not_human_reviewed_GQA"
-    ):
-        raise ValueError("GQA feature bundle scope or vocabulary mismatch")
-    tensor_path = folder / "class_embeddings.pt"
-    if sha256(tensor_path) != metadata["tensor_sha256"]:
-        raise ValueError("Feature tensor hash mismatch")
-    data = torch.load(tensor_path, map_location="cpu", weights_only=True)
-    features, valid = data["class_embeddings"], data["valid_mask"]
-    n = len(labels) + 1
-    if (
-        features.shape != (n, metadata["dim"])
-        or features.dtype != torch.float32
-        or valid.shape != (n,)
-        or valid.dtype != torch.bool
-        or not torch.isfinite(features).all()
-        or valid[0]
-        or torch.count_nonzero(features[~valid])
-        or int(valid.sum()) != metadata["valid_class_count"]
-    ):
-        raise ValueError("Invalid feature shape, values or background/missing mask")
-    rows = metadata["rows"]
-    if (
-        len(rows) != n
-        or any(type(r["class_id"]) is not int or r["class_id"] != i for i, r in enumerate(rows))
-        or any(rows[i]["label"] != label for label, i in labels.items())
-        or [r["valid"] for r in rows] != valid.tolist()
-    ):
-        raise ValueError("GQA feature row order or label mismatch")
-    return features, valid, metadata
-
-
-def main(argv=None):
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--checkpoint", type=Path, default=Path("runs/level2/gqa-wordnet-transe-draft-v1/best.pt"))
-    parser.add_argument("--mapping-dir", type=Path, default=Path("data/knowledge/gqa-wordnet-v1"))
-    parser.add_argument("--output", type=Path, default=Path("data/knowledge/gqa-wordnet-features-draft-v1"))
-    args = parser.parse_args(argv)
-    metadata = export_features(args.checkpoint, args.mapping_dir, args.output)
-    print(
-        json.dumps({k: metadata[k] for k in ("class_count", "valid_class_count", "dim", "checkpoint_epoch", "scope")})
-    )
-
-
-if __name__ == "__main__":
-    main()

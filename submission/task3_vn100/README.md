@@ -18,7 +18,6 @@ Qwen dùng configs/level3/qwen-unified-v1.json, batch 1, seed 42, 40 diffusion s
     python -m task3_vn100.evaluation check
     python -m task3_vn100.evaluation graph --device cpu
     python -m task3_vn100.evaluation metrics --device cuda
-    python -m task3_vn100.evaluation report --review /duong/dan/nhan-tay.json
 
 Các bước chấm đọc đầu vào đã khóa trong configs/level3/evaluation200-v1.json và lưu theo DEFAULT_OUTPUT trong evaluation/core.py. Khi đổi thư mục tạo ảnh/đồ thị, cần cấu hình đánh giá có provenance riêng trỏ đến lượt đó.
 

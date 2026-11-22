@@ -7,4 +7,3 @@ diffusers @ git+https://github.com/huggingface/diffusers.git@43e30028af5120d8b08
 Pillow==11.3.0
 numpy==2.2.6
 requests==2.32.5
-pytest==8.4.2

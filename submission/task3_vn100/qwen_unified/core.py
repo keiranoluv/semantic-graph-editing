@@ -5,16 +5,18 @@ import fcntl
 import json
 import os
 import re
-import subprocess
 import tempfile
 from collections import Counter
 from pathlib import Path
 
-from task3_vn100.image_graph.core import ROOT, digest, read, sha256, write
+from common.paths import ROOT
+from task3_vn100.image_graph.core import digest, read, sha256, write
 from task3_vn100.qwen21.core import LOCK, bundle
 
 CONFIG = ROOT / "configs/level3/qwen-unified-v1.json"
+
 RUNS = ROOT / "runs/level3/qwen200"
+
 GPU_LOCK = ROOT / "data/cache/level3-sgg-v1/inference.lock"
 
 
@@ -99,26 +101,9 @@ def protocol(cfg):
 
 
 def identity():
-    files = list(Path(__file__).parent.glob("*.py")) + list(Path(__file__).parent.glob("*.html"))
-    files += [
-        CONFIG,
-        ROOT / read(CONFIG)["manifest"],
-        LOCK,
-        ROOT / "task3_vn100/commands/run_level3_qwen.sh",
-        ROOT / "task3_vn100/image_graph/core.py",
-        ROOT / "common/editing/operations.py",
-        ROOT / "task3_vn100/shared/__init__.py",
-        ROOT / "configs/level3/qwen21-pilot-v1.json",
-        ROOT / "environments/qwen-edit.txt",
-    ]
-    files += list((ROOT / "task3_vn100/qwen21").glob("*.py"))
-    files += [ROOT / "task3_vn100/shared/qwen_runtime.py"]
-    if subprocess.check_output(["git", "status", "--porcelain", "--", *map(str, files)], cwd=ROOT, text=True):
-        raise ValueError("commit_related_code_before_running")
-    return {
-        "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
-        "files_sha256": {str(p.relative_to(ROOT)): sha256(p) for p in sorted(files)},
-    }
+    from common.provenance import revision, source_hashes
+
+    return {"commit": revision(), "files_sha256": source_hashes()}
 
 
 def workspace(path, cfg, code):

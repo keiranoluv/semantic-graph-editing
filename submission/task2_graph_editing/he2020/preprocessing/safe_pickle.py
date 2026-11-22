@@ -23,6 +23,7 @@ GLOBALS = {
     "networkx.classes.reportviews NodeView",
     "builtins dict",
 }
+
 MARK = object()
 
 

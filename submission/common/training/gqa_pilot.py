@@ -1,7 +1,5 @@
 """GQA supervision retaining multi-predicate pairs without overweighting duplicates."""
 
-from collections import Counter
-
 import torch
 import torch.nn.functional as F
 
@@ -79,23 +77,3 @@ def cross_entropy_sum(logits, targets):
     if not torch.isfinite(logits).all():
         raise RuntimeError("Non-finite logits")
     return -(targets * F.log_softmax(logits, dim=1)).sum()
-
-
-def graph_statistics(graphs, num_classes):
-    counts = Counter(images=len(graphs))
-    predicate_support = Counter()
-    for g in graphs:
-        targets = soft_targets(g, num_classes)
-        counts.update(
-            objects=g.num_nodes,
-            candidate_pairs=len(targets),
-            positive_pairs=int((targets[:, 0] == 0).sum()),
-            background_pairs=int((targets[:, 0] == 1).sum()),
-            multi_predicate_pairs=int(((targets[:, 1:] > 0).sum(1) > 1).sum()),
-            gt_annotation_rows=g.gt_predicate.numel(),
-            unique_gt_triplets=len(set(zip(*g.gt_relation_index.tolist(), g.gt_predicate.tolist(), strict=True))),
-            images_without_gt=int(g.gt_predicate.numel() == 0),
-            images_without_candidates=int(len(targets) == 0),
-        )
-        predicate_support.update(g.gt_predicate.tolist())
-    return {**dict(counts), "predicates_with_gt": len(predicate_support)}

@@ -1,9 +1,8 @@
 """Matched KG fusion controls for VG150 PredCls."""
 
 import torch
-from torch import nn
-
 from common.models.gat import GATPredicateClassifier
+from torch import nn
 
 
 class KnowledgeFusionGAT(nn.Module):

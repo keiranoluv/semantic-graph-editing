@@ -1,7 +1,6 @@
 """Full internal-validation timelines; no test evaluation or pair filtering by GT."""
 
 import numpy as np
-
 from extension_pvsg.evaluation import evaluate
 from extension_pvsg.intervals import window_bounds
 from extension_pvsg.m3.data import collate, sparse_targets, to_device

@@ -1,7 +1,6 @@
 """Bounding-box geometry features for scene graph nodes."""
 
 import torch
-
 from common.datasets.schemas import SceneGraphRecord
 from common.graph.features import FeatureExtractor
 

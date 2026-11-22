@@ -1,7 +1,6 @@
 """Strict native array -> EditGraph conversion; no semantic invention."""
 
 import numpy as np
-
 from common.editing.operations import Edge, EditGraph, Node
 from task3_vn100.image_graph.core import make_record, validate_box
 

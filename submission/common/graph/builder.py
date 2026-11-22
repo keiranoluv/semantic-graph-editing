@@ -5,11 +5,11 @@ from dataclasses import dataclass
 from typing import Literal
 
 import torch
+from common.datasets.schemas import SceneGraphRecord
 from torch_geometric.data import Data
 
-from common.datasets.schemas import SceneGraphRecord
-
 Topology = Literal["fully_connected"]
+
 CandidateMode = Literal["all_pairs", "supervised_pairs"]
 
 

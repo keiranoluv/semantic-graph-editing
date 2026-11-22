@@ -3,7 +3,6 @@
 from abc import ABC, abstractmethod
 
 import torch
-
 from common.datasets.schemas import SceneGraphRecord
 
 

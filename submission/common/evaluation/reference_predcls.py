@@ -10,7 +10,9 @@ import numpy as np
 import torch
 
 PROTOCOL = "PredCls_reference_v1_iou50_image_macro_per_predicate_50"
+
 NG_PROTOCOL = "PredCls_reference_ng_v1_iou50_image_macro_per_predicate_50"
+
 REFERENCE_COMMIT = "ceb71fa88461c2a97a6258a80f47669d89207296"
 
 

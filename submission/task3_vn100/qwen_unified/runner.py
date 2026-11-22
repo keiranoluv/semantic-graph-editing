@@ -1,20 +1,26 @@
 """Single entry point: collect completed cases, resume pending inference, or serve the 200-case demo."""
 
 import argparse
-import functools
-import http.server
 import json
 import os
 import signal
 from pathlib import Path
 
+from common.paths import ROOT
 from PIL import Image, ImageOps
-
-from task3_vn100.image_graph.core import ROOT, sha256, write
+from task3_vn100.image_graph.core import sha256, write
 from task3_vn100.qwen21.core import finish
-
-from task3_vn100.qwen_unified.core import GPU_LOCK, atomic, collect, identity, inputs, load_case, lock, save_state, workspace
-from task3_vn100.qwen_unified.viewer import render
+from task3_vn100.qwen_unified.core import (
+    GPU_LOCK,
+    atomic,
+    collect,
+    identity,
+    inputs,
+    load_case,
+    lock,
+    save_state,
+    workspace,
+)
 
 
 def attempt_dir(parent):
@@ -30,7 +36,7 @@ def attempt_dir(parent):
 def infer_pending(out, cfg, tasks, state, code, editor_factory=None, tracker_factory=None):
     """One bounded pass. Successes survive interruptions; retries get new attempt directories."""
     if state["successful"] == len(tasks):
-        return 0  # no model, CUDA, weights or W&B needed when already complete
+        return 0
     if os.environ.get("WANDB_MODE", "online") != "online":
         raise ValueError("online_WandB_required")
     if editor_factory is None:
@@ -72,7 +78,7 @@ def infer_pending(out, cfg, tasks, state, code, editor_factory=None, tracker_fac
                 raise ValueError("original_source_changed_before_inference")
             case = attempt_dir(out / "cases" / task["task_id"])
             write(case / "intent.json", task)
-            source, target = case / "source.png", case / "target.png"
+            source, target = (case / "source.png", case / "target.png")
             if task["image_id"] in known_sources:
                 os.link(known_sources[task["image_id"]], source)
             else:
@@ -110,7 +116,6 @@ def infer_pending(out, cfg, tasks, state, code, editor_factory=None, tracker_fac
             known_sources[task["image_id"]] = str(source)
             generated += 1
             save_state(out, state)
-            render(out, cfg, tasks, state)
             tracking.log(
                 {
                     "successful": state["successful"],
@@ -136,7 +141,6 @@ def infer_pending(out, cfg, tasks, state, code, editor_factory=None, tracker_fac
         if editor is not None:
             editor.close()
         save_state(out, state)
-        render(out, cfg, tasks, state)
         write(
             attempt / "execution.json",
             {
@@ -155,7 +159,7 @@ def infer_pending(out, cfg, tasks, state, code, editor_factory=None, tracker_fac
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("command", choices=["collect", "infer", "serve", "preflight"])
+    p.add_argument("command", choices=["collect", "infer", "preflight"])
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--import-run", action="append", type=Path, default=[])
     p.add_argument(
@@ -163,7 +167,6 @@ def main():
         action="store_true",
         help="Fresh 200-request inference; existing successes in output still resume",
     )
-    p.add_argument("--port", type=int, default=8008)
     args = p.parse_args()
     cfg, tasks = inputs()
     code = identity()
@@ -174,15 +177,13 @@ def main():
     imports = ([] if args.no_import else [ROOT / r for r in cfg["default_import_runs"]]) + args.import_run
     with lock(out / ".state.lock"):
         state = collect(out, cfg, tasks, imports)
-        render(out, cfg, tasks, state)
-        if args.command == "infer" and not state["execution_complete"]:
+        if args.command == "infer" and (not state["execution_complete"]):
 
             def terminate(_signum, _frame):
                 raise KeyboardInterrupt("SIGTERM: keep completed case receipts")
 
             signal.signal(signal.SIGTERM, terminate)
             with lock(GPU_LOCK):
-                # Never queue behind the running legacy inference job.
                 return infer_pending(out, cfg, tasks, state, code)
     print(
         json.dumps(
@@ -196,12 +197,4 @@ def main():
         ),
         flush=True,
     )
-    if args.command == "serve":
-        handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(out))
-        with http.server.ThreadingHTTPServer(("127.0.0.1", args.port), handler) as server:
-            print(f"http://localhost:{args.port}/comparison.html", flush=True)
-            try:
-                server.serve_forever()
-            except KeyboardInterrupt:
-                pass
     return 0

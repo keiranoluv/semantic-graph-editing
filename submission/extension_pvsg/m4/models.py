@@ -5,9 +5,8 @@ See provenance/sources.json and README for source version and changed heads.
 """
 
 import torch
-from torch import nn
-
 from extension_pvsg.m3.models import RelationModel as M3RelationModel
+from torch import nn
 
 
 class EdgeAblation(M3RelationModel):

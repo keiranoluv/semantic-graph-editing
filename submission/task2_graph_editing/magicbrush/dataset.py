@@ -5,9 +5,10 @@ from pathlib import Path
 
 from common.io import read, sha256
 
-
 HERE = Path(__file__).resolve().parent
+
 DATA = HERE / "data"
+
 MANIFEST = DATA / "manifest.json"
 
 

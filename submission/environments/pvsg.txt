@@ -1,0 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.9.1+cu128
+torch-geometric==2.6.1
+numpy==2.1.0
+scipy==1.15.3
+Pillow==11.2.1
+av==16.0.1
+jsonschema==4.26.0
+wandb==0.18.7
+protobuf==5.29.5
+setuptools==78.1.0

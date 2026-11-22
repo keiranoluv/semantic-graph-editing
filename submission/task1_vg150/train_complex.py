@@ -7,7 +7,6 @@ from pathlib import Path
 
 import numpy as np
 import torch
-
 from common.knowledge.complex import ComplexReviewed, evaluate_complex
 from common.knowledge.transe.core import (
     check_gate,

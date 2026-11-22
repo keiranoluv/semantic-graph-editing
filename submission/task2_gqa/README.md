@@ -9,20 +9,19 @@ Chạy từ gốc submission/. Cài environments/gqa-cu128.txt, đăng nhập W&
 
 Runner dùng configs/level2/aligng-gqa-fast-v1-bs512.json. Batch train và validation đều 512, lr 0.001, weight decay 0.01, tối đa 200 epoch, patience 15. Sáu lượt chạy tuần tự, mỗi seed 42, 123, 3407 lần lượt train PE-PLPR + AlignG rồi PE-PLPR. W&B online, output ở runs/level2/aligng-gqa-fast-v1/full/. Runner tiếp tục hàng đợi khi lượt hiện tại hoàn tất.
 
-training/model.py cài mô hình, training/engine.py cài vòng tối ưu, recipe/ chuẩn bị dữ liệu và validation, models/ chứa khối AlignG. dataset.py chứa loader RAM mà lượt full sử dụng.
+training/model.py cài mô hình, training/engine.py cài vòng tối ưu, configuration.py chuẩn bị cấu hình và dữ liệu; validation.py tính metric dùng trong train, models/ chứa khối AlignG. dataset.py chứa loader RAM mà lượt full sử dụng.
 
 ## Baseline MLP, GAT và PE-Net
 
     python -m task2_gqa.train_baselines --stage train --config configs/level2/gqa-full-v3-bs512.json --model gat --seed 42
 
-Lệnh trên chạy một model/seed, output theo trường output của config. Đổi --model thành mlp, pe-ce, pe-pl hoặc pe-plpr. Cấu hình cố định batch 512 và seeds 42, 123, 3407. evaluation.py cung cấp cách dựng baseline và tính metric. knowledge.py dựng GAT + KG để đọc checkpoint của phần đối chứng tri thức.
+Lệnh trên chạy một model/seed, output theo trường output của config. Đổi --model thành mlp, pe-ce, pe-pl hoặc pe-plpr. Cấu hình cố định batch 512 và seeds 42, 123, 3407. validation.py cung cấp cách dựng baseline và tính metric. knowledge.py dựng GAT + KG để đọc checkpoint của phần đối chứng tri thức.
 
 ## Suy luận và đánh giá
 
-    python -m task2_gqa.gqa_test_v1.runner cpu-smoke --output /tmp/gqa-cpu-smoke
+    python -m task2_gqa.evaluate --checkpoint runs/level2/aligng-gqa-fast-v1/full/pe-plpr-aligng/42/best.pt --model pe-plpr-aligng --backend fast --split val --max-images 2 --device cpu
 
-Notebook tổng hợp suy luận checkpoint trên CPU, hiển thị 5 Hit và 5 Miss. Bộ chấm đọc danh mục checkpoint đã chọn trên validation. preprocessing/graphs.py chuẩn hóa đồ thị và tách tập theo ID ảnh.
-
+Lệnh đọc một checkpoint và chấm trên cache đã có. predict.py dựng mô hình từ checkpoint. validation.py dùng chung cách tính metric cho train và đánh giá. Notebook tổng hợp hiển thị 5 Hit và 5 Miss, dùng danh mục hai checkpoint trong assets/gqa_checkpoints.json.
 
 ## Chuẩn bị lại dữ liệu
 

@@ -17,11 +17,11 @@ from common.training.gqa_full import math_finite
 from common.training.gqa_tracking import RunTracker
 from common.training.penet import prototype_losses
 from common.training.state import state_hash
-from task2_gqa.evaluation import compact_metrics
-from task2_gqa.models import AlignGConfig
+from task2_gqa.models.model import AlignGConfig
 from task2_gqa.training.batching import collate, model_inputs
-from task2_gqa.training.evaluation import evaluate
 from task2_gqa.training.model import FastAlignG, FastConfig
+from task2_gqa.validation import compact_metrics
+from task2_gqa.validation import evaluate_fast as evaluate
 
 MODELS = ("pe-plpr-aligng", "pe-plpr")
 

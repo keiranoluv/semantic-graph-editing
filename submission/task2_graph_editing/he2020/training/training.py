@@ -8,7 +8,7 @@ from pathlib import Path
 import torch
 from common.io import read, sha256, write
 from common.training.random_state import capture_rng, restore_rng, save_checkpoint
-from task2_graph_editing.he2020.models.runner import evaluate, make_model, predict, tensor_subset
+from task2_graph_editing.he2020.runtime import evaluate, make_model, predict, tensor_subset
 from task2_graph_editing.he2020.training import tracking
 from torch import nn
 

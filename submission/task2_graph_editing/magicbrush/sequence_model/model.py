@@ -3,10 +3,9 @@
 import math
 
 import torch
-from torch import nn
-
 from task2_graph_editing.magicbrush.sequence_model.codec import BOS, EOS, PAD, VOCAB_SIZE
 from task2_graph_editing.magicbrush.sequence_model.data import feature_texts
+from torch import nn
 
 
 def collate_inputs(inputs, embeddings, *, max_nodes=20, max_edges=60, device="cpu"):
@@ -34,16 +33,6 @@ def collate_inputs(inputs, embeddings, *, max_nodes=20, max_edges=60, device="cp
         for j, edge in enumerate(source.edges):
             tensors["subject"][i, j], tensors["object"][i, j] = ids[edge.subject], ids[edge.object]
     return {k: v.to(device) for k, v in tensors.items()}
-
-
-def collate_targets(examples, device="cpu"):
-    from task2_graph_editing.magicbrush.sequence_model.codec import encode_actions
-
-    sequences = [encode_actions(example.operations) for example in examples]
-    tokens = torch.full((len(sequences), max(map(len, sequences))), PAD, dtype=torch.long, device=device)
-    for i, sequence in enumerate(sequences):
-        tokens[i, : len(sequence)] = torch.tensor(sequence, device=device)
-    return tokens[:, :-1], tokens[:, 1:]
 
 
 class MessageLayer(nn.Module):

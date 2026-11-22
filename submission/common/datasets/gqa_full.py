@@ -12,14 +12,13 @@ from pathlib import Path
 import h5py
 import numpy as np
 import torch
-from PIL import Image
-
 from common.datasets.gqa import image_archive_index, normalize_gqa
 from common.datasets.gqa_pilot import record_identity, select_cohort
 from common.datasets.schemas import SceneGraphRecord, SceneObject, SceneRelation
 from common.features.geometry import GeometryFeatureExtractor
 from common.graph.builder import SceneGraphBuilder
 from common.knowledge.transe.core import sha256
+from PIL import Image
 
 
 def digest(value):
@@ -128,7 +127,6 @@ def shard_plan(identity):
 def prepare_cache(config, *, stop_requested=lambda: False):
     """Completed shards are immutable; interrupted temp shard is rebuilt on resume."""
     import clip
-
     from task1_vg150.cache_vg150_regions import extract_vectors, scale_boxes_to_jpeg
 
     manifest = json.loads(Path(config["manifest"]).read_text())

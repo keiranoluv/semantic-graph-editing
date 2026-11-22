@@ -6,14 +6,15 @@ from copy import deepcopy
 from functools import lru_cache
 from pathlib import Path
 
+from extension_pvsg.intervals import integer, intervals_to_mask, mask_to_intervals, normalize_intervals
 from jsonschema import Draft202012Validator
 
-from extension_pvsg.intervals import integer, intervals_to_mask, mask_to_intervals, normalize_intervals
-
 ROOT = Path(__file__).resolve().parent
+
 PROTOCOL_ID = "pvsg-gt-trd-tiouv1"
+
 NUM_PREDICATES = 57
-NUM_CLASSES = 126
+
 NUM_THINGS = 115
 
 

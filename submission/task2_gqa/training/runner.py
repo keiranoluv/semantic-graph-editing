@@ -8,19 +8,22 @@ import time
 from dataclasses import asdict
 from pathlib import Path
 
+import task2_gqa.configuration as previous
 import torch
 from common.datasets.gqa_full import atomic_write, digest, pin_json
 from common.knowledge.transe.core import sha256
 from common.locking import exclusive
 from common.training.gqa_full import summarize_matrix
-from task2_gqa.recipe import runner as previous
 from task2_gqa.training import engine
 from task2_gqa.training.batching import prepare_graph
 from task2_gqa.training.model import FastConfig
 
 ROOT = previous.ROOT
+
 CONFIG = ROOT / "configs/level2/aligng-gqa-fast-v1-bs512.json"
+
 MODELS = ("pe-plpr-aligng", "pe-plpr")
+
 SEEDS = (42, 123, 3407)
 
 

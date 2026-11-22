@@ -5,7 +5,6 @@ from pathlib import Path
 
 import numpy as np
 import torch
-
 from common.datasets.hdf5_session import ProcessLocalH5
 from common.datasets.schemas import SceneGraphRecord
 from common.features.geometry import GeometryFeatureExtractor

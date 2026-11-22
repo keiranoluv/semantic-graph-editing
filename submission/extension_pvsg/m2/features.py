@@ -9,12 +9,11 @@ import zipfile
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
-
 from extension_pvsg.contracts import read_json
-from extension_pvsg.validate_m0 import canonical_sha256
 from extension_pvsg.m2.download import sha256
 from extension_pvsg.m2.media import MEDIA_ROOT, iter_video_timeline, read_mask
+from extension_pvsg.validate_m0 import canonical_sha256
+from PIL import Image
 
 CONFIG_PATH = Path(__file__).parent / "configs/clip_masked_v1.json"
 
@@ -39,7 +38,6 @@ def preprocess_crop(rgb, mask, track_id, box, config):
 class ClipEncoder:
     def __init__(self, checkpoint, device, config):
         import torch
-
         from extension_pvsg.m2.vendor.openai_clip_model import VisionTransformer
 
         if sha256(checkpoint) != config["checkpoint_sha256"]:

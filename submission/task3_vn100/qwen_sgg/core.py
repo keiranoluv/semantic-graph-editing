@@ -3,11 +3,11 @@
 import copy
 import json
 import re
-import subprocess
 from collections import Counter
 from pathlib import Path
 
-from task3_vn100.image_graph.core import ROOT, digest, read, sha256, validate_record, write
+from common.paths import ROOT
+from task3_vn100.image_graph.core import digest, read, sha256, validate_record, write
 from task3_vn100.qwen21.core import bundle, finish
 from task3_vn100.qwen_unified.core import atomic
 from task3_vn100.qwen_unified.core import inputs as qwen_inputs
@@ -15,7 +15,9 @@ from task3_vn100.qwen_unified.core import load_case
 from task3_vn100.qwen_unified.core import protocol as qwen_protocol
 
 CONFIG = ROOT / "configs/level3/qwen-sgg-unified-v1.json"
+
 RUNS = ROOT / "runs/level3/qwen-sgg"
+
 MODEL_FIELDS = (
     "backend",
     "asset_lock_sha256",
@@ -103,33 +105,9 @@ def inputs(run_name=None):
 
 
 def identity():
-    from task3_vn100.sgg_pretrained_v2.assets import LOCK
+    from common.provenance import revision, source_hashes
 
-    files = list(Path(__file__).parent.glob("*.py")) + list(Path(__file__).parent.glob("*.html"))
-    files += [
-        CONFIG,
-        ROOT / "task3_vn100/commands/run_level3_sgg.sh",
-        ROOT / "environments/react-graph.txt",
-        LOCK,
-        ROOT / read(CONFIG)["manifest"],
-        ROOT / "configs/level3/qwen-unified-v1.json",
-        ROOT / "configs/level3/sgg-pretrained-v2.json",
-        ROOT / "task3_vn100/qwen_unified/core.py",
-        ROOT / "task3_vn100/qwen_unified/runner.py",
-        ROOT / "task3_vn100/qwen21/core.py",
-        ROOT / "task3_vn100/shared/qwen_runtime.py",
-        ROOT / "task3_vn100/shared/__init__.py",
-        ROOT / "task3_vn100/sgg_pretrained_v2/assets.py",
-        ROOT / "configs/level3/qwen21-pilot-v1.json",
-    ]
-    files += [ROOT / p for p in read(CONFIG)["pipeline_files_sha256"]]
-    files = sorted(set(files))
-    if subprocess.check_output(["git", "status", "--porcelain", "--", *map(str, files)], text=True, cwd=ROOT):
-        raise ValueError("commit_SGG_code_before_execution")
-    return {
-        "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True, cwd=ROOT).strip(),
-        "files_sha256": {str(p.relative_to(ROOT)): sha256(p) for p in files},
-    }
+    return {"commit": revision(), "files_sha256": source_hashes()}
 
 
 def workspace(out, cfg, code):

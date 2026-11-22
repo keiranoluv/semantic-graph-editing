@@ -1,4 +1,4 @@
-"""CPU-only gates: immutable earlier stages, complete cache, tested batch profile."""
+"""Check runtime versions and the complete feature cache before training."""
 
 import fcntl
 from pathlib import Path
@@ -17,7 +17,7 @@ def check_runtime():
 def check_features(cfg):
     root = Path(cfg["feature_cache"])
     if not (root / "summary.json").is_file():
-        raise ValueError("M2 extraction is incomplete: run bash extension_pvsg/m2/launch_extract.sh first")
+        raise ValueError("M2 extraction is incomplete: run python -m extension_pvsg.m2.features first")
     with (root / ".lock").open("a") as handle:
         try:
             fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)

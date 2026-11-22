@@ -8,12 +8,10 @@ from dataclasses import dataclass
 
 import torch
 import torch.nn.functional as F
-from torch.utils.checkpoint import checkpoint
-
 from common.models.penet import PENetPredicateClassifier
-
 from task2_gqa.models.batching import validate_pairs
 from task2_gqa.models.feedback import PrototypeFeedback
+from torch.utils.checkpoint import checkpoint
 
 
 @dataclass(frozen=True)

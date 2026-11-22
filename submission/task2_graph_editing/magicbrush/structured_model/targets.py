@@ -1,8 +1,8 @@
 """Supervision for existing graph entities and canonical added-entity slots."""
-import torch
-from torch.nn import functional as F
 
+import torch
 from task2_graph_editing.magicbrush.structured_model.vocabulary import field_index
+from torch.nn import functional as F
 
 
 def encode_targets(examples, vocab, config, device="cpu"):

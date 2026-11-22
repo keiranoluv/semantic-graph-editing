@@ -11,8 +11,8 @@ import io
 import json
 from pathlib import Path
 
-from task1_vg150.prepare_knowledge import _save_outputs
 from common.knowledge.graph_builder import build_wordnet_graph
+from task1_vg150.prepare_knowledge import _save_outputs
 
 
 def _json_bytes(data: object) -> bytes:

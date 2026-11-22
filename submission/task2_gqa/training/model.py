@@ -8,12 +8,10 @@ from dataclasses import dataclass
 
 import torch
 import torch.nn.functional as F
-from torch.utils.checkpoint import checkpoint
-
-from task2_gqa.models.model import AlignGPredicateClassifier
 from common.models.penet import PENetPredicateClassifier
-
+from task2_gqa.models.model import AlignGPredicateClassifier
 from task2_gqa.training.batching import ModelBatch
+from torch.utils.checkpoint import checkpoint
 
 
 @dataclass(frozen=True)

@@ -1,9 +1,11 @@
 """Immutable JSON artifacts and streaming SHA-256 checks."""
+
 import hashlib
 import json
 import os
 import tempfile
 from pathlib import Path
+
 
 def encode(value):
     return (json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False) + "\n").encode()

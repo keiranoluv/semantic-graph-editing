@@ -2,7 +2,6 @@
 
 import numpy as np
 import torch
-
 from extension_pvsg.m3.data import collate as collate_m3
 
 

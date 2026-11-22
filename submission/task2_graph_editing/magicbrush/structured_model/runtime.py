@@ -1,9 +1,8 @@
 """Structured losses and inference; scoring remains the frozen operation metric."""
-import torch
 
+import torch
 from task2_graph_editing.magicbrush.sequence_model.codec import score_predictions
 from task2_graph_editing.magicbrush.sequence_model.model import collate_inputs
-
 from task2_graph_editing.magicbrush.structured_model.decoding import decode_batch
 from task2_graph_editing.magicbrush.structured_model.targets import encode_targets, structured_loss
 

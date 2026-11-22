@@ -1,7 +1,6 @@
 """Batch independent scene graphs while preserving full message-passing edges."""
 
 import torch
-
 from common.training.sampling import sample_training_pairs
 
 

@@ -15,7 +15,7 @@ from common.training.gqa_pilot import collate, cross_entropy_sum, forward
 from common.training.gqa_tracking import RunTracker
 from common.training.penet import prototype_losses
 from common.training.state import state_hash
-from task2_gqa.evaluation import build_model, compact_metrics, evaluate
+from task2_gqa.validation import build_model, compact_metrics, evaluate
 
 MODELS = ("mlp", "gat", "pe-ce", "pe-pl", "pe-plpr")
 

@@ -5,7 +5,6 @@ import inspect
 import time
 
 from PIL import Image
-
 from task3_vn100.image_graph.core import sha256, write
 from task3_vn100.qwen21.core import CACHE, assets
 from task3_vn100.shared.qwen_runtime import MemoryMonitor, call_args, check_image, runtime

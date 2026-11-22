@@ -1,4 +1,5 @@
 """Unchanged Qwen runtime contracts shared with the REACT++ memory monitor."""
+
 import importlib.metadata
 import inspect
 import json
@@ -8,7 +9,6 @@ import time
 
 import numpy as np
 from PIL import Image
-
 from task3_vn100.image_graph.core import read, sha256
 from task3_vn100.qwen21.core import CONFIG
 

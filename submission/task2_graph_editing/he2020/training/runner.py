@@ -10,15 +10,14 @@ import subprocess
 from pathlib import Path
 
 import torch
-
-from task2_graph_editing.magicbrush.sequence_model.text import TextStore
 from common.io import digest, read, sha256, write
-from task2_graph_editing.he2020.preprocessing.dataset import ROOT
-from task2_graph_editing.he2020.models.runner import identity as base_identity
-from task2_graph_editing.he2020.models.runner import inputs_tensor
+from common.paths import ROOT
 from task2_graph_editing.he2020.data_processing.data import load_bundle
 from task2_graph_editing.he2020.data_processing.model import WEIGHTS_SHA256, ActionVocabulary
+from task2_graph_editing.he2020.runtime import identity as base_identity
+from task2_graph_editing.he2020.runtime import inputs_tensor
 from task2_graph_editing.he2020.training.training import train_one
+from task2_graph_editing.magicbrush.sequence_model.text import TextStore
 
 
 def validate_config(config):
@@ -226,7 +225,3 @@ def main():
     else:
         result = train(config)
     print(json.dumps(result, indent=2))
-
-
-if __name__ == "__main__":
-    main()

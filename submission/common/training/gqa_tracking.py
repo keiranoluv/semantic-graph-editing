@@ -12,7 +12,6 @@ from pathlib import Path
 
 import numpy as np
 import torch
-
 from common.datasets.gqa_full import atomic_write, digest, pin_json
 
 

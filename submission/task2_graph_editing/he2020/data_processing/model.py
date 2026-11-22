@@ -5,14 +5,12 @@ import json
 from pathlib import Path
 
 import torch
-from torch import nn
-
 from common.editing.operations import KINDS
+from common.io import fixed, read, sha256, write
 from task2_graph_editing.magicbrush.sequence_model.codec import BOS, EOS, PAD, encode_actions
 from task2_graph_editing.magicbrush.sequence_model.model import EditPredictor
 from task2_graph_editing.magicbrush.sequence_model.text import TextStore, text_key
-from common.io import fixed, read, sha256, write
-
+from torch import nn
 
 WEIGHTS_SHA256 = "40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af"
 

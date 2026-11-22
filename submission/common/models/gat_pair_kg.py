@@ -1,9 +1,8 @@
 """GAT with a frozen, relation-specific KG branch for ordered object pairs."""
 
 import torch
-from torch import nn
-
 from common.models.gat import GATPredicateClassifier
+from torch import nn
 
 
 class PairwiseKnowledgeGAT(nn.Module):

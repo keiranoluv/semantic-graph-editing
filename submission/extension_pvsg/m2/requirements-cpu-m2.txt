@@ -1,6 +1,0 @@
-numpy==2.1.0
-scipy==1.15.3
-Pillow==11.2.1
-av==16.0.1
-jsonschema==4.26.0
-pytest==8.3.5

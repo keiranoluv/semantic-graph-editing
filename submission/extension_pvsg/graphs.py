@@ -4,13 +4,6 @@ from dataclasses import dataclass
 
 import numpy as np
 
-from extension_pvsg.contracts import validate_video, visibility_masks
-from extension_pvsg.intervals import integer
-
-
-def _edges(rows):
-    return np.asarray(rows, dtype=np.int64).reshape(-1, 2).T.copy()
-
 
 @dataclass(frozen=True)
 class Graph:
@@ -22,39 +15,6 @@ class Graph:
     temporal_edges: np.ndarray
     self_edges: np.ndarray
     query_edges: np.ndarray
-
-
-def build_graph(video, *, start=0, stop=None, spatial=True, temporal=True):
-    video = validate_video(video)
-    start = integer(start, "start")
-    stop = video["num_frames"] if stop is None else integer(stop, "stop", 1)
-    if not start < stop <= video["num_frames"]:
-        raise ValueError("Invalid graph window bounds")
-    visibility = visibility_masks(video)
-    classes = {track["track_id"]: track["class_id"] for track in video["tracks"]}
-    rows = [
-        (t, track_id, classes[track_id])
-        for t in range(start, stop)
-        for track_id in sorted(visibility)
-        if visibility[track_id][t]
-    ]
-    indices = {(t, track_id): i for i, (t, track_id, _) in enumerate(rows)}
-    spatial_rows, temporal_rows = [], []
-    for t in range(start, stop):
-        active = [indices[t, track_id] for track_id in sorted(visibility) if (t, track_id) in indices]
-        spatial_rows.extend((s, o) for s in active for o in active if s != o)
-        for track_id in sorted(visibility):
-            if (t, track_id) in indices and (t + 1, track_id) in indices:
-                a, b = indices[t, track_id], indices[t + 1, track_id]
-                temporal_rows.extend(((a, b), (b, a)))
-    return Graph(
-        video["video_id"],
-        np.asarray(rows, dtype=np.int64).reshape(-1, 3),
-        _edges(spatial_rows if spatial else []),
-        _edges(temporal_rows if temporal else []),
-        _edges([(i, i) for i in range(len(rows))]),
-        _edges(spatial_rows),
-    )
 
 
 def batch_graphs(graphs):

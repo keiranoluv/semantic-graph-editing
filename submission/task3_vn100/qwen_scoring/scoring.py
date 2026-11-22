@@ -2,7 +2,6 @@
 
 import numpy as np
 from scipy.optimize import linear_sum_assignment
-
 from task3_vn100.image_graph.core import validate_record
 from task3_vn100.shared.geometry import inside, iou, label
 

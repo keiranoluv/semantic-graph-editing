@@ -1,7 +1,6 @@
 """Frozen KG features and edge-removal ablation, separate from baseline."""
 
 import torch
-
 from common.models.gat import GATPredicateClassifier
 
 

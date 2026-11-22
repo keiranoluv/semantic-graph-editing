@@ -10,10 +10,9 @@ import h5py
 import numpy as np
 import torch
 import torch.nn.functional as F
-from PIL import Image
-
 from common.datasets.vg150 import VG150AnnotationLoader
 from common.knowledge.transe.core import sha256
+from PIL import Image
 
 SOURCE_FILES = ("VG-SGG-with-attri.h5", "image_data.json", "splits.json", "images_manifest.json")
 

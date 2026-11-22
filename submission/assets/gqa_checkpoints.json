@@ -1,0 +1,67 @@
+[
+  {
+    "model": "pe-plpr",
+    "seed": 42,
+    "backend": "base",
+    "checkpoint": "runs/level2/gqa-full-v3-bs512/pe-plpr/42/best.pt",
+    "checkpoint_sha256": "902f6d06664d4f50e376e2e20f62b18260bdcaa84567bb9e70e29063006e8b78",
+    "result_sha256": "3cb031f917b74da807ae2d623abcf994394eadc45f7774333672d27ec090db82",
+    "history_sha256": "c1ab0c405f540bba456d0ebe9cdaa61e89e0ddc11216a41e1cd7020278a7801d",
+    "experiment_sha256": "5ca6bf29db2365406eaaf5ce958be6d87e8e4c3a0f7cdf39057f14de77b94917",
+    "selected_epoch": 56,
+    "epochs_completed": 71,
+    "stopping_reason": "early_stopping",
+    "validation": {
+      "gc": {
+        "R@50": 0.7793774616014066,
+        "R@100": 0.8822170002125385,
+        "mR@50": 0.041455798010329295,
+        "mR@100": 0.07068085906389963
+      },
+      "ng": {
+        "R@50": 0.8017786538818951,
+        "R@100": 0.9201479035039083,
+        "mR@50": 0.07755901893555667,
+        "mR@100": 0.16976283696419234
+      }
+    },
+    "identity": {
+      "experiment_sha256": "5ca6bf29db2365406eaaf5ce958be6d87e8e4c3a0f7cdf39057f14de77b94917",
+      "model": "pe-plpr",
+      "seed": 42
+    },
+    "effective_state_sha256": "21e3f49a574531f0096799bc3d625a8187d5fa3d9025acbe2beadbabe08b6658"
+  },
+  {
+    "model": "pe-plpr-aligng",
+    "seed": 42,
+    "backend": "fast",
+    "checkpoint": "runs/level2/aligng-gqa-fast-v1/full/pe-plpr-aligng/42/best.pt",
+    "checkpoint_sha256": "3d0644a60edd436301ae13120a023e8d2894683174dc5451d7e4281fe952e664",
+    "result_sha256": "80cdf2ca3d92d523b678b205a739a7f96544e9d4b397cc7fc1165215f5849bd1",
+    "history_sha256": "188ef1c7225700dd5879fc127603095bcac95b441fe84ecda65b2099cb23db8d",
+    "experiment_sha256": "ea05085cd3eea85f951deb42e51e71eda2a9322516b8f5bb57042c9a8427deda",
+    "selected_epoch": 47,
+    "epochs_completed": 62,
+    "stopping_reason": "early_stopping",
+    "validation": {
+      "gc": {
+        "R@50": 0.7782442987474947,
+        "R@100": 0.8803585287653279,
+        "mR@50": 0.050404324087327104,
+        "mR@100": 0.08225511835040414
+      },
+      "ng": {
+        "R@50": 0.801567601055889,
+        "R@100": 0.9180430532726266,
+        "mR@50": 0.10206705935889912,
+        "mR@100": 0.20583819723297955
+      }
+    },
+    "identity": {
+      "experiment_sha256": "ea05085cd3eea85f951deb42e51e71eda2a9322516b8f5bb57042c9a8427deda",
+      "model": "pe-plpr-aligng",
+      "seed": 42
+    }
+  }
+]

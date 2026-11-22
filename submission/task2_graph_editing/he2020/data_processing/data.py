@@ -10,21 +10,15 @@ from collections import Counter
 from pathlib import Path
 
 from common.editing.operations import KINDS, EditGraph, Operation, apply_operations
-from task2_graph_editing.magicbrush.sequence_model.codec import decode_actions, encode_actions
-from task2_graph_editing.magicbrush.sequence_model.data import Example
+from common.io import digest, read, sha256, write
 from task2_graph_editing.he2020.preprocessing.compiler import compile_record
 from task2_graph_editing.he2020.preprocessing.data import source_fingerprint
-from task2_graph_editing.he2020.preprocessing.dataset import (
-    ARCHIVE_SHA256,
-    OFFICIAL_COMMIT,
-    digest,
-    read,
-    sha256,
-    verified_archive,
-    write,
-)
+from task2_graph_editing.he2020.preprocessing.dataset import ARCHIVE_SHA256, OFFICIAL_COMMIT, verified_archive
+from task2_graph_editing.magicbrush.sequence_model.codec import decode_actions, encode_actions
+from task2_graph_editing.magicbrush.sequence_model.data import Example
 
 VERSION = "emnlp2020-task-b-v2"
+
 MEMBERS = ("src_graph.bin", "tgt_graph.bin", "src_text.txt")
 
 

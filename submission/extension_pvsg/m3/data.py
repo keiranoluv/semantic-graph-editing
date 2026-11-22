@@ -5,11 +5,10 @@ from pathlib import Path
 
 import numpy as np
 import torch
-from torch.utils.data import Dataset, Sampler
-
 from extension_pvsg.contracts import read_json
 from extension_pvsg.graphs import Graph, batch_graphs
 from extension_pvsg.m2.download import sha256
+from torch.utils.data import Dataset, Sampler
 
 
 class Store:

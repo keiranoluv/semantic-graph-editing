@@ -3,9 +3,8 @@
 from dataclasses import dataclass
 
 import torch
-
-from task2_gqa.models.batching import validate_pairs
 from common.training.gqa_pilot import soft_targets
+from task2_gqa.models.batching import validate_pairs
 
 
 @dataclass(frozen=True)

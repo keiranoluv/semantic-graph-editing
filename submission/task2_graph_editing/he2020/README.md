@@ -1,6 +1,6 @@
 # Mở rộng nhiệm vụ 2B · He và cộng sự
 
-Chạy từ gốc submission/, dùng environments/graph-training.txt và protobuf==5.29.5. Dữ liệu đã chuẩn hóa cùng CLIP cache nằm ở data/processed/level2/emnlp2020-task-b-v2/.
+Chạy từ gốc submission/, dùng environments/graph-training.txt. Dữ liệu đã chuẩn hóa cùng CLIP cache nằm ở data/processed/level2/emnlp2020-task-b-v2/.
 
 ## Huấn luyện
 
@@ -11,8 +11,13 @@ Runner chạy tuần tự MLP rồi GNN, mỗi model có seeds 42, 43, 44. Batch
 
 ## Suy luận và đánh giá
 
-    python -m task2_graph_editing.he2020.evaluate --config configs/level2/emnlp2020-task-b-wandb-v4.json --stage eval --device cpu
+    python -m task2_graph_editing.he2020.predict --checkpoint runs/level2/emnlp2020-task-b-wandb-v4/gnn-seed42/best.pt --model gnn --input /duong/dan/input.json
+    python -m task2_graph_editing.he2020.evaluate --checkpoint runs/level2/emnlp2020-task-b-wandb-v4/gnn-seed42/best.pt --model gnn --split val --max-examples 5
 
-Evaluator đọc sáu checkpoint đã chọn và chấm 530 mẫu test sau lọc, với đối chiếu nguồn và cache. Notebook tổng hợp phát lại một dự đoán đúng và một dự đoán sai rồi áp thao tác lên đồ thị nguồn.
+input.json chứa source_graph theo schema common/editing/operations.py và instruction. Suy luận chạy CPU, trả thao tác và đồ thị đích. Evaluator chấm một checkpoint trên validation hoặc test, đọc các cache đã tạo. Notebook phát lại một ca đúng và một ca sai đã lưu.
 
-preprocessing/ đọc và chuẩn hóa bộ gốc, data_processing/ chuẩn bị train/validation, models/ cài MLP/GNN, training/ huấn luyện với W&B. Tính độc lập của split theo ảnh gốc chưa được xác minh.
+## Chuẩn bị dữ liệu
+
+    python -m task2_graph_editing.he2020.preprocessing --archive data/raw/emnlp2020-graph-modification-v1/scene_graph_modification_data.tgz --output data/processed/level2/emnlp2020-task-b-v2
+
+Thêm --test để chuyển đổi tập test sau khi đã khóa train/validation. Bộ đọc pickle chạy trong tiến trình cô lập. data_processing/ chuẩn hóa và lọc trùng theo nhóm nguồn. runtime.py chứa hàm dựng mô hình, chuẩn bị batch, dự đoán và tính metric dùng chung với trainer. Tính độc lập theo ảnh gốc chưa được xác minh.

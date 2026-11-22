@@ -9,12 +9,13 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from extension_pvsg.contracts import ROOT, normalize_targets, read_json, visibility_masks
-from extension_pvsg.data import PREDICATE_IDS, rasterize_targets
+from extension_pvsg.data import PREDICATE_IDS
 from extension_pvsg.intervals import intervals_to_mask, mask_to_intervals
-from extension_pvsg.validate_m0 import canonical_sha256, validate_manifest
 from extension_pvsg.m2.download import sha256
+from extension_pvsg.validate_m0 import canonical_sha256, validate_manifest
 
 POLICY_ID = "pvsg-gml-valid-support-v1"
+
 POLICY = {
     "policy_id": POLICY_ID,
     "raw_annotation_unchanged": True,
@@ -30,22 +31,6 @@ POLICY = {
     "upstream_ontology_source": "https://github.com/LilyDaytoy/OpenPVSG/blob/b2850b980c272368215a754299986cb904d55820/utils/relation_matching.py",
     "benchmark_claim": "GML_GT_track_dataset_variant_not_original_PVSG_benchmark_reproduction",
 }
-
-
-def rasterize_adapted_targets(video, target, ignored_negative_keys, *, start=0, stop=None):
-    """Use this supervision mask with the adapted dataset, for every baseline."""
-    import numpy as np
-
-    batch = rasterize_targets(video, target, start=start, stop=stop)
-    mask = np.broadcast_to(batch["loss_mask"][..., None], batch["labels"].shape).copy()
-    pairs = {tuple(pair): i for i, pair in enumerate(batch["pairs"])}
-    for row in ignored_negative_keys:
-        pair = row["subject_id"], row["object_id"]
-        if pair in pairs:
-            index, predicate = pairs[pair], row["predicate_id"]
-            mask[index, :, predicate] &= batch["labels"][index, :, predicate] > 0
-    batch["supervision_mask"] = mask
-    return batch
 
 
 def source_group(video_id, source):
